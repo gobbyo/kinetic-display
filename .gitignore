@@ -1,3 +1,7 @@
+# various .gitignore files suitable for Python projects
+main.py
+*.log
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
