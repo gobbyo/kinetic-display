@@ -11,6 +11,14 @@ motor1cwPin=6
 motor1acwPin=7
 motor2cwPin=9
 motor2acwPin=10
+motor3cwPin=11
+motor3acwPin=12
+motor4cwPin=13
+motor4acwPin=14
+motor5cwPin=15
+motor5acwPin=16
+motor6cwPin=17
+motor6acwPin=18
 
 def motorMove(speed,direction,speedGP,cwGP,acwGP):
   if speed > 100: speed=100
@@ -52,25 +60,49 @@ class shiftreg:
 
 def main():
     sr = shiftreg(latchpin, clockpin, datapin)
-    motorMove(0,0,pwmPIN,motor1cwPin,motor1acwPin)
-    time.sleep(1)
     direction = 1
     print("start")
 
     while True:  
 
-        sr.set_reg([0,0,0,0,0,0,0,1])
-        motorMove(100,direction,pwmPIN,motor1cwPin,motor1acwPin)
-        
+        if direction == 1:
+            print("forward")
+            sr.set_reg([0,0,0,0,0,0,0,1])
+        else:
+            print("reverse")
+            sr.set_reg([0,0,0,0,0,0,1,0])
+
+        motorMove(75,direction,pwmPIN,motor1cwPin,motor1acwPin)
         time.sleep(.2)
         motorMove(0,0,pwmPIN,motor1cwPin,motor1acwPin)
-        time.sleep(.2)       
-        sr.set_reg([0,0,0,0,0,0,1,0])
-        motorMove(30,direction,pwmPIN,motor2cwPin,motor2acwPin)
+        time.sleep(.1)
+
+        motorMove(75,direction,pwmPIN,motor2cwPin,motor2acwPin)
         time.sleep(.2)
         motorMove(0,0,pwmPIN,motor2cwPin,motor2acwPin)
+        time.sleep(.1)
+
+
+        motorMove(75,direction,pwmPIN,motor3cwPin,motor3acwPin)
         time.sleep(.2)
-        sr.set_reg([0,0,0,0,0,0,0,0])
+        motorMove(0,0,pwmPIN,motor3cwPin,motor3acwPin)
+        time.sleep(.25)
+
+        motorMove(75,direction,pwmPIN,motor4cwPin,motor4acwPin)
+        time.sleep(.2)
+        motorMove(0,0,pwmPIN,motor4cwPin,motor4acwPin)
+        time.sleep(.25)
+
+        motorMove(75,direction,pwmPIN,motor5cwPin,motor5acwPin)
+        time.sleep(.2)
+        motorMove(0,0,pwmPIN,motor5cwPin,motor5acwPin)
+        time.sleep(.25)
+
+        motorMove(75,direction,pwmPIN,motor6cwPin,motor6acwPin)
+        time.sleep(.2)
+        motorMove(0,0,pwmPIN,motor6cwPin,motor6acwPin)
+        time.sleep(.25)
+
         direction *= -1
 
 if __name__ == "__main__":
