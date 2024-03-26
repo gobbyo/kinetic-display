@@ -7,10 +7,12 @@ clockpin = const(26) #SRCLK default
 datapin = const(28) #SER default
 
 pause = .5
-waitTime = .3
-speed = 100
+waitTime = .2
+ABspeed = 75
+CDspeed = 100
 
-pwmPIN=10
+pwmABPIN=10
+pwmCDPIN=11
 extend_a = [0,0,0,0,0,0,0,0,0,0,0,0,0,1]
 retract_a = [0,0,0,0,0,0,0,0,0,0,0,0,1,0]
 extend_b = [0,0,0,0,0,0,0,0,0,0,0,1,0,0]
@@ -31,10 +33,10 @@ clear_reg = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 class motoractuator:
     def __init__(self, speedGP, sr):
         self.speed = PWM(Pin(speedGP))
-        self.speed.freq(20)
+        self.speed.freq(50)
         self.sr = sr
     
-    def move(self, reg):
+    def move(self, reg, speed):
         self.speed.duty_u16(int((speed/100)*65536))
         self.sr.set_reg(reg)
         time.sleep(waitTime)
@@ -70,28 +72,42 @@ def main():
     sr = shiftreg(latchpin, clockpin, datapin)
     print("start")
 
-    m = motoractuator(pwmPIN, sr)
+    m_AB = motoractuator(pwmABPIN, sr)
+    m_CD = motoractuator(pwmCDPIN, sr)
 
     while True:
-        m.move(extend_a)
-
+        m_AB.move(extend_a,ABspeed)
+        m_AB.stop()
         time.sleep(pause)
-        m.stop()
 
-        m.move(extend_e)
-
+        m_AB.move(extend_b,ABspeed)
+        m_AB.stop()
         time.sleep(pause)
-        m.stop()
+
+        m_CD.move(extend_c,CDspeed)
+        m_CD.stop()
+        time.sleep(pause)
+
+        m_CD.move(extend_d,CDspeed)
+        m_CD.stop()
+        time.sleep(pause)
         
-        m.move(retract_a)
-
+        m_AB.move(retract_a,ABspeed)
+        m_AB.stop()
         time.sleep(pause)
-        m.stop()
 
-        m.move(retract_e)
-
+        m_AB.move(retract_b,ABspeed)
+        m_AB.stop()
         time.sleep(pause)
-        m.stop()
+
+        m_CD.move(retract_c,CDspeed)
+        m_CD.stop()
+        time.sleep(pause)
+
+        m_CD.move(retract_d,CDspeed)
+        m_CD.stop()
+        time.sleep(pause)
+
 
 if __name__ == "__main__":
     main()
