@@ -3,7 +3,7 @@ import time
 
 pause = 1
 waitTime = 0.2
-speed = 50
+speed = 75
 
 pwmPIN=11
 motor1extendPin=12 
@@ -21,7 +21,7 @@ motor6retractPin=26
 motor7extendPin=27
 motor7retractPin=10
 
-_percentBrightness = .10
+_percentBrightness = .30
 _brightness = int(_percentBrightness*65536)
 
 led_a_pin = 4
@@ -129,7 +129,7 @@ def main():
             set_digit(seg,actuators,leds)
             time.sleep(pause)
             i += 1
-        time.sleep(5)
+        time.sleep(2)
 
 if __name__ == "__main__":
     main()
