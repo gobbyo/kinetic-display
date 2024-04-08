@@ -32,6 +32,25 @@ led_e_pin = 8
 led_f_pin = 9
 led_g_pin = 28
 
+# 0 = 	0011 1111   0x3F
+# 1 =	0000 0110   0x06
+# 2 =	0101 1011   0x5B
+# 3 =	0100 1111   0x4F
+# 4 =	0110 0110   0x66
+# 5 =	0110 1101   0x6D
+# 6 =	0111 1101   0x7D
+# 7 =	0000 0111   0x07
+# 8 =   0111 1111   0x7F
+# 9 =   0110 0111   0x67
+# A =   0110 0011   0x63  #degrees
+# B =   0101 1100   0x5C  #percent
+# C =   0011 1001   0x39  #celcius
+# D =   0111 0001   0x71  #farhenheit
+# E =   0000 0000   0x00  #clear
+# F =   1000 0000   0x00  #ignore
+_segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67,0x63,0x5C,0x39,0x71,0x00]
+_segprint = ['0','1','2','3','4','5','6','7','8','9','A (degrees)','B (percent)','C (celcius)','D (farhenheit)','E (clear)', 'F (ignore)']
+
 class motoractuator:
     def __init__(self, speedGP, cwGP, acwGP):
         self.speed = PWM(Pin(speedGP))
@@ -62,25 +81,6 @@ class motoractuator:
         print("stop")
 
 _previousDigitArray = [0,0,0,0,0,0,0]
-    
-# 0 = 	0011 1111   0x3F
-# 1 =	0000 0110   0x06
-# 2 =	0101 1011   0x5B
-# 3 =	0100 1111   0x4F
-# 4 =	0110 0110   0x66
-# 5 =	0110 1101   0x6D
-# 6 =	0111 1101   0x7D
-# 7 =	0000 0111   0x07
-# 8 =   0111 1111   0x7F
-# 9 =   0110 0111   0x67
-# A =   0110 0011   0x63  #degrees
-# B =   0101 1100   0x5C  #percent
-# C =   0011 1001   0x39  #celcius
-# D =   0111 0001   0x71  #farhenheit
-# E =   0000 0000   0x00  #clear
-# F =   1000 0000   0x00  #ignore
-_segnum = [0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x67,0x63,0x5C,0x39,0x71,0x00]
-_segprint = ['0','1','2','3','4','5','6','7','8','9','A (degrees)','B (percent)','C (celcius)','D (farhenheit)','E (clear)', 'F (ignore)']
 
 def getDigitArray(val):
     a = [0,0,0,0,0,0,0]
