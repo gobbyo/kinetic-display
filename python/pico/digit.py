@@ -82,36 +82,40 @@ class motoractuator:
 
 _previousDigitArray = [0,0,0,0,0,0,0]
 
-def getDigitArray(val):
-    a = [0,0,0,0,0,0,0]
-    i = 0
-    for s in a:
-        a[i] = (val & (0x01 << i)) >> i
-        i += 1
-    return a
+class digit:
+    def __init__(self):
+        pass
 
-def set_digit(seg, actuators, leds):
-    digitArray = getDigitArray(seg)
-    print("set_digit(0x{0:02x}): {1}".format(seg, digitArray))
+    def getDigitArray(self, val):
+        a = [0,0,0,0,0,0,0]
+        i = 0
+        for s in a:
+            a[i] = (val & (0x01 << i)) >> i
+            i += 1
+        return a
 
-    for i in range(0,7):
-        if (1 == digitArray[i]) and (0 == _previousDigitArray[i]):
-            actuators[i].extend(speed)
-            print("----------")
-            print("extend {0} digit {1}".format(i, digitArray))
-            leds[i].duty_u16(_brightness)
+    def set_digit(self, seg, actuators, leds):
+        digitArray = self.getDigitArray(seg)
+        print("set_digit(0x{0:02x}): {1}".format(seg, digitArray))
 
-        if (0 == digitArray[i]) and (1 == _previousDigitArray[i]):
-            print("----------")
-            print("retract {0} digit {1}".format(i, digitArray))
-            leds[i].duty_u16(0)
-            actuators[i].retract(speed)
+        for i in range(0,7):
+            if (1 == digitArray[i]) and (0 == _previousDigitArray[i]):
+                actuators[i].extend(speed)
+                print("----------")
+                print("extend {0} digit {1}".format(i, digitArray))
+                leds[i].duty_u16(_brightness)
 
-    setPreviousDigitArray(digitArray)
+            if (0 == digitArray[i]) and (1 == _previousDigitArray[i]):
+                print("----------")
+                print("retract {0} digit {1}".format(i, digitArray))
+                leds[i].duty_u16(0)
+                actuators[i].retract(speed)
 
-def setPreviousDigitArray(digitArray):
-    for i in range(7):
-        _previousDigitArray[i] = digitArray[i]
+        self.setPreviousDigitArray(digitArray)
+
+    def setPreviousDigitArray(self, digitArray):
+        for i in range(7):
+            _previousDigitArray[i] = digitArray[i]
 
 def main():
     leds = [PWM(Pin(led_a_pin)), PWM(Pin(led_b_pin)), PWM(Pin(led_c_pin)),  PWM(Pin(led_d_pin)),  PWM(Pin(led_e_pin)),  PWM(Pin(led_f_pin)),  PWM(Pin(led_g_pin))]
@@ -122,11 +126,13 @@ def main():
     for actuator in actuators:
         actuator.stop()
 
+    d = digit()
+
     while True:
         i = 0
         for seg in _segnum:
             print('---Digit {0}---'.format(_segprint[i]))
-            set_digit(seg,actuators,leds)
+            d.set_digit(seg,actuators,leds)
             time.sleep(pause)
             i += 1
         time.sleep(2)
