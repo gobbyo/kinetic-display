@@ -1,5 +1,6 @@
 from uart_protocol import uartProtocol, uartChannel, uartCommand, commandHelper, uartActions
-from dht11 import DHT11, InvalidChecksum, InvalidPulseCount
+#from dht11 import DHT11, InvalidChecksum, InvalidPulseCount
+import dht
 from machine import Pin, RTC
 import photoresistor
 from time_formatter import formatHour
@@ -29,7 +30,7 @@ class conductor:
         time.sleep(.75)
         self.uart1 = uartProtocol(uartChannel.uart1, commandHelper.baudRate[3])
         self.light = photoresistor.photoresistor(photoresistorPin)
-        self.dht = DHT11(Pin(dhtPin))
+        self.dht = dht.DHT11(Pin(dhtPin))
         self.dhtpower = Pin(dhtPowerpin, Pin.OUT)
         self.display12hour = True
         self.temp = 0
@@ -45,21 +46,17 @@ class conductor:
         #print("checkForScheduledAction for event={0}".format(s.event))
         #[year, month, day, weekday, hours, minutes, seconds, subseconds]
         dt = self.rtc.datetime()
-        t = s.elapse + s.second
-        if t > 60:
-            t = t - 60
-
-        if s.event == eventActions.displayTime:
-            if s.hour == -1 and dt[6] >= s.second or dt[6] <= t:
-                return eventActions.displayTime
-        elif s.event == eventActions.hybernate:
+                
+        if s.event == eventActions.hybernate:
             if dt[4] == s.hour and dt[5] == s.minute:
                 return eventActions.hybernate
-        elif s.event >= eventActions.displayDate or s.event <= eventActions.updateOutdoorTempHumid:
-            if s.hour == -1 and dt[5] == s.minute and dt[6] >= s.second and dt[6] <= t:
-                return s.event
-        else:
-            return 0
+        
+        if s.event >= eventActions.displayTime or s.event <= eventActions.updateOutdoorTempHumid:
+            if s.hour == -1 and dt[5] == (s.minute):
+                if dt[6] >= s.second and dt[6] < (s.second + 5):
+                    return s.event
+        
+        return 0
     
     def scheduledHybernation(self,s):
         print("scheduledHybernation")
@@ -120,15 +117,12 @@ class conductor:
     def updateIndoorTemp(self):
         self.dhtpower.on()
         time.sleep(1.5)
+        self.temp = 0
+        self.humidity = 0
         try:
             self.dht.measure()
-            self.temp = '{0:02}'.format(int(self.dht.temperature))
-            self.humidity = '{0:02}'.format(int(self.dht.humidity))
-            print("Temp: {0} Humidity: {1}".format(self.temp, self.humidity))
-        except InvalidChecksum:
-            print("Invalid checksum")
-        except InvalidPulseCount:
-            print("Invalid pulse count")
+            self.temp = self.dht.temperature()
+            self.humidity = self.dht.humidity()
         except Exception as e:
             print("Error updateIndoorTemp: {0}".format(e))
         finally:
@@ -223,7 +217,7 @@ class conductor:
             self.updateIndoorTemp()
             t = self.temp
             if not celcius:
-                t = '{0:02}'.format(round((9/5)*int(self.temp))+32,0)
+                t = '{0:02}'.format(int(round((9/5)*self.temp+32,0)))
                 print("Temp in Fahrenheit: {0}".format(t))
             
             # set the digits to show the temperature
@@ -246,9 +240,10 @@ class conductor:
         try:
             print("showIndoorHumidity")
             self.updateIndoorTemp()
+            h = str(self.humidity)
             # set the digits to show the temperature
-            self.displayNumber(3,int(self.humidity[0]))
-            self.displayNumber(2,int(self.humidity[1]))
+            self.displayNumber(3,int(h[0]))
+            self.displayNumber(2,int(h[1]))
             self.colons.extend_segment(0)
             self.colons.retract_segment(1)
             self.displayNumber(1,10)
@@ -269,7 +264,7 @@ class conductor:
                     temp *= -1
                 print("Outdoor temp in Celcius: {0}".format(temp)) 
             else:
-                f = round((9/5)*int(temp))+32
+                f = int(round((9/5)*temp+32,0))
                 if f < 0:
                     f *= -1
                 if f > 99:
@@ -408,20 +403,6 @@ def loop():
     # Set up the UARTs digits 0 through 3
     controller = conductor()
 
-    # Load the schedule
-    try:
-        scheduleConf = io.open("scheduleconfig.json")
-        s = json.load(scheduleConf)
-        for i in s["scheduledEvent"]:
-            print("--schedule info--")
-            controller.schedule.append(scheduleInfo(i["hour"],i["minute"],i["second"],i["elapse"],i["event"]))
-    except ValueError as ve:
-        print("Schedule loading value error: {0}".format(ve))
-    except OSError as ioe:
-        print("Schedule loading IO error: {0}".format(ioe))
-    finally:
-        scheduleConf.close()
-
     try:
 
         if controller.hybernateswitch(): #if the hybernate switch is in "off" position
@@ -430,13 +411,13 @@ def loop():
             while controller.hybernateswitch(): #wait for the switch to be turned to the "on" position
                 time.sleep(1)
        
+        # Load the configuration
         conf = config.Config("config.json")
         tempCF = conf.read("tempCF")
         if tempCF == "C":
             cf = True
         else:
             cf = False
-
         tempWait = int(conf.read("wait"))
         tempSpeed = int(conf.read("speed"))
             # set the motor speed to % (x10) of max
@@ -456,6 +437,21 @@ def loop():
         time.sleep(.5)
         controller.testdigits()
 
+        # Load the schedule
+        try:
+            scheduleConf = io.open("schedule_0.json")
+            s = json.load(scheduleConf)
+            for i in s["scheduledEvent"]:
+                print("--schedule info--")
+                controller.schedule.append(scheduleInfo(i["hour"],i["minute"],i["second"],i["elapse"],i["event"]))
+        except ValueError as ve:
+            print("Schedule loading value error: {0}".format(ve))
+        except OSError as ioe:
+            print("Schedule loading IO error: {0}".format(ioe))
+        finally:
+            scheduleConf.close()
+
+        # Enable wifi and sync the RTC
         ssid = secrets.usr
         pwd = secrets.pwd
         wifi = hotspot(ssid,pwd)
@@ -468,20 +464,8 @@ def loop():
         print("Wifi error: {0}".format(e))
     finally:
         pass
-    
-    try:
-        controller.updateIndoorTemp()
-    except InvalidChecksum:
-        print("Invalid checksum")
-    except InvalidPulseCount:
-        print("Invalid pulse count")
-    except Exception as e:
-        print("RTC error: {0}".format(e))
-    finally:
-        pass
 
     controller.updatebrightness()
-    controller.showTime()
 
     while True:
         try:
@@ -502,17 +486,15 @@ def loop():
                 elif a == eventActions.updateOutdoorTempHumid:
                     controller.updateOutdoorTempHumid()
                 elif a == eventActions.hybernate:
+                    wifi.disconnectWifi()
                     controller.scheduledHybernation(s)
+                    wifi.connectWifi()
                     break
             
             time.sleep(1)
             if controller.checkHybernate():
-                controller.showTime()
+                controller.updatebrightness()
 
-        except InvalidChecksum:
-            print("Invalid checksum")
-        except InvalidPulseCount:
-            print("Invalid pulse count")
         except Exception as e:
             print("Error: {0}".format(e))
         finally:

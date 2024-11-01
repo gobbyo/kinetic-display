@@ -36,9 +36,11 @@ class extTempHumid:
             conf = config.Config("config.json")
             lat = conf.read("lat")
             lon = conf.read("lon")
+            print(f"lat={lat}, lon={lon}")
             r = urequests.get("https://api.open-meteo.com/v1/forecast?latitude={0}&longitude={1}&current_weather=true&hourly=relativehumidity_2m".format(lat,lon))
             j = json.loads(r.content)
             temperature = j['current_weather']['temperature']
+            print(f"temp={temperature}")
             temp = int(temperature)
             conf.write("tempoutdoor",temp)
             print("temp sensor outdoor = {0}".format(temp))

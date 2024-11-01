@@ -187,6 +187,11 @@ class hotspot:
             print('waiting for connection...')
             time.sleep(1)
         return False
+    
+    def disconnectWifi(self):
+        wifi = network.WLAN(network.STA_IF)
+        wifi.disconnect()
+        wifi.active(False)
 
     # This method starts the hotspot and renders the admin web page
     # The admin web page allows the user to set the wifi ssid and password,

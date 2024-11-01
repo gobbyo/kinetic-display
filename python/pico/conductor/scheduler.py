@@ -10,6 +10,25 @@ class eventActions():
     hybernate = 9
 
 class scheduleInfo:
+    """
+    A class to represent a schedule information.
+    Attributes:
+    -----------
+    hour : int
+        The hour of the schedule (0-23).
+    minute : int
+        The minute of the schedule (0-59).
+    second : int
+        The second of the schedule (0-59).
+    elapse : int
+        The elapsed time in seconds.
+    event : int
+        The event type (0-5).
+    Methods:
+    --------
+    __init__(h=0, m=0, s=0, e=0, ev=0):
+        Initializes the scheduleInfo with given hour, minute, second, elapse, and event.
+    """
     def __init__(self, h=0, m=0, s=0, e=0, ev=0):
         self.hour = h
         self.minute = m
