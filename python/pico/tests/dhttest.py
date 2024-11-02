@@ -6,7 +6,7 @@ def main():
     dhtpower = Pin(16, Pin.OUT)
     dhtpower.on()
     time.sleep(1.2)
-    t = dht.DHT11(Pin(27))
+    t = dht.DHT22(Pin(27))
     t.measure()
     temp = t.temperature()
     humid = t.humidity()

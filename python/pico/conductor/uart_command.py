@@ -1,5 +1,4 @@
 from uart_protocol import uartProtocol, uartChannel, uartCommand, commandHelper, uartActions
-#from dht11 import DHT11, InvalidChecksum, InvalidPulseCount
 import dht
 from machine import Pin, RTC
 import photoresistor
@@ -30,7 +29,8 @@ class conductor:
         time.sleep(.75)
         self.uart1 = uartProtocol(uartChannel.uart1, commandHelper.baudRate[3])
         self.light = photoresistor.photoresistor(photoresistorPin)
-        self.dht = dht.DHT11(Pin(dhtPin))
+        #self.dht = dht.DHT11(Pin(dhtPin))
+        self.dht = dht.DHT22(Pin(dhtPin))
         self.dhtpower = Pin(dhtPowerpin, Pin.OUT)
         self.display12hour = True
         self.temp = 0
@@ -43,17 +43,18 @@ class conductor:
         self.colons = digit_colons.Digit_Colons(digit_colons.led_pins, digit_colons.LEDbrightness, digit_colons.motor_pins)
 
     def checkForScheduledAction(self, s):
-        #print("checkForScheduledAction for event={0}".format(s.event))
         #[year, month, day, weekday, hours, minutes, seconds, subseconds]
         dt = self.rtc.datetime()
                 
         if s.event == eventActions.hybernate:
             if dt[4] == s.hour and dt[5] == s.minute:
+                print(f"h={s.hour}, m={s.minute}, s={s.second}, e={s.event}")
                 return eventActions.hybernate
-        
-        if s.event >= eventActions.displayTime or s.event <= eventActions.updateOutdoorTempHumid:
-            if s.hour == -1 and dt[5] == (s.minute):
-                if dt[6] >= s.second and dt[6] < (s.second + 5):
+    
+        if s.event < eventActions.hybernate:
+            if (s.hour == -1 and dt[5] == (s.minute)) or (s.hour == -1 and s.minute == -1):
+                if dt[6] >= s.second and dt[6] < (s.second + s.elapse):
+                    print(f"h={s.hour}, m={s.minute}, s={s.second}, e={s.event}")
                     return s.event
         
         return 0

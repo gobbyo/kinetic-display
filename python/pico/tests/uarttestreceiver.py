@@ -1,8 +1,6 @@
 from uart_protocol import uartProtocol, uartChannel, uartCommand, commandHelper, uartActions
 import time
 
-
-
 def main():
     uart0 = uartProtocol(0, commandHelper.baudRate[3])
     time.sleep(.2)

@@ -1,26 +1,24 @@
 import io
 import json
-import scheduler
+from scheduler import scheduleInfo, eventActions
 from machine import RTC
 import time
 
 def checkForScheduledAction(rtc,s):
-    #print("checkForScheduledAction for event={0}".format(s.event))
     #[year, month, day, weekday, hours, minutes, seconds, subseconds]
-    
     dt = rtc.datetime()
 
-    if s.event == scheduler.eventActions.hybernate:
+    if s.event == eventActions.hybernate:
         if dt[4] == s.hour and dt[5] == s.minute:
             print(f"h={s.hour}, m={s.minute}, s={s.second}, e={s.event}")
-            return scheduler.eventActions.hybernate
-    
-    if s.event >= scheduler.eventActions.displayTime or s.event <= scheduler.eventActions.updateOutdoorTempHumid:
-        if s.hour == -1 and dt[5] == (s.minute):
-            if dt[6] == s.second:
+            return eventActions.hybernate
+
+    if s.event < eventActions.hybernate:
+        if (s.hour == -1 and dt[5] == (s.minute)) or (s.hour == -1 and s.minute == -1):
+            if dt[6] >= s.second and dt[6] < (s.second + s.elapse):
                 print(f"h={s.hour}, m={s.minute}, s={s.second}, e={s.event}")
                 return s.event
-    
+                
     return 0
 
 def main():
@@ -28,11 +26,11 @@ def main():
     rtc = RTC()
 
     try:
-        scheduleConf = io.open("schedule_0.json")
+        scheduleConf = io.open("schedule_2.json")
         s = json.load(scheduleConf)
         for i in s["scheduledEvent"]:
             print("--record--")
-            schedule.append(scheduler.scheduleInfo(i["hour"],i["minute"],i["second"],i["elapse"],i["event"]))
+            schedule.append(scheduleInfo(i["hour"],i["minute"],i["second"],i["elapse"],i["event"]))
     except ValueError as ve:
         print("Schedule loading value error: {0}".format(ve))
     except OSError as ioe:

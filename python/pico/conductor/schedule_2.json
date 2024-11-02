@@ -1,0 +1,109 @@
+{
+    "scheduledEvent": [
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 0,
+            "elapse": 25,
+            "event": 1
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 45,
+            "elapse": 10,
+            "event": 1
+        },
+        {
+            "hour": -1,
+            "minute": 0,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 5,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 10,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 10,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 15,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 20,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 25,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 30,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 35,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 40,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 45,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 50,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 55,
+            "second": 15,
+            "elapse": 25,
+            "event": 2
+        }
+    ]
+}

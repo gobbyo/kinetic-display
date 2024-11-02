@@ -54,7 +54,7 @@ class scheduleInfo:
     @minute.setter
     def minute(self, value):
         print("minute={0}".format(value))
-        if value < 0 or value >= 60:
+        if value < -1 or value >= 60:
             raise ValueError("minute must be between 0 and 59")
         self._minute = value
     
