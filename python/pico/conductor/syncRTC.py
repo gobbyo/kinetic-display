@@ -10,10 +10,9 @@ externalIPAddressAPI=const("http://api.ipify.org")
 class syncRTC:
 
     def __init__(self):
-        self.rtc = RTC()
         self.externalIPaddress = "00.000.000.000"
 
-    def syncclock(self):
+    def syncclock(self, rtc):
         print("Sync clock")
         returnval = True
 
@@ -29,7 +28,7 @@ class syncRTC:
             t = (j["currentLocalTime"].split('T'))[1].split(':')
             print(t)
             #[year, month, day, weekday, hours, minutes, seconds, subseconds]
-            self.rtc.datetime((int(z["year"]), int(z["month"]), int(z["day"]), 0, int(t[0]), int(t[1]), int(z["seconds"]), 0))
+            rtc.datetime((int(z["year"]), int(z["month"]), int(z["day"]), 0, int(t[0]), int(t[1]), int(z["seconds"]), 0))
         except Exception as e:
             print("Exception: {}".format(e))
             returnval = False
@@ -51,8 +50,15 @@ class syncRTC:
             pass
 
 def main():
-    rtc = syncRTC()
-    rtc.syncclock()
+    rtc = RTC()
+    rtc2 = RTC()
+    clock = syncRTC()
+    clock.syncclock(rtc)
+    print(rtc.datetime())
+    print(rtc2.datetime())
+    rtc2.datetime((2023, 1, 1, 0, 0, 0, 0, 0))
+    print(rtc.datetime())
+    print(rtc2.datetime())
 
 if __name__ == "__main__":
     main()

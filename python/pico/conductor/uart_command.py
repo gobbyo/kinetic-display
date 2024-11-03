@@ -25,6 +25,7 @@ powerRelayPin = 19
 # hybernation of the system and the schedule of events.
 class conductor:
     def __init__(self):
+        self.wifi = None
         self.uart0 = uartProtocol(uartChannel.uart0, commandHelper.baudRate[3])
         time.sleep(.75)
         self.uart1 = uartProtocol(uartChannel.uart1, commandHelper.baudRate[3])
@@ -47,7 +48,7 @@ class conductor:
         dt = self.rtc.datetime()
                 
         if s.event == eventActions.hybernate:
-            if dt[4] == s.hour and dt[5] == s.minute:
+            if (dt[4] == s.hour or s.hour == -1) and (dt[5] == s.minute or s.minute == -1):
                 print(f"h={s.hour}, m={s.minute}, s={s.second}, e={s.event}")
                 return eventActions.hybernate
     
@@ -68,7 +69,7 @@ class conductor:
             m = s.elapse + (dt[4] * 60) + dt[5]
             deadlineinHours = int(m/60) % 24 #hours
             deadlineinMinutes = int(m%60)
-            print("deadline {0}:{1}".format(deadlineinHours, deadlineinMinutes))
+            print(f"deadline {deadlineinHours}:{deadlineinMinutes}")
             while hybernating:
                 dt = self.rtc.datetime()
                 if deadlineinHours == dt[4] and deadlineinMinutes == dt[5]:
@@ -84,12 +85,14 @@ class conductor:
                     cleared = True
                 time.sleep(1)
         except Exception as e:
-            print("Error scheduledHybernation: {0}".format(e))
+            print(f"Error scheduledHybernation: {e}")
         finally:
             self.powerRelay.off()
+            self.wifi = hotspot(secrets.usr,secrets.pwd)
+            self.wifi.connectWifi()
             syncrtc = syncRTC()
             syncrtc.syncclock()
-            #time.sleep(2)
+            self.wifi.disconnectWifi()
         pass
 
     def checkHybernate(self):
@@ -107,12 +110,15 @@ class conductor:
                     hybernated = True
                 time.sleep(1)
         except Exception as e:
-            print("Error hybernateswitch: {0}".format(e))
+            print(f"Error hybernateswitch: {e}")
         finally:
             self.powerRelay.off()
             if hybernated:
+                self.wifi = hotspot(secrets.usr,secrets.pwd)
+                self.wifi.connectWifi()
                 rtc = syncRTC()
                 rtc.syncclock()
+                self.wifi.disconnectWifi()
         return hybernated
 
     def updateIndoorTemp(self):
@@ -125,18 +131,21 @@ class conductor:
             self.temp = self.dht.temperature()
             self.humidity = self.dht.humidity()
         except Exception as e:
-            print("Error updateIndoorTemp: {0}".format(e))
+            print(f"Error updateIndoorTemp: {e}")
         finally:
             time.sleep(.25)
             self.dhtpower.off()
 
     def updateOutdoorTempHumid(self):
         try:
+            self.wifi = hotspot(secrets.usr,secrets.pwd)
+            self.wifi.connectWifi()
             syncrtc = syncRTC()
             etc = extTempHumid(syncrtc)
             etc.updateOutdoorTemp()
+            self.wifi.disconnectWifi()
         except Exception as e:
-            print("Error conductor updateOutdoorTempHumid: {0}".format(e))
+            print(f"Error conductor updateOutdoorTempHumid: {e}")
         finally:
             pass
 
@@ -144,7 +153,7 @@ class conductor:
         curlight = self.light.read()
         if curlight == self.brightness:
             return
-        print("Light level: {0}".format(curlight))
+        print(f"Light level: {curlight}")
         # Set the brightness of the digits
         for d in range(3,-1,-1):
             cmd = None
@@ -153,13 +162,11 @@ class conductor:
                     self.colons.brightness = curlight/10
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.brightness, curlight))
                 self.uart0.sendCommand(cmd)
-                print("sending brightness command to digit {0} = {1}".format(d,cmd.cmdStr))
-                time.sleep(.1)
             else:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.brightness, curlight))
                 self.uart1.sendCommand(cmd)
-                print("sending brightness command to digit {0} = {1}".format(d,cmd.cmdStr))
-                time.sleep(.1)
+            print(f"sending brightness command to digit {d} = {cmd.cmdStr}")
+            time.sleep(.1)
         self.brightness = curlight
 
     def cleardisplay(self):
@@ -173,17 +180,15 @@ class conductor:
                         self.colons.retract_segment(1)
                     cmd = uartCommand('{0}015'.format(d))
                     self.uart0.sendCommand(cmd)
-                    print("clear display: cmd={0}".format(cmd.cmdStr))
+                    print(f"clear display: cmd={cmd.cmdStr}")
                     time.sleep(.1)
-                    #cmd = self.uart0.receiveCommand()
                 else:
-                    cmd = uartCommand('{0}015'.format(d))
+                    cmd = uartCommand(f'{d}015')
                     self.uart1.sendCommand(cmd)
-                    print("clear display: cmd={0}".format(cmd.cmdStr))
+                    print(f"clear display: cmd={cmd.cmdStr}")
                     time.sleep(.1)
-                    #cmd = self.uart1.receiveCommand()
         except Exception as e:
-            print("Error cleardisplay: {0}".format(e))
+            print(f"Error cleardisplay: {e}")
         finally:
             pass
 
@@ -197,18 +202,14 @@ class conductor:
                     self.colons.dance()
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.dance, 0))
                 self.uart0.sendCommand(cmd)
-                print("sending dance command: cmd={0}".format(cmd.cmdStr))
-                time.sleep(2)
-                #cmd = self.uart0.receiveCommand()
             else:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.dance, 0))
                 self.uart1.sendCommand(cmd)
-                print("sending dance command: cmd={0}".format(cmd.cmdStr))
-                time.sleep(2)
-                #cmd = self.uart1.receiveCommand()
+            print(f"sending dance command: cmd={cmd.cmdStr}")
+            time.sleep(2)
             
             if cmd is not None:
-                print("received reply: cmd={0}".format(cmd.cmdStr))
+                print(f"received reply: cmd={cmd.cmdStr}")
             
             time.sleep(.5)
 
@@ -219,7 +220,7 @@ class conductor:
             t = self.temp
             if not celcius:
                 t = '{0:02}'.format(int(round((9/5)*self.temp+32,0)))
-                print("Temp in Fahrenheit: {0}".format(t))
+                print(f"Temp in Fahrenheit: {t}")
             
             # set the digits to show the temperature
             self.displayNumber(3,int(t[0]))
@@ -233,7 +234,7 @@ class conductor:
             else:
                 self.displayNumber(0,13)
         except Exception as e:
-            print("Error showIndoorTemp: {0}".format(e))
+            print(f"Error showIndoorTemp: {e}")
         finally:
             pass
 
@@ -250,7 +251,7 @@ class conductor:
             self.displayNumber(1,10)
             self.displayNumber(0,11)
         except Exception as e:
-            print("Error showIndoorHumidity: {0}".format(e))
+            print(f"Error showIndoorHumidity: {e}")
         finally:
             pass
     
@@ -263,7 +264,7 @@ class conductor:
             if cf == "C":
                 if temp < 0:
                     temp *= -1
-                print("Outdoor temp in Celcius: {0}".format(temp)) 
+                print(f"Outdoor temp in Celcius: {temp}") 
             else:
                 f = int(round((9/5)*temp+32,0))
                 if f < 0:
@@ -271,7 +272,7 @@ class conductor:
                 if f > 99:
                     f -= 100
                 temp = f
-                print("Outdoor temp in Fahrenheit: {0}".format(temp))
+                print(f"Outdoor temp in Fahrenheit: {temp}")
             
             t = '{0}'.format(temp)
             if len(t) == 3:
@@ -289,7 +290,7 @@ class conductor:
             else:
                 self.displayNumber(0,13)
         except Exception as e:
-            print("Error showOutdoorTemp: {0}".format(e))
+            print(f"Error showOutdoorTemp: {e}")
         finally:
             pass
     
@@ -307,18 +308,18 @@ class conductor:
             self.displayNumber(1,10)
             self.displayNumber(0,11)
         except Exception as e:
-            print("Error showOutdoorHumidity: {0}".format(e))
+            print(f"Error showOutdoorHumidity: {e}")
         finally:
             pass
 
     def showTime(self):
         # set the digits to show the time
         try:
-            print("showTime display12hour={0}".format(self.display12hour))
+            print(f"showTime display12hour={self.display12hour}")
             #[year, month, day, weekday, hours, minutes, seconds, subseconds]
             dt = self.rtc.datetime()
             t = "{0:02}{1:02}".format(formatHour(dt[4],self.display12hour), dt[5])
-            print("t={0}".format(t))
+            print(f"time={t}")
 
             if int(t[0]) == 0:
                 cmd = uartCommand('3015')
@@ -331,7 +332,7 @@ class conductor:
             self.displayNumber(1,int(t[2]))
             self.displayNumber(0,int(t[3]))
         except Exception as e:
-            print("Error: {0}".format(e))
+            print(f"Error: {e}")
         finally:
             pass
     
@@ -349,40 +350,40 @@ class conductor:
             self.displayNumber(1,int(t[2]))
             self.displayNumber(0,int(t[3]))
         except Exception as e:
-            print("Error showDate: {0}".format(e))
+            print(f"Error showDate: {e}")
         finally:
             pass
 
     def setMotorSpeed(self, percentSpeed):
-        print("setMotorSpeed percentSpeed={0}".format(percentSpeed))
+        print(f"setMotorSpeed percentSpeed={percentSpeed}")
         self.colons.motorspeed = percentSpeed
         for d in range(3,-1,-1):
             cmd = None
             if d < 2:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.setmotorspeed, percentSpeed))
-                print("sending setMotorSpeed command: cmd={0}".format(cmd.cmdStr))
+                print(f"sending setMotorSpeed command: cmd={cmd.cmdStr}")
                 self.uart0.sendCommand(cmd)
                 time.sleep(.1)
             else:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.setmotorspeed, percentSpeed))
-                print("sending setMotorSpeed command: cmd={0}".format(cmd.cmdStr))
+                print(f"sending setMotorSpeed command: cmd={cmd.cmdStr}")
                 self.uart1.sendCommand(cmd)
                 time.sleep(.1)
 
     # Set the wait time for the digits to move in tenths of a second
     def setWaitTime(self, tenthsSecondWaitTime):
-        print("setWaitTime tenthsSecondWaitTime={0}".format(tenthsSecondWaitTime))
+        print(f"setWaitTime tenthsSecondWaitTime={tenthsSecondWaitTime}")
         self.colons.waitTime = tenthsSecondWaitTime/100
         for d in range(3,-1,-1):
             cmd = None
             if d < 2:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.setwaittime, tenthsSecondWaitTime))
-                print("sending setWaitTime command: cmd={0}".format(cmd.cmdStr))
+                print(f"sending setWaitTime command: cmd={cmd.cmdStr}")
                 self.uart0.sendCommand(cmd)
                 time.sleep(.1)
             else:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.setwaittime, tenthsSecondWaitTime))
-                print("sending setWaitTime command: cmd={0}".format(cmd.cmdStr))
+                print(f"sending setWaitTime command: cmd={cmd.cmdStr}")
                 self.uart1.sendCommand(cmd)
                 time.sleep(.1)
     
@@ -390,12 +391,12 @@ class conductor:
         cmd = uartCommand('{0}0{1:02}'.format(d,n))
         if d < 2:     
             self.uart0.sendCommand(cmd)
-            print("display number: cmd={0}".format(cmd.cmdStr))
+            print(f"display number: cmd={cmd.cmdStr}")
             time.sleep(.1)
             #cmd = self.uart0.receiveCommand()
         else:
             self.uart1.sendCommand(cmd)
-            print("display number: cmd={0}".format(cmd.cmdStr))
+            print(f"display number: cmd={cmd.cmdStr}")
             time.sleep(.1)
             #cmd = self.uart1.receiveCommand()
 
@@ -407,8 +408,8 @@ def loop():
     try:
 
         if controller.hybernateswitch(): #if the hybernate switch is in "off" position
-            wifi = hotspot("7segdisplay","12oclock")
-            wifi.connectAdmin()
+            controller.wifi = hotspot("7segdisplay","12oclock")
+            controller.wifi.connectAdmin()
             while controller.hybernateswitch(): #wait for the switch to be turned to the "on" position
                 time.sleep(1)
        
@@ -422,13 +423,13 @@ def loop():
         tempWait = int(conf.read("wait"))
         tempSpeed = int(conf.read("speed"))
             # set the motor speed to % (x10) of max
-        print("tempSpeed={0}".format(tempSpeed))
+        print(f"tempSpeed={tempSpeed}")
         controller.setMotorSpeed(tempSpeed)
         # set the wait time in hundreths of a second, e.g. 15 = 0.15 seconds
-        print("tempWait={0}".format(tempWait))
+        print(f"tempWait={tempWait}")
         controller.setWaitTime(tempWait)
         tempTime = int(conf.read("time"))
-        print("tempTime={0}".format(tempTime))
+        print(f"tempTime={tempTime}")
         if tempTime == 12:
             print("12 hour time")
             controller.display12hour = True
@@ -443,26 +444,24 @@ def loop():
             scheduleConf = io.open("schedule_0.json")
             s = json.load(scheduleConf)
             for i in s["scheduledEvent"]:
-                print("--schedule info--")
                 controller.schedule.append(scheduleInfo(i["hour"],i["minute"],i["second"],i["elapse"],i["event"]))
         except ValueError as ve:
-            print("Schedule loading value error: {0}".format(ve))
+            print(f"Schedule loading value error: {ve}")
         except OSError as ioe:
-            print("Schedule loading IO error: {0}".format(ioe))
+            print(f"Schedule loading IO error: {ioe}")
         finally:
             scheduleConf.close()
+            print(f"schedule length={len(controller.schedule)}")
 
         # Enable wifi and sync the RTC
-        ssid = secrets.usr
-        pwd = secrets.pwd
-        wifi = hotspot(ssid,pwd)
-        wifi.connectWifi()
+        controller.wifi = hotspot(secrets.usr,secrets.pwd)
+        controller.wifi.connectWifi()
         syncrtc = syncRTC()
         syncrtc.syncclock()
         etc = extTempHumid(syncrtc)
         etc.setLatLon()
     except Exception as e:
-        print("Wifi error: {0}".format(e))
+        print(f"Wifi error: {e}")
     finally:
         pass
 
@@ -487,9 +486,9 @@ def loop():
                 elif a == eventActions.updateOutdoorTempHumid:
                     controller.updateOutdoorTempHumid()
                 elif a == eventActions.hybernate:
-                    wifi.disconnectWifi()
+                    controller.wifi.disconnectWifi()
                     controller.scheduledHybernation(s)
-                    wifi.connectWifi()
+                    controller.wifi.connectWifi()
                     break
             
             time.sleep(1)
@@ -497,7 +496,7 @@ def loop():
                 controller.updatebrightness()
 
         except Exception as e:
-            print("Error: {0}".format(e))
+            print(f"Error: {e}")
         finally:
             controller.updatebrightness() 
             time.sleep(1)
@@ -523,7 +522,7 @@ def instructions():
         for i in actions:
             if i == cmd[0].upper():
                 validaction = True
-                print("{0} is a valid action".format(i))
+                print(f"{i} is a valid action")
                 break
         if validaction:
             a = cmd[0]
@@ -544,14 +543,14 @@ def manual():
     finished = False
     while not finished:
         a, v = instructions()
-        print("action={0} value={1}".format(a,v))
+        print(f"action={a} value={v}")
         if a == 'A':
             controller.testdigits()
             print("Test all digits")
         elif a == 'D':
             digit = v[0]
             value = v[1:]
-            print("digit={0} value={1}".format(digit,value))
+            print(f"digit={digit} value={value}")
             controller.displayNumber(int(digit),int(value))
         elif a == 'T':
             controller.updateIndoorTemp()

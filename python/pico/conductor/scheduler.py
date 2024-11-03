@@ -42,9 +42,9 @@ class scheduleInfo:
     
     @hour.setter
     def hour(self, value):
-        print("hour={0}".format(value))
+        print(f"hour={value}")
         if value < -1 or value >= 24:
-            raise ValueError("hour must be between 0 and 23")
+            raise ValueError("hour must be between -1 and 23")
         self._hour = value
     
     @property
@@ -53,9 +53,9 @@ class scheduleInfo:
     
     @minute.setter
     def minute(self, value):
-        print("minute={0}".format(value))
+        print(f"minute={value}")
         if value < -1 or value >= 60:
-            raise ValueError("minute must be between 0 and 59")
+            raise ValueError("minute must be between -1 and 59")
         self._minute = value
     
     @property
@@ -64,7 +64,7 @@ class scheduleInfo:
     
     @second.setter
     def second(self, value):
-        print("second={0}".format(value))
+        print(f"second={value}")
         if value < 0 or value >= 60:
             raise ValueError("second must be between 0 and 59")
         self._second = value
@@ -75,7 +75,7 @@ class scheduleInfo:
     
     @elapse.setter
     def elapse(self, value):
-        print("elapse={0}".format(value))
+        print(f"elapse={value}")
         if value < 0:
             raise ValueError("elapse must be greater than or equal to 0")
         self._elapse = value
@@ -86,7 +86,7 @@ class scheduleInfo:
     
     @event.setter
     def event(self, value):
-        print("event={0}".format(value))
+        print(f"event={value}")
         if value < eventActions.nothing or value > eventActions.hybernate:
             raise ValueError("event must be between 0 and 5")
         self._event = value
