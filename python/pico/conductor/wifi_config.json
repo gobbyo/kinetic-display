@@ -1,7 +1,0 @@
-{
-    "ssid": "PicoW-AP",
-    "password": "picopassword",
-    "channel": 1,
-    "url": "192.168.4.1",
-    "waittime": 10
-}

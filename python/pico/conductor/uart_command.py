@@ -439,9 +439,9 @@ def loop():
         time.sleep(.5)
         controller.testdigits()
 
-        # Load the schedule
+        # Load the schedule 
         try:
-            scheduleConf = io.open("schedule_0.json")
+            scheduleConf = io.open(conf.read("schedule"))
             s = json.load(scheduleConf)
             for i in s["scheduledEvent"]:
                 controller.schedule.append(scheduleInfo(i["hour"],i["minute"],i["second"],i["elapse"],i["event"]))

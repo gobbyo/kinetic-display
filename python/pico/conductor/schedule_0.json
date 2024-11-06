@@ -1,4 +1,6 @@
 {
+    "title": "All Features",
+    "scheduleDescription": "Time: 15 and 45 seconds of every minute. Date: 5 minutes on the 20th second. Month: 2 minutes on the 20th second. Internal temp: every 10 minutes after the 2nd and 6th minute on 15th second mark, humidity on the 30th second mark. External temp: every 10 minutes after the 4 and 8 minute mark on the 30th second, humidity on the 30th second mark. Sleep: 10:00 PM for 8 hours.",
     "scheduledEvent": [
         {
             "hour": -1,
@@ -519,10 +521,10 @@
             "event": 7
         },
         {
-            "hour": 23,
+            "hour": 22,
             "minute": 0,
             "second": 0,
-            "elapse": 420,
+            "elapse": 480,
             "event": 9
         }
     ]

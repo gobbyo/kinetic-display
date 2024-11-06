@@ -4,5 +4,6 @@
     "wait": "18",
     "speed": "70",
     "lat": "48.5062",
-    "lon": "-122.6291"
+    "lon": "-122.6291",
+    "schedule": "schedule_0.json"
 }

@@ -1,4 +1,6 @@
 {
+    "title": "Time and Date",
+    "scheduleDescription": "Time is every minute. Date is every 5 minutes on the 15th second.",
     "scheduledEvent": [
         {
             "hour": -1,

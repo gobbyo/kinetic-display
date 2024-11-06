@@ -1,0 +1,139 @@
+{
+    "title": "All features in one minute, sleep for 4 minutes",
+    "scheduleDescription": "Time on second 0, date on second 10, internal temp on second 20, internal humidity on second 30, external temp on second 40, external humidity on second 50. Sleep for 4 minutes.",
+    "scheduledEvent": [
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 0,
+            "elapse": 9,
+            "event": 1
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 10,
+            "elapse": 9,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 20,
+            "elapse": 9,
+            "event": 3
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 30,
+            "elapse": 9,
+            "event": 4
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 31,
+            "elapse": 9,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 40,
+            "elapse": 9,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 50,
+            "elapse": 9,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 1,
+            "second": 5,
+            "elapse": 4,
+            "event": 9
+        },
+        {
+            "hour": -1,
+            "minute": 6,
+            "second": 5,
+            "elapse": 4,
+            "event": 9
+        },
+        {
+            "hour": -1,
+            "minute": 11,
+            "second": 5,
+            "elapse": 4,
+            "event": 9
+        },
+        {
+            "hour": -1,
+            "minute": 16,
+            "second": 5,
+            "elapse": 4,
+            "event": 9
+        },
+        {
+            "hour": -1,
+            "minute": 21,
+            "second": 5,
+            "elapse": 4,
+            "event": 9
+        },
+        {
+            "hour": -1,
+            "minute": 26,
+            "second": 5,
+            "elapse": 4,
+            "event": 9
+        },
+        {
+            "hour": -1,
+            "minute": 31,
+            "second": 5,
+            "elapse": 4,
+            "event": 9
+        },
+        {
+            "hour": -1,
+            "minute": 36,
+            "second": 5,
+            "elapse": 4,
+            "event": 9
+        },
+        {
+            "hour": -1,
+            "minute": 41,
+            "second": 5,
+            "elapse": 4,
+            "event": 9
+        },
+        {
+            "hour": -1,
+            "minute": 46,
+            "second": 5,
+            "elapse": 4,
+            "event": 9
+        },
+        {
+            "hour": -1,
+            "minute": 51,
+            "second": 5,
+            "elapse": 4,
+            "event": 9
+        },
+        {
+            "hour": -1,
+            "minute": 56,
+            "second": 5,
+            "elapse": 4,
+            "event": 9
+        }
+    ]
+}

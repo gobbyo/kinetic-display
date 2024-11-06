@@ -35,12 +35,17 @@
                     <td>Display Motor Speed</td>
                     <td><input type="number" id="speed" value="50" min="50" max="99"> percent</td>
                 </tr>
+                <tr>
+                    <td>Schedule</td>
+                    <td><select name="schedule" id="schedule"> </select></td>
+                </tr>
             </table>
             <p><input type="submit"></p>
         </form>
         <script type="text/javascript">
             function adminurl() {
                 v = "wifisettings/";
+                v += "&schedule=" + document.getElementById("schedule").value;
                 v += "ssid=" + document.getElementById("ssid").value;
                 v += "&pwd=" + document.getElementById("pwd").value;
                 v += "&time=" + document.getElementById("time").value;

@@ -11,6 +11,7 @@ import time
 import config
 import machine
 import secrets
+import json
 
 # The purpose of this class is to bootstrap the PICO W connectivity to the user's wifi network.
 # This class renders administrative web pages to allow the user to set various settings for the main display controller:
@@ -58,29 +59,40 @@ class hotspot:
         findTime = '<option value="{0}">'.format(tempTime)
         findWait = 'id="wait" value="20"'
         findSpeed = 'id="speed" value="50"'
+        
+        # Load schedule titles
+        schedules = []
+        for i in range(4):
+            with open(f'schedule_{i}.json', 'r') as f:
+                schedule = json.load(f)
+                schedules.append((schedule['title'], f'schedule_{i}.json'))
+        
         with uio.open(self.adminwebpage, 'r') as f:
             while True:
                 line = f.readline()
                 if not line:
                     break
                 if line.find('ssid') > 0:
-                    print('Found ssid={0}'.format(secrets.usr))
+                    print(f'Found ssid={secrets.usr}')
                     line = line.replace('8eb5c1217eaf',secrets.usr)
                 if line.find('pwd') > 0:
-                    print('Found pwd={0}'.format(secrets.pwd))
+                    print(f'Found pwd={secrets.pwd}')
                     line = line.replace('fd3b61afb36d', secrets.pwd)
                 if line.find(findCF) > 0:
-                    print('findCF={0}'.format(findCF))
+                    print(f'findCF={findCF}')
                     line = line.replace(findCF, '<option value="{0}" selected>'.format(tempCF))
                 if line.find(findWait) > 0:
-                    print('findWait={0}'.format(findWait))
+                    print(f'findWait={findWait}')
                     line = line.replace(findWait, 'id="wait" value="{0}"'.format(tempWait))
                 if line.find(findSpeed) > 0:
-                    print('findSpeed={0}'.format(findSpeed))
+                    print(f'findSpeed={findSpeed}')
                     line = line.replace(findSpeed, 'id="speed" value="{0}"'.format(tempSpeed))
                 if line.find(findTime) > 0:
-                    print('findTime={0}'.format(findTime))
+                    print(f'findTime={findTime}')
                     line = line.replace(findTime, '<option value="{0}" selected>'.format(tempTime))
+                if line.find('<select name="schedule" id="schedule">') > 0:
+                    schedule_options = ''.join([f'<option value="{file}">{title}</option>' for title, file in schedules])
+                    line = line.replace('<select name="schedule" id="schedule">', f'<select name="schedule" id="schedule">{schedule_options}')
                 page += line
             f.close()
         return page
@@ -100,7 +112,7 @@ class hotspot:
     # This method parses the request from the web page and returns the page to be rendered
     def _requestPage(self,request):
         returnPage = 'admin'
-        print('_requestPage() {0}'.format(request))
+        print(f'_requestPage() {request}')
         if request.find('admin') > 0:
             returnPage = 'admin'
         if request.find('wifisettings') > 0:
@@ -121,28 +133,32 @@ class hotspot:
             if t[1].find('?') > 0:
                 t[1] = t[1].split('?')[0]
             if t[0] == 'ssid':
-                print('ssid={0}'.format(t[1]))
+                print(f'ssid={t[1]}')
                 self.ssid = t[1]
             if t[0] == 'pwd':
-                print('pwd={0}'.format(t[1]))
+                print(f'pwd={t[1]}')
                 self.pwd = t[1]
+            if t[0] == 'schedule':
+                l = t[1].split('.json')
+                print(f'schedule={l[0]}.json')
+                conf.write('schedule',l[0]+'.json')
             if t[0] == 'tempCF':
-                print('tempCF={0}'.format(t[1][0]))
+                print(f'tempCF={t[1][0]}')
                 conf.write('tempCF',t[1][0])
             if t[0] == 'time':
-                print('time={0}'.format(t[1]))
+                print(f'time={t[1]}')
                 conf.write('time',int(t[1]))
             if t[0] == 'wait':
-                print('wait={0}'.format(t[1]))
+                print(f'wait={t[1]}')
                 conf.write('wait',int(t[1]))
             if t[0] == 'speed':
-                print('speed={0}'.format(t[1]))
+                print(f'speed={t[1]}')
                 conf.write('speed',int(t[1]))
         self._writeSecrets(self.ssid,self.pwd)
     
     # This method sends the reply back to the user's web browser
     def sendreply(self,conn, pagebuffer):
-        print("sendreply(conn={0})".format(conn))
+        print(f"sendreply(conn={conn})")
         response_headers = {
             'Content-Type': 'text/html; encoding=utf8',
             'Content-Length': len(pagebuffer)
@@ -167,9 +183,9 @@ class hotspot:
         wifi.active(True)
         # set power mode to get WiFi power-saving off (if needed)
         wifi.config(pm = 0xa11140)
-        print('self.ssid={0},self.pwd={1}'.format(self.ssid,self.pwd))
+        print(f'self.ssid={self.ssid},self.pwd={self.pwd}')
         wifi.connect(self.ssid,self.pwd)
-        print('wifi.isconnected({0})'.format(wifi.isconnected()))
+        print(f'wifi.isconnected({wifi.isconnected()})')
 
         max_wait = self.waittime
         while max_wait > 0:
@@ -180,7 +196,7 @@ class hotspot:
                 #STAT_NO_AP_FOUND – failed because no access point replied,
                 #STAT_CONNECT_FAIL – failed due to other problems,
                 #STAT_GOT_IP – connection successful
-                print('wifi.status() = {0}'.format(wifi.status()))
+                print(f'wifi.status() = {wifi.status()}')
                 self.url = wifi.ifconfig()[0]
                 return True
             max_wait -= 1
@@ -214,7 +230,7 @@ class hotspot:
             wifi.active(True)
             time.sleep(2)
             i -= 1
-            print("Waiting for WiFi AP to be active, attempt {0}".format(i))
+            print(f"Waiting for WiFi AP to be active, attempt {i}")
             pass
 
         print('display hotspot is active')
@@ -226,9 +242,9 @@ class hotspot:
         s.listen(5)
         while evalResponse:
             conn, addr = s.accept()
-            print('Got a connection from %s' % str(addr))
+            print(f'Got a connection from {str(addr)}')
             request = conn.recv(1024).decode('utf-8')
-            print('connection request received = %s' % str(request))
+            print(f'connection request received = {str(request)}')
             returnPage = self._requestPage(request)
             if returnPage == 'wifisettings':
                 print("update to wifisettings detected!")
@@ -248,9 +264,7 @@ class hotspot:
 
 def connectToLocalWifi(connectAdmin):
     try:
-        ssid = input("ssid: ")
-        pwd = input("password: ")
-        wifi = hotspot(ssid,pwd)
+        wifi = hotspot("7segdisplay","12oclock")
         
         if connectAdmin:
             wifi.connectAdmin()
@@ -261,7 +275,7 @@ def connectToLocalWifi(connectAdmin):
             print('Failed to connect to wifi')
             del wifi
     except Exception as e:
-        print("Exception: {}".format(e))
+        print(f"Exception: {e}")
 
 if __name__ == '__main__':
     connectToLocalWifi(True)
