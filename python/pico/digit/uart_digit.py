@@ -1,84 +1,68 @@
 import digit
 from uart_protocol import uartProtocol, uartChannel, UARTChecksumError, UARTInvalidDigit, UARTInvalidAction, uartActions, uartCommand, commandHelper
-import time
+import asyncio
 
-def main():
+async def handle_command(display, cmd):
+    actuatorMoves = 0
+    if display._digit == cmd.digit:
+        if cmd.action == int(uartActions.setdigit):
+            a = int(cmd.value)
+            digitArray = display.getDigitArray(uartCommand.digitAlien[a] if display.testdigit == 1 else uartCommand.digitValue[a])
+            actuatorMoves = display.set_digit(digitArray)
+            print(f"digit {cmd.digit} set to number {cmd.value}, actuator moves = {actuatorMoves}")
+        elif cmd.action == int(uartActions.brightness):
+            display.brightness = cmd.value / 10
+            actuatorMoves = 1
+            print(f"digit {cmd.digit} set brightness to {display.brightness}")
+        elif cmd.action == int(uartActions.setmotorspeed):
+            display.motorspeed = int(cmd.value)
+            actuatorMoves = 1
+            print(f"digit {cmd.digit} motorspeed set to {display.motorspeed}")
+        elif cmd.action == int(uartActions.setwaittime):
+            display.waitTime = float(cmd.value / 100)
+            actuatorMoves = 1
+            print(f"digit {cmd.digit} waittime set to {display.waitTime}")
+        elif cmd.action == int(uartActions.dance):
+            actuatorMoves = display.dance()
+            print(f"digit {cmd.digit} dancing")
+        elif cmd.action == int(uartActions.extendSegment):
+            cmd.value = min(cmd.value, 6)
+            actuatorMoves = display.extend_segment(int(cmd.value))
+            print(f"digit {cmd.digit} extending segment {cmd.value}")
+        elif cmd.action == int(uartActions.retractSegment):
+            cmd.value = min(cmd.value, 6)
+            actuatorMoves = display.retract_segment(int(cmd.value))
+            print(f"digit {cmd.digit} retracting segment {cmd.value}")
+        else:
+            pass
+        await asyncio.sleep(actuatorMoves * display.waitTime)
+    else:
+        print(f"command ignored as target digit {cmd.digit} is not digit {display._digit}")
+
+async def main():
     display = digit.Digit(digit.led_pins, digit.LEDbrightness, digit.motor_pins)
-    uartCh = uartChannel.uart0
-    if display._digit > 1:
-        uartCh = uartChannel.uart1
+    uartCh = uartChannel.uart0 if display._digit <= 1 else uartChannel.uart1
     
-    display.syncTime(0,0,0)
-    
-    print("Digit {0} using UART channel {1}".format(display._digit, uartCh))
+    display.syncTime(0, 0, 0)
+    print(f"Digit {display._digit} using UART channel {uartCh}")
 
     try:
         uart = uartProtocol(uartCh, commandHelper.baudRate[3])
-        time.sleep(.5)
+        await asyncio.sleep(.5)
 
         while True:
-            time.sleep(.1)
+            await asyncio.sleep(.1)
             try:
-                cmd = uart.receiveCommand()
+                cmd = await uart.receiveCommand()
                 if cmd is not None:
-                    print("digit received cmd: digit={0} action={1} value={2}".format(cmd.digit, cmd.action, cmd.value))
-                    actuatorMoves = 0
-                    if display._digit == cmd.digit:              
-                        if cmd.action == int(uartActions.setdigit):
-                            a = int(cmd.value)
-                            if 1 == display.testdigit:
-                                digitArray = display.getDigitArray(uartCommand.digitAlien[a])
-                            else:
-                                digitArray = display.getDigitArray(uartCommand.digitValue[a])
-                            actuatorMoves = display.set_digit(digitArray)
-                            print("digit {0} set to number {1}, actuator moves = {2}".format(cmd.digit, cmd.value, actuatorMoves))
-                        elif cmd.action == int(uartActions.brightness):
-                            # 0-9, 0 = off, 9 being 90% luminosity
-                            print("digit {0} set brightness to {1}".format(cmd.digit, cmd.value/10))
-                            display.brightness = cmd.value/10
-                            actuatorMoves = 1
-                        elif cmd.action == int(uartActions.setmotorspeed):
-                            # 0-100, 100 being 100% speed
-                            display.motorspeed = int(cmd.value)
-                            print("digit {0} motorspeed set to {1}".format(cmd.digit, display.motorspeed))
-                            actuatorMoves = 1
-                        elif cmd.action == int(uartActions.setwaittime):
-                            # hundreths of a second, e.g. 15 = 0.15 seconds
-                            display.waitTime = float(cmd.value/100)
-                            print("digit {0} waittime set to {1}".format(cmd.digit, display.waitTime))   
-                            actuatorMoves = 1                         
-                        elif cmd.action == int(uartActions.dance):
-                            print("digit {0} dancing".format(cmd.digit))
-                            actuatorMoves = display.dance()
-                        elif cmd.action == int(uartActions.extendSegment):
-                            if cmd.value > 6:
-                                cmd.value = 6
-                            print("digit {0} extending segment {1}".format(cmd.digit, cmd.value))
-                            actuatorMoves = display.extend_segment(int(cmd.value))
-                        elif cmd.action == int(uartActions.retractSegment):
-                            if cmd.value > 6:
-                                cmd.value = 6
-                            print("digit {0} retracting segment {1}".format(cmd.digit, cmd.value))
-                            actuatorMoves = display.retract_segment(int(cmd.value))
-                        else:
-                            pass
-                        #prevents the display from executing the next command until the actuator has completed its move
-                        time.sleep(actuatorMoves * display.waitTime)
-                    else:
-                        print("command ignored as target digit {0} is not digit {1}".format(cmd.digit, display._digit))
-            except UARTChecksumError as e:
-                print("Checksum error: {0}".format(e))
-            except UARTInvalidDigit as e:
-                print("Invalid digit: {0}".format(e))
-            except UARTInvalidAction as e:
-                print("Invalid action: {0}".format(e))
+                    print(f"digit received cmd: digit={cmd.digit} action={cmd.action} value={cmd.value}")
+                    await handle_command(display, cmd)
+            except (UARTChecksumError, UARTInvalidDigit, UARTInvalidAction) as e:
+                print(f"{type(e).__name__}: {e}")
             except Exception as e:
-                print("receiveCommand error: {0}".format(e))
-            finally:
-                pass
+                print(f"receiveCommand error: {e}")
     except Exception as e:
-        print("Exception in main: {0}".format(e))
-        return
+        print(f"Exception in main: {e}")
 
 if __name__ == '__main__':
-    main()
+    asyncio.run(main())

@@ -1,5 +1,6 @@
 from machine import UART, Pin
 import time
+import uasyncio as asyncio  # Import uasyncio for async operations
 # This file contains the UART commands
 
 class UARTChecksumError(Exception):
@@ -109,18 +110,21 @@ class uartProtocol():
         else:
             self.uart = UART(1)
             self.uart.init(uartCh, baudRate, rx=Pin(uartPins.uartRx1Pin), tx=Pin(uartPins.uartTx1Pin), txbuf=4, rxbuf=4)
-    def clearQueue(self):
+
+    async def clearQueue(self):
         if self.uart.any() > 0:
             a = self.uart.readline()
             print("clearQueue: {0}".format(a))
-    def sendCommand(self, uartCmd):
+
+    async def sendCommand(self, uartCmd):
         b = uartCmd.encode()
         print("sendCommand: {0}".format(b))
         self.uart.write(b)
-        self.uart.flush()
-    def receiveCommand(self):
+        await asyncio.sleep(0)  # Yield control to the event loop
+
+    async def receiveCommand(self):
         for i in range(20):
-            time.sleep(.1)
+            await asyncio.sleep(0.1)  # Non-blocking sleep
             if self.uart.any() > 0:
                 b = bytearray(uartCommand.cmdStr, 'utf-8')
                 self.uart.readinto(b)
@@ -138,8 +142,6 @@ class uartProtocol():
                 except Exception as e:
                     print("receiveCommand error: {0}".format(e))
                     return None
-                finally:
-                    pass
         return None
 
 class commandHelper():
@@ -182,7 +184,7 @@ class commandHelper():
             #return False
         return True
 
-def main():
+async def main():
     ch = 0
     uartch = input("Enter UART channel (0 or 1): ")
     if uartch == '1':
@@ -192,11 +194,11 @@ def main():
     while True:
         cmdStr = input("Send command string [Digit(0-3) Action(0-9) Value(0-99)]: ")
         cmd = uartCommand(cmdStr)
-        uart.sendCommand(cmd)
-        time.sleep(.05)
-        cmd = uart.receiveCommand()
+        await uart.sendCommand(cmd)
+        await asyncio.sleep(0.05)
+        cmd = await uart.receiveCommand()
         if cmd is not None:
-            print("uart{0} command received: {1}".format(ch,cmd.cmdStr))
+            print("uart{0} command received: {1}".format(ch, cmd.cmdStr))
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

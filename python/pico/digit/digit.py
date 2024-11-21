@@ -31,10 +31,10 @@ class Motoractuator:
             self.cw.on()
             time.sleep(waitTime)
         except Exception as e:
-            print("extend error: {0}".format(e))
+            print(f"extend error: {e}")
         finally:
             self.stop()
-            print("extend")
+            #print("extend")
     
     def retract(self, motor_speed, waitTime):
         try:
@@ -42,16 +42,16 @@ class Motoractuator:
             self.ccw.on()
             time.sleep(waitTime)
         except Exception as e:
-            print("retract error: {0}".format(e))
+            print(f"retract error: {e}")
         finally:
             self.stop()
-            print("retract")
+            #print("retract")
     
     def stop(self):
         self.speed.duty_u16(0)
         self.cw.off()
         self.ccw.off()
-        print("stop")
+        #print("stop")
 
 class Digit:
     def __init__(self, led_pins, percentLED_brightness, motor_pins):
@@ -129,8 +129,7 @@ class Digit:
         for i in range(0,7):
             if 1 == self._previousDigitArray[i]:
                 self.leds[i].duty_u16(self._brightness)
-                print("----------")
-                print("brightness {0} seg={1}".format(self._brightness, i))
+                print(f"----------\nbrightness {self._brightness} seg={i}")
 
     def getDigitArray(self, val):
         a = [0,0,0,0,0,0,0]
@@ -157,25 +156,30 @@ class Digit:
     def set_digit(self, digitArray):     
         self.startLED.on()   
         actuatorMoves = 0
+        print(f"set_digit: {digitArray}")
         for i in range(0,7):
+            skipped = True
             if (1 == digitArray[i]) and (0 == self._previousDigitArray[i]):
                 self.actuators[i].extend(self._motorspeed,self._waitTime)
-                print("----------")
-                print("extend {0} digit {1}".format(i, digitArray))
+                print(f"\t[1] extend seg {chr(i+97)}")
                 self.leds[i].duty_u16(self._brightness)
                 actuatorMoves += 1
+                skipped = False
             
             if (1 == digitArray[i]) and (1 == self._previousDigitArray[i]):
                 self.leds[i].duty_u16(self._brightness)
-                print("----------")
-                print("extend {0} digit {1}".format(i, digitArray))
+                print(f"\t[1] extend seg {chr(i+97)}")
+                skipped = False
 
             if (0 == digitArray[i]) and (1 == self._previousDigitArray[i]):
-                print("----------")
-                print("retract {0} digit {1}".format(i, digitArray))
+                print(f"\t[0] retract seg {chr(i+97)}")
                 self.leds[i].duty_u16(0)
                 self.actuators[i].retract(self._motorspeed,self._waitTime)
                 actuatorMoves += 1
+                skipped = False
+            
+            if skipped:
+                print(f"\t[{self._previousDigitArray[i]}] skipped")
 
         self.setPreviousDigitArray(digitArray)
         self.startLED.off()
@@ -219,11 +223,11 @@ class Digit:
         if self._digit >= 0 and self._digit < 2:
             a = '{0:02}'.format(t[4])
             d = a[self._digit]
-            print("hours d={0}".format(d))
+            print(f"hours d={d}")
         else:
             a = '{0:02}'.format(t[5])
             d = a[self._digit - 2]
-            print("minutes d={0}".format(d))
+            print(f"minutes d={d}")
 
         if twelveHour and d == '0' and self._digit == 0:
             d = 'F'
@@ -232,56 +236,53 @@ class Digit:
 
 def main():
     d = Digit(led_pins, LEDbrightness, motor_pins)
-    tempTime = input("set 24 hour time (e.g. 13:45):  ")
-    hour = int(tempTime[0:2])
-    minute = int(tempTime[3:5])
-    d.syncTime(hour, minute, 0)
     
     while True:
-        seg = input("Enter \n\t(d)igit (d0-d9,dA-dF)\n\t(b)rightness\n\t(e)xtend segment (e0-e6)\n\t(t)ime\n\t(r)etract segment (r0-r6)\n\t(m)otor speed\n\t(w)ait time\n\t(q)uit\n\t>:")
+        seg = input("Enter: \n\t(d)igit (d0-d9,dA-dF)\n\t(b)rightness\n\t(e)xtend segment (e0-e6)\n\t(r)etract segment (r0-r6)\n\t(m)otor speed\n\t(w)ait time\n\t(c)ycle\n\t(t)est digit\n\t(q)uit\n\t>:")
         if seg == 'q':
             break
         elif seg[0] == 'a':
             actuatorMoves = d.dance()
         elif seg[0] == 'b':
             b = int(seg[1])
-            print("set_brightness({0})".format(b))
+            print(f"set_brightness({b})")
             d.brightness = b/10 # 0-9, 9 being the brightest
+        elif seg[0] == 'c':
+            for i in range(0,16):
+                a = commandHelper.decodeHex(i)
+                print(f"set_digit(0x{a:02x})")
+                digitArray = d.getDigitArray(uartCommand.digitValue[a])
+                d.set_digit(digitArray)
+                time.sleep(1)
         elif seg[0] == 'd':
             a = commandHelper.decodeHex(seg[1])
             if 1 == d.testdigit:
                 digitArray = d.getDigitArray(uartCommand.digitTest[a])
             else:
                 digitArray = d.getDigitArray(uartCommand.digitValue[a])
-            print("set_digit(0x{0:02x}): {1}".format(a, digitArray))
+            print(f"set_digit(0x{a:02x}): {digitArray}")
             actuatorMoves = d.set_digit(digitArray)
             time.sleep(actuatorMoves * d._waitTime)
         elif seg[0] == 'e':
             i = int(seg[1])
-            print("set_digit(0x{0:02x})".format(i))
+            print(f"set_digit(0x{i:02x})")
             actuatorMoves = d.extend_segment(i)
             time.sleep(actuatorMoves * d._waitTime)
         elif seg[0] == 'm':
             i = int(seg[1:])
-            print("set_motor_speed({0})".format(i))
+            print(f"set_motor_speed({i})")
             d.motorspeed = i
         elif seg[0] == 'w':
             i = int(seg[1:])
-            print("set_wait_time({0})".format(i))
+            print(f"set_wait_time({i})")
             d.waitTime = i/100
         elif seg[0] == 'r':
             i = int(seg[1])
-            print("set_digit(0x{0:02x})".format(i))
+            print(f"set_digit(0x{i:02x})")
             actuatorMoves = d.retract_segment(i)
             time.sleep(actuatorMoves * d._waitTime)
         elif seg[0] == 't':
-            twelveHour = True
-            t = input("12 or 24 hour time (12/24): ")
-            if t == '24':
-                twelveHour = False
-            else:
-                twelveHour = True
-            d.setTimeDisplay(twelveHour)
+            d.dance()
         else:
             print("Invalid input")
     d.__del__()
