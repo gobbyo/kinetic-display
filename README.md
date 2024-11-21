@@ -1,2 +1,2 @@
 # kinetic-display
-Physical display using mini electric motors
+Physical display using 103 brush electric toy motors
