@@ -161,25 +161,25 @@ class Digit:
             skipped = True
             if (1 == digitArray[i]) and (0 == self._previousDigitArray[i]):
                 self.actuators[i].extend(self._motorspeed,self._waitTime)
-                print(f"\t[1] extend seg {chr(i+97)}")
+                print(f"\t[1] seg {chr(i+97)} extended")
                 self.leds[i].duty_u16(self._brightness)
                 actuatorMoves += 1
                 skipped = False
             
             if (1 == digitArray[i]) and (1 == self._previousDigitArray[i]):
                 self.leds[i].duty_u16(self._brightness)
-                print(f"\t[1] extend seg {chr(i+97)}")
+                print(f"\t[1] seg {chr(i+97)} skipped")
                 skipped = False
 
             if (0 == digitArray[i]) and (1 == self._previousDigitArray[i]):
-                print(f"\t[0] retract seg {chr(i+97)}")
+                print(f"\t[0] seg {chr(i+97)} retracted")
                 self.leds[i].duty_u16(0)
                 self.actuators[i].retract(self._motorspeed,self._waitTime)
                 actuatorMoves += 1
                 skipped = False
             
             if skipped:
-                print(f"\t[{self._previousDigitArray[i]}] skipped")
+                print(f"\t[{self._previousDigitArray[i]}] seg {chr(i+97)} skipped")
 
         self.setPreviousDigitArray(digitArray)
         self.startLED.off()
@@ -248,12 +248,13 @@ def main():
             print(f"set_brightness({b})")
             d.brightness = b/10 # 0-9, 9 being the brightest
         elif seg[0] == 'c':
-            for i in range(0,16):
-                a = commandHelper.decodeHex(i)
-                print(f"set_digit(0x{a:02x})")
-                digitArray = d.getDigitArray(uartCommand.digitValue[a])
-                d.set_digit(digitArray)
-                time.sleep(1)
+            while True:
+                for i in range(0,16):
+                    a = commandHelper.decodeHex(i)
+                    #print(f"set_digit(0x{a:02x})")
+                    digitArray = d.getDigitArray(uartCommand.digitValue[a])
+                    d.set_digit(digitArray)
+                    time.sleep(1)
         elif seg[0] == 'd':
             a = commandHelper.decodeHex(seg[1])
             if 1 == d.testdigit:
