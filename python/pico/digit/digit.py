@@ -1,7 +1,7 @@
 from machine import Pin, PWM, RTC
-from uart_protocol import commandHelper, uartCommand
+from common.uart_protocol import commandHelper, uartCommand
 import time
-from config import Config
+from common.config import Config
 
 LEDbrightness = 0.4
 
