@@ -1,6 +1,6 @@
-import config
+from common.config import Config
 import urequests
-import json
+import ujson
 import time
 
 class extTempHumid:
@@ -13,10 +13,10 @@ class extTempHumid:
     # outdoor temperature and humidity.
     def setLatLon(self):
         try:
-            conf = config.Config("config.json")
+            conf = Config("config.json")
             print("external ip address = {0}".format(self._sync.externalIPaddress))
             g = urequests.get("http://ip-api.com/json/{0}".format(self._sync.externalIPaddress))
-            geo = json.loads(g.content)
+            geo = ujson.loads(g.content)
             conf.write("lat",geo['lat'])
             conf.write("lon",geo['lon'])
             print("lat = {0}".format(geo['lat']))
@@ -33,12 +33,12 @@ class extTempHumid:
     def updateOutdoorTemp(self):
         print("kineticDisplay.setOutdoorTemp()")
         try:
-            conf = config.Config("config.json")
+            conf = Config("config.json")
             lat = conf.read("lat")
             lon = conf.read("lon")
             print(f"lat={lat}, lon={lon}")
             r = urequests.get("https://api.open-meteo.com/v1/forecast?latitude={0}&longitude={1}&current_weather=true&hourly=relativehumidity_2m".format(lat,lon))
-            j = json.loads(r.content)
+            j = ujson.loads(r.content)
             temperature = j['current_weather']['temperature']
             print(f"temp={temperature}")
             temp = int(temperature)

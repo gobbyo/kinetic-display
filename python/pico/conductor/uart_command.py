@@ -1,18 +1,19 @@
-from uart_protocol import uartProtocol, uartChannel, uartCommand, commandHelper, uartActions
+from common.uart_protocol import uartProtocol, uartChannel, uartCommand, commandHelper, uartActions
 import dht
 from machine import Pin, RTC
 import photoresistor
 from time_formatter import formatHour
-from picowifi import hotspot
+from picowifiserver import PicoWifi
 from syncRTC import syncRTC
 from externalTemp import extTempHumid
 from scheduler import scheduleInfo, eventActions
 import digit_colons
-import config
+from common.config import Config
 import secrets
+import gc
 import time
-import json
-import io
+import ujson
+import uio
 
 photoresistorPin = 28
 dhtPin = 27
@@ -30,7 +31,6 @@ class conductor:
         time.sleep(.75)
         self.uart1 = uartProtocol(uartChannel.uart1, commandHelper.baudRate[3])
         self.light = photoresistor.photoresistor(photoresistorPin)
-        #self.dht = dht.DHT11(Pin(dhtPin))
         self.dht = dht.DHT22(Pin(dhtPin))
         self.dhtpower = Pin(dhtPowerpin, Pin.OUT)
         self.display12hour = True
@@ -88,11 +88,11 @@ class conductor:
             print(f"Error scheduledHybernation: {e}")
         finally:
             self.powerRelay.off()
-            self.wifi = hotspot(secrets.usr,secrets.pwd)
-            self.wifi.connectWifi()
+            self.wifi = PicoWifi(secrets.usr,secrets.pwd)
+            self.wifi.connect_to_wifi_network()
             syncrtc = syncRTC()
-            syncrtc.syncclock()
-            self.wifi.disconnectWifi()
+            syncrtc.syncclock(self.rtc)
+            self.wifi.disconnect_from_wifi_network()
         pass
 
     def checkHybernate(self):
@@ -114,11 +114,11 @@ class conductor:
         finally:
             self.powerRelay.off()
             if hybernated:
-                self.wifi = hotspot(secrets.usr,secrets.pwd)
-                self.wifi.connectWifi()
+                self.wifi = PicoWifi(secrets.usr,secrets.pwd)
+                self.wifi.connect_to_wifi_network()
                 rtc = syncRTC()
-                rtc.syncclock()
-                self.wifi.disconnectWifi()
+                rtc.syncclock(self.rtc)
+                self.wifi.disconnect_from_wifi_network()
         return hybernated
 
     def updateIndoorTemp(self):
@@ -138,12 +138,9 @@ class conductor:
 
     def updateOutdoorTempHumid(self):
         try:
-            self.wifi = hotspot(secrets.usr,secrets.pwd)
-            self.wifi.connectWifi()
             syncrtc = syncRTC()
             etc = extTempHumid(syncrtc)
             etc.updateOutdoorTemp()
-            self.wifi.disconnectWifi()
         except Exception as e:
             print(f"Error conductor updateOutdoorTempHumid: {e}")
         finally:
@@ -217,7 +214,7 @@ class conductor:
         try:
             print("showIndoorTemp")
             self.updateIndoorTemp()
-            t = self.temp
+            t = '{0:02}'.format(self.temp)
             if not celcius:
                 t = '{0:02}'.format(int(round((9/5)*self.temp+32,0)))
                 print(f"Temp in Fahrenheit: {t}")
@@ -258,7 +255,7 @@ class conductor:
     def showOutdoorTemp(self, celcius):
         try:
             print("showOutdoorTemp")
-            conf = config.Config("config.json")
+            conf = Config("config.json")
             temp = conf.read("tempoutdoor")
             cf = conf.read("tempCF")
             if cf == "C":
@@ -297,7 +294,7 @@ class conductor:
     def showOutdoorHumidity(self):
         try:
             print("showOutdoorHumidity")
-            conf = config.Config("config.json")
+            conf = Config("config.json")
             humidity = conf.read("humidoutdoor")
             if humidity > 99:
                 humidity = 99
@@ -356,7 +353,7 @@ class conductor:
 
     def setMotorSpeed(self, percentSpeed):
         print(f"setMotorSpeed percentSpeed={percentSpeed}")
-        self.colons.motorspeed = percentSpeed
+        self.colons.speed = percentSpeed
         for d in range(3,-1,-1):
             cmd = None
             if d < 2:
@@ -373,7 +370,7 @@ class conductor:
     # Set the wait time for the digits to move in tenths of a second
     def setWaitTime(self, tenthsSecondWaitTime):
         print(f"setWaitTime tenthsSecondWaitTime={tenthsSecondWaitTime}")
-        self.colons.waitTime = tenthsSecondWaitTime/100
+        self.colons.wait = tenthsSecondWaitTime/100
         for d in range(3,-1,-1):
             cmd = None
             if d < 2:
@@ -408,13 +405,17 @@ def loop():
     try:
 
         if controller.hybernateswitch(): #if the hybernate switch is in "off" position
-            controller.wifi = hotspot("7segdisplay","12oclock")
-            controller.wifi.connectAdmin()
+            controller.wifi = PicoWifi("config.json")
+            controller.wifi.start_wifi()
+            if controller.wifi.ip_address != "":
+                controller.wifi.run_server()
+            controller.wifi.shutdownWifi()
+            controller.wifi.__del__()
             while controller.hybernateswitch(): #wait for the switch to be turned to the "on" position
                 time.sleep(1)
        
         # Load the configuration
-        conf = config.Config("config.json")
+        conf = Config("config.json")
         tempCF = conf.read("tempCF")
         if tempCF == "C":
             cf = True
@@ -441,8 +442,9 @@ def loop():
 
         # Load the schedule 
         try:
-            scheduleConf = io.open(conf.read("schedule"))
-            s = json.load(scheduleConf)
+            path = f'schedules/{conf.read("schedule")}'
+            scheduleConf = uio.open(path)
+            s = ujson.load(scheduleConf)
             for i in s["scheduledEvent"]:
                 controller.schedule.append(scheduleInfo(i["hour"],i["minute"],i["second"],i["elapse"],i["event"]))
         except ValueError as ve:
@@ -453,13 +455,16 @@ def loop():
             scheduleConf.close()
             print(f"schedule length={len(controller.schedule)}")
 
+        gc.collect()
         # Enable wifi and sync the RTC
-        controller.wifi = hotspot(secrets.usr,secrets.pwd)
-        controller.wifi.connectWifi()
-        syncrtc = syncRTC()
-        syncrtc.syncclock()
-        etc = extTempHumid(syncrtc)
-        etc.setLatLon()
+        print("Creating wifi object")
+        controller.wifi = PicoWifi("config.json")
+        if(controller.wifi.connect_to_wifi_network()):
+            time.sleep(1)
+            syncrtc = syncRTC()
+            syncrtc.syncclock(controller.rtc)
+            etc = extTempHumid(syncrtc)
+            etc.setLatLon()
     except Exception as e:
         print(f"Wifi error: {e}")
     finally:
@@ -486,9 +491,18 @@ def loop():
                 elif a == eventActions.updateOutdoorTempHumid:
                     controller.updateOutdoorTempHumid()
                 elif a == eventActions.hybernate:
-                    controller.wifi.disconnectWifi()
+                    if controller.wifi:
+                        controller.wifi.disconnect_from_wifi_network()
+                        controller.wifi.__del__()
                     controller.scheduledHybernation(s)
-                    controller.wifi.connectWifi()
+                    if controller.wifi:
+                        controller.wifi = PicoWifi("config.json")
+                        if(controller.wifi.connect_to_wifi_network()):
+                            time.sleep(1)
+                            syncrtc = syncRTC()
+                            syncrtc.syncclock(controller.rtc)
+                            etc = extTempHumid(syncrtc)
+                            etc.setLatLon()
                     break
             
             time.sleep(1)
@@ -548,10 +562,11 @@ def manual():
             controller.testdigits()
             print("Test all digits")
         elif a == 'D':
-            digit = v[0]
-            value = v[1:]
+            v = str(v)
+            digit = v[0] if len(v) > 0 else '0'
+            value = v[1:] if len(v) > 1 else '0'
             print(f"digit={digit} value={value}")
-            controller.displayNumber(int(digit),int(value))
+            controller.displayNumber(int(digit), int(value))
         elif a == 'T':
             controller.updateIndoorTemp()
             if v == '0':
