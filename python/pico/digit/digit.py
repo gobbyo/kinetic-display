@@ -248,13 +248,12 @@ def main():
             print(f"set_brightness({b})")
             d.brightness = b/10 # 0-9, 9 being the brightest
         elif seg[0] == 'c':
-            while True:
-                for i in range(0,16):
-                    a = commandHelper.decodeHex(i)
-                    #print(f"set_digit(0x{a:02x})")
-                    digitArray = d.getDigitArray(uartCommand.digitValue[a])
-                    d.set_digit(digitArray)
-                    time.sleep(1)
+            for i in range(0,16):
+                a = commandHelper.decodeHex(i)
+                #print(f"set_digit(0x{a:02x})")
+                digitArray = d.getDigitArray(uartCommand.digitValue[a])
+                d.set_digit(digitArray)
+                time.sleep(1)
         elif seg[0] == 'd':
             a = commandHelper.decodeHex(seg[1])
             if 1 == d.testdigit:
