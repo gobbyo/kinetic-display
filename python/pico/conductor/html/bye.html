@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microdot App</title>
+</head>
+<body>
+    <h1>Shut down service</h1>
+    <p id="message">Click the button below to close the service.</p>
+    <button id="shutdown-button">Shut down</button>
+
+    <script>
+        document.getElementById('shutdown-button').addEventListener('click', async function() {
+            await fetch('/shutdown', { method: 'POST' });
+            document.getElementById('message').textContent = "Shutting down";
+            setTimeout(function() {
+                    window.close();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 from machine import UART, Pin
 import time
-import uasyncio as asyncio  # Import uasyncio for async operations
+#import uasyncio as asyncio  # Import uasyncio for async operations
 # This file contains the UART commands
 
 class UARTChecksumError(Exception):
@@ -111,43 +111,45 @@ class uartProtocol():
             self.uart = UART(1)
             self.uart.init(uartCh, baudRate, rx=Pin(uartPins.uartRx1Pin), tx=Pin(uartPins.uartTx1Pin), txbuf=4, rxbuf=4)
 
-    async def clearQueue(self):
+    def clearQueue(self):
         if self.uart.any() > 0:
             a = self.uart.readline()
             print("clearQueue: {0}".format(a))
 
-    async def sendCommand(self, uartCmd):
+    def sendCommand(self, uartCmd):
         b = uartCmd.encode()
         print("sendCommand: {0}".format(b))
         self.uart.write(b)
-        await asyncio.sleep(0)  # Yield control to the event loop
 
-    async def receiveCommand(self):
+    def receiveCommand(self):
         for i in range(20):
-            await asyncio.sleep(0.1)  # Non-blocking sleep
+            time.sleep(0.1)
+            uartCmd = uartCommand('0000')
             if self.uart.any() > 0:
-                b = bytearray(uartCommand.cmdStr, 'utf-8')
+                b = bytearray(uartCmd.cmdStr, 'utf-8')
                 self.uart.readinto(b)
-                if b == bytearray(b'\x00000'):
+                if b == bytearray(b'\x0000'):
                     return None
                 try:
+                    p = Pin(25, Pin.OUT)
+                    p.on()
                     s = b.decode('utf-8')
                     print("receiveCommand: {0}".format(s))
                     uartCmd = uartCommand(s)
                     if commandHelper.validate(uartCmd):
+                        p.off()
                         return uartCmd
-                except ValueError:
-                    print("receiveCommand: ValueError")
-                    return None
                 except Exception as e:
                     print("receiveCommand error: {0}".format(e))
                     return None
+                finally:
+                    p.off()
         return None
 
 class commandHelper():
     baudRate = [9600, 19200, 38400, 57600, 115200]
     # uart command tool to decode hex values
-    def decodeHex(value):
+    def decodeHex(self,value):
         returnVal = value
         if value == "A":
             returnVal = 10
@@ -161,17 +163,18 @@ class commandHelper():
             returnVal = 14
         elif value == "F":
             returnVal = 15
-        return int(returnVal)
+        return int(returnVal, 16) if isinstance(returnVal, str) else returnVal
 
     # uart command tool to encode hex values
-    def encodeHex(value):
-        v = int(value)
+    def encodeHex(self,value):
+        v = int(str(value))
         if v < 10:
             return '{0}'.format(value)
         if v > 15:
             return 'E'
         return str(hex(v)).upper()[2:]
     # uart command validation
+    @staticmethod
     def validate(uartCmd):
         if len(uartCmd.cmdStr) != uartCommand.len:
             raise UARTChecksumError("Invalid uartCommand length = {0}".format(len(uartCmd.cmdStr)))
@@ -184,7 +187,8 @@ class commandHelper():
             #return False
         return True
 
-async def main():
+# Example usage:
+def main():
     ch = 0
     uartch = input("Enter UART channel (0 or 1): ")
     if uartch == '1':
@@ -194,11 +198,11 @@ async def main():
     while True:
         cmdStr = input("Send command string [Digit(0-3) Action(0-9) Value(0-99)]: ")
         cmd = uartCommand(cmdStr)
-        await uart.sendCommand(cmd)
-        await asyncio.sleep(0.05)
-        cmd = await uart.receiveCommand()
+        uart.sendCommand(cmd)
+        cmd = uart.receiveCommand()
         if cmd is not None:
             print("uart{0} command received: {1}".format(ch, cmd.cmdStr))
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
+    #asyncio.run(main())

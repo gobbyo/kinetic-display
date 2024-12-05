@@ -1,6 +1,6 @@
 from machine import RTC
 import urequests
-import json
+import ujson
 
 externalIPAddressAPI=const("http://api.ipify.org")
 
@@ -20,11 +20,11 @@ class syncRTC:
             self.setExternalIPAddress()
             timeAPI = "https://www.timeapi.io/api/Time/current/ip?ipAddress={0}".format(self.externalIPaddress)
             r = urequests.get(timeAPI)
-            z = json.loads(r.content)
+            z = ujson.loads(r.content)
             timeAPI = "https://www.timeapi.io/api/TimeZone/zone?timeZone={0}".format(z["timeZone"])
             print(timeAPI)
             rq = urequests.get(timeAPI)
-            j = json.loads(rq.content)
+            j = ujson.loads(rq.content)
             t = (j["currentLocalTime"].split('T'))[1].split(':')
             print(t)
             #[year, month, day, weekday, hours, minutes, seconds, subseconds]
@@ -36,7 +36,7 @@ class syncRTC:
             return returnval
 
     def __del__(self):
-        urequests.Response.close()
+        pass
 
     def setExternalIPAddress(self):
         try:
@@ -49,6 +49,7 @@ class syncRTC:
         finally:
             pass
 
+#Example usage:
 def main():
     rtc = RTC()
     rtc2 = RTC()

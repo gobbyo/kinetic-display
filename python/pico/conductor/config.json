@@ -1,8 +1,8 @@
 {
-    "tempCF": "C",
-    "time": "24",
-    "wait": "18",
-    "speed": "70",
+    "tempCF": "F",
+    "time": "12",
+    "wait": "16",
+    "speed": "85",
     "lat": "48.5062",
     "lon": "-122.6291",
     "schedule": "schedule_0.json"

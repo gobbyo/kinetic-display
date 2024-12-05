@@ -1,6 +1,6 @@
 {
-    "title": "All features in one minute, sleep for 4 minutes",
-    "scheduleDescription": "Time on second 0, date on second 10, internal temp on second 20, internal humidity on second 30, external temp on second 40, external humidity on second 50. Sleep for 4 minutes.",
+    "title": "All features in one minute",
+    "scheduleDescription": "All features in one minute.",
     "scheduledEvent": [
         {
             "hour": -1,

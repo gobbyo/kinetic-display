@@ -21,6 +21,7 @@ class photoresistor():
             self.light = 1
         return self.light
 
+#Example usage:
 def main():
     light = photoresistor(28)
     while True:

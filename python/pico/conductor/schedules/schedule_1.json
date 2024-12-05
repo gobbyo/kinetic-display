@@ -1,531 +1,601 @@
 {
-    "title": "All Features",
-    "scheduleDescription": "Time: 15 and 45 seconds of every minute. Date: 5 minutes on the 20th second. Month: 2 minutes on the 20th second. Internal temp: every 10 minutes after the 2nd and 6th minute on 15th second mark, humidity on the 30th second mark. External temp: every 10 minutes after the 4 and 8 minute mark on the 30th second, humidity on the 30th second mark. Sleep: 10:00 PM for 8 hours.",
+    "title": "Date, Internal and External Temperature and Humidity",
+    "scheduleDescription": "Date every 5 minutes. External and Internal temperature and humidity every 5 minutes.",
     "scheduledEvent": [
         {
             "hour": -1,
-            "minute": -1,
-            "second": 0,
-            "elapse": 14,
-            "event": 1
-        },
-        {
-            "hour": -1,
-            "minute": -1,
-            "second": 45,
-            "elapse": 14,
-            "event": 1
-        },
-        {
-            "hour": -1,
             "minute": 0,
-            "second": 20,
-            "elapse": 19,
+            "second": 0,
+            "elapse": 10,
             "event": 2
         },
         {
             "hour": -1,
             "minute": 5,
-            "second": 20,
-            "elapse": 19,
+            "second": 0,
+            "elapse": 10,
             "event": 2
         },
         {
             "hour": -1,
             "minute": 10,
-            "second": 20,
-            "elapse": 19,
+            "second": 0,
+            "elapse": 10,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 10,
+            "second": 0,
+            "elapse": 10,
             "event": 2
         },
         {
             "hour": -1,
             "minute": 15,
-            "second": 20,
-            "elapse": 19,
+            "second": 0,
+            "elapse": 10,
             "event": 2
         },
         {
             "hour": -1,
             "minute": 20,
-            "second": 20,
-            "elapse": 19,
+            "second": 0,
+            "elapse": 10,
             "event": 2
         },
         {
             "hour": -1,
             "minute": 25,
-            "second": 20,
-            "elapse": 19,
+            "second": 0,
+            "elapse": 10,
             "event": 2
         },
         {
             "hour": -1,
             "minute": 30,
-            "second": 20,
-            "elapse": 19,
+            "second": 0,
+            "elapse": 10,
             "event": 2
         },
         {
             "hour": -1,
             "minute": 35,
-            "second": 20,
-            "elapse": 19,
+            "second": 0,
+            "elapse": 10,
             "event": 2
         },
         {
             "hour": -1,
             "minute": 40,
-            "second": 20,
-            "elapse": 19,
+            "second": 0,
+            "elapse": 10,
             "event": 2
         },
         {
             "hour": -1,
             "minute": 45,
-            "second": 20,
-            "elapse": 19,
+            "second": 0,
+            "elapse": 10,
             "event": 2
         },
         {
             "hour": -1,
             "minute": 50,
-            "second": 20,
-            "elapse": 19,
+            "second": 0,
+            "elapse": 10,
             "event": 2
         },
         {
             "hour": -1,
             "minute": 55,
-            "second": 20,
-            "elapse": 19,
+            "second": 0,
+            "elapse": 10,
             "event": 2
         },
         {
             "hour": -1,
-            "minute": 2,
-            "second": 15,
+            "minute": 1,
+            "second": 0,
             "elapse": 10,
             "event": 3
         },
         {
             "hour": -1,
             "minute": 6,
-            "second": 15,
+            "second": 0,
             "elapse": 10,
             "event": 3
         },
         {
             "hour": -1,
-            "minute": 12,
-            "second": 15,
+            "minute": 11,
+            "second": 0,
             "elapse": 10,
             "event": 3
         },
         {
             "hour": -1,
             "minute": 16,
-            "second": 15,
+            "second": 0,
             "elapse": 10,
             "event": 3
         },
         {
             "hour": -1,
-            "minute": 22,
-            "second": 15,
+            "minute": 21,
+            "second": 0,
             "elapse": 10,
             "event": 3
         },
         {
             "hour": -1,
             "minute": 26,
-            "second": 15,
+            "second": 0,
             "elapse": 10,
             "event": 3
         },
         {
             "hour": -1,
-            "minute": 32,
-            "second": 15,
+            "minute": 31,
+            "second": 0,
             "elapse": 10,
             "event": 3
         },
         {
             "hour": -1,
             "minute": 36,
-            "second": 15,
+            "second": 0,
             "elapse": 10,
             "event": 3
         },
         {
             "hour": -1,
-            "minute": 42,
-            "second": 15,
+            "minute": 41,
+            "second": 0,
             "elapse": 10,
             "event": 3
         },
         {
             "hour": -1,
             "minute": 46,
-            "second": 15,
+            "second": 0,
             "elapse": 10,
             "event": 3
         },
         {
             "hour": -1,
-            "minute": 52,
-            "second": 15,
+            "minute": 51,
+            "second": 0,
             "elapse": 10,
             "event": 3
         },
         {
             "hour": -1,
             "minute": 56,
-            "second": 15,
+            "second": 0,
             "elapse": 10,
             "event": 3
         },
         {
             "hour": -1,
             "minute": 2,
-            "second": 30,
+            "second": 0,
             "elapse": 10,
             "event": 4
         },
         {
             "hour": -1,
-            "minute": 6,
-            "second": 30,
+            "minute": 7,
+            "second": 0,
             "elapse": 10,
             "event": 4
         },
         {
             "hour": -1,
             "minute": 12,
-            "second": 30,
+            "second": 0,
             "elapse": 10,
             "event": 4
         },
         {
             "hour": -1,
-            "minute": 16,
-            "second": 30,
+            "minute": 17,
+            "second": 0,
             "elapse": 10,
             "event": 4
         },
         {
             "hour": -1,
             "minute": 22,
-            "second": 30,
+            "second": 0,
             "elapse": 10,
             "event": 4
         },
         {
             "hour": -1,
-            "minute": 26,
-            "second": 30,
+            "minute": 27,
+            "second": 0,
             "elapse": 10,
             "event": 4
         },
         {
             "hour": -1,
             "minute": 32,
-            "second": 30,
+            "second": 0,
             "elapse": 10,
             "event": 4
         },
         {
             "hour": -1,
-            "minute": 36,
-            "second": 30,
+            "minute": 37,
+            "second": 0,
             "elapse": 10,
             "event": 4
         },
         {
             "hour": -1,
             "minute": 42,
-            "second": 30,
+            "second": 0,
             "elapse": 10,
             "event": 4
         },
         {
             "hour": -1,
-            "minute": 46,
-            "second": 30,
+            "minute": 47,
+            "second": 0,
             "elapse": 10,
             "event": 4
         },
         {
             "hour": -1,
             "minute": 52,
-            "second": 30,
+            "second": 0,
             "elapse": 10,
             "event": 4
         },
         {
             "hour": -1,
-            "minute": 56,
-            "second": 30,
+            "minute": 57,
+            "second": 0,
             "elapse": 10,
             "event": 4
-        },
-        {
-            "hour": -1,
-            "minute": 4,
-            "second": 15,
-            "elapse": 10,
-            "event": 5
-        },
-        {
-            "hour": -1,
-            "minute": 8,
-            "second": 15,
-            "elapse": 10,
-            "event": 5
-        },
-        {
-            "hour": -1,
-            "minute": 14,
-            "second": 15,
-            "elapse": 10,
-            "event": 5
-        },
-        {
-            "hour": -1,
-            "minute": 18,
-            "second": 15,
-            "elapse": 10,
-            "event": 5
-        },
-        {
-            "hour": -1,
-            "minute": 24,
-            "second": 15,
-            "elapse": 10,
-            "event": 5
-        },
-        {
-            "hour": -1,
-            "minute": 28,
-            "second": 15,
-            "elapse": 10,
-            "event": 5
-        },
-        {
-            "hour": -1,
-            "minute": 34,
-            "second": 15,
-            "elapse": 10,
-            "event": 5
-        },
-        {
-            "hour": -1,
-            "minute": 38,
-            "second": 15,
-            "elapse": 10,
-            "event": 5
-        },
-        {
-            "hour": -1,
-            "minute": 44,
-            "second": 15,
-            "elapse": 10,
-            "event": 5
-        },
-        {
-            "hour": -1,
-            "minute": 48,
-            "second": 15,
-            "elapse": 10,
-            "event": 5
-        },
-        {
-            "hour": -1,
-            "minute": 54,
-            "second": 15,
-            "elapse": 10,
-            "event": 5
-        },
-        {
-            "hour": -1,
-            "minute": 58,
-            "second": 15,
-            "elapse": 10,
-            "event": 5
-        },
-        {
-            "hour": -1,
-            "minute": 4,
-            "second": 30,
-            "elapse": 10,
-            "event": 6
-        },
-        {
-            "hour": -1,
-            "minute": 8,
-            "second": 30,
-            "elapse": 10,
-            "event": 6
-        },
-        {
-            "hour": -1,
-            "minute": 14,
-            "second": 30,
-            "elapse": 10,
-            "event": 6
-        },
-        {
-            "hour": -1,
-            "minute": 18,
-            "second": 30,
-            "elapse": 10,
-            "event": 6
-        },
-        {
-            "hour": -1,
-            "minute": 24,
-            "second": 30,
-            "elapse": 10,
-            "event": 6
-        },
-        {
-            "hour": -1,
-            "minute": 28,
-            "second": 30,
-            "elapse": 10,
-            "event": 6
-        },
-        {
-            "hour": -1,
-            "minute": 34,
-            "second": 30,
-            "elapse": 10,
-            "event": 6
-        },
-        {
-            "hour": -1,
-            "minute": 38,
-            "second": 30,
-            "elapse": 10,
-            "event": 6
-        },
-        {
-            "hour": -1,
-            "minute": 44,
-            "second": 30,
-            "elapse": 10,
-            "event": 6
-        },
-        {
-            "hour": -1,
-            "minute": 48,
-            "second": 30,
-            "elapse": 10,
-            "event": 6
-        },
-        {
-            "hour": -1,
-            "minute": 54,
-            "second": 30,
-            "elapse": 10,
-            "event": 6
-        },
-        {
-            "hour": -1,
-            "minute": 58,
-            "second": 30,
-            "elapse": 10,
-            "event": 6
         },
         {
             "hour": -1,
             "minute": 3,
-            "second": 15,
+            "second": 0,
             "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 8,
+            "second": 0,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 13,
+            "second": 0,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 18,
+            "second": 0,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 23,
+            "second": 0,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 28,
+            "second": 0,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 33,
+            "second": 0,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 38,
+            "second": 0,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 43,
+            "second": 0,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 48,
+            "second": 0,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 53,
+            "second": 0,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 58,
+            "second": 0,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 4,
+            "second": 0,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 9,
+            "second": 0,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 14,
+            "second": 0,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 19,
+            "second": 0,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 24,
+            "second": 0,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 29,
+            "second": 0,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 34,
+            "second": 0,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 39,
+            "second": 0,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 44,
+            "second": 0,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 49,
+            "second": 0,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 54,
+            "second": 0,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 59,
+            "second": 0,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 2,
+            "second": 30,
+            "elapse": 2,
             "event": 7
         },
         {
             "hour": -1,
             "minute": 7,
-            "second": 15,
-            "elapse": 10,
+            "second": 30,
+            "elapse": 2,
             "event": 7
         },
         {
             "hour": -1,
-            "minute": 13,
-            "second": 15,
-            "elapse": 10,
+            "minute": 12,
+            "second": 30,
+            "elapse": 2,
             "event": 7
         },
         {
             "hour": -1,
             "minute": 17,
-            "second": 15,
-            "elapse": 10,
+            "second": 30,
+            "elapse": 2,
             "event": 7
         },
         {
             "hour": -1,
-            "minute": 23,
-            "second": 15,
-            "elapse": 10,
+            "minute": 22,
+            "second": 30,
+            "elapse": 2,
             "event": 7
         },
         {
             "hour": -1,
             "minute": 27,
-            "second": 15,
-            "elapse": 10,
+            "second": 30,
+            "elapse": 2,
             "event": 7
         },
         {
             "hour": -1,
-            "minute": 33,
-            "second": 15,
-            "elapse": 10,
+            "minute": 32,
+            "second": 30,
+            "elapse": 2,
             "event": 7
         },
         {
             "hour": -1,
             "minute": 37,
-            "second": 15,
-            "elapse": 10,
+            "second": 30,
+            "elapse": 2,
             "event": 7
         },
         {
             "hour": -1,
-            "minute": 43,
-            "second": 15,
-            "elapse": 10,
+            "minute": 42,
+            "second": 30,
+            "elapse": 2,
             "event": 7
         },
         {
             "hour": -1,
             "minute": 47,
-            "second": 15,
-            "elapse": 10,
+            "second": 30,
+            "elapse": 2,
             "event": 7
         },
         {
             "hour": -1,
-            "minute": 53,
-            "second": 15,
-            "elapse": 10,
+            "minute": 52,
+            "second": 30,
+            "elapse": 2,
             "event": 7
         },
         {
             "hour": -1,
             "minute": 57,
-            "second": 15,
-            "elapse": 10,
+            "second": 30,
+            "elapse": 2,
             "event": 7
         },
         {
-            "hour": 22,
-            "minute": 0,
-            "second": 0,
-            "elapse": 480,
-            "event": 9
+            "hour": -1,
+            "minute": 3,
+            "second": 30,
+            "elapse": 2,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": 8,
+            "second": 30,
+            "elapse": 2,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": 13,
+            "second": 30,
+            "elapse": 2,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": 18,
+            "second": 30,
+            "elapse": 2,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": 23,
+            "second": 30,
+            "elapse": 2,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": 28,
+            "second": 30,
+            "elapse": 2,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": 33,
+            "second": 30,
+            "elapse": 2,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": 38,
+            "second": 30,
+            "elapse": 2,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": 43,
+            "second": 30,
+            "elapse": 2,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": 48,
+            "second": 30,
+            "elapse": 2,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": 53,
+            "second": 30,
+            "elapse": 2,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": 58,
+            "second": 30,
+            "elapse": 2,
+            "event": 7
         }
     ]
 }

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>Your settings have been saved.</p>
+        <p><b>Be sure to have the ON/OFF switch in the ON position</b> so the kinetic display uses your Wifi credentials.</p>
+        <button id="shutdown-button">Shut down</button>
+
+        <script>
+            document.getElementById('shutdown-button').addEventListener('click', function() {
+                window.location.href = '/shutdown';
+                document.getElementById('message').textContent = "Success! Close this browser window after clicking the 'Shut Down' button";
+            });
+        </script>
+    </body>
+</html>

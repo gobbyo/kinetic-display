@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Kinetic Display Controls Settings</h1>
+
+        <form id="controllersettings">
+            <table>
+                <tr>
+                    <td>Schedule</td>
+                    <td><select name="schedule" id="schedule"> </select></td>
+                </tr>
+                <tr>
+                    <td>Add Schedule</td>
+                    <td><a href="/uploadfile"><button type="button">Upload Schedule</button></a></td>
+                </tr>
+                <tr>
+                    <td>Delete Schedule</td>
+                    <td><a href="#" onclick="deleteSchedule(event)"><button type="button">Delete Schedule</button></a></td>
+                </tr>
+                <tr>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                </tr>
+                <tr>
+                    <td>Wifi SSID</td>
+                    <td><input type="text" id="ssid" name="ssid" maxlength="24" size="24" value="ce9c7e1bb79e"></td>
+                </tr>
+                <tr>
+                    <td>Wifi Pwd</td>
+                    <td><input type="password" id="pwd" name="pwd" maxlength="24" size="24" value="ea83bcd634fa"></td>
+                </tr>
+                <tr>
+                    <td>Time</td>
+                    <td><select name="time" id="time">
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Temperature</td>
+                    <td><select name="tempCF" id="tempCF">
+                        <option value="F">fahrenheit</option>
+                        <option value="C">celsius</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>Display Motor Wait Time</td>
+                    <td><input type="number" id="wait" min="15" max="30"> milliseconds</td>
+                </tr>
+                <tr>
+                    <td>Display Motor Speed</td>
+                    <td><input type="number" id="speed" min="50" max="99"> percent</td>
+                </tr>
+            </table>
+            <p></p><input type="submit" value="Save" onclick="upload(event)">
+        </form>
+        <script>
+            async function upload(ev) {
+                ev.preventDefault();
+                const data = JSON.stringify({
+                    wait: document.getElementById('wait').value,
+                    speed: document.getElementById('speed').value,
+                    ssid: document.getElementById('ssid').value,
+                    pwd: document.getElementById('pwd').value,
+                    time: document.getElementById('time').value,
+                    tempCF: document.getElementById('tempCF').value,
+                    schedule: document.getElementById('schedule').value,
+                });
+        
+                await fetch('/controllersettings', {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }).then(res => {
+                console.log('Upload accepted');
+                window.location.href = '/bye';
+                });
+            }
+
+            async function deleteSchedule(ev) {
+                ev.preventDefault();
+                const schedule = document.getElementById('schedule').value;
+                
+                await fetch(`/delete/${schedule}`, {
+                    method: 'DELETE',
+                }).then(res => {
+                    console.log('Schedule deleted');
+                    window.location.reload();
+                });
+            }
+        </script>
+    </body>
+</html>

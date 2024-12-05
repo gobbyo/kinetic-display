@@ -1,7 +1,7 @@
 from machine import Pin, PWM, RTC
-from uart_protocol import commandHelper, uartCommand
+from common.uart_protocol import commandHelper, uartCommand
 import time
-from config import Config
+from common.config import Config
 
 LEDbrightness = 0.4
 
@@ -20,24 +20,24 @@ class Motoractuator:
         self.ccw = Pin(acwPin, Pin.OUT)
         self.stop()
     
-    def extend(self, motor_speed, waitTime):
+    def extend(self, motor_speed, wait):
         # try/except block needed as an exception may be thrown without stopping the motor
         try:
             self.speed.duty_u16(int((motor_speed/100)*65536))
             self.cw.on()
-            time.sleep(waitTime)
+            time.sleep(wait)
         except Exception as e:
             print("extend error: {0}".format(e))
         finally:
             self.stop()
             print("extend")
     
-    def retract(self, motor_speed, waitTime):
+    def retract(self, motor_speed, wait):
         # try/except block needed as an exception may be thrown without stopping the motor
         try:
             self.speed.duty_u16(int((motor_speed/100)*65536))
             self.ccw.on()
-            time.sleep(waitTime)
+            time.sleep(wait)
         except Exception as e:
             print("retract error: {0}".format(e))
         finally:
@@ -67,8 +67,8 @@ class Digit_Colons:
             percentLED_brightness = float(self.conf.read("brightness")) # 0-1, 0.5 being 50% brightness
             self._brightness = int(percentLED_brightness*65536)
             self._previousDigitArray = self.conf.read("previous")
-            self._motorspeed = int(self.conf.read("motorspeed"))
-            self._waitTime = float(self.conf.read("waitTime"))
+            self._motorspeed = int(self.conf.read("speed"))
+            self._waitTime = float(self.conf.read("wait"))
             self._digit = int(self.conf.read("digit"))
             self._testDigit = int(self.conf.read("alien"))
         finally:
@@ -98,24 +98,24 @@ class Digit_Colons:
         self.conf.write("alien", test)
     
     @property
-    def motorspeed(self):
-        print("motorspeed={0}".format(self._motorspeed))
+    def speed(self):
+        print("speed={0}".format(self._motorspeed))
         return self._motorspeed
 
-    @motorspeed.setter
-    def motorspeed(self, speed):
+    @speed.setter
+    def speed(self, speed):
         self._motorspeed = speed
-        self.conf.write("motorspeed", int(speed))
+        self.conf.write("speed", int(speed))
     
     @property
-    def waitTime(self):
-        print("waitTime={0}".format(self._waitTime))
+    def wait(self):
+        print("wait={0}".format(self._waitTime))
         return self._waitTime
     
-    @waitTime.setter
-    def waitTime(self, wt):
+    @wait.setter
+    def wait(self, wt):
         self._waitTime = wt
-        self.conf.write("waitTime", wt)
+        self.conf.write("wait", wt)
     
     @property
     def brightness(self):
@@ -228,9 +228,10 @@ class Digit_Colons:
 
         if twelveHour and d == '0' and self._digit == 0:
             d = 'F'
-        
-        self.set_digit(self.getDigitArray(uartCommand.digitValue[int(d)]))
+        cmd = uartCommand("default")
+        self.set_digit(self.getDigitArray(cmd.digitValue[int(d)]))
 
+#Example usage:
 def main():
     d = Digit_Colons(led_pins, LEDbrightness, motor_pins)
     
@@ -245,7 +246,7 @@ def main():
             print("set_brightness({0})".format(b))
             d.brightness = b/10 # 0-9, 9 being the brightest
         elif seg[0] == 'd':
-            a = commandHelper.decodeHex(seg[1])
+            a = commandHelper().decodeHex(value=seg[1])
             digitArray = d.getDigitArray(a)
             print("digit={0} array={1}".format(a, digitArray))
             actuatorMoves = d.set_digit(digitArray)
@@ -258,25 +259,17 @@ def main():
         elif seg[0] == 'm':
             i = int(seg[1:])
             print("set_motor_speed({0})".format(i))
-            d.motorspeed = i
+            d.speed = i
             print("_motorspeed={0}".format(d._motorspeed))
         elif seg[0] == 'w':
             i = int(seg[1:])
             print("set_wait_time({0})".format(i))
-            d.waitTime = i/100
+            d.wait = i/100
         elif seg[0] == 'r':
             i = int(seg[1])
             print("set_digit(0x{0:02x})".format(i))
             actuatorMoves = d.retract_segment(i)
             time.sleep(actuatorMoves * d._waitTime)
-        elif seg[0] == 't':
-            twelveHour = True
-            t = input("12 or 24 hour time (12/24): ")
-            if t == '24':
-                twelveHour = False
-            else:
-                twelveHour = True
-            d.setTimeDisplay(twelveHour)
         else:
             print("Invalid input")
     d.__del__()
