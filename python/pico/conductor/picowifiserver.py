@@ -11,7 +11,7 @@ from microdot import Microdot, send_file, Request
 
 class PicoWifi:
     def __init__(self, configfilename, ssid='kinetic-display', password='12oclock'):
-        gc.collect()
+        self.app = None
         self.ip_address = ""
         self.config = Config(configfilename)
         self.uart = None
@@ -187,20 +187,20 @@ class PicoWifi:
         return True
 
     def run_server(self):
-        app = Microdot()
+        self.app = Microdot()
 
-        @app.route('/')
+        @self.app.route('/')
         async def index(request):
             print("returning index page")
             self.createIndex()
             return send_file('html/index.html')
 
-        @app.get('/uploadfile')
+        @self.app.get('/uploadfile')
         async def file(request):
             print("returning upload file page")
             return send_file('html/file.html')
 
-        @app.post('/controllersettings')
+        @self.app.post('/controllersettings')
         async def controllersettings(request):
             print('Received controller settings')
             form = request.body.decode('utf-8')
@@ -214,7 +214,7 @@ class PicoWifi:
             self.config.write('schedule', f['schedule'])
             return ''
 
-        @app.post('/upload')
+        @self.app.post('/upload')
         async def upload(request):
             print("uploading file")
             try:
@@ -243,7 +243,7 @@ class PicoWifi:
                 print(f"Error uploading file: {e}")
                 return 'Error uploading file', 500
 
-        @app.delete('/delete/<filename>')
+        @self.app.delete('/delete/<filename>')
         async def deleteSchedule(self, filename):
             try:
                 path = f'schedules/{filename}'
@@ -252,18 +252,25 @@ class PicoWifi:
             except OSError as e:
                 print(f"Error deleting {filename}: {e}")
 
-        @app.get('/bye')
+        @self.app.get('/bye')
         async def bye(request):
             print('returning completed settings page')
             return send_file('html/completedsettings.html')
 
-        @app.get('/shutdown')
+        @self.app.get('/shutdown')
         async def shutdown(request):
             print('shutting down microdot web service')
             request.app.shutdown()
             return 'Shutting down', 200
 
-        app.run(host=self.ip_address, port=80)
+        self.app.run(host=self.ip_address, port=80)
+    
+    def shutdown_server(self):
+        print("Web server shutdown")
+        if self.app:
+            self.app.shutdown()
+        time.sleep(1)
+        del self.app
 
 # Example usage
 if __name__ == "__main__":
@@ -272,6 +279,7 @@ if __name__ == "__main__":
         picowifi.start_wifi()
         if picowifi.ip_address != "":
             picowifi.run_server()
+        picowifi.shutdown_server()
         picowifi.shutdownWifi()
     finally:
         print('deleted picowifi instance')

@@ -1,8 +1,9 @@
 import digit
 from common.uart_protocol import uartProtocol, uartChannel, UARTChecksumError, UARTInvalidDigit, UARTInvalidAction, uartActions, uartCommand, commandHelper
-import asyncio
+import time
+#import asyncio
 
-async def handle_command(display, cmd):
+def handle_command(display, cmd):
     actuatorMoves = 0
     if display._digit == cmd.digit:
         if cmd.action == int(uartActions.setdigit):
@@ -35,11 +36,11 @@ async def handle_command(display, cmd):
             print(f"digit {cmd.digit} retracting segment {cmd.value}")
         else:
             pass
-        await asyncio.sleep(actuatorMoves * display.waitTime)
+        time.sleep(actuatorMoves * display.waitTime)
     else:
         print(f"command ignored as target digit {cmd.digit} is not digit {display._digit}")
 
-async def main():
+def main():
     display = digit.Digit(digit.led_pins, digit.LEDbrightness, digit.motor_pins)
     uartCh = uartChannel.uart0 if display._digit <= 1 else uartChannel.uart1
     
@@ -48,15 +49,15 @@ async def main():
 
     try:
         uart = uartProtocol(uartCh, commandHelper.baudRate[3])
-        await asyncio.sleep(.5)
+        time.sleep(.5)
 
         while True:
-            await asyncio.sleep(.1)
+            time.sleep(.1)
             try:
-                cmd = await uart.receiveCommand()
+                cmd = uart.receiveCommand()
                 if cmd is not None:
                     print(f"digit received cmd: digit={cmd.digit} action={cmd.action} value={cmd.value}")
-                    await handle_command(display, cmd)
+                    handle_command(display, cmd)
             except (UARTChecksumError, UARTInvalidDigit, UARTInvalidAction) as e:
                 print(f"{type(e).__name__}: {e}")
             except Exception as e:
@@ -65,4 +66,5 @@ async def main():
         print(f"Exception in main: {e}")
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    main()
+    #asyncio.run(main())

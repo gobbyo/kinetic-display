@@ -388,14 +388,15 @@ class conductor:
         cmd = uartCommand('{0}0{1:02}'.format(d,n))
         if d < 2:     
             self.uart0.sendCommand(cmd)
-            print(f"display number: cmd={cmd.cmdStr}")
+            print(f"command sent on ch0 to display number: cmd={cmd.cmdStr}")
             time.sleep(.1)
             #cmd = self.uart0.receiveCommand()
         else:
             self.uart1.sendCommand(cmd)
-            print(f"display number: cmd={cmd.cmdStr}")
+            print(f"command sent on ch1 to display number: cmd={cmd.cmdStr}")
             time.sleep(.1)
             #cmd = self.uart1.receiveCommand()
+        del cmd
 
 def loop():
 
@@ -409,8 +410,8 @@ def loop():
             controller.wifi.start_wifi()
             if controller.wifi.ip_address != "":
                 controller.wifi.run_server()
+            controller.wifi.shutdown_server()
             controller.wifi.shutdownWifi()
-            controller.wifi.__del__()
             while controller.hybernateswitch(): #wait for the switch to be turned to the "on" position
                 time.sleep(1)
        
@@ -491,9 +492,6 @@ def loop():
                 elif a == eventActions.updateOutdoorTempHumid:
                     controller.updateOutdoorTempHumid()
                 elif a == eventActions.hybernate:
-                    if controller.wifi:
-                        controller.wifi.disconnect_from_wifi_network()
-                        controller.wifi.__del__()
                     controller.scheduledHybernation(s)
                     if controller.wifi:
                         controller.wifi = PicoWifi("config.json")
@@ -520,71 +518,87 @@ def loop():
 ##############################
 
 def instructions():
-    actions = ['A','C','D','E','H','L','R','S','T','W']
+    actions = ['a','c','d','e','h','l','s','t','w']
 
     while True:
-        print("'A' = test all digits")
-        print("'D(0-3,0-15)' = digit and number to display")
-        print("'L' = update brightness")
-        print("'C' = current time")
-        print("T'(0-1)' = temp in 0 = celcius or 1 = farenheit")
-        print("'H' = humidity")
-        print("'W(15-30)' = motor wait time in milliseconds")
-        print("'S(10-100)' = motor speed %")
+        print("Enter a command:")
+        print("\t(a)ll digits test")
+        print("\t(c)ycle through all digits on both UART channels")
+        print("\t(d)igit(0-3)number(0-15)")
+        print("\t(l)uminosity(0-100)%")
+        print("\t(t)emp(0=C,1=F)")
+        print("\t(h)umidity")
+        print("\t(w)ait(15-30 milliseconds) of segment movement")
+        print("\t(s)peed(10-100)% of segment movement")
+        print("\t(e)xit")
         cmd = input("command: ")
         validaction = False
         for i in actions:
-            if i == cmd[0].upper():
+            if i == cmd[0].lower():
                 validaction = True
-                print(f"{i} is a valid action")
+                print(f"Choice={i} value={cmd[1:]}")
                 break
         if validaction:
             a = cmd[0]
-            if a.upper() == 'H':
+            if a.lower() == 'h' or a.lower() == 'c' or a.lower() == 'a' or a.lower() == 'e':
                 v = '0'
-                return a.upper(), v
-            elif a.upper() == 'C':
-                v = '0'
-                return a.upper(), v
+                return a.lower(), v
             else:
-                v = cmd[1:]  
-                return a.upper(), v
+                v = cmd[1:]
+                return a.lower(), v
         else:
             return '',0
 
 def manual():
     controller = conductor()
     finished = False
+
     while not finished:
         a, v = instructions()
-        print(f"action={a} value={v}")
-        if a == 'A':
+        if a == 'a':
             controller.testdigits()
-            print("Test all digits")
-        elif a == 'D':
+            print("(a)ll digits test")
+        elif a == 'c':
+            for u in range(15):
+                for i in range(2):
+                    print("UART{0} test".format(i))
+                    uart = uartProtocol(i, commandHelper.baudRate[3])
+                    uart.clearQueue()
+                    cmdStr = '0{0}{1:02}'.format(i,u)
+                    print("sending command: {0}".format(cmdStr))
+                    cmd = uartCommand(cmdStr)
+                    uart.sendCommand(cmd)
+                    time.sleep(1)         
+                    del(uart)
+        elif a == 'd':
             v = str(v)
             digit = v[0] if len(v) > 0 else '0'
             value = v[1:] if len(v) > 1 else '0'
-            print(f"digit={digit} value={value}")
+            print(f"(d)igit={digit} value={value}")
             controller.displayNumber(int(digit), int(value))
-        elif a == 'T':
+        elif a == 't':
             controller.updateIndoorTemp()
             if v == '0':
                 controller.showIndoorTemp(True)
+                print(f"Outdoor temp in Celcius")
             else:
                 controller.showIndoorTemp(False)
-        elif a == 'H':
+                print(f"Indoor temp in Celcius")
+        elif a == 'h':
             controller.updateIndoorTemp()
             controller.showIndoorHumidity()
-        elif a == 'L':
+            print(f"Indoor humidity")
+        elif a == 'l':
             controller.updatebrightness()
-        elif a == 'C':
-            controller.showTime()
-        elif a == 'W':
+            print(f"Change in luminosity")
+        elif a == 'w':
+            controller.setWaitTime(int(v))
+            print(f"Set segment movement wait time to {v} milliseconds")
+        elif a == 's':
             controller.setMotorSpeed(int(v))
-        elif a == 'S':
-            controller.setMotorSpeed(int(v))
+            print(f"Set segment movement speed to {v}%")
         else:
+            print(f'Quitting program')
             finished = True
             controller.cleardisplay()
 

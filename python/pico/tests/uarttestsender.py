@@ -1,4 +1,4 @@
-from uart_protocol import uartProtocol, uartChannel, uartCommand, commandHelper, uartActions
+from common.uart_protocol import uartProtocol, uartChannel, uartCommand, commandHelper, uartActions
 import time
 
 

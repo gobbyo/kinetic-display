@@ -232,11 +232,13 @@ class Digit:
         if twelveHour and d == '0' and self._digit == 0:
             d = 'F'
         
-        self.set_digit(self.getDigitArray(uartCommand.digitValue[int(d)]))
+        v = uartCommand.digitValue
+        self.set_digit(self.getDigitArray(v[int(d)]))
 
 def main():
     d = Digit(led_pins, LEDbrightness, motor_pins)
-    
+    helper = commandHelper()
+
     while True:
         seg = input("Enter: \n\t(d)igit (d0-d9,dA-dF)\n\t(b)rightness\n\t(e)xtend segment (e0-e6)\n\t(r)etract segment (r0-r6)\n\t(m)otor speed\n\t(w)ait time\n\t(c)ycle\n\t(t)est digit\n\t(q)uit\n\t>:")
         if seg == 'q':
@@ -250,17 +252,19 @@ def main():
         elif seg[0] == 'c':
             while True:
                 for i in range(0,16):
-                    a = commandHelper.decodeHex(i)
+                    a = helper.decodeHex(value=i)
                     #print(f"set_digit(0x{a:02x})")
-                    digitArray = d.getDigitArray(uartCommand.digitValue[a])
+                    v = uartCommand.digitValue
+                    digitArray = d.getDigitArray(v[int(a)])
                     d.set_digit(digitArray)
                     time.sleep(1)
         elif seg[0] == 'd':
-            a = commandHelper.decodeHex(seg[1])
+            a = helper.decodeHex(seg[1])
+            v = uartCommand.digitValue
             if 1 == d.testdigit:
-                digitArray = d.getDigitArray(uartCommand.digitTest[a])
+                digitArray = d.getDigitArray(v[a])
             else:
-                digitArray = d.getDigitArray(uartCommand.digitValue[a])
+                digitArray = d.getDigitArray(v[a])
             print(f"set_digit(0x{a:02x}): {digitArray}")
             actuatorMoves = d.set_digit(digitArray)
             time.sleep(actuatorMoves * d._waitTime)
