@@ -549,6 +549,7 @@ def instructions():
         else:
             return '',0
 
+#Example usage:
 def manual():
     controller = conductor()
     finished = False

@@ -235,62 +235,90 @@ class Digit:
         v = uartCommand.digitValue
         self.set_digit(self.getDigitArray(v[int(d)]))
 
+def instructions():
+    actions = ['c','d','e','l','r','s','t','w']
+
+    while True:
+        print("Enter a command:")
+        print("\t(c)ycle through digits")
+        print("\t(d)igit (d0-d9,dA-dF)")
+        print("\t(e)xtend segment (e0-e6)")
+        print("\t(l)uminosity(0-9)")
+        print("\t(r)etract segment (r0-r6)")
+        print("\t(s)peed(10-100)% of segment movement")
+        print("\t(t)est digit")
+        print("\t(w)ait(15-30 milliseconds) of segment movement")
+        print("\t(q)uit")
+        cmd = input("command: ")
+        validaction = False
+        for i in actions:
+            if i == cmd[0].lower():
+                validaction = True
+                print(f"Choice={i} value={cmd[1:]}")
+                break
+        if validaction:
+            a = cmd[0]
+            if a.lower() == 'h' or a.lower() == 'c' or a.lower() == 'a' or a.lower() == 'e':
+                v = '0'
+                return a.lower(), v
+            else:
+                v = cmd[1:]
+                return a.lower(), v
+        else:
+            return '',0
+        
 def main():
     d = Digit(led_pins, LEDbrightness, motor_pins)
     helper = commandHelper()
+    finished = False
+    
+    while not finished:
+        seg, value = instructions()
 
-    while True:
-        seg = input("Enter: \n\t(d)igit (d0-d9,dA-dF)\n\t(b)rightness\n\t(e)xtend segment (e0-e6)\n\t(r)etract segment (r0-r6)\n\t(m)otor speed\n\t(w)ait time\n\t(c)ycle\n\t(t)est digit\n\t(q)uit\n\t>:")
-        if seg == 'q':
-            break
-        elif seg[0] == 'a':
-            actuatorMoves = d.dance()
-        elif seg[0] == 'b':
-            b = int(seg[1])
-            print(f"set_brightness({b})")
-            d.brightness = b/10 # 0-9, 9 being the brightest
-        elif seg[0] == 'c':
-            while True:
-                for i in range(0,16):
-                    a = helper.decodeHex(value=i)
-                    #print(f"set_digit(0x{a:02x})")
-                    v = uartCommand.digitValue
-                    digitArray = d.getDigitArray(v[int(a)])
-                    d.set_digit(digitArray)
-                    time.sleep(1)
-        elif seg[0] == 'd':
-            a = helper.decodeHex(seg[1])
-            v = uartCommand.digitValue
+        if seg == 'c':
+            print("cycle through digits:")
+            for i in range(0,16):
+                a = helper.decodeHex(value=i)
+                print(f"/tdigit=(0x{a:02x})")
+                digitArray = d.getDigitArray(uartCommand.digitValue[int(a)])
+                d.set_digit(digitArray)
+                time.sleep(1)
+        elif seg == 'd':
+            print(f"digit=({value})")
+            a = helper.decodeHex(value)
             if 1 == d.testdigit:
-                digitArray = d.getDigitArray(v[a])
+                digitArray = d.getDigitArray(uartCommand.digitValue[a])
             else:
-                digitArray = d.getDigitArray(v[a])
-            print(f"set_digit(0x{a:02x}): {digitArray}")
+                digitArray = d.getDigitArray(uartCommand.digitValue[a])
+            print(f"/tdigit array=(0x{a:02x}): {digitArray}")
             actuatorMoves = d.set_digit(digitArray)
-            time.sleep(actuatorMoves * d._waitTime)
-        elif seg[0] == 'e':
-            i = int(seg[1])
-            print(f"set_digit(0x{i:02x})")
+        elif seg == 'e':
+            i = int(value)
+            print(f"extend segment=({i})")
             actuatorMoves = d.extend_segment(i)
-            time.sleep(actuatorMoves * d._waitTime)
-        elif seg[0] == 'm':
-            i = int(seg[1:])
-            print(f"set_motor_speed({i})")
-            d.motorspeed = i
-        elif seg[0] == 'w':
-            i = int(seg[1:])
-            print(f"set_wait_time({i})")
-            d.waitTime = i/100
-        elif seg[0] == 'r':
-            i = int(seg[1])
-            print(f"set_digit(0x{i:02x})")
+        elif seg == 'l':
+            print(f"luminosity=({value})")
+            d.brightness = int(value) # 0-9, 9 being the brightest
+        elif seg == 'r':
+            i = int(value)
+            print(f"retract segment=({i})")
             actuatorMoves = d.retract_segment(i)
             time.sleep(actuatorMoves * d._waitTime)
-        elif seg[0] == 't':
-            d.dance()
+        elif seg == 's':
+            i = int(value)
+            print(f"set_motor_speed({i})")
+            d.motorspeed = i
+        elif seg == 't':
+            actuatorMoves = d.dance()
+            print(f"test actuator moves={actuatorMoves}")
+        elif seg == 'w':
+            i = int(value)
+            print(f"set_wait_time({i})")
+            d.waitTime = i/100
         else:
-            print("Invalid input")
+            finished = True
     d.__del__()
+    del d
 
 if __name__ == "__main__":
     main()

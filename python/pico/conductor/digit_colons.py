@@ -231,6 +231,7 @@ class Digit_Colons:
         cmd = uartCommand("default")
         self.set_digit(self.getDigitArray(cmd.digitValue[int(d)]))
 
+#Example usage:
 def main():
     d = Digit_Colons(led_pins, LEDbrightness, motor_pins)
     

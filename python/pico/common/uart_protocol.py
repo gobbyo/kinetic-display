@@ -187,6 +187,7 @@ class commandHelper():
             #return False
         return True
 
+# Example usage:
 def main():
     ch = 0
     uartch = input("Enter UART channel (0 or 1): ")

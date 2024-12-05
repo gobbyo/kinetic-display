@@ -49,6 +49,7 @@ class syncRTC:
         finally:
             pass
 
+#Example usage:
 def main():
     rtc = RTC()
     rtc2 = RTC()
