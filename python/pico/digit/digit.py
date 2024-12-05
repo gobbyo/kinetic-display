@@ -279,7 +279,7 @@ def main():
             print("cycle through digits:")
             for i in range(0,16):
                 a = helper.decodeHex(value=i)
-                print(f"/tdigit=(0x{a:02x})")
+                print(f"\tdigit=(0x{a:02x})")
                 digitArray = d.getDigitArray(uartCommand.digitValue[int(a)])
                 d.set_digit(digitArray)
                 time.sleep(1)
@@ -290,7 +290,6 @@ def main():
                 digitArray = d.getDigitArray(uartCommand.digitValue[a])
             else:
                 digitArray = d.getDigitArray(uartCommand.digitValue[a])
-            print(f"/tdigit array=(0x{a:02x}): {digitArray}")
             actuatorMoves = d.set_digit(digitArray)
         elif seg == 'e':
             i = int(value)
@@ -298,7 +297,7 @@ def main():
             actuatorMoves = d.extend_segment(i)
         elif seg == 'l':
             print(f"luminosity=({value})")
-            d.brightness = int(value) # 0-9, 9 being the brightest
+            d.brightness = float(value)/10
         elif seg == 'r':
             i = int(value)
             print(f"retract segment=({i})")
