@@ -27,6 +27,7 @@ powerRelayPin = 19
 class conductor:
     def __init__(self):
         self.wifi = None
+        self.wifihotspot = None
         self.uart0 = uartProtocol(uartChannel.uart0, commandHelper.baudRate[3])
         time.sleep(.75)
         self.uart1 = uartProtocol(uartChannel.uart1, commandHelper.baudRate[3])
@@ -79,8 +80,9 @@ class conductor:
                 #Clear the display
                 if not cleared:
                     print("hybernating...")
-                    self.cleardisplay()
+                    self.cleardisplay() 
                     time.sleep(2)
+                    self.wifi.disconnect_from_wifi_network()
                     self.powerRelay.on()
                     cleared = True
                 time.sleep(1)
@@ -92,7 +94,6 @@ class conductor:
             self.wifi.connect_to_wifi_network()
             syncrtc = syncRTC()
             syncrtc.syncclock(self.rtc)
-            self.wifi.disconnect_from_wifi_network()
         pass
 
     def checkHybernate(self):
@@ -105,6 +106,7 @@ class conductor:
                     self.cleardisplay()
                     print("hybernating...")
                     time.sleep(2)
+                    self.wifi.disconnect_from_wifi_network()
                     self.powerRelay.on()
                     cleared = True
                     hybernated = True
@@ -118,7 +120,6 @@ class conductor:
                 self.wifi.connect_to_wifi_network()
                 rtc = syncRTC()
                 rtc.syncclock(self.rtc)
-                self.wifi.disconnect_from_wifi_network()
         return hybernated
 
     def updateIndoorTemp(self):
@@ -406,12 +407,13 @@ def loop():
     try:
 
         if controller.hybernateswitch(): #if the hybernate switch is in "off" position
-            controller.wifi = PicoWifi("config.json")
-            controller.wifi.start_wifi()
-            if controller.wifi.ip_address != "":
-                controller.wifi.run_server()
-            controller.wifi.shutdown_server()
-            controller.wifi.shutdownWifi()
+            controller.wifihotspot = PicoWifi("config.json")
+            controller.wifihotspot.start_wifi()
+            if controller.wifihotspot.ip_address != "":
+                controller.wifihotspot.run_server()
+            controller.wifihotspot.shutdown_server()
+            controller.wifihotspot.shutdownWifi()
+            controller.wifihotspot.__del__()
             while controller.hybernateswitch(): #wait for the switch to be turned to the "on" position
                 time.sleep(1)
        

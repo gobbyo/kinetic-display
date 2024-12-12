@@ -258,7 +258,7 @@ def instructions():
                 break
         if validaction:
             a = cmd[0]
-            if a.lower() == 'h' or a.lower() == 'c' or a.lower() == 'a' or a.lower() == 'e':
+            if a.lower() == 'c' or a.lower() == 't':
                 v = '0'
                 return a.lower(), v
             else:
@@ -279,7 +279,7 @@ def main():
             print("cycle through digits:")
             for i in range(0,16):
                 a = helper.decodeHex(value=i)
-                print(f"\tdigit=(0x{a:02x})")
+                print(f"digit=(0x{a:02x})")
                 digitArray = d.getDigitArray(uartCommand.digitValue[int(a)])
                 d.set_digit(digitArray)
                 time.sleep(1)
@@ -302,7 +302,6 @@ def main():
             i = int(value)
             print(f"retract segment=({i})")
             actuatorMoves = d.retract_segment(i)
-            time.sleep(actuatorMoves * d._waitTime)
         elif seg == 's':
             i = int(value)
             print(f"set_motor_speed({i})")
