@@ -105,11 +105,13 @@ class uartProtocol():
         self.baudRate = baudRate
         
         if uartCh == uartChannel.uart0:
+            #self.uart = UART(uartCh, baudRate, rx=Pin(uartPins.uartRx0Pin), tx=Pin(uartPins.uartTx0Pin), txbuf=4, rxbuf=4)
             self.uart = UART(0)
-            self.uart.init(uartCh, baudRate, rx=Pin(uartPins.uartRx0Pin), tx=Pin(uartPins.uartTx0Pin), txbuf=4, rxbuf=4)
+            self.uart.init(0,baudRate, rx=Pin(uartPins.uartRx0Pin), tx=Pin(uartPins.uartTx0Pin), txbuf=4, rxbuf=4)
         else:
+            #self.uart = UART(uartCh, baudRate, rx=Pin(uartPins.uartRx1Pin), tx=Pin(uartPins.uartTx1Pin), txbuf=4, rxbuf=4)
             self.uart = UART(1)
-            self.uart.init(uartCh, baudRate, rx=Pin(uartPins.uartRx1Pin), tx=Pin(uartPins.uartTx1Pin), txbuf=4, rxbuf=4)
+            self.uart.init(1, baudRate, rx=Pin(uartPins.uartRx1Pin), tx=Pin(uartPins.uartTx1Pin), txbuf=4, rxbuf=4)
 
     def clearQueue(self):
         if self.uart.any() > 0:

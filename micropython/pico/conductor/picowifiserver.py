@@ -19,7 +19,7 @@ class PicoWifi:
         # This is typically used when you want your Pico W to act as a Wi-Fi access point, 
         # allowing other devices to connect to it.
         self.wifi = network.WLAN(network.AP_IF)
-        self.waittime = 15
+        self.waittime = 20
         self.ssid = ssid
         self.password = password
         Request.max_content_length = 1024 * 1024  # 1MB (change as needed)
@@ -74,12 +74,6 @@ class PicoWifi:
             print("Disconnected from WiFi")
         else:
             print("WiFi was not connected")
-        
-        self.wifi.active(False)
-        if not self.wifi.active():
-            print("WiFi interface deactivated")
-        else:
-            print("Failed to deactivate WiFi interface")
     
     # This method connects the PICO W to the user's wifi network
     def connect_to_wifi_network(self):
@@ -87,31 +81,36 @@ class PicoWifi:
         print("Connecting to WiFi")
         # STA_IF=Station mode, the PICO W acts as a client that connects to an existing WiFi network, 
         # similar to how your phone or laptop connects to a WiFi router.
-        wifi = network.WLAN(network.STA_IF)
-        wifi.active(True)
+        self.wifi = network.WLAN(network.STA_IF)
+        self.wifi.active(True)
         # set power mode to turn off WiFi power-saving (if needed)
-        wifi.config(pm=0xa11140)
+        self.wifi.config(pm=0xa11140)
         
-        wifi.connect(secrets.usr, secrets.pwd)
+        self.wifi.connect(secrets.usr, secrets.pwd)
         max_wait = self.waittime
         while max_wait > 0:
-            if wifi.isconnected():
-                self.url = wifi.ifconfig()[0]
+            if self.wifi.isconnected():
+                self.url = self.wifi.ifconfig()[0]
                 print(f'Connected to WiFi, IP address: {self.url}')
                 return True
-            elif wifi.status() == network.STAT_WRONG_PASSWORD:
+            elif self.wifi.status() == network.STAT_WRONG_PASSWORD:
                 print("Failed to connect to WiFi: Wrong password (network.STAT_WRONG_PASSWORD)")
-            elif wifi.status() == network.STAT_NO_AP_FOUND:
+            elif self.wifi.status() == network.STAT_NO_AP_FOUND:
                 print("Failed to connect to WiFi: No access point found (network.STAT_NO_AP_FOUND)")
-            elif wifi.status() == network.STAT_CONNECT_FAIL:
+            elif self.wifi.status() == network.STAT_CONNECT_FAIL:
                 print("Failed to connect to WiFi: Connection failed (network.STAT_CONNECT_FAIL)")
-            elif wifi.status() == network.STAT_CONNECTING:
+            elif self.wifi.status() == network.STAT_CONNECTING:
                 print("Connecting to WiFi network (network.STAT_CONNECTING)")
+            elif self.wifi.status() == network.STAT_GOT_IP:
+                print(f'Connected to WiFi network (network.STAT_GOT_IP), IP address: {self.url}')
+                self.url = self.wifi.ifconfig()[0]
+                return True
             else:
-                print(f'unknown wifi status = {wifi.status()}')
+                print(f'unknown wifi status = {self.wifi.status()}')
+
             max_wait -= 1
             print('Waiting for connection...')
-            time.sleep(1)
+            time.sleep(2)
 
         print("Failed to connect to WiFi: Timeout")
         return False
@@ -119,17 +118,12 @@ class PicoWifi:
     def disconnect_from_wifi_network(self):
         gc.collect()
         print("Disconnecting from user's WiFi")
-        wifi = network.WLAN(network.STA_IF)
-        if wifi.isconnected():
-            wifi.disconnect()
+        self.wifi = network.WLAN(network.STA_IF)
+        if self.wifi.isconnected():
+            self.wifi.disconnect()
             print("Disconnected from WiFi")
         else:
             print("WiFi is not connected")
-        wifi.active(False)
-        if not wifi.active():
-            print("WiFi interface deactivated")
-        else:
-            print("Failed to deactivate WiFi interface")
 
     def writeSecrets(self, ssid, pwd):
         try:
@@ -286,7 +280,7 @@ if __name__ == "__main__":
         time.sleep(1)
 
     try:
-        picowifi = PicoWifi("config.json")
+        picowifi = PicoWifi("config.json", secrets.usr, secrets.pwd)
         if(picowifi.connect_to_wifi_network()):
             time.sleep(2)
             picowifi.disconnect_from_wifi_network()

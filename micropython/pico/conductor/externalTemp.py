@@ -31,7 +31,7 @@ class extTempHumid:
     # longitude to obtain the outdoor temperature and humidity. Finally, it turns off the "connected" LED.
     # The outdoor temperature and humidity are then written to the configuration file.
     def updateOutdoorTemp(self):
-        print("kineticDisplay.setOutdoorTemp()")
+        print("kineticDisplay.updateOutdoorTemp()")
         try:
             conf = Config("config.json")
             lat = conf.read("lat")
