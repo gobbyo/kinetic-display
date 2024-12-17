@@ -13,7 +13,6 @@ def testGPIO():
 
 def testUART(channel, txpin, rxpin, payload="Hello from the Pico!"):
     uart = UART(channel, 9600, rx=Pin(rxpin), tx=Pin(txpin))
-    #uart.init(channel, 9600, rx=Pin(rxpin), tx=Pin(txpin))
     uart.write(payload.encode('utf-8'))
     time.sleep(.2)
     if uart.any() > 0:
@@ -29,16 +28,9 @@ def main():
         print("Testing GPIO and UART")
         print("This is a test of the UART protocol")
         testUART(0,0,1)
-<<<<<<< HEAD
-<<<<<<< HEAD
         #testUART(0,2,3) # wemos s2 mini
-=======
->>>>>>> 6526a738a7231b691eb28b2277641cfa51fcf062
-=======
->>>>>>> 6526a738a7231b691eb28b2277641cfa51fcf062
         testUART(1,4,5)
-        
-        #testGPIO()
+        testGPIO()
     except KeyboardInterrupt:
         print("KeyboardInterrupt")
     except Exception as e:
