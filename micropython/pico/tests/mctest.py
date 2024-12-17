@@ -29,7 +29,10 @@ def main():
         print("Testing GPIO and UART")
         print("This is a test of the UART protocol")
         testUART(0,0,1)
+<<<<<<< HEAD
         #testUART(0,2,3) # wemos s2 mini
+=======
+>>>>>>> 6526a738a7231b691eb28b2277641cfa51fcf062
         testUART(1,4,5)
         
         #testGPIO()
