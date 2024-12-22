@@ -1,0 +1,5 @@
+site_name: Kinetic Display
+nav:
+  - Home: index.md
+  - Introduction: intro.md
+  - GitClone: assembly.md
