@@ -1,5 +1,9 @@
 site_name: Kinetic Display
 nav:
-  - Home: index.md
-  - Introduction: intro.md
-  - GitClone: assembly.md
+  - contents: index.md
+  - introduction: intro.md
+  - createandorder:
+    - fork and clone repo: ./createandorder/forkandclone.md
+    - order pcb: ./createandorder/pcb.md
+    - print parts: ./createandorder/3dprints.md
+  - assembly: ./assembly/actuatorassembly.md

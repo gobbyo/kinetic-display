@@ -38,7 +38,7 @@ Complete the assembly of the printed circuit boards (PCB) and electric motor wir
 | Powerbank PCB | 1 |
 | A4 Size Felt Sheets with Adhesive Backing | 1 |
 | 2 Inch Jumbo Paper Clips (Smooth Big Paperclips) | 20 |
-| M2 x 6mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
+| M2 x 5mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
 | M2 x 8mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
 | M2 X 15mm Stainless Steel Phillips Round Head Self Tapping Screws | 50 |
 | Micro 130 DC Motor Strong Magnetic Brushed Electric DC 3V -12V 25000 RPM Cars Toys Electric Motor, High Speed Torque | 30 |
@@ -72,3 +72,5 @@ Complete the assembly of the printed circuit boards (PCB) and electric motor wir
 | Black PLA Comgrow 1 KG | 1 |
 | Black Easy Nylon Overture, 1 KG | 1 |
 | Black TPU Colorful (flexible), 1 KG | 1 |
+
+[Previous](./index.md) | [Next](./createandorder/forkandclone.md)
