@@ -27,26 +27,31 @@ After the actuator is assembled, it will be connected to the digit PCB. Stencile
 
 ### Wire Cutting and Soldering Steps
 
-In this section you'll create 21 unlabelled motors with 40mm wires with Dupont conectors, 4 motors labelled "C", 4 motors labelled "D", and one labelled "UC" (upper colon), totalling 9 motors having 60mm wires with dupont connectors.
+In this section you'll create 21 unlabelled motors with 4cm wires with Dupont connectors, 4 motors labelled "C", 4 motors labelled "D", and one labelled "UC" (upper colon), totalling 9 motors having 6cm wires with dupont connectors.
 
-1. The tools and parts needed to prepare and add the wires to the DC motor includes: black and white 28 AWG stranded wire, wire strippers for 28 AWG wire, and a soldering station with solder.
-2. Cut 9 white and 9 black wires of 60mm lengths for segment actuators C and D and the upper colon. Cut 21 white and 21 black wires of 40mm lengths for the remaining actuators.
-![step1](../img/motor-wire/1-motor-wire-assembly.jpg)
-1. Strip about 2mm off one end of each black and white wire. With a soldering iron, tin the braided wire with solder.
-![step2](../img/motor-wire/2-motor-wire-assembly.jpg)
-1. Position the DC motor so the leads are facing upward. Place the unsoldered white wire on the left and the black wire on the right side of the DC motor.
-![step3](../img/motor-wire/3-motor-wire-assembly.jpg)
-1. Solder the white wire onto the left motor lead and the black wire onto the right motor lead. Be sure to label the motors with 60mm wire as C, D, and the upper colon.
-![step4](../img/motor-wire/4-motor-wire-assembly.jpg)
+1. The tools and parts needed to prepare and add the wires to the DC motor includes: black and white 28 AWG stranded wire, wire strippers for 28 AWG wire, and a soldering station with 0.8mm 1.76g flux core solder.
+![step1](../img/motor-wire/1-motor-wire-assembly.webp)
+2. Cut 9 white and 9 black wires of 6cm lengths for segment actuators C and D and the upper colon. Cut 21 white and 21 black wires of 4cm lengths for the remaining actuators.
+![step1](../img/motor-wire/2-motor-wire-assembly.webp)
+1. Strip about 3mm off one end of each black and white wire. With a soldering iron, tin the braided wire with solder.
+![step2](../img/motor-wire/3-motor-wire-assembly.webp)
+1. Position the DC motor so the shaft is facing upward and the terminals are on the top. Add solder to each motor terminal.
+![step3](../img/motor-wire/4-motor-wire-assembly.webp)
+1. Solder the white wire onto the left motor lead and the black wire onto the right motor lead. Be sure to label the motors with 6cm wire as C, D, and the upper colon.
+![step4](../img/motor-wire/5-motor-wire-assembly.webp)
 
 ### Dupont Connections
 
 1. The tools and parts needed to add the 2.54mm Dupont connectors to each wire include: the DC motor with shaft gear and wires (as prepared in the previous steps), a Dupont connector crimping tool, 60 female Dupont pin connectors and 30 1x2p Dupont connector housings.
-![Prerequisite](../img/motor-wire/prereq-motor-wire-assembly.jpg)
-1. Strip 2mm off the DC motor wire and crimp each female Dupon pin connector to each wire.
-![step5](../img/motor-wire/5-motor-wire-assembly.jpg)
-1. Attach the Dupont connector housing.
-![step6](../img/motor-wire/6-motor-wire-assembly.jpg)
+![step1](../img//dupont-connections/1-motor-wire-dupont-connection.webp)
+1. Strip 3mm off the DC motor wire and crimp each female Dupont pin connector to each wire.
+![step2](../img/dupont-connections/2-motor-wire-dupont-connection.webp)
+1. Crimp the female connectors onto each wire.
+![step3](../img/dupont-connections/3-motor-wire-dupont-connection.webp)
+1. Crimp the female connectors onto each wire.
+![step4](../img/dupont-connections/4-motor-wire-dupont-connection.webp)
+1. Repeat the previous steps for all remaining motors.
+![step5](../img/dupont-connections/5-motor-wire-dupont-connection.webp)
 
 ## Motor Mount
 
