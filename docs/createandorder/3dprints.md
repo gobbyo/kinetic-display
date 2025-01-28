@@ -36,5 +36,3 @@ All 3D printed parts, see table below for details.
 
 <p> </p>
 Congratulations for fabricating all your parts!
-
-[Previous](./pcb.md) | [Next](../index.md)

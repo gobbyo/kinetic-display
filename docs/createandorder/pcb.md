@@ -18,5 +18,3 @@ You will need to order more PCBs than required for this project because the mini
 ![Use the default settings except set the PCB color to white](../img/pcborder-4.png)
 
 Congratulations for getting all PCBs ordered!
-
-[Previous](./forkandclone.md) | [Next](./3dprints.md)

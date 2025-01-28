@@ -15,5 +15,3 @@ From your windows machine, install the Git tool set:
 1. From your browser, copy the command HTTPS Clone URL and paste it into your command window then hit the enter key. You should see a fork of all the files from the kinetic-display appear in a new folder at ```.\repos\kinetic-display\```.
 
 Congratulations, you have the files to begin your project!
-
-[Previous](../intro.md) | [Next](./pcb.md)

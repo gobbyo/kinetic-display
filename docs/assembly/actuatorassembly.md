@@ -83,3 +83,5 @@ In this section you'll create 21 unlabelled motors with 4 centimeter wires with 
 ![actuatorstep11](../img/actuator/11-actuator.webp)
 1. Repeat the process for the remaining 29 motors.
 ![actuatorstep12](../img/actuator/12-actuator.webp)
+<p> </p>
+Congratulations for assembling your actuators!
