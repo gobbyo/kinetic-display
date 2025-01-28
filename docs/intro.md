@@ -72,5 +72,3 @@ Complete the assembly of the printed circuit boards (PCB) and electric motor wir
 | Black PLA Comgrow 1 KG | 1 |
 | Black Easy Nylon Overture, 1 KG | 1 |
 | Black TPU Colorful (flexible), 1 KG | 1 |
-
-[Previous](./index.md) | [Next](./createandorder/forkandclone.md)
