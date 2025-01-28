@@ -59,15 +59,27 @@ In this section you'll create 21 unlabelled motors with 4cm wires with Dupont co
 
 ## Motor Mount
 
-1. The tools and parts needed to assemble the motor mount include: 3d printed motor mount in PLA and Nylon pinion reduction gear, a 20mm metal shaft made from a jumbo paper clip. a soldering station capable of a heat setting of 250° C, clamping tweezers with a thin piece of metal. Verify the shaft can easily slide through the pinion gear before assembling the motor. If you cannot easily rotate the pinion gear on the shaft, then you'll need a 1/16" drill bit and drill to widen the pinion gear shaft hole.
-![actuatorstep1](../img/actuator/1-actuator-assembly.jpg)
-1. Partially insert the 20mm shaft into the motor mount as shown in the picture below.
-![actuatorstep2](../img/actuator/2-actuator-assembly.jpg)
-1. Align the pinion reduction gear and shaft so the shaft can easily slide through the pinion gear. Make sure the large 30-tooth side of the pinion gear is facing out per the diagram below.
-![actuatorstep3](../img/actuator/3-actuator-assembly.jpg)
-1. Clamp down the motor mount with the open end of the shaft facing up per the picture below.
-![actuatorstep4](../img/actuator/4-actuator-assembly.jpg)
-1. Melt the shaft into place using the thin metal (zinc) strip and clamping tweezers. Melt the motor mount shaft entry down to half its size--the small melted plasic nub should extend about 1mm out from the motor mount. See the picture below.
-![actuatorstep5](../img/actuator/5-actuator-assembly.jpg)
-![actuatorstep6](../img/actuator/6-actuator-assembly.jpg)
-![actuatorstep7](../img/actuator/7-actuator-assembly.jpg)
+1. The tools and parts needed to assemble the motor mount include: 3d printed motor mount in PLA and Nylon pinion reduction gear, a 20mm metal shaft made from a jumbo paper clip, a soldering station capable of a heat setting of 250° C, clamping tweezers with a thin piece of metal. Verify the shaft can easily slide through the pinion gear before assembling the motor. If you cannot easily rotate the pinion gear on the shaft, then you'll need a 1/16" drill bit and drill to widen the pinion gear shaft hole.
+![actuatorstep1](../img/actuator/1-actuator.webp)
+1. Cut the off the straight sections from the Jumbo paper clip. 
+![actuatorstep2](../img/actuator/2-actuator.webp)
+1. Measure 2 cm from each Jumbo paper clip straight section.
+![actuatorstep3](../img/actuator/3-actuator.webp)
+1. Use a large wire cutter to cut the shaft.
+![actuatorstep4](../img/actuator/4-actuator.webp)
+1. With a 1/16" drill bit, bore out the shaft hole in the pinion gear.
+![actuatorstep5](../img/actuator/5-actuator.webp)
+1. Insert the 2 cm shaft about 1 millimeter into the motor mount.
+![actuatorstep6](../img/actuator/6-actuator.webp)
+1. Add the pinion gear to the motor mount as shown in the diagram. Insert the shaft by aligning the pinion gear shaft hole with the metal shaft, then slide the metal shaft all the way into the motor mount.
+![actuatorstep7](../img/actuator/7-actuator.webp)
+1. Heat your soldering iron to 250°C and prepare your clamping tweezer and zinc strip as shown in the picture.
+![actuatorstep8](../img/actuator/8-actuator.webp)
+1. Hold the zinc strip over the shaft collar and press down on the zinc strip with your soldering iron. Melt the collar and flatten it onto the motor mount.
+![actuatorstep9](../img/actuator/9-actuator.webp)
+1. When finished, the melted collar will only protrude about a half millimeter out from the motor mount.
+![actuatorstep10](../img/actuator/10-actuator.webp)
+1. Hold the main body of the motor mount so the pinion gear faces left. Avoid touching or putting any pressure onto the motor mounting tabs used the screw the motor onto the display. With your other hand, hold the prepared motor with the shaft pointed left and the terminals downward, insert the prepared motor into the motor mount. 
+![actuatorstep11](../img/actuator/11-actuator.webp)
+1. Repeat the process for the remaining 29 motors.
+![actuatorstep12](../img/actuator/12-actuator.webp)
