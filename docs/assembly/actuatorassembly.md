@@ -41,7 +41,7 @@ In this section you'll create 21 unlabelled motors with 4 centimeter wires with 
 ![step2](../img/motor-wire/3-motor-wire-assembly.webp)
 1. Position the DC motor so the shaft is facing upward and the terminals are on the top. Set your soldering iron to 350°C then add solder to each motor terminal.
 ![step3](../img/motor-wire/4-motor-wire-assembly.webp)
-1. Solder the white wire onto the left motor lead and the black wire onto the right motor lead. Be sure to label the motors with 6 centimeter wire as C, D, and the upper colon.
+1. Solder the white wire onto the left motor terminal and the black wire onto the right motor terminal. Be sure to label the motors with 6 centimeter wire as C, D, and the upper colon.
 ![step4](../img/motor-wire/5-motor-wire-assembly.webp)
 
 ### Dupont Connections
