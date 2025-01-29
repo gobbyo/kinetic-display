@@ -52,7 +52,7 @@ In this section you'll create 21 unlabelled motors with 4 centimeter wires with 
 ![step2](../img/dupont-connections/2-motor-wire-dupont-connection.webp)
 1. Crimp the female connectors onto each wire.
 ![step3](../img/dupont-connections/3-motor-wire-dupont-connection.webp)
-1. Crimp the female connectors onto each wire.
+1. Attach the Dupont connector housing onto the wires so the pins lock into the housing.
 ![step4](../img/dupont-connections/4-motor-wire-dupont-connection.webp)
 1. Repeat the previous steps for all remaining motors. Be sure to place your label on the black side of the motor for the nine, 6 centimeter wire length actuators with C, D or UC (upper colon). No need to label the 21 other actuators with 4 centimeter lengths
 ![step5](../img/dupont-connections/5-motor-wire-dupont-connection.webp)
