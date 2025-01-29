@@ -48,7 +48,7 @@ In this section you'll create 21 unlabelled motors with 4 centimeter wires with 
 
 1. The tools and parts needed to add the 2.54mm Dupont connectors to each wire include: the DC motor with shaft gear and wires (as prepared in the previous steps), a Dupont connector crimping tool, 60 female Dupont pin connectors and 30 1x2p Dupont connector housings.
 ![step1](../img//dupont-connections/1-motor-wire-dupont-connection.webp)
-1. Strip 3mm off the DC motor wire and crimp each female Dupont pin connector to each wire.
+1. Strip 3mm off the end of the DC motor wire.
 ![step2](../img/dupont-connections/2-motor-wire-dupont-connection.webp)
 1. Crimp the female connectors onto each wire.
 ![step3](../img/dupont-connections/3-motor-wire-dupont-connection.webp)
