@@ -26,5 +26,13 @@ Components needed for this section.
 
 ## Solder the 28 LEDs 
 
-BEFORE SOLDERING LEDS TO YOUR DIGIT PCB. Be sure to test your LEDs on a breadboard by using your phones digital camera to see if there are any variations in color when the LEDs are lit. Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v.
+BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadboard and use your phones digital camera to see if there are any variations in color when the LEDs are lit. Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v.
 ![blueLEDs](../img/digit-pcb/ledcolors.webp)
+1. There are seven segments "A" through "G" each with four LEDs. From the front-facing side of the PCB. Start with the four LEDs in segment A by inserting the LED's long lead (anode) into the "+" through hole. 
+![digitpcbLEDs-1](../img/digit-pcb/1-digit-pcb-LED.webp)
+1. Carefully turn over the PCB and rest it with the back facing up. Solder each of the LED leads onto the PCB.
+![digitpcbLEDs-2](../img/digit-pcb/2-digit-pcb-LED.webp)
+1. Snip off the excess from the LED leads. Resolder all LEDs into place by repeating the previous step
+![digitpcbLEDs-3](../img/digit-pcb/3-digit-pcb-LED.webp)
+1. Clean the flux off with a cotton pad soaked in isopropyl alcohol.
+![digitpcbLEDs-4](../img/digit-pcb/4-digit-pcb-LED.webp)
