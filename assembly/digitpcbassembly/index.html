@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>pcbs - Kinetic Display</title>
+        <title>digit pcbs - Kinetic Display</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -66,7 +66,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">pcbs</a>
+    <a href="./" class="dropdown-item active" aria-current="page">digit pcbs</a>
 </li>
                                 </ul>
                             </li>
@@ -106,9 +106,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#pcbs-assembly" class="nav-link">PCBs Assembly</a>
+            <li class="nav-item" data-bs-level="1"><a href="#digit-pcb-assembly" class="nav-link">Digit PCB Assembly</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#digit-pcbs" class="nav-link">Digit PCBs</a>
+            <li class="nav-item" data-bs-level="2"><a href="#label-the-front-and-back-sides-of-the-digit-pcb" class="nav-link">Label the front and back sides of the digit PCB</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#solder-the-four-16-pin-headers-for-the-l293d-motor-drivers" class="nav-link">Solder the four, 16 pin headers for the L293D motor drivers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#solder-the-28-leds" class="nav-link">Solder the 28 LEDs</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -119,24 +127,33 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="pcbs-assembly">PCBs Assembly</h1>
-<h2 id="digit-pcbs">Digit PCBs</h2>
+<h1 id="digit-pcb-assembly">Digit PCB Assembly</h1>
 <p>The display has 4 digits. The digits are numbered from right to left, 0-3, when looking at the front of display. The digit PCBs are digits 0, 2, and 3 whereas the controller PCB is digit 1 and includes the colons. This section details the building of digits 0, 2, and 3.</p>
 <p>Components needed for this section.
 <img alt="digitpcb-1" src="../../img/digit-pcb/1-digit-pcb.webp" /></p>
-<h3 id="solder-the-four-16-pin-headers-for-the-l293d-motor-drivers">Solder the four, 16 pin headers for the L293D motor drivers</h3>
-<p><img alt="digitpcb-2" src="../../img/digit-pcb/2-digit-pcb.webp" />
-<img alt="digitpcb-3" src="../../img/digit-pcb/3-digit-pcb.webp" />
-1. From the front facing side of the PCB, insert the 16 pin header into the through holes by aligning the notch with the PCB top silk layer outline of the 16 pins. The notch in the 16-pin header is used to ensure correct orientation when connecting the L293D motor driver. Carefully turn over the PCB while keeping the 16 pin header in the through holes.
-<img alt="digitpcb-4" src="../../img/digit-pcb/4-digit-pcb.webp" />
-1. Solder the 16 pins and repeat the previous step until all 4 of the 16 pin headers are soldered into place.
-<img alt="digitpcb-5" src="../../img/digit-pcb/5-digit-pcb.webp" />
-1. From the back face of the PCB, snip off the soldered pins.
-<img alt="digitpcb-6" src="../../img/digit-pcb/6-digit-pcb.webp" />
-1. Touch up the clipped pins with a small bit of solder to make smooth rounded beads instead of sharp points.
-<img alt="digitpcb-7" src="../../img/digit-pcb/7-digit-pcb.webp" />
-1. Clean up the soldered pins by removing the solder flux using a cotton pad dabbed with isopropyl alcohol.
-<img alt="digitpcb-8" src="../../img/digit-pcb/8-digit-pcb.webp" /></p></div>
+<h2 id="label-the-front-and-back-sides-of-the-digit-pcb">Label the front and back sides of the digit PCB</h2>
+<ol>
+<li>Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the label to the FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Note digit 0 is a completed digit PCB that is ready for the actuators.
+<img alt="digitpcb-2" src="../../img/digit-pcb/2-digit-pcb.webp" /></li>
+<li>Add the label to the BACK FACING SIDE of each of the 3 digit PCBs as placed in the picture below.
+<img alt="digitpcb-3" src="../../img/digit-pcb/3-digit-pcb.webp" /></li>
+</ol>
+<h2 id="solder-the-four-16-pin-headers-for-the-l293d-motor-drivers">Solder the four, 16 pin headers for the L293D motor drivers</h2>
+<ol>
+<li>From the front facing side of the PCB, insert the 16 pin header into the through holes by aligning the notch with the PCB top silk layer outline of the 16 pins. The notch in the 16-pin header is used to ensure correct orientation when connecting the L293D motor driver. Carefully turn over the PCB while keeping the 16 pin header in the through holes.
+<img alt="digitpcb-4" src="../../img/digit-pcb/4-digit-pcb.webp" /></li>
+<li>Solder the 16 pins and repeat the previous step until all 4 of the 16 pin headers are soldered into place.
+<img alt="digitpcb-5" src="../../img/digit-pcb/5-digit-pcb.webp" /></li>
+<li>From the back face of the PCB, snip off the soldered pins.
+<img alt="digitpcb-6" src="../../img/digit-pcb/6-digit-pcb.webp" /></li>
+<li>Touch up the clipped pins with a small bit of solder to make smooth rounded beads instead of sharp points.
+<img alt="digitpcb-7" src="../../img/digit-pcb/7-digit-pcb.webp" /></li>
+<li>Clean up the soldered pins by removing the solder flux using a cotton pad dabbed with isopropyl alcohol. Repeat the previous step if you find your cotton pad is being torn from any protruding pins.
+<img alt="digitpcb-8" src="../../img/digit-pcb/8-digit-pcb.webp" /></li>
+</ol>
+<h2 id="solder-the-28-leds">Solder the 28 LEDs</h2>
+<p>BEFORE SOLDERING LEDS TO YOUR DIGIT PCB. Be sure to test your LEDs on a breadboard by using your phones digital camera to see if there are any variations in color when the LEDs are lit.  Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v.
+<img alt="blueLEDs" src="../../img/digit-pcb/ledcolors.webp" /></p></div>
             </div>
         </div>
 
