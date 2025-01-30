@@ -36,3 +36,5 @@ BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadb
 ![digitpcbLEDs-3](../img/digit-pcb/3-digit-pcb-LED.webp)
 1. Clean the flux off with a cotton pad soaked in isopropyl alcohol.
 ![digitpcbLEDs-4](../img/digit-pcb/4-digit-pcb-LED.webp)
+1. Note the picture below of the 28 soldered LEDs.
+![digitpcbLEDs-5](../img/digit-pcb/5-digit-pcb-LED.webp)
