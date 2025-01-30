@@ -8,4 +8,4 @@ nav:
     - print parts: ./createandorder/3dprints.md
   - assembly: 
     - actuators: ./assembly/actuatorassembly.md
-    - pcbs: ./assembly/pcbassembly.md
+    - digit pcbs: ./assembly/digitpcbassembly.md
