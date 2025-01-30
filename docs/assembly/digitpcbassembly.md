@@ -26,5 +26,5 @@ Components needed for this section.
 
 ## Solder the 28 LEDs 
 
-BEFORE SOLDERING LEDS TO YOUR DIGIT PCB. Be sure to test your LEDs on a breadboard by using your phones digital camera to see if there are any variations in color when the LEDs are lit.  Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v.
+BEFORE SOLDERING LEDS TO YOUR DIGIT PCB. Be sure to test your LEDs on a breadboard by using your phones digital camera to see if there are any variations in color when the LEDs are lit. Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v.
 ![blueLEDs](../img/digit-pcb/ledcolors.webp)

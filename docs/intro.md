@@ -73,5 +73,5 @@ Complete the assembly of the printed circuit boards (PCB) and electric motor wir
 | Black Easy Nylon Overture, 1 KG | 1 |
 | Black TPU Colorful (flexible), 1 KG | 1 |
 
-*Note that you can choose any color of LED that you would like for your display. Note however that certain colors like blue and warm white may vary in the same batch so you may need to order a few batches of 100 in order to get enough LEDs of the same color. Use your phones digital camera to see if there are any variations in color.  Below is a photo showing the color variation of blue 5mm LEDs within the same batch.
+*Note that you can choose any color of LED that you would like for your display. White LEDs are the safest to order as they have no color variation within the same batch. Colored LEDs like blue or warm white may vary in the same batch. Therefore, you may need to order more than the quantity listed in the BOM to get enough LEDs of the same color. Be sure to test your LEDs by using your phones digital camera to see if there are any variations in color when the LEDs are lit.  Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v. 
 ![blueLEDs](./img/digit-pcb/ledcolors.webp)
