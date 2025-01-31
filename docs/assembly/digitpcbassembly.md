@@ -63,4 +63,4 @@ BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadb
 1. CAREFULLY insert the motor driver into the 16 pin header and ensure none of the pins on the motor driver are bent or protruding from the 16 pin header. 
 ![digitpcbmotordriver2](../img/digit-pcb/2-digit-pcb-motordriver.webp)
 
-## Add the Wire connectors
+## Add the PCB Mount 2-Screw Terminal Block Connectors
