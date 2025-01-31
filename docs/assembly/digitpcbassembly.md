@@ -60,7 +60,40 @@ BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadb
 
 1. From the front face of the pcb, orient the motor driver so the notch (or pin 1) is aligned with the 16 pin header.
 ![digitpcbmotordriver1](../img/digit-pcb/1-digit-pcb-motordriver.webp)
-1. CAREFULLY insert the motor driver into the 16 pin header and ensure none of the pins on the motor driver are bent or protruding from the 16 pin header. 
+1. CAREFULLY insert the motor driver into the 16 pin header and ensure none of the pins on the motor driver are bent or protruding from the 16 pin header.
 ![digitpcbmotordriver2](../img/digit-pcb/2-digit-pcb-motordriver.webp)
 
-## Add the PCB Mount 2-Screw Terminal Block Connectors
+## Add the PCB Mount, 2 port Terminal Block Connectors
+
+1. On the front side of the PCB, insert the PCB 2 port terminal block connector into the 5v through holes so the connector is facing toward the LEDs on the PCB.
+![digitpcbconnector-1](../img/digit-pcb/1-digit-pcb-connector.webp)
+1. Solder the block terminal connector pins on the back side of the PCB.
+![digitpcbconnector-2](../img/digit-pcb/2-digit-pcb-connector.webp)
+1. On the front side of the PCB position the 2 port terminal block connector facing away from the LEDs. For PCBs labelled "2" & "3", insert the connector pins into the UART Tx-1/Rx-1 through holes. For the PCB labelled "0", insert the connector into the Tx-0/Rx-0 through holes.
+![digitpcbconnector-3](../img/digit-pcb/3-digit-pcb-connector.webp)
+1. On the back side of the PCB, solder the remaining connector pins, snip the pins flush with the PCB, resolder to a smooth bead, then remove the flux wth a cotton dabbed with isopropyl alcohol.
+![digitpcbconnector-4](../img/digit-pcb/4-digit-pcb-connector.webp)
+
+## Add the Ceramic and Electrolytic Capacitors
+
+1. On the front side of the PCB, align the electrolytic capacitor "-" sign opposite the "+" printed on the PCB for capacitor "c1". Insert the pins into the through holes, then turn the PCB over to the back side and solder the capacitor to the PCB.
+![digitpcbcapacitor-1](../img/digit-pcb/1-digit-pcb-capacitor.webp)
+1. On the front side of the PCB, insert the ceramic capacitor pins into the through holes titled "c2". Turn the PCB over to the back side and solder the capacitor to the PCB.
+![digitpcbcapacitor-2](../img/digit-pcb/2-digit-pcb-capacitor.webp)
+1. On the back side of the PCB, snip the pins flush with the PCB, resolder to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
+![digitpcbcapacitor-3](../img/digit-pcb/3-digit-pcb-capacitor.webp)
+
+## Add the 20 pin Headers and Install the Microcontroller
+
+1. On the back side of the PCB, place the two 20 pin headers into the through holes for "RASP1". Carefully turn over the PCB while keeping the 20 pin headers in the through holes.
+![digitpcbmicrocontroller-1](../img/digit-pcb/1-digit-pcb-micro.webp)
+1. Level the PCB and adjust the two 20 pin headers so they are perpendicular to the PCB. Solder the pins once in place. Snip all 40 of the pins flush with the PCB, resolder each to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
+![digitpcbmicrocontroller-2](../img/digit-pcb/2-digit-pcb-micro.webp)
+1. Orient the Raspberry Pi Pico microcontroller so the USB port is facing in the same direction as the PCB silk screen, then gently mount the microcontroller onto the header.
+![digitpcbmicrocontroller-3](../img/digit-pcb/3-digit-pcb-micro.webp)
+
+## Digits 0, 2, & 3 Schematics
+
+![digitschematic-1](../img/digit-pcb/digit-schematic-motorcontrollers.png)
+![digitschematic-2](../img/digit-pcb/digit-schematic-microcontroller.webp)
+![digitschematic-3](../img/digit-pcb/digit-schematic-microcontroller.webp)
