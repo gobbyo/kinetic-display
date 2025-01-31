@@ -38,8 +38,8 @@ Complete the assembly of the printed circuit boards (PCB) and electric motor wir
 | Powerbank PCB | 1 |
 | A4 Size Felt Sheets with Adhesive Backing | 1 |
 | 2 Inch Jumbo Paper Clips (Smooth Big Paperclips) | 20 |
-| M2 x 5mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
-| M2 x 8mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
+| M1.7 x 5mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
+| M1.7 x 8mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
 | M2 X 15mm Stainless Steel Phillips Round Head Self Tapping Screws | 50 |
 | Micro 130 DC Motor Strong Magnetic Brushed Electric DC 3V -12V 25000 RPM Cars Toys Electric Motor, High Speed Torque | 30 |
 | 28 AWG Gauge Flexible Silicone Rubber Electric Wire | 2 rolls |
@@ -47,8 +47,8 @@ Complete the assembly of the printed circuit boards (PCB) and electric motor wir
 | 2.54mm 1x2p Dupont Connector Housing Female for Dupont Cable and Jumper Wire | 100 |
 | Digital Temperature and Humidity Sensor DHT22 Module, 3 pin | 1 |
 | 5mm 0.5 Ω ohm Photoresistor Resistor 5516 GL5516 | 1 |
-| 5mm Flat Top LED Diode Lights (Clear Transparent Lens) Bright Lighting Bulb Lamps Electronics Components Indicator Light Emitting Diodes | 112 |
-| 3mm Flat Top LED Diode Lights (Clear Transparent Lens) Bright Lighting Bulb Lamps Electronics Components Indicator Light Emitting Diodes | 2 |
+| 5mm Flat Top LED Diode Lights (Clear Transparent Lens, color of your choosing*) Bright Lighting Bulb Lamps Electronics Components Indicator Light Emitting Diodes | 112 |
+| 3mm Flat Top LED Diode Lights (Clear Transparent Lens, color of your choosing*) Bright Lighting Bulb Lamps Electronics Components Indicator Light Emitting Diodes | 2 |
 | Vertical Slide Switches Micro High Knob 3 Pin 2 Position 1P2T SPDT Panel Mount AC 125V 2A | 1 |
 | 2.54mm 0.1" Pitch PCB Mount Screw Terminal Block Connector, 2P 3P 4P Terminals 150V 6A for 26-18AWG Cable | 1 |
 | LM2596 DC-DC Step Down Variable Volt Regulator Input 3.2V-40V Output 1.25V-35V Adjustable Buck Converter Electronic Voltage Stabilizer Power Supply Module | 5 |
@@ -73,4 +73,5 @@ Complete the assembly of the printed circuit boards (PCB) and electric motor wir
 | Black Easy Nylon Overture, 1 KG | 1 |
 | Black TPU Colorful (flexible), 1 KG | 1 |
 
-[Previous](./index.md) | [Next](./createandorder/forkandclone.md)
+*Note that you can choose any color of LED that you would like for your display. White LEDs are the safest to order as they have no color variation within the same batch. Colored LEDs like blue or warm white may vary in the same batch. Therefore, you may need to order more than the quantity listed in the BOM to get enough LEDs of the same color. Be sure to test your LEDs by using your phones digital camera to see if there are any variations in color when the LEDs are lit.  Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v. 
+![blueLEDs](./img/digit-pcb/ledcolors.webp)
