@@ -43,6 +43,7 @@ Complete the assembly of the printed circuit boards (PCB) and electric motor wir
 | M2 X 15mm Stainless Steel Phillips Round Head Self Tapping Screws | 50 |
 | Micro 130 DC Motor Strong Magnetic Brushed Electric DC 3V -12V 25000 RPM Cars Toys Electric Motor, High Speed Torque | 30 |
 | 28 AWG Gauge Flexible Silicone Rubber Electric Wire | 2 rolls |
+| Male Breakout Pin Connector 2.54mm | 100 |
 | Dupont Jumper Wire Cable Female Pin Connector 2.54mm | 100 |
 | 2.54mm 1x2p Dupont Connector Housing Female for Dupont Cable and Jumper Wire | 100 |
 | Digital Temperature and Humidity Sensor DHT22 Module, 3 pin | 1 |
