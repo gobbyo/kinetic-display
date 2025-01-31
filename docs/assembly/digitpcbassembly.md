@@ -27,10 +27,10 @@ Components needed for this section.
 
 ## Add the 28 LEDs
 
-BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadboard and use your phones digital camera to see if there are any variations in color when the LEDs are lit. Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v.
+BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadboard and use a digital camera to spot any variations in color when the LEDs are lit. Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v.
 ![blueLEDs](../img/digit-pcb/ledcolors.webp)
 
-1. There are seven segments "A" through "G" each with four LEDs. From the front-facing side of the PCB. Start with the four LEDs in segment A by inserting the LED's long lead (anode) into the "+" through hole. 
+1. There are seven segments "A" through "G" each with four LEDs. From the front-facing side of the PCB, start with segment A by inserting the LED's long lead (anode) into the "+" through hole. Repeat the process for all segment-A LEDs.
 ![digitpcbLEDs-1](../img/digit-pcb/1-digit-pcb-LED.webp)
 1. Carefully turn over the PCB and rest it with the back facing up. Solder each of the LED leads onto the PCB.
 ![digitpcbLEDs-2](../img/digit-pcb/2-digit-pcb-LED.webp)
@@ -38,7 +38,7 @@ BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadb
 ![digitpcbLEDs-3](../img/digit-pcb/3-digit-pcb-LED.webp)
 1. Clean the flux off with a cotton pad soaked in isopropyl alcohol.
 ![digitpcbLEDs-4](../img/digit-pcb/4-digit-pcb-LED.webp)
-1. Front face of the pcb with 28 soldered LEDs.
+1. Repeat the previous steps for segments B through G until all 28 LEDs are soldered onto the PCB.
 ![digitpcbLEDs-5](../img/digit-pcb/5-digit-pcb-LED.webp)
 
 ## Add the Motor Pins
@@ -54,4 +54,13 @@ BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadb
 1. Continuing on the front face of the digit, snip the pins to be flush on the pcb. Resolder the snipped pins to create smooth beads.
 ![digitpcbmotorpins-5](../img/digit-pcb/5-digit-pcb-motorpins.webp)
 1. Clean off the flux residue using a cotton pad soaked in isopropyl alcohol.
-![digitpcbmotorpins-6](../img/digit-pcb/5-digit-pcb-motorpins.webp)
+![digitpcbmotorpins-6](../img/digit-pcb/6-digit-pcb-motorpins.webp)
+
+## Mount the L293D 16-pin IC Stepper Motor Drivers
+
+1. From the front face of the pcb, orient the motor driver so the notch (or pin 1) is aligned with the 16 pin header.
+![digitpcbmotordriver1](../img/digit-pcb/1-digit-pcb-motordriver.webp)
+1. CAREFULLY insert the motor driver into the 16 pin header and ensure none of the pins on the motor driver are bent or protruding from the 16 pin header. 
+![digitpcbmotordriver2](../img/digit-pcb/2-digit-pcb-motordriver.webp)
+
+## Add the Wire connectors
