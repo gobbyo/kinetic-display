@@ -8,6 +8,6 @@ nav:
     - fork and clone repo: ./createandorder/forkandclone.md
     - order pcb: ./createandorder/pcb.md
     - print parts: ./createandorder/3dprints.md
-  - assembly: 
+  - assemble: 
     - actuators: ./assembly/actuatorassembly.md
     - digit pcbs: ./assembly/digitpcbassembly.md

@@ -19,13 +19,13 @@
 
 1. Open Visual Studio Code
 1. On the top menu select **Terminal->New Terminal**
-1. In the terminal pane, select the terminal menu **"A"** followed by **"B"** the MicroPico vREPL sub-menu
+1. In the terminal pane, select the terminal menu **"A"** followed by the MicroPico vREPL sub-menu **"B"**
 ![micropico-1](./img/prereq-software/micropicoscreenshot-1.webp)
 1. The "MicroPico vREPL" terminal will show your Pico is disconnected
 ![micropico-2](./img/prereq-software/micropicoscreenshot-2.webp)
 1. Plug your Raspberry Pi Pico into the USB port and the terminal will show your Pico as connected
 ![micropico-3](./img/prereq-software/micropicoscreenshot-3.webp)
-1. Type the following code in the terminal window, copy/paste each line separately:
+1. Verify your Pico's onboard LED turns on and off by typing the following code in the terminal window and copy/paste each line separately:
 
 ```python
 from machine import Pin
@@ -34,4 +34,42 @@ p.on()
 p.off()
 ```
 
-Verify your Pico's onboard LED turns on and off.
+## Install Git and Clone a fork of the Repository
+
+1. [Install Git](https://git-scm.com/downloads)
+2. Open a new terminal **Command Prompt** pane in VS Code
+3. From the **cmd** create or navigate to a directory to place the cloned repository. For example,
+
+```dos
+mkdir repos
+cd repos
+```
+
+4. From the **cmd** type the following
+
+```dos
+git clone https://github.com/gobbyo/kinetic-display.git
+```
+
+5. In VS Code open a new **PowerShell** terminal and copy/paste each PS command below:
+
+```powershell
+PS > cd kinetic-display\micropython\pico
+PS > ./deploy.ps1
+```
+
+6. You'll get the following output when successful
+
+PS C:\repos\kinetic-display\micropython\pico> ./deploy.ps1
+
+```powershell
+    Directory: C:\repos\deploy
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         1/31/2025   8:30 PM                conductor
+d-----         1/31/2025   8:30 PM                digit
+```
+
+7. Verify the **conductor** and **digit** folders exist under the same parent directory as the **Kinetic-Display**

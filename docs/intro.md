@@ -23,12 +23,6 @@ Complete the assembly of the printed circuit boards (PCB) and electric motor wir
 - Label maker (optional)
 - Computer with USB connector
 
-## Software prerequisites
-
-- Git
-- VS Code
-- Micropython
-
 ## Bill of materials
 
 | Item | Quantity |
