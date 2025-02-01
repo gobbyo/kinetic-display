@@ -1,12 +1,12 @@
 site_name: Kinetic Display
 nav:
-  - contents: index.md
-  - introduction: 
+  - Contents: index.md
+  - Introduction: 
     - intro.md
     - prerequisitesoftware.md
-  - createandorder:
-    - order pcb: ./createandorder/pcb.md
-    - print parts: ./createandorder/3dprints.md
-  - assemble: 
-    - actuators: ./assembly/actuatorassembly.md
-    - digit pcbs: ./assembly/digitpcbassembly.md
+  - OrderParts:
+    - Order PCBs: ./createandorder/pcb.md
+    - Print parts: ./createandorder/3dprints.md
+  - Assemble: 
+    - Actuators: ./assembly/actuatorassembly.md
+    - Digit pcbs: ./assembly/digitpcbassembly.md
