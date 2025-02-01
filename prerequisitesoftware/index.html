@@ -126,7 +126,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#install-git-and-clone-a-fork-of-the-repository" class="nav-link">Install Git and Clone a fork of the Repository</a>
+            <li class="nav-item" data-bs-level="2"><a href="#install-git-fork-and-clone-the-repository" class="nav-link">Install Git, Fork and Clone the Repository</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -174,31 +174,28 @@ p = Pin(25,Pin.OUT)
 p.on()
 p.off()
 </code></pre>
-<h2 id="install-git-and-clone-a-fork-of-the-repository">Install Git and Clone a fork of the Repository</h2>
+<h2 id="install-git-fork-and-clone-the-repository">Install Git, Fork and Clone the Repository</h2>
 <ol>
 <li><a href="https://git-scm.com/downloads">Install Git</a></li>
-<li>Open a new terminal <strong>Command Prompt</strong> pane in VS Code</li>
+<li>Open a browser and follow the link to the <a href="https://github.com/gobbyo/kinetic-display">Kinetic-Display</a> repository</li>
+<li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">Create a fork</a> of the Kinetic-Display repository.</li>
 <li>From the <strong>cmd</strong> create or navigate to a directory to place the cloned repository. For example,</li>
 </ol>
 <pre><code class="language-dos">mkdir repos
 cd repos
 </code></pre>
 <ol>
-<li>From the <strong>cmd</strong> type the following</li>
-</ol>
-<pre><code class="language-dos">git clone https://github.com/gobbyo/kinetic-display.git
-</code></pre>
-<ol>
-<li>In VS Code open a new <strong>PowerShell</strong> terminal and copy/paste each PS command below:</li>
+<li>Open a new <strong>PowerShell</strong> terminal in VS Code and copy/paste each PS command below.</li>
 </ol>
 <pre><code class="language-powershell">PS &gt; cd kinetic-display\micropython\pico
 PS &gt; ./deploy.ps1
 </code></pre>
 <ol>
-<li>You'll get the following output when successful</li>
+<li>You'll get the following example output when successful.</li>
 </ol>
-<p>PS C:\repos\kinetic-display\micropython\pico&gt; ./deploy.ps1</p>
-<pre><code class="language-powershell">    Directory: C:\repos\deploy
+<pre><code class="language-powershell">PS C:\repos\kinetic-display\micropython\pico&gt; ./deploy.ps1
+
+    Directory: C:\repos\deploy
 
 
 Mode                 LastWriteTime         Length Name
