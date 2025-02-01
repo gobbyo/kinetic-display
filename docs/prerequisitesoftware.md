@@ -34,35 +34,30 @@ p.on()
 p.off()
 ```
 
-## Install Git and Clone a fork of the Repository
+## Install Git, Fork and Clone the Repository
 
 1. [Install Git](https://git-scm.com/downloads)
-2. Open a new terminal **Command Prompt** pane in VS Code
-3. From the **cmd** create or navigate to a directory to place the cloned repository. For example,
+2. Open a browser and follow the link to the [Kinetic-Display](https://github.com/gobbyo/kinetic-display) repository
+3. [Create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) of the Kinetic-Display repository.
+4. From the **cmd** create or navigate to a directory to place the cloned repository. For example,
 
 ```dos
 mkdir repos
 cd repos
 ```
 
-4. From the **cmd** type the following
-
-```dos
-git clone https://github.com/gobbyo/kinetic-display.git
-```
-
-5. In VS Code open a new **PowerShell** terminal and copy/paste each PS command below:
+5. Open a new **PowerShell** terminal in VS Code and copy/paste each PS command below.
 
 ```powershell
 PS > cd kinetic-display\micropython\pico
 PS > ./deploy.ps1
 ```
 
-6. You'll get the following output when successful
-
-PS C:\repos\kinetic-display\micropython\pico> ./deploy.ps1
+6. You'll get the following example output when successful.
 
 ```powershell
+PS C:\repos\kinetic-display\micropython\pico> ./deploy.ps1
+
     Directory: C:\repos\deploy
 
 
