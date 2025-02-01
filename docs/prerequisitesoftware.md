@@ -3,7 +3,7 @@
 ## Prerequisites
 
 1. [Install Visual Studio Code](https://code.visualstudio.com/download)
-1. With VS Code installed and open, click on the "extensions" icon on the leftmost panel and install the following extensions from Marketplace:
+1. With VS Code installed and open, click on the extensions icon on the "Activity bar" (leftmost panel in the window) and install the following [extensions from Marketplace](https://code.visualstudio.com/docs/editor/extension-marketplace):
     1. **Python** by Microsoft
     1. **MicroPico** by paulober
 1. Download the [flash_nuke Uf2 file](https://github.com/Pwea/Flash-Nuke)
@@ -34,4 +34,4 @@ p.on()
 p.off()
 ```
 
-Verify your Pico's onboard LED lights up
+Verify your Pico's onboard LED turns on and off.
