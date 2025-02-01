@@ -5,7 +5,6 @@ nav:
     - intro.md
     - prerequisitesoftware.md
   - createandorder:
-    - fork and clone repo: ./createandorder/forkandclone.md
     - order pcb: ./createandorder/pcb.md
     - print parts: ./createandorder/3dprints.md
   - assemble: 
