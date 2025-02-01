@@ -1,7 +1,9 @@
 site_name: Kinetic Display
 nav:
   - contents: index.md
-  - introduction: intro.md
+  - introduction: 
+    - intro.md
+    - prerequisitesoftware.md
   - createandorder:
     - fork and clone repo: ./createandorder/forkandclone.md
     - order pcb: ./createandorder/pcb.md

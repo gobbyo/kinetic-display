@@ -23,7 +23,7 @@ Complete the assembly of the printed circuit boards (PCB) and electric motor wir
 - Label maker (optional)
 - Computer with USB connector
 
-## Software
+## Software prerequisites
 
 - Git
 - VS Code
@@ -75,5 +75,5 @@ Complete the assembly of the printed circuit boards (PCB) and electric motor wir
 | Black Easy Nylon Overture, 1 KG | 1 |
 | Black TPU Colorful (flexible), 1 KG | 1 |
 
-*Note that you can choose any color of LED that you would like for your display. White LEDs are the safest to order as they have no color variation within the same batch. Colored LEDs like blue or warm white may vary in the same batch. Therefore, you may need to order more than the quantity listed in the BOM to get enough LEDs of the same color. Be sure to test your LEDs by using your phones digital camera to see if there are any variations in color when the LEDs are lit.  Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v. 
+*Note that you can choose any color of LED that you would like for your display. White LEDs are the easiest to work with as they have no color variation within the same batch. Colored LEDs like blue or warm white may vary in the same batch. Therefore, you will need to order more than the quantity listed in the BOM to get enough LEDs of the same color. Be sure to test your LEDs by using your phones digital camera to see if there are any variations in color when the LEDs are lit.  Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v. In this case I used the purple hued LEDs because there were 112 of the same color.
 ![blueLEDs](./img/digit-pcb/ledcolors.webp)

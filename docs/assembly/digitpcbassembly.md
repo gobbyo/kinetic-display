@@ -92,8 +92,9 @@ BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadb
 1. Orient the Raspberry Pi Pico microcontroller so the USB port is facing in the same direction as the PCB silk screen, then gently mount the microcontroller onto the header.
 ![digitpcbmicrocontroller-3](../img/digit-pcb/3-digit-pcb-micro.webp)
 
+The next step is to test the digit board before soldering more boards.
+
 ## Digits 0, 2, & 3 Schematics
 
 ![digitschematic-1](../img/digit-pcb/digit-schematic-motorcontrollers.png)
 ![digitschematic-2](../img/digit-pcb/digit-schematic-microcontroller.webp)
-![digitschematic-3](../img/digit-pcb/digit-schematic-microcontroller.webp)
