@@ -42,15 +42,12 @@ p.off()
 2. Open a new **PowerShell** terminal in VS Code, change the directory to ```kinetic-display\micropython\pico``` in your cloned fork, then run the following command.
 
     <!--dos-->
-
         PS > ./deploy.ps1
         
 3. You'll get the following example output when successful.
 
     <!--dos-->
-
             Directory: C:\repos\deploy
-        
         
         Mode                 LastWriteTime         Length Name
         ----                 -------------         ------ ----
