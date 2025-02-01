@@ -68,7 +68,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">assembly</a>
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">assemble</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -126,6 +126,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#install-git-and-clone-a-fork-of-the-repository" class="nav-link">Install Git and Clone a fork of the Repository</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -157,20 +161,54 @@
 <ol>
 <li>Open Visual Studio Code</li>
 <li>On the top menu select <strong>Terminal-&gt;New Terminal</strong></li>
-<li>In the terminal pane, select the terminal menu <strong>"A"</strong> followed by <strong>"B"</strong> the MicroPico vREPL sub-menu
+<li>In the terminal pane, select the terminal menu <strong>"A"</strong> followed by the MicroPico vREPL sub-menu <strong>"B"</strong>
 <img alt="micropico-1" src="../img/prereq-software/micropicoscreenshot-1.webp" /></li>
 <li>The "MicroPico vREPL" terminal will show your Pico is disconnected
 <img alt="micropico-2" src="../img/prereq-software/micropicoscreenshot-2.webp" /></li>
 <li>Plug your Raspberry Pi Pico into the USB port and the terminal will show your Pico as connected
 <img alt="micropico-3" src="../img/prereq-software/micropicoscreenshot-3.webp" /></li>
-<li>Type the following code in the terminal window, copy/paste each line separately:</li>
+<li>Verify your Pico's onboard LED turns on and off by typing the following code in the terminal window and copy/paste each line separately:</li>
 </ol>
 <pre><code class="language-python">from machine import Pin
 p = Pin(25,Pin.OUT)
 p.on()
 p.off()
 </code></pre>
-<p>Verify your Pico's onboard LED turns on and off.</p></div>
+<h2 id="install-git-and-clone-a-fork-of-the-repository">Install Git and Clone a fork of the Repository</h2>
+<ol>
+<li><a href="https://git-scm.com/downloads">Install Git</a></li>
+<li>Open a new terminal <strong>Command Prompt</strong> pane in VS Code</li>
+<li>From the <strong>cmd</strong> create or navigate to a directory to place the cloned repository. For example,</li>
+</ol>
+<pre><code class="language-dos">mkdir repos
+cd repos
+</code></pre>
+<ol>
+<li>From the <strong>cmd</strong> type the following</li>
+</ol>
+<pre><code class="language-dos">git clone https://github.com/gobbyo/kinetic-display.git
+</code></pre>
+<ol>
+<li>In VS Code open a new <strong>PowerShell</strong> terminal and copy/paste each PS command below:</li>
+</ol>
+<pre><code class="language-powershell">PS &gt; cd kinetic-display\micropython\pico
+PS &gt; ./deploy.ps1
+</code></pre>
+<ol>
+<li>You'll get the following output when successful</li>
+</ol>
+<p>PS C:\repos\kinetic-display\micropython\pico&gt; ./deploy.ps1</p>
+<pre><code class="language-powershell">    Directory: C:\repos\deploy
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         1/31/2025   8:30 PM                conductor
+d-----         1/31/2025   8:30 PM                digit
+</code></pre>
+<ol>
+<li>Verify the <strong>conductor</strong> and <strong>digit</strong> folders exist under the same parent directory as the <strong>Kinetic-Display</strong></li>
+</ol></div>
             </div>
         </div>
 
