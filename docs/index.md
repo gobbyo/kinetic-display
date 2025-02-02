@@ -14,3 +14,4 @@
 
 - [Actuator Assembly](./assembly/actuatorassembly.md)
 - [Digit PCB Assembly](./assembly/digitpcbassembly.md)
+- [Test Digit PCB](./assembly/testdigitpcb.md)

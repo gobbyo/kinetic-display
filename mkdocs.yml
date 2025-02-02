@@ -9,4 +9,5 @@ nav:
     - Print parts: ./createandorder/3dprints.md
   - Assemble: 
     - Actuators: ./assembly/actuatorassembly.md
-    - Digit pcbs: ./assembly/digitpcbassembly.md
+    - Digit PCBs: ./assembly/digitpcbassembly.md
+    - Test Digit PCBs: ./assembly/testdigitpcbs.md
