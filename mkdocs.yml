@@ -10,4 +10,5 @@ nav:
   - Assemble: 
     - Actuators: ./assembly/actuatorassembly.md
     - Digit PCBs: ./assembly/digitpcbassembly.md
-    - Test Digit PCBs: ./assembly/testdigitpcb.md
+    - Deploy Digit Project: ./assembly/deploydigitproject.md
+    - Test Digit PCBs: ./assembly/digitpcbtest.md
