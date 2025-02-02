@@ -3,17 +3,17 @@
 ## Prerequisites
 
 1. [Install Visual Studio Code](https://code.visualstudio.com/download)
-1. With VS Code installed and open, click on the extensions icon on the "Activity bar" (leftmost panel in the window) and install the following [extensions from Marketplace](https://code.visualstudio.com/docs/editor/extension-marketplace):
+2. With VS Code installed and open, click on the extensions icon on the [Activity bar](https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout) and install the following [extensions from Marketplace](https://code.visualstudio.com/docs/editor/extension-marketplace):
     1. **Python** by Microsoft
-    1. **MicroPico** by paulober
-1. Download the [flash_nuke Uf2 file](https://github.com/Pwea/Flash-Nuke)
-1. Clear your Raspberry Pi Pico before flashing a new build:
+    2. **MicroPico** by paulober
+3. Download the [flash_nuke Uf2 file](https://github.com/Pwea/Flash-Nuke)
+4. Clear your Raspberry Pi Pico before flashing a new build:
     1. Plug a USB cable into your Raspberry Pi Pico's USB port
-    1. Press and hold the **BOOTSEL** button on your Raspberry Pi Pico while plugging your USB cable into your computer
-    1. Verify an **RPI-RP2** storage device appears
-    1. Drag and drop the **flash_nuke.uf2** file into the RPI-RP2 storage
-1. Download the micropython Uf2 file for the [Raspberry Pi Pico](https://micropython.org/download/RPI_PICO/) and [Raspberry Pi PicoW](https://micropython.org/download/RPI_PICO_W/)
-1. Install [Micropython onto your Raspberry Pi Pico](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#what-is-micropython)
+    2. Press and hold the **BOOTSEL** button on your Raspberry Pi Pico while plugging your USB cable into your computer
+    3. Verify an **RPI-RP2** storage device appears
+    4. Drag and drop the **flash_nuke.uf2** file into the RPI-RP2 storage
+5. Download the micropython Uf2 file for the [Raspberry Pi Pico](https://micropython.org/download/RPI_PICO/) and [Raspberry Pi PicoW](https://micropython.org/download/RPI_PICO_W/)
+6. Install [Micropython onto your Raspberry Pi Pico](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#what-is-micropython)
 
 ## Verify Micropython on your Raspberry Pi Pico
 
@@ -39,12 +39,12 @@ p.off()
 1. [Install Git](https://git-scm.com/downloads)
 1. Open a browser and follow the link to the [Kinetic-Display](https://github.com/gobbyo/kinetic-display) repository
 1. [Create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) of the Kinetic-Display repository.
-2. Open a new **PowerShell** terminal in VS Code, change the directory to ```kinetic-display\micropython\pico``` in your cloned fork, then run the following command.
+1. Open a new **PowerShell** terminal in VS Code, change the directory to ```kinetic-display\micropython\pico``` in your cloned fork, then run the following command.
 
     <!--dos-->
         PS > ./deploy.ps1
         
-3. You'll get the following example output when successful.
+1. You'll get the following example output when successful.
 
     <!--dos-->
             Directory: C:\repos\deploy
@@ -54,4 +54,4 @@ p.off()
         d-----         1/31/2025   8:30 PM                conductor
         d-----         1/31/2025   8:30 PM                digit
 
-4. Verify the **conductor** and **digit** folders exist under the same parent directory where you cloned your fork.
+1. Verify the **conductor** and **digit** folders exist under the same parent directory where you cloned your fork.
