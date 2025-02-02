@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Userguide - Kinetic Display</title>
+        <title>Deploy Digit Project - Kinetic Display</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -64,19 +64,23 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Assemble</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Assemble</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../assembly/actuatorassembly/" class="dropdown-item">Actuators</a>
+    <a href="../actuatorassembly/" class="dropdown-item">Actuators</a>
 </li>
                                     
 <li>
-    <a href="../../assembly/digitpcbassembly/" class="dropdown-item">Digit PCBs</a>
+    <a href="../digitpcbassembly/" class="dropdown-item">Digit PCBs</a>
 </li>
                                     
 <li>
-    <a href="../../assembly/testdigitpcb/" class="dropdown-item">Test Digit PCBs</a>
+    <a href="./" class="dropdown-item active" aria-current="page">Deploy Digit Project</a>
+</li>
+                                    
+<li>
+    <a href="../digitpcbtest/" class="dropdown-item">Test Digit PCBs</a>
 </li>
                                 </ul>
                             </li>
@@ -88,6 +92,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../digitpcbassembly/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../digitpcbtest/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -105,12 +119,42 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#deploy-the-digit-project-to-the-digit-pcb" class="nav-link">Deploy the Digit Project to the Digit PCB</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#prerequisites" class="nav-link">Prerequisites</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#configure-and-deploy-the-digit-project" class="nav-link">Configure and Deploy the Digit Project</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-</div>
+<h1 id="deploy-the-digit-project-to-the-digit-pcb">Deploy the Digit Project to the Digit PCB</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Completed the assembly and soldering of the <a href="../digitpcbassembly/">Digit PCB</a></li>
+<li>Created a fork of the Kinetic-Display GitHub repository, see <a href="../../prerequisitesoftware/#install-git-fork-and-clone-the-repository">Software and Microcontroller Preparation</a></li>
+<li>Deployed the digit directory, also see <a href="../../prerequisitesoftware/#install-git-fork-and-clone-the-repository">Software and Microcontroller Preparation</a></li>
+</ul>
+<h2 id="configure-and-deploy-the-digit-project">Configure and Deploy the Digit Project</h2>
+<ol>
+<li>Connect your Computer to the digit PCB Pico per the instructions on <a href="../../prerequisitesoftware/#verify-micropython-on-your-raspberry-pi-pico">Verify Micropython on your Raspberry Pi Pico</a></li>
+<li>From VS Code, select <strong>File-&gt;Open Folder...</strong> and open the <strong>deploy/digit</strong> folder you deployed during step 4 in the section <a href="../../prerequisitesoftware/#install-git-fork-and-clone-the-repository">Install Git, Fork and Clone the Repository</a></li>
+<li>Following the screen capture below, select the Explorer icon (<strong>A</strong>) in the left <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout">Activity bar</a>. Click the digit.json file (<strong>B</strong>) in the Explorer pane. Change the <strong>"digit":</strong> value (<strong>C</strong>) to match the PCB labelled number 0-3. <strong><em>It is very important to have the digit value in the digit.json file match the PCB's labelled value.</em></strong>
+<img alt="testdigitpcb-1" src="../../img/testdigitpcb/testdigitpcb-1.webp" /></li>
+<li>Following the screen capture below, click <strong>All Commands</strong> (<strong>A</strong>) on the <a href="https://code.visualstudio.com/api/ux-guidelines/status-bar">status bar</a>. In the Command text field (<strong>B</strong>), type "<strong>Upload</strong>" after "<strong>&gt; MicroPico:</strong> ", then select the dropdown <strong>MicroPico: Upload project to Pico</strong>.
+<img alt="testdigitpcb-2" src="../../img/testdigitpcb/testdigitpcb-2.webp" /></li>
+<li>Verify the project was uploaded into the Pico.
+<img alt="testdigitpcb-3" src="../../img/testdigitpcb/testdigitpcb-3.webp" /></li>
+</ol></div>
             </div>
         </div>
 

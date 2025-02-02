@@ -76,6 +76,10 @@
 </li>
                                     
 <li>
+    <a href="../deploydigitproject/" class="dropdown-item">Deploy Digit Project</a>
+</li>
+                                    
+<li>
     <a href="./" class="dropdown-item active" aria-current="page">Test Digit PCBs</a>
 </li>
                                 </ul>
@@ -89,7 +93,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../digitpcbassembly/" class="nav-link">
+                                <a rel="prev" href="../deploydigitproject/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -118,14 +122,6 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#digit-pcb-test" class="nav-link">Digit PCB Test</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#prerequisites" class="nav-link">Prerequisites</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#configure-and-deploy-the-digit-project" class="nav-link">Configure and Deploy the Digit Project</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -134,22 +130,7 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="digit-pcb-test">Digit PCB Test</h1>
-<p>Run the tests in this section after assembling each digit PCB to ensure all the components on the PCB are properly soldered into place and functional. Any defective electronic component on the digit PCB will need to be replaced before completing the project.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<ul>
-<li>Created a fork of the Kinetic-Display GitHub repository, see <a href="../../prerequisitesoftware/#install-git-fork-and-clone-the-repository">Software and Microcontroller Preparation</a></li>
-<li>Deployed the digit directory, also see <a href="../../prerequisitesoftware/#install-git-fork-and-clone-the-repository">Software and Microcontroller Preparation</a></li>
-</ul>
-<h2 id="configure-and-deploy-the-digit-project">Configure and Deploy the Digit Project</h2>
-<ol>
-<li>Connect your Computer to the digit PCB Pico per the instructions on <a href="../../prerequisitesoftware/#verify-micropython-on-your-raspberry-pi-pico">Verify Micropython on your Raspberry Pi Pico</a></li>
-<li>From VS Code, select <strong>File-&gt;Open Folder...</strong> and open the <strong>deploy/digit</strong> folder you deployed during step 4 in the section <a href="../../prerequisitesoftware/#install-git-fork-and-clone-the-repository">Install Git, Fork and Clone the Repository</a></li>
-<li>Following the screen capture below, select the Explorer icon (<strong>A</strong>) in the left <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout">Activity bar</a>. Click the digit.json file (<strong>B</strong>) in the Explorer pane. Change the <strong>"digit":</strong> value (<strong>C</strong>) to match the PCB labelled number 0-3. <strong><em>It is very important to have the digit value match the PCB's labelled value.</em></strong>
-<img alt="testdigitpcb-1" src="../../img/testdigitpcb/testdigitpcb-1.webp" /></li>
-<li>Following the screen capture below, click <strong>All Commands</strong> (<strong>A</strong>) on the <a href="https://code.visualstudio.com/api/ux-guidelines/status-bar">status bar</a>. In the Command text field (<strong>B</strong>), type "<strong>Upload</strong>" after "<strong>&gt; MicroPico:</strong> ", then select the dropdown <strong>MicroPico: Upload project to Pico</strong>.
-<img alt="testdigitpcb-2" src="../../img/testdigitpcb/testdigitpcb-2.webp" /></li>
-<li>Verify the project was uploaded into the Pico.</li>
-</ol></div>
+<p>Run the tests in this section after assembling each digit PCB to ensure all the components on the PCB are properly soldered into place and functional. Any defective electronic component on the digit PCB will need to be replaced before completing the project.</p></div>
             </div>
         </div>
 
