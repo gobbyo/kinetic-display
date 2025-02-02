@@ -16,3 +16,4 @@
 - [Digit PCB Assembly](./assembly/digitpcbassembly.md)
 - [Deploy Digit Projecct](./assembly/deploydigitproject.md)
 - [Test Digit PCB](./assembly/digitpcbtest.md)
+- 
