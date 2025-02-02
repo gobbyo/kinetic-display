@@ -8,7 +8,7 @@ The display has 4 digits. The digits are numbered from right to left, 0-3, when 
 
 This section details the assembly of digits 0, 2, and 3.
 
-Components needed for this section.
+***Table of components***
 
 | Quantity | Component | Image |
 | :--: | :------| :-----: |
@@ -21,10 +21,18 @@ Components needed for this section.
 | 1 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp)|
 | 28 | 5mm Flat top LED, anode long lead (any color) | ![component-8](../img/component/component-8.webp)|
 | 1 | Raspberry Pi Pico | ![component-9](../img/component/component-9.webp)|
-| 1 | 0.8mm 1.76oz RoHS flux core solder | ![component-10](../img/component/component-10.webp)|
-| 1 | Isopropyl Alcohol | ![component-11](../img/component/component-11.webp)|
-| 6 | Cotton Facial Pads | ![component-12](../img/component/component-12.webp)|
-| 3 | Digit PCBs | |
+| 3 | Digit PCBs | See next section |
+
+***Table of tools***
+
+| Required | Tool | Image |
+| :--- | :------- | :---: |
+| Yes | Soldering station    | ![tool-4](../img/tools/tool-4.webp)|
+| Yes | 0.8mm 1.76oz RoHS flux core solder | ![tool-1](../img/tools/tool-1.webp)|
+| Yes | Mini flush cutters   | ![tool-6](../img/tools/tool-6.webp)|
+| Yes | Isopropyl Alcohol | ![tool-3](../img/tools/tool-3.webp)|
+| Yes | Cotton Facial Pads | ![tool-2](../img/tools/tool-2.webp)|
+| No  | Label maker | ![tool-5s](../img/tools/tool-5.webp) |
 
 ## Label the front and back sides of the digit PCB
 
