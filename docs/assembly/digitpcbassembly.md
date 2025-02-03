@@ -10,7 +10,7 @@ This section details the assembly of digits 0, 2, and 3.
 
 ## Prerequisites
 
-- Fabrication of the [digit PCBs](../createandorder/pcb.md)
+- [Fabrication of the digit PCBs](../createandorder/pcb.md)
 - Table of components and tools
 
 ***Table of components***
