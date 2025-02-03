@@ -51,15 +51,19 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">OrderParts</a>
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Parts</a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../createandorder/bom/" class="dropdown-item">Bill of Materials</a>
+</li>
                                     
 <li>
     <a href="../createandorder/pcb/" class="dropdown-item">Order PCBs</a>
 </li>
                                     
 <li>
-    <a href="../createandorder/3dprints/" class="dropdown-item">Print parts</a>
+    <a href="../createandorder/3dprints/" class="dropdown-item">Print Parts</a>
 </li>
                                 </ul>
                             </li>
@@ -98,7 +102,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../createandorder/pcb/" class="nav-link">
+                                <a rel="next" href="../createandorder/bom/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -120,17 +124,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#software-and-microcontroller-preparation" class="nav-link">Software and Microcontroller Preparation</a>
+            <li class="nav-item" data-bs-level="1"><a href="#software_and_microcontroller_preparation" class="nav-link">Software and Microcontroller Preparation</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#prerequisites" class="nav-link">Prerequisites</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#verify-micropython-on-your-raspberry-pi-pico" class="nav-link">Verify Micropython on your Raspberry Pi Pico</a>
+            <li class="nav-item" data-bs-level="2"><a href="#verify_micropython_on_your_raspberry_pi_pico" class="nav-link">Verify Micropython on your Raspberry Pi Pico</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#install-git-fork-and-clone-the-repository" class="nav-link">Install Git, Fork and Clone the Repository</a>
+            <li class="nav-item" data-bs-level="2"><a href="#install_git_fork_and_clone_the_repository" class="nav-link">Install Git, Fork and Clone the Repository</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -141,8 +145,8 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="software-and-microcontroller-preparation">Software and Microcontroller Preparation</h1>
-<h2 id="prerequisites">Prerequisites</h2>
+<h1 id="software_and_microcontroller_preparation">Software and Microcontroller Preparation<a class="headerlink" href="#software_and_microcontroller_preparation" title="Permanent link">&para;</a></h1>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="https://code.visualstudio.com/download">Install Visual Studio Code</a></li>
 <li>With VS Code installed and open, click on the extensions icon on the <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout">Activity bar</a> and install the following <a href="https://code.visualstudio.com/docs/editor/extension-marketplace">extensions from Marketplace</a>:<ol>
@@ -161,7 +165,7 @@
 <li>Download the micropython Uf2 file for the <a href="https://micropython.org/download/RPI_PICO/">Raspberry Pi Pico</a> and <a href="https://micropython.org/download/RPI_PICO_W/">Raspberry Pi PicoW</a></li>
 <li>Install <a href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#what-is-micropython">Micropython onto your Raspberry Pi Pico</a></li>
 </ol>
-<h2 id="verify-micropython-on-your-raspberry-pi-pico">Verify Micropython on your Raspberry Pi Pico</h2>
+<h2 id="verify_micropython_on_your_raspberry_pi_pico">Verify Micropython on your Raspberry Pi Pico<a class="headerlink" href="#verify_micropython_on_your_raspberry_pi_pico" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Open Visual Studio Code</li>
 <li>On the top menu select <strong>Terminal-&gt;New Terminal</strong></li>
@@ -173,12 +177,13 @@
 <img alt="micropico-3" src="../img/prereq-software/micropicoscreenshot-3.webp" /></li>
 <li>Verify your Pico's onboard LED turns on and off by typing the following code in the terminal window and copy/paste each line separately:</li>
 </ol>
-<pre><code class="language-python">from machine import Pin
+<pre class="codehilite"><code class="language-python">from machine import Pin
 p = Pin(25,Pin.OUT)
 p.on()
 p.off()
 </code></pre>
-<h2 id="install-git-fork-and-clone-the-repository">Install Git, Fork and Clone the Repository</h2>
+
+<h2 id="install_git_fork_and_clone_the_repository">Install Git, Fork and Clone the Repository<a class="headerlink" href="#install_git_fork_and_clone_the_repository" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="https://git-scm.com/downloads">Install Git</a></li>
 <li>Open a browser and follow the link to the <a href="https://github.com/gobbyo/kinetic-display">Kinetic-Display</a> repository</li>
@@ -192,11 +197,12 @@ p.off()
 <p>You'll get the following example output when successful.</p>
 <p><!--dos-->
         Directory: C:\repos\deploy</p>
-<pre><code>Mode                 LastWriteTime         Length Name
+<pre class="codehilite"><code>Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 d-----         1/31/2025   8:30 PM                conductor
 d-----         1/31/2025   8:30 PM                digit
 </code></pre>
+
 </li>
 <li>
 <p>Verify the <strong>conductor</strong> and <strong>digit</strong> folders exist under the same parent directory where you cloned your fork.</p>
