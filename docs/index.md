@@ -7,6 +7,7 @@
 
 ## Order Parts
 
+- [Bill of Materials](./createandorder/bom.md)
 - [Fabricate the Printed Circuit Boards (PCBs)](./createandorder/pcb.md)
 - [3D Print the Display Parts](./createandorder/3dprints.md)
 

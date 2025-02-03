@@ -61,7 +61,9 @@ This section details the assembly of digits 0, 2, and 3.
 
 ## Add the 28 LEDs
 
-BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadboard and use a digital camera to spot any variations in color when the LEDs are lit. Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v.
+!!! note
+    BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadboard and use a digital camera to spot any variations in color when the LEDs are lit.
+Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v.
 ![blueLEDs](../img/digit-pcb/ledcolors.webp)
 
 1. There are seven segments "A" through "G" each with four LEDs. From the front of the digit PCB, start with segment A by inserting the LED's long lead (anode) into the "+" through hole. Repeat the process for all segment-A LEDs.
@@ -112,9 +114,11 @@ BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadb
 
 1. On the front of the digit PCB, align the electrolytic capacitor "-" sign opposite the "+" printed on the PCB for capacitor "c1", see the picture below. Insert the pins into the through holes, then turn the digit PCB over to the back side and solder the capacitor.
 ![digitpcbcapacitor-1](../img/digit-pcb/1-digit-pcb-capacitor.webp)
-1. On the front of the digit PCB, insert the ceramic capacitor pins into the through holes titled "c2". Note that ceramic capacitors do not have polarity and can be inserted in any direction. Turn the digit PCB over to the back and solder the capacitor.
+1. On the front of the digit PCB, insert the ceramic capacitor pins into the through holes titled "c2". Turn the digit PCB over to the back and solder the capacitor.
+!!! note
+    Ceramic capacitors do not have polarity and can be inserted in any direction.
 ![digitpcbcapacitor-2](../img/digit-pcb/2-digit-pcb-capacitor.webp)
-1. On the back of the digit PCB, cut the pins flush, resolder to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
+3. On the back of the digit PCB, cut the pins flush, resolder to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 ![digitpcbcapacitor-3](../img/digit-pcb/3-digit-pcb-capacitor.webp)
 
 ## Add the 20 pin Headers and Install the Microcontroller

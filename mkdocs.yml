@@ -1,12 +1,20 @@
 site_name: Kinetic Display
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - toc:
+      permalink: true
+      separator: "_"
 nav:
   - Contents: index.md
   - Introduction: 
     - intro.md
     - prerequisitesoftware.md
-  - OrderParts:
+  - Parts:
+    - Bill of Materials: ./createandorder/bom.md
     - Order PCBs: ./createandorder/pcb.md
-    - Print parts: ./createandorder/3dprints.md
+    - Print Parts: ./createandorder/3dprints.md
   - Assemble: 
     - Actuators: ./assembly/actuatorassembly.md
     - Digit PCBs: ./assembly/digitpcbassembly.md

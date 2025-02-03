@@ -59,8 +59,11 @@ In this section you'll create 21 unlabelled motors with 4 centimeter wires with 
 
 ## Motor Mount
 
-1. The tools and parts needed to assemble the motor mount include: 3d printed motor mount in PLA and Nylon pinion reduction gear, a 20mm metal shaft made from a jumbo paper clip, a soldering station capable of a heat setting of 250° C, clamping tweezers with a thin piece of metal. Verify the shaft can easily slide through the pinion gear before assembling the motor. If you cannot easily rotate the pinion gear on the shaft, then you'll need a 1/16" drill bit and drill to widen the pinion gear shaft hole.
+The tools and parts needed to assemble the motor mount include: 3d printed motor mount in PLA and Nylon pinion reduction gear, a 20mm metal shaft made from a jumbo paper clip, a soldering station capable of a heat setting of 250° C, clamping tweezers with a thin piece of metal.
+!!! note
+    Verify the shaft can easily slide through the pinion gear before assembling the motor. If you cannot easily rotate the pinion gear on the shaft, then you'll need a 1/16" drill bit and drill to widen the pinion gear shaft hole.
 ![actuatorstep1](../img/actuator/1-actuator.webp)
+
 1. Cut the off the straight sections from the Jumbo paper clip. 
 ![actuatorstep2](../img/actuator/2-actuator.webp)
 1. Measure 2 cm from each Jumbo paper clip straight section.
