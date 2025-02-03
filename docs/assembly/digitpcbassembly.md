@@ -8,6 +8,11 @@ The display has 4 digits. The digits are numbered from right to left, 0-3, when 
 
 This section details the assembly of digits 0, 2, and 3.
 
+## Prerequisites
+
+- Fabrication of the [digit PCBs](../createandorder/pcb.md)
+- Table of components and tools
+
 ***Table of components***
 
 | Quantity | Component | Image |
@@ -103,7 +108,7 @@ BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadb
 1. On the back of the digit PCB, solder the remaining connector pins, cut the pins flush, resolder to a smooth bead, then remove the flux wth a cotton dabbed with isopropyl alcohol.
 ![digitpcbconnector-4](../img/digit-pcb/4-digit-pcb-connector.webp)
 
-## Add the Ceramic and Electrolytic Capacitors
+## Add the Electrolytic and Ceramic Capacitors
 
 1. On the front of the digit PCB, align the electrolytic capacitor "-" sign opposite the "+" printed on the PCB for capacitor "c1", see the picture below. Insert the pins into the through holes, then turn the digit PCB over to the back side and solder the capacitor.
 ![digitpcbcapacitor-1](../img/digit-pcb/1-digit-pcb-capacitor.webp)
