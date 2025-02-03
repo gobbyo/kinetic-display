@@ -14,6 +14,5 @@
 
 - [Actuator Assembly](./assembly/actuatorassembly.md)
 - [Digit PCB Assembly](./assembly/digitpcbassembly.md)
-- [Deploy Digit Projecct](./assembly/deploydigitproject.md)
+- [Deploy Digit Project](./assembly/deploydigitproject.md)
 - [Test Digit PCB](./assembly/digitpcbtest.md)
-- 
