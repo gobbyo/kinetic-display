@@ -26,7 +26,7 @@ This section details the assembly of digits 0, 2, and 3.
 ***Table of tools***
 
 | Required | Tool | Image |
-| :--- | :------- | :---: |
+| :---: | :------- | :---: |
 | Yes | Soldering station    | ![tool-4](../img/tools/tool-4.webp)|
 | Yes | 0.8mm 1.76oz RoHS flux core solder | ![tool-1](../img/tools/tool-1.webp)|
 | Yes | Mini flush cutters   | ![tool-6](../img/tools/tool-6.webp)|
