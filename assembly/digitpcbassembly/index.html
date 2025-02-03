@@ -122,6 +122,10 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#digit-pcb-assembly" class="nav-link">Digit PCB Assembly</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#prerequisites" class="nav-link">Prerequisites</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-bs-level="2"><a href="#label-the-front-and-back-sides-of-the-digit-pcb" class="nav-link">Label the front and back sides of the digit PCB</a>
               <ul class="nav flex-column">
               </ul>
@@ -146,7 +150,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#add-the-ceramic-and-electrolytic-capacitors" class="nav-link">Add the Ceramic and Electrolytic Capacitors</a>
+            <li class="nav-item" data-bs-level="2"><a href="#add-the-electrolytic-and-ceramic-capacitors" class="nav-link">Add the Electrolytic and Ceramic Capacitors</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -173,6 +177,11 @@
 <li>provides the traditional role of reducing the wiring, efficiently connects various electronic component minimizing the overall size, reliable, cost-effective, and consistent quality of the circuitry</li>
 </ul>
 <p>This section details the assembly of digits 0, 2, and 3.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><a href="../../createandorder/pcb/">Fabrication of the digit PCBs</a></li>
+<li>Table of components and tools</li>
+</ul>
 <p><strong><em>Table of components</em></strong></p>
 <table>
 <thead>
@@ -345,7 +354,7 @@
 <li>On the back of the digit PCB, solder the remaining connector pins, cut the pins flush, resolder to a smooth bead, then remove the flux wth a cotton dabbed with isopropyl alcohol.
 <img alt="digitpcbconnector-4" src="../../img/digit-pcb/4-digit-pcb-connector.webp" /></li>
 </ol>
-<h2 id="add-the-ceramic-and-electrolytic-capacitors">Add the Ceramic and Electrolytic Capacitors</h2>
+<h2 id="add-the-electrolytic-and-ceramic-capacitors">Add the Electrolytic and Ceramic Capacitors</h2>
 <ol>
 <li>On the front of the digit PCB, align the electrolytic capacitor "-" sign opposite the "+" printed on the PCB for capacitor "c1", see the picture below. Insert the pins into the through holes, then turn the digit PCB over to the back side and solder the capacitor.
 <img alt="digitpcbcapacitor-1" src="../../img/digit-pcb/1-digit-pcb-capacitor.webp" /></li>
@@ -363,7 +372,7 @@
 <li>Orient the Raspberry Pi Pico microcontroller so the USB port is facing in the same direction as the PCB silk screen, then gently mount the microcontroller onto the header.
 <img alt="digitpcbmicrocontroller-3" src="../../img/digit-pcb/3-digit-pcb-micro.webp" /></li>
 </ol>
-<p>The next step is to test the digit board before soldering more boards.</p>
+<p>Congratulations for assembling a digit PCB! Be sure to test the digit PCB before assembling the next one.</p>
 <h2 id="digits-0-2-3-schematics">Digits 0, 2, &amp; 3 Schematics</h2>
 <p><img alt="digitschematic-1" src="../../img/digit-pcb/digit-schematic-motorcontrollers.png" />
 <img alt="digitschematic-2" src="../../img/digit-pcb/digit-schematic-microcontroller.webp" /></p></div>
