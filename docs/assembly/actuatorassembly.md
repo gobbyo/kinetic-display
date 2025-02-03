@@ -9,6 +9,7 @@ Actuator rack and pinion gear assembly.
 ![All 3D printed parts](../img/motor-gears-title.png)
 
 The actuator assembly includes installing the shaft gear onto the DC brushed motor, preparing and adding the wires to the motor, assembling the motor mount, pinion gear and shaft, then adding the DC brushed motor to the assembled motor mount.
+
 ## Prerequisites
 
 ***Table of components***
