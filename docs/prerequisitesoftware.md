@@ -34,7 +34,7 @@ p.on()
 p.off()
 ```
 
-## Install Git, Fork and Clone the Repository
+## Fork and Clone the Repository
 
 1. [Install Git](https://git-scm.com/downloads)
 1. Open a browser and follow the link to the [Kinetic-Display](https://github.com/gobbyo/kinetic-display) repository
