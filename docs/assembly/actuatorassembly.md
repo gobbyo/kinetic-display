@@ -79,7 +79,7 @@ The tools and parts needed to add the 2.54mm Dupont connectors to each wire incl
 ![step2](../img/dupont-connections/2-motor-wire-dupont-connection.webp)
 1. Crimp the female connectors onto each wire.
 ![step3](../img/dupont-connections/3-motor-wire-dupont-connection.webp)
-1. Attach the Dupont connector housing onto the wires so the pins lock into the housing.
+1. Slide the Dupont connector housing onto the wires so the pins lock into the housing.
 ![step4](../img/dupont-connections/4-motor-wire-dupont-connection.webp)
 1. Repeat the previous steps for all remaining motors. Be sure to place your label on the black side of the motor for the nine, 6 centimeter wire length actuators with C, D or UC (upper colon). No need to label the 21 other actuators with 4 centimeter lengths
 ![step5](../img/dupont-connections/5-motor-wire-dupont-connection.webp)
@@ -98,7 +98,7 @@ The tools and parts needed to assemble the motor mount include: 3d printed motor
 ![actuatorstep4](../img/actuator/4-actuator.webp)
 1. With a 1/16" drill bit, bore out the shaft hole in the pinion gear.
 ![actuatorstep5](../img/actuator/5-actuator.webp)
-1. Insert the 2 cm shaft about 1 millimeter into the motor mount.
+1. Insert the 2 cm shaft through the motor mount until is protrudes about 1mm into the pinion gear space.
 ![actuatorstep6](../img/actuator/6-actuator.webp)
 1. Add the pinion gear to the motor mount as shown in the diagram. Insert the shaft by aligning the pinion gear shaft hole with the metal shaft, then slide the metal shaft all the way into the motor mount.
 ![actuatorstep7](../img/actuator/7-actuator.webp)
