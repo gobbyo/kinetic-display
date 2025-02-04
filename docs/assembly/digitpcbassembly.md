@@ -42,22 +42,22 @@ This section details the assembly of digits 0, 2, and 3.
 ## Label the front and back sides of the digit PCB
 
 1. Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the label to the FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Also note that digit 0 is a completed digit PCB ready for mounting onto the display.
-![digitpcb-2](../img/digitpcbassembly/2-digit-pcb.webp)
+![digitpcb-2](../img/digitpcbassembly/2-digitpcbassembly.webp)
 1. Add the label to the BACK FACING SIDE of each of the 3 digit PCBs as placed in the picture below.
-![digitpcb-3](../img/digitpcbassembly/3-digit-pcb.webp)
+![digitpcb-3](../img/digitpcbassembly/3-digitpcbassembly.webp)
 
 ## Add the 16 pin headers
 
 1. From the front side of the digit PCB, insert the 16 pin header into the through holes by aligning the notch with the digit PCB top silk layer outline of the 16 pins. The notch in the 16-pin header is used to ensure correct orientation when connecting the L293D motor driver. Carefully turn over the digit PCB while keeping the 16 pin header in the through holes.
-![digitpcb-4](../img/digitpcbassembly/4-digit-pcb.webp)
+![digitpcb-4](../img/digitpcbassembly/4-digitpcbassembly.webp)
 1. Solder the 16 pins and repeat the previous step until all 4 of the 16 pin headers are soldered into place.
-![digitpcb-5](../img/digitpcbassembly/5-digit-pcb.webp)
+![digitpcb-5](../img/digitpcbassembly/5-digitpcbassembly.webp)
 1. From the back of the digit PCB, cut off the soldered pins.
-![digitpcb-6](../img/digitpcbassembly/6-digit-pcb.webp)
+![digitpcb-6](../img/digitpcbassembly/6-digitpcbassembly.webp)
 1. Touch up the clipped pins with a small bit of solder to make smooth rounded beads instead of sharp points.
-![digitpcb-7](../img/digitpcbassembly/7-digit-pcb.webp)
+![digitpcb-7](../img/digitpcbassembly/7-digitpcbassembly.webp)
 1. Clean up the soldered pins by removing the flux using a cotton pad dabbed with isopropyl alcohol. Repeat the previous step if you find your cotton pad is being torn from any protruding pins.
-![digitpcb-8](../img/digitpcbassembly/8-digit-pcb.webp)
+![digitpcb-8](../img/digitpcbassembly/8-digitpcbassembly.webp)
 
 ## Add the 28 LEDs
 
