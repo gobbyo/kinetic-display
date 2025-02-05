@@ -10,4 +10,3 @@
 ![5vpowersupply-8](../img/5vpowersupply/5vpowersupply-8.webp)
 ![5vpowersupply-9](../img/5vpowersupply/5vpowersupply-9.webp)
 ![5vpowersupply-10](../img/5vpowersupply/5vpowersupply-10.webp)
-![5vpowersupply-11](../img/5vpowersupply/5vpowersupply-11.webp)
