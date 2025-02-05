@@ -10,3 +10,8 @@ Run the tests in this section after assembling each digit PCB to ensure all the 
 
 !!! warning
      Use a grounding bracelet and anti static wrist strap with grounding plug and rubber mat to prevent damage to you, your computer, and Raspberry Pi Pico/PicoWs
+
+![testpcbactuator-1](../img/testpcbactuator/testpcbactuator-1.webp)
+![testpcbactuator-2](../img/testpcbactuator/testpcbactuator-2.webp)
+![testpcbactuator-3](../img/testpcbactuator/testpcbactuator-3.webp)
+![testpcbactuator-4](../img/testpcbactuator/testpcbactuator-4.webp)
