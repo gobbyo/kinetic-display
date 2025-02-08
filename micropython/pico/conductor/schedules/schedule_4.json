@@ -1,0 +1,13 @@
+{
+    "title": "Time only",
+    "scheduleDescription": "Time updates every minute.",
+    "scheduledEvent": [
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 0,
+            "elapse": 55,
+            "event": 1
+        }
+    ]
+}
