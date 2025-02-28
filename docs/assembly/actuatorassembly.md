@@ -35,7 +35,6 @@ The actuator assembly includes installing the shaft gear onto the DC brushed mot
 | Yes | Pin Crimp Tool for 2.54mm Dupont Connectors | ![tool-10](../img/tools/tool-10.webp) |
 | Yes | Heavy Duty Wire Cutter Pliers | ![tool-11](../img/tools/tool-11.webp) |
 | Yes | Heavy Duty Cross Locking or Clamping Tweezers | ![tool-12](../img/tools/tool-12.webp) |
-| Yes | 1/16" drill bit | ![tool-13](../img/tools/tool-13.webp) |
 | Yes | 10cm zinc strip | ![tool-14](../img/tools/tool-14.webp) |
 | No | Label Maker | ![tool-5](../img/tools/tool-5.webp) |
 
@@ -96,8 +95,6 @@ The tools and parts needed to assemble the motor mount include: 3d printed motor
 ![actuatorstep3](../img/actuator/3-actuator.webp)
 1. Use a large wire cutter to cut the shaft.
 ![actuatorstep4](../img/actuator/4-actuator.webp)
-1. With a 1/16" drill bit, bore out the shaft hole in the pinion gear.
-![actuatorstep5](../img/actuator/5-actuator.webp)
 1. Insert the 2 cm shaft through the motor mount until is protrudes about 1mm into the pinion gear space.
 ![actuatorstep6](../img/actuator/6-actuator.webp)
 1. Add the pinion gear to the motor mount as shown in the diagram. Insert the shaft by aligning the pinion gear shaft hole with the metal shaft, then slide the metal shaft all the way into the motor mount.
