@@ -1,6 +1,6 @@
 # Deploy the Digit Project to the Digit PCB
 
-In this section you will deploy the software necessary to make the digit PCB work.
+In this section you will upload code to your Raspberry Pi Pico and PicoW from your computer.
 
 ## Prerequisites
 

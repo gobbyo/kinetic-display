@@ -3,7 +3,7 @@
 The display has 4 digits. The digits are numbered from right to left, 0-3, when looking at the front of display. The digit PCBs are digits 0, 2, and 3 whereas the controller PCB is digit 1 and includes the colons. The digit PCBs are the foundation of the display and serve several important functions:
 
 - provides a mechanical backstop to the actuator's segment when retracting into the display
-- provides a constent distance for the lighting of the segment, giving the segment a uniform glow rather than spots of light
+- provides a constent distance for the lighting of the segment, giving each segment a uniform glow rather than spots of light
 - provides the traditional role of reducing the wiring, efficiently connects various electronic component minimizing the overall size, reliable, cost-effective, and consistent quality of the circuitry
 
 This section details the assembly of digits 0, 2, and 3.
@@ -25,7 +25,7 @@ This section details the assembly of digits 0, 2, and 3.
 | 1 | 0.1μ farad ceramic capacitor | ![component-6](../img/component/component-6.webp)|
 | 1 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp)|
 | 28 | 5mm Flat top LED, anode long lead (any color) | ![component-8](../img/component/component-8.webp)|
-| 1 | Raspberry Pi Pico | ![component-9](../img/component/component-9.webp)|
+| 1 | Raspberry Pi Pico with Headers | ![component-9](../img/component/component-9.webp)|
 | 3 | Digit PCBs | See next section |
 
 ***Table of tools***
@@ -41,20 +41,20 @@ This section details the assembly of digits 0, 2, and 3.
 
 ## Label the front and back sides of the digit PCB
 
-1. Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the label to the FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Also note that digit 0 is a completed digit PCB ready for mounting onto the display.
+1. Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the (**A**) label to the (**B**) FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Also note that digit 0 (**C**) in the picture below is a completed digit PCB ready for mounting onto the display.
 ![digitpcb-2](../img/digitpcbassembly/2-digitpcbassembly.webp)
-1. Add the label to the BACK FACING SIDE of each of the 3 digit PCBs as placed in the picture below.
+1. Add the (**A**) label to the (**B**) BACK FACING SIDE of each of the 3 digit PCBs as placed in the picture below.
 ![digitpcb-3](../img/digitpcbassembly/3-digitpcbassembly.webp)
 
 ## Add the 16 pin headers
 
-1. From the front side of the digit PCB, insert the 16 pin header into the through holes by aligning the notch with the digit PCB top silk layer outline of the 16 pins. The notch in the 16-pin header is used to ensure correct orientation when connecting the L293D motor driver. Carefully turn over the digit PCB while keeping the 16 pin header in the through holes.
+1. From the front side of the digit PCB, (**A**) insert the 16 pin header into the through holes by aligning the notch with the digit PCB top silk layer outline of the 16 pins. The notch in the 16-pin header is used to ensure correct orientation when connecting the L293D motor driver. Carefully turn over the digit PCB while keeping the 16 pin header in the through holes.
 ![digitpcb-4](../img/digitpcbassembly/4-digitpcbassembly.webp)
-1. Solder the 16 pins and repeat the previous step until all 4 of the 16 pin headers are soldered into place.
+1. (**A**) Solder the 16 pins and repeat the previous step until all 4 of the 16 pin headers are soldered into place.
 ![digitpcb-5](../img/digitpcbassembly/5-digitpcbassembly.webp)
-1. From the back of the digit PCB, cut off the soldered pins.
+1. From the back of the digit PCB, (**A**) cut off the soldered pins.
 ![digitpcb-6](../img/digitpcbassembly/6-digitpcbassembly.webp)
-1. Touch up the clipped pins with a small bit of solder to make smooth rounded beads instead of sharp points.
+1. Touch up the clipped pins with a small bit of solder to make (**A**) smooth rounded beads instead of sharp points.
 ![digitpcb-7](../img/digitpcbassembly/7-digitpcbassembly.webp)
 1. Clean up the soldered pins by removing the flux using a cotton pad dabbed with isopropyl alcohol. Repeat the previous step if you find your cotton pad is being torn from any protruding pins.
 ![digitpcb-8](../img/digitpcbassembly/8-digitpcbassembly.webp)
@@ -63,31 +63,27 @@ This section details the assembly of digits 0, 2, and 3.
 
 !!! note
     BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadboard and use a digital camera to spot any variations in color when the LEDs are lit.
-Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v.
+Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v. Note the (**A**) light blue LEDs and the (**B**) purple LEDs within the same blue batch of LEDs.
 ![blueLEDs](../img/digitpcbassembly/ledcolors.webp)
 
-1. There are seven segments "A" through "G" each with four LEDs. From the front of the digit PCB, start with segment A by inserting the LED's long lead (anode) into the "+" through hole. Repeat the process for all segment-A LEDs.
+1. There are seven segments "A" through "G" each with four LEDs. From the front of the digit PCB, start with segment A by inserting the LED's (**A**) long lead (anode) into the "+" through hole. Repeat the process for all segment-A LEDs.
 ![digitpcbLEDs-1](../img/digitpcbassembly/1-digitpcbassembly-LED.webp)
-1. Carefully turn over the digit PCB and rest it with the back facing up. Solder each of the LED leads onto the digit PCB.
-![digitpcbLEDs-2](../img/digitpcbassembly/2-digitpcbassembly-LED.webp)
-1. Snip off the excess from the LED leads. Resolder all LEDs into place by repeating the previous step
+1. Carefully turn over the digit PCB and rest it with the back facing up. Solder each LED pin onto the digit PCB, then (**A**) snip off the excess. Touch up the clipped pins with a small bit of solder to make smooth rounded beads instead of sharp points.
 ![digitpcbLEDs-3](../img/digitpcbassembly/3-digitpcbassembly-LED.webp)
 1. Clean the flux off with a cotton pad dabbed in isopropyl alcohol.
 ![digitpcbLEDs-4](../img/digitpcbassembly/4-digitpcbassembly-LED.webp)
-1. Repeat the previous steps for segments B through G until all 28 LEDs are soldered onto the PCB.
+1. Repeat the previous steps for segments B through G until all 28 LEDs are soldered onto the PCB. The picture below is the front face of the digit with all 28 LEDs soldered into place.
 ![digitpcbLEDs-5](../img/digitpcbassembly/5-digitpcbassembly-LED.webp)
 
 ## Add the Motor Pins
 
-1. The tools and components needed for this section includes 14, 2.54 mm male breakaway pins, needle nose pliers, soldering station and solder.
-![digitpcbmotorpins-1](../img/digitpcbassembly/1-digitpcbassembly-motorpins.webp)
-1. Break out 7 pairs of motor pins using needle nose pliers.
+1. Break out 7 pairs of 2.54mm male breakaway pins using needle nose pliers. 
 ![digitpcbmotorpins-2](../img/digitpcbassembly/2-digitpcbassembly-motorpins.webp)
 1. On the back of the digit PCB, place the short end of the pin-pair into each actuator segment through hole (seg-A through seg-G).
 ![digitpcbmotorpins-3](../img/digitpcbassembly/3-digitpcbassembly-motorpins.webp)
-1. On the front of the digit PCB, solder the reminder of the pins
+1. On the front of the digit PCB motor solder pins into place.
 ![digitpcbmotorpins-4](../img/digitpcbassembly/4-digitpcbassembly-motorpins.webp)
-1. Continuing on the front of the digit PCB, cut the pins flush on the pcb. Resolder the snipped pins to create smooth beads.
+1. Continuing on the front of the digit PCB, cut the pins flush on the pcb, then resolder the snipped pins to create smooth beads.
 ![digitpcbmotorpins-5](../img/digitpcbassembly/5-digitpcbassembly-motorpins.webp)
 1. Clean off the flux residue using a cotton pad dabbed in isopropyl alcohol.
 ![digitpcbmotorpins-6](../img/digitpcbassembly/6-digitpcbassembly-motorpins.webp)
@@ -127,7 +123,7 @@ Below is a photo showing the color variation of blue 5mm LEDs within the same ba
 ![digitpcbmicrocontroller-1](../img/digitpcbassembly/1-digitpcbassembly-micro.webp)
 1. Level the PCB and adjust the two 20 pin headers so they are perpendicular to the PCB. Solder the pins once in place. Snip all 40 of the pins flush, resolder each to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 ![digitpcbmicrocontroller-2](../img/digitpcbassembly/2-digitpcbassembly-micro.webp)
-1. Orient the Raspberry Pi Pico microcontroller so the USB port is facing in the same direction as the PCB silk screen, then gently mount the microcontroller onto the header.
+1. Orient the Raspberry Pi Pico 2040 microcontroller so the USB port is facing in the same direction as the PCB silk screen, then gently mount the microcontroller onto the header.
 ![digitpcbmicrocontroller-3](../img/digitpcbassembly/3-digitpcbassembly-micro.webp)
 
 Congratulations for assembling a digit PCB! Be sure to test the digit PCB before assembling the next one.

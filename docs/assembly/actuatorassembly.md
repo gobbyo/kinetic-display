@@ -65,7 +65,7 @@ In this section you'll create 21 unlabelled motors with 4 centimeter wires with 
 ![step1](../img/motor-wire/2-motor-wire-assembly.webp)
 1. Strip about 3mm off one end of each black and white wire.
 ![step2](../img/motor-wire/3-motor-wire-assembly.webp)
-1. Position the DC motor so the shaft is facing upward and the terminals are on the top. Set your soldering iron to 350°C then add solder to each motor terminal.
+1. Position the DC motor so the shaft is pointing away and the terminals are facing up. Set your soldering iron to 350°C then add solder to each motor terminal.
 ![step3](../img/motor-wire/4-motor-wire-assembly.webp)
 1. Solder the white wire onto the left motor terminal and the black wire onto the right motor terminal. Be sure to label the motors with 6 centimeter wire as C, D, and the upper colon.
 ![step4](../img/motor-wire/5-motor-wire-assembly.webp)
@@ -80,14 +80,14 @@ The tools and parts needed to add the 2.54mm Dupont connectors to each wire incl
 ![step3](../img/dupont-connections/3-motor-wire-dupont-connection.webp)
 1. Slide the Dupont connector housing onto the wires so the pins lock into the housing.
 ![step4](../img/dupont-connections/4-motor-wire-dupont-connection.webp)
-1. Repeat the previous steps for all remaining motors. Be sure to place your label on the black side of the motor for the nine, 6 centimeter wire length actuators with C, D or UC (upper colon). No need to label the 21 other actuators with 4 centimeter lengths
+1. Repeat the previous steps for all remaining motors. Be sure to place your label on the black-wire side of the motor for the nine, 6 centimeter wire length actuators with C, D or UC (upper colon). No need to label the 21 other actuators with 4 centimeter lengths
 ![step5](../img/dupont-connections/5-motor-wire-dupont-connection.webp)
 
 ## Motor Mount
 
 The tools and parts needed to assemble the motor mount include: 3d printed motor mount in PLA and Nylon pinion reduction gear, a 20mm metal shaft made from a jumbo paper clip, a soldering station capable of a heat setting of 250° C, clamping tweezers with a thin piece of metal.
 !!! note
-    Verify the shaft can easily slide through the pinion gear before assembling the motor. If you cannot easily rotate the pinion gear on the shaft, then you'll need a 1/16" drill bit and drill to widen the pinion gear shaft hole.
+    Verify the shaft can slide through the pinion gear before assembling the motor. If you cannot rotate the pinion gear on the shaft, then you'll need to reprint the pinion gear to ensure the hole is wide enough. Avoid an overly sized shaft hole as it allows the gear to shift side to side on the motor shaft and will cause the actuator to jam or stick.
 
 1. Cut the off the straight sections from the Jumbo paper clip.
 ![actuatorstep2](../img/actuator/2-actuator.webp)
