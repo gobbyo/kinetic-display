@@ -94,6 +94,7 @@ Below is a photo showing the color variation of blue 5mm LEDs within the same ba
 ![digitpcbmotordriver1](../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp)
 1. CAREFULLY insert the motor driver into the 16 pin header and ensure none of the pins on the motor driver are bent or protruding from the 16 pin header.
 ![digitpcbmotordriver2](../img/digitpcbassembly/2-digitpcbassembly-motordriver.webp)
+1. Repeat the install for the remaining motor drivers.
 
 ## Add the PCB Mount, Two port (2P) Terminal Block Connectors
 
