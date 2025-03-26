@@ -113,9 +113,9 @@ Below is a photo showing the color variation of blue 5mm LEDs within the same ba
 1. On the front of the digit PCB, insert the ceramic capacitor pins into the through holes titled "c2". Turn the digit PCB over to the back and solder the capacitor.
 !!! note
     Ceramic capacitors do not have polarity and can be inserted in any direction.
-![digitpcbcapacitor-2](../img/digitpcbassembly/2-digitpcbassembly-capacitor.webp)
-3. On the back of the digit PCB, cut the pins flush, resolder to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
-![digitpcbcapacitor-3](../img/digitpcbassembly/3-digitpcbassembly-capacitor.webp)
+![digitpcbcapacitor-2](../img/digitpcbassembly/3-digitpcbassembly-capacitor.webp)
+4. On the back of the digit PCB, cut the pins flush, resolder to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
+![digitpcbcapacitor-3](../img/digitpcbassembly/4-digitpcbassembly-capacitor.webp)
 
 ## Add the 20 pin Headers and Install the Microcontroller
 
