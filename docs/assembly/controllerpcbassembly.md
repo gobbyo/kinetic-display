@@ -46,16 +46,12 @@ This section details the assembly of digits 0, 2, and 3.
 
 ## Assemble Digit 1
 
-1. From the front side of the digit PCB, (**A**) insert the 16 pin header into the through holes by aligning the notch with the digit PCB top silk layer outline of the 16 pins. The notch in the 16-pin header is used to ensure correct orientation when connecting the L293D motor driver. Carefully turn over the digit PCB while keeping the 16 pin header in the through holes.
-![digitpcb-4](../img/digitpcbassembly/4-digitpcbassembly.webp)
-1. (**A**) Solder the 16 pins and repeat the previous step until all 4 of the 16 pin headers are soldered into place.
-![digitpcb-5](../img/digitpcbassembly/5-digitpcbassembly.webp)
-1. From the back of the digit PCB, (**A**) cut off the soldered pins.
-![digitpcb-6](../img/digitpcbassembly/6-digitpcbassembly.webp)
-1. Touch up the clipped pins with a small bit of solder to make (**A**) smooth rounded beads instead of sharp points.
-![digitpcb-7](../img/digitpcbassembly/7-digitpcbassembly.webp)
-1. Clean up the soldered pins by removing the flux using a cotton pad dabbed with isopropyl alcohol. Repeat the previous step if you find your cotton pad is being torn from any protruding pins.
-![digitpcb-8](../img/digitpcbassembly/8-digitpcbassembly.webp)
+On the controller PCB, follow the instructions from the digit PCB assembly to assemble digit one:
+
+1. [Add the 16 pin headers](digitpcbassembly.md#add-the-16-pin-headers). There is an additional (5th) 16 pin header you'll need to add to the controller PCB.
+1. [Add the 28 5mm LEDs](digitpcbassembly.md#add-the-28-leds). Do not solder the 5mm LED into the "Top-LED1" or "LWR-LED1" location on the controller PCB.
+1. [Add the motor pins](digitpcbassembly.md#add-the-motor-pins). There are two additional motor pins (pairs) you'll need to add, on the back face of the PCB titled "Colon-Top" and "Colon-LWR"
+
 
 ## Add the 28 LEDs
 
