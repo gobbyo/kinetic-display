@@ -49,38 +49,8 @@ This section details the assembly of digits 0, 2, and 3.
 On the controller PCB, follow the instructions from the digit PCB assembly to assemble digit one:
 
 1. [Add the 16 pin headers](digitpcbassembly.md#add-the-16-pin-headers). There is an additional (5th) 16 pin header you'll need to add to the controller PCB.
-1. [Add the 28 5mm LEDs](digitpcbassembly.md#add-the-28-leds). Do not solder the 5mm LED into the "Top-LED1" or "LWR-LED1" location on the controller PCB.
+1. [Add the 28 5mm LEDs](digitpcbassembly.md#add-the-28-leds). Do not solder the 5mm LED into the "Top-LED1" or "LWR-LED1" location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.
 1. [Add the motor pins](digitpcbassembly.md#add-the-motor-pins). There are two additional motor pins (pairs) you'll need to add, on the back face of the PCB titled "Colon-Top" and "Colon-LWR"
-
-
-## Add the 28 LEDs
-
-!!! note
-    BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadboard and use a digital camera to spot any variations in color when the LEDs are lit.
-Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v. Note the (**A**) light blue LEDs and the (**B**) purple LEDs within the same blue batch of LEDs.
-![blueLEDs](../img/digitpcbassembly/ledcolors.webp)
-
-1. There are seven segments "A" through "G" each with four LEDs. From the front of the digit PCB, start with segment A by inserting the LED's (**A**) long lead (anode) into the "+" through hole. Repeat the process for all segment-A LEDs.
-![digitpcbLEDs-1](../img/digitpcbassembly/1-digitpcbassembly-LED.webp)
-1. Carefully turn over the digit PCB and rest it with the back facing up. Solder each LED pin onto the digit PCB, then (**A**) snip off the excess. Touch up the clipped pins with a small bit of solder to make smooth rounded beads instead of sharp points.
-![digitpcbLEDs-3](../img/digitpcbassembly/3-digitpcbassembly-LED.webp)
-1. Clean the flux off with a cotton pad dabbed in isopropyl alcohol.
-![digitpcbLEDs-4](../img/digitpcbassembly/4-digitpcbassembly-LED.webp)
-1. Repeat the previous steps for segments B through G until all 28 LEDs are soldered onto the PCB. The picture below is the front face of the digit with all 28 LEDs soldered into place.
-![digitpcbLEDs-5](../img/digitpcbassembly/5-digitpcbassembly-LED.webp)
-
-## Add the Motor Pins
-
-1. Break out 7 pairs of 2.54mm male breakaway pins using needle nose pliers. 
-![digitpcbmotorpins-2](../img/digitpcbassembly/2-digitpcbassembly-motorpins.webp)
-1. On the back of the digit PCB, place the short end of the pin-pair into each actuator segment through hole (seg-A through seg-G).
-![digitpcbmotorpins-3](../img/digitpcbassembly/3-digitpcbassembly-motorpins.webp)
-1. On the front of the digit PCB motor solder pins into place.
-![digitpcbmotorpins-4](../img/digitpcbassembly/4-digitpcbassembly-motorpins.webp)
-1. Continuing on the front of the digit PCB, cut the pins flush on the pcb, then resolder the snipped pins to create smooth beads.
-![digitpcbmotorpins-5](../img/digitpcbassembly/5-digitpcbassembly-motorpins.webp)
-1. Clean off the flux residue using a cotton pad dabbed in isopropyl alcohol.
-![digitpcbmotorpins-6](../img/digitpcbassembly/6-digitpcbassembly-motorpins.webp)
 
 ## Mount the L293D 16-pin IC Stepper Motor Drivers
 
