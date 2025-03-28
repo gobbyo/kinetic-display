@@ -5,13 +5,11 @@ Run the tests in this section after assembling each digit PCB to ensure all the 
 ## Prerequisites
 
 - [Completed digit PCB ready for actuators](digitpcbassembly.md).
-- 5v power supply. If you do not have a 5v power supply you can make one from the parts in the BOM.
 - Computer and microcontroller with the [prerequisite software](../prerequisitesoftware.md).
-
-!!! warning
-     Use a grounding bracelet and anti static wrist strap with grounding plug and rubber mat to prevent damage to you, your computer, and Raspberry Pi Pico/PicoWs
 
 ![testpcbactuator-1](../img/testpcbactuator/testpcbactuator-1.webp)
 ![testpcbactuator-2](../img/testpcbactuator/testpcbactuator-2.webp)
 ![testpcbactuator-3](../img/testpcbactuator/testpcbactuator-3.webp)
 ![testpcbactuator-4](../img/testpcbactuator/testpcbactuator-4.webp)
+![testpcbactuator-5](../img/testpcbactuator/testpcbactuator-5.webp)
+![testpcbactuator-6](../img/testpcbactuator/testpcbactuator-6.webp)

@@ -1,10 +1,14 @@
-# Digit PCB Assembly
+# Controller and Digit 1 PCB Assembly
 
-The display has 4 digits. The digits are numbered from right to left, 0-3, when looking at the front of display. The digit PCBs are digits 0, 2, and 3 whereas the controller PCB is digit 1 and includes the colons. The digit PCBs are the foundation of the display and serve several important functions:
+Digit 1 and the colons are on a single PCB. Digit 1 is identical to digits 0, 2, and 3 except it is contained on a single PCB with the colons. The controller operates the colons and is the central command and control for the display performing the following functions:
 
-- provides a mechanical backstop to the actuator's segment when retracting into the display
-- provides a consistent distance of dispersion for the lighting of the segment, giving each segment a uniform glow rather than spots of light
-- provides the traditional role of reducing the wiring, efficiently connects various electronic component minimizing the overall size, reliable, cost-effective, and consistent quality of the circuitry
+- Sends commands to digits as to what to display (i.e. 0-9, A-F)
+- Sends commands for the brightness of the digits
+- When in the Admin mode, it will transmit its own wifi service that provides a way to change the display settings
+- Manages the scheduler, which is the mechanism for displaying time, date, external temperature and humidity, and interior temperature and humidity.
+- When connected to a wifi network, it will obtain its public facing IP address, look up the time zone it is located in, and set the display to the local time
+- When connected to a wifi network, it will obtain the closest weather station and, depending on the scheduler, may display the external temperature and humidity.
+- Manages the low power consumption mode by turning off the power to digits 0-3.  When awakened, it will turn back on the power to digits 0-3.
 
 This section details the assembly of digits 0, 2, and 3.
 
@@ -37,16 +41,8 @@ This section details the assembly of digits 0, 2, and 3.
 | Yes | Mini flush cutters   | ![tool-6](../img/tools/tool-6.webp)|
 | Yes | Isopropyl Alcohol | ![tool-3](../img/tools/tool-3.webp)|
 | Yes | Cotton Facial Pads | ![tool-2](../img/tools/tool-2.webp)|
-| No  | Label maker | ![tool-5s](../img/tools/tool-5.webp) |
 
-## Label the front and back sides of the digit PCB
-
-1. Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the (**A**) label to the (**B**) FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Also note that digit 0 (**C**) in the picture below is a completed digit PCB ready for mounting onto the display.
-![digitpcb-2](../img/digitpcbassembly/2-digitpcbassembly.webp)
-1. Add the (**A**) label to the (**B**) BACK FACING SIDE of each of the 3 digit PCBs as placed in the picture below.
-![digitpcb-3](../img/digitpcbassembly/3-digitpcbassembly.webp)
-
-## Add the 16 pin headers
+## Assemble Digit 1
 
 1. From the front side of the digit PCB, (**A**) insert the 16 pin header into the through holes by aligning the notch with the digit PCB top silk layer outline of the 16 pins. The notch in the 16-pin header is used to ensure correct orientation when connecting the L293D motor driver. Carefully turn over the digit PCB while keeping the 16 pin header in the through holes.
 ![digitpcb-4](../img/digitpcbassembly/4-digitpcbassembly.webp)
