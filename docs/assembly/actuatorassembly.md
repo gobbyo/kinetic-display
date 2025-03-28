@@ -88,6 +88,8 @@ The tools and parts needed to add the 2.54mm Dupont connectors to each wire incl
 
 ## Motor Mount
 
+In this section you'll assemble the motor mounts. Properly installed parts on the motor mount are essential to making the actuators work without issues such as having a segment stick or jam in an extended or retracted position. The figure below summarizes the assembly for the motor mount. There are three parts: the **(A) motor mount**, the **(B) pinion reduction gear**, and **(C) pinion gear shaft**. Discard the red section.
+![actuatorfigure](../img/actuator/motor-mount-figure.webp)
 The tools and parts needed to assemble the motor mount include: 3d printed motor mount in PLA and Nylon pinion reduction gear, a 20mm metal shaft made from a jumbo paper clip, a soldering station capable of a heat setting of 250° C, clamping tweezers with a thin piece of metal.
 
 1. Cut the off the straight sections from the Jumbo paper clip.

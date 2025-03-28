@@ -2,6 +2,8 @@
 
 ## Prerequisites
 
+Read and bookmark the instructions to install [Micropython onto your Raspberry Pi Pico](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#what-is-micropython).
+
 1. [Install Visual Studio Code](https://code.visualstudio.com/download)
 2. With VS Code installed and open, click on the extensions icon on the [Activity bar](https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout) and install the following [extensions from Marketplace](https://code.visualstudio.com/docs/editor/extension-marketplace):
     1. **Python** by Microsoft
@@ -13,7 +15,6 @@
     3. Verify an **RPI-RP2** storage device appears
     4. Drag and drop the **flash_nuke.uf2** file into the RPI-RP2 storage
 5. Download the micropython Uf2 file for the [Raspberry Pi Pico](https://micropython.org/download/RPI_PICO/) and [Raspberry Pi PicoW](https://micropython.org/download/RPI_PICO_W/)
-6. Install [Micropython onto your Raspberry Pi Pico](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#what-is-micropython)
 
 ## Verify Micropython on your Raspberry Pi Pico
 
