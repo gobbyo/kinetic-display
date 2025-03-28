@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Digit PCBs - Kinetic Display</title>
+        <title>Controller and Digit 1 PCB Assembly - Kinetic Display</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -68,7 +68,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Assemble</a>
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Assemble</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -76,7 +76,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Digit PCBs</a>
+    <a href="../digitpcbassembly/" class="dropdown-item">Digit PCBs</a>
 </li>
                                     
 <li>
@@ -100,16 +100,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../actuatorassembly/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../deploydigitproject/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -128,17 +118,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#digit_pcb_assembly" class="nav-link">Digit PCB Assembly</a>
+            <li class="nav-item" data-bs-level="1"><a href="#controller_and_digit_1_pcb_assembly" class="nav-link">Controller and Digit 1 PCB Assembly</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#prerequisites" class="nav-link">Prerequisites</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#label_the_front_and_back_sides_of_the_digit_pcb" class="nav-link">Label the front and back sides of the digit PCB</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#add_the_16_pin_headers" class="nav-link">Add the 16 pin headers</a>
+            <li class="nav-item" data-bs-level="2"><a href="#assemble_digit_1" class="nav-link">Assemble Digit 1</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -177,12 +163,16 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="digit_pcb_assembly">Digit PCB Assembly<a class="headerlink" href="#digit_pcb_assembly" title="Permanent link">&para;</a></h1>
-<p>The display has 4 digits. The digits are numbered from right to left, 0-3, when looking at the front of display. The digit PCBs are digits 0, 2, and 3 whereas the controller PCB is digit 1 and includes the colons. The digit PCBs are the foundation of the display and serve several important functions:</p>
+<h1 id="controller_and_digit_1_pcb_assembly">Controller and Digit 1 PCB Assembly<a class="headerlink" href="#controller_and_digit_1_pcb_assembly" title="Permanent link">&para;</a></h1>
+<p>Digit 1 and the colons are on a single PCB. Digit 1 is identical to digits 0, 2, and 3 except it is contained on a single PCB with the colons. The controller operates the colons and is the central command and control for the display performing the following functions:</p>
 <ul>
-<li>provides a mechanical backstop to the actuator's segment when retracting into the display</li>
-<li>provides a consistent distance of dispersion for the lighting of the segment, giving each segment a uniform glow rather than spots of light</li>
-<li>provides the traditional role of reducing the wiring, efficiently connects various electronic component minimizing the overall size, reliable, cost-effective, and consistent quality of the circuitry</li>
+<li>Sends commands to digits as to what to display (i.e. 0-9, A-F)</li>
+<li>Sends commands for the brightness of the digits</li>
+<li>When in the Admin mode, it will transmit its own wifi service that provides a way to change the display settings</li>
+<li>Manages the scheduler, which is the mechanism for displaying time, date, external temperature and humidity, and interior temperature and humidity.</li>
+<li>When connected to a wifi network, it will obtain its public facing IP address, look up the time zone it is located in, and set the display to the local time</li>
+<li>When connected to a wifi network, it will obtain the closest weather station and, depending on the scheduler, may display the external temperature and humidity.</li>
+<li>Manages the low power consumption mode by turning off the power to digits 0-3.  When awakened, it will turn back on the power to digits 0-3.</li>
 </ul>
 <p>This section details the assembly of digits 0, 2, and 3.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
@@ -287,21 +277,9 @@
 <td style="text-align: left;">Cotton Facial Pads</td>
 <td style="text-align: center;"><img alt="tool-2" src="../../img/tools/tool-2.webp" /></td>
 </tr>
-<tr>
-<td style="text-align: center;">No</td>
-<td style="text-align: left;">Label maker</td>
-<td style="text-align: center;"><img alt="tool-5s" src="../../img/tools/tool-5.webp" /></td>
-</tr>
 </tbody>
 </table>
-<h2 id="label_the_front_and_back_sides_of_the_digit_pcb">Label the front and back sides of the digit PCB<a class="headerlink" href="#label_the_front_and_back_sides_of_the_digit_pcb" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the (<strong>A</strong>) label to the (<strong>B</strong>) FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Also note that digit 0 (<strong>C</strong>) in the picture below is a completed digit PCB ready for mounting onto the display.
-<img alt="digitpcb-2" src="../../img/digitpcbassembly/2-digitpcbassembly.webp" /></li>
-<li>Add the (<strong>A</strong>) label to the (<strong>B</strong>) BACK FACING SIDE of each of the 3 digit PCBs as placed in the picture below.
-<img alt="digitpcb-3" src="../../img/digitpcbassembly/3-digitpcbassembly.webp" /></li>
-</ol>
-<h2 id="add_the_16_pin_headers">Add the 16 pin headers<a class="headerlink" href="#add_the_16_pin_headers" title="Permanent link">&para;</a></h2>
+<h2 id="assemble_digit_1">Assemble Digit 1<a class="headerlink" href="#assemble_digit_1" title="Permanent link">&para;</a></h2>
 <ol>
 <li>From the front side of the digit PCB, (<strong>A</strong>) insert the 16 pin header into the through holes by aligning the notch with the digit PCB top silk layer outline of the 16 pins. The notch in the 16-pin header is used to ensure correct orientation when connecting the L293D motor driver. Carefully turn over the digit PCB while keeping the 16 pin header in the through holes.
 <img alt="digitpcb-4" src="../../img/digitpcbassembly/4-digitpcbassembly.webp" /></li>
