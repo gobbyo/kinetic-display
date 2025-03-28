@@ -80,15 +80,19 @@
 </li>
                                     
 <li>
-    <a href="../assembly/deploydigitproject/" class="dropdown-item">Deploy Digit Project</a>
-</li>
-                                    
-<li>
-    <a href="../assembly/buckassembly/" class="dropdown-item">5v Power Supply</a>
+    <a href="../assembly/deploydigitproject/" class="dropdown-item">Deploy Digit and Controller Projects</a>
 </li>
                                     
 <li>
     <a href="../assembly/digitpcbtest/" class="dropdown-item">Test Digit PCBs</a>
+</li>
+                                    
+<li>
+    <a href="../assembly/controllerpcbassembly/" class="dropdown-item">Controller PCB</a>
+</li>
+                                    
+<li>
+    <a href="../assembly/buckassembly/" class="dropdown-item">5v Power Supply</a>
 </li>
                                 </ul>
                             </li>
@@ -172,14 +176,14 @@
 <h2 id="verify_micropython_on_your_raspberry_pi_pico">Verify Micropython on your Raspberry Pi Pico<a class="headerlink" href="#verify_micropython_on_your_raspberry_pi_pico" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Open Visual Studio Code</li>
-<li>On the top menu select <strong>Terminal-&gt;New Terminal</strong></li>
+<li>On the top menu select the <strong>(A) elipse ...</strong> (if present), then <strong>(B) Terminal-&gt;New Terminal</strong>.
+<img alt="micropico-0" src="../img/prereq-software/prereqsoftware-3.webp" /></li>
 <li>In the terminal pane, select the terminal menu <strong>"A"</strong> followed by the MicroPico vREPL sub-menu <strong>"B"</strong>
-<img alt="micropico-1" src="../img/prereq-software/micropicoscreenshot-1.webp" /></li>
-<li>The "MicroPico vREPL" terminal will show your Pico is disconnected
-<img alt="micropico-2" src="../img/prereq-software/micropicoscreenshot-2.webp" /></li>
-<li>Plug your Raspberry Pi Pico into the USB port and the terminal will show your Pico as connected
-<img alt="micropico-3" src="../img/prereq-software/micropicoscreenshot-3.webp" /></li>
-<li>Verify your Pico's onboard LED turns on and off by typing the following code in the terminal window and copy/paste each line separately:</li>
+<img alt="micropico-1" src="../img/prereq-software/prereqsoftware-4.webp" />
+micropicoscreenshot-2.webp)</li>
+<li>Plug your Raspberry Pi Pico into the USB port and the <strong>(A) [Status bar]</strong>(https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix/recipes/notifications?view=vs-2022#status-bar) will show your Pico as connected
+<img alt="micropico-3" src="../img/prereq-software/prereqsoftware-6.webp" /></li>
+<li>Verify your Pico's onboard LED turns on and off by typing the following code in the <strong>(B) Terminal pane</strong> (screen capture above) and copy/paste each line separately:</li>
 </ol>
 <pre class="codehilite"><code class="language-python">from machine import Pin
 p = Pin(25,Pin.OUT)
