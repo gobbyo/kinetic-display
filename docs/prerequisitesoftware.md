@@ -19,14 +19,14 @@ Read and bookmark the instructions to install [Micropython onto your Raspberry P
 ## Verify Micropython on your Raspberry Pi Pico
 
 1. Open Visual Studio Code
-1. On the top menu select **Terminal->New Terminal**
+1. On the top menu select the **(A) elipse ...** (if present), then **(B) Terminal->New Terminal**.
+![micropico-0](./img/prereq-software/prereqsoftware-3.webp)
 1. In the terminal pane, select the terminal menu **"A"** followed by the MicroPico vREPL sub-menu **"B"**
-![micropico-1](./img/prereq-software/micropicoscreenshot-1.webp)
-1. The "MicroPico vREPL" terminal will show your Pico is disconnected
-![micropico-2](./img/prereq-software/micropicoscreenshot-2.webp)
-1. Plug your Raspberry Pi Pico into the USB port and the terminal will show your Pico as connected
-![micropico-3](./img/prereq-software/micropicoscreenshot-3.webp)
-1. Verify your Pico's onboard LED turns on and off by typing the following code in the terminal window and copy/paste each line separately:
+![micropico-1](./img/prereq-software/prereqsoftware-4.webp)
+micropicoscreenshot-2.webp)
+1. Plug your Raspberry Pi Pico into the USB port and the **(A) [Status bar]**(https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix/recipes/notifications?view=vs-2022#status-bar) will show your Pico as connected
+![micropico-3](./img/prereq-software/prereqsoftware-6.webp)
+1. Verify your Pico's onboard LED turns on and off by typing the following code in the **(B) Terminal pane** (screen capture above) and copy/paste each line separately:
 
 ```python
 from machine import Pin
