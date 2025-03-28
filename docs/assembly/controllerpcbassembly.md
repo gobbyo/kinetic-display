@@ -21,16 +21,18 @@ This section details the assembly of digits 0, 2, and 3.
 
 | Quantity | Component | Image |
 | :--: | :------| :-----: |
-| 4 | 16 pin IC socket | ![component-1](../img/component/component-1.webp)|
-| 4 | L293D stepper motor driver | ![component-2](../img/component/component-2.webp)|
-| 2 | 20 pin female header connector | ![component-3](../img/component/component-3.webp)|
+| 5 | 16 pin IC socket | ![component-1](../img/component/component-1.webp)|
+| 5 | L293D stepper motor driver | ![component-2](../img/component/component-2.webp)|
+| 4 | 20 pin female header connector | ![component-3](../img/component/component-3.webp)|
 | 1 | 20 pin single row breakaway male connector | ![component-4](../img/component/component-4.webp)|
-| 2 | 2 Port PCB Mount Screw Terminal Block Connector Straight Pin | ![component-5](../img/component/component-5.webp)|
-| 1 | 0.1μ farad ceramic capacitor | ![component-6](../img/component/component-6.webp)|
-| 1 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp)|
+| 5 | 2 Port PCB Mount Screw Terminal Block Connector Straight Pin | ![component-5](../img/component/component-5.webp)|
+| 2 | 0.1μ farad ceramic capacitor | ![component-6](../img/component/component-6.webp)|
+| 2 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp)|
 | 28 | 5mm Flat top LED, anode long lead (any color) | ![component-8](../img/component/component-8.webp)|
-| 1 | Raspberry Pi Pico with Headers | ![component-9](../img/component/component-9.webp)|
-| 3 | Digit PCBs | See next section |
+| 2 | 3mm Flat top LED, anode long lead (any color) | ![component-17](../img/component/component-17.webp)|
+| 1 | Raspberry Pi Pico 2040 with Headers | ![component-9](../img/component/component-9.webp)|
+| 1 | Raspberry Pi Pico W 2040 with Headers | ![component-9](../img/component/component-16.webp)|
+| 1 | Controller PCB | See next section |
 
 ***Table of tools***
 

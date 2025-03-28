@@ -18,6 +18,8 @@ nav:
   - Assemble: 
     - Actuators: ./assembly/actuatorassembly.md
     - Digit PCBs: ./assembly/digitpcbassembly.md
-    - Deploy Digit Project: ./assembly/deploydigitproject.md
-    - 5v Power Supply: ./assembly/buckassembly.md
+    - Deploy Digit and Controller Projects: ./assembly/deploydigitproject.md
     - Test Digit PCBs: ./assembly/digitpcbtest.md
+    - Controller PCB: ./assembly/controllerpcbassembly.md
+    - 5v Power Supply: ./assembly/buckassembly.md
+    

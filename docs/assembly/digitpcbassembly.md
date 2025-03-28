@@ -26,7 +26,7 @@ This section details the assembly of digits 0, 2, and 3.
 | 1 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp)|
 | 28 | 5mm Flat top LED, anode long lead (any color) | ![component-8](../img/component/component-8.webp)|
 | 1 | Raspberry Pi Pico with Headers | ![component-9](../img/component/component-9.webp)|
-| 3 | Digit PCBs | See next section |
+| 3 | Digit PCBs | See [labelling the digit PCBs](#label-the-digit-pcb) |
 
 ***Table of tools***
 
@@ -39,7 +39,7 @@ This section details the assembly of digits 0, 2, and 3.
 | Yes | Cotton Facial Pads | ![tool-2](../img/tools/tool-2.webp)|
 | No  | Label maker | ![tool-5s](../img/tools/tool-5.webp) |
 
-## Label the front and back sides of the digit PCB
+## Label the Digit PCB
 
 1. Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the (**A**) label to the (**B**) FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Also note that digit 0 (**C**) in the picture below is a completed digit PCB ready for mounting onto the display.
 ![digitpcb-2](../img/digitpcbassembly/2-digitpcbassembly.webp)
