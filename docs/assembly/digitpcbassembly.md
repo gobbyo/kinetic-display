@@ -6,7 +6,12 @@ The display has 4 digits. The digits are numbered from right to left, 0-3, when 
 - provides a consistent distance of dispersion for the lighting of the segment, giving each segment a uniform glow rather than spots of light
 - provides the traditional role of reducing the wiring, efficiently connects various electronic component minimizing the overall size, reliable, cost-effective, and consistent quality of the circuitry
 
-This section details the assembly of digits 0, 2, and 3.
+This section details the assembly of digits 0, 2, and 3. Note the pictures below showing the fully assembled PCBs that will be covered in this section.
+
+Front face fully assembled.
+![digit pcb front face](../img/digitpcbassembly/1-digitpcbassembly-frontface.webp)
+Back face fully assembled.
+![digit pcb back face](../img/digitpcbassembly/1-digitpcbassembly-backface.webp)
 
 ## Prerequisites
 
