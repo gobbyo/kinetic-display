@@ -138,11 +138,19 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#assemble_digit_1" class="nav-link">Assemble Digit 1</a>
+            <li class="nav-item" data-bs-level="2"><a href="#assemble_digit_one" class="nav-link">Assemble Digit One</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#mount_the_l293d_16-pin_ic_stepper_motor_drivers" class="nav-link">Mount the L293D 16-pin IC Stepper Motor Drivers</a>
+            <li class="nav-item" data-bs-level="2"><a href="#add_the_3mm_flat_top_leds_for_the_colon_segments" class="nav-link">Add the 3mm Flat Top LEDs for the Colon Segments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#add_the_pnp_and_npn_transistors" class="nav-link">Add the PNP and NPN transistors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#mount_the_l293d_16-pin_ic_motor_drivers" class="nav-link">Mount the L293D 16-pin IC Motor Drivers</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -298,22 +306,41 @@ Below is the fully assembled, back side of the controller PCB.
 </tr>
 </tbody>
 </table>
-<h2 id="assemble_digit_1">Assemble Digit 1<a class="headerlink" href="#assemble_digit_1" title="Permanent link">&para;</a></h2>
+<h2 id="assemble_digit_one">Assemble Digit One<a class="headerlink" href="#assemble_digit_one" title="Permanent link">&para;</a></h2>
 <p>On the controller PCB, follow the instructions from the digit PCB assembly to assemble digit one.</p>
 <ol>
-<li>From the front face of the controller PCB, <a href="../digitpcbassembly/#add-the-16-pin-headers">add the 16 pin headers</a> as previously completed for the digit PCBs. Note in the picture below that you'll add an additional (5th) 16 pin header to the controller PCB.
+<li>On the front face of the controller PCB, <a href="../digitpcbassembly/#add-the-16-pin-headers">add the 16 pin headers</a> as previously completed for the digit PCBs. Note the highlighted sections in the picture below that you'll add an additional (5th) 16 pin header to the controller PCB.
 <img alt="1-controllerpcb" src="../../img/controllerpcb/1-controllerpcb.webp" /></li>
-<li>From the front face of the controller PCB, <a href="../digitpcbassembly/#add-the-28-leds">add the 28 5mm LEDs</a>as previously completed for the digit PCBs. Do not solder the 5mm LED into the "Top-LED1" or "LWR-LED1" location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.
-<img alt="1-controllerpcb" src="../../img/controllerpcb/2-controllerpcb.webp" /></li>
-<li><a href="../digitpcbassembly/#add-the-motor-pins">Add the motor pins</a>. There are two additional motor pins (pairs) you'll need to add, on the back face of the PCB titled "Colon-Top" and "Colon-LWR"</li>
+<li>On the front face of the controller PCB, <a href="../digitpcbassembly/#add-the-28-leds">add the 28 5mm LEDs</a> as previously completed for the digit PCBs. Do not solder the 5mm LED into the <strong>Top-LED1</strong> or <strong>LWR-LED1</strong> location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.
+<img alt="2-controllerpcb" src="../../img/controllerpcb/2-controllerpcb.webp" /></li>
+<li>On the back face of the controller PCB, <a href="../digitpcbassembly/#add-the-motor-pins">add the motor pins</a>. Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add, and an additional 3-pin connector for the Digital Humidity Temperature (DHT) sensor.
+<img alt="3-controllerpcb" src="../../img/controllerpcb/3-controllerpcb.webp" /></li>
 </ol>
-<h2 id="mount_the_l293d_16-pin_ic_stepper_motor_drivers">Mount the L293D 16-pin IC Stepper Motor Drivers<a class="headerlink" href="#mount_the_l293d_16-pin_ic_stepper_motor_drivers" title="Permanent link">&para;</a></h2>
+<h2 id="add_the_3mm_flat_top_leds_for_the_colon_segments">Add the 3mm Flat Top LEDs for the Colon Segments<a class="headerlink" href="#add_the_3mm_flat_top_leds_for_the_colon_segments" title="Permanent link">&para;</a></h2>
+<p>For this section in addition to the soldering equipment you needed when previously mounting the 5mm flat top LEDs, you'll need the two 3D printed colon segments, label <strong>A</strong> in the diagram below, as fabricated in the <a href="../../createandorder/3dprints/">3D print the display parts</a> document.
+<img alt="6-controllerpcb" src="../../img/controllerpcb/6-controllerpcb.webp" /></p>
 <ol>
-<li>From the front of the digit PCB, orient the motor driver so the notch (or pin 1) is aligned with the 16 pin header.
-<img alt="digitpcbmotordriver1" src="../../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp" /></li>
-<li>CAREFULLY insert the motor driver into the 16 pin header and ensure none of the pins on the motor driver are bent or protruding from the 16 pin header.
-<img alt="digitpcbmotordriver2" src="../../img/digitpcbassembly/2-digitpcbassembly-motordriver.webp" /></li>
-<li>Repeat the install for the remaining motor drivers.</li>
+<li>Following label <strong>B</strong> in the diagram above, insert the 3mm flat top LEDs into <strong>Top-LED1</strong> and <strong>LWR-LED1</strong> on the front face of the controller PCB. Follow the same 5mm LED install process and be sure to insert the long lead anode of the LED into the <strong>+</strong> through hole.</li>
+<li>Following the diagram below, slide the colon segments over the 3mm LED. Note the lower base of the LED lense may need to be lightly sanded with 300 grid sandpaper if it does not easily slide into the colon segment.
+<img alt="7-controllerpcb" src="../../img/controllerpcb/7-controllerpcb.webp" /></li>
+<li>Following the diagram below on the back side of the controller PCB, align the colon segment so its square base is positioned into the square hole of the PCB.
+<img alt="8-controllerpcb" src="../../img/controllerpcb/8-controllerpcb.webp" /></li>
+<li>Solder the 3mm LEDs into place.
+<img alt="9-controllerpcb" src="../../img/controllerpcb/9-controllerpcb.webp" /></li>
+<li>Optionally you can use a metric ruler to verify the LEDs protrude perpendicular from the PCB and are 14mm from the PCB to the top of the lens of the LED. This optional step insures the proper length of the 3mm LEDs.
+<img alt="10-controllerpcb" src="../../img/controllerpcb/10-controllerpcb.webp" /></li>
+</ol>
+<h2 id="add_the_pnp_and_npn_transistors">Add the PNP and NPN transistors<a class="headerlink" href="#add_the_pnp_and_npn_transistors" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Following the diagram below, solder the s8550D PNP transistor into the through hole (mis-) labelled 2N8550 on the front face of the controller PCB.
+<img alt="4-controllerpcb" src="../../img/controllerpcb/4-controllerpcb.webp" /></li>
+<li>Following the diagram below, solder the 2N2222A PNP transistor into the though hole labelled 2N2222 on the front face of the controller PCB.
+<img alt="5-controllerpcb" src="../../img/controllerpcb/5-controllerpcb.webp" /></li>
+</ol>
+<h2 id="mount_the_l293d_16-pin_ic_motor_drivers">Mount the L293D 16-pin IC Motor Drivers<a class="headerlink" href="#mount_the_l293d_16-pin_ic_motor_drivers" title="Permanent link">&para;</a></h2>
+<ol>
+<li>On the front face of the controller PCB, <a href="../digitpcbassembly/#mount-the-l293d-16-pin-ic-stepper-motor-drivers">mount the L293D 16-pin IC Stepper Motor Drivers</a> as previously completed for the digit PCBs.
+<img alt="5-controllerpcb-motordriverIC" src="../../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp" /></li>
 </ol>
 <h2 id="add_the_pcb_mount_two_port_2p_terminal_block_connectors">Add the PCB Mount, Two port (2P) Terminal Block Connectors<a class="headerlink" href="#add_the_pcb_mount_two_port_2p_terminal_block_connectors" title="Permanent link">&para;</a></h2>
 <ol>
