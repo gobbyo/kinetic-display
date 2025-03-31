@@ -51,9 +51,9 @@ Below is the fully assembled, back side of the controller PCB.
 
 On the controller PCB, follow the instructions from the digit PCB assembly to assemble digit one.
 
-1. [Add the 16 pin headers](digitpcbassembly.md#add-the-16-pin-headers). Note **"A"** in the picture below that you'll add an additional (5th) 16 pin header to the controller PCB.
+1. From the front face of the controller PCB, [add the 16 pin headers](digitpcbassembly.md#add-the-16-pin-headers) as previously completed for the digit PCBs. Note in the picture below that you'll add an additional (5th) 16 pin header to the controller PCB.
 ![1-controllerpcb](../img/controllerpcb/1-controllerpcb.webp)
-1. [Add the 28 5mm LEDs](digitpcbassembly.md#add-the-28-leds). Do not solder the 5mm LED into the "Top-LED1" or "LWR-LED1" location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.
+1. From the front face of the controller PCB, [add the 28 5mm LEDs](digitpcbassembly.md#add-the-28-leds)as previously completed for the digit PCBs. Do not solder the 5mm LED into the "Top-LED1" or "LWR-LED1" location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.
 ![1-controllerpcb](../img/controllerpcb/2-controllerpcb.webp)
 1. [Add the motor pins](digitpcbassembly.md#add-the-motor-pins). There are two additional motor pins (pairs) you'll need to add, on the back face of the PCB titled "Colon-Top" and "Colon-LWR"
 
