@@ -71,6 +71,7 @@ For this section in addition to the soldering equipment you needed when previous
 4. Solder the 3mm LEDs into place.
 ![9-controllerpcb](../img/controllerpcb/9-controllerpcb.webp)
 5. Optionally you can use a metric ruler to verify the LEDs protrude perpendicular from the PCB and are 14mm from the PCB to the top of the lens of the LED. This optional step insures the proper length of the 3mm LEDs.
+![10-controllerpcb](../img/controllerpcb/10-controllerpcb.webp)
 
 ## Add the PNP and NPN transistors
 
