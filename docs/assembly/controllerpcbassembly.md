@@ -10,7 +10,10 @@ Digit 1 and the colons are on a single PCB. Digit 1 is identical to digits 0, 2,
 - When connected to a wifi network, it will obtain the closest weather station and, depending on the scheduler, may display the external temperature and humidity.
 - Manages the low power consumption mode by turning off the power to digits 0-3.  When awakened, it will turn back on the power to digits 0-3.
 
-This section details the assembly of digits 0, 2, and 3.
+Below is the fully assembled, front face of the controller PCB.
+![front-face-controller-pcb](../img/controllerpcb/fullyassembled-frontface.webp)
+Below is the fully assembled, back side of the controller PCB.
+![back-face-controller-pcb](../img/controllerpcb/fullyassembled-backface.webp)
 
 ## Prerequisites
 
@@ -46,10 +49,12 @@ This section details the assembly of digits 0, 2, and 3.
 
 ## Assemble Digit 1
 
-On the controller PCB, follow the instructions from the digit PCB assembly to assemble digit one:
+On the controller PCB, follow the instructions from the digit PCB assembly to assemble digit one.
 
-1. [Add the 16 pin headers](digitpcbassembly.md#add-the-16-pin-headers). There is an additional (5th) 16 pin header you'll need to add to the controller PCB.
+1. [Add the 16 pin headers](digitpcbassembly.md#add-the-16-pin-headers). Note **"A"** in the picture below that you'll add an additional (5th) 16 pin header to the controller PCB.
+![1-controllerpcb](../img/controllerpcb/1-controllerpcb.webp)
 1. [Add the 28 5mm LEDs](digitpcbassembly.md#add-the-28-leds). Do not solder the 5mm LED into the "Top-LED1" or "LWR-LED1" location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.
+![1-controllerpcb](../img/controllerpcb/2-controllerpcb.webp)
 1. [Add the motor pins](digitpcbassembly.md#add-the-motor-pins). There are two additional motor pins (pairs) you'll need to add, on the back face of the PCB titled "Colon-Top" and "Colon-LWR"
 
 ## Mount the L293D 16-pin IC Stepper Motor Drivers
