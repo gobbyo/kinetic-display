@@ -7,6 +7,7 @@ Run the tests in this section after assembling each digit PCB to ensure all the 
 - [Completed digit PCB ready for actuators](digitpcbassembly.md).
 - Computer and microcontroller with the [prerequisite software](../prerequisitesoftware.md).
 
+![testpcbactuator-prerequisite](../img/testpcbactuator/prerequisite.webp)
 ![testpcbactuator-1](../img/testpcbactuator/testpcbactuator-1.webp)
 ![testpcbactuator-2](../img/testpcbactuator/testpcbactuator-2.webp)
 ![testpcbactuator-3](../img/testpcbactuator/testpcbactuator-3.webp)

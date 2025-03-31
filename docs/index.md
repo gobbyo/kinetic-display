@@ -15,7 +15,8 @@
 
 - [Actuator Assembly](./assembly/actuatorassembly.md)
 - [Digit PCB Assembly](./assembly/digitpcbassembly.md)
-- [Deploy Digit Project](./assembly/deploydigitproject.md)
-- [Buck Converter Preparation and Assembly](./assembly/buckassembly.md)
+- [Deploy Digit and Controller Projects](./assembly/deploydigitproject.md)
 - [Test Digit PCB](./assembly/digitpcbtest.md)
-- [Controller PCB Assembly](assembly/controllerpcbassembly.md)
+- [Controller PCB Assembly](./assembly/controllerpcbassembly.md)
+- [Buck Converter Preparation and Assembly](./assembly/buckassembly.md)
+

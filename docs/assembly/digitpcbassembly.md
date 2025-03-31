@@ -6,7 +6,12 @@ The display has 4 digits. The digits are numbered from right to left, 0-3, when 
 - provides a consistent distance of dispersion for the lighting of the segment, giving each segment a uniform glow rather than spots of light
 - provides the traditional role of reducing the wiring, efficiently connects various electronic component minimizing the overall size, reliable, cost-effective, and consistent quality of the circuitry
 
-This section details the assembly of digits 0, 2, and 3.
+This section details the assembly of digits 0, 2, and 3. Note the pictures below showing the fully assembled PCBs that will be covered in this section.
+
+Front face fully assembled.
+![digit pcb front face](../img/digitpcbassembly/1-digitpcbassembly-frontface.webp)
+Back face fully assembled.
+![digit pcb back face](../img/digitpcbassembly/1-digitpcbassembly-backface.webp)
 
 ## Prerequisites
 
@@ -26,7 +31,7 @@ This section details the assembly of digits 0, 2, and 3.
 | 1 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp)|
 | 28 | 5mm Flat top LED, anode long lead (any color) | ![component-8](../img/component/component-8.webp)|
 | 1 | Raspberry Pi Pico with Headers | ![component-9](../img/component/component-9.webp)|
-| 3 | Digit PCBs | See next section |
+| 3 | Digit PCBs | See [labelling the digit PCBs](#label-the-digit-pcb) |
 
 ***Table of tools***
 
@@ -39,7 +44,7 @@ This section details the assembly of digits 0, 2, and 3.
 | Yes | Cotton Facial Pads | ![tool-2](../img/tools/tool-2.webp)|
 | No  | Label maker | ![tool-5s](../img/tools/tool-5.webp) |
 
-## Label the front and back sides of the digit PCB
+## Label the Digit PCB
 
 1. Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the (**A**) label to the (**B**) FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Also note that digit 0 (**C**) in the picture below is a completed digit PCB ready for mounting onto the display.
 ![digitpcb-2](../img/digitpcbassembly/2-digitpcbassembly.webp)

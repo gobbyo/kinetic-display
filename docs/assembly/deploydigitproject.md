@@ -1,6 +1,6 @@
 # Deploy the Digit Project to the Digit PCB
 
-In this section you will upload code to your Raspberry Pi Pico and PicoW from your computer.
+In this section you will upload code to your Raspberry Pi Pico 2040 from your computer.
 
 ## Prerequisites
 
