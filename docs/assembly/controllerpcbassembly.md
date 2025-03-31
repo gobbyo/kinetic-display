@@ -47,23 +47,42 @@ Below is the fully assembled, back side of the controller PCB.
 | Yes | Isopropyl Alcohol | ![tool-3](../img/tools/tool-3.webp)|
 | Yes | Cotton Facial Pads | ![tool-2](../img/tools/tool-2.webp)|
 
-## Assemble Digit 1
+## Assemble Digit One
 
 On the controller PCB, follow the instructions from the digit PCB assembly to assemble digit one.
 
-1. From the front face of the controller PCB, [add the 16 pin headers](digitpcbassembly.md#add-the-16-pin-headers) as previously completed for the digit PCBs. Note in the picture below that you'll add an additional (5th) 16 pin header to the controller PCB.
+1. On the front face of the controller PCB, [add the 16 pin headers](digitpcbassembly.md#add-the-16-pin-headers) as previously completed for the digit PCBs. Note the highlighted sections in the picture below that you'll add an additional (5th) 16 pin header to the controller PCB.
 ![1-controllerpcb](../img/controllerpcb/1-controllerpcb.webp)
-1. From the front face of the controller PCB, [add the 28 5mm LEDs](digitpcbassembly.md#add-the-28-leds)as previously completed for the digit PCBs. Do not solder the 5mm LED into the "Top-LED1" or "LWR-LED1" location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.
-![1-controllerpcb](../img/controllerpcb/2-controllerpcb.webp)
-1. [Add the motor pins](digitpcbassembly.md#add-the-motor-pins). There are two additional motor pins (pairs) you'll need to add, on the back face of the PCB titled "Colon-Top" and "Colon-LWR"
+1. On the front face of the controller PCB, [add the 28 5mm LEDs](digitpcbassembly.md#add-the-28-leds) as previously completed for the digit PCBs. Do not solder the 5mm LED into the **Top-LED1** or **LWR-LED1** location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.
+![2-controllerpcb](../img/controllerpcb/2-controllerpcb.webp)
+1. On the back face of the controller PCB, [add the motor pins](digitpcbassembly.md#add-the-motor-pins). Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add, and an additional 3-pin connector for the Digital Humidity Temperature (DHT) sensor.
+![3-controllerpcb](../img/controllerpcb/3-controllerpcb.webp)
 
-## Mount the L293D 16-pin IC Stepper Motor Drivers
+## Add the 3mm Flat Top LEDs for the Colon Segments
 
-1. From the front of the digit PCB, orient the motor driver so the notch (or pin 1) is aligned with the 16 pin header.
-![digitpcbmotordriver1](../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp)
-1. CAREFULLY insert the motor driver into the 16 pin header and ensure none of the pins on the motor driver are bent or protruding from the 16 pin header.
-![digitpcbmotordriver2](../img/digitpcbassembly/2-digitpcbassembly-motordriver.webp)
-1. Repeat the install for the remaining motor drivers.
+For this section in addition to the soldering equipment you needed when previously mounting the 5mm flat top LEDs, you'll need the two 3D printed colon segments, label **A** in the diagram below, as fabricated in the [3D print the display parts](../createandorder/3dprints.md) document.
+![6-controllerpcb](../img/controllerpcb/6-controllerpcb.webp)
+
+1. Following label **B** in the diagram above, insert the 3mm flat top LEDs into **Top-LED1** and **LWR-LED1** on the front face of the controller PCB. Follow the same 5mm LED install process and be sure to insert the long lead anode of the LED into the **+** through hole.
+2. Following the diagram below, slide the colon segments over the 3mm LED. Note the lower base of the LED lense may need to be lightly sanded with 300 grid sandpaper if it does not easily slide into the colon segment.
+![7-controllerpcb](../img/controllerpcb/7-controllerpcb.webp)
+3. Following the diagram below on the back side of the controller PCB, align the colon segment so its square base is positioned into the square hole of the PCB.
+![8-controllerpcb](../img/controllerpcb/8-controllerpcb.webp)
+4. Solder the 3mm LEDs into place.
+![9-controllerpcb](../img/controllerpcb/9-controllerpcb.webp)
+5. Optionally you can use a metric ruler to verify the LEDs protrude perpendicular from the PCB and are 14mm from the PCB to the top of the lens of the LED. This optional step insures the proper length of the 3mm LEDs.
+
+## Add the PNP and NPN transistors
+
+1. Following the diagram below, solder the s8550D PNP transistor into the through hole (mis-) labelled 2N8550 on the front face of the controller PCB.
+![4-controllerpcb](../img/controllerpcb/4-controllerpcb.webp)
+1. Following the diagram below, solder the 2N2222A PNP transistor into the though hole labelled 2N2222 on the front face of the controller PCB.
+![5-controllerpcb](../img/controllerpcb/5-controllerpcb.webp)
+
+## Mount the L293D 16-pin IC Motor Drivers
+
+1. On the front face of the controller PCB, [mount the L293D 16-pin IC Stepper Motor Drivers](digitpcbassembly.md#mount-the-l293d-16-pin-ic-stepper-motor-drivers) as previously completed for the digit PCBs.
+![5-controllerpcb-motordriverIC](../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp)
 
 ## Add the PCB Mount, Two port (2P) Terminal Block Connectors
 
