@@ -180,7 +180,10 @@
 <li>When connected to a wifi network, it will obtain the closest weather station and, depending on the scheduler, may display the external temperature and humidity.</li>
 <li>Manages the low power consumption mode by turning off the power to digits 0-3.  When awakened, it will turn back on the power to digits 0-3.</li>
 </ul>
-<p>This section details the assembly of digits 0, 2, and 3.</p>
+<p>Below is the fully assembled, front face of the controller PCB.
+<img alt="front-face-controller-pcb" src="../../img/controllerpcb/fullyassembled-frontface.webp" />
+Below is the fully assembled, back side of the controller PCB.
+<img alt="back-face-controller-pcb" src="../../img/controllerpcb/fullyassembled-backface.webp" /></p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../createandorder/pcb/">Fabrication of the digit PCBs</a></li>
@@ -296,10 +299,12 @@
 </tbody>
 </table>
 <h2 id="assemble_digit_1">Assemble Digit 1<a class="headerlink" href="#assemble_digit_1" title="Permanent link">&para;</a></h2>
-<p>On the controller PCB, follow the instructions from the digit PCB assembly to assemble digit one:</p>
+<p>On the controller PCB, follow the instructions from the digit PCB assembly to assemble digit one.</p>
 <ol>
-<li><a href="../digitpcbassembly/#add-the-16-pin-headers">Add the 16 pin headers</a>. There is an additional (5th) 16 pin header you'll need to add to the controller PCB.</li>
-<li><a href="../digitpcbassembly/#add-the-28-leds">Add the 28 5mm LEDs</a>. Do not solder the 5mm LED into the "Top-LED1" or "LWR-LED1" location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.</li>
+<li>From the front face of the controller PCB, <a href="../digitpcbassembly/#add-the-16-pin-headers">add the 16 pin headers</a> as previously completed for the digit PCBs. Note in the picture below that you'll add an additional (5th) 16 pin header to the controller PCB.
+<img alt="1-controllerpcb" src="../../img/controllerpcb/1-controllerpcb.webp" /></li>
+<li>From the front face of the controller PCB, <a href="../digitpcbassembly/#add-the-28-leds">add the 28 5mm LEDs</a>as previously completed for the digit PCBs. Do not solder the 5mm LED into the "Top-LED1" or "LWR-LED1" location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.
+<img alt="1-controllerpcb" src="../../img/controllerpcb/2-controllerpcb.webp" /></li>
 <li><a href="../digitpcbassembly/#add-the-motor-pins">Add the motor pins</a>. There are two additional motor pins (pairs) you'll need to add, on the back face of the PCB titled "Colon-Top" and "Colon-LWR"</li>
 </ol>
 <h2 id="mount_the_l293d_16-pin_ic_stepper_motor_drivers">Mount the L293D 16-pin IC Stepper Motor Drivers<a class="headerlink" href="#mount_the_l293d_16-pin_ic_stepper_motor_drivers" title="Permanent link">&para;</a></h2>
