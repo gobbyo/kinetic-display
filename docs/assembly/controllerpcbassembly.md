@@ -120,7 +120,7 @@ The diagram below shows a completed install of the terminal block connectors on 
 
 ## Mount the L293D 16-pin IC Motor Drivers
 
-On the front face of the controller PCB, [mount the L293D 16-pin IC Stepper Motor Drivers](digitpcbassembly/#mount_the_l293d_16_pin_ic_stepper_motor_drivers) as previously completed for the digit PCBs.
+On the front face of the controller PCB, [mount the L293D 16-pin IC Stepper Motor Drivers](digitpcbassembly.md#mount_the_l293d_16_pin_ic_stepper_motor_drivers) as previously completed for the digit PCBs.
 ![5-controllerpcb-motordriverIC](../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp)
 
 ## Vertical Slide SPDT Switch
