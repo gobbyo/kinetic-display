@@ -67,11 +67,11 @@ In this section you'll create 21 unlabelled motors with 4 centimeter wires with 
 ![step2](../img/motor-wire/2-motor-wire.webp)
 1. Position the DC motor so the shaft is pointed away and the terminals are facing up. Set your soldering iron to 350°C then add solder to each motor terminal.
 ![step3](../img/motor-wire/3-motor-wire.webp)
-1. With the DC motor shaft pointing up and the terminals are facing up, solder the white wire onto the left motor terminal and the black wire onto the right motor terminal. 
+1. With the DC motor shaft pointing up and the terminals are facing up, solder the white wire onto the left motor terminal and the black wire onto the right motor terminal.
 ![step4](../img/motor-wire/4-motor-wire.webp)
 
 !!! note
-    Be sure to label the motors with 6 centimeter wire as C, D, and the upper colon.
+     There are 9 motors with 6 centimeter wire lengths: four motors labelled C, four D, and one UC (upper colon). Place a label on the black-wire side of the motor.
 
 ### Dupont Connections
 
@@ -83,7 +83,7 @@ The tools and parts needed to add the 2.54mm Dupont connectors to each wire incl
 ![step2](../img/dupont-connections/2-motor-dupont-connection.webp)
 1. Slide the Dupont connector housing onto the wires so the pins lock into the housing.
 ![step3](../img/dupont-connections/3-motor-dupont-connection.webp)
-1. Repeat the previous steps for all remaining motors. Be sure to place your label on the black-wire side of the motor for the nine, 6 centimeter wire length actuators with C, D or UC (upper colon). No need to label the 21 other actuators with 4 centimeter lengths
+1. Repeat the previous steps for all remaining motors. Be sure to place your label on the black-wire side of the motor for the 6 centimeter wire length actuators with C (4), D (4) and one UC (upper colon). No need to label the 21 other actuators with 4 centimeter lengths
 ![step4](../img/dupont-connections/4-motor-dupont-connection.webp)
 
 ## Motor Mount
