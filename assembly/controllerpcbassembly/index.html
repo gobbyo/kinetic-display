@@ -142,23 +142,19 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#add_the_3mm_flat_top_leds_for_the_colon_segments" class="nav-link">Add the 3mm Flat Top LEDs for the Colon Segments</a>
+            <li class="nav-item" data-bs-level="2"><a href="#3mm_flat_top_leds_for_the_colon_segments" class="nav-link">3mm Flat Top LEDs for the Colon Segments</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#solder_the_pnp_and_npn_transistors" class="nav-link">Solder the PNP and NPN transistors</a>
+            <li class="nav-item" data-bs-level="2"><a href="#pnp_and_npn_transistors" class="nav-link">PNP and NPN transistors</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#mount_the_l293d_16-pin_ic_motor_drivers" class="nav-link">Mount the L293D 16-pin IC Motor Drivers</a>
+            <li class="nav-item" data-bs-level="2"><a href="#20-pin_headers_for_the_pico_and_picow" class="nav-link">20-pin Headers for the Pico and PicoW</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#add_the_20-pin_headers_for_the_pico_and_picow" class="nav-link">Add the 20-pin Headers for the Pico and PicoW</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#solder_the_surface_mount_resistors" class="nav-link">Solder the surface mount resistors</a>
+            <li class="nav-item" data-bs-level="2"><a href="#surface_mount_resistors" class="nav-link">Surface mount resistors</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -166,7 +162,19 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#add_the_electrolytic_and_ceramic_capacitors" class="nav-link">Add the Electrolytic and Ceramic Capacitors</a>
+            <li class="nav-item" data-bs-level="2"><a href="#electrolytic_and_ceramic_capacitors" class="nav-link">Electrolytic and Ceramic Capacitors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#mount_the_l293d_16-pin_ic_motor_drivers" class="nav-link">Mount the L293D 16-pin IC Motor Drivers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#vertical_slide_spdt_switch" class="nav-link">Vertical Slide SPDT Switch</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#light_dependent_resistor_ldr" class="nav-link">Light Dependent Resistor (LDR)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -198,8 +206,8 @@ Below is the fully assembled, back side of the controller PCB.
 <img alt="back-face-controller-pcb" src="../../img/controllerpcb/fullyassembled-backface.webp" /></p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../../createandorder/pcb/">Fabrication of the digit PCBs</a></li>
-<li>Table of components and tools</li>
+<li><a href="../../createandorder/pcb/">Fabrication of the controller and digit one PCB</a></li>
+<li>3D print of the upper and lower colons</li>
 </ul>
 <p><strong><em>Table of components</em></strong></p>
 <table>
@@ -230,6 +238,11 @@ Below is the fully assembled, back side of the controller PCB.
 <td style="text-align: center;">1</td>
 <td style="text-align: left;">20 pin single row breakaway male connector</td>
 <td style="text-align: center;"><img alt="component-4" src="../../img/component/component-4.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">Vertical Slide Switch Micro High Knob 3 Pin 2 Position 1P2T SPDT Panel Mount</td>
+<td style="text-align: center;"><img alt="component-4" src="../../img/component/component-18.webp" /></td>
 </tr>
 <tr>
 <td style="text-align: center;">6</td>
@@ -320,7 +333,7 @@ Below is the fully assembled, back side of the controller PCB.
 <li>On the back face of the controller PCB, <a href="../digitpcbassembly/#add_the_motor_pins">add the motor pins</a>. Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add, and an additional 3-pin connector for the Digital Humidity Temperature (DHT) sensor.
 <img alt="3-controllerpcb" src="../../img/controllerpcb/3-controllerpcb.webp" /></li>
 </ol>
-<h2 id="add_the_3mm_flat_top_leds_for_the_colon_segments">Add the 3mm Flat Top LEDs for the Colon Segments<a class="headerlink" href="#add_the_3mm_flat_top_leds_for_the_colon_segments" title="Permanent link">&para;</a></h2>
+<h2 id="3mm_flat_top_leds_for_the_colon_segments">3mm Flat Top LEDs for the Colon Segments<a class="headerlink" href="#3mm_flat_top_leds_for_the_colon_segments" title="Permanent link">&para;</a></h2>
 <p>In addition to the soldering equipment you needed when previously mounting the 5mm flat top LEDs, you'll need the two 3D printed colon segments, label <strong>A</strong> in the diagram below, as fabricated in the <a href="../../createandorder/3dprints/">3D print the display parts</a> document.
 <img alt="6-controllerpcb" src="../../img/controllerpcb/6-controllerpcb.webp" /></p>
 <ol>
@@ -334,31 +347,22 @@ Below is the fully assembled, back side of the controller PCB.
 <li>Optionally you can use a metric ruler to verify the LEDs protrude perpendicular from the PCB and are 14mm from the PCB to the top of the lens of the LED. This optional step insures the proper length of the 3mm LEDs.
 <img alt="10-controllerpcb" src="../../img/controllerpcb/10-controllerpcb.webp" /></li>
 </ol>
-<h2 id="solder_the_pnp_and_npn_transistors">Solder the PNP and NPN transistors<a class="headerlink" href="#solder_the_pnp_and_npn_transistors" title="Permanent link">&para;</a></h2>
+<h2 id="pnp_and_npn_transistors">PNP and NPN transistors<a class="headerlink" href="#pnp_and_npn_transistors" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Following the diagram below, solder the s8550D PNP transistor into the through hole (mis-) labelled 2N8550 on the front face of the controller PCB.
 <img alt="4-controllerpcb" src="../../img/controllerpcb/4-controllerpcb.webp" /></li>
 <li>Following the diagram below, solder the 2N2222A PNP transistor into the though hole labelled 2N2222 on the front face of the controller PCB.
 <img alt="5-controllerpcb" src="../../img/controllerpcb/5-controllerpcb.webp" /></li>
 </ol>
-<h2 id="mount_the_l293d_16-pin_ic_motor_drivers">Mount the L293D 16-pin IC Motor Drivers<a class="headerlink" href="#mount_the_l293d_16-pin_ic_motor_drivers" title="Permanent link">&para;</a></h2>
-<ol>
-<li>On the front face of the controller PCB, <a href="digitpcbassembly/#mount_the_l293d_16_pin_ic_stepper_motor_drivers">mount the L293D 16-pin IC Stepper Motor Drivers</a> as previously completed for the digit PCBs.
-<img alt="5-controllerpcb-motordriverIC" src="../../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp" /></li>
-</ol>
-<h2 id="add_the_20-pin_headers_for_the_pico_and_picow">Add the 20-pin Headers for the Pico and PicoW<a class="headerlink" href="#add_the_20-pin_headers_for_the_pico_and_picow" title="Permanent link">&para;</a></h2>
-<ol>
-<li>On the back side of the PCB, place the four 20 pin headers into the through holes for <strong>RASP1</strong> and <strong>RASP2</strong>. Carefully turn over the PCB while keeping the 20 pin headers in the through holes. Level the PCB and adjust the two 20 pin headers so they are perpendicular to the PCB. Solder the pins once in place. Snip all 40 of the pins flush, resolder each to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
-<img alt="11-controllerpcb" src="../../img/controllerpcb/11-controllerpcb.webp" /></li>
-</ol>
-<h2 id="solder_the_surface_mount_resistors">Solder the surface mount resistors<a class="headerlink" href="#solder_the_surface_mount_resistors" title="Permanent link">&para;</a></h2>
-<ol>
-<li>On the back side of the PCB, solder the two 10kΩ resistors onto the pads marked <strong>R2 10k</strong> and <strong>R3 10k</strong> located between the top and bottom rows of teh 20-pin headers.
-<img alt="12-controllerpcb" src="../../img/controllerpcb/12-controllerpcb.webp" /></li>
-</ol>
+<h2 id="20-pin_headers_for_the_pico_and_picow">20-pin Headers for the Pico and PicoW<a class="headerlink" href="#20-pin_headers_for_the_pico_and_picow" title="Permanent link">&para;</a></h2>
+<p>On the back side of the PCB, place the four 20 pin headers into the through holes for <strong>RASP1</strong> and <strong>RASP2</strong>. Carefully turn over the PCB while keeping the 20 pin headers in the through holes. Level the PCB and adjust the two 20 pin headers so they are perpendicular to the PCB. Solder the pins once in place. Snip all 40 of the pins flush, resolder each to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
+<img alt="11-controllerpcb" src="../../img/controllerpcb/11-controllerpcb.webp" /></p>
+<h2 id="surface_mount_resistors">Surface mount resistors<a class="headerlink" href="#surface_mount_resistors" title="Permanent link">&para;</a></h2>
+<p>On the back side of the PCB, solder the two 10kΩ resistors onto the pads marked <strong>R2 10k</strong> and <strong>R3 10k</strong> located between the top and bottom rows of teh 20-pin headers.
+<img alt="12-controllerpcb" src="../../img/controllerpcb/12-controllerpcb.webp" /></p>
 <h2 id="install_six_two_port_2p_terminal_block_connectors">Install Six, two port (2P) Terminal Block Connectors<a class="headerlink" href="#install_six_two_port_2p_terminal_block_connectors" title="Permanent link">&para;</a></h2>
 <p>There are five 2P terminal block connectors on the front face of the PCB, and one on the back side.
-The diagram below shows a completed install of the terminal block connectors on the front face of the controller PCB. Note the arrows pointing in the direction of the terminal block connector where the wires are inserted into the ports. When following the steps below you'll position the front face of the controller PCB up and work your way from the bottom left corner to the bottom right corner.
+The diagram below shows a completed install of the terminal block connectors on the front face of the controller PCB. Note the arrows pointing in the direction of the terminal block connector where the wires are inserted into the ports. To follow the steps below, you'll position the front face of the controller PCB up, then work your way from the bottom left corner <strong>1</strong>, to the bottom right corner <strong>5</strong>.
 <img alt="13-controllerpcb" src="../../img/controllerpcb/13-controllerpcb.webp" /></p>
 <ol>
 <li>Follow the diagram below and insert the 2P terminal block connector into the <strong>5v-D1</strong> through holes with the connector facing LEFT, then solder it into place.
@@ -368,26 +372,27 @@ The diagram below shows a completed install of the terminal block connectors on 
 <li>Follow the diagram below and insert the 2P terminal block connector into the <strong>U7, GPIO19 Tx-0</strong> through holes with the connector facing LEFT, then solder it into place.
 <img alt="16-controllerpcb" src="../../img/controllerpcb/16-controllerpcb.webp" /></li>
 <li>Follow the diagram below and insert the 2P terminal block connector into the <strong>UART1, Tx-0 Rx-0</strong> through holes with the connector facing RIGHT, then solder it into place.
-<img alt="17-controllerpcb" src="../../img/controllerpcb/17-controllerpcb.webp" />
-Follow the diagram below, insert the 2P terminal block connector into the <strong>5v-D0</strong> through holes with the connector facing LEFT, then solder it into place.
+<img alt="17-controllerpcb" src="../../img/controllerpcb/17-controllerpcb.webp" /></li>
+<li>Follow the diagram below, insert the 2P terminal block connector into the <strong>5v-D0</strong> through holes with the connector facing LEFT, then solder it into place.
 <img alt="18-controllerpcb" src="../../img/controllerpcb/18-controllerpcb.webp" /></li>
 <li>Position the back face of the PCB up and insert the 2P terminal block connector into the <strong>5v-OUT</strong> through holes with the connector facing RIGHT, then solder it into place.
 <img alt="19-controllerpcb" src="../../img/controllerpcb/19-controllerpcb.webp" /></li>
 </ol>
-<h2 id="add_the_electrolytic_and_ceramic_capacitors">Add the Electrolytic and Ceramic Capacitors<a class="headerlink" href="#add_the_electrolytic_and_ceramic_capacitors" title="Permanent link">&para;</a></h2>
+<h2 id="electrolytic_and_ceramic_capacitors">Electrolytic and Ceramic Capacitors<a class="headerlink" href="#electrolytic_and_ceramic_capacitors" title="Permanent link">&para;</a></h2>
 <ol>
-<li>On the front of the digit PCB, align the electrolytic capacitor "-" sign opposite the "+" printed on the PCB for capacitor "c1", see the picture below. Insert the pins into the through holes, then turn the digit PCB over to the back side and solder the capacitor.
-<img alt="digitpcbcapacitor-1" src="../../img/digitpcbassembly/1-digitpcbassembly-capacitor.webp" /></li>
-<li>On the front of the digit PCB, insert the ceramic capacitor pins into the through holes titled "c2". Turn the digit PCB over to the back and solder the capacitor.</li>
+<li>On the front of the controller PCB, align the electrolytic capacitor "-" sign opposite the "+" printed on the PCB for capacitor <strong>c01</strong> and <strong>c1</strong>, see the picture below. Insert the pins into the through holes, then turn the controller PCB over to the back side and solder the capacitor.
+<img alt="20-controllerpcb" src="../../img/controllerpcb/20-controllerpcb.webp" /></li>
+<li>On the front of the controller PCB, insert the ceramic capacitor pins into the through holes titled <strong>c02</strong> and <strong>c2</strong>. Turn the controller PCB over to the back and solder the capacitor.
+<img alt="21-controllerpcb" src="../../img/controllerpcb/21-controllerpcb.webp" /></li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Ceramic capacitors do not have polarity and can be inserted in any direction.</p>
-</div>
-<p><img alt="digitpcbcapacitor-2" src="../../img/digitpcbassembly/3-digitpcbassembly-capacitor.webp" />
-4. On the back of the digit PCB, cut the pins flush, resolder to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
-<img alt="digitpcbcapacitor-3" src="../../img/digitpcbassembly/4-digitpcbassembly-capacitor.webp" /></p>
-<p>Congratulations for assembling a digit PCB! Be sure to test the digit PCB before assembling the next one.</p>
+<h2 id="mount_the_l293d_16-pin_ic_motor_drivers">Mount the L293D 16-pin IC Motor Drivers<a class="headerlink" href="#mount_the_l293d_16-pin_ic_motor_drivers" title="Permanent link">&para;</a></h2>
+<p>On the front face of the controller PCB, <a href="digitpcbassembly/#mount_the_l293d_16_pin_ic_stepper_motor_drivers">mount the L293D 16-pin IC Stepper Motor Drivers</a> as previously completed for the digit PCBs.
+<img alt="5-controllerpcb-motordriverIC" src="../../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp" /></p>
+<h2 id="vertical_slide_spdt_switch">Vertical Slide SPDT Switch<a class="headerlink" href="#vertical_slide_spdt_switch" title="Permanent link">&para;</a></h2>
+<p>On the back face of the controller PCB, insert the SPDT vertical slide switch pins into the <strong>ON/OFF</strong> through holes found on the top right hand corner, then solder into place.
+<img alt="22-controllerpcb" src="../../img/controllerpcb/22-controllerpcb.webp" /></p>
+<h2 id="light_dependent_resistor_ldr">Light Dependent Resistor (LDR)<a class="headerlink" href="#light_dependent_resistor_ldr" title="Permanent link">&para;</a></h2>
+<p><img alt="23-controllerpcb" src="../../img/controllerpcb/23-controllerpcb.webp" /></p>
 <h2 id="controller_and_digit_1_schematics">Controller and Digit 1 Schematics<a class="headerlink" href="#controller_and_digit_1_schematics" title="Permanent link">&para;</a></h2>
 <p><img alt="digitschematic-1" src="../../img/digitpcbassembly/digit-schematic-motorcontrollers.png" />
 <img alt="digitschematic-2" src="../../img/digitpcbassembly/digit-schematic-microcontroller.webp" /></p></div>
