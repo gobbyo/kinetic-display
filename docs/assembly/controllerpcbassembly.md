@@ -95,16 +95,24 @@ In addition to the soldering equipment you needed when previously mounting the 5
 1. On the back side of the PCB, solder the two 10kΩ resistors onto the pads marked **R2 10k** and **R3 10k** located between the top and bottom rows of teh 20-pin headers.
 ![12-controllerpcb](../img/controllerpcb/12-controllerpcb.webp)
 
-## Install the Two port (2P) Terminal Block Connectors
+## Install Six, two port (2P) Terminal Block Connectors
 
-1. On the front of the digit PCB, insert the PCB two port terminal block connector into the 5v through holes so the face of the connector where the wires are inserted points toward the LEDs on the PCB.
-![digitpcbconnector-1](../img/digitpcbassembly/1-digitpcbassembly-connector.webp)
-1. Solder the block terminal connector pins on the back of the digit PCB.
-![digitpcbconnector-2](../img/digitpcbassembly/2-digitpcbassembly-connector.webp)
-1. On the front of the digit PCB position the 2 port terminal block connector facing away from the LEDs. For PCBs labelled "2" & "3", insert the connector pins into the UART Tx-1/Rx-1 through holes. For the digit PCB labelled "0", insert the connector into the Tx-0/Rx-0 through holes.
-![digitpcbconnector-3](../img/digitpcbassembly/3-digitpcbassembly-connector.webp)
-1. On the back of the digit PCB, solder the remaining connector pins, cut the pins flush, resolder to a smooth bead, then remove the flux wth a cotton dabbed with isopropyl alcohol.
-![digitpcbconnector-4](../img/digitpcbassembly/4-digitpcbassembly-connector.webp)
+There are five 2P terminal block connectors on the front face of the PCB, and one on the back side.
+The diagram below shows a completed install of the terminal block connectors on the front face of the controller PCB. Note the arrows pointing in the direction of the terminal block connector where the wires are inserted into the ports. When following the steps below you'll position the front face of the controller PCB up and work your way from the bottom left corner to the bottom right corner.
+![13-controllerpcb](../img/controllerpcb/13-controllerpcb.webp)
+
+1. Follow the diagram below and insert the 2P terminal block connector into the **5v-D1** through holes with the connector facing LEFT, then solder it into place.
+![14-controllerpcb](../img/controllerpcb/14-controllerpcb.webp)
+1. Follow the diagram below and insert the 2P terminal block connector into the **U7, Tx-1 Rx-1** through holes with the connector facing LEFT, then solder it into place.
+![15-controllerpcb](../img/controllerpcb/15-controllerpcb.webp)
+1. Follow the diagram below and insert the 2P terminal block connector into the **U7, GPIO19 Tx-0** through holes with the connector facing LEFT, then solder it into place.
+![16-controllerpcb](../img/controllerpcb/16-controllerpcb.webp)
+1. Follow the diagram below and insert the 2P terminal block connector into the **UART1, Tx-0 Rx-0** through holes with the connector facing RIGHT, then solder it into place.
+![17-controllerpcb](../img/controllerpcb/17-controllerpcb.webp)
+Follow the diagram below, insert the 2P terminal block connector into the **5v-D0** through holes with the connector facing LEFT, then solder it into place.
+![18-controllerpcb](../img/controllerpcb/18-controllerpcb.webp)
+1. Position the back face of the PCB up and insert the 2P terminal block connector into the **5v-OUT** through holes with the connector facing RIGHT, then solder it into place.
+![19-controllerpcb](../img/controllerpcb/19-controllerpcb.webp)
 
 ## Add the Electrolytic and Ceramic Capacitors
 
