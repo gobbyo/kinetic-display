@@ -146,7 +146,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#add_the_pnp_and_npn_transistors" class="nav-link">Add the PNP and NPN transistors</a>
+            <li class="nav-item" data-bs-level="2"><a href="#solder_the_pnp_and_npn_transistors" class="nav-link">Solder the PNP and NPN transistors</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -154,7 +154,15 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#add_the_pcb_mount_two_port_2p_terminal_block_connectors" class="nav-link">Add the PCB Mount, Two port (2P) Terminal Block Connectors</a>
+            <li class="nav-item" data-bs-level="2"><a href="#add_the_20-pin_headers_for_the_pico_and_picow" class="nav-link">Add the 20-pin Headers for the Pico and PicoW</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#solder_the_surface_mount_resistors" class="nav-link">Solder the surface mount resistors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#install_the_two_port_2p_terminal_block_connectors" class="nav-link">Install the Two port (2P) Terminal Block Connectors</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -162,11 +170,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#add_the_20_pin_headers_and_install_the_microcontroller" class="nav-link">Add the 20 pin Headers and Install the Microcontroller</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#digits_0_2_3_schematics" class="nav-link">Digits 0, 2, &amp; 3 Schematics</a>
+            <li class="nav-item" data-bs-level="2"><a href="#controller_and_digit_1_schematics" class="nav-link">Controller and Digit 1 Schematics</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -317,20 +321,20 @@ Below is the fully assembled, back side of the controller PCB.
 <img alt="3-controllerpcb" src="../../img/controllerpcb/3-controllerpcb.webp" /></li>
 </ol>
 <h2 id="add_the_3mm_flat_top_leds_for_the_colon_segments">Add the 3mm Flat Top LEDs for the Colon Segments<a class="headerlink" href="#add_the_3mm_flat_top_leds_for_the_colon_segments" title="Permanent link">&para;</a></h2>
-<p>For this section in addition to the soldering equipment you needed when previously mounting the 5mm flat top LEDs, you'll need the two 3D printed colon segments, label <strong>A</strong> in the diagram below, as fabricated in the <a href="../../createandorder/3dprints/">3D print the display parts</a> document.
+<p>In addition to the soldering equipment you needed when previously mounting the 5mm flat top LEDs, you'll need the two 3D printed colon segments, label <strong>A</strong> in the diagram below, as fabricated in the <a href="../../createandorder/3dprints/">3D print the display parts</a> document.
 <img alt="6-controllerpcb" src="../../img/controllerpcb/6-controllerpcb.webp" /></p>
 <ol>
 <li>Following label <strong>B</strong> in the diagram above, insert the 3mm flat top LEDs into <strong>Top-LED1</strong> and <strong>LWR-LED1</strong> on the front face of the controller PCB. Follow the same 5mm LED install process and be sure to insert the long lead anode of the LED into the <strong>+</strong> through hole.</li>
 <li>Following the diagram below, slide the colon segments over the 3mm LED. Note the lower base of the LED lense may need to be lightly sanded with 300 grid sandpaper if it does not easily slide into the colon segment.
 <img alt="7-controllerpcb" src="../../img/controllerpcb/7-controllerpcb.webp" /></li>
-<li>Following the diagram below on the back side of the controller PCB, align the colon segment so its square base is positioned into the square hole of the PCB.
+<li>On the back side of the controller PCB, align the colon segment so its square base is positioned into the square hole of the PCB.
 <img alt="8-controllerpcb" src="../../img/controllerpcb/8-controllerpcb.webp" /></li>
 <li>Solder the 3mm LEDs into place.
 <img alt="9-controllerpcb" src="../../img/controllerpcb/9-controllerpcb.webp" /></li>
 <li>Optionally you can use a metric ruler to verify the LEDs protrude perpendicular from the PCB and are 14mm from the PCB to the top of the lens of the LED. This optional step insures the proper length of the 3mm LEDs.
 <img alt="10-controllerpcb" src="../../img/controllerpcb/10-controllerpcb.webp" /></li>
 </ol>
-<h2 id="add_the_pnp_and_npn_transistors">Add the PNP and NPN transistors<a class="headerlink" href="#add_the_pnp_and_npn_transistors" title="Permanent link">&para;</a></h2>
+<h2 id="solder_the_pnp_and_npn_transistors">Solder the PNP and NPN transistors<a class="headerlink" href="#solder_the_pnp_and_npn_transistors" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Following the diagram below, solder the s8550D PNP transistor into the through hole (mis-) labelled 2N8550 on the front face of the controller PCB.
 <img alt="4-controllerpcb" src="../../img/controllerpcb/4-controllerpcb.webp" /></li>
@@ -342,7 +346,17 @@ Below is the fully assembled, back side of the controller PCB.
 <li>On the front face of the controller PCB, <a href="../digitpcbassembly/#mount-the-l293d-16-pin-ic-stepper-motor-drivers">mount the L293D 16-pin IC Stepper Motor Drivers</a> as previously completed for the digit PCBs.
 <img alt="5-controllerpcb-motordriverIC" src="../../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp" /></li>
 </ol>
-<h2 id="add_the_pcb_mount_two_port_2p_terminal_block_connectors">Add the PCB Mount, Two port (2P) Terminal Block Connectors<a class="headerlink" href="#add_the_pcb_mount_two_port_2p_terminal_block_connectors" title="Permanent link">&para;</a></h2>
+<h2 id="add_the_20-pin_headers_for_the_pico_and_picow">Add the 20-pin Headers for the Pico and PicoW<a class="headerlink" href="#add_the_20-pin_headers_for_the_pico_and_picow" title="Permanent link">&para;</a></h2>
+<ol>
+<li>On the back side of the PCB, place the four 20 pin headers into the through holes for <strong>RASP1</strong> and <strong>RASP2</strong>. Carefully turn over the PCB while keeping the 20 pin headers in the through holes. Level the PCB and adjust the two 20 pin headers so they are perpendicular to the PCB. Solder the pins once in place. Snip all 40 of the pins flush, resolder each to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
+<img alt="11-controllerpcb" src="../../img/controllerpcb/11-controllerpcb.webp" /></li>
+</ol>
+<h2 id="solder_the_surface_mount_resistors">Solder the surface mount resistors<a class="headerlink" href="#solder_the_surface_mount_resistors" title="Permanent link">&para;</a></h2>
+<ol>
+<li>On the back side of the PCB, solder the two 10kΩ resistors onto the pads marked <strong>R2 10k</strong> and <strong>R3 10k</strong> located between the top and bottom rows of teh 20-pin headers.
+<img alt="12-controllerpcb" src="../../img/controllerpcb/12-controllerpcb.webp" /></li>
+</ol>
+<h2 id="install_the_two_port_2p_terminal_block_connectors">Install the Two port (2P) Terminal Block Connectors<a class="headerlink" href="#install_the_two_port_2p_terminal_block_connectors" title="Permanent link">&para;</a></h2>
 <ol>
 <li>On the front of the digit PCB, insert the PCB two port terminal block connector into the 5v through holes so the face of the connector where the wires are inserted points toward the LEDs on the PCB.
 <img alt="digitpcbconnector-1" src="../../img/digitpcbassembly/1-digitpcbassembly-connector.webp" /></li>
@@ -366,17 +380,8 @@ Below is the fully assembled, back side of the controller PCB.
 <p><img alt="digitpcbcapacitor-2" src="../../img/digitpcbassembly/3-digitpcbassembly-capacitor.webp" />
 4. On the back of the digit PCB, cut the pins flush, resolder to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 <img alt="digitpcbcapacitor-3" src="../../img/digitpcbassembly/4-digitpcbassembly-capacitor.webp" /></p>
-<h2 id="add_the_20_pin_headers_and_install_the_microcontroller">Add the 20 pin Headers and Install the Microcontroller<a class="headerlink" href="#add_the_20_pin_headers_and_install_the_microcontroller" title="Permanent link">&para;</a></h2>
-<ol>
-<li>On the back side of the PCB, place the two 20 pin headers into the through holes for "RASP1". Carefully turn over the PCB while keeping the 20 pin headers in the through holes.
-<img alt="digitpcbmicrocontroller-1" src="../../img/digitpcbassembly/1-digitpcbassembly-micro.webp" /></li>
-<li>Level the PCB and adjust the two 20 pin headers so they are perpendicular to the PCB. Solder the pins once in place. Snip all 40 of the pins flush, resolder each to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
-<img alt="digitpcbmicrocontroller-2" src="../../img/digitpcbassembly/2-digitpcbassembly-micro.webp" /></li>
-<li>Orient the Raspberry Pi Pico 2040 microcontroller so the USB port is facing in the same direction as the PCB silk screen, then gently mount the microcontroller onto the header.
-<img alt="digitpcbmicrocontroller-3" src="../../img/digitpcbassembly/3-digitpcbassembly-micro.webp" /></li>
-</ol>
 <p>Congratulations for assembling a digit PCB! Be sure to test the digit PCB before assembling the next one.</p>
-<h2 id="digits_0_2_3_schematics">Digits 0, 2, &amp; 3 Schematics<a class="headerlink" href="#digits_0_2_3_schematics" title="Permanent link">&para;</a></h2>
+<h2 id="controller_and_digit_1_schematics">Controller and Digit 1 Schematics<a class="headerlink" href="#controller_and_digit_1_schematics" title="Permanent link">&para;</a></h2>
 <p><img alt="digitschematic-1" src="../../img/digitpcbassembly/digit-schematic-motorcontrollers.png" />
 <img alt="digitschematic-2" src="../../img/digitpcbassembly/digit-schematic-microcontroller.webp" /></p></div>
             </div>
