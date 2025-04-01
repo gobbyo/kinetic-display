@@ -166,7 +166,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#mount_the_l293d_16-pin_ic_motor_drivers" class="nav-link">Mount the L293D 16-pin IC Motor Drivers</a>
+            <li class="nav-item" data-bs-level="2"><a href="#mount_the_motor_drivers" class="nav-link">Mount the Motor Drivers</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -194,11 +194,11 @@
 <ul>
 <li>Sends commands to digits as to what to display (i.e. 0-9, A-F)</li>
 <li>Sends commands for the brightness of the digits</li>
-<li>When in the Admin mode, it will transmit its own wifi service that provides a way to change the display settings</li>
+<li>When in Admin mode, it will transmit its own wifi service to wirelessly change the display settings from a cell phone or computer.</li>
 <li>Manages the scheduler, which is the mechanism for displaying time, date, external temperature and humidity, and interior temperature and humidity.</li>
 <li>When connected to a wifi network, it will obtain its public facing IP address, look up the time zone it is located in, and set the display to the local time</li>
 <li>When connected to a wifi network, it will obtain the closest weather station and, depending on the scheduler, may display the external temperature and humidity.</li>
-<li>Manages the low power consumption mode by turning off the power to digits 0-3.  When awakened, it will turn back on the power to digits 0-3.</li>
+<li>Manages the low power consumption mode by turning off the power to digits 0-3.  When awakened, it will turn on the power to digits 0-3.</li>
 </ul>
 <p>Front face of the controller PCB fully assembled.
 <img alt="front-face-controller-pcb" src="../../img/controllerpcb/fullyassembled-frontface.webp" />
@@ -260,13 +260,33 @@ Back side of the controller PCB fully assembled.
 <td style="text-align: center;"><img alt="component-7" src="../../img/component/component-7.webp" /></td>
 </tr>
 <tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">5mm 0.5 Ω ohm Photoresistor Resistor 5516 GL5516</td>
+<td style="text-align: center;"><img alt="component-19" src="../../img/component/component-19.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">S8550 TO-92 TH PNP Transistor</td>
+<td style="text-align: center;"><img alt="component-20" src="../../img/component/component-20.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">2N2222 TO-92 TH NPN Transistor</td>
+<td style="text-align: center;"><img alt="component-21" src="../../img/component/component-21.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">10K ohm 0805 Resistor 1/2w Metal Film Fixed Resistor</td>
+<td style="text-align: center;"><img alt="component-22" src="../../img/component/component-22.webp" /></td>
+</tr>
+<tr>
 <td style="text-align: center;">28</td>
-<td style="text-align: left;">5mm Flat top LED, anode long lead (any color)</td>
+<td style="text-align: left;">5mm Flat top LED, anode long lead (your choice of color)</td>
 <td style="text-align: center;"><img alt="component-8" src="../../img/component/component-8.webp" /></td>
 </tr>
 <tr>
 <td style="text-align: center;">2</td>
-<td style="text-align: left;">3mm Flat top LED, anode long lead (any color)</td>
+<td style="text-align: left;">3mm Flat top LED, anode long lead (your choice of color)</td>
 <td style="text-align: center;"><img alt="component-17" src="../../img/component/component-17.webp" /></td>
 </tr>
 <tr>
@@ -385,14 +405,16 @@ The diagram below shows a completed install of the terminal block connectors on 
 <li>On the front of the controller PCB, insert the ceramic capacitor pins into the through holes titled <strong>c02</strong> and <strong>c2</strong>. Turn the controller PCB over to the back and solder the capacitors.
 <img alt="21-controllerpcb" src="../../img/controllerpcb/21-controllerpcb.webp" /></li>
 </ol>
-<h2 id="mount_the_l293d_16-pin_ic_motor_drivers">Mount the L293D 16-pin IC Motor Drivers<a class="headerlink" href="#mount_the_l293d_16-pin_ic_motor_drivers" title="Permanent link">&para;</a></h2>
-<p>On the front face of the controller PCB, <a href="../digitpcbassembly/#mount_the_l293d_16_pin_ic_stepper_motor_drivers">mount the L293D 16-pin IC Stepper Motor Drivers</a> as previously completed for the digit PCBs.
+<h2 id="mount_the_motor_drivers">Mount the Motor Drivers<a class="headerlink" href="#mount_the_motor_drivers" title="Permanent link">&para;</a></h2>
+<p>On the front face of the controller PCB, <a href="../digitpcbassembly/#mount_the_motor_drivers">mount the L293D 16-pin IC Stepper Motor Drivers</a> as previously completed for the digit PCBs.
 <img alt="5-controllerpcb-motordriverIC" src="../../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp" /></p>
 <h2 id="vertical_slide_spdt_switch">Vertical Slide SPDT Switch<a class="headerlink" href="#vertical_slide_spdt_switch" title="Permanent link">&para;</a></h2>
 <p>On the back face of the controller PCB, insert the SPDT vertical slide switch pins into the <strong>ON/OFF</strong> through holes found on the top right hand corner, then solder into place.
 <img alt="22-controllerpcb" src="../../img/controllerpcb/22-controllerpcb.webp" /></p>
 <h2 id="light_dependent_resistor_ldr">Light Dependent Resistor (LDR)<a class="headerlink" href="#light_dependent_resistor_ldr" title="Permanent link">&para;</a></h2>
+<p>Following the picture below and from the back face of the controller PCB, place the two LDR pins into the <strong>R1</strong> through holes. Bend the pins of the LDR upward so the head of the LDR fits tightly on the top of controller PCB. Solder the LDR in place once properly positioned.</p>
 <p><img alt="23-controllerpcb" src="../../img/controllerpcb/23-controllerpcb.webp" /></p>
+<p>Congratulations, you've completed assembling the controller and digit 1 PCB!</p>
 <h2 id="controller_and_digit_1_schematics">Controller and Digit 1 Schematics<a class="headerlink" href="#controller_and_digit_1_schematics" title="Permanent link">&para;</a></h2>
 <p><img alt="controllerschematic-1" src="../../img/controllerpcb/digit1-colons-display-controller.png" />
 <img alt="controllerschematic-2" src="../../img/controllerpcb/digit1-microcontroller.png" />
