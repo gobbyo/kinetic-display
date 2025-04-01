@@ -53,9 +53,9 @@ On the controller PCB, follow the instructions from the digit PCB assembly to as
 
 1. On the front face of the controller PCB, [add the 16 pin headers](digitpcbassembly.md#add-the-16-pin-headers) as previously completed for the digit PCBs. Note the highlighted sections in the picture below that you'll add an additional (5th) 16 pin header to the controller PCB.
 ![1-controllerpcb](../img/controllerpcb/1-controllerpcb.webp)
-1. On the front face of the controller PCB, [add the 28 5mm LEDs](digitpcbassembly.md#add-the-28-leds) as previously completed for the digit PCBs. Do not solder the 5mm LED into the **Top-LED1** or **LWR-LED1** location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.
+1. On the front face of the controller PCB, [add the 28 5mm LEDs](digitpcbassembly.md#add_the_28_leds) as previously completed for the digit PCBs. Do not solder the 5mm LED into the **Top-LED1** or **LWR-LED1** location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.
 ![2-controllerpcb](../img/controllerpcb/2-controllerpcb.webp)
-1. On the back face of the controller PCB, [add the motor pins](digitpcbassembly.md#add-the-motor-pins). Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add, and an additional 3-pin connector for the Digital Humidity Temperature (DHT) sensor.
+1. On the back face of the controller PCB, [add the motor pins](digitpcbassembly.md#add_the_motor_pins). Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add, and an additional 3-pin connector for the Digital Humidity Temperature (DHT) sensor.
 ![3-controllerpcb](../img/controllerpcb/3-controllerpcb.webp)
 
 ## Add the 3mm Flat Top LEDs for the Colon Segments
@@ -82,7 +82,7 @@ In addition to the soldering equipment you needed when previously mounting the 5
 
 ## Mount the L293D 16-pin IC Motor Drivers
 
-1. On the front face of the controller PCB, [mount the L293D 16-pin IC Stepper Motor Drivers](digitpcbassembly.md#mount-the-l293d-16-pin-ic-stepper-motor-drivers) as previously completed for the digit PCBs.
+1. On the front face of the controller PCB, [mount the L293D 16-pin IC Stepper Motor Drivers](digitpcbassembly.md#mount_the_l293d_16_pin_ic_stepper_motor_drivers) as previously completed for the digit PCBs.
 ![5-controllerpcb-motordriverIC](../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp)
 
 ## Add the 20-pin Headers for the Pico and PicoW

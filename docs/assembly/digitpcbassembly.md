@@ -31,7 +31,7 @@ Back face fully assembled.
 | 1 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp)|
 | 28 | 5mm Flat top LED, anode long lead (any color) | ![component-8](../img/component/component-8.webp)|
 | 1 | Raspberry Pi Pico with Headers | ![component-9](../img/component/component-9.webp)|
-| 3 | Digit PCBs | See [labelling the digit PCBs](#label-the-digit-pcb) |
+| 3 | Digit PCBs | See [labelling the digit PCBs](#label_the_digit_pcb) |
 
 ***Table of tools***
 
