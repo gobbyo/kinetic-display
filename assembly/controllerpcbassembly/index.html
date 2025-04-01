@@ -142,7 +142,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#3mm_flat_top_leds_for_the_colon_segments" class="nav-link">3mm Flat Top LEDs for the Colon Segments</a>
+            <li class="nav-item" data-bs-level="2"><a href="#colon_segments_leds" class="nav-link">Colon Segments LEDs</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -150,7 +150,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#20-pin_headers_for_the_pico_and_picow" class="nav-link">20-pin Headers for the Pico and PicoW</a>
+            <li class="nav-item" data-bs-level="2"><a href="#headers_for_the_pico_and_picow" class="nav-link">Headers for the Pico and PicoW</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -190,7 +190,7 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="controller_and_digit_1_pcb_assembly">Controller and Digit 1 PCB Assembly<a class="headerlink" href="#controller_and_digit_1_pcb_assembly" title="Permanent link">&para;</a></h1>
-<p>Digit 1 and the colons are on a single PCB. Digit 1 is identical to digits 0, 2, and 3 except it is contained on a single PCB with the colons. The controller operates the colons and is the central command and control for the display performing the following functions:</p>
+<p>Digit 1 and the colons are on a single PCB. Digit 1 is identical to digits 0, 2, and 3 except it is contained on a single PCB with the colons. The Raspberry Pi Pico W microcontroller operates the colons and is the central command and control for the display performing the following functions:</p>
 <ul>
 <li>Sends commands to digits as to what to display (i.e. 0-9, A-F)</li>
 <li>Sends commands for the brightness of the digits</li>
@@ -200,9 +200,9 @@
 <li>When connected to a wifi network, it will obtain the closest weather station and, depending on the scheduler, may display the external temperature and humidity.</li>
 <li>Manages the low power consumption mode by turning off the power to digits 0-3.  When awakened, it will turn back on the power to digits 0-3.</li>
 </ul>
-<p>Below is the fully assembled, front face of the controller PCB.
+<p>Front face of the controller PCB fully assembled.
 <img alt="front-face-controller-pcb" src="../../img/controllerpcb/fullyassembled-frontface.webp" />
-Below is the fully assembled, back side of the controller PCB.
+Back side of the controller PCB fully assembled.
 <img alt="back-face-controller-pcb" src="../../img/controllerpcb/fullyassembled-backface.webp" /></p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
@@ -333,9 +333,9 @@ Below is the fully assembled, back side of the controller PCB.
 <li>On the back face of the controller PCB, <a href="../digitpcbassembly/#add_the_motor_pins">add the motor pins</a>. Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add, and an additional 3-pin connector for the Digital Humidity Temperature (DHT) sensor.
 <img alt="3-controllerpcb" src="../../img/controllerpcb/3-controllerpcb.webp" /></li>
 </ol>
-<h2 id="3mm_flat_top_leds_for_the_colon_segments">3mm Flat Top LEDs for the Colon Segments<a class="headerlink" href="#3mm_flat_top_leds_for_the_colon_segments" title="Permanent link">&para;</a></h2>
-<p>In addition to the soldering equipment you needed when previously mounting the 5mm flat top LEDs, you'll need the two 3D printed colon segments, label <strong>A</strong> in the diagram below, as fabricated in the <a href="../../createandorder/3dprints/">3D print the display parts</a> document.
-<img alt="6-controllerpcb" src="../../img/controllerpcb/6-controllerpcb.webp" /></p>
+<h2 id="colon_segments_leds">Colon Segments LEDs<a class="headerlink" href="#colon_segments_leds" title="Permanent link">&para;</a></h2>
+<p>In addition to the soldering equipment you needed when previously mounting the 5mm flat top LEDs, you'll need the two 3D printed colon segments, label <strong>A</strong> in the diagram below, as fabricated in the <a href="../../createandorder/3dprints/">3D print the display parts</a> document.</p>
+<p><img alt="6-controllerpcb" src="../../img/controllerpcb/6-controllerpcb.webp" /></p>
 <ol>
 <li>Following label <strong>B</strong> in the diagram above, insert the 3mm flat top LEDs into <strong>Top-LED1</strong> and <strong>LWR-LED1</strong> on the front face of the controller PCB. Follow the same 5mm LED install process and be sure to insert the long lead anode of the LED into the <strong>+</strong> through hole.</li>
 <li>Following the diagram below, slide the colon segments over the 3mm LED. Note the lower base of the LED lense may need to be lightly sanded with 300 grid sandpaper if it does not easily slide into the colon segment.
@@ -354,7 +354,7 @@ Below is the fully assembled, back side of the controller PCB.
 <li>Following the diagram below, solder the 2N2222A PNP transistor into the though hole labelled 2N2222 on the front face of the controller PCB.
 <img alt="5-controllerpcb" src="../../img/controllerpcb/5-controllerpcb.webp" /></li>
 </ol>
-<h2 id="20-pin_headers_for_the_pico_and_picow">20-pin Headers for the Pico and PicoW<a class="headerlink" href="#20-pin_headers_for_the_pico_and_picow" title="Permanent link">&para;</a></h2>
+<h2 id="headers_for_the_pico_and_picow">Headers for the Pico and PicoW<a class="headerlink" href="#headers_for_the_pico_and_picow" title="Permanent link">&para;</a></h2>
 <p>On the back side of the PCB, place the four 20 pin headers into the through holes for <strong>RASP1</strong> and <strong>RASP2</strong>. Carefully turn over the PCB while keeping the 20 pin headers in the through holes. Level the PCB and adjust the two 20 pin headers so they are perpendicular to the PCB. Solder the pins once in place. Snip all 40 of the pins flush, resolder each to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 <img alt="11-controllerpcb" src="../../img/controllerpcb/11-controllerpcb.webp" /></p>
 <h2 id="surface_mount_resistors">Surface mount resistors<a class="headerlink" href="#surface_mount_resistors" title="Permanent link">&para;</a></h2>
