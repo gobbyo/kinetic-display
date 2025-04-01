@@ -82,7 +82,7 @@ In addition to the soldering equipment you needed when previously mounting the 5
 
 ## Mount the L293D 16-pin IC Motor Drivers
 
-1. On the front face of the controller PCB, [mount the L293D 16-pin IC Stepper Motor Drivers](digitpcbassembly#mount_the_l293d_16_pin_ic_stepper_motor_drivers) as previously completed for the digit PCBs.
+1. On the front face of the controller PCB, [mount the L293D 16-pin IC Stepper Motor Drivers](digitpcbassembly/#mount_the_l293d_16_pin_ic_stepper_motor_drivers) as previously completed for the digit PCBs.
 ![5-controllerpcb-motordriverIC](../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp)
 
 ## Add the 20-pin Headers for the Pico and PicoW
