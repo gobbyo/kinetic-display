@@ -60,20 +60,20 @@ On the controller PCB, follow the instructions from the digit PCB assembly to as
 
 ## Add the 3mm Flat Top LEDs for the Colon Segments
 
-For this section in addition to the soldering equipment you needed when previously mounting the 5mm flat top LEDs, you'll need the two 3D printed colon segments, label **A** in the diagram below, as fabricated in the [3D print the display parts](../createandorder/3dprints.md) document.
+In addition to the soldering equipment you needed when previously mounting the 5mm flat top LEDs, you'll need the two 3D printed colon segments, label **A** in the diagram below, as fabricated in the [3D print the display parts](../createandorder/3dprints.md) document.
 ![6-controllerpcb](../img/controllerpcb/6-controllerpcb.webp)
 
 1. Following label **B** in the diagram above, insert the 3mm flat top LEDs into **Top-LED1** and **LWR-LED1** on the front face of the controller PCB. Follow the same 5mm LED install process and be sure to insert the long lead anode of the LED into the **+** through hole.
 2. Following the diagram below, slide the colon segments over the 3mm LED. Note the lower base of the LED lense may need to be lightly sanded with 300 grid sandpaper if it does not easily slide into the colon segment.
 ![7-controllerpcb](../img/controllerpcb/7-controllerpcb.webp)
-3. Following the diagram below on the back side of the controller PCB, align the colon segment so its square base is positioned into the square hole of the PCB.
+3. On the back side of the controller PCB, align the colon segment so its square base is positioned into the square hole of the PCB.
 ![8-controllerpcb](../img/controllerpcb/8-controllerpcb.webp)
 4. Solder the 3mm LEDs into place.
 ![9-controllerpcb](../img/controllerpcb/9-controllerpcb.webp)
 5. Optionally you can use a metric ruler to verify the LEDs protrude perpendicular from the PCB and are 14mm from the PCB to the top of the lens of the LED. This optional step insures the proper length of the 3mm LEDs.
 ![10-controllerpcb](../img/controllerpcb/10-controllerpcb.webp)
 
-## Add the PNP and NPN transistors
+## Solder the PNP and NPN transistors
 
 1. Following the diagram below, solder the s8550D PNP transistor into the through hole (mis-) labelled 2N8550 on the front face of the controller PCB.
 ![4-controllerpcb](../img/controllerpcb/4-controllerpcb.webp)
@@ -85,7 +85,17 @@ For this section in addition to the soldering equipment you needed when previous
 1. On the front face of the controller PCB, [mount the L293D 16-pin IC Stepper Motor Drivers](digitpcbassembly.md#mount-the-l293d-16-pin-ic-stepper-motor-drivers) as previously completed for the digit PCBs.
 ![5-controllerpcb-motordriverIC](../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp)
 
-## Add the PCB Mount, Two port (2P) Terminal Block Connectors
+## Add the 20-pin Headers for the Pico and PicoW
+
+1. On the back side of the PCB, place the four 20 pin headers into the through holes for **RASP1** and **RASP2**. Carefully turn over the PCB while keeping the 20 pin headers in the through holes. Level the PCB and adjust the two 20 pin headers so they are perpendicular to the PCB. Solder the pins once in place. Snip all 40 of the pins flush, resolder each to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
+![11-controllerpcb](../img/controllerpcb/11-controllerpcb.webp)
+
+## Solder the surface mount resistors
+
+1. On the back side of the PCB, solder the two 10kΩ resistors onto the pads marked **R2 10k** and **R3 10k** located between the top and bottom rows of teh 20-pin headers.
+![12-controllerpcb](../img/controllerpcb/12-controllerpcb.webp)
+
+## Install the Two port (2P) Terminal Block Connectors
 
 1. On the front of the digit PCB, insert the PCB two port terminal block connector into the 5v through holes so the face of the connector where the wires are inserted points toward the LEDs on the PCB.
 ![digitpcbconnector-1](../img/digitpcbassembly/1-digitpcbassembly-connector.webp)
@@ -107,18 +117,11 @@ For this section in addition to the soldering equipment you needed when previous
 4. On the back of the digit PCB, cut the pins flush, resolder to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 ![digitpcbcapacitor-3](../img/digitpcbassembly/4-digitpcbassembly-capacitor.webp)
 
-## Add the 20 pin Headers and Install the Microcontroller
 
-1. On the back side of the PCB, place the two 20 pin headers into the through holes for "RASP1". Carefully turn over the PCB while keeping the 20 pin headers in the through holes.
-![digitpcbmicrocontroller-1](../img/digitpcbassembly/1-digitpcbassembly-micro.webp)
-1. Level the PCB and adjust the two 20 pin headers so they are perpendicular to the PCB. Solder the pins once in place. Snip all 40 of the pins flush, resolder each to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
-![digitpcbmicrocontroller-2](../img/digitpcbassembly/2-digitpcbassembly-micro.webp)
-1. Orient the Raspberry Pi Pico 2040 microcontroller so the USB port is facing in the same direction as the PCB silk screen, then gently mount the microcontroller onto the header.
-![digitpcbmicrocontroller-3](../img/digitpcbassembly/3-digitpcbassembly-micro.webp)
 
 Congratulations for assembling a digit PCB! Be sure to test the digit PCB before assembling the next one.
 
-## Digits 0, 2, & 3 Schematics
+## Controller and Digit 1 Schematics
 
 ![digitschematic-1](../img/digitpcbassembly/digit-schematic-motorcontrollers.png)
 ![digitschematic-2](../img/digitpcbassembly/digit-schematic-microcontroller.webp)
