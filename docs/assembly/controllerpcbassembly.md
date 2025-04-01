@@ -10,9 +10,9 @@ Digit 1 and the colons are on a single PCB. Digit 1 is identical to digits 0, 2,
 - When connected to a wifi network, it will obtain the closest weather station and, depending on the scheduler, may display the external temperature and humidity.
 - Manages the low power consumption mode by turning off the power to digits 0-3.  When awakened, it will turn back on the power to digits 0-3.
 
-Below is the fully assembled, front face of the controller PCB.
+Front face of the controller PCB fully assembled.
 ![front-face-controller-pcb](../img/controllerpcb/fullyassembled-frontface.webp)
-Below is the fully assembled, back side of the controller PCB.
+Back side of the controller PCB fully assembled.
 ![back-face-controller-pcb](../img/controllerpcb/fullyassembled-backface.webp)
 
 ## Prerequisites
@@ -23,7 +23,7 @@ Below is the fully assembled, back side of the controller PCB.
 ***Table of components***
 
 | Quantity | Component | Image |
-| :------: | :---------| :-----: |
+| :--: | :------ | :-----: |
 | 5 | 16 pin IC socket | ![component-1](../img/component/component-1.webp)|
 | 5 | L293D stepper motor driver | ![component-2](../img/component/component-2.webp)|
 | 4 | 20 pin female header connector | ![component-3](../img/component/component-3.webp)|
