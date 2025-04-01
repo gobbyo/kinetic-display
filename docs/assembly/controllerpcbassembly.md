@@ -4,11 +4,11 @@ Digit 1 and the colons are on a single PCB. Digit 1 is identical to digits 0, 2,
 
 - Sends commands to digits as to what to display (i.e. 0-9, A-F)
 - Sends commands for the brightness of the digits
-- When in the Admin mode, it will transmit its own wifi service that provides a way to change the display settings
+- When in Admin mode, it will transmit its own wifi service to wirelessly change the display settings from a cell phone or computer.
 - Manages the scheduler, which is the mechanism for displaying time, date, external temperature and humidity, and interior temperature and humidity.
 - When connected to a wifi network, it will obtain its public facing IP address, look up the time zone it is located in, and set the display to the local time
 - When connected to a wifi network, it will obtain the closest weather station and, depending on the scheduler, may display the external temperature and humidity.
-- Manages the low power consumption mode by turning off the power to digits 0-3.  When awakened, it will turn back on the power to digits 0-3.
+- Manages the low power consumption mode by turning off the power to digits 0-3.  When awakened, it will turn on the power to digits 0-3.
 
 Front face of the controller PCB fully assembled.
 ![front-face-controller-pcb](../img/controllerpcb/fullyassembled-frontface.webp)
@@ -32,8 +32,12 @@ Back side of the controller PCB fully assembled.
 | 6 | 2 Port PCB Mount Screw Terminal Block Connector Straight Pin | ![component-5](../img/component/component-5.webp)|
 | 2 | 0.1μ farad ceramic capacitor | ![component-6](../img/component/component-6.webp)|
 | 2 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp)|
-| 28 | 5mm Flat top LED, anode long lead (any color) | ![component-8](../img/component/component-8.webp)|
-| 2 | 3mm Flat top LED, anode long lead (any color) | ![component-17](../img/component/component-17.webp)|
+| 1 | 5mm 0.5 Ω ohm Photoresistor Resistor 5516 GL5516 | ![component-19](../img/component/component-19.webp) |
+| 1 | S8550 TO-92 TH PNP Transistor | ![component-20](../img/component/component-20.webp) |
+| 1 | 2N2222 TO-92 TH NPN Transistor | ![component-21](../img/component/component-21.webp) |
+| 2 | 10K ohm 0805 Resistor 1/2w Metal Film Fixed Resistor | ![component-22](../img/component/component-22.webp) |
+| 28 | 5mm Flat top LED, anode long lead (your choice of color) | ![component-8](../img/component/component-8.webp)|
+| 2 | 3mm Flat top LED, anode long lead (your choice of color) | ![component-17](../img/component/component-17.webp)|
 | 1 | Raspberry Pi Pico 2040 with Headers | ![component-9](../img/component/component-9.webp)|
 | 1 | Raspberry Pi Pico W 2040 with Headers | ![component-9](../img/component/component-16.webp)|
 | 1 | Controller PCB | See next section |
@@ -118,9 +122,9 @@ The diagram below shows a completed install of the terminal block connectors on 
 1. On the front of the controller PCB, insert the ceramic capacitor pins into the through holes titled **c02** and **c2**. Turn the controller PCB over to the back and solder the capacitors.
 ![21-controllerpcb](../img/controllerpcb/21-controllerpcb.webp)
 
-## Mount the L293D 16-pin IC Motor Drivers
+## Mount the Motor Drivers
 
-On the front face of the controller PCB, [mount the L293D 16-pin IC Stepper Motor Drivers](digitpcbassembly.md#mount_the_l293d_16_pin_ic_stepper_motor_drivers) as previously completed for the digit PCBs.
+On the front face of the controller PCB, [mount the L293D 16-pin IC Stepper Motor Drivers](digitpcbassembly.md/#mount_the_motor_drivers) as previously completed for the digit PCBs.
 ![5-controllerpcb-motordriverIC](../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp)
 
 ## Vertical Slide SPDT Switch
@@ -130,7 +134,11 @@ On the back face of the controller PCB, insert the SPDT vertical slide switch pi
 
 ## Light Dependent Resistor (LDR)
 
+Following the picture below and from the back face of the controller PCB, place the two LDR pins into the **R1** through holes. Bend the pins of the LDR upward so the head of the LDR fits tightly on the top of controller PCB. Solder the LDR in place once properly positioned.
+
 ![23-controllerpcb](../img/controllerpcb/23-controllerpcb.webp)
+
+Congratulations, you've completed assembling the controller and digit 1 PCB!
 
 ## Controller and Digit 1 Schematics
 

@@ -32,9 +32,9 @@
 | L293D 16-pin IC Stepper Motor Drivers Controller | 17 |
 | 0.1uF Ceramic Disc Capacitor - 50 Volts | 5 |
 | 1uF Electrolytic Capacitor 1UF-50V-5X11 | 5 |
-| SS8550 TO-92 PNP Transistor | 1 |
-| 2N2222 TO-92 - NPN Transistor | 1 |
-| 10K ohm Resistor 1/2w (0.5Watt) ±1% Tolerance Metal Film Fixed Resistor | 2 |
+| S8550 TO-92 PNP Transistor | 1 |
+| 2N2222 TO-92 NPN Transistor | 1 |
+| 10K ohm 0805 Resistor 1/2w Metal Film Fixed Resistor | 2 |
 | Vertical Slide Switch Micro High Knob 3 Pin 2 Position 1P2T SPDT Panel Mount AC 125V 2A | 1 |
 | Raspberry pi 2040 Pico | 4 |
 | Raspberry pi 2040 pico-W | 1 |
