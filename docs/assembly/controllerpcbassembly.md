@@ -23,7 +23,7 @@ Below is the fully assembled, back side of the controller PCB.
 ***Table of components***
 
 | Quantity | Component | Image |
-| :--: | :------| :-----: |
+| :------: | :---------| :-----: |
 | 5 | 16 pin IC socket | ![component-1](../img/component/component-1.webp)|
 | 5 | L293D stepper motor driver | ![component-2](../img/component/component-2.webp)|
 | 4 | 20 pin female header connector | ![component-3](../img/component/component-3.webp)|
@@ -41,7 +41,7 @@ Below is the fully assembled, back side of the controller PCB.
 ***Table of tools***
 
 | Required | Tool | Image |
-| :---: | :------- | :---: |
+| :------: | :------- | :---: |
 | Yes | Soldering station    | ![tool-4](../img/tools/tool-4.webp)|
 | Yes | 0.8mm 1.76oz RoHS flux core solder | ![tool-1](../img/tools/tool-1.webp)|
 | Yes | Mini flush cutters   | ![tool-6](../img/tools/tool-6.webp)|
