@@ -112,9 +112,9 @@ The diagram below shows a completed install of the terminal block connectors on 
 
 ## Electrolytic and Ceramic Capacitors
 
-1. On the front of the controller PCB, align the electrolytic capacitor "-" sign opposite the "+" printed on the PCB for capacitor **c01** and **c1**, see the picture below. Insert the pins into the through holes, then turn the controller PCB over to the back side and solder the capacitor.
+1. On the front of the controller PCB, align the electrolytic capacitor "-" sign opposite the "+" printed on the PCB for capacitor **c01** and **c1**, see the picture below. Insert the pins into the through holes, then turn the controller PCB over to the back side and solder the capacitors.
 ![20-controllerpcb](../img/controllerpcb/20-controllerpcb.webp)
-1. On the front of the controller PCB, insert the ceramic capacitor pins into the through holes titled **c02** and **c2**. Turn the controller PCB over to the back and solder the capacitor.
+1. On the front of the controller PCB, insert the ceramic capacitor pins into the through holes titled **c02** and **c2**. Turn the controller PCB over to the back and solder the capacitors.
 ![21-controllerpcb](../img/controllerpcb/21-controllerpcb.webp)
 
 ## Mount the L293D 16-pin IC Motor Drivers
@@ -133,5 +133,6 @@ On the back face of the controller PCB, insert the SPDT vertical slide switch pi
 
 ## Controller and Digit 1 Schematics
 
-![digitschematic-1](../img/digitpcbassembly/digit-schematic-motorcontrollers.png)
-![digitschematic-2](../img/digitpcbassembly/digit-schematic-microcontroller.webp)
+![controllerschematic-1](../img/controllerpcb/digit1-colons-display-controller.png)
+![controllerschematic-2](../img/controllerpcb/digit1-microcontroller.png)
+![controllerschematic-3](../img/controllerpcb/digit1-motorcontrollers.png)
