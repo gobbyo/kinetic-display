@@ -1,6 +1,6 @@
 # Controller and Digit 1 PCB Assembly
 
-Digit 1 and the colons are on a single PCB. Digit 1 is identical to digits 0, 2, and 3 except it is contained on a single PCB with the colons. The controller operates the colons and is the central command and control for the display performing the following functions:
+Digit 1 and the colons are on a single PCB. Digit 1 is identical to digits 0, 2, and 3 except it is contained on a single PCB with the colons. The Raspberry Pi Pico W microcontroller operates the colons and is the central command and control for the display performing the following functions:
 
 - Sends commands to digits as to what to display (i.e. 0-9, A-F)
 - Sends commands for the brightness of the digits
@@ -59,9 +59,10 @@ On the controller PCB, follow the instructions from the digit PCB assembly to as
 1. On the back face of the controller PCB, [add the motor pins](digitpcbassembly.md#add_the_motor_pins). Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add, and an additional 3-pin connector for the Digital Humidity Temperature (DHT) sensor.
 ![3-controllerpcb](../img/controllerpcb/3-controllerpcb.webp)
 
-## 3mm Flat Top LEDs for the Colon Segments
+## Colon Segments LEDs
 
 In addition to the soldering equipment you needed when previously mounting the 5mm flat top LEDs, you'll need the two 3D printed colon segments, label **A** in the diagram below, as fabricated in the [3D print the display parts](../createandorder/3dprints.md) document.
+
 ![6-controllerpcb](../img/controllerpcb/6-controllerpcb.webp)
 
 1. Following label **B** in the diagram above, insert the 3mm flat top LEDs into **Top-LED1** and **LWR-LED1** on the front face of the controller PCB. Follow the same 5mm LED install process and be sure to insert the long lead anode of the LED into the **+** through hole.
@@ -81,7 +82,7 @@ In addition to the soldering equipment you needed when previously mounting the 5
 1. Following the diagram below, solder the 2N2222A PNP transistor into the though hole labelled 2N2222 on the front face of the controller PCB.
 ![5-controllerpcb](../img/controllerpcb/5-controllerpcb.webp)
 
-## 20-pin Headers for the Pico and PicoW
+## Headers for the Pico and PicoW
 
 On the back side of the PCB, place the four 20 pin headers into the through holes for **RASP1** and **RASP2**. Carefully turn over the PCB while keeping the 20 pin headers in the through holes. Level the PCB and adjust the two 20 pin headers so they are perpendicular to the PCB. Solder the pins once in place. Snip all 40 of the pins flush, resolder each to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 ![11-controllerpcb](../img/controllerpcb/11-controllerpcb.webp)
