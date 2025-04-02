@@ -145,7 +145,7 @@ Together, these circuits enable the digit PCBs to display numbers and characters
 
 ### **Digit Motor Controller Schematic**
 
-The schematic in the section shows the motor control circuitry for the seven-segment actuators (A-G) the digits. Each segment is controlled by a motor driver IC (L293D) connected to the Raspberry Pi Pico 2040. Also see the [L293D motorcontroller datasheet](https://www.digikey.com/htmldatasheets/production/237694/0/0/1/l293dd.html?msockid=1bb835ba59046489292020fa582965d3). Note the L293D IC motor driver is considered outdated, but used in this circuit as it works well with toy motors and costs less.
+The schematic in the section shows the motor control circuitry for the digit's seven-segment actuators (A-G). Each segment is controlled by a motor driver IC (L293D) connected to the Raspberry Pi Pico 2040. Also see the [L293D motorcontroller datasheet](https://www.digikey.com/htmldatasheets/production/237694/0/0/1/l293dd.html?msockid=1bb835ba59046489292020fa582965d3). Note the L293D IC motor driver is considered outdated, but used in this circuit as it works well with toy motors and costs slightly less.
 
 #### **Key Motor Controller Components and Their Purpose**
 
@@ -197,7 +197,7 @@ The schematic in this section shows the microcontroller circuitry for controllin
     *Purpose*: Illuminates the segments of the seven-segment display.</br>
     *Configuration*:
      - Each segment (A-G) has four LEDs connected in parallel.
-     - The anode (`+`) is connected to the 5V power rail, and the cathode (`-`) is connected to the GPIO pins in the microcontroller.
+     - The anode (`+`) is connected to the GPIO pins, and the cathode (`-`) is connected to ground.
      - Brightness is controlled by the GPIO PWM signals from the microcontroller.
 1. **Resistors (not used in lieu of PWM)**:</br>
     *Purpose*: Prevents the LEDs from exceeding their maximum rated power capabilities. Note the brightest PWM signal from a GPIO does not exceed a 220 ohm resistor.
@@ -214,9 +214,9 @@ The schematic in this section shows the microcontroller circuitry for controllin
 
 1. **Segment Control**:
       - The Raspberry Pi Pico 2040 controls sends motor direction, extending or retracting the segment, and speed from the GPIO pins that are connected to the motor controllers.
-      - This allows the microcontroller to control the length of time the motor is running (typically in 10th of a second), the CW (extend) or CCW (retract) direction of the motor, and the speed of the motor which is a % value typically between 50% to 100% of 5v.
+      - This allows the microcontroller to control the length of time the motor is running (between 1/5th and 1/4th of a second), the CW (extend) or CCW (retract) direction of the motor, and the speed of the motor which is a % value typically between 50% to 100% of 5v.
 1. **LED Control**:
-      - The Raspberry Pi Pico 2040 controls the LEDs by PWM from the GPIO pins that are connected to the cathodes.
+      - The Raspberry Pi Pico 2040 controls the LEDs by PWM from the GPIO pins that are connected to the anode of each LED.
       - This allows the microcontroller to turn on/off specific LEDs, control the brightness, and illuminates the desired segments.
 1. **Communication**:
       - The UART connector allows the digit PCB to receive commands from the controller and digit 1 PCB.
