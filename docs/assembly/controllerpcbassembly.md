@@ -1,6 +1,6 @@
 # Controller and Digit 1 PCB Assembly
 
-Digit 1 and the colons are on a single PCB. Digit 1 is identical to digits 0, 2, and 3 except it is contained on a single PCB with the colons. The Raspberry Pi Pico W microcontroller operates the colons and is the central command and control for the display performing the following functions:
+Digit 1 and the colons are on a single PCB. Digit 1 is identical to digits 0, 2, and 3 except it is contained on a single PCB with the colons. The Raspberry Pi Pico W microcontroller operates the colons and serves as the central command and control for the display performing the following functions:
 
 - Sends commands to digits as to what to display (i.e. 0-9, A-F)
 - Sends commands for the brightness of the digits
@@ -56,11 +56,11 @@ Back side of the controller PCB fully assembled.
 
 On the controller PCB, follow the instructions from the digit PCB assembly to assemble digit one.
 
-1. On the front face of the controller PCB, [add the 16 pin headers](digitpcbassembly.md#add_the_16_pin_headers) as previously completed for the digit PCBs. Note the highlighted sections in the picture below that you'll add an additional (5th) 16 pin header to the controller PCB.
+1. On the front face of the controller PCB, [add the 16 pin headers](digitpcbassembly.md#add_the_16_pin_headers) as previously completed for the digit PCBs. Note the highlighted sections in the picture below that you'll add an additional (5th) 16 pin header to the controller PCB. Don't forget to snip all the pins flush on the back side of the controller PCB, resolder each snipped pin to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 ![1-controllerpcb](../img/controllerpcb/1-controllerpcb.webp)
-1. On the front face of the controller PCB, [add the 28 5mm LEDs](digitpcbassembly.md#add_the_28_leds) as previously completed for the digit PCBs. Do not solder the 5mm LED into the **Top-LED1** or **LWR-LED1** location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations.
+1. On the front face of the controller PCB, [add the 28 5mm LEDs](digitpcbassembly.md#add_the_28_leds) as previously completed for the digit PCBs. Be sure to insert the LED anode (long pin) into the through hole marked with a **+**. Do not solder the 5mm LED into the **Top-LED1** or **LWR-LED1** location on the controller PCB. Instructions later in this section will detail how to install the 3mm LEDs into the "Top-LED1" and "LWR-LED1" locations. Finish soldering the 28 5mm LEDs by snipping all the pins flush on the back side of the controller PCB, resolder each snipped pin into a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 ![2-controllerpcb](../img/controllerpcb/2-controllerpcb.webp)
-1. On the back face of the controller PCB, [add the motor pins](digitpcbassembly.md#add_the_motor_pins). Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add, and an additional 3-pin connector for the Digital Humidity Temperature (DHT) sensor.
+1. On the back face of the controller PCB, [add the motor pins](digitpcbassembly.md#add_the_motor_pins). Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add, and an additional 3-pin connector for the Digital Humidity Temperature (DHT) sensor. Don't forget to snip all the pins flush on the back side of the controller PCB, resolder each snipped pin to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 ![3-controllerpcb](../img/controllerpcb/3-controllerpcb.webp)
 
 ## Colon Segments LEDs
@@ -81,19 +81,19 @@ In addition to the soldering equipment you needed when previously mounting the 5
 
 ## PNP and NPN transistors
 
-1. Following the diagram below, solder the s8550D PNP transistor into the through hole (mis-) labelled 2N8550 on the front face of the controller PCB.
+1. Following the diagram below, solder the s8550D PNP transistor into the through hole (mis-) labelled 2N8550 on the front face of the controller PCB. When inserting the transistor's pins into the through holes, be sure to orient the transistors so the flat face matches the silk screen on the PCB as held by the tweezers in the picture.
 ![4-controllerpcb](../img/controllerpcb/4-controllerpcb.webp)
 1. Following the diagram below, solder the 2N2222A PNP transistor into the though hole labelled 2N2222 on the front face of the controller PCB.
 ![5-controllerpcb](../img/controllerpcb/5-controllerpcb.webp)
 
 ## Headers for the Pico and PicoW
 
-On the back side of the PCB, place the four 20 pin headers into the through holes for **RASP1** and **RASP2**. Carefully turn over the PCB while keeping the 20 pin headers in the through holes. Level the PCB and adjust the two 20 pin headers so they are perpendicular to the PCB. Solder the pins once in place. Snip all 40 of the pins flush, resolder each to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
+On the back side of the PCB, place the four 20 pin headers into the through holes for **RASP1** and **RASP2**. Carefully turn over the PCB while keeping the 20 pin headers in the through holes. Level the PCB and adjust the two 20 pin headers so they are perpendicular to the PCB. To keep the headers perpendicular to the PCB, you can provide a temporary solder onto a pin or use a jig. Solder the pins once in place. Snip all the pins flush, resolder each to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 ![11-controllerpcb](../img/controllerpcb/11-controllerpcb.webp)
 
 ## Surface mount resistors
 
-On the back side of the PCB, solder the two 10kΩ resistors onto the pads marked **R2 10k** and **R3 10k** located between the top and bottom rows of teh 20-pin headers.
+On the back side of the PCB, solder the two 10kΩ resistors onto the pads marked **R2 10k** and **R3 10k** located between the top and bottom rows of the 20-pin headers. Soldering surface mount components require a slightly different skill than through hole soldering as you'll need to use tweezers to center the resistor over the pads and apply a minimal amount of solder. There are several online tutorials on how to solder surface mount compontents using a soldering iron and tweezers.
 ![12-controllerpcb](../img/controllerpcb/12-controllerpcb.webp)
 
 ## Install Six, two port (2P) Terminal Block Connectors
@@ -119,7 +119,7 @@ The diagram below shows a completed install of the terminal block connectors on 
 
 1. On the front of the controller PCB, align the electrolytic capacitor "-" sign opposite the "+" printed on the PCB for capacitor **c01** and **c1**, see the picture below. Insert the pins into the through holes, then turn the controller PCB over to the back side and solder the capacitors.
 ![20-controllerpcb](../img/controllerpcb/20-controllerpcb.webp)
-1. On the front of the controller PCB, insert the ceramic capacitor pins into the through holes titled **c02** and **c2**. Turn the controller PCB over to the back and solder the capacitors.
+1. On the front of the controller PCB, insert the ceramic capacitor pins into the through holes titled **c02** and **c2**. Ceramic capacitors are non-polarized and can be inserted in either direction. Turn the controller PCB over to the back and solder the capacitors.
 ![21-controllerpcb](../img/controllerpcb/21-controllerpcb.webp)
 
 ## Mount the Motor Drivers
@@ -141,6 +141,104 @@ Following the picture below and from the back face of the controller PCB, place 
 Congratulations, you've completed assembling the controller and digit 1 PCB!
 
 ## Controller and Digit 1 Schematics
+
+The attached schematic represents the **Colons & Display Microcontroller** circuit for the controller and digit 1 PCB. Below is an explanation of the various components, their purpose, and how the circuitry functions:
+
+### **Key Components and Their Purpose**
+
+1. **Raspberry Pi Pico W (Microcontroller)**:
+   - **Purpose**: Acts as the central processing unit for the display. It controls the colons, digit 1, and communicates with other digits.
+   - **Functions**:
+     - Sends commands to the digits (e.g., what to display, brightness levels).
+     - Manages Wi-Fi connectivity for remote control and time synchronization.
+     - Handles scheduling for displaying time, date, and environmental data.
+     - Controls power-saving modes by turning off unused digits.
+
+2. **5-Pin UART Connector (U7)**:
+   - **Purpose**: Provides communication between the microcontroller and the digits via UART (Universal Asynchronous Receiver-Transmitter).
+   - **Pins**:
+   - `Tx-0`, `Rx-0`, `Tx-1`, `Rx-1`: Used for transmitting and receiving data to/from the digits.
+   - `GPIO19`: is used to turn on and off the power to the buck converters to Digits 0, 2, and 3.
+
+3. **L293D Motor Driver IC (U5)**:
+   - **Purpose**: Drives the colon motors (top and lower colons) to control their movement.
+   - **Pins**:
+     - `ENABLE1` and `ENABLE2`: Enable the motor driver channels.
+     - `INPUT1`, `INPUT2`, `INPUT3`, `INPUT4`: Control the direction of the motors.
+     - `OUTPUT1`, `OUTPUT2`, `OUTPUT3`, `OUTPUT4`: Provide the output signals to the motors.
+   - **Functionality**: Allows the microcontroller to control the colon motors for precise positioning.
+
+4. **2-Port Terminal Block Connectors**:
+   - **Purpose**: Provide connections for external components like power, UART communication, and sensors.
+   - **Examples**:
+     - `5V-D1`, `5V-D0`: Power connections for the digits.
+     - `UART1`, `Tx-0`, `Rx-0`: UART communication lines.
+     - `5V-OUT`: Power output for external components.
+
+5. **PNP and NPN Transistors (S8550 and 2N2222)**:
+   - **Purpose**: Act as switches or amplifiers for controlling various components.
+   - **S8550 (PNP)**: Used for switching power to specific components.
+   - **2N2222 (NPN)**: Used for driving loads or amplifying signals.
+
+6. **Light Dependent Resistor (LDR)**:
+   - **Purpose**: Measures ambient light levels to adjust the brightness of the display dynamically.
+   - **Placement**: Connected to `R1` and works with the microcontroller to sense light intensity.
+
+7. **Electrolytic and Ceramic Capacitors (C01, C1, C02, C2)**:
+   - **Purpose**: Provide power filtering and decoupling to ensure stable operation of the circuit.
+   - **Electrolytic Capacitors**:
+     - Polarized, used for smoothing power supply fluctuations.
+   - **Ceramic Capacitors**:
+     - Non-polarized, used for high-frequency noise filtering.
+
+8. **Vertical Slide SPDT Switch (SW1)**:
+   - **Purpose**: Acts as an on/off switch for the entire circuit.
+   - **Placement**: Connected to the power input to control the flow of power to the PCB.
+
+9. **Resistors (R2, R3)**:
+   - **Purpose**: Limit current and set voltage levels in the circuit.
+   - **R2 and R3 (10kΩ)**: Pull-up or pull-down resistors for stabilizing signals.
+
+10. **LEDs (TOP-LED1, LWR-LED1)**:
+    - **Purpose**: Indicate the status of the colons.
+    - **Placement**: Positioned on the PCB to align with the colon segments.
+
+11. **DHT22 Sensor Connector**:
+    - **Purpose**: Provides a connection for the Digital Humidity and Temperature (DHT) sensor.
+    - **Functionality**: Allows the microcontroller to read environmental data for display.
+
+### **How the Circuitry Works**
+
+1. **Power Supply**:
+   - Power is supplied by buck converters through the `5V-OUT` and `5V-D1/D0` terminal blocks.
+   - Capacitors (C01, C1, C02, C2) stabilize the power supply and filter noise for the microcontrollers.
+
+2. **Microcontroller Control**:
+   - The Raspberry Pi Pico W serves as the brain of the circuit, controlling all components.
+   - It communicates with the digits via UART (U7) and controls the colon motors through the L293D motor driver (U5).
+
+3. **Colon Motor Control**:
+   - The L293D motor driver receives control signals from the microcontroller to drive the colon motors.
+   - The `ENABLE` and `INPUT` pins determine the speed and direction of the motors.
+
+4. **Display Brightness Adjustment**:
+   - The LDR (R1) measures ambient light levels and sends the data to the microcontroller.
+   - The microcontroller adjusts the brightness of the LEDs accordingly.
+
+5. **Wi-Fi and Scheduler**:
+   - The Raspberry Pi Pico W connects to a Wi-Fi network to synchronize time and fetch weather data.
+   - The scheduler manages the display of time, date, and environmental data.
+
+6. **Low Power Mode**:
+   - The microcontroller uses the S8550 and 2N2222 transistors to switch off power to the DHT22 in low-power mode.
+
+7. **User Interaction**:
+   - The SPDT switch (SW1) allows the user to turn the circuit on or off.
+   - The LEDs provide visual feedback for the status of the colons.
+
+### **Summary**
+
+This circuit is designed to control the colons of the display, acting as the central hub for communication, power management, and environmental data integration. The Raspberry Pi Pico W microcontroller orchestrates all operations, while the supporting components ensure stable and efficient functionality.
 
 ![controllerschematic-1](../img/controllerpcb/digit1-colons-display-controller.png)
 ![controllerschematic-2](../img/controllerpcb/digit1-microcontroller.png)
