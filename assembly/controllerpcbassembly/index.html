@@ -424,7 +424,7 @@ The picture below shows a completed install of the terminal block connectors on 
 <p><img alt="23-controllerpcb" src="../../img/controllerpcb/23-controllerpcb.webp" /></p>
 <p>Congratulations, you've completed assembling the controller and digit 1 PCB!</p>
 <h2 id="controller_and_digit_1_schematic">Controller and Digit 1 Schematic<a class="headerlink" href="#controller_and_digit_1_schematic" title="Permanent link">&para;</a></h2>
-<p>The schematic in this section represents the <strong>Colons &amp; Display Microcontroller</strong> portion of the circuit for the controller and digit 1 PCB. This circuit is designed to control the colons of the display, acting as the central hub for communication, power management, and environmental data (interior and outdoor) integration. The Raspberry Pi Pico W 2040 orchestrates all operations, while the supporting components ensure stable and efficient functionality. Below is an explanation of the various components, their purpose, and how the circuitry functions:</p>
+<p>The schematic in this section (below) represents the <strong>Colons &amp; Display Microcontroller</strong> portion of the circuit for the controller and digit 1 PCB. This circuit is designed to control the colons of the display, acting as the central hub for communication, power management, and environmental data (interior and outdoor) integration. The Raspberry Pi Pico W 2040 orchestrates all operations, while the supporting components ensure stable and efficient functionality. Below is an explanation of the various components, their purpose, and how the circuitry functions:</p>
 <h3 id="key_components_and_their_purpose"><em>Key Components and Their Purpose</em><a class="headerlink" href="#key_components_and_their_purpose" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Raspberry Pi Pico W 2040 (Microcontroller)</strong>:</br>
@@ -440,15 +440,15 @@ The picture below shows a completed install of the terminal block connectors on 
     <em>Purpose</em>: Provides communication between the microcontroller and the digits via UART (Universal Asynchronous Receiver-Transmitter).</br>
     <em>Pins</em>:<ul>
 <li><code>Tx-0</code>, <code>Rx-0</code>, <code>Tx-1</code>, <code>Rx-1</code>: Used for transmitting and receiving data to/from the digits.</li>
-<li><code>GPIO19</code>: is used to turn on and off the power to the buck converters to Digits 0, 2, and 3.</li>
+<li><code>GPIO19</code>: is used to turn on and off the power to the digits.</li>
 </ul>
 </li>
 <li><strong>L293D Motor Driver IC (U5)</strong>:</br>
     <em>Purpose</em>: Drives the colon motors (top and lower colons) to control their movement.</br>
     <em>Functionality</em>: Allows the microcontroller to control the colon motors for precise positioning.</br>
     <em>Pins</em>:<ul>
-<li><code>ENABLE1</code> and <code>ENABLE2</code>: Enable the motor driver channels.</li>
-<li><code>INPUT1</code>, <code>INPUT2</code>, <code>INPUT3</code>, <code>INPUT4</code>: Control the direction of the motors.</li>
+<li><code>ENABLE1</code> and <code>ENABLE2</code>: Controls the motor speed.</li>
+<li><code>INPUT1</code>, <code>INPUT2</code>, <code>INPUT3</code>, <code>INPUT4</code>: Control the CW and CCW direction of the motors.</li>
 <li><code>OUTPUT1</code>, <code>OUTPUT2</code>, <code>OUTPUT3</code>, <code>OUTPUT4</code>: Provide the output signals to the motors.</li>
 </ul>
 </li>
