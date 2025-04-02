@@ -10,7 +10,7 @@ In this section you will upload code to your Raspberry Pi Pico W 2040 from your 
 
 ## Configure and Deploy the Controller Project
 
-1. Connect your Computer to the digit PCB Pico per the instructions on [Verify Micropython on your Raspberry Pi Pico](../prerequisitesoftware.md)
+1. Connect your Computer to the controller PCB Pico per the instructions on [Verify Micropython on your Raspberry Pi Pico](../prerequisitesoftware.md)
 2. Following the screen capture below from VS Code, select **(A)** **File->Open Folder...**, **(B)** open the **deploy/conductor** folder you deployed during step 4 in the section [Fork and Clone the Repository](../prerequisitesoftware.md), then **(C)** click the "Select Folder" button.
 ![deploycontrollercode-1.webp](../img/deploycontrollercode/deploycontrollercode-1.webp)
 3. Following the screen capture below, select the Explorer icon (**A**) in the left [Activity bar](https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout). Click the digit.json file (**B**) in the Explorer pane. Change the **"digit":** value (**C**) to **4**. Don't forget to save the file after changing the value.
