@@ -6,7 +6,7 @@ The display has 4 digits. The digits are numbered from right to left, 0-3, when 
 - provides a consistent distance of dispersion for the lighting of the segment, giving each segment a uniform glow rather than spots of light
 - provides the traditional role of reducing the wiring, efficiently connects various electronic component minimizing the overall size, reliable, cost-effective, and consistent quality of the circuitry
 
-This section details the assembly of digits 0, 2, and 3. Note the pictures below showing the fully assembled PCBs that will be covered in this section.
+This section details the assembly of the digit PCBs. Note the pictures below showing the fully assembled PCBs that will be covered in this section.
 
 Front face fully assembled.
 ![digit pcb front face](../img/digitpcbassembly/1-digitpcbassembly-frontface.webp)
@@ -134,16 +134,16 @@ Below is a photo showing the color variation of blue 5mm LEDs within the same ba
 
 Congratulations for assembling a digit PCB! Be sure to test the digit PCB before assembling the next one.
 
-## Digits 0, 2, & 3 Schematics
+## Digit Schematics
 
-The schematic diagrams in this section represent the **Digits 0, 2, 3 Motor Controller** and **Digits 0, 2, 3 Microcontroller** circuits:
+The schematic diagrams in this section represent the **Digit Motor Controller** and **Digits Microcontroller** circuits:
 
 - *Motor Controller Circuit* drives the actuator motors for each segment (A-G) to physically move the segments into position, turns on the segment LEDs when extended, and turns off the segment LEDs when retracted.
 - *Microcontroller Circuit* controls the LEDs for segment illumination (brightness) and communicates with the main controller (Raspberry Pi Pico W 2040) to receive display commands.
   
 Together, these circuits enable the digit PCBs to display numbers and characters as part of the larger kinetic display system. Below is an explanation of the components, their purpose, and how the circuitry functions.
 
-### **Digits 0, 2, 3 Motor Controller Schematic**
+### **Digit Motor Controller Schematic**
 
 The schematic in the section shows the motor control circuitry for the seven-segment actuators (A-G) the digits. Each segment is controlled by a motor driver IC (L293D) connected to the Raspberry Pi Pico 2040. Also see the [L293D motorcontroller datasheet](https://www.digikey.com/htmldatasheets/production/237694/0/0/1/l293dd.html?msockid=1bb835ba59046489292020fa582965d3). Note the L293D IC motor driver is considered outdated, but used in this circuit as it works well with toy motors and costs less.
 
@@ -181,7 +181,7 @@ The schematic in the section shows the motor control circuitry for the seven-seg
 
 ![digitschematic-1](../img/digitpcbassembly/digit-schematic-motorcontrollers.webp)
 
-### **Digits 0, 2, 3 Microcontroller Schematic**
+### **Digit Microcontroller Schematic**
 
 The schematic in this section shows the microcontroller circuitry for controlling the LEDs and communicating with the motor controllers.
 
