@@ -16,11 +16,12 @@ In this section you will upload code to your Raspberry Pi Pico W 2040 from your 
 3. Following the screen capture below, select the Explorer icon (**A**) in the left [Activity bar](https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout). Click the digit.json file (**B**) in the Explorer pane. Change the **"digit":** value (**C**) to **4**. Don't forget to save the file after changing the value.
 ![deploycontrollercode-2](../img/deploycontrollercode/deploycontrollercode-2.webp)
 4. Following the screen capture below, create a new terminal by **(A) clicking the elipse ...**, then **(B) Terminal->New Terminal** submenu.
-![testdigitpcb-3](../img/deploycontrollercode/deploycontrollercode-3.webp)
-5. Connect your computer's USB port to a Digit's Raspberry Pi Pico. 
-1. Following the screen capture below, **(A) select the drop-down menu** in the terminal pane, then **(B) click the MicroPico vREPL submenu** item.
-![testdigitpcb-4](../img/deploycontrollercode/deploycontrollercode-4.webp)
-6. Following the screen capture below, click **All Commands** (**A**) on the [status bar](https://code.visualstudio.com/api/ux-guidelines/status-bar). In the Command text field (**B**), type "**Upload**" after "**> MicroPico:** ", then select the dropdown **MicroPico: Upload project to Pico**.
-![testdigitpcb-5](../img/deploycontrollercode/deploycontrollercode-5.webp)
+![deploycontrollercode-3](../img/deploycontrollercode/deploycontrollercode-3.webp)
+5. Connect your computer's USB port to a Digit's Raspberry Pi Pico.
+![deploycontrollercode-4](../img/deploycontrollercode/deploycontrollercode-4.webp)
+6. Following the screen capture below, **(A) select the drop-down menu** in the terminal pane, then **(B) click the MicroPico vREPL submenu** item.
+![deploycontrollercode-5](../img/deploycontrollercode/deploycontrollercode-5.webp)
+7. Following the screen capture below, click **All Commands** (**A**) on the [status bar](https://code.visualstudio.com/api/ux-guidelines/status-bar). In the Command text field (**B**), type "**Upload**" after "**> MicroPico:** ", then select the dropdown **MicroPico: Upload project to Pico**.
+![deploycontrollercode-6](../img/deploycontrollercode/deploycontrollercode-6.webp)
 
 Congratulations on successfully uploading the code to the Digit's Raspberry Pi Pico W!
