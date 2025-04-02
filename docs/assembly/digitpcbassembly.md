@@ -212,13 +212,19 @@ The schematic in this section shows the microcontroller circuitry for controllin
 
 #### **How the Microcontroller Circuit Works**
 
+1. **Segment Control**:
+      - The Raspberry Pi Pico 2040 controls sends motor direction, extending or retracting the segment, and speed from the GPIO pins that are connected to the motor controllers.
+      - This allows the microcontroller to control the length of time the motor is running (typically in 10th of a second), the CW (extend) or CCW (retract) direction of the motor, and the speed of the motor which is a % value typically between 50% to 100% of 5v.
 1. **LED Control**:
       - The Raspberry Pi Pico 2040 controls the LEDs by PWM from the GPIO pins that are connected to the cathodes.
-      - This allows the microcontroller to turn on/off specific LEDs, control the brightness, and illuminate the desired segments.
+      - This allows the microcontroller to turn on/off specific LEDs, control the brightness, and illuminates the desired segments.
 1. **Communication**:
       - The UART connector allows the digit PCB to receive commands from the controller and digit 1 PCB.
       - Commands include which digit to display and brightness levels.
-1. **Power Stabilization**:
+1. **State**:
+      - The Raspberry Pi Pico 2040 stores the digits state at all times in order to gracefully transition from one number or character to the next and to handle graceful or ungraceful power off situations.
+      - The state includes which segment is extended or retracted, the type of character map to segments, as well as the speed and length of time to run the motors.
+1. **PowerCommands Stabilization**:
       - The capacitors (C1, C2) ensure stable operation of the LEDs and microcontroller by filtering noise and stabilizing the power supply.
 
 ![digitschematic-2](../img/digitpcbassembly/digit-schematic-microcontroller.webp)
