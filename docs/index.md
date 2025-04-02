@@ -18,6 +18,6 @@
 - [Deploy Digit Project](./assembly/deploydigitproject.md)
 - [Test Digit PCB](./assembly/digitpcbtest.md)
 - [Controller PCB Assembly](./assembly/controllerpcbassembly.md)
-- [Deploy Controller Project](./assembly/deploydigitpcontrollerroject.md)
+- [Deploy Controller Project](./assembly/deploycontrollerproject.md)
 - [Test Controller PCB](./assembly/controllerpcbtest.md)
 - [Buck Converter Preparation and Assembly](./assembly/buckassembly.md)
