@@ -1,6 +1,6 @@
 # Controller and Digit 1 PCB Assembly
 
-Digit 1 and the colons are on a single PCB. Digit 1 is identical to digits 0, 2, and 3 except it is contained on a single PCB with the colons. The Raspberry Pi Pico W microcontroller operates the colons and serves as the central command and control for the display performing the following functions:
+Digit 1 and the colons are on a single PCB. Digit 1, powered by a Raspberry Pi Pico 2040 is identical to digits 0, 2, and 3 except it is contained on a single PCB with the controller. The Raspberry Pi Pico W 2040 operates the colons and serves as the central command and control for the display performing the following functions:
 
 - Sends commands to digits as to what to display (i.e. 0-9, A-F)
 - Sends commands for the brightness of the digits
@@ -54,7 +54,7 @@ Back side of the controller PCB fully assembled.
 
 ## Assemble Digit One
 
-On the controller PCB, follow the instructions from the digit PCB assembly to assemble digit one.
+Follow the instructions from the **Digit 0, 2, & 3** PCB assembly to assemble **Digit 1** on the controller PCB.
 
 1. On the front face of the controller PCB, [add the 16 pin headers](digitpcbassembly.md#add_the_16_pin_headers) as previously completed for the digit PCBs. Note the highlighted sections in the picture below that you'll add an additional (5th) 16 pin header to the controller PCB. Don't forget to snip all the pins flush on the back side of the controller PCB, resolder each snipped pin to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 ![1-controllerpcb](../img/controllerpcb/1-controllerpcb.webp)
@@ -140,104 +140,84 @@ Following the picture below and from the back face of the controller PCB, place 
 
 Congratulations, you've completed assembling the controller and digit 1 PCB!
 
-## Controller and Digit 1 Schematics
+## Controller and Digit 1 Schematic
 
-The schematic in this section represents the **Colons & Display Microcontroller** portion of the circuit for the controller and digit 1 PCB. Below is an explanation of the various components, their purpose, and how the circuitry functions:
+The schematic in this section represents the **Colons & Display Microcontroller** portion of the circuit for the controller and digit 1 PCB. This circuit is designed to control the colons of the display, acting as the central hub for communication, power management, and environmental data (interior and outdoor) integration. The Raspberry Pi Pico W 2040 orchestrates all operations, while the supporting components ensure stable and efficient functionality. Below is an explanation of the various components, their purpose, and how the circuitry functions:
 
 ### **Key Components and Their Purpose**
 
-1. **Raspberry Pi Pico W (Microcontroller)**:
-   - **Purpose**: Acts as the central processing unit for the display. It controls the colons and communicates with the digits.
-   - **Functions**:
-     - Sends commands to the digits (e.g., what to display, brightness levels).
-     - Manages Wi-Fi connectivity for remote control and time synchronization.
-     - Handles scheduling for displaying time, date, and environmental data.
-     - Controls power-saving modes by turning off unused digits.
-
-2. **4-Pin UART (U7) and Low Power mode pin connector**:
-   - **Purpose**: Provides communication between the microcontroller and the digits via UART (Universal Asynchronous Receiver-Transmitter).
-   - **Pins**:
-   - `Tx-0`, `Rx-0`, `Tx-1`, `Rx-1`: Used for transmitting and receiving data to/from the digits.
-   - `GPIO19`: is used to turn on and off the power to the buck converters to Digits 0, 2, and 3.
-
-3. **L293D Motor Driver IC (U5)**:
-   - **Purpose**: Drives the colon motors (top and lower colons) to control their movement.
-   - **Pins**:
+1. **Raspberry Pi Pico W 2040 (Microcontroller)**:</br>
+    *Purpose*: Acts as the central processing unit for the display. It controls the colons and communicates with the digits.</br>
+    *Functions*:
+      - Sends commands to the digits (e.g., what to display, brightness levels).
+      - Manages `Wi-Fi connectivity for remote control and time synchronization.
+      - Handles scheduling for displaying time, date, and environmental data.
+      - Controls power-saving modes by turning off unused digits.
+2. **4-Pin UART and Low Power mode pin connector (U7)**:</br>
+    *Purpose*: Provides communication between the microcontroller and the digits via UART (Universal Asynchronous Receiver-Transmitter).</br>
+    *Pins*:
+       - `Tx-0`, `Rx-0`, `Tx-1`, `Rx-1`: Used for transmitting and receiving data to/from the digits.
+       - `GPIO19`: is used to turn on and off the power to the buck converters to Digits 0, 2, and 3.
+3. **L293D Motor Driver IC (U5)**:</br>
+    *Purpose*: Drives the colon motors (top and lower colons) to control their movement.</br>
+    *Functionality*: Allows the microcontroller to control the colon motors for precise positioning.</br>
+    *Pins*:
      - `ENABLE1` and `ENABLE2`: Enable the motor driver channels.
      - `INPUT1`, `INPUT2`, `INPUT3`, `INPUT4`: Control the direction of the motors.
      - `OUTPUT1`, `OUTPUT2`, `OUTPUT3`, `OUTPUT4`: Provide the output signals to the motors.
-   - **Functionality**: Allows the microcontroller to control the colon motors for precise positioning.
-
-4. **2-Port Terminal Block Connectors**:
-   - **Purpose**: Provide connections for external components like power, UART communication, and sensors.
-   - **Examples**:
+4. **2-Port Terminal Block Connectors**:</br>
+    *Purpose*: Provide connections for external components like power, UART communication, and sensors.</br>
+    *Examples*:
      - `5V-D1`, `5V-D0`: Power connections for the digits.
      - `UART1`, `Tx-0`, `Rx-0`: UART communication lines.
      - `5V-OUT`: Power output for external components.
-
-5. **PNP and NPN Transistors (S8550 and 2N2222)**:
-   - **Purpose**: Act as switches or amplifiers for controlling various components.
-   - **S8550 (PNP)**: Used for switching power to specific components.
-   - **2N2222 (NPN)**: Used for driving loads or amplifying signals.
-
-6. **Light Dependent Resistor (LDR)**:
-   - **Purpose**: Measures ambient light levels to adjust the brightness of the display dynamically.
-   - **Placement**: Connected to `R1` and works with the microcontroller to sense light intensity.
-
-7. **Electrolytic and Ceramic Capacitors (C01, C1, C02, C2)**:
-   - **Purpose**: Provide power filtering and decoupling to ensure stable operation of the circuit.
-   - **Electrolytic Capacitors**:
+5. **PNP and NPN Transistors (S8550 and 2N2222)**:</br>
+    *Purpose*: Act as switches or amplifiers for controlling various components.</br>
+    *S8550 (PNP)*: Used for switching power to specific components.</br>
+    *2N2222 (NPN)*: Used for driving loads or amplifying signals.
+6. **Light Dependent Resistor (LDR)**:</br>
+    *Purpose*: Measures ambient light levels to adjust the brightness of the display dynamically.</br>
+    *Placement*: Connected to `R1` and works with the microcontroller to sense light intensity.
+7. **Electrolytic and Ceramic Capacitors (C01, C1, C02, C2)**:</br>
+    *Purpose*: Provide power filtering and decoupling to ensure stable operation of the circuit.</br>
+    *Electrolytic Capacitors*:</br>
      - Polarized, used for smoothing power supply fluctuations.
-   - **Ceramic Capacitors**:
+    *Ceramic Capacitors*:</br>
      - Non-polarized, used for high-frequency noise filtering.
-
-8. **Vertical Slide SPDT Switch (SW1)**:
-   - **Purpose**: Acts as an on/off switch for the entire circuit where off may be **Low Power** or **Admin** mode. When the switch is turned off and the 12v power supply is connected and plugged into wall power, the Pico W provides its own wifi and web service allowing you to connect to its web page and remotely change the display settings. When the switch is changed to the off position while the display is actively running, then the display will retract all the segments and enter low power mode.
-   - **Placement**: Connected to the power input to control the flow of power to the PCB.
-
-9. **Resistors (R2, R3)**:
-   - **Purpose**: Limit current and set voltage levels in the circuit.
-   - **R2 and R3 (10kΩ)**: Pull-up or pull-down resistors for stabilizing signals.
-
-10. **LEDs (TOP-LED1, LWR-LED1)**:
-    - **Purpose**: Indicate the status of the colons.
-    - **Placement**: Positioned on the PCB to align with the colon segments.
-
-11. **DHT22 Sensor Connector**:
-    - **Purpose**: Provides a connection for the Digital Humidity and Temperature (DHT) sensor.
-    - **Functionality**: Allows the microcontroller to read environmental data for display.
+8. **Vertical Slide SPDT Switch (SW1)**:</br>
+    *Purpose*: Acts as an on/off switch for the entire circuit where off may be **Low Power** or **Admin** mode. When the switch is on and the 12v power supply is plugged in, the display will run using its saved settings which includes the SSID and password to the Wifi network. When the switch is turned off and the disconnected 12v power supply is then connected and plugged into wall power, the Pico W provides its own wifi and web service allowing you to connect to its web page and remotely change the display settings. When the switch is changed to the off position while the display is actively running, then the display will retract all the segments and enter low power mode.</br>
+    *Placement*: Controls its internal wifi service and the flow of power to the display.
+9. **Resistors (R2, R3)**:</br>
+    *Purpose*: Limit current and set voltage levels in the circuit.</br>
+    *R2 and R3 (10kΩ)*: Pull-up or pull-down resistors for stabilizing signals.
+10. **LEDs (TOP-LED1, LWR-LED1)**:</br>
+    *Purpose*: Indicate the status of the colons.</br>
+    *Placement*: Positioned on the PCB to align with the colon segments.
+11. **DHT22 Sensor Connector**:</br>
+    *Purpose*: Provides a connection for the Digital Humidity and Temperature (DHT) sensor.</br>
+    *Functionality*: Allows the microcontroller to read environmental data for display.
 
 ### **How the Circuitry Works**
 
-1. **Power Supply**:
-   - Power is supplied by buck converters through the `5V-OUT` and `5V-D1/D0` terminal blocks.
-   - Capacitors (C01, C1, C02, C2) stabilize the power supply and filter noise for the microcontrollers.
-
-2. **Microcontroller Control**:
-   - The Raspberry Pi Pico W serves as the brain of the circuit, controlling all components.
-   - It communicates with the digits via UART (U7) and controls the colon motors through the L293D motor driver (U5).
-
-3. **Colon Motor Control**:
-   - The L293D motor driver receives control signals from the microcontroller to drive the colon motors.
-   - The `ENABLE` and `INPUT` pins determine the speed and direction of the motors.
-
-4. **Display Brightness Adjustment**:
-   - The LDR (R1) measures ambient light levels and sends the data to the microcontroller.
-   - The microcontroller adjusts the brightness of the LEDs accordingly.
-
-5. **Wi-Fi and Scheduler**:
-   - The Raspberry Pi Pico W connects to a Wi-Fi network to synchronize time and fetch weather data.
-   - The scheduler manages the display of time, date, and environmental data.
-
-6. **Low Power Mode**:
-   - The microcontroller uses the S8550 and 2N2222 transistors to switch off power to the DHT22 in low-power mode.
-
-7. **User Interaction**:
-   - The SPDT switch (SW1) allows the user to turn the circuit on or off.
-   - The LEDs provide visual feedback for the status of the colons.
-
-### **Summary**
-
-This circuit is designed to control the colons of the display, acting as the central hub for communication, power management, and environmental data integration. The Raspberry Pi Pico W microcontroller orchestrates all operations, while the supporting components ensure stable and efficient functionality.
+1. **Power Supply**:</br>
+      - Power is supplied by buck converters through the `5V-OUT` and `5V-D1/D0` terminal blocks.
+      - Capacitors (C01, C1, C02, C2) stabilize the power supply and filter noise for the microcontrollers.
+1. **Microcontroller Control**:
+      - The Raspberry Pi Pico W 2040 serves as the brain of the circuit, controlling all components.
+      - It communicates with the digits via UART (U7) and controls the colon motors through the L293D motor driver (U5).
+1. **Colon Motor Control**:
+      - The L293D motor driver receives control signals from the microcontroller to drive the colon motors.
+      - The `ENABLE` and `INPUT` pins determine the speed and direction of the motors.
+1. **Display Brightness Adjustment**:
+      - The LDR (R1) measures ambient light levels and sends the data to the microcontroller.
+      - The microcontroller adjusts the brightness of the LEDs accordingly.
+1. **Wi-Fi and Scheduler**:
+      - The Raspberry Pi Pico W 2040 connects to a Wi-Fi network to synchronize time and fetch weather data.
+      - The scheduler manages the display of time, date, and environmental data.
+1. **Low Power Mode**:
+      - The microcontroller uses the S8550 and 2N2222 transistors to switch off power to the DHT22 when not in use.
+1. **User Interaction**:
+      - The SPDT switch (SW1) allows the user to turn the circuit on or off (low power or Admin mode).
+      - The LEDs provide visual feedback for the status of the colons.
 
 ![controllerschematic-1](../img/controllerpcb/digit1-colons-display-controller.png)
