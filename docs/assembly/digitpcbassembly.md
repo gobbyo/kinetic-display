@@ -30,7 +30,7 @@ Back face fully assembled.
 | 1 | 0.1μ farad ceramic capacitor | ![component-6](../img/component/component-6.webp)|
 | 1 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp)|
 | 28 | 5mm Flat top LED, anode long lead (any color) | ![component-8](../img/component/component-8.webp)|
-| 1 | Raspberry Pi Pico with Headers | ![component-9](../img/component/component-9.webp)|
+| 1 | Raspberry Pi Pico 2040 with Headers | ![component-9](../img/component/component-9.webp)|
 | 3 | Digit PCBs | See [labelling the digit PCBs](#label_the_digit_pcb) |
 
 ***Table of tools***
@@ -136,5 +136,89 @@ Congratulations for assembling a digit PCB! Be sure to test the digit PCB before
 
 ## Digits 0, 2, & 3 Schematics
 
-![digitschematic-1](../img/digitpcbassembly/digit-schematic-motorcontrollers.png)
+The schematic diagrams in this section represent the **Digits 0, 2, 3 Motor Controller** and **Digits 0, 2, 3 Microcontroller** circuits:
+
+- *Motor Controller Circuit* drives the actuator motors for each segment (A-G) to physically move the segments into position, turns on the segment LEDs when extended, and turns off the segment LEDs when retracted.
+- *Microcontroller Circuit* controls the LEDs for segment illumination (brightness) and communicates with the main controller (Raspberry Pi Pico W 2040) to receive display commands.
+  
+Together, these circuits enable the digit PCBs to display numbers and characters as part of the larger kinetic display system. Below is an explanation of the components, their purpose, and how the circuitry functions.
+
+### **Digits 0, 2, 3 Motor Controller Schematic**
+
+The schematic in the section shows the motor control circuitry for the seven-segment actuators (A-G) the digits. Each segment is controlled by a motor driver IC (L293D) connected to the Raspberry Pi Pico 2040. Also see the [L293D motorcontroller datasheet](https://www.digikey.com/htmldatasheets/production/237694/0/0/1/l293dd.html?msockid=1bb835ba59046489292020fa582965d3). Note the L293D IC motor driver is considered outdated, but used in this circuit as it works well with toy motors and costs less.
+
+#### **Key Motor Controller Components and Their Purpose**
+
+1. **L293D Motor Driver ICs (U1, U2, U3, U4)**:</br>
+    *Purpose*: Control the bidirectional movement of the actuator motors for each segment (A-G).</br>
+    *Functionality*: Each IC controls two segments, allowing precise movement of the actuators.</br>
+    *Pins*:
+     - `ENABLE1` and `ENABLE2`: Enable or disable the motor driver channels.
+     - `INPUT1`, `INPUT2`, `INPUT3`, `INPUT4`: Control the direction of the motor (clockwise or counterclockwise).
+     - `OUTPUT1`, `OUTPUT2`, `OUTPUT3`, `OUTPUT4`: Provide the output signals to the motors.
+1. **Actuator Motors (SEG-A to SEG-G)**:</br>
+    *Purpose*: Physically extends and retracts the segments of the seven-segment display to create the desired digit.</br>
+    *Pins*:
+     - `CW` (Clockwise) extends the segment and `CCW` (Counterclockwise) retracts the segment: Control the direction of the motor's rotation.
+1. **Capacitors (C1, C2)**:</br>
+    *Purpose*: Provide power decoupling and noise filtering for the motor drivers.</br>
+    *C1 (1μF)*: Stabilizes the power supply for the motor drivers.</br>
+    *C2 (0.1μF)*: Filters high-frequency noise.
+1. **GPIO Pins (from Raspberry Pi Pico 2040)**:</br>
+    *Purpose*: Send control signals to the motor drivers.</br>
+    *Pins*:
+     - `GPIO11`, `GPIO12`, `GPIO15`, etc.: Control the `INPUT` and `ENABLE` pins of the motor drivers.
+
+#### **How the Motor Controller Circuit Works**
+
+1. **Motor Control**:</br>
+      - The Raspberry Pi Pico 2040 sends signals to the `INPUT` and `ENABLE` pins of the L293D ICs.</br>
+      - Based on these signals, the motor driver controls the direction and speed of the actuator motors.
+2. **Segment Movement**:</br>
+      - Each segment (A-G) is connected to a motor. The motor moves the segment into position to display the desired digit.
+3. **Power Stabilization**:</br>
+      - The capacitors (C1, C2) ensure stable operation of the motor drivers by filtering noise and stabilizing the power supply.
+
+![digitschematic-1](../img/digitpcbassembly/digit-schematic-motorcontrollers.webp)
+
+### **Digits 0, 2, 3 Microcontroller Schematic**
+
+The schematic in this section shows the microcontroller circuitry for controlling the LEDs and communicating with the motor controllers.
+
+#### **Key Microcontroller Components and Their Purpose**
+
+1. **Raspberry Pi Pico 2040 (Microcontroller)**:</br>
+    *Purpose*: Acts as the central processing unit for the digit PCB.</br>
+    *Functions*:
+      - Sends control signals to the motor drivers for segment movement.
+      - Controls the LEDs for segment illumination.
+      - Communicates with the main controller PCB via UART.
+1. **LEDs (A-LED1 to G-LED4)**:</br>
+    *Purpose*: Illuminates the segments of the seven-segment display.</br>
+    *Configuration*:
+     - Each segment (A-G) has four LEDs connected in parallel.
+     - The anode (`+`) is connected to the 5V power rail, and the cathode (`-`) is connected to the GPIO pins in the microcontroller.
+     - Brightness is controlled by the GPIO PWM signals from the microcontroller.
+1. **Resistors (not used in lieu of PWM)**:</br>
+    *Purpose*: Prevents the LEDs from exceeding their maximum rated power capabilities. Note the brightest PWM signal from a GPIO does not exceed a 220 ohm resistor.
+1. **UART Connector**:</br>
+    *Purpose*: Provides communication between the digit PCB and the main controller PCB.</br>
+    *Pins*:
+     - `Rx-1`, `Tx-1`, `Rx-0`, `Tx-0`: Used for transmitting and receiving data.
+1. **Capacitors (C1, C2)**:</br>
+    *Purpose*: Provide power decoupling and noise filtering for the microcontroller and LEDs.</br>
+    *C1 (1μF)*: Stabilizes the power supply for the LEDs.</br>
+    *C2 (0.1μF)*: Filters high-frequency noise.
+
+#### **How the Microcontroller Circuit Works**
+
+1. **LED Control**:
+      - The Raspberry Pi Pico 2040 controls the LEDs by PWM from the GPIO pins that are connected to the cathodes.
+      - This allows the microcontroller to turn on/off specific LEDs, control the brightness, and illuminate the desired segments.
+1. **Communication**:
+      - The UART connector allows the digit PCB to receive commands from the controller and digit 1 PCB.
+      - Commands include which digit to display and brightness levels.
+1. **Power Stabilization**:
+      - The capacitors (C1, C2) ensure stable operation of the LEDs and microcontroller by filtering noise and stabilizing the power supply.
+
 ![digitschematic-2](../img/digitpcbassembly/digit-schematic-microcontroller.webp)
