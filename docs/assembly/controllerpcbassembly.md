@@ -142,7 +142,7 @@ Congratulations, you've completed assembling the controller and digit 1 PCB!
 
 ## Controller and Digit 1 Schematic
 
-The schematic in this section represents the **Colons & Display Microcontroller** portion of the circuit for the controller and digit 1 PCB. This circuit is designed to control the colons of the display, acting as the central hub for communication, power management, and environmental data (interior and outdoor) integration. The Raspberry Pi Pico W 2040 orchestrates all operations, while the supporting components ensure stable and efficient functionality. Below is an explanation of the various components, their purpose, and how the circuitry functions:
+The schematic in this section (below) represents the **Colons & Display Microcontroller** portion of the circuit for the controller and digit 1 PCB. This circuit is designed to control the colons of the display, acting as the central hub for communication, power management, and environmental data (interior and outdoor) integration. The Raspberry Pi Pico W 2040 orchestrates all operations, while the supporting components ensure stable and efficient functionality. Below is an explanation of the various components, their purpose, and how the circuitry functions:
 
 ### *Key Components and Their Purpose*
 
@@ -157,13 +157,13 @@ The schematic in this section represents the **Colons & Display Microcontroller*
     *Purpose*: Provides communication between the microcontroller and the digits via UART (Universal Asynchronous Receiver-Transmitter).</br>
     *Pins*:
        - `Tx-0`, `Rx-0`, `Tx-1`, `Rx-1`: Used for transmitting and receiving data to/from the digits.
-       - `GPIO19`: is used to turn on and off the power to the buck converters to Digits 0, 2, and 3.
+       - `GPIO19`: is used to turn on and off the power to the digits.
 3. **L293D Motor Driver IC (U5)**:</br>
     *Purpose*: Drives the colon motors (top and lower colons) to control their movement.</br>
     *Functionality*: Allows the microcontroller to control the colon motors for precise positioning.</br>
     *Pins*:
-     - `ENABLE1` and `ENABLE2`: Enable the motor driver channels.
-     - `INPUT1`, `INPUT2`, `INPUT3`, `INPUT4`: Control the direction of the motors.
+     - `ENABLE1` and `ENABLE2`: Controls the motor speed.
+     - `INPUT1`, `INPUT2`, `INPUT3`, `INPUT4`: Control the CW and CCW direction of the motors.
      - `OUTPUT1`, `OUTPUT2`, `OUTPUT3`, `OUTPUT4`: Provide the output signals to the motors.
 4. **2-Port Terminal Block Connectors**:</br>
     *Purpose*: Provide connections for external components like power, UART communication, and sensors.</br>

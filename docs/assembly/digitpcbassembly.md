@@ -145,7 +145,7 @@ Together, these circuits enable the digit PCBs to display numbers and characters
 
 ### **Digit Motor Controller Schematic**
 
-The schematic in the section shows the motor control circuitry for the digit's seven-segment actuators (A-G). Each segment is controlled by a motor driver IC (L293D) connected to the Raspberry Pi Pico 2040. Also see the [L293D motorcontroller datasheet](https://www.digikey.com/htmldatasheets/production/237694/0/0/1/l293dd.html?msockid=1bb835ba59046489292020fa582965d3). Note the L293D IC motor driver is considered outdated, but used in this circuit as it works well with toy motors and costs slightly less.
+The schematic in the section shows the motor control circuitry for the digit's seven-segment actuators (A-G). Each segment is controlled by a motor driver IC (L293D) connected to the Raspberry Pi Pico 2040. Note the L293D IC motor driver is considered outdated, but used in this circuit as it works well with toy motors and costs slightly less. For more details see the [L293D motorcontroller datasheet](https://www.digikey.com/htmldatasheets/production/237694/0/0/1/l293dd.html?msockid=1bb835ba59046489292020fa582965d3).
 
 #### **Key Motor Controller Components and Their Purpose**
 
@@ -153,18 +153,18 @@ The schematic in the section shows the motor control circuitry for the digit's s
     *Purpose*: Control the bidirectional movement of the actuator motors for each segment (A-G).</br>
     *Functionality*: Each IC controls two segments, allowing precise movement of the actuators.</br>
     *Pins*:
-     - `ENABLE1` and `ENABLE2`: Enable or disable the motor driver channels.
-     - `INPUT1`, `INPUT2`, `INPUT3`, `INPUT4`: Control the direction of the motor (clockwise or counterclockwise).
+     - `ENABLE1` and `ENABLE2`: Controls the motor speed.
+     - `INPUT1`, `INPUT2`, `INPUT3`, `INPUT4`: Control the CW (Clockwise) and CCW (Counter clockwise) direction of the motor.
      - `OUTPUT1`, `OUTPUT2`, `OUTPUT3`, `OUTPUT4`: Provide the output signals to the motors.
-1. **Actuator Motors (SEG-A to SEG-G)**:</br>
+2. **Actuator Motors (SEG-A to SEG-G)**:</br>
     *Purpose*: Physically extends and retracts the segments of the seven-segment display to create the desired digit.</br>
     *Pins*:
-     - `CW` (Clockwise) extends the segment and `CCW` (Counterclockwise) retracts the segment: Control the direction of the motor's rotation.
-1. **Capacitors (C1, C2)**:</br>
+     - `CW` extends the segment and `CCW` retracts the segment: Control the extension and retraction of the actuator.
+3. **Capacitors (C1, C2)**:</br>
     *Purpose*: Provide power decoupling and noise filtering for the motor drivers.</br>
     *C1 (1μF)*: Stabilizes the power supply for the motor drivers.</br>
     *C2 (0.1μF)*: Filters high-frequency noise.
-1. **GPIO Pins (from Raspberry Pi Pico 2040)**:</br>
+4. **GPIO Pins (from Raspberry Pi Pico 2040)**:</br>
     *Purpose*: Send control signals to the motor drivers.</br>
     *Pins*:
      - `GPIO11`, `GPIO12`, `GPIO15`, etc.: Control the `INPUT` and `ENABLE` pins of the motor drivers.
@@ -200,7 +200,7 @@ The schematic in this section shows the microcontroller circuitry for controllin
      - The anode (`+`) is connected to the GPIO pins, and the cathode (`-`) is connected to ground.
      - Brightness is controlled by the GPIO PWM signals from the microcontroller.
 1. **Resistors (not used in lieu of PWM)**:</br>
-    *Purpose*: Prevents the LEDs from exceeding their maximum rated power capabilities. Note the brightest PWM signal from a GPIO does not exceed a 220 ohm resistor.
+    *Purpose*: Prevents the LEDs from exceeding their maximum rated power capabilities. The software prevents any LED PWM signal from exceeding a 220 ohm resistor for 3.3v and therefore resistors are not needed.
 1. **UART Connector**:</br>
     *Purpose*: Provides communication between the digit PCB and the main controller PCB.</br>
     *Pins*:
@@ -213,18 +213,18 @@ The schematic in this section shows the microcontroller circuitry for controllin
 #### **How the Microcontroller Circuit Works**
 
 1. **Segment Control**:
-      - The Raspberry Pi Pico 2040 controls sends motor direction, extending or retracting the segment, and speed from the GPIO pins that are connected to the motor controllers.
-      - This allows the microcontroller to control the length of time the motor is running (between 1/5th and 1/4th of a second), the CW (extend) or CCW (retract) direction of the motor, and the speed of the motor which is a % value typically between 50% to 100% of 5v.
-1. **LED Control**:
+      - The Raspberry Pi Pico 2040 controls motor direction, extending or retracting the segment, and speed from GPIO pins connected to the motor controllers.
+      - The microcontroller determines the length of time the motor is running (between 1/5th and 1/4th of a second), the CW (extend) or CCW (retract) direction of the actuator, and the speed of the motor which is a value typically between 50% to 100% of 5v.
+2. **LED Control**:
       - The Raspberry Pi Pico 2040 controls the LEDs by PWM from the GPIO pins that are connected to the anode of each LED.
       - This allows the microcontroller to turn on/off specific LEDs, control the brightness, and illuminates the desired segments.
-1. **Communication**:
-      - The UART connector allows the digit PCB to receive commands from the controller and digit 1 PCB.
-      - Commands include which digit to display and brightness levels.
-1. **State**:
-      - The Raspberry Pi Pico 2040 stores the digits state at all times in order to gracefully transition from one number or character to the next and to handle graceful or ungraceful power off situations.
-      - The state includes which segment is extended or retracted, the type of character map to segments, as well as the speed and length of time to run the motors.
-1. **PowerCommands Stabilization**:
+3. **Communication**:
+      - The UART connector allows the digit PCB to receive UART commands from the controller and digit 1 PCB.
+      - UART commands include which digit to display and brightness levels, as well as various actuator and digit settings.
+4. **State**:
+      - The Raspberry Pi Pico 2040 stores the digit state at all times in order to gracefully transition from one number or character to the next and handle graceful or ungraceful power off situations.
+      - The state includes which segment is extended or retracted, the type of character map used by the digits, as well as the speed and length of time to run the motors.
+5. **PowerCommands Stabilization**:
       - The capacitors (C1, C2) ensure stable operation of the LEDs and microcontroller by filtering noise and stabilizing the power supply.
 
 ![digitschematic-2](../img/digitpcbassembly/digit-schematic-microcontroller.webp)
