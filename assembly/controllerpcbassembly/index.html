@@ -424,11 +424,11 @@ The diagram below shows a completed install of the terminal block connectors on 
 <p><img alt="23-controllerpcb" src="../../img/controllerpcb/23-controllerpcb.webp" /></p>
 <p>Congratulations, you've completed assembling the controller and digit 1 PCB!</p>
 <h2 id="controller_and_digit_1_schematics">Controller and Digit 1 Schematics<a class="headerlink" href="#controller_and_digit_1_schematics" title="Permanent link">&para;</a></h2>
-<p>The attached schematic represents the <strong>Colons &amp; Display Microcontroller</strong> circuit for the controller and digit 1 PCB. Below is an explanation of the various components, their purpose, and how the circuitry functions:</p>
+<p>The schematic in this section represents the <strong>Colons &amp; Display Microcontroller</strong> portion of the circuit for the controller and digit 1 PCB. Below is an explanation of the various components, their purpose, and how the circuitry functions:</p>
 <h3 id="key_components_and_their_purpose"><strong>Key Components and Their Purpose</strong><a class="headerlink" href="#key_components_and_their_purpose" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Raspberry Pi Pico W (Microcontroller)</strong>:</li>
-<li><strong>Purpose</strong>: Acts as the central processing unit for the display. It controls the colons, digit 1, and communicates with other digits.</li>
+<li><strong>Purpose</strong>: Acts as the central processing unit for the display. It controls the colons and communicates with the digits.</li>
 <li>
 <p><strong>Functions</strong>:</p>
 <ul>
@@ -439,7 +439,7 @@ The diagram below shows a completed install of the terminal block connectors on 
 </ul>
 </li>
 <li>
-<p><strong>5-Pin UART Connector (U7)</strong>:</p>
+<p><strong>4-Pin UART (U7) and Low Power mode pin connector</strong>:</p>
 </li>
 <li><strong>Purpose</strong>: Provides communication between the microcontroller and the digits via UART (Universal Asynchronous Receiver-Transmitter).</li>
 <li><strong>Pins</strong>:</li>
@@ -504,7 +504,7 @@ The diagram below shows a completed install of the terminal block connectors on 
 <li>
 <p><strong>Vertical Slide SPDT Switch (SW1)</strong>:</p>
 </li>
-<li><strong>Purpose</strong>: Acts as an on/off switch for the entire circuit.</li>
+<li><strong>Purpose</strong>: Acts as an on/off switch for the entire circuit where off may be <strong>Low Power</strong> or <strong>Admin</strong> mode. When the switch is turned off and the 12v power supply is connected and plugged into wall power, the Pico W provides its own wifi and web service allowing you to connect to its web page and remotely change the display settings. When the switch is changed to the off position while the display is actively running, then the display will retract all the segments and enter low power mode.</li>
 <li>
 <p><strong>Placement</strong>: Connected to the power input to control the flow of power to the PCB.</p>
 </li>
@@ -579,9 +579,7 @@ The diagram below shows a completed install of the terminal block connectors on 
 </ol>
 <h3 id="summary"><strong>Summary</strong><a class="headerlink" href="#summary" title="Permanent link">&para;</a></h3>
 <p>This circuit is designed to control the colons of the display, acting as the central hub for communication, power management, and environmental data integration. The Raspberry Pi Pico W microcontroller orchestrates all operations, while the supporting components ensure stable and efficient functionality.</p>
-<p><img alt="controllerschematic-1" src="../../img/controllerpcb/digit1-colons-display-controller.png" />
-<img alt="controllerschematic-2" src="../../img/controllerpcb/digit1-microcontroller.png" />
-<img alt="controllerschematic-3" src="../../img/controllerpcb/digit1-motorcontrollers.png" /></p></div>
+<p><img alt="controllerschematic-1" src="../../img/controllerpcb/digit1-colons-display-controller.png" /></p></div>
             </div>
         </div>
 
