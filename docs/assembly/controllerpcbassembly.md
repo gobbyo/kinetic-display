@@ -142,19 +142,19 @@ Congratulations, you've completed assembling the controller and digit 1 PCB!
 
 ## Controller and Digit 1 Schematics
 
-The attached schematic represents the **Colons & Display Microcontroller** circuit for the controller and digit 1 PCB. Below is an explanation of the various components, their purpose, and how the circuitry functions:
+The schematic in this section represents the **Colons & Display Microcontroller** portion of the circuit for the controller and digit 1 PCB. Below is an explanation of the various components, their purpose, and how the circuitry functions:
 
 ### **Key Components and Their Purpose**
 
 1. **Raspberry Pi Pico W (Microcontroller)**:
-   - **Purpose**: Acts as the central processing unit for the display. It controls the colons, digit 1, and communicates with other digits.
+   - **Purpose**: Acts as the central processing unit for the display. It controls the colons and communicates with the digits.
    - **Functions**:
      - Sends commands to the digits (e.g., what to display, brightness levels).
      - Manages Wi-Fi connectivity for remote control and time synchronization.
      - Handles scheduling for displaying time, date, and environmental data.
      - Controls power-saving modes by turning off unused digits.
 
-2. **5-Pin UART Connector (U7)**:
+2. **4-Pin UART (U7) and Low Power mode pin connector**:
    - **Purpose**: Provides communication between the microcontroller and the digits via UART (Universal Asynchronous Receiver-Transmitter).
    - **Pins**:
    - `Tx-0`, `Rx-0`, `Tx-1`, `Rx-1`: Used for transmitting and receiving data to/from the digits.
@@ -192,7 +192,7 @@ The attached schematic represents the **Colons & Display Microcontroller** circu
      - Non-polarized, used for high-frequency noise filtering.
 
 8. **Vertical Slide SPDT Switch (SW1)**:
-   - **Purpose**: Acts as an on/off switch for the entire circuit.
+   - **Purpose**: Acts as an on/off switch for the entire circuit where off may be **Low Power** or **Admin** mode. When the switch is turned off and the 12v power supply is connected and plugged into wall power, the Pico W provides its own wifi and web service allowing you to connect to its web page and remotely change the display settings. When the switch is changed to the off position while the display is actively running, then the display will retract all the segments and enter low power mode.
    - **Placement**: Connected to the power input to control the flow of power to the PCB.
 
 9. **Resistors (R2, R3)**:
@@ -241,5 +241,3 @@ The attached schematic represents the **Colons & Display Microcontroller** circu
 This circuit is designed to control the colons of the display, acting as the central hub for communication, power management, and environmental data integration. The Raspberry Pi Pico W microcontroller orchestrates all operations, while the supporting components ensure stable and efficient functionality.
 
 ![controllerschematic-1](../img/controllerpcb/digit1-colons-display-controller.png)
-![controllerschematic-2](../img/controllerpcb/digit1-microcontroller.png)
-![controllerschematic-3](../img/controllerpcb/digit1-motorcontrollers.png)
