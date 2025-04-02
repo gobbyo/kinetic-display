@@ -425,7 +425,7 @@ The diagram below shows a completed install of the terminal block connectors on 
 <p>Congratulations, you've completed assembling the controller and digit 1 PCB!</p>
 <h2 id="controller_and_digit_1_schematic">Controller and Digit 1 Schematic<a class="headerlink" href="#controller_and_digit_1_schematic" title="Permanent link">&para;</a></h2>
 <p>The schematic in this section represents the <strong>Colons &amp; Display Microcontroller</strong> portion of the circuit for the controller and digit 1 PCB. This circuit is designed to control the colons of the display, acting as the central hub for communication, power management, and environmental data (interior and outdoor) integration. The Raspberry Pi Pico W 2040 orchestrates all operations, while the supporting components ensure stable and efficient functionality. Below is an explanation of the various components, their purpose, and how the circuitry functions:</p>
-<h3 id="key_components_and_their_purpose"><strong>Key Components and Their Purpose</strong><a class="headerlink" href="#key_components_and_their_purpose" title="Permanent link">&para;</a></h3>
+<h3 id="key_components_and_their_purpose"><em>Key Components and Their Purpose</em><a class="headerlink" href="#key_components_and_their_purpose" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Raspberry Pi Pico W 2040 (Microcontroller)</strong>:</br>
     <em>Purpose</em>: Acts as the central processing unit for the display. It controls the colons and communicates with the digits.</br>
@@ -462,13 +462,13 @@ The diagram below shows a completed install of the terminal block connectors on 
 </li>
 <li><strong>PNP and NPN Transistors (S8550 and 2N2222)</strong>:</br>
     <em>Purpose</em>: Act as switches or amplifiers for controlling various components.</br>
-    <em>S8550 (PNP)</em>: Used for switching power to specific components.</br>
-    <em>2N2222 (NPN)</em>: Used for driving loads or amplifying signals.</li>
+    <em>S8550 (PNP)</em>: Used for switching power on or off to the DHT22 sensor</br>
+    <em>2N2222 (NPN)</em>: Used to drive the gate of the S8550 to manage power to the DHT22 sensor.</li>
 <li><strong>Light Dependent Resistor (LDR)</strong>:</br>
     <em>Purpose</em>: Measures ambient light levels to adjust the brightness of the display dynamically.</br>
     <em>Placement</em>: Connected to <code>R1</code> and works with the microcontroller to sense light intensity.</li>
 <li><strong>Electrolytic and Ceramic Capacitors (C01, C1, C02, C2)</strong>:</br>
-    <em>Purpose</em>: Provide power filtering and decoupling to ensure stable operation of the circuit.</br>
+    <em>Purpose</em>: Provide power filtering and decoupling to ensure stable operation of the microcontroller.</br>
     <em>Electrolytic Capacitors</em>:</br><ul>
 <li>Polarized, used for smoothing power supply fluctuations.
 <em>Ceramic Capacitors</em>:</br></li>
@@ -476,7 +476,7 @@ The diagram below shows a completed install of the terminal block connectors on 
 </ul>
 </li>
 <li><strong>Vertical Slide SPDT Switch (SW1)</strong>:</br>
-    <em>Purpose</em>: Acts as an on/off switch for the entire circuit where off may be <strong>Low Power</strong> or <strong>Admin</strong> mode. When the switch is on and the 12v power supply is plugged in, the display will run using its saved settings which includes the SSID and password to the Wifi network. When the switch is turned off and the disconnected 12v power supply is then connected and plugged into wall power, the Pico W provides its own wifi and web service allowing you to connect to its web page and remotely change the display settings. When the switch is changed to the off position while the display is actively running, then the display will retract all the segments and enter low power mode.</br>
+    <em>Purpose</em>: Acts as an on/off switch for the entire circuit where off may be <strong>Low Power</strong> or <strong>Admin</strong> mode. When the switch is on and the 12v power supply is plugged in, the display will run using its saved settings which includes the SSID and password to the wifi network. When the switch is turned off, the disconnected 12v power supply is then connected and plugged into wall power, the Pico W provides its own wifi and web service allowing you to direcctly connect to its web page and remotely change the display settings. When the switch is changed to the off position while the display is actively running, then the display will retract all the segments and enter low power mode.</br>
     <em>Placement</em>: Controls its internal wifi service and the flow of power to the display.</li>
 <li><strong>Resistors (R2, R3)</strong>:</br>
     <em>Purpose</em>: Limit current and set voltage levels in the circuit.</br>
@@ -488,7 +488,7 @@ The diagram below shows a completed install of the terminal block connectors on 
     <em>Purpose</em>: Provides a connection for the Digital Humidity and Temperature (DHT) sensor.</br>
     <em>Functionality</em>: Allows the microcontroller to read environmental data for display.</li>
 </ol>
-<h3 id="how_the_circuitry_works"><strong>How the Circuitry Works</strong><a class="headerlink" href="#how_the_circuitry_works" title="Permanent link">&para;</a></h3>
+<h3 id="how_the_circuitry_works"><em>How the Circuitry Works</em><a class="headerlink" href="#how_the_circuitry_works" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Power Supply</strong>:</br><ul>
 <li>Power is supplied by buck converters through the <code>5V-OUT</code> and <code>5V-D1/D0</code> terminal blocks.</li>
