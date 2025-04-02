@@ -172,9 +172,9 @@ The schematic in this section represents the **Colons & Display Microcontroller*
      - `UART1`, `Tx-0`, `Rx-0`: UART communication lines.
      - `5V-OUT`: Power output for external components.
 5. **PNP and NPN Transistors (S8550 and 2N2222)**:</br>
-    *Purpose*: Act as switches or amplifiers for controlling various components.</br>
+    *Purpose*: Act as a switch for powering the DHT22 sensor.</br>
     *S8550 (PNP)*: Used for switching power on or off to the DHT22 sensor</br>
-    *2N2222 (NPN)*: Used to drive the gate of the S8550 to manage power to the DHT22 sensor.
+    *2N2222 (NPN)*: Used to drive the base of the S8550 to manage power to the DHT22 sensor.
 6. **Light Dependent Resistor (LDR)**:</br>
     *Purpose*: Measures ambient light levels to adjust the brightness of the display dynamically.</br>
     *Placement*: Connected to `R1` and works with the microcontroller to sense light intensity.
