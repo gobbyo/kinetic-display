@@ -144,7 +144,7 @@ Congratulations, you've completed assembling the controller and digit 1 PCB!
 
 The schematic in this section represents the **Colons & Display Microcontroller** portion of the circuit for the controller and digit 1 PCB. This circuit is designed to control the colons of the display, acting as the central hub for communication, power management, and environmental data (interior and outdoor) integration. The Raspberry Pi Pico W 2040 orchestrates all operations, while the supporting components ensure stable and efficient functionality. Below is an explanation of the various components, their purpose, and how the circuitry functions:
 
-### **Key Components and Their Purpose**
+### *Key Components and Their Purpose*
 
 1. **Raspberry Pi Pico W 2040 (Microcontroller)**:</br>
     *Purpose*: Acts as the central processing unit for the display. It controls the colons and communicates with the digits.</br>
@@ -173,19 +173,19 @@ The schematic in this section represents the **Colons & Display Microcontroller*
      - `5V-OUT`: Power output for external components.
 5. **PNP and NPN Transistors (S8550 and 2N2222)**:</br>
     *Purpose*: Act as switches or amplifiers for controlling various components.</br>
-    *S8550 (PNP)*: Used for switching power to specific components.</br>
-    *2N2222 (NPN)*: Used for driving loads or amplifying signals.
+    *S8550 (PNP)*: Used for switching power on or off to the DHT22 sensor</br>
+    *2N2222 (NPN)*: Used to drive the gate of the S8550 to manage power to the DHT22 sensor.
 6. **Light Dependent Resistor (LDR)**:</br>
     *Purpose*: Measures ambient light levels to adjust the brightness of the display dynamically.</br>
     *Placement*: Connected to `R1` and works with the microcontroller to sense light intensity.
 7. **Electrolytic and Ceramic Capacitors (C01, C1, C02, C2)**:</br>
-    *Purpose*: Provide power filtering and decoupling to ensure stable operation of the circuit.</br>
+    *Purpose*: Provide power filtering and decoupling to ensure stable operation of the microcontroller.</br>
     *Electrolytic Capacitors*:</br>
      - Polarized, used for smoothing power supply fluctuations.
     *Ceramic Capacitors*:</br>
      - Non-polarized, used for high-frequency noise filtering.
 8. **Vertical Slide SPDT Switch (SW1)**:</br>
-    *Purpose*: Acts as an on/off switch for the entire circuit where off may be **Low Power** or **Admin** mode. When the switch is on and the 12v power supply is plugged in, the display will run using its saved settings which includes the SSID and password to the Wifi network. When the switch is turned off and the disconnected 12v power supply is then connected and plugged into wall power, the Pico W provides its own wifi and web service allowing you to connect to its web page and remotely change the display settings. When the switch is changed to the off position while the display is actively running, then the display will retract all the segments and enter low power mode.</br>
+    *Purpose*: Acts as an on/off switch for the entire circuit where off may be **Low Power** or **Admin** mode. When the switch is on and the 12v power supply is plugged in, the display will run using its saved settings which includes the SSID and password to the wifi network. When the switch is turned off, the disconnected 12v power supply is then connected and plugged into wall power, the Pico W provides its own wifi and web service allowing you to direcctly connect to its web page and remotely change the display settings. When the switch is changed to the off position while the display is actively running, then the display will retract all the segments and enter low power mode.</br>
     *Placement*: Controls its internal wifi service and the flow of power to the display.
 9. **Resistors (R2, R3)**:</br>
     *Purpose*: Limit current and set voltage levels in the circuit.</br>
@@ -197,7 +197,7 @@ The schematic in this section represents the **Colons & Display Microcontroller*
     *Purpose*: Provides a connection for the Digital Humidity and Temperature (DHT) sensor.</br>
     *Functionality*: Allows the microcontroller to read environmental data for display.
 
-### **How the Circuitry Works**
+### *How the Circuitry Works*
 
 1. **Power Supply**:</br>
       - Power is supplied by buck converters through the `5V-OUT` and `5V-D1/D0` terminal blocks.
