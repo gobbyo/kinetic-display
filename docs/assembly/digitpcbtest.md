@@ -6,7 +6,7 @@ Run the tests in this section after assembling each digit PCB to ensure all the 
 
 - [Completed digit PCB ready for actuators](./digitpcbassembly.md)
 - Computer and microcontroller with the [prerequisite software](../prerequisitesoftware.md)
-- An [assembled actuator](./actuatorassembly.md)
+- An [assembled actuator](actuatorassembly.md)
 
 1. From Visual Studio Code, open the deployed "digit" project by following the steps in the screen capture below: **A**, click the file menu; **B**, select the "digit" folder; **C** click the **Select Folder** button.
 ![testpcbactuator-prerequisite](../img/testpcbactuator/prerequisite.webp)
@@ -18,3 +18,5 @@ Run the tests in this section after assembling each digit PCB to ensure all the 
 ![testpcbactuator-4](../img/testpcbactuator/testpcbactuator-4.webp)
 ![testpcbactuator-5](../img/testpcbactuator/testpcbactuator-5.webp)
 ![testpcbactuator-6](../img/testpcbactuator/testpcbactuator-6.webp)
+
+[def]: ./actuatorassembly.md
