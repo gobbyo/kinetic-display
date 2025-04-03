@@ -312,7 +312,7 @@ Back face fully assembled.
 </table>
 <h2 id="label_the_digit_pcb">Label the Digit PCB<a class="headerlink" href="#label_the_digit_pcb" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the <strong>(A)</strong> label to the <strong>(B)</strong> FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Also note that digit 0 (<strong>C</strong>) in the picture below is a completed digit PCB ready for mounting onto the display.
+<li>Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the <strong>(A)</strong> label to the <strong>(B)</strong> FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Also note that digit 0 <strong>(C)</strong> in the picture below is a completed digit PCB ready for mounting onto the display.
 <img alt="digitpcb-2" src="../../img/digitpcbassembly/2-digitpcbassembly.webp" /></li>
 <li>Add the <strong>(A)</strong> label to the <strong>(B)</strong> BACK FACING SIDE of each of the 3 digit PCBs as placed in the picture below.
 <img alt="digitpcb-3" src="../../img/digitpcbassembly/3-digitpcbassembly.webp" /></li>
@@ -430,8 +430,8 @@ Back face fully assembled.
 </li>
 <li><strong>Capacitors (C1, C2)</strong>:</br>
     <em>Purpose</em>: Provide power decoupling and noise filtering for the motor drivers.</br>
-    <em>C1 (1μF)</em>: Stabilizes the power supply for the motor drivers.</br>
-    <em>C2 (0.1μF)</em>: Filters high-frequency noise.</li>
+    <code>C1</code> (1μF): Stabilizes the power supply for the motor drivers.</br>
+    <code>C2</code> (0.1μF): Filters high-frequency noise.</li>
 <li><strong>GPIO Pins (from Raspberry Pi Pico 2040)</strong>:</br>
     <em>Purpose</em>: Send control signals to the motor drivers.</br>
     <em>Pins</em>:<ul>
@@ -451,7 +451,7 @@ Back face fully assembled.
 </ul>
 </li>
 <li><strong>Power Stabilization</strong>:</br><ul>
-<li>The capacitors (C1, C2) ensure stable operation of the motor drivers by filtering noise and stabilizing the power supply.</li>
+<li>The capacitors <code>C1</code> and <code>C2</code> ensure stable operation of the motor drivers by filtering noise and stabilizing the power supply.</li>
 </ul>
 </li>
 </ol>
@@ -472,7 +472,7 @@ Back face fully assembled.
     <em>Purpose</em>: Illuminates the segments of the seven-segment display.</br>
     <em>Configuration</em>:<ul>
 <li>Each segment (A-G) has four LEDs connected in parallel.</li>
-<li>The anode (<code>+</code>) is connected to the GPIO pins, and the cathode (<code>-</code>) is connected to ground.</li>
+<li>The anode <code>+</code> is connected to the GPIO pins, and the cathode <code>-</code> is connected to ground.</li>
 <li>Brightness is controlled by the GPIO PWM signals from the microcontroller.</li>
 </ul>
 </li>
@@ -486,8 +486,8 @@ Back face fully assembled.
 </li>
 <li><strong>Capacitors (C1, C2)</strong>:</br>
     <em>Purpose</em>: Provide power decoupling and noise filtering for the microcontroller and LEDs.</br>
-    <em>C1 (1μF)</em>: Stabilizes the power supply for the LEDs.</br>
-    <em>C2 (0.1μF)</em>: Filters high-frequency noise.</li>
+    <code>C1</code> (1μF): Stabilizes the power supply for the LEDs.</br>
+    <code>C2</code> (0.1μF): Filters high-frequency noise.</li>
 </ol>
 <h4 id="how_the_microcontroller_circuit_works"><strong>How the Microcontroller Circuit Works</strong><a class="headerlink" href="#how_the_microcontroller_circuit_works" title="Permanent link">&para;</a></h4>
 <ol>
@@ -512,7 +512,7 @@ Back face fully assembled.
 </ul>
 </li>
 <li><strong>PowerCommands Stabilization</strong>:<ul>
-<li>The capacitors (C1, C2) ensure stable operation of the LEDs and microcontroller by filtering noise and stabilizing the power supply.</li>
+<li>The capacitors <code>C1</code>, <code>C2</code> ensure stable operation of the LEDs and microcontroller by filtering noise and stabilizing the power supply.</li>
 </ul>
 </li>
 </ol>
