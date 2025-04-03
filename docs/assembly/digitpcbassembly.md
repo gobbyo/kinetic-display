@@ -46,7 +46,7 @@ Back face fully assembled.
 
 ## Label the Digit PCB
 
-1. Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the **(A)** label to the **(B)** FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Also note that digit 0 (**C**) in the picture below is a completed digit PCB ready for mounting onto the display.
+1. Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the **(A)** label to the **(B)** FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Also note that digit 0 **(C)** in the picture below is a completed digit PCB ready for mounting onto the display.
 ![digitpcb-2](../img/digitpcbassembly/2-digitpcbassembly.webp)
 1. Add the **(A)** label to the **(B)** BACK FACING SIDE of each of the 3 digit PCBs as placed in the picture below.
 ![digitpcb-3](../img/digitpcbassembly/3-digitpcbassembly.webp)
