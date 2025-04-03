@@ -17,7 +17,7 @@ In this section you will upload code to your Raspberry Pi Pico W 2040 from your 
 ![deploycontrollercode-2](../img/deploycontrollercode/deploycontrollercode-2.webp)
 4. Following the screen capture below, create a new terminal by **(A) clicking the elipse ...**, then **(B) Terminal->New Terminal** submenu.
 ![deploycontrollercode-3](../img/deploycontrollercode/deploycontrollercode-3.webp)
-5. Connect your computer's USB port to a Digit's Raspberry Pi Pico.
+5. Following the picture below, connect your computer's USB port to the Raspberry Pi Pico W 2040.
 ![deploycontrollercode-4](../img/deploycontrollercode/deploycontrollercode-4.webp)
 6. Following the screen capture below, **(A) select the drop-down menu** in the terminal pane, then **(B) click the MicroPico vREPL submenu** item.
 ![deploycontrollercode-5](../img/deploycontrollercode/deploycontrollercode-5.webp)
