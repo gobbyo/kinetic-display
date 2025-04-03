@@ -157,16 +157,24 @@
 <p>Run the tests in this section after assembling each digit PCB to ensure all the components on the PCB are soldered and functional. Any defective electronic component on the digit PCB will need to be replaced before completing the project.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../digitpcbassembly/">Completed digit PCB ready for actuators</a>.</li>
-<li>Computer and microcontroller with the <a href="../../prerequisitesoftware/">prerequisite software</a>.</li>
-</ul>
-<p><img alt="testpcbactuator-prerequisite" src="../../img/testpcbactuator/prerequisite.webp" />
-<img alt="testpcbactuator-1" src="../../img/testpcbactuator/testpcbactuator-1.webp" />
+<li><a href="../digitpcbassembly/">Completed digit PCB ready for actuators</a></li>
+<li>Computer and microcontroller with the <a href="./prerequisitesoftware.md">prerequisite software</a></li>
+<li>
+<p>An <a href="../actuatorassembly/">assembled actuator</a></p>
+</li>
+<li>
+<p>From Visual Studio Code, open the deployed "digit" project by following the steps in the screen capture below: <strong>A</strong>, click the file menu; <strong>B</strong>, select the "digit" folder; <strong>C</strong> click the <strong>Select Folder</strong> button.
+<img alt="testpcbactuator-prerequisite" src="../../img/testpcbactuator/prerequisite.webp" /></p>
+</li>
+<li>Following the picture below, plug a USB cable connected to your computer into the Raspberry Pi Pico's USB port on the Digit PCB. Connect your Raspberry Pi Pico to Visual Studio Code by opening the <strong>MicroPico vREPL</strong> in the terminal dropdown, see the prerequisite software section <a href="../../prerequisitesoftware/#verify_micropython_on_your_raspberry_pi_pico">Verify Micropython on your Raspberry Pi Pico</a>.
+<img alt="testpcbactuator-1" src="../../img/testpcbactuator/testpcbactuator-1.webp" /></li>
+<li>Following the picture below, plug the dupont connector from the actuator into the <strong>SEG-A</strong> pins with the white wire connected to the CW pin and the black wire to the CCW pin.
 <img alt="testpcbactuator-2" src="../../img/testpcbactuator/testpcbactuator-2.webp" />
 <img alt="testpcbactuator-3" src="../../img/testpcbactuator/testpcbactuator-3.webp" />
 <img alt="testpcbactuator-4" src="../../img/testpcbactuator/testpcbactuator-4.webp" />
 <img alt="testpcbactuator-5" src="../../img/testpcbactuator/testpcbactuator-5.webp" />
-<img alt="testpcbactuator-6" src="../../img/testpcbactuator/testpcbactuator-6.webp" /></p></div>
+<img alt="testpcbactuator-6" src="../../img/testpcbactuator/testpcbactuator-6.webp" /></li>
+</ul></div>
             </div>
         </div>
 
