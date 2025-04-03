@@ -162,8 +162,8 @@ The schematic in the section shows the motor control circuitry for the digit's s
      - `CW` extends the segment and `CCW` retracts the segment: Control the extension and retraction of the actuator.
 3. **Capacitors (C1, C2)**:</br>
     *Purpose*: Provide power decoupling and noise filtering for the motor drivers.</br>
-    *C1 (1μF)*: Stabilizes the power supply for the motor drivers.</br>
-    *C2 (0.1μF)*: Filters high-frequency noise.
+    `C1` (1μF): Stabilizes the power supply for the motor drivers.</br>
+    `C2` (0.1μF): Filters high-frequency noise.
 4. **GPIO Pins (from Raspberry Pi Pico 2040)**:</br>
     *Purpose*: Send control signals to the motor drivers.</br>
     *Pins*:
@@ -177,7 +177,7 @@ The schematic in the section shows the motor control circuitry for the digit's s
 2. **Segment Movement**:</br>
       - Each segment (A-G) is connected to a motor. The motor moves the segment into position to display the desired digit.
 3. **Power Stabilization**:</br>
-      - The capacitors (C1, C2) ensure stable operation of the motor drivers by filtering noise and stabilizing the power supply.
+      - The capacitors `C1` and `C2` ensure stable operation of the motor drivers by filtering noise and stabilizing the power supply.
 
 ![digitschematic-1](../img/digitpcbassembly/digit-schematic-motorcontrollers.webp)
 
@@ -197,7 +197,7 @@ The schematic in this section shows the microcontroller circuitry for controllin
     *Purpose*: Illuminates the segments of the seven-segment display.</br>
     *Configuration*:
      - Each segment (A-G) has four LEDs connected in parallel.
-     - The anode (`+`) is connected to the GPIO pins, and the cathode (`-`) is connected to ground.
+     - The anode `+` is connected to the GPIO pins, and the cathode `-` is connected to ground.
      - Brightness is controlled by the GPIO PWM signals from the microcontroller.
 1. **Resistors (not used in lieu of PWM)**:</br>
     *Purpose*: Prevents the LEDs from exceeding their maximum rated power capabilities. The software prevents any LED PWM signal from exceeding a 220 ohm resistor for 3.3v and therefore resistors are not needed.
@@ -207,8 +207,8 @@ The schematic in this section shows the microcontroller circuitry for controllin
      - `Rx-1`, `Tx-1`, `Rx-0`, `Tx-0`: Used for transmitting and receiving data.
 1. **Capacitors (C1, C2)**:</br>
     *Purpose*: Provide power decoupling and noise filtering for the microcontroller and LEDs.</br>
-    *C1 (1μF)*: Stabilizes the power supply for the LEDs.</br>
-    *C2 (0.1μF)*: Filters high-frequency noise.
+    `C1` (1μF): Stabilizes the power supply for the LEDs.</br>
+    `C2` (0.1μF): Filters high-frequency noise.
 
 #### **How the Microcontroller Circuit Works**
 
@@ -225,6 +225,6 @@ The schematic in this section shows the microcontroller circuitry for controllin
       - The Raspberry Pi Pico 2040 stores the digit state at all times in order to gracefully transition from one number or character to the next and handle graceful or ungraceful power off situations.
       - The state includes which segment is extended or retracted, the type of character map used by the digits, as well as the speed and length of time to run the motors.
 5. **PowerCommands Stabilization**:
-      - The capacitors (C1, C2) ensure stable operation of the LEDs and microcontroller by filtering noise and stabilizing the power supply.
+      - The capacitors `C1`, `C2` ensure stable operation of the LEDs and microcontroller by filtering noise and stabilizing the power supply.
 
 ![digitschematic-2](../img/digitpcbassembly/digit-schematic-microcontroller.webp)
