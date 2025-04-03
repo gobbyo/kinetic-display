@@ -24,3 +24,4 @@ Run the tests in this section after assembling each digit PCB to ensure all the 
 ![digitpcbtest-6](../img/digitpcbtest/digitpcbtest-6.webp)
 1. Following the picture below, the 4 **SEG-A** LEDs light up and the motor briefly turns on. From the Terminal session, type **r0** to retract the segement. 
 ![digitpcbtest-7](../img/digitpcbtest/digitpcbtest-7.webp)
+1. Repeat steps 6 and 7 to verify the remaining **SEG-B** through **SEG-G** work as expected.
