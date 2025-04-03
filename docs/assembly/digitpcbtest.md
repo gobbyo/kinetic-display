@@ -8,6 +8,8 @@ Run the tests in this section after assembling each digit PCB to ensure all the 
 - Computer and microcontroller with the [prerequisite software](../prerequisitesoftware.md)
 - An [assembled actuator](actuatorassembly.md)
 
+## PCB Test
+
 1. From Visual Studio Code, open the deployed "digit" project by following the steps in the screen capture below: **A**, click the file menu; **B**, select the "digit" folder; **C** click the **Select Folder** button.
 ![testpcbactuator-prerequisite](../img/testpcbactuator/prerequisite.webp)
 1. Following the picture below, plug a USB cable connected to your computer into the Raspberry Pi Pico's USB port on the Digit PCB. Connect your Raspberry Pi Pico to Visual Studio Code by opening the **MicroPico vREPL** in the terminal dropdown, see the prerequisite software section [Verify Micropython on your Raspberry Pi Pico](../prerequisitesoftware.md/#verify_micropython_on_your_raspberry_pi_pico).
