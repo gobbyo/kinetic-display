@@ -146,7 +146,11 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#controller_pcb_test_application" class="nav-link">Controller PCB Test Application</a>
+            <li class="nav-item" data-bs-level="2"><a href="#test_the_led_and_motor_segments" class="nav-link">Test the LED and Motor Segments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#test_the_light_detection" class="nav-link">Test the Light Detection</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -166,7 +170,7 @@
 <li><a href="../deploycontrollerproject/">Deployed the Controller Project to the Controller PCB</a></li>
 <li><a href="../digitpcbtest/">Completed the digit PCB test</a> for digit 1 on the controller PCB.</li>
 </ul>
-<h2 id="controller_pcb_test_application">Controller PCB Test Application<a class="headerlink" href="#controller_pcb_test_application" title="Permanent link">&para;</a></h2>
+<h2 id="test_the_led_and_motor_segments">Test the LED and Motor Segments<a class="headerlink" href="#test_the_led_and_motor_segments" title="Permanent link">&para;</a></h2>
 <ol>
 <li>From Visual Studio Code, <strong>(A)</strong> select the File-&gt;Open Folder menu, <strong>(B)</strong> select the conductor folder, then <strong>(C)</strong> click the <strong>Select Folder</strong> button.
 <img alt="testpcbactuator-prerequisite" src="../../img/controllerpcbtest/controllerpcbtest-1.webp" /></li>
@@ -176,6 +180,18 @@
 <img alt="controllerpcbtest-3" src="../../img/controllerpcbtest/controllerpcbtest-3.webp" /></li>
 <li>From the Visual Studio Code status bar, <strong>(A)</strong> verify the Raspberry Pi Pico W is connected. <strong>(B)</strong> Click the <code>Run</code> button to start the controller PCB test application.
 <img alt="controllerpcbtest-4" src="../../img/controllerpcbtest/controllerpcbtest-4.webp" /></li>
+<li>The console test application shows various options that relate to the top or bottom colon: the <code>COLON-TOP</code> is 0 and the <code>COLON-LWR</code> is 1. Extend <code>COLON-TOP</code> by typing <strong>e0</strong> in the console.
+<img alt="controllerpcbtest-5" src="../../img/controllerpcbtest/controllerpcbtest-5.webp" /></li>
+<li>Following the picture below, the <code>COLON-TOP</code> LED light up and the motor briefly turns on. From the terminal session, type <strong>r0</strong> to retract the the <code>COLON-TOP</code>.
+<img alt="controllerpcbtest-6" src="../../img/controllerpcbtest/controllerpcbtest-6.webp" /></li>
+<li>Repeat steps 5 and 6 to <code>COLON-LWR</code>.</li>
+</ol>
+<h2 id="test_the_light_detection">Test the Light Detection<a class="headerlink" href="#test_the_light_detection" title="Permanent link">&para;</a></h2>
+<ol>
+<li>From Visual Studio Code <strong>(A)</strong> select the file <code>photoresistor.py</code>, then <strong>(B)</strong> click the Run button in the status bar.
+<img alt="LDRpcbtest-1" src="../../img/controllerpcbtest/LDRpcbtest-1.webp" /></li>
+<li>The terminal pane will print the light level, between 0 and 9, depending on the brightness of the light as detected by the LDR.
+<img alt="LDRpcbtest-2" src="../../img/controllerpcbtest/LDRpcbtest-2.webp" /></li>
 </ol></div>
             </div>
         </div>
