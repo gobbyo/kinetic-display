@@ -8,7 +8,7 @@ Run the tests in this section after assembling each digit PCB to ensure all the 
 - Computer and microcontroller with the [prerequisite software](../prerequisitesoftware.md)
 - An [assembled actuator](actuatorassembly.md)
 
-## Digit PCB Test Application
+## Test the Motor and LED Segments
 
 1. From Visual Studio Code, open the deployed `digit` project by following the steps in the screen capture below: **(A)** click the file menu, **(B)** select the `digit` folder, then **(C)** click the **Select Folder** button.
 ![testpcbactuator-prerequisite](../img/digitpcbtest/prerequisite.webp)

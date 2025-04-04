@@ -9,7 +9,7 @@ Run the tests in this section after assembling the controller PCB to ensure all 
 - [Deployed the Controller Project to the Controller PCB](deploycontrollerproject.md)
 - [Completed the digit PCB test](digitpcbtest.md) for digit 1 on the controller PCB.
 
-## Controller PCB Test Application
+## Test the LED and Motor Segments
 
 1. From Visual Studio Code, **(A)** select the File->Open Folder menu, **(B)** select the conductor folder, then **(C)** click the **Select Folder** button.
 ![testpcbactuator-prerequisite](../img/controllerpcbtest/controllerpcbtest-1.webp)
@@ -19,3 +19,15 @@ Run the tests in this section after assembling the controller PCB to ensure all 
 ![controllerpcbtest-3](../img/controllerpcbtest/controllerpcbtest-3.webp)
 1. From the Visual Studio Code status bar, **(A)** verify the Raspberry Pi Pico W is connected. **(B)** Click the `Run` button to start the controller PCB test application.
 ![controllerpcbtest-4](../img/controllerpcbtest/controllerpcbtest-4.webp)
+1. The console test application shows various options that relate to the top or bottom colon: the `COLON-TOP` is 0 and the `COLON-LWR` is 1. Extend `COLON-TOP` by typing **e0** in the console.
+![controllerpcbtest-5](../img/controllerpcbtest/controllerpcbtest-5.webp)
+1. Following the picture below, the `COLON-TOP` LED light up and the motor briefly turns on. From the terminal session, type **r0** to retract the the `COLON-TOP`.
+![controllerpcbtest-6](../img/controllerpcbtest/controllerpcbtest-6.webp)
+1. Repeat steps 5 and 6 to `COLON-LWR`.
+
+## Test the Light Detection
+
+1. From Visual Studio Code **(A)** select the file `photoresistor.py`, then **(B)** click the Run button in the status bar.
+![LDRpcbtest-1](../img/controllerpcbtest/LDRpcbtest-1.webp)
+1. The terminal pane will print the light level, between 0 and 9, depending on the brightness of the light as detected by the LDR.
+![LDRpcbtest-2](../img/controllerpcbtest/LDRpcbtest-2.webp)
