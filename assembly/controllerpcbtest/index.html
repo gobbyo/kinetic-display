@@ -100,7 +100,7 @@
 </li>
                                     
 <li>
-    <a href="../buckassembly/" class="dropdown-item">5v Power Supply</a>
+    <a href="../powersupply/" class="dropdown-item">Power Supply</a>
 </li>
                                 </ul>
                             </li>
@@ -118,7 +118,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../buckassembly/" class="nav-link">
+                                <a rel="next" href="../powersupply/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -174,15 +174,15 @@
 <ol>
 <li>From Visual Studio Code, <strong>(A)</strong> select the File-&gt;Open Folder menu, <strong>(B)</strong> select the conductor folder, then <strong>(C)</strong> click the <strong>Select Folder</strong> button.
 <img alt="testpcbactuator-prerequisite" src="../../img/controllerpcbtest/controllerpcbtest-1.webp" /></li>
-<li>On the Controller and Digit 1 PCB, <strong>(A)</strong> plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040. <strong>(B)</strong> Connect a motor actuator to the <code>COLON-TOP</code> with the white wire dupont connector plugged into <code>CW</code> pin and the black wire plugged into the <code>CCW</code> pin.
+<li>On the Controller and Digit 1 PCB, <strong>(A)</strong> plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040. <strong>(B)</strong> Connect a motor actuator to the <code>TOP-LED1</code> with the white wire dupont connector plugged into <code>CW</code> pin and the black wire plugged into the <code>CCW</code> pin.
 <img alt="controllerpcbtest-2" src="../../img/controllerpcbtest/controllerpcbtest-2.webp" /></li>
 <li>From Visual Studio Code, <strong>(A)</strong> select the <code>digit_colon.py</code> file, then <strong>(B)</strong> select <strong>MicroPico vREPL</strong> from the terminal pane menu.
 <img alt="controllerpcbtest-3" src="../../img/controllerpcbtest/controllerpcbtest-3.webp" /></li>
 <li>From the Visual Studio Code status bar, <strong>(A)</strong> verify the Raspberry Pi Pico W is connected. <strong>(B)</strong> Click the <code>Run</code> button to start the controller PCB test application.
 <img alt="controllerpcbtest-4" src="../../img/controllerpcbtest/controllerpcbtest-4.webp" /></li>
-<li>The console test application shows various options that relate to the top or bottom colon: the <code>COLON-TOP</code> is 0 and the <code>COLON-LWR</code> is 1. Extend <code>COLON-TOP</code> by typing <strong>e0</strong> in the console.
+<li>The console test application shows various options that relate to the top or bottom colon: the <code>TOP-LED1</code> is 0 and the <code>LWR-LED1</code> is 1. Extend <code>TOP-LED1</code> by typing <strong>e0</strong> in the console.
 <img alt="controllerpcbtest-5" src="../../img/controllerpcbtest/controllerpcbtest-5.webp" /></li>
-<li>Following the picture below, the <code>COLON-TOP</code> LED light up and the motor briefly turns on. From the terminal session, type <strong>r0</strong> to retract the the <code>COLON-TOP</code>.
+<li>Following the picture below, the <code>TOP-LED1</code> LED light up and the motor briefly turns on. From the terminal session, type <strong>r0</strong> to retract the the <code>TOP-LED1</code>.
 <img alt="controllerpcbtest-6" src="../../img/controllerpcbtest/controllerpcbtest-6.webp" /></li>
 <li>Repeat steps 5 and 6 to <code>COLON-LWR</code>.</li>
 </ol>
