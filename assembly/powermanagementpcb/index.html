@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Power Supply - Kinetic Display</title>
+        <title>Power Management PCB - Kinetic Display</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -100,7 +100,11 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Power Supply</a>
+    <a href="./" class="dropdown-item active" aria-current="page">Power Management PCB</a>
+</li>
+                                    
+<li>
+    <a href="../powermanagementpcbtest/" class="dropdown-item">Test Power Management PCB</a>
 </li>
                                 </ul>
                             </li>
@@ -118,7 +122,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../powermanagementpcbtest/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -294,42 +298,58 @@
 <h2 id="power_management_pcb_components">Power Management PCB Components<a class="headerlink" href="#power_management_pcb_components" title="Permanent link">&para;</a></h2>
 <p>In this section you'll assemble the power management system PCB.</p>
 <p>Top view of the power management PCB.
-<img alt="powersupply-top" src="../../img/powersupply/powersupply-top.webp" />
+<img alt="powermanagement-top" src="../../img/powermanagement/powermanagement-top.webp" />
 Bottom view of the power management PCB.
-<img alt="powersupply-bottom" src="../../img/powersupply/powersupply-bottom.webp" /></p>
+<img alt="powermanagement-bottom" src="../../img/powermanagement/powermanagement-bottom.webp" /></p>
 <ol>
 <li>Following the picture below on the TOP side of the PCB, solder the <code>1kΩ 805</code> surface mount resistor onto <code>R1</code>.
-<img alt="powersupply-1" src="../../img/powersupply/powersupply-1.webp" /></li>
+<img alt="powermanagement-1" src="../../img/powermanagement/powermanagement-1.webp" /></li>
 <li>Following the picture below on the TOP side of the PCB, solder the <code>s8050</code> through hole transistor into <code>Q1</code>. Be sure to align the pins according to the silk screen outline.
-<img alt="powersupply-2" src="../../img/powersupply/powersupply-2.webp" /></li>
+<img alt="powermanagement-2" src="../../img/powermanagement/powermanagement-2.webp" /></li>
 <li>Following the picture below on the TOP side of the PCB, solder the <code>1N4001</code> diode into <code>D1</code>. Be sure to align the anode band, with the silk screen outline.
-<img alt="powersupply-3" src="../../img/powersupply/powersupply-3.webp" /></li>
+<img alt="powermanagement-3" src="../../img/powermanagement/powermanagement-3.webp" /></li>
 <li>Following the picture below on the TOP side of the PCB, solder the 6 pins of the Songle relay into <code>RLY1</code>.
-<img alt="powersupply-4" src="../../img/powersupply/powersupply-4.webp" /></li>
+<img alt="powermanagement-4" src="../../img/powermanagement/powermanagement-4.webp" /></li>
 </ol>
 <h2 id="power_management_pcb_block_connectors">Power Management PCB Block Connectors<a class="headerlink" href="#power_management_pcb_block_connectors" title="Permanent link">&para;</a></h2>
 <p>Top view of the power management PCB with arrows pointing in the direction of the connected wire.
-<img alt="powersupply-top-arrows" src="../../img/powersupply/powersupply-top-arrows.webp" /></p>
+<img alt="powermanagement-top-arrows" src="../../img/powermanagement/powermanagement-top-arrows.webp" /></p>
 <ol>
 <li>Following the picture below on the TOP side of the PCB, hold the PCB so the silk screen <code>C-12V-1</code> is to your left. Solder the 4 pin terminal block connector into the <code>C-12V-1</code> through holes so the connection to the wires faces out to the left.
-<img alt="powersupply-5" src="../../img/powersupply/powersupply-5.webp" /></li>
+<img alt="powermanagement-5" src="../../img/powermanagement/powermanagement-5.webp" /></li>
 <li>Following the picture below on the TOP side of the PCB, hold the PCB so the silk screen <code>C-12V-2</code> is to your right. Solder the 4 pin terminal block connector into the <code>C-12V-2</code> through holes so the connection to the wires faces out to the right.
-<img alt="powersupply-6" src="../../img/powersupply/powersupply-6.webp" /></li>
+<img alt="powermanagement-6" src="../../img/powermanagement/powermanagement-6.webp" /></li>
 <li>Following the picture below on the TOP side of the PCB, hold the PCB so the silk screen <code>CONN-1</code> is to your left. Solder the 2 pin terminal block connector into the <code>5v+ 5v-</code> through holes of the <code>CONN-1</code> silk screen so the connection to the wires faces out to the left.
-<img alt="powersupply-7" src="../../img/powersupply/powersupply-7.webp" /></li>
+<img alt="powermanagement-7" src="../../img/powermanagement/powermanagement-7.webp" /></li>
 <li>Following the picture below on the TOP side of the PCB, continue to hold the PCB so the silk screen <code>CONN-1</code> to your left. Solder the 3 pin terminal block connector into the <code>GPIO19 12v+ 12v-</code> through holes of the <code>CONN-1</code> silk screen so the connection to the wires faces out to the left.
-<img alt="powersupply-8" src="../../img/powersupply/powersupply-8.webp" /></li>
+<img alt="powermanagement-8" src="../../img/powermanagement/powermanagement-8.webp" /></li>
 <li>Note the arrows pointing in the direction of the connected wire on the BOTTOM side of the power management PCB.
-<img alt="powersupply-bottom-arrow" src="../../img/powersupply/powersupply-bottom-arrow.webp" />
+<img alt="powermanagement-bottom-arrow" src="../../img/powermanagement/powermanagement-bottom-arrow.webp" />
     Following the picture below on the BOTTOM side of the power management PCB, solder the two pins of the terminal block connector into the through holes marked as <code>12v(in)</code>.
-<img alt="powersupply-9" src="../../img/powersupply/powersupply-9.webp" /></li>
+<img alt="powermanagement-9" src="../../img/powermanagement/powermanagement-9.webp" /></li>
 </ol>
 <h2 id="barrel_jack_panel_mount">Barrel Jack Panel Mount<a class="headerlink" href="#barrel_jack_panel_mount" title="Permanent link">&para;</a></h2>
-<p><img alt="powersupply-11" src="../../img/powersupply/powersupply-11.webp" />
-<img alt="powersupply-12" src="../../img/powersupply/powersupply-12.webp" />
-<img alt="powersupply-13" src="../../img/powersupply/powersupply-13.webp" />
-<img alt="powersupply-14" src="../../img/powersupply/powersupply-14.webp" />
-<img alt="powersupply-15" src="../../img/powersupply/powersupply-15.webp" /></p>
+<ol>
+<li>Cut a black and white 28 AWG wire 4cm in length.
+<img alt="powermanagement-10" src="../../img/powermanagement/powermanagement-10.webp" /></li>
+<li>Strip about 3mm off the ends of each wire, then tin the stripped ends with a bit of solder.
+<img alt="powermanagement-11" src="../../img/powermanagement/powermanagement-11.webp" /></li>
+<li>Using a multimeter, verify which are the positive and negative pins on the barrel jack. In this case, the longer pin is negative.
+<img alt="powermanagement-12" src="../../img/powermanagement/powermanagement-12.webp" /></li>
+<li>Based on the results from the previous step, solder the white wire onto the positive pin and black onto the negative pin. 
+<img alt="powermanagement-13" src="../../img/powermanagement/powermanagement-13.webp" /></li>
+<li>Optionally, add heat shrink to protect exposing the soldered pin locations. Use a piece of electrical tape if you don't have any heat shrink.
+    <img alt="powermanagement-14" src="../../img/powermanagement/powermanagement-14.webp" />
+    Secure the heat shrink with a heat gun.
+    <img alt="powermanagement-15" src="../../img/powermanagement/powermanagement-15.webp" /></li>
+<li><img alt="powermanagement-16" src="../../img/powermanagement/powermanagement-16.webp" />
+1.
+<img alt="powermanagement-17" src="../../img/powermanagement/powermanagement-17.webp" />
+1.
+<img alt="powermanagement-18" src="../../img/powermanagement/powermanagement-18.webp" />
+1.
+<img alt="powermanagement-19" src="../../img/powermanagement/powermanagement-19.webp" /></li>
+</ol>
 <h2 id="lm2596_adjustable_buck_converters_and_wiring">LM2596 Adjustable Buck Converters and Wiring<a class="headerlink" href="#lm2596_adjustable_buck_converters_and_wiring" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
