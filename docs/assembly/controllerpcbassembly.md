@@ -29,7 +29,7 @@ Back side of the controller PCB fully assembled.
 | 4 | 20 pin female header connector | ![component-3](../img/component/component-3.webp)|
 | 1 | 20 pin single row breakaway male connector | ![component-4](../img/component/component-4.webp)|
 | 1 | Vertical Slide Switch Micro High Knob 3 Pin 2 Position 1P2T SPDT Panel Mount | ![component-4](../img/component/component-18.webp)|
-| 6 | 2 Port PCB Mount Screw Terminal Block Connector Straight Pin | ![component-5](../img/component/component-5.webp)|
+| 6 | 2 Pin PCB Mount Screw Terminal Block Connector Straight Pin | ![component-5](../img/component/component-5.webp)|
 | 2 | 0.1μ farad ceramic capacitor | ![component-6](../img/component/component-6.webp)|
 | 2 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp)|
 | 1 | 5mm 0.5 Ω ohm Photoresistor Resistor 5516 GL5516 | ![component-19](../img/component/component-19.webp) |
@@ -96,7 +96,7 @@ On the back side of the PCB, place the four 20 pin headers into the through hole
 On the back side of the PCB, solder the two 10kΩ resistors onto the pads marked `R2 10k` and `R3 10k` located between the top and bottom rows of the 20-pin headers. Soldering surface mount components require a slightly different skill than through hole soldering as you'll need to use tweezers to center the resistor over the pads and apply a minimal amount of solder. There are several online tutorials on how to solder surface mount compontents using a soldering iron and tweezers.
 ![12-controllerpcb](../img/controllerpcb/12-controllerpcb.webp)
 
-## Install Six, two port (2P) Terminal Block Connectors
+## Install Six, two pin (2P) Terminal Block Connectors
 
 There are five 2P terminal block connectors on the front face of the PCB, and one on the back side.
 The picture below shows a completed install of the terminal block connectors on the front face of the controller PCB. Note the arrows pointing in the direction of the terminal block connector where the wires are inserted into the ports. To follow the steps below, you'll position the front face of the controller PCB up, then work your way from the bottom left corner **(1)**, to the bottom right corner **(5)**.
@@ -165,7 +165,7 @@ The schematic in this section (below) represents the **Colons & Display Microcon
      - `ENABLE1` and `ENABLE2`: Controls the motor speed.
      - `INPUT1`, `INPUT2`, `INPUT3`, `INPUT4`: Control the CW and CCW direction of the motors.
      - `OUTPUT1`, `OUTPUT2`, `OUTPUT3`, `OUTPUT4`: Provide the output signals to the motors.
-4. **2-Port Terminal Block Connectors**:</br>
+4. **2-Pin Terminal Block Connectors**:</br>
     *Purpose*: Provide connections for external components like power, UART communication, and sensors.</br>
     *Examples*:
      - `5V-D1`, `5V-D0`: Power connections for the digits.

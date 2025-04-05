@@ -26,7 +26,7 @@ Back face fully assembled.
 | 4 | L293D stepper motor driver | ![component-2](../img/component/component-2.webp)|
 | 2 | 20 pin female header connector | ![component-3](../img/component/component-3.webp)|
 | 1 | 20 pin single row breakaway male connector | ![component-4](../img/component/component-4.webp)|
-| 2 | 2 Port PCB Mount Screw Terminal Block Connector Straight Pin | ![component-5](../img/component/component-5.webp)|
+| 2 | 2 Pin PCB Mount Screw Terminal Block Connector Straight Pin | ![component-5](../img/component/component-5.webp)|
 | 1 | 0.1μ farad ceramic capacitor | ![component-6](../img/component/component-6.webp)|
 | 1 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp)|
 | 28 | 5mm Flat top LED, anode long lead (any color) | ![component-8](../img/component/component-8.webp)|
@@ -101,13 +101,13 @@ Below is a photo showing the color variation of blue 5mm LEDs within the same ba
 ![digitpcbmotordriver2](../img/digitpcbassembly/2-digitpcbassembly-motordriver.webp)
 1. Repeat the install for the remaining motor drivers.
 
-## Add the PCB Mount, Two port (2P) Terminal Block Connectors
+## Add the PCB Mount, Two pin (2P) Terminal Block Connectors
 
-1. On the front of the digit PCB, insert the PCB two port terminal block connector into the 5v through holes so the face of the connector where the wires are inserted points toward the LEDs on the PCB.
+1. On the front of the digit PCB, insert the PCB two pin terminal block connector into the 5v through holes so the face of the connector where the wires are inserted points toward the LEDs on the PCB.
 ![digitpcbconnector-1](../img/digitpcbassembly/1-digitpcbassembly-connector.webp)
 1. Solder the block terminal connector pins on the back of the digit PCB.
 ![digitpcbconnector-2](../img/digitpcbassembly/2-digitpcbassembly-connector.webp)
-1. On the front of the digit PCB position the 2 port terminal block connector facing away from the LEDs. For **PCBs labelled "2" & "3"**, insert the connector pins into the `UART Tx-1/Rx-1` through holes. For the digit **PCB labelled "0"**, insert the connector into the `Tx-0/Rx-0` through holes.
+1. On the front of the digit PCB position the 2 pin terminal block connector facing away from the LEDs. For **PCBs labelled "2" & "3"**, insert the connector pins into the `UART Tx-1/Rx-1` through holes. For the digit **PCB labelled "0"**, insert the connector into the `Tx-0/Rx-0` through holes.
 ![digitpcbconnector-3](../img/digitpcbassembly/3-digitpcbassembly-connector.webp)
 1. On the back of the digit PCB, solder the remaining connector pins, cut the pins flush, resolder to a smooth bead, then remove the flux wth a cotton dabbed with isopropyl alcohol.
 ![digitpcbconnector-4](../img/digitpcbassembly/4-digitpcbassembly-connector.webp)

@@ -11,7 +11,8 @@
 | M1.7 x 8mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
 | M2 X 15mm Stainless Steel Phillips Round Head Self Tapping Screws | 50 |
 | Micro 130 DC Motor Strong Magnetic Brushed Electric DC 3V -12V 25000 RPM Cars Toys Electric Motor, High Speed Torque | 30 |
-| 28 AWG Gauge Flexible Silicone Rubber Electric Wire | 2 rolls |
+| Black 28 AWG Gauge Flexible Silicone Rubber Electric Wire | 3M |
+| White 28 AWG Gauge Flexible Silicone Rubber Electric Wire | 3M |
 | Male Breakout Pin Connector 2.54mm | 100 |
 | 2.54mm 0.1" Pitch PCB Mount Screw Terminal Block Connector, 2P 3P 4P Terminals for 26-18AWG Cable | 50 |
 | Dupont Jumper Wire Cable Female Pin Connector 2.54mm | 100 |
