@@ -44,46 +44,62 @@ There are several choices of power supplies available in the market. Why not sim
 In this section you'll assemble the power management system PCB.
 
 Top view of the power management PCB.
-![powersupply-top](../img/powersupply/powersupply-top.webp)
+![powermanagement-top](../img/powermanagement/powermanagement-top.webp)
 Bottom view of the power management PCB.
-![powersupply-bottom](../img/powersupply/powersupply-bottom.webp)
+![powermanagement-bottom](../img/powermanagement/powermanagement-bottom.webp)
 
 1. Following the picture below on the TOP side of the PCB, solder the `1kΩ 805` surface mount resistor onto `R1`.
-![powersupply-1](../img/powersupply/powersupply-1.webp)
+![powermanagement-1](../img/powermanagement/powermanagement-1.webp)
 1. Following the picture below on the TOP side of the PCB, solder the `s8050` through hole transistor into `Q1`. Be sure to align the pins according to the silk screen outline.
-![powersupply-2](../img/powersupply/powersupply-2.webp)
+![powermanagement-2](../img/powermanagement/powermanagement-2.webp)
 1. Following the picture below on the TOP side of the PCB, solder the `1N4001` diode into `D1`. Be sure to align the anode band, with the silk screen outline.
-![powersupply-3](../img/powersupply/powersupply-3.webp)
+![powermanagement-3](../img/powermanagement/powermanagement-3.webp)
 1. Following the picture below on the TOP side of the PCB, solder the 6 pins of the Songle relay into `RLY1`.
-![powersupply-4](../img/powersupply/powersupply-4.webp)
+![powermanagement-4](../img/powermanagement/powermanagement-4.webp)
 
 ## Power Management PCB Block Connectors
 
 Top view of the power management PCB with arrows pointing in the direction of the connected wire.
-![powersupply-top-arrows](../img/powersupply/powersupply-top-arrows.webp)
+![powermanagement-top-arrows](../img/powermanagement/powermanagement-top-arrows.webp)
 
 1. Following the picture below on the TOP side of the PCB, hold the PCB so the silk screen `C-12V-1` is to your left. Solder the 4 pin terminal block connector into the `C-12V-1` through holes so the connection to the wires faces out to the left.
-![powersupply-5](../img/powersupply/powersupply-5.webp)
+![powermanagement-5](../img/powermanagement/powermanagement-5.webp)
 1. Following the picture below on the TOP side of the PCB, hold the PCB so the silk screen `C-12V-2` is to your right. Solder the 4 pin terminal block connector into the `C-12V-2` through holes so the connection to the wires faces out to the right.
-![powersupply-6](../img/powersupply/powersupply-6.webp)
+![powermanagement-6](../img/powermanagement/powermanagement-6.webp)
 1. Following the picture below on the TOP side of the PCB, hold the PCB so the silk screen `CONN-1` is to your left. Solder the 2 pin terminal block connector into the `5v+ 5v-` through holes of the `CONN-1` silk screen so the connection to the wires faces out to the left.
-![powersupply-7](../img/powersupply/powersupply-7.webp)
+![powermanagement-7](../img/powermanagement/powermanagement-7.webp)
 1. Following the picture below on the TOP side of the PCB, continue to hold the PCB so the silk screen `CONN-1` to your left. Solder the 3 pin terminal block connector into the `GPIO19 12v+ 12v-` through holes of the `CONN-1` silk screen so the connection to the wires faces out to the left.
-![powersupply-8](../img/powersupply/powersupply-8.webp)
+![powermanagement-8](../img/powermanagement/powermanagement-8.webp)
 1. Note the arrows pointing in the direction of the connected wire on the BOTTOM side of the power management PCB.
-![powersupply-bottom-arrow](../img/powersupply/powersupply-bottom-arrow.webp)
+![powermanagement-bottom-arrow](../img/powermanagement/powermanagement-bottom-arrow.webp)
     Following the picture below on the BOTTOM side of the power management PCB, solder the two pins of the terminal block connector into the through holes marked as `12v(in)`.
-![powersupply-9](../img/powersupply/powersupply-9.webp)
+![powermanagement-9](../img/powermanagement/powermanagement-9.webp)
 
 ## Barrel Jack Panel Mount
 
-![powersupply-11](../img/powersupply/powersupply-11.webp)
-![powersupply-12](../img/powersupply/powersupply-12.webp)
-![powersupply-13](../img/powersupply/powersupply-13.webp)
-![powersupply-14](../img/powersupply/powersupply-14.webp)
-![powersupply-15](../img/powersupply/powersupply-15.webp)
+1. Cut a black and white 28 AWG wire 4cm in length.
+![powermanagement-10](../img/powermanagement/powermanagement-10.webp)
+1. Strip about 3mm off the ends of each wire, then tin the stripped ends with a bit of solder.
+![powermanagement-11](../img/powermanagement/powermanagement-11.webp)
+1. Using a multimeter, verify which are the positive and negative pins on the barrel jack. In this case, the longer pin is negative.
+![powermanagement-12](../img/powermanagement/powermanagement-12.webp)
+1. Based on the results from the previous step, solder the white wire onto the positive pin and black onto the negative pin. 
+![powermanagement-13](../img/powermanagement/powermanagement-13.webp)
+1. Optionally, add heat shrink to protect exposing the soldered pin locations. Use a piece of electrical tape if you don't have any heat shrink.
+    ![powermanagement-14](../img/powermanagement/powermanagement-14.webp)
+    Secure the heat shrink with a heat gun.
+    ![powermanagement-15](../img/powermanagement/powermanagement-15.webp)
+1. 
+![powermanagement-16](../img/powermanagement/powermanagement-16.webp)
+1.
+![powermanagement-17](../img/powermanagement/powermanagement-17.webp)
+1.
+![powermanagement-18](../img/powermanagement/powermanagement-18.webp)
+1.
+![powermanagement-19](../img/powermanagement/powermanagement-19.webp)
 
 ## LM2596 Adjustable Buck Converters and Wiring
 
 !!! warning
     Use anti static mats and ESD wristband and grounding wire for the remainder of the Kinetic Display electronics assembly.
+

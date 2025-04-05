@@ -20,4 +20,5 @@
 - [Controller PCB Assembly](./assembly/controllerpcbassembly.md)
 - [Deploy Controller Project](./assembly/deploycontrollerproject.md)
 - [Test Controller PCB](./assembly/controllerpcbtest.md)
-- [Power Supply Preparation and Assembly](./assembly/powersupply.md)
+- [Power Management PCB Assembly](./assembly/powermanagementpcb.md)
+- [Test Power Management PCB](./assembly/powermanagementpcbtest.md)
