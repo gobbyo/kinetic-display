@@ -13,15 +13,15 @@ Run the tests in this section after assembling the controller PCB to ensure all 
 
 1. From Visual Studio Code, **(A)** select the File->Open Folder menu, **(B)** select the conductor folder, then **(C)** click the **Select Folder** button.
 ![testpcbactuator-prerequisite](../img/controllerpcbtest/controllerpcbtest-1.webp)
-1. On the Controller and Digit 1 PCB, **(A)** plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040. **(B)** Connect a motor actuator to the `COLON-TOP` with the white wire dupont connector plugged into `CW` pin and the black wire plugged into the `CCW` pin.
+1. On the Controller and Digit 1 PCB, **(A)** plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040. **(B)** Connect a motor actuator to the `TOP-LED1` with the white wire dupont connector plugged into `CW` pin and the black wire plugged into the `CCW` pin.
 ![controllerpcbtest-2](../img/controllerpcbtest/controllerpcbtest-2.webp)
 1. From Visual Studio Code, **(A)** select the `digit_colon.py` file, then **(B)** select **MicroPico vREPL** from the terminal pane menu.
 ![controllerpcbtest-3](../img/controllerpcbtest/controllerpcbtest-3.webp)
 1. From the Visual Studio Code status bar, **(A)** verify the Raspberry Pi Pico W is connected. **(B)** Click the `Run` button to start the controller PCB test application.
 ![controllerpcbtest-4](../img/controllerpcbtest/controllerpcbtest-4.webp)
-1. The console test application shows various options that relate to the top or bottom colon: the `COLON-TOP` is 0 and the `COLON-LWR` is 1. Extend `COLON-TOP` by typing **e0** in the console.
+1. The console test application shows various options that relate to the top or bottom colon: the `TOP-LED1` is 0 and the `LWR-LED1` is 1. Extend `TOP-LED1` by typing **e0** in the console.
 ![controllerpcbtest-5](../img/controllerpcbtest/controllerpcbtest-5.webp)
-1. Following the picture below, the `COLON-TOP` LED light up and the motor briefly turns on. From the terminal session, type **r0** to retract the the `COLON-TOP`.
+1. Following the picture below, the `TOP-LED1` LED light up and the motor briefly turns on. From the terminal session, type **r0** to retract the the `TOP-LED1`.
 ![controllerpcbtest-6](../img/controllerpcbtest/controllerpcbtest-6.webp)
 1. Repeat steps 5 and 6 to `COLON-LWR`.
 

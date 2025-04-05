@@ -20,4 +20,4 @@
 - [Controller PCB Assembly](./assembly/controllerpcbassembly.md)
 - [Deploy Controller Project](./assembly/deploycontrollerproject.md)
 - [Test Controller PCB](./assembly/controllerpcbtest.md)
-- [Buck Converter Preparation and Assembly](./assembly/buckassembly.md)
+- [Power Supply Preparation and Assembly](./assembly/powersupply.md)
