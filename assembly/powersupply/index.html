@@ -140,13 +140,25 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#5v_power_supply" class="nav-link">5v Power Supply</a>
+            <li class="nav-item" data-bs-level="1"><a href="#power_management_pcb_assembly" class="nav-link">Power Management PCB Assembly</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#prerequisites" class="nav-link">Prerequisites</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#assembly" class="nav-link">Assembly</a>
+            <li class="nav-item" data-bs-level="2"><a href="#power_management_pcb_components" class="nav-link">Power Management PCB Components</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#power_management_pcb_block_connectors" class="nav-link">Power Management PCB Block Connectors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#barrel_jack_panel_mount" class="nav-link">Barrel Jack Panel Mount</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#lm2596_adjustable_buck_converters_and_wiring" class="nav-link">LM2596 Adjustable Buck Converters and Wiring</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -157,27 +169,172 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="5v_power_supply">5v Power Supply<a class="headerlink" href="#5v_power_supply" title="Permanent link">&para;</a></h1>
+<h1 id="power_management_pcb_assembly">Power Management PCB Assembly<a class="headerlink" href="#power_management_pcb_assembly" title="Permanent link">&para;</a></h1>
+<p>There are several choices of power supplies available in the market. Why not simply use a retail 5v power supply? A few important reasons for building a custom power management system for the display include:</p>
+<ul>
+<li><strong>Stable Voltage</strong>: A drop in voltage occurs in a poor power supply when the heavy duty 103 electric toy motor starts up because each motor requires a high inrush of current to extend or retract the display's segments. Most retail power supplies cannot provide sufficient current causing a dramatic voltage drop leading to instability. The power supply setup in this section ensures the components receive a consistent 5V power, preventing malfunctions or damage to the more sensitive electronic components like the microcontrollers and sensors.</li>
+<li><strong>Current Requirements</strong>: The display has colons, with two motors; four digits, each with seven independent electric motors. There can be up to 5 electric motors running simultaneously to extend or contract the segment or colon. Note there are also additional power requirements for lighting the LEDs. The power system you'll build in this section provides sufficient current to power all motors, sensors, and controllers simultaneously.</li>
+<li><strong>Safety</strong>: Protects the system from overvoltage, short circuits, or power surges.</li>
+<li><strong>Customization</strong>: Tailors the power supply to meet the specific needs of the kinetic display's design and components.</li>
+<li><strong>Efficiency</strong>: Reduces energy loss and improves the overall performance of the display. An old school coil-driven relay is used to shut off power to the digits when in low power mode and not displaying anything. There are other ways to accomplish the same thing with solid state relays or a FET. However, the display is kinetic by design and the use of a coil relay enhances its sound, feel, and aesthetics.</li>
+</ul>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<h2 id="assembly">Assembly<a class="headerlink" href="#assembly" title="Permanent link">&para;</a></h2>
-<p><img alt="powersupply-top" src="../../img/powersupply/powersupply-top.webp" />
-<img alt="powersupply-bottom" src="../../img/powersupply/powersupply-bottom.webp" />
-<img alt="powersupply-1" src="../../img/powersupply/powersupply-1.webp" />
-<img alt="powersupply-2" src="../../img/powersupply/powersupply-2.webp" />
-<img alt="powersupply-3" src="../../img/powersupply/powersupply-3.webp" />
-<img alt="powersupply-4" src="../../img/powersupply/powersupply-4.webp" />
-<img alt="powersupply-5" src="../../img/powersupply/powersupply-top-arrows.webp" />
-<img alt="powersupply-5" src="../../img/powersupply/powersupply-5.webp" />
-<img alt="powersupply-6" src="../../img/powersupply/powersupply-6.webp" />
-<img alt="powersupply-7" src="../../img/powersupply/powersupply-7.webp" />
-<img alt="powersupply-8" src="../../img/powersupply/powersupply-8.webp" />
+<ul>
+<li>3D print of the Display stand</li>
+</ul>
+<p><strong><em>Table of components</em></strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Quantity</th>
+<th style="text-align: left;">Component</th>
+<th style="text-align: center;">Image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">2 Pin PCB Mount Screw Terminal Block Connector Straight Pin</td>
+<td style="text-align: center;"><img alt="component-5" src="../../img/component/component-5.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">3 Pin PCB Mount Screw Terminal Block Connector Straight Pin</td>
+<td style="text-align: center;"><img alt="component-23" src="../../img/component/component-23.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">4 Pin PCB Mount Screw Terminal Block Connector Straight Pin</td>
+<td style="text-align: center;"><img alt="component-24" src="../../img/component/component-24.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">SONGLE SRS-05VDC-SL 05VDC-SL 4100 Blue 5V 6PIN Power Relay</td>
+<td style="text-align: center;"><img alt="component-25" src="../../img/component/component-25.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">1N4001 Diode, standard, 1A, 50V, DO-41</td>
+<td style="text-align: center;"><img alt="component-26" src="../../img/component/component-26.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">S8050 TO-92 TH PNP Transistor</td>
+<td style="text-align: center;"><img alt="component-20" src="../../img/component/component-20.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">1K ohm 0805 Resistor 1/2w Metal Film Fixed Resistor</td>
+<td style="text-align: center;"><img alt="component-22" src="../../img/component/component-22.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">2.1mm Barrel Jack 5.5x2.1mm Female DC Power Jack 2.1 X 5.5mm DC Jack Connector 6V 9V 12V DC Jack Panel Mount</td>
+<td style="text-align: center;"><img alt="component-27" src="../../img/component/component-27.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">10M</td>
+<td style="text-align: left;">White 28 AWG Gauge Flexible Silicone Rubber Electric Wire</td>
+<td style="text-align: center;"><img alt="component-28" src="../../img/component/component-28.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">10M</td>
+<td style="text-align: left;">Black 28 AWG Gauge Flexible Silicone Rubber Electric Wire</td>
+<td style="text-align: center;"><img alt="component-29" src="../../img/component/component-29.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">50cm</td>
+<td style="text-align: left;">(optional) 28 AWG Gauge heat shrink</td>
+<td style="text-align: center;"><img alt="component-30" src="../../img/component/component-30.webp" /></td>
+</tr>
+</tbody>
+</table>
+<p><strong><em>Table of tools</em></strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Required</th>
+<th style="text-align: left;">Tool</th>
+<th style="text-align: center;">Image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: left;">Soldering station</td>
+<td style="text-align: center;"><img alt="tool-4" src="../../img/tools/tool-4.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: left;">0.8mm 1.76oz RoHS flux core solder</td>
+<td style="text-align: center;"><img alt="tool-1" src="../../img/tools/tool-1.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: left;">Mini flush cutters</td>
+<td style="text-align: center;"><img alt="tool-6" src="../../img/tools/tool-6.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: left;">Isopropyl Alcohol</td>
+<td style="text-align: center;"><img alt="tool-3" src="../../img/tools/tool-3.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: left;">Cotton Facial Pads</td>
+<td style="text-align: center;"><img alt="tool-2" src="../../img/tools/tool-2.webp" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">No</td>
+<td style="text-align: left;">Heat gun</td>
+<td style="text-align: center;"><img alt="tool-215" src="../../img/tools/tool-15.webp" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="power_management_pcb_components">Power Management PCB Components<a class="headerlink" href="#power_management_pcb_components" title="Permanent link">&para;</a></h2>
+<p>In this section you'll assemble the power management system PCB.</p>
+<p>Top view of the power management PCB.
+<img alt="powersupply-top" src="../../img/powersupply/powersupply-top.webp" />
+Bottom view of the power management PCB.
+<img alt="powersupply-bottom" src="../../img/powersupply/powersupply-bottom.webp" /></p>
+<ol>
+<li>Following the picture below on the TOP side of the PCB, solder the <code>1kΩ 805</code> surface mount resistor onto <code>R1</code>.
+<img alt="powersupply-1" src="../../img/powersupply/powersupply-1.webp" /></li>
+<li>Following the picture below on the TOP side of the PCB, solder the <code>s8050</code> through hole transistor into <code>Q1</code>. Be sure to align the pins according to the silk screen outline.
+<img alt="powersupply-2" src="../../img/powersupply/powersupply-2.webp" /></li>
+<li>Following the picture below on the TOP side of the PCB, solder the <code>1N4001</code> diode into <code>D1</code>. Be sure to align the anode band, with the silk screen outline.
+<img alt="powersupply-3" src="../../img/powersupply/powersupply-3.webp" /></li>
+<li>Following the picture below on the TOP side of the PCB, solder the 6 pins of the Songle relay into <code>RLY1</code>.
+<img alt="powersupply-4" src="../../img/powersupply/powersupply-4.webp" /></li>
+</ol>
+<h2 id="power_management_pcb_block_connectors">Power Management PCB Block Connectors<a class="headerlink" href="#power_management_pcb_block_connectors" title="Permanent link">&para;</a></h2>
+<p>Top view of the power management PCB with arrows pointing in the direction of the connected wire.
+<img alt="powersupply-top-arrows" src="../../img/powersupply/powersupply-top-arrows.webp" /></p>
+<ol>
+<li>Following the picture below on the TOP side of the PCB, hold the PCB so the silk screen <code>C-12V-1</code> is to your left. Solder the 4 pin terminal block connector into the <code>C-12V-1</code> through holes so the connection to the wires faces out to the left.
+<img alt="powersupply-5" src="../../img/powersupply/powersupply-5.webp" /></li>
+<li>Following the picture below on the TOP side of the PCB, hold the PCB so the silk screen <code>C-12V-2</code> is to your right. Solder the 4 pin terminal block connector into the <code>C-12V-2</code> through holes so the connection to the wires faces out to the right.
+<img alt="powersupply-6" src="../../img/powersupply/powersupply-6.webp" /></li>
+<li>Following the picture below on the TOP side of the PCB, hold the PCB so the silk screen <code>CONN-1</code> is to your left. Solder the 2 pin terminal block connector into the <code>5v+ 5v-</code> through holes of the <code>CONN-1</code> silk screen so the connection to the wires faces out to the left.
+<img alt="powersupply-7" src="../../img/powersupply/powersupply-7.webp" /></li>
+<li>Following the picture below on the TOP side of the PCB, continue to hold the PCB so the silk screen <code>CONN-1</code> to your left. Solder the 3 pin terminal block connector into the <code>GPIO19 12v+ 12v-</code> through holes of the <code>CONN-1</code> silk screen so the connection to the wires faces out to the left.
+<img alt="powersupply-8" src="../../img/powersupply/powersupply-8.webp" /></li>
+<li>Note the arrows pointing in the direction of the connected wire on the BOTTOM side of the power management PCB.
 <img alt="powersupply-bottom-arrow" src="../../img/powersupply/powersupply-bottom-arrow.webp" />
-<img alt="powersupply-9" src="../../img/powersupply/powersupply-9.webp" />
-<img alt="powersupply-11" src="../../img/powersupply/powersupply-11.webp" />
+    Following the picture below on the BOTTOM side of the power management PCB, solder the two pins of the terminal block connector into the through holes marked as <code>12v(in)</code>.
+<img alt="powersupply-9" src="../../img/powersupply/powersupply-9.webp" /></li>
+</ol>
+<h2 id="barrel_jack_panel_mount">Barrel Jack Panel Mount<a class="headerlink" href="#barrel_jack_panel_mount" title="Permanent link">&para;</a></h2>
+<p><img alt="powersupply-11" src="../../img/powersupply/powersupply-11.webp" />
 <img alt="powersupply-12" src="../../img/powersupply/powersupply-12.webp" />
 <img alt="powersupply-13" src="../../img/powersupply/powersupply-13.webp" />
 <img alt="powersupply-14" src="../../img/powersupply/powersupply-14.webp" />
-<img alt="powersupply-15" src="../../img/powersupply/powersupply-15.webp" /></p></div>
+<img alt="powersupply-15" src="../../img/powersupply/powersupply-15.webp" /></p>
+<h2 id="lm2596_adjustable_buck_converters_and_wiring">LM2596 Adjustable Buck Converters and Wiring<a class="headerlink" href="#lm2596_adjustable_buck_converters_and_wiring" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Use anti static mats and ESD wristband and grounding wire for the remainder of the Kinetic Display electronics assembly.</p>
+</div></div>
             </div>
         </div>
 
