@@ -24,13 +24,16 @@ Run the tests in this section after assembling the controller PCB to ensure all 
 1. Following the picture below, the `TOP-LED1` LED light up and the motor briefly turns on. From the terminal session, type **r0** to retract the the `TOP-LED1`.
 ![controllerpcbtest-6](../img/controllerpcbtest/controllerpcbtest-6.webp)
 1. Repeat steps 5 and 6 to `COLON-LWR`.
+1. Unplug the USB from the Raspberry Pi Pico W 2040 upon completion
 
 ## Test the Light Detection
 
+1. On the Controller and Digit 1 PCB, plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040.
 1. From Visual Studio Code **(A)** select the file `photoresistor.py`, then **(B)** click the Run button in the status bar.
 ![LDRpcbtest-1](../img/controllerpcbtest/LDRpcbtest-1.webp)
 1. The terminal pane will print the light level, between 0 and 9, depending on the brightness of the light as detected by the LDR.
 ![LDRpcbtest-2](../img/controllerpcbtest/LDRpcbtest-2.webp)
+1. Unplug the USB from the Raspberry Pi Pico W 2040 upon completion
 
 ## Test the Humidity and Temperature
 
@@ -40,3 +43,4 @@ Run the tests in this section after assembling the controller PCB to ensure all 
 ![dhtpcbtest-3](../img/controllerpcbtest/dhttest-3.webp)
 1. Verify the output in the terminal shows the temperature and humidity.
 ![dhtpcbtest-4](../img/controllerpcbtest/dhttest-4.webp)
+1. Unplug the USB from the Raspberry Pi Pico W 2040 upon completion
