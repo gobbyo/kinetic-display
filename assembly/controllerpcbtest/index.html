@@ -158,6 +158,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#test_the_humidity_and_temperature" class="nav-link">Test the Humidity and Temperature</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -196,6 +200,15 @@
 <img alt="LDRpcbtest-1" src="../../img/controllerpcbtest/LDRpcbtest-1.webp" /></li>
 <li>The terminal pane will print the light level, between 0 and 9, depending on the brightness of the light as detected by the LDR.
 <img alt="LDRpcbtest-2" src="../../img/controllerpcbtest/LDRpcbtest-2.webp" /></li>
+</ol>
+<h2 id="test_the_humidity_and_temperature">Test the Humidity and Temperature<a class="headerlink" href="#test_the_humidity_and_temperature" title="Permanent link">&para;</a></h2>
+<ol>
+<li>On the Controller and Digit 1 PCB, <strong>(A)</strong> plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040. <strong>(B)</strong> Connect the DHT22 sensor by ensuring the <code>- Data +</code> pins in the <code>DHT1</code> silk screen align with the <code>+ out -</code> pins on the DHT22 sensor.
+<img alt="dhtpcbtest-1" src="../../img/controllerpcbtest/dhtpcbtest-1.webp" /></li>
+<li>From Visual Studio Code <strong>(A)</strong> select the file <code>dhttest.py</code>, then <strong>(B)</strong> click the Run button in the status bar.
+<img alt="dhtpcbtest-3" src="../../img/controllerpcbtest/dhttest-3.webp" /></li>
+<li>Verify the output in the terminal shows the temperature and humidity.
+<img alt="dhtpcbtest-4" src="../../img/controllerpcbtest/dhttest-4.webp" /></li>
 </ol></div>
             </div>
         </div>
