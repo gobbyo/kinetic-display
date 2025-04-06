@@ -1,4 +1,4 @@
-# Buck Converter Assembly
+# Buck Modules and Wiring
 
 ## Prerequisites
 
@@ -18,3 +18,4 @@ This section ensures wiring for the PCBs is placed over the TPU gasket otherwise
     Use anti static mats and ESD wristband and grounding wire for the remainder of the Kinetic Display electronics assembly.
 
 This section details wiring the buck converter to the PCBs. Each buck converter must be calibrated to have a 5.0v to 5.1v output. The install of the buck converter and wiring starts with digit 0 on the far right, then digit 1, then the colons/controller. Next we'll start with digit 3 on the far left followed by digit 2.
+
