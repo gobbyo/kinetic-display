@@ -31,3 +31,12 @@ Run the tests in this section after assembling the controller PCB to ensure all 
 ![LDRpcbtest-1](../img/controllerpcbtest/LDRpcbtest-1.webp)
 1. The terminal pane will print the light level, between 0 and 9, depending on the brightness of the light as detected by the LDR.
 ![LDRpcbtest-2](../img/controllerpcbtest/LDRpcbtest-2.webp)
+
+## Test the Humidity and Temperature
+
+1. On the Controller and Digit 1 PCB, **(A)** plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040. **(B)** Connect the DHT22 sensor by ensuring the `- Data +` pins in the `DHT1` silk screen align with the `+ out -` pins on the DHT22 sensor.
+![dhtpcbtest-1](../img/controllerpcbtest/dhtpcbtest-1.webp)
+1. From Visual Studio Code **(A)** select the file `dhttest.py`, then **(B)** click the Run button in the status bar.
+![dhtpcbtest-3](../img/controllerpcbtest/dhttest-3.webp)
+1. Verify the output in the terminal shows the temperature and humidity.
+![dhtpcbtest-4](../img/controllerpcbtest/dhttest-4.webp)
