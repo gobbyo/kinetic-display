@@ -6,11 +6,13 @@
 
 ## PCB and Stand Layout
 
-This section ensures wiring for the PCBs is placed over the TPU gasket otherwise the wires will be sandwiched between the display face and the PCBs.
+This section ensures wiring for the PCBs are oriented for the mounting of the buck modules and wiring.
 
 1. Remove the Raspberry Pi Pico and Pico W 2040 from the PCBs. We'll add these later when it is safe to do so.
 1. Lay the PCBs face up with digit 0 on the far right and digit 3 on the far left. Position the stand below the PCBs so the barrel jack is between the controller/digit 1 PCB and digit 2 PCB.
+![buckmodulesandwiring-1](../img/buckmoduleassembly/buckmoduleassembly-1.webp)
 1. Place the TPU gaskets on the PCBs. Note the TPU gasket for digit 2 differs slightly from digit 0 and 3 gaskets.
+![buckmodulesandwiring-2](../img/buckmoduleassembly/buckmoduleassembly-2.webp)
 
 ## Digit Wiring and Buck Converter
 
