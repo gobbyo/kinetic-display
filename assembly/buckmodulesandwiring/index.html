@@ -172,15 +172,15 @@
 <h1 id="buck_modules_and_wiring">Buck Modules and Wiring<a class="headerlink" href="#buck_modules_and_wiring" title="Permanent link">&para;</a></h1>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>3D print the digit and controller TPU gaskets</li>
+<li>3D print the Digit and controller TPU gaskets</li>
 </ul>
 <h2 id="pcb_and_stand_layout">PCB and Stand Layout<a class="headerlink" href="#pcb_and_stand_layout" title="Permanent link">&para;</a></h2>
 <p>This section ensures wiring for the PCBs are oriented for the mounting of the buck modules and wiring.</p>
 <ol>
 <li>Remove the Raspberry Pi Pico and Pico W 2040 from the PCBs. We'll add these later when it is safe to do so.</li>
-<li>Lay the PCBs face up with digit 0 on the far right and digit 3 on the far left. Position the stand below the PCBs so the barrel jack is between the controller/digit 1 PCB and digit 2 PCB.
+<li>Lay the PCBs face up with Digit 0 on the far right and Digit 3 on the far left. Position the stand below the PCBs so the barrel jack is between the controller/Digit 1 PCB and Digit 2 PCB.
 <img alt="buckmodulesandwiring-1" src="../../img/buckmoduleassembly/buckmoduleassembly-1.webp" /></li>
-<li>Place the TPU gaskets on the PCBs. Note the TPU gasket for digit 2 differs slightly from digit 0 and 3 gaskets.
+<li>Place the TPU gaskets on the PCBs. Note the TPU gasket for Digit 2 differs slightly from Digit 0 and 3 gaskets.
 <img alt="buckmodulesandwiring-2" src="../../img/buckmoduleassembly/buckmoduleassembly-2.webp" /></li>
 </ol>
 <h2 id="wiring_the_buck_modules">Wiring the Buck Modules<a class="headerlink" href="#wiring_the_buck_modules" title="Permanent link">&para;</a></h2>
@@ -188,15 +188,25 @@
 <p class="admonition-title">Warning</p>
 <p>Use anti static mats and ESD wristband and grounding wire for the remainder of the Kinetic Display electronics assembly.</p>
 </div>
-<p>This section details wiring the buck converter to the PCBs. Each module must be calibrated to have a 5.0v to 5.1v output. The wiring of the buck module starts with digit 0 on the far right, digit 1, the colons/controller, then digit 3 on the far left followed by digit 2.</p>
-<p><img alt="buckmodulesandwiring-3" src="../../img/buckmoduleassembly/buckmoduleassembly-3.webp" />
-<img alt="buckmodulesandwiring-4" src="../../img/buckmoduleassembly/buckmoduleassembly-4.webp" />
-<img alt="buckmodulesandwiring-5" src="../../img/buckmoduleassembly/buckmoduleassembly-5.webp" />
-<img alt="buckmodulesandwiring-6" src="../../img/buckmoduleassembly/buckmoduleassembly-6.webp" />
-<img alt="buckmodulesandwiring-7" src="../../img/buckmoduleassembly/buckmoduleassembly-7.webp" />
-<img alt="buckmodulesandwiring-8" src="../../img/buckmoduleassembly/buckmoduleassembly-8.webp" />
-<img alt="buckmodulesandwiring-9" src="../../img/buckmoduleassembly/buckmoduleassembly-9.webp" />
-<img alt="buckmodulesandwiring-10" src="../../img/buckmoduleassembly/buckmoduleassembly-10.webp" /></p></div>
+<p>This section details wiring the buck converter to the PCBs. The buck converter module has an <code>In +</code> and <code>In -</code> on one side for the 12v input, and an <code>Out +</code> and <code>Out -</code> on the opposite side for the converted 5v output. The display uses only the 5v outputs. This section will also cover how to calibrate the variable buck module to provide 5.0v to 5.1v output.</p>
+<ol>
+<li>Following the picture below, place a buck converter module for Digit 0 on the rightmost support on the display stand. Strip 3mm of insulation from the black and white 28 AWG wire while on the roll starting then tin the stripped end with solder. Starting with the Digit 0 PCB, <strong>(A)</strong> Route the two wires from the 5v block terminal. <strong>(B)</strong> Add two 3cm sections of heat shrink on the two wires then <strong>(C)</strong> continue routing the wire around the relay, under the power management PCB and through the port on the PCB stand. <strong>(D)</strong> Finish unwinding the wire when you reach the end of buck module as shown in the picture. Now that the length of wire is known from its route, snip off the wires next to the block terminal <strong>(A)</strong>. Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the <code>+</code> on the <code>5v</code> block terminal and the black wire onto the <code>-</code>.
+<img alt="buckmodulesandwiring-3" src="../../img/buckmoduleassembly/buckmoduleassembly-3.webp" /></li>
+<li>Following the picture below, turn the buck module over to its backside and solder the white wire onto the <code>Out +</code> pad and the black wire onto the <code>Out -</code> pad.
+<img alt="buckmodulesandwiring-4" src="../../img/buckmoduleassembly/buckmoduleassembly-4.webp" /></li>
+<li>Following the picture below, turn the buck module 180 degrees while having its backside facing up. Strip 3mm of insulation from the black and white 28 AWG wire while on the roll starting then tin the stripped end with solder. Solder the white wire onto the buck module's <code>In +</code> pad and the black wire onto the <code>In -</code> pad.
+<img alt="buckmodulesandwiring-5" src="../../img/buckmoduleassembly/buckmoduleassembly-5.webp" /></li>
+<li>Turn the buck module over and secure it with 1.7 x 6mm self tapping screws onto the rightmost module supports on the display stand.
+<img alt="buckmodulesandwiring-6" src="../../img/buckmoduleassembly/buckmoduleassembly-6.webp" /></li>
+<li>Route the white and black wire to the power management PCB <code>C-12v-1</code> block terminal, provide about 10mm extra length in the wire before cutting them. Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the <code>+</code> on the <code>C-12v-1</code> and the black wire onto the <code>-</code>.
+<img alt="buckmodulesandwiring-7" src="../../img/buckmoduleassembly/buckmoduleassembly-7.webp" /></li>
+<li>Following the picture below, place a buck converter module for Digit 1 to the left of the Digit 0 module. Strip 3mm of insulation from the black and white 28 AWG wire while on the roll starting then tin the stripped end with solder. Starting with the Digit 1 PCB, <strong>(A)</strong> Route the two wires from the 5v block terminal. <strong>(B)</strong> Add one 3cm section of heat shrink on the two wires then <strong>(C)</strong> continue routing the wire around the relay, under the power management PCB and through the port on the PCB stand. <strong>(D)</strong> Finish unwinding the wire when you reach the end of second buck module as shown in the picture. Now that the length of wire is known from its route, snip off the wires next to the block terminal <strong>(A)</strong>. Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the <code>+</code> on the <code>5v</code> block terminal and the black wire onto the <code>-</code>.
+<img alt="buckmodulesandwiring-8" src="../../img/buckmoduleassembly/buckmoduleassembly-8.webp" /></li>
+<li>Following the picture below, turn the buck module over to its backside and solder the white wire onto the <code>Out +</code> pad and the black wire onto the <code>Out -</code> pad.
+<img alt="buckmodulesandwiring-9" src="../../img/buckmoduleassembly/buckmoduleassembly-9.webp" /></li>
+<li>Follow the previous steps 3-5 and connect the 12v black and white wire into the next available block terminals on <code>C-12v-1</code>. See the picture below for the assembled Digit 1 buck module.
+<img alt="buckmodulesandwiring-10" src="../../img/buckmoduleassembly/buckmoduleassembly-10.webp" /></li>
+</ol></div>
             </div>
         </div>
 
