@@ -105,7 +105,7 @@ Below is a photo showing the color variation of blue 5mm LEDs within the same ba
 
 1. On the front of the digit PCB, insert the PCB two pin terminal block connector into the 5v through holes so the face of the connector where the wires are inserted points toward the LEDs on the PCB.
 ![digitpcbconnector-1](../img/digitpcbassembly/1-digitpcbassembly-connector.webp)
-1. Solder the block terminal connector pins on the back of the digit PCB.
+1. Solder the terminal block connector pins on the back of the digit PCB.
 ![digitpcbconnector-2](../img/digitpcbassembly/2-digitpcbassembly-connector.webp)
 1. On the front of the digit PCB position the 2 pin terminal block connector facing away from the LEDs. For **PCBs labelled "2" & "3"**, insert the connector pins into the `UART Tx-1/Rx-1` through holes. For the digit **PCB labelled "0"**, insert the connector into the `Tx-0/Rx-0` through holes.
 ![digitpcbconnector-3](../img/digitpcbassembly/3-digitpcbassembly-connector.webp)
