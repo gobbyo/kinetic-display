@@ -98,7 +98,7 @@ The tools and parts needed to assemble the motor mount include: 3d printed motor
 ![actuatorstep2](../img/actuator/2-actuator.webp)
 1. Use a large wire cutter to cut the shaft.
 ![actuatorstep3](../img/actuator/3-actuator.webp)
-1. Insert the 2 cm shaft through the motor mount until is protrudes about 1mm into the pinion gear space.
+1. Insert the 2 cm shaft through the motor mount until it protrudes about 1mm into the pinion gear space.
 ![actuatorstep4](../img/actuator/4-actuator.webp)
 1. Add the pinion gear to the motor mount as shown in the diagram. Insert the shaft by aligning the pinion gear shaft hole with the metal shaft, then slide the metal shaft all the way into the motor mount.
 ![actuatorstep5](../img/actuator/5-actuator.webp)

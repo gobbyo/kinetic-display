@@ -22,6 +22,6 @@ Run the tests in this section after assembling each digit PCB to ensure all the 
 ![digitpcbtest-4](../img/digitpcbtest/digitpcbtest-5.webp)
 1. The console test application shows various options that relate to segments 0-6 which correspond to segments A-G. For example, segment A is 0, B is 1, until G which is 6. Extend `SEG-A` by typing **e0** in the console.
 ![digitpcbtest-6](../img/digitpcbtest/digitpcbtest-6.webp)
-1. Following the picture below, the 4 `SEG-A` LEDs light up and the motor briefly turns on. From the terminal session, type **r0** to retract the segement. 
+1. Following the picture below, the 4 `SEG-A` LEDs light up and the motor briefly turns on. From the terminal session, type **r0** to retract the segement.
 ![digitpcbtest-7](../img/digitpcbtest/digitpcbtest-7.webp)
 1. Repeat steps 6 and 7 to verify the remaining `SEG-B` through `SEG-G` work as expected. Repeat the test for all digit PCBs 0-3.
