@@ -14,10 +14,19 @@ This section ensures wiring for the PCBs are oriented for the mounting of the bu
 1. Place the TPU gaskets on the PCBs. Note the TPU gasket for digit 2 differs slightly from digit 0 and 3 gaskets.
 ![buckmodulesandwiring-2](../img/buckmoduleassembly/buckmoduleassembly-2.webp)
 
-## Digit Wiring and Buck Converter
+## Wiring the Buck Modules
 
 !!! warning
     Use anti static mats and ESD wristband and grounding wire for the remainder of the Kinetic Display electronics assembly.
 
-This section details wiring the buck converter to the PCBs. Each buck converter must be calibrated to have a 5.0v to 5.1v output. The install of the buck converter and wiring starts with digit 0 on the far right, then digit 1, then the colons/controller. Next we'll start with digit 3 on the far left followed by digit 2.
+This section details wiring the buck converter to the PCBs. Each module must be calibrated to have a 5.0v to 5.1v output. The wiring of the buck module starts with digit 0 on the far right, digit 1, the colons/controller, then digit 3 on the far left followed by digit 2.
+
+![buckmodulesandwiring-3](../img/buckmoduleassembly/buckmoduleassembly-3.webp)
+![buckmodulesandwiring-4](../img/buckmoduleassembly/buckmoduleassembly-4.webp)
+![buckmodulesandwiring-5](../img/buckmoduleassembly/buckmoduleassembly-5.webp)
+![buckmodulesandwiring-6](../img/buckmoduleassembly/buckmoduleassembly-6.webp)
+![buckmodulesandwiring-7](../img/buckmoduleassembly/buckmoduleassembly-7.webp)
+![buckmodulesandwiring-8](../img/buckmoduleassembly/buckmoduleassembly-8.webp)
+![buckmodulesandwiring-9](../img/buckmoduleassembly/buckmoduleassembly-9.webp)
+![buckmodulesandwiring-10](../img/buckmoduleassembly/buckmoduleassembly-10.webp)
 
