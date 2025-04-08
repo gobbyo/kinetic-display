@@ -16,7 +16,7 @@ This section ensures wiring for the PCBs are oriented for the mounting of the bu
 
 ## Wiring the Buck Modules
 
-This section details wiring the buck converter to the PCBs. The buck converter module has an `In +` and `In -` on one side for the 12v input, and an `Out +` and `Out -` on the opposite side for the converted 5v output. The display uses only the 5v outputs. This section will also cover how to calibrate the variable buck module to provide 5.0v to 5.1v output.
+This section details wiring the buck converter to the PCBs. The buck converter module has an `In +` and `In -` on one side for the 12v input, and an `Out +` and `Out -` on the opposite side for the converted 5v output. This section will also cover how to calibrate the variable buck module to provide 5.0v to 5.1v output.
 
 ![buckmodulesandwiring-wiring](../img/buckmoduleassembly/buckmoduleassembly-wire.webp)
 
@@ -59,3 +59,9 @@ Following the picture above and staarting with the Digit 0 buck module and worki
 Repeat the steps above to calibrate Digit 1 and the Conductor buck modules to 5v.
 
 ## Continue Wiring the Remaining Buck Modules
+
+![buckmodulesandwiring-14](../img/buckmoduleassembly/buckmoduleassembly-14.webp)
+
+![buckmodulesandwiring-15](../img/buckmoduleassembly/buckmoduleassembly-15.webp)
+
+![buckmodulesandwiring-16](../img/buckmoduleassembly/buckmoduleassembly-16.webp)
