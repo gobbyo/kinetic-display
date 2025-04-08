@@ -93,7 +93,7 @@ On the back side of the PCB, place the four 20 pin headers into the through hole
 
 ## Surface mount resistors
 
-On the back side of the PCB, solder the two 10kΩ resistors onto the pads marked `R2 10k` and `R3 10k` located between the top and bottom rows of the 20-pin headers. Soldering surface mount components require a slightly different skill than through hole soldering as you'll need to use tweezers to center the resistor over the pads and apply a minimal amount of solder. There are several online tutorials on how to solder surface mount compontents using a soldering iron and tweezers.
+On the back side of the PCB, solder the two 10kΩ resistors onto the pads marked `R2 10k` and `R3 10k` located between the top and bottom rows of the 20-pin headers. Soldering surface mount components require a slightly different skill than through hole soldering as you'll need to use tweezers to center the resistor over the pads and apply a minimal amount of solder.
 ![12-controllerpcb](../img/controllerpcb/12-controllerpcb.webp)
 
 ## Install Six, two pin (2P) Terminal Block Connectors
