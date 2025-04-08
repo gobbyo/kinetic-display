@@ -18,9 +18,11 @@ This section ensures wiring for the PCBs are oriented for the mounting of the bu
 
 This section details wiring the buck converter to the PCBs. The buck converter module has an `In +` and `In -` on one side for the 12v input, and an `Out +` and `Out -` on the opposite side for the converted 5v output. The display uses only the 5v outputs. This section will also cover how to calibrate the variable buck module to provide 5.0v to 5.1v output.
 
-![buckmodulesandwiring](../img/buckmoduleassembly/buckmoduleassembly-complete.webp)
+![buckmodulesandwiring-wiring](../img/buckmoduleassembly/buckmoduleassembly-wire.webp)
 
-The picture above is the completed wiring of the buck converter modules. The order of install is **1, 2, 3** on the right, followed by **4** and **5** on the left.
+The picture below is the completed wiring of the buck converter modules. The order of install is **1, 2, 3** on the right, followed by **4** and **5** on the left.
+
+![buckmodulesandwiring](../img/buckmoduleassembly/buckmoduleassembly-complete.webp)
 
 !!! warning
     Use anti static mats and ESD wristband and grounding wire for the remainder of the Kinetic Display electronics assembly.
