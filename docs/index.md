@@ -22,4 +22,4 @@
 - [Test Controller PCB](./assembly/controllerpcbtest.md)
 - [Power Management PCB Assembly](./assembly/powermanagementpcb.md)
 - [Test Power Management PCB](./assembly/powermanagementpcbtest.md)
-- [Buck Modules and Wiring](./assembly/buckmodulesandwiring.md)
+- [Buck Module Wiring](./assembly/buckmodulesandwiring.md)
