@@ -1,8 +1,17 @@
 # Buck Module Wiring
 
+This guide provides detailed instructions for assembling and wiring DC to DC variable buck converter modules in a Kinetic Display system. It includes a list of required components and tools, step-by-step guidance for wiring and securing the modules, and calibration instructions to ensure proper voltage output.
+
+1. **Correct Wiring**: Proper routing and connection of wires are critical to ensure the display functions correctly. Incorrect wire lengths or connections can lead to assembly issues or electrical faults.
+1. **Voltage Calibration**: The buck converters step down the input voltage from 12V to a stable 5.0-5.1V output. Calibration ensures the modules provide the correct voltage to prevent damage to connected components or malfunctions.
+1. **Safety Measures**: The document emphasizes using anti-static precautions and proper tools to avoid damaging sensitive electronics during assembly.
+
+This guide is essential for ensuring the reliability and safety of the Kinetic Display system.
+
 ## Prerequisites
 
 - 3D print the Digit and controller TPU gaskets
+- 3D print the Display stand
 
 ***Table of components***
 
@@ -12,6 +21,7 @@
 | 10M | White 28 AWG Gauge Flexible Silicone Rubber Electric Wire | ![component-28](../img/component/component-28.webp)  |
 | 10M | Black 28 AWG Gauge Flexible Silicone Rubber Electric Wire | ![component-29](../img/component/component-29.webp)  |
 | 50cm | (optional) 28 AWG Gauge heat shrink | ![component-30](../img/component/component-30.webp)  |
+| 10 | M1.7x6mm Cross Round Head with Washer Self Tapping Screw 304 Stainless Steel Screws | ![component-32](../img/component/component-32.webp) |
 
 ***Table of tools***
 
@@ -21,6 +31,7 @@
 | Yes | Soldering station    | ![tool-4](../img/tools/tool-4.webp)|
 | Yes | 0.8mm 1.76oz RoHS flux core solder | ![tool-1](../img/tools/tool-1.webp)|
 | Yes | Mini flush cutters   | ![tool-6](../img/tools/tool-6.webp)|
+| Yes | Wire stripper   | ![tool-9](../img/tools/tool-9.webp)|
 | No  | Label maker | ![tool-5s](../img/tools/tool-5.webp) |
 
 ## PCB and Stand Layout
