@@ -23,4 +23,4 @@
 - [Power Management PCB Assembly](./assembly/powermanagementpcb.md)
 - [Power Management PCB Test](./assembly/powermanagementpcbtest.md)
 - [Buck Module Wiring](./assembly/buckmodulesandwiring.md)
-- [UART and Relay Wiring] (./assembly/uartandrelaywiring.md)
+- [UART and Relay Wiring](./assembly/uartandrelaywiring.md)
