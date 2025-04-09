@@ -84,7 +84,7 @@ The picture below is the completed wiring of the buck converter modules. The ord
 1. Clip the white and black wires, strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the 5v terminal block connector and the black wire onto the `-`.
 ![buckmodulesandwiring-12](../img/buckmoduleassembly/buckmoduleassembly-12.webp)
 
-### Calibrate the Buck Module Voltage
+## Calibrate the Buck Module Voltage
 
 ![buckmodulesandwiring-13](../img/buckmoduleassembly/buckmoduleassembly-13.webp)
 
@@ -92,7 +92,7 @@ Follow using the picture above and start with the Digit 0 buck module furthest r
 
 Repeat the steps above to calibrate Digit 1 and the Conductor buck modules to 5v.
 
-## Continue Wiring the Remaining Buck Modules
+## Wire Remaining Buck Modules
 
 1. Following the picture below, place a buck converter module for Digit 3 to the far left mounting location. Strip 3mm of insulation from the black and white 28 AWG wire while on the roll starting then tin the stripped end with solder. **(A)** Unroll the two wires starting at the 5v terminal block connector on Digit 3 PCB. **(B)** Slide one 3cm section of heat shrink on the two wires but DO NOT APPLY HEAT, then **(C)** route the wire around the relay, under the power management PCB, and through the port on the PCB stand. **(D)** Finish unwinding the wire when you reach the end of the buck module as shown in the picture. Strip 3mm of insulation then solder the white wire to the buck module `Out +` pad and the black wire to the `Out -` pad. Now that the length of wire is known from its route, snip off the wires next to the terminal block connector **(A)**. Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the `5v` terminal block connector and the black wire onto the `-`.
 ![buckmodulesandwiring-14](../img/buckmoduleassembly/buckmoduleassembly-14.webp)
