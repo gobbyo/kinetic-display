@@ -54,14 +54,19 @@ The picture below is the completed wiring of the buck converter modules. The ord
 
 ![buckmodulesandwiring-13](../img/buckmoduleassembly/buckmoduleassembly-13.webp)
 
-Following the picture above and staarting with the Digit 0 buck module and working our way left. **(A)** disconnect the black and white wire from the 5v terminal block and connect the probes from the multimeter and turn on the multimeter. **(B)** Plug the 12v power supply into the power management PCB barrel jack. **(C)** Turn the screw on the top of the potentiometer on the Digit 0 buck module counter colockwise until **(D)** the voltage measures between 5.0 and 5.1 volts. Note you'll have to turn the screw on the top of the potentiometer several times before the voltage begins to drop.
+Following the picture above and starting with the Digit 0 buck module and working our way left. **(A)** disconnect the black and white wire from the 5v terminal block and connect the probes from the multimeter and turn on the multimeter. **(B)** Plug the 12v power supply into the power management PCB barrel jack. **(C)** Turn the screw on the top of the potentiometer on the Digit 0 buck module counterclockwise until **(D)** the voltage measures between 5.0 and 5.1 volts. Note you'll have to turn the screw on the top of the potentiometer several times before the voltage begins to drop.
 
 Repeat the steps above to calibrate Digit 1 and the Conductor buck modules to 5v.
 
 ## Continue Wiring the Remaining Buck Modules
 
+1. Following the picture below, place a buck converter module for Digit 3 to the far left mounting location. Strip 3mm of insulation from the black and white 28 AWG wire while on the roll starting then tin the stripped end with solder. Starting with the Digit 3 PCB, **(A)** unroll the two wires starting at the 5v terminal block connector. **(B)** Slide one 3cm section of heat shrink on the two wires but DO NOT APPLY HEAT, then **(C)** route the wire around the relay, under the power management PCB, and through the port on the PCB stand. **(D)** Finish unwinding the wire when you reach the end of the buck module as shown in the picture. Strip 3mm of insulation then solder the white wire to the buck module `Out +` pad and the black wire to the `Out -` pad. Now that the length of wire is known from its route, snip off the wires next to the terminal block connector **(A)**. Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the `5v` terminal block connector and the black wire onto the `-`.
 ![buckmodulesandwiring-14](../img/buckmoduleassembly/buckmoduleassembly-14.webp)
-
+1. Following the diagram below, **(A)** solder the white wire onto the buck module's `In +` pad and the black wire onto the `In -` pad. Secure the module with two M1.7x6mm self tapping screws. **(B)** Route the Digit 0 white and black wire to the power management PCB `C-12v-1` terminal block connector, provide about 10mm extra length in the wire before cutting them. Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the `C-12v-1` and the black wire onto the `-`.
 ![buckmodulesandwiring-15](../img/buckmoduleassembly/buckmoduleassembly-15.webp)
 
 ![buckmodulesandwiring-16](../img/buckmoduleassembly/buckmoduleassembly-16.webp)
+
+![buckmodulesandwiring-17](../img/buckmoduleassembly/buckmoduleassembly-17.webp)
+
+![buckmodulesandwiring-18](../img/buckmoduleassembly/buckmoduleassembly-18.webp)
