@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Power Management PCB Test - Kinetic Display</title>
+        <title>UART and Relay Wiring - Kinetic Display</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -104,7 +104,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Power Management PCB Test</a>
+    <a href="../powermanagementpcbtest/" class="dropdown-item">Power Management PCB Test</a>
 </li>
                                     
 <li>
@@ -112,7 +112,7 @@
 </li>
                                     
 <li>
-    <a href="../uartandrelaywiring/" class="dropdown-item">UART and Relay Wiring</a>
+    <a href="./" class="dropdown-item active" aria-current="page">UART and Relay Wiring</a>
 </li>
                                 </ul>
                             </li>
@@ -125,12 +125,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../powermanagementpcb/" class="nav-link">
+                                <a rel="prev" href="../buckmodulesandwiring/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../buckmodulesandwiring/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -152,13 +152,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#power_management_pcb_test" class="nav-link">Power Management PCB Test</a>
+            <li class="nav-item" data-bs-level="1"><a href="#uart_and_relay_wiring" class="nav-link">UART and Relay Wiring</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#prerequisites" class="nav-link">Prerequisites</a>
+            <li class="nav-item" data-bs-level="2"><a href="#uart_wiring" class="nav-link">UART Wiring</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#test_relay" class="nav-link">Test Relay</a>
+            <li class="nav-item" data-bs-level="2"><a href="#relay_wiring" class="nav-link">Relay Wiring</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -169,37 +169,20 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="power_management_pcb_test">Power Management PCB Test<a class="headerlink" href="#power_management_pcb_test" title="Permanent link">&para;</a></h1>
-<p>Run the tests in this section after assembling the power management PCB. Any defective electronic component on the digit PCB will need to be replaced before completing the project.</p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../controllerpcbassembly/">Completed the controller and digit 1 PCB assembly</a></li>
-<li><a href="../powermanagementpcb/">Completed power management PCB</a></li>
-<li>Computer and microcontroller with the <a href="../../prerequisitesoftware/">prerequisite software</a></li>
-<li>3 male-male jumpers (or wires with the ends stripped in tinned with solder)</li>
-</ul>
-<h2 id="test_relay">Test Relay<a class="headerlink" href="#test_relay" title="Permanent link">&para;</a></h2>
+<h1 id="uart_and_relay_wiring">UART and Relay Wiring<a class="headerlink" href="#uart_and_relay_wiring" title="Permanent link">&para;</a></h1>
+<p>UART (Universal Asynchronous Receiver-Transmitter) facilitates communication between the controller and the digit PCBs. The controller acts as the central hub, transmitting commands and receiving status updates from the digits.</p>
 <ol>
-<li>Following the picture below on the BACK face of the controller and digit 1 PCB, <strong>(A)</strong> using a pair of jumper wires, connect the positive (+) and negative (-) ports of the terminal block connector <code>5v-OUT</code> to the <strong>(B)</strong> positive (+) and negative (-) ports on the corresponding terminal block connector marked <code>CONN-1</code> on the power management PCB.
-<img alt="powermanagement-1" src="../../img/powermanagementpcbtest/powermanagementpcbtest-1.webp" /></li>
-<li>Using a single jumper wire, <strong>(A)</strong> connect the <code>GPIO19</code> port of the terminal block connector in <code>CONN-1</code> on the power management PCB to <strong>(B)</strong> the <code>GPIO19</code> port of the terminal block connector on the FRONT face of the controller and digit 1 PCB.
-<img alt="powermanagement-2" src="../../img/powermanagementpcbtest/powermanagementpcbtest-2.webp" /></li>
-<li>Following the picture below, connect a USB cable from your computer to the Raspberry Pi Pico W on the BACK face of the controller and digit 1 PCB.
-<img alt="powermanagement-3" src="../../img/powermanagementpcbtest/powermanagementpcbtest-3.webp" /></li>
-<li>From your computer, open a terminal session using Visual Studio Code by selecting <code>MicroPico vREPL</code> from the terminal dropdown menu. Once connected, type (or copy/paste each line) the following code into the terminal window:</li>
+<li><strong>Controller (Transmitter and Receiver)</strong>:</li>
+<li>The controller's UART <code>Tx</code> (transmit) pin sends data to the digits, such as display commands and brightness levels.</li>
+<li>The controller's UART <code>Rx</code> (receive) pin listens for acknowledgment or status updates from the digits.</li>
+<li><strong>Digits (Receivers and Transmitters)</strong>:</li>
+<li>Each digit PCB's UART <code>Rx</code> pin receives commands from the controller.</li>
+<li>The digit PCBs' UART <code>Tx</code> pins send status updates or responses back to the controller.</li>
 </ol>
-<pre class="codehilite"><code class="language-python">from machine import Pin
-
-p = Pin(19, Pin.OUT)
-p.on()
-</code></pre>
-
-<p>Once you hear the relay click to connect the circuit, then type the following code into the terminal window:</p>
-<pre class="codehilite"><code class="language-python">p.off()
-</code></pre>
-
-<p>Below is a screenshot of the terminal session:
-<img alt="powermanagement-4" src="../../img/powermanagementpcbtest/powermanagementpcbtest-4.webp" /></p></div>
+<p>This bidirectional communication ensures synchronized operation of the display, enabling the controller to manage all digits effectively.</p>
+<h2 id="uart_wiring">UART Wiring<a class="headerlink" href="#uart_wiring" title="Permanent link">&para;</a></h2>
+<p><img alt="uartwiring" src="../../img/uartwiring/uartwiring.webp" /></p>
+<h2 id="relay_wiring">Relay Wiring<a class="headerlink" href="#relay_wiring" title="Permanent link">&para;</a></h2></div>
             </div>
         </div>
 
