@@ -2,6 +2,6 @@
 
 ## UART Wiring
 
-![uartwiring](../img/uartwiring/)
+![uartwiring](../img/uartwiring/uartwiring.webp)
 
 ## Relay Wiring
