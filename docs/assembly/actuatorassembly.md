@@ -1,5 +1,13 @@
 # Actuator Assembly
 
+This guide is essential for ensuring the actuators function reliably and integrate seamlessly into the display system. It provides detailed instructions for assembling the 30 actuators used in the Kinetic Display. Below are the key areas:
+
+1. **Components and Tools**: Lists all required components (e.g., motors, wires, connectors) and tools (e.g., soldering station, wire strippers, crimping tool).
+2. **Shaft Gear Installation**: Explains how to securely attach the shaft gear to the motor shaft using super glue and precise alignment.
+3. **Wire Preparation**: Details cutting, stripping, and soldering wires to motor terminals, ensuring proper polarity for clockwise and counterclockwise motion.
+4. **Dupont Connectors**: Guides the crimping and housing of Dupont connectors for easy connection to the digit PCB.
+5. **Motor Mount Assembly**: Covers assembling the motor mount, pinion gear, and shaft, ensuring smooth operation without jamming or sticking.
+
 There are 30 actuators in the display, 7 per digit and 2 for the colons (4 digits x 7 segments + 2 colons = 30 total actuators). The diagrams below identify the various parts and composition of the actuator.
 
 Fully assembled actuator with segment and back stopper.

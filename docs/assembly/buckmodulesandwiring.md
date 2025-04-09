@@ -1,6 +1,8 @@
 # Buck Module Wiring
 
-This guide provides detailed instructions for assembling and wiring DC to DC variable buck converter modules in a Kinetic Display system. It includes a list of required components and tools, step-by-step guidance for wiring and securing the modules, and calibration instructions to ensure proper voltage output.
+Buck converters are essential for converting 12V DC to 5V DC because they efficiently step down the voltage while minimizing energy loss. Unlike linear regulators, which dissipate excess voltage as heat, buck converters use high-frequency switching and inductors to transfer energy more efficiently. This makes them ideal for powering sensitive electronics like microcontrollers and LEDs, as they provide stable output voltage, reduce heat generation, and improve overall system reliability. 
+
+This guide provides detailed instructions for assembling and wiring DC to DC variable buck converter modules in a Kinetic Display system. Also included is a list of required components and tools, step-by-step guidance for wiring and securing the modules, and calibration instructions to ensure proper voltage output.
 
 1. **Correct Wiring**: Proper routing and connection of wires are critical to ensure the display functions correctly. Incorrect wire lengths or connections can lead to assembly issues or electrical faults.
 1. **Voltage Calibration**: The buck converters step down the input voltage from 12V to a stable 5.0-5.1V output. Calibration ensures the modules provide the correct voltage to prevent damage to connected components or malfunctions.
