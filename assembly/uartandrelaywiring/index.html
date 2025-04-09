@@ -172,12 +172,16 @@
 <h1 id="uart_and_relay_wiring">UART and Relay Wiring<a class="headerlink" href="#uart_and_relay_wiring" title="Permanent link">&para;</a></h1>
 <p>UART (Universal Asynchronous Receiver-Transmitter) facilitates communication between the controller and the digit PCBs. The controller acts as the central hub, transmitting commands and receiving status updates from the digits.</p>
 <ol>
-<li><strong>Controller (Transmitter and Receiver)</strong>:</li>
+<li><strong>Controller (Transmitter and Receiver)</strong>:<ul>
 <li>The controller's UART <code>Tx</code> (transmit) pin sends data to the digits, such as display commands and brightness levels.</li>
 <li>The controller's UART <code>Rx</code> (receive) pin listens for acknowledgment or status updates from the digits.</li>
-<li><strong>Digits (Receivers and Transmitters)</strong>:</li>
+</ul>
+</li>
+<li><strong>Digits (Receivers and Transmitters)</strong>:<ul>
 <li>Each digit PCB's UART <code>Rx</code> pin receives commands from the controller.</li>
 <li>The digit PCBs' UART <code>Tx</code> pins send status updates or responses back to the controller.</li>
+</ul>
+</li>
 </ol>
 <p>This bidirectional communication ensures synchronized operation of the display, enabling the controller to manage all digits effectively.</p>
 <h2 id="uart_wiring">UART Wiring<a class="headerlink" href="#uart_wiring" title="Permanent link">&para;</a></h2>
