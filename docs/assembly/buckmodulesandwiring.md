@@ -4,6 +4,25 @@
 
 - 3D print the Digit and controller TPU gaskets
 
+***Table of components***
+
+| Quantity | Component | Image |
+| :--: | :------| :-----: |
+| 5 | DC to DC variable buck converter module | ![component-31](../img/component/component-31.webp)|
+| 10M | White 28 AWG Gauge Flexible Silicone Rubber Electric Wire | ![component-28](../img/component/component-28.webp)  |
+| 10M | Black 28 AWG Gauge Flexible Silicone Rubber Electric Wire | ![component-29](../img/component/component-29.webp)  |
+| 50cm | (optional) 28 AWG Gauge heat shrink | ![component-30](../img/component/component-30.webp)  |
+
+***Table of tools***
+
+| Required | Tool | Image |
+| :---: | :------- | :---: |
+| Yes | Multimeter    | ![tool-4](../img/tools/tool-16.webp)|
+| Yes | Soldering station    | ![tool-4](../img/tools/tool-4.webp)|
+| Yes | 0.8mm 1.76oz RoHS flux core solder | ![tool-1](../img/tools/tool-1.webp)|
+| Yes | Mini flush cutters   | ![tool-6](../img/tools/tool-6.webp)|
+| No  | Label maker | ![tool-5s](../img/tools/tool-5.webp) |
+
 ## PCB and Stand Layout
 
 This section ensures wiring for the PCBs are oriented for the mounting of the buck modules and wiring.
@@ -29,7 +48,7 @@ The picture below is the completed wiring of the buck converter modules. The ord
 !!! warning
     Use anti static mats and ESD wristband and grounding wire for the remainder of the Kinetic Display electronics assembly.
 
-### Digits 0-1, and Controller
+### Digits and Controller
 
 1. Following the picture below, place a buck converter module for Digit 0 on the rightmost support on the display stand. Strip 3mm of insulation from the black and white 28 AWG wire while on the roll starting then tin the stripped end with solder. **(A)** Route the two wires from the 5v terminal block connector on the Digit 0 PCB. **(B)** Slide two 3cm sections of heat shrink on the two wires but DO NOT APPLY HEAT, then **(C)** continue routing the wire around the relay, under the power management PCB and through the port on the PCB stand. **(D)** Finish unwinding the wire when you reach the end of buck module as shown in the picture. Now that the length of wire is known from its route, snip off the wires next to the terminal block connector. **(A)** Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the `5v` terminal block connector and the black wire onto the `-`.
 ![buckmodulesandwiring-3](../img/buckmoduleassembly/buckmoduleassembly-3.webp)
@@ -68,10 +87,10 @@ Repeat the steps above to calibrate Digit 1 and the Conductor buck modules to 5v
 ![buckmodulesandwiring-15](../img/buckmoduleassembly/buckmoduleassembly-15.webp)
 1. Following the picture below, place a buck converter module for Digit 2 to the right of Digit 3. Strip 3mm of insulation from the black and white 28 AWG wire while on the roll starting then tin the stripped end with solder. Starting with the Digit 2 PCB, **(A)** unroll the two wires starting at the 5v terminal block connector. **(B)** route the wire around the relay, under the power management PCB, and through the port on the PCB stand. **(C)** Finish unwinding the wire when you reach the end of the buck module as shown in the picture. Strip 3mm of insulation then solder the white wire to the buck module `Out +` pad and the black wire to the `Out -` pad. Now that the length of wire is known from its route, snip off the wires next to the terminal block connector **(A)**. Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the `5v` terminal block connector and the black wire onto the `-`.
 ![buckmodulesandwiring-16](../img/buckmoduleassembly/buckmoduleassembly-16.webp)
-Following the diagram below, **(A)** solder the white wire onto the buck module's `In +` pad and the black wire onto the `In -` pad. Secure the module with two M1.7x6mm self tapping screws. **(B)** Route the Digit 0 white and black wire to the power management PCB `C-12v-1` terminal block connector, provide about 10mm extra length in the wire before cutting them. Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the `C-12v-1` and the black wire onto the `-`.
+1. Following the diagram below, **(A)** solder the white wire onto the buck module's `In +` pad and the black wire onto the `In -` pad. Secure the module with two M1.7x6mm self tapping screws. **(B)** Route the Digit 0 white and black wire to the power management PCB `C-12v-1` terminal block connector, provide about 10mm extra length in the wire before cutting them. Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the `C-12v-1` and the black wire onto the `-`.
 ![buckmodulesandwiring-17](../img/buckmoduleassembly/buckmoduleassembly-17.webp)
 1. Position the heat shrink as per the picture of the completed wiring of the buck converter modules at the beginning of this document. Apply heat from your heat gun to complete the assembly of all the heat shrink.
-2. Following the picture below with the Digit 3 buck module, **(A)** disconnect the black and white wire from the 5v terminal block, and connect the probes from the multimeter set to measure DC voltage. **(B)** Plug the 12v power supply into the power management PCB barrel jack. **(C)** Turn the screw on the top of the potentiometer on the Digit 3 buck module counterclockwise until **(D)** the voltage measures between 5.0 and 5.1 volts. Note you'll have to turn the screw on the top of the potentiometer several times counterclockwise before the voltage begins to drop.
+1. Following the picture below with the Digit 3 buck module, **(A)** disconnect the black and white wire from the 5v terminal block, and connect the probes from the multimeter set to measure DC voltage. **(B)** Plug the 12v power supply into the power management PCB barrel jack. **(C)** Turn the screw on the top of the potentiometer on the Digit 3 buck module counterclockwise until **(D)** the voltage measures between 5.0 and 5.1 volts. Note you'll have to turn the screw on the top of the potentiometer several times counterclockwise before the voltage begins to drop.
 
-Repeat the steps above to calibrate Digit 1 and the Conductor buck modules to 5v.
+Repeat the steps above to calibrate Digit 2 buck module to 5v.
 ![buckmodulesandwiring-18](../img/buckmoduleassembly/buckmoduleassembly-18.webp)
