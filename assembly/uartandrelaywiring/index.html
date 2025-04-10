@@ -185,6 +185,22 @@
 </ol>
 <p>This bidirectional communication ensures synchronized operation of the display, enabling the controller to manage all digits effectively.</p>
 <h2 id="uart_wiring">UART Wiring<a class="headerlink" href="#uart_wiring" title="Permanent link">&para;</a></h2>
+<p>The UART wiring diagram illustrates the communication connections between the controller and the digit PCBs. It shows how the UART <code>Tx</code> (transmit) and <code>Rx</code> (receive) pins are connected using the two UART channels 0 and 1:</p>
+<ol>
+<li>
+<p><strong>Controller to Digit PCBs</strong>:</p>
+<ul>
+<li>The controller's channel 1 <code>Tx</code> pin is connected to the channel 1 <code>Rx</code> pin on the digit 2 PCB. The controller PCB has tracing that connects the channel 0 <code>Tx</code> pin to channel 0 <code>Rx</code> pin on digit 1.</li>
+<li>The controller's channel 1 <code>Rx</code> pin is connected to the channel 1 <code>Tx</code> pin of the digit 2 PCB. The controller PCB has tracing that connects the channel 0 <code>Rx</code> pin to channel 0 <code>Tx</code> pin on digit 1.</li>
+</ul>
+</li>
+<li>
+<p><strong>Daisy-Chained Digits</strong>:</p>
+<ul>
+<li>Each digit PCB's <code>Tx</code> pin is connected to the <code>Tx</code> pin of the next digit PCB in sequence. Each digit PCB's <code>Rx</code> pin is connected to the <code>Rx</code> pin of the next digit PCB in sequence.</li>
+</ul>
+</li>
+</ol>
 <p><img alt="uartwiring" src="../../img/uartwiring/uartwiring.webp" /></p>
 <ol>
 <li>Digit 0 and 1 UART wiring.
@@ -195,9 +211,14 @@
 <img alt="uartwiring-3" src="../../img/uartwiring/uartwiring-3.webp" /></li>
 </ol>
 <h2 id="relay_wiring">Relay Wiring<a class="headerlink" href="#relay_wiring" title="Permanent link">&para;</a></h2>
-<p><img alt="relaywiring-1" src="../../img/uartwiring/relaywiring-1.webp" /></p>
-<p><img alt="relaywiring-2" src="../../img/uartwiring/relaywiring-2.webp" /></p>
-<p><img alt="relaywiring-3" src="../../img/uartwiring/relaywiring-3.webp" /></p></div>
+<ol>
+<li>Follow the picture below starting from the back side of the controller PCB. Using any color 28 AWG wire, connect the <strong>(A)</strong> terminal block connector pin <code>GPIO19</code> from the controller PCB to the <strong>(B)</strong> terminal block connector pin <code>GPIO19</code> on the power management PCB.
+<img alt="relaywiring-1" src="../../img/uartwiring/relaywiring-1.webp" /></li>
+<li>Following the picture below, turn the controller PCB over so the front face is up. <strong>(A)</strong> Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the <code>+</code> on the <code>5v-OUT</code> terminal block connector and the black wire onto the <code>-</code>. <strong>(B)</strong> Route the white wire to the <code>5v +</code> and the black wire to the <code>5v -</code> on the power management PCB, then cut the wires with at least 2cm of slack. Strip 3mm of insulation, tin the stripped end with solder, then connect each wire to the appropriate terminal block connector.
+<img alt="relaywiring-2" src="../../img/uartwiring/relaywiring-2.webp" /></li>
+<li>Following the picture below, position the heat shrink and apply heat with a heat gun. Add the two remaining M1.7x6mm self tapping screws to the power management PCB. Ensure all 4 screws securing the power management PCB are snug, but do not over tighten.
+<img alt="relaywiring-3" src="../../img/uartwiring/relaywiring-3.webp" /></li>
+</ol></div>
             </div>
         </div>
 
