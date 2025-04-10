@@ -37,5 +37,5 @@ The UART wiring diagram illustrates the communication connections between the co
 ![relaywiring-1](../img/uartwiring/relaywiring-1.webp)
 1. Following the picture below, turn the controller PCB over so the front face is up. **(A)** Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the `5v-OUT` terminal block connector and the black wire onto the `-`. **(B)** Route the white wire to the `5v +` and the black wire to the `5v -` on the power management PCB, then cut the wires with at least 2cm of slack. Strip 3mm of insulation, tin the stripped end with solder, then connect each wire to the appropriate terminal block connector.
 ![relaywiring-2](../img/uartwiring/relaywiring-2.webp)
-1. Add the two remaining M1.7x6mm self tapping screws to the power management PCB. Ensure all 4 screws securing the power management PCB are snug, but do not over tighten.
+1. Following the picture below, position the heat shrink and apply heat with a heat gun. Add the two remaining M1.7x6mm self tapping screws to the power management PCB. Ensure all 4 screws securing the power management PCB are snug, but do not over tighten.
 ![relaywiring-3](../img/uartwiring/relaywiring-3.webp)
