@@ -21,11 +21,13 @@ The UART wiring diagram illustrates the communication connections between the co
 
 ![uartwiring](../img/uartwiring/uartwiring.webp)
 
-1. Digit 0 and 1 UART wiring.
+Note the wire color references in the section below are in yellow and blue which can be substituted by white and black.
+
+1. Follow the picture below for Digit 0 and 1 UART wiring. On Digit 0 PCB, **(A)** connect the yellow (white) wire to the `Rx-0` and the blue (black) wire to the `Tx-0` terminal block connector. Route the wires to the Digit 1 `Rx-0` and `Tx-0` terminal block connectors and give the wires about 10mm of extra length, then cut. **(B)** slide the heat shrink over the wires and position them according to the picture. On Digit 1 PCB, **(C)** connect the yellow (white) wire to the `Rx-0` and the blue (black) wire to the `Tx-0` terminal block connector.
 ![uartwiring-1](../img/uartwiring/uartwiring-1.webp)
-1. Digit 2 and 3 UART wiring.
+1. Follow the picture below for Digit 2 and 3 UART wiring. On Digit 2 PCB, **(A)** connect the yellow (white) wire to the `Rx-1` and the blue (black) wire to the `Tx-1` terminal block connector. Route the wires to the Digit 3 `Rx-1` and `Tx-1` terminal block connectors and give the wires about 10mm of extra length, then cut. **(B)** slide the heat shrink over the wires and position them according to the picture. On Digit 3 PCB, **(C)** connect the yellow (white) wire to the `Rx-1` and the blue (black) wire to the `Tx-1` terminal block connector.
 ![uartwiring-2](../img/uartwiring/uartwiring-2.webp)
-1. Controller to Digit 2 UART wiring.
+1. Follow the picture below for the controller to Digit 2 UART wiring. On the controller PCB, **(A)** connect the yellow (white) wire to the `Rx-1` and the blue (black) wire to the `Tx-1` terminal block connector. Route the wires to the Digit 2 `Rx-1` and `Tx-1` terminal block connectors and give the wires about 10mm of extra length, then cut. On Digit 3 PCB, **(C)** connect the yellow (white) wire to the `Tx-1` and the blue (black) wire to the `Rx-1` terminal block connector.
 ![uartwiring-3](../img/uartwiring/uartwiring-3.webp)
 
 ## Relay Wiring
