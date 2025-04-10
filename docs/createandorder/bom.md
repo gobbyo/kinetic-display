@@ -25,7 +25,7 @@
 | 2.54mm 0.1" Pitch PCB Mount Screw Terminal Block Connector, 2P 3P 4P Terminals 150V 6A for 26-18AWG Cable | 1 |
 | LM2596 DC-DC Step Down Variable Volt Regulator Input 3.2V-40V Output 1.25V-35V Adjustable Buck Converter Electronic Voltage Stabilizer Power Supply Module | 5 |
 | 2.1mm Barrel Jack 5.5x2.1mm Female DC Power Jack 2.1 X 5.5mm DC Jack Connector 6V 9V 12V DC Jack Panel Mount | 1 |
-| 12V 5A Power Supply, Waysse Power Supply Adapter, AC DC Converter 100-220V to 12 Volt 5 Amp Transformer 5.5x2.1mm Plug | 1 |
+| 12V 5A Power Supply, AC DC Converter 100-220V to 12 Volt 5 Amp Transformer 5.5x2.1mm Plug | 1 |
 | S8050D S8050 NPN Transistor TO-92 20V 700MA 1W | 1 |
 | 1N4001 Diode, standard, 1A, 50V, DO-41 | 1 |
 | (optional) 20pin x 10pcs Female Headers Pins Straight Single Row Gold Plated Pitch 2.54mm 0.1 inch for PCB Connector Machine Breadboard Electronic Circuit Board | 10 |

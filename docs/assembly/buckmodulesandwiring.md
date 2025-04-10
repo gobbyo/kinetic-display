@@ -20,7 +20,7 @@ This guide is essential for ensuring the reliability and safety of the Kinetic D
 | Quantity | Component | Image |
 | :--: | :------| :-----: |
 | 5 | DC to DC variable buck converter module | ![component-31](../img/component/component-31.webp)|
-| 1 | 3A 12v power supply | ![component-31](../img/component/component-33.webp)|
+| 1 | 12V 5A Power Supply, AC DC Converter 100-220V to 12 Volt 5 Amp Transformer 5.5x2.1mm Plug | ![component-31](../img/component/component-33.webp)|
 | 10M | White 28 AWG Gauge Flexible Silicone Rubber Electric Wire | ![component-28](../img/component/component-28.webp)  |
 | 10M | Black 28 AWG Gauge Flexible Silicone Rubber Electric Wire | ![component-29](../img/component/component-29.webp)  |
 | 50cm | (optional) 28 AWG Gauge heat shrink | ![component-30](../img/component/component-30.webp)  |
