@@ -13,6 +13,15 @@ This bidirectional communication ensures synchronized operation of the display, 
 
 ## UART Wiring
 
+The UART wiring diagram illustrates the communication connections between the controller and the digit PCBs. It shows how the UART `Tx` (transmit) and `Rx` (receive) pins are connected using the two UART channels 0 and 1:
+
+1. **Controller to Digit PCBs**:
+      - The controller's channel 1 `Tx` pin is connected to the channel 1 `Rx` pin on the digit 2 PCB. The controller PCB has tracing that connects the channel 0 `Tx` pin to channel 0 `Rx` pin on digit 1.
+      - The controller's channel 1 `Rx` pin is connected to the channel 1 `Tx` pin of the digit 2 PCB. The controller PCB has tracing that connects the channel 0 `Rx` pin to channel 0 `Tx` pin on digit 1.
+
+2. **Daisy-Chained Digits**:
+      - Each digit PCB's `Tx` pin is connected to the `Tx` pin of the next digit PCB in sequence. Each digit PCB's `Rx` pin is connected to the `Rx` pin of the next digit PCB in sequence.
+
 ![uartwiring](../img/uartwiring/uartwiring.webp)
 
 1. Digit 0 and 1 UART wiring.
@@ -24,8 +33,9 @@ This bidirectional communication ensures synchronized operation of the display, 
 
 ## Relay Wiring
 
+1. Follow the picture below starting from the back side of the controller PCB. Using any color 28 AWG wire, connect the **(A)** terminal block connector pin `GPIO19` from the controller PCB to the **(B)** terminal block connector pin `GPIO19` on the power management PCB.
 ![relaywiring-1](../img/uartwiring/relaywiring-1.webp)
-
+1. Following the picture below, turn the controller PCB over so the front face is up. **(A)** Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the `5v-OUT` terminal block connector and the black wire onto the `-`. **(B)** Route the white wire to the `5v +` and the black wire to the `5v -` on the power management PCB, then cut the wires with at least 2cm of slack. Strip 3mm of insulation, tin the stripped end with solder, then connect each wire to the appropriate terminal block connector.
 ![relaywiring-2](../img/uartwiring/relaywiring-2.webp)
-
+1. Add the two remaining M1.7x6mm self tapping screws to the power management PCB. Ensure all 4 screws securing the power management PCB are snug, but do not over tighten.
 ![relaywiring-3](../img/uartwiring/relaywiring-3.webp)

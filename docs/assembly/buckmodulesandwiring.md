@@ -20,6 +20,7 @@ This guide is essential for ensuring the reliability and safety of the Kinetic D
 | Quantity | Component | Image |
 | :--: | :------| :-----: |
 | 5 | DC to DC variable buck converter module | ![component-31](../img/component/component-31.webp)|
+| 1 | 3A 12v power supply | ![component-31](../img/component/component-33.webp)|
 | 10M | White 28 AWG Gauge Flexible Silicone Rubber Electric Wire | ![component-28](../img/component/component-28.webp)  |
 | 10M | Black 28 AWG Gauge Flexible Silicone Rubber Electric Wire | ![component-29](../img/component/component-29.webp)  |
 | 50cm | (optional) 28 AWG Gauge heat shrink | ![component-30](../img/component/component-30.webp)  |
@@ -43,7 +44,7 @@ This section ensures wiring for the PCBs are oriented for the mounting of the bu
 1. Remove the Raspberry Pi Pico and Pico W 2040 from the PCBs. We'll add these later when it is safe to do so.
 1. Lay the PCBs face up with Digit 0 on the far right and Digit 3 on the far left. Position the stand below the PCBs so the barrel jack is between the controller/Digit 1 PCB and Digit 2 PCB.
 ![buckmodulesandwiring-1](../img/buckmoduleassembly/buckmoduleassembly-1.webp)
-1. Place the TPU gaskets on the PCBs. Note the TPU gasket for Digit 2 differs slightly from Digit 0 and 3 gaskets.
+1. Place the TPU gaskets on the PCBs. Note the wiring lays over the gaskets.
 ![buckmodulesandwiring-2](../img/buckmoduleassembly/buckmoduleassembly-2.webp)
 
 ## Wiring the Buck Modules
@@ -84,7 +85,7 @@ The picture below is the completed wiring of the buck converter modules. The ord
 1. Clip the white and black wires, strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the 5v terminal block connector and the black wire onto the `-`.
 ![buckmodulesandwiring-12](../img/buckmoduleassembly/buckmoduleassembly-12.webp)
 
-## Calibrate the Buck Module Voltage
+## Calibrate the Buck Module Voltage, Part 1
 
 ![buckmodulesandwiring-13](../img/buckmoduleassembly/buckmoduleassembly-13.webp)
 
@@ -103,7 +104,10 @@ Repeat the steps above to calibrate Digit 1 and the Conductor buck modules to 5v
 1. Following the diagram below, **(A)** solder the white wire onto the buck module's `In +` pad and the black wire onto the `In -` pad. Secure the module with two M1.7x6mm self tapping screws. **(B)** Route the Digit 0 white and black wire to the power management PCB `C-12v-1` terminal block connector, provide about 10mm extra length in the wire before cutting them. Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the `C-12v-1` and the black wire onto the `-`.
 ![buckmodulesandwiring-17](../img/buckmoduleassembly/buckmoduleassembly-17.webp)
 1. Position the heat shrink as per the picture of the completed wiring of the buck converter modules at the beginning of this document. Apply heat from your heat gun to complete the assembly of all the heat shrink.
-1. Following the picture below with the Digit 3 buck module, **(A)** disconnect the black and white wire from the 5v terminal block, and connect the probes from the multimeter set to measure DC voltage. **(B)** Plug the 12v power supply into the power management PCB barrel jack. **(C)** Turn the screw on the top of the potentiometer on the Digit 3 buck module counterclockwise until **(D)** the voltage measures between 5.0 and 5.1 volts. Note you'll have to turn the screw on the top of the potentiometer several times counterclockwise before the voltage begins to drop.
+
+## Calibrate the Buck Module Voltage, Part 2
+
+Following the picture below with the Digit 3 buck module, **(A)** disconnect the black and white wire from the 5v terminal block, and connect the probes from the multimeter set to measure DC voltage. **(B)** Plug the 12v power supply into the power management PCB barrel jack. **(C)** Turn the screw on the top of the potentiometer on the Digit 3 buck module counterclockwise until **(D)** the voltage measures between 5.0 and 5.1 volts. Note you'll have to turn the screw on the top of the potentiometer several times counterclockwise before the voltage begins to drop.
 
 Repeat the steps above to calibrate Digit 2 buck module to 5v.
 ![buckmodulesandwiring-18](../img/buckmoduleassembly/buckmoduleassembly-18.webp)
