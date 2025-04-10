@@ -16,8 +16,8 @@ This bidirectional communication ensures synchronized operation of the display, 
 The UART wiring diagram illustrates the communication connections between the controller and the digit PCBs. It shows how the UART `Tx` (transmit) and `Rx` (receive) pins are connected using the two UART channels 0 and 1:
 
 1. **Controller to Digit PCBs**:
-      - The controller's channel 1 `Tx` pin is connected to the channel 1 `Rx` pin on the digit 2 PCB. The controller PCB has tracing that connects the channel 0 `Tx` pin to channel 0 `Rx` pin on digit 1.
-      - The controller's channel 1 `Rx` pin is connected to the channel 1 `Tx` pin of the digit 2 PCB. The controller PCB has tracing that connects the channel 0 `Rx` pin to channel 0 `Tx` pin on digit 1.
+      - The controller's channel 1 `Tx` pin is connected to the channel 1 `Rx` pin on the digit 2 PCB. The controller PCB has tracing that connects the controller's channel 0 `Tx` pin to channel 0 `Rx` pin on digit 1.
+      - The controller's channel 1 `Rx` pin is connected to the channel 1 `Tx` pin of the digit 2 PCB. The controller PCB has tracing that connects the controller's channel 0 `Rx` pin to channel 0 `Tx` pin on digit 1.
 
 2. **Daisy-Chained Digits**:
       - Each digit PCB's `Tx` pin is connected to the `Tx` pin of the next digit PCB in sequence. Each digit PCB's `Rx` pin is connected to the `Rx` pin of the next digit PCB in sequence.
