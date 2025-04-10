@@ -15,4 +15,17 @@ This bidirectional communication ensures synchronized operation of the display, 
 
 ![uartwiring](../img/uartwiring/uartwiring.webp)
 
+1. Digit 0 and 1 UART wiring.
+![uartwiring-1](../img/uartwiring/uartwiring-1.webp)
+1. Digit 2 and 3 UART wiring.
+![uartwiring-2](../img/uartwiring/uartwiring-2.webp)
+1. Controller to Digit 2 UART wiring.
+![uartwiring-3](../img/uartwiring/uartwiring-3.webp)
+
 ## Relay Wiring
+
+![relaywiring-1](../img/uartwiring/relaywiring-1.webp)
+
+![relaywiring-2](../img/uartwiring/relaywiring-2.webp)
+
+![relaywiring-3](../img/uartwiring/relaywiring-3.webp)
