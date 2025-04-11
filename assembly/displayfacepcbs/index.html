@@ -218,13 +218,29 @@
 <ol>
 <li>Connect the two 3d printed sides of the display face with the front facing down onto your workbench. The cove on the backside of the display face should be on the top, furthest from you. See the picture in the next step with the controller PCB tilted upward to unveil the position of the cove.</li>
 <li>Position the stand and PCBs atop of the display face as shown in the picture below. The wiring should fit in the cove and the gaskets of the PCBs flush against the display face without any wires protruding out.
-<img alt="displayfacepcb-1.mk" src="../../img/displayfacepcbs/displayfacepcbs-1.webp" /></li>
+<img alt="displayfacepcb-1" src="../../img/displayfacepcbs/displayfacepcbs-1.webp" /></li>
 <li>Using a small philips head screwdriver, secure the PCBs with M1.7x6mm self tapping screws in the locations as highlighted below.
-<img alt="displayfacepcb-2.mk" src="../../img/displayfacepcbs/displayfacepcbs-2.webp" /></li>
+<img alt="displayfacepcb-2" src="../../img/displayfacepcbs/displayfacepcbs-2.webp" /></li>
 <li>Following the picture below, <strong>(A)</strong> connect the DHT22 sensor to the controller PCB, <strong>(B)</strong> plug in the 12v power supply into the power management PCB's barrel jack. Note the DHT22 sensor connection is temporary and will be perminantly installed later.
-<img alt="displayfacepcb-3.mk" src="../../img/displayfacepcbs/displayfacepcbs-3.webp" /></li>
+<img alt="displayfacepcb-3" src="../../img/displayfacepcbs/displayfacepcbs-3.webp" /></li>
 </ol>
-<h2 id="integration_test">Integration Test<a class="headerlink" href="#integration_test" title="Permanent link">&para;</a></h2></div>
+<h2 id="integration_test">Integration Test<a class="headerlink" href="#integration_test" title="Permanent link">&para;</a></h2>
+<ol>
+<li>From Visual Studio Code on your computer, <strong>(A)</strong> click the <code>_main.py</code> file in the explorer pane, then <strong>(B)</strong> run the program. Make sure you have a connection via your computer's USB cable to the controller PCB Raspberry Pi Pico W 2040.
+<img alt="displayfacepcbtest-1" src="../../img/displayfacepcbs/displayfacepcbtest-1.webp" /></li>
+<li>From Visual Studio Code on your computer, type the <code>(a)ll digits test</code> in the command terminal to check the UART connections across the digits. See the video below to verify the segments animate from digit 3 to digit 0.
+<img alt="displayfacepcbtest-2" src="../../img/displayfacepcbs/displayfacepcbtest-2.webp" />
+<img alt="alldigitstest" src="../../img/displayfacepcbs/alldigitstest.webp" />
+1.
+<img alt="displayfacepcbtest-3" src="../../img/displayfacepcbs/displayfacepcbtest-3.webp" />
+<img alt="relaytest" src="../../img/displayfacepcbs/relaytest.webp" />
+1.
+<img alt="displayfacepcbtest-4" src="../../img/displayfacepcbs/displayfacepcbtest-4.webp" />
+<img alt="temperaturetest" src="../../img/displayfacepcbs/temperaturetest.webp" />
+1.
+<img alt="displayfacepcbtest-5" src="../../img/displayfacepcbs/displayfacepcbtest-5.webp" />
+<img alt="humidtest" src="../../img/displayfacepcbs/humidtest.webp" /></li>
+</ol></div>
             </div>
         </div>
 
