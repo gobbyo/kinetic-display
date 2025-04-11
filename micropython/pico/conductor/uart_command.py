@@ -520,18 +520,19 @@ def loop():
 ##############################
 
 def instructions():
-    actions = ['a','c','d','e','h','l','s','t','w']
+    actions = ['a','c','d','e','h','l','r','s','t','w']
 
     while True:
         print("Enter a command:")
         print("\t(a)ll digits test")
         print("\t(c)ycle through all digits on both UART channels")
         print("\t(d)igit(0-3)number(0-15)")
-        print("\t(l)uminosity(0-100)%")
-        print("\t(t)emp(0=C,1=F)")
         print("\t(h)umidity")
-        print("\t(w)ait(15-30 milliseconds) of segment movement")
+        print("\t(l)uminosity(0-100)%")
+        print("\t(r)elay (0=off,1=on)")
         print("\t(s)peed(10-100)% of segment movement")
+        print("\t(t)emp(0=C,1=F)")
+        print("\t(w)ait(15-30 milliseconds) of segment movement")
         print("\t(e)xit")
         cmd = input("command: ")
         validaction = False
@@ -597,6 +598,13 @@ def manual():
         elif a == 'w':
             controller.setWaitTime(int(v))
             print(f"Set segment movement wait time to {v} milliseconds")
+        elif a == 'r':
+            if v == '1': #this seems backwards but the relay is off it is switched on
+                controller.powerRelay.off()
+                print(f"Power relay off")
+            else:
+                controller.powerRelay.on()
+                print(f"Power relay on")
         elif a == 's':
             controller.setMotorSpeed(int(v))
             print(f"Set segment movement speed to {v}%")
