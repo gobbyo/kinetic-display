@@ -28,6 +28,7 @@ There are several choices of power supplies available in the market. Why not sim
 | 10M | White 28 AWG Gauge Flexible Silicone Rubber Electric Wire | ![component-28](../img/component/component-28.webp)  |
 | 10M | Black 28 AWG Gauge Flexible Silicone Rubber Electric Wire | ![component-29](../img/component/component-29.webp)  |
 | 50cm | (optional) 28 AWG Gauge heat shrink | ![component-30](../img/component/component-30.webp)  |
+| 4 | M1.7x6mm Cross Round Head with Washer Self Tapping Screw 304 Stainless Steel Screws | ![component-32](../img/component/component-32.webp) |
 
 ***Table of tools***
 
