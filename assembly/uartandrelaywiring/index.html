@@ -114,6 +114,10 @@
 <li>
     <a href="./" class="dropdown-item active" aria-current="page">UART and Relay Wiring</a>
 </li>
+                                    
+<li>
+    <a href="../displayfacepcbs/" class="dropdown-item">Display Face and PCBs Assembly with Integration Testing</a>
+</li>
                                 </ul>
                             </li>
                         </ul>
@@ -130,7 +134,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../displayfacepcbs/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -185,16 +189,16 @@
 </ol>
 <p>This bidirectional communication ensures synchronized operation of the display, enabling the controller to manage all digits effectively.</p>
 <h2 id="uart_wiring">UART Wiring<a class="headerlink" href="#uart_wiring" title="Permanent link">&para;</a></h2>
-<p>The UART wiring diagram illustrates the communication connections between the controller and the digit PCBs. It shows how the UART <code>Tx</code> (transmit) and <code>Rx</code> (receive) pins are connected using the two UART channels 0 and 1:</p>
-<pre class="codehilite"><code>- The controller's channel 1 `Tx` pin is connected to the channel 1 `Rx` pin on the digit 2 PCB. The controller PCB has tracing that connects the controller's channel 0 `Tx` pin to channel 0 `Rx` pin on digit 1.
-- The controller's channel 1 `Rx` pin is connected to the channel 1 `Tx` pin of the digit 2 PCB. The controller PCB has tracing that connects the controller's channel 0 `Rx` pin to channel 0 `Tx` pin on digit 1.
-- Digit 2 and 3 PCB's `Tx` pins are connected and Digit 0 PCB and Digit 1 on the controller PCB's `Tx` pin are connected. The same is true for the `Rx` pins for Digits 0-3.
-</code></pre>
-
+<p>The UART wiring diagram illustrates the communication connections between the controller and the digit PCBs. It shows how the UART <code>Tx</code> (transmit) and <code>Rx</code> (receive) pins are connected using the two UART channels 0 and 1.</p>
+<ul>
+<li>The controller's channel 1 <code>Tx</code> pin is connected to the channel 1 <code>Rx</code> pin on the digit 2 PCB. The controller PCB has tracing that connects the controller's channel 0 <code>Tx</code> pin to channel 0 <code>Rx</code> pin on digit 1.</li>
+<li>The controller's channel 1 <code>Rx</code> pin is connected to the channel 1 <code>Tx</code> pin of the digit 2 PCB. The controller PCB has tracing that connects the controller's channel 0 <code>Rx</code> pin to channel 0 <code>Tx</code> pin on digit 1.</li>
+<li>Digit 2 and 3 PCB's <code>Tx</code> pins are connected and Digit 0 PCB and Digit 1 on the controller PCB's <code>Tx</code> pin are connected. The same is true for the <code>Rx</code> pins for Digits 0-3.</li>
+</ul>
 <p><img alt="uartwiring" src="../../img/uartwiring/uartwiring.webp" /></p>
 <p>Note the wire color references in the section below are in yellow and blue which can be substituted by white and black.</p>
 <ol>
-<li>Follow the picture below for Digit 0 and 1 UART wiring. On Digit 0 PCB, <strong>(A)</strong> connect the yellow (white) wire to the <code>Rx-0</code> and the blue (black) wire to the <code>Tx-0</code> terminal block connector. Route the wires to the Digit 1 <code>Rx-0</code> and <code>Tx-0</code> terminal block connectors and give the wires about 10mm of extra length, then cut. <strong>(B)</strong> slide the heat shrink over the wires and position them according to the picture. On Digit 1 PCB, <strong>(C)</strong> connect the yellow (white) wire to the <code>Rx-0</code> and the blue (black) wire to the <code>Tx-0</code> terminal block connector.
+<li>Follow the picture below for Digit 0 and 1 UART wiring. On Digit 0 PCB, <strong>(A)</strong> connect the yellow (white) wire to the <code>Rx-0</code> and the blue (black) wire to the <code>Tx-0</code> terminal block connector. Route the wires to the Digit 1 <code>Rx-0</code> and <code>Tx-0</code> terminal block connectors and give the wires about 10mm of extra length, then cut. <strong>(B)</strong> Slide the heat shrink over the wires and position them according to the picture. On Digit 1 PCB, <strong>(C)</strong> connect the yellow (white) wire to the <code>Rx-0</code> and the blue (black) wire to the <code>Tx-0</code> terminal block connector.
 <img alt="uartwiring-1" src="../../img/uartwiring/uartwiring-1.webp" /></li>
 <li>Follow the picture below for Digit 2 and 3 UART wiring. On Digit 2 PCB, <strong>(A)</strong> connect the yellow (white) wire to the <code>Rx-1</code> and the blue (black) wire to the <code>Tx-1</code> terminal block connector. Route the wires to the Digit 3 <code>Rx-1</code> and <code>Tx-1</code> terminal block connectors and give the wires about 10mm of extra length, then cut. <strong>(B)</strong> slide the heat shrink over the wires and position them according to the picture. On Digit 3 PCB, <strong>(C)</strong> connect the yellow (white) wire to the <code>Rx-1</code> and the blue (black) wire to the <code>Tx-1</code> terminal block connector.
 <img alt="uartwiring-2" src="../../img/uartwiring/uartwiring-2.webp" /></li>
