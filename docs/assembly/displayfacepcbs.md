@@ -42,7 +42,8 @@ This guide details assembling the PCBs onto the display face, and includes integ
 1. From the command terminal pane, use the `(l)uninosity` command while shielding the LDR with your hand (or tuning off the light in your room). You won't see any command output, only a change in the brightness of the display. Should the LED colons be brighter or dimmer than the digit LEDs, then be sure to change the `LEDbrightnessFactor` setting found in the `digit_colons.py` file. Presently the LED colons are set to about 1/3rd the power as the digit LEDs. Should you change the controller's `LEDbrightnessFactor`, then be sure to upload the changes to the controller's Raspberry Pi Pico W 2040.
 ![displayfacepcbtest-5](../img/displayfacepcbs/displayfacepcbtest-5.webp)
 ![brightnesstest](../img/displayfacepcbs/brightnesstest.webp)
-1. **Rename `_main.py` to `main.py`**. Then upload the project to the controller's Raspberry Pi Pico W 2040.
+1. From your Visual Studio Code file explorer pane, open the `secrets.py` file and change the usr and pwd to your network SSID and password so the Kinetic Display can connect to your local wifi network. This is an optional step as you will be able to change this at a later date.
+1. At the bottom of the `_main.py` file, comment out the `manual()` call and uncomment the `loop()` call. **Rename `_main.py` to `main.py`** and comment out the `manual()` call and uncomment the `loop()` call. Then upload the project to the controller's Raspberry Pi Pico W 2040.
 
 !!! warning
     Forgetting to upload the renamed `main.py` file to the controller's Raspberry Pi Pico W 2040 will cause the Kinetic Display to be unresponsive.
