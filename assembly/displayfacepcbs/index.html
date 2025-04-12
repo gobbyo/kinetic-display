@@ -230,17 +230,22 @@
 <img alt="displayfacepcbtest-1" src="../../img/displayfacepcbs/displayfacepcbtest-1.webp" /></li>
 <li>From Visual Studio Code on your computer, type the <code>(a)ll digits test</code> in the command terminal to check the UART connections across the digits. See the video below to verify the segments animate from digit 3 to digit 0.
 <img alt="displayfacepcbtest-2" src="../../img/displayfacepcbs/displayfacepcbtest-2.webp" />
-<img alt="alldigitstest" src="../../img/displayfacepcbs/alldigitstest.webp" />
-1.
+<img alt="alldigitstest" src="../../img/displayfacepcbs/alldigitstest.webp" /></li>
+<li>From the command terminal pane, use the <code>(r)elay (0=off,1=on)</code> command by typing <code>r0</code> (off) then <code>r1</code> (on) to check the relay functionality. See the video below with the LEDs on the buck converters turning on and off.
 <img alt="displayfacepcbtest-3" src="../../img/displayfacepcbs/displayfacepcbtest-3.webp" />
-<img alt="relaytest" src="../../img/displayfacepcbs/relaytest.webp" />
-1.
+<img alt="relaytest" src="../../img/displayfacepcbs/relaytest.webp" /></li>
+<li>From the command terminal pane, use the <code>(t)emp(0=C,1=F)</code> command by typing <code>t0</code> or <code>t1</code> to display the temperature (respectively) in celius or fehrenheit. You'll need to tip the display up on one side to view the front of the display as shown in the video below.
 <img alt="displayfacepcbtest-4" src="../../img/displayfacepcbs/displayfacepcbtest-4.webp" />
-<img alt="temperaturetest" src="../../img/displayfacepcbs/temperaturetest.webp" />
-1.
+<img alt="temperaturetest" src="../../img/displayfacepcbs/temperaturetest.webp" /></li>
+<li>From the command terminal pane, use the <code>(l)uninosity</code> command while shielding the LDR with your hand (or tuning off the light in your room). You won't see any command output, only a change in the brightness of the display. Should the LED colons be brighter or dimmer than the digit LEDs, then be sure to change the <code>LEDbrightnessFactor</code> setting found in the <code>digit_colons.py</code> file. Presently the LED colons are set to about 1/3rd the power as the digit LEDs. Should you change the controller's <code>LEDbrightnessFactor</code>, then be sure to upload the changes to the controller's Raspberry Pi Pico W 2040.
 <img alt="displayfacepcbtest-5" src="../../img/displayfacepcbs/displayfacepcbtest-5.webp" />
-<img alt="humidtest" src="../../img/displayfacepcbs/humidtest.webp" /></li>
-</ol></div>
+<img alt="brightnesstest" src="../../img/displayfacepcbs/brightnesstest.webp" /></li>
+<li><strong>Rename <code>_main.py</code> to <code>main.py</code></strong>. Then upload the project to the controller's Raspberry Pi Pico W 2040.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Forgetting to upload the renamed <code>main.py</code> file to the controller's Raspberry Pi Pico W 2040 will cause the Kinetic Display to be unresponsive.</p>
+</div></div>
             </div>
         </div>
 
