@@ -33,12 +33,16 @@ This guide details assembling the PCBs onto the display face, and includes integ
 1. From Visual Studio Code on your computer, type the `(a)ll digits test` in the command terminal to check the UART connections across the digits. See the video below to verify the segments animate from digit 3 to digit 0.
 ![displayfacepcbtest-2](../img/displayfacepcbs/displayfacepcbtest-2.webp)
 ![alldigitstest](../img/displayfacepcbs/alldigitstest.webp)
-1.
+1. From the command terminal pane, use the `(r)elay (0=off,1=on)` command by typing `r0` (off) then `r1` (on) to check the relay functionality. See the video below with the LEDs on the buck converters turning on and off.
 ![displayfacepcbtest-3](../img/displayfacepcbs/displayfacepcbtest-3.webp)
 ![relaytest](../img/displayfacepcbs/relaytest.webp)
-1.
+1. From the command terminal pane, use the `(t)emp(0=C,1=F)` command by typing `t0` or `t1` to display the temperature (respectively) in celius or fehrenheit. You'll need to tip the display up on one side to view the front of the display as shown in the video below.
 ![displayfacepcbtest-4](../img/displayfacepcbs/displayfacepcbtest-4.webp)
 ![temperaturetest](../img/displayfacepcbs/temperaturetest.webp)
-1.
+1. From the command terminal pane, use the `(l)uninosity` command while shielding the LDR with your hand (or tuning off the light in your room). You won't see any command output, only a change in the brightness of the display. Should the LED colons be brighter or dimmer than the digit LEDs, then be sure to change the `LEDbrightnessFactor` setting found in the `digit_colons.py` file. Presently the LED colons are set to about 1/3rd the power as the digit LEDs. Should you change the controller's `LEDbrightnessFactor`, then be sure to upload the changes to the controller's Raspberry Pi Pico W 2040.
 ![displayfacepcbtest-5](../img/displayfacepcbs/displayfacepcbtest-5.webp)
-![humidtest](../img/displayfacepcbs/humidtest.webp)
+![brightnesstest](../img/displayfacepcbs/brightnesstest.webp)
+1. **Rename `_main.py` to `main.py`**. Then upload the project to the controller's Raspberry Pi Pico W 2040.
+
+!!! warning
+    Forgetting to upload the renamed `main.py` file to the controller's Raspberry Pi Pico W 2040 will cause the Kinetic Display to be unresponsive.

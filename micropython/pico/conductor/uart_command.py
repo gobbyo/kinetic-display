@@ -528,7 +528,7 @@ def instructions():
         print("\t(c)ycle through all digits on both UART channels")
         print("\t(d)igit(0-3)number(0-15)")
         print("\t(h)umidity")
-        print("\t(l)uminosity(0-100)%")
+        print("\t(l)uminosity")
         print("\t(r)elay (0=off,1=on)")
         print("\t(s)peed(10-100)% of segment movement")
         print("\t(t)emp(0=C,1=F)")
