@@ -46,7 +46,7 @@ This guide details assembling the PCBs onto the display face, and includes integ
 ![displayfacepcbtest-5](../img/displayfacepcbs/displayfacepcbtest-5.webp)
 ![brightnesstest](../img/displayfacepcbs/brightnesstest.webp)
 1. From your Visual Studio Code file explorer pane, open the `secrets.py` file and change the usr and pwd to your network SSID and password so the Kinetic Display can connect to your local wifi network. This is an optional step as you will be able to change this at a later date.
-1. At the bottom of the `_main.py` file, comment out the `manual()` call and uncomment the `loop()` call. **Rename `_main.py` to `main.py`** and comment out the `manual()` call and uncomment the `loop()` call. Then upload the project to the controller's Raspberry Pi Pico W 2040.
+1. At the bottom of the `_main.py` file, comment out the `manual()` call and uncomment the `loop()` call. **Rename `_main.py` to `main.py`**. Then upload the project to the controller's Raspberry Pi Pico W 2040.
 
 !!! warning
     Forgetting to upload the renamed `main.py` file to the controller's Raspberry Pi Pico W 2040 will cause the Kinetic Display to be unresponsive.
