@@ -23,8 +23,11 @@ This guide details assembling the PCBs onto the display face, and includes integ
 ![displayfacepcb-1](../img/displayfacepcbs/displayfacepcbs-1.webp)
 1. Using a small philips head screwdriver, secure the PCBs with M1.7x6mm self tapping screws in the locations as highlighted below.
 ![displayfacepcb-2](../img/displayfacepcbs/displayfacepcbs-2.webp)
-1. Following the picture below, **(A)** connect the DHT22 sensor to the controller PCB, **(B)** plug in the 12v power supply into the power management PCB's barrel jack. Note the DHT22 sensor connection is temporary and will be perminantly installed later.
+1. Following the picture below, **(A)** connect the DHT22 sensor to the controller PCB, **(B)** plug in the 12v power supply into the power management PCB's barrel jack. Note the DHT22 sensor connection is temporary and will be perminantly installed later. **(C)** Connect your computer's USB cable to the controller PCB Raspberry Pi Pico W 2040
 ![displayfacepcb-3](../img/displayfacepcbs/displayfacepcbs-3.webp)
+
+!!! warning
+    ONLY connect your computer's USB cable to the conductor and controller Raspberry Pi Pico W 2040 AFTER plugging in the 12v power supply. Plugging in your computer's USB cable BEFORE your 12v power supply is plugged in will burn out the sensitive circuitry within the Pico W.
 
 ## Integration Test
 
