@@ -1,4 +1,4 @@
-# Deploy the Controller Project to the Controller PCB
+# Deploy the Conductor Project to the Controller PCB
 
 In this section you will upload code to your Raspberry Pi Pico W 2040 from your computer.
 
@@ -8,7 +8,7 @@ In this section you will upload code to your Raspberry Pi Pico W 2040 from your 
 - Created a fork of the Kinetic-Display GitHub repository, see [Software and Microcontroller Preparation](../prerequisitesoftware.md)
 - Deployed the digit and controller directories, also see [Software and Microcontroller Preparation](../prerequisitesoftware.md)
 
-## Configure and Deploy the Controller Project
+## Configure and Deploy the Conductor Project
 
 1. Connect your Computer to the controller PCB Pico W 2040 per the instructions on [Verify Micropython on your Raspberry Pi Pico](../prerequisitesoftware.md)
 1. Following the screen capture below from VS Code, select **(A)** **File->Open Folder...**, **(B)** open the **deploy/conductor** folder you deployed during step 4 in the section [Fork and Clone the Repository](../prerequisitesoftware.md), then **(C)** click the "Select Folder" button.
