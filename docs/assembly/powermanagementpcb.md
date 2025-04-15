@@ -11,7 +11,7 @@ There are several choices of power supplies available in the market. Why not sim
 ## Prerequisites
 
 - [Fabrication of the power management PCB](../createandorder/pcb.md)
-- 3D print of the Display stand
+- 3D print of the display stand and powermanagement components, `powerbank.stl`.
 
 ***Table of components***
 
