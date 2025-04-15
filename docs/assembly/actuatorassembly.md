@@ -20,6 +20,10 @@ The actuator assembly includes installing the shaft gear onto the DC brushed mot
 
 ## Prerequisites
 
+- Nylon pinion gear 30, `digit-gear30.stl`
+- Black Matte PLA shaft gear 10, `digit-gear10.stl`
+- White Matte PLA motor mount, `digit-motor-mount.stl`
+
 ***Table of components***
 
 | Quantity | Component | Image |
@@ -52,7 +56,7 @@ In this section you'll glue the shaft gear onto the shaft to avoid slippage. The
 
 ### Shaft Gear Installation Steps
 
-The tools and parts needed to install the shaft gear include: a regular tipped screwdriver, super glue, motor shaft 10-toothed gear, and DC brushed toy motor.
+The tools and parts needed to install the shaft gear include: a regular tipped screwdriver, super glue, `digit-gear10.stl`, and DC brushed toy motor.
 
 1. Add a drop of super glue to attach the shaft gear. Note the shaft gear is 10mm high and the hole is 5mm.
 ![shaftstep1](../img/motor-shaft-gear/2-motor-shaft-gear.webp)
@@ -96,7 +100,7 @@ The tools and parts needed to add the 2.54mm Dupont connectors to each wire incl
 
 ## Motor Mount
 
-In this section you'll assemble the motor mounts. Properly installed parts on the motor mount are essential to making the actuators work without issues such as having a segment stick or jam in an extended or retracted position. The figure below summarizes the assembly for the motor mount. There are three parts: the **(A) motor mount**, the **(B) pinion reduction gear**, and **(C) pinion gear shaft**. Discard the red support section.
+In this section you'll assemble the motor mounts. Properly installed parts on the motor mount are essential to making the actuators work without issues such as having a segment stick or jam in an extended or retracted position. The figure below summarizes the assembly for the motor mount. There are three parts: the **(A) motor mount** white matte PLA `digit-motor-mount.stl`, the **(B) pinion reduction gear** nylon `digit-gear30.stl`, and **(C) pinion gear shaft**. Discard the red support section.
 ![actuatorfigure](../img/actuator/motor-mount-figure.webp)
 The tools and parts needed to assemble the motor mount include: 3d printed motor mount in PLA and Nylon pinion reduction gear, a 20mm metal shaft made from a jumbo paper clip, a soldering station capable of a heat setting of 250° C, clamping tweezers with a thin piece of metal.
 
