@@ -240,7 +240,8 @@
 <li>From the command terminal pane, use the <code>(l)uninosity</code> command while shielding the LDR with your hand (or tuning off the light in your room). You won't see any command output, only a change in the brightness of the display. Should the LED colons be brighter or dimmer than the digit LEDs, then be sure to change the <code>LEDbrightnessFactor</code> setting found in the <code>digit_colons.py</code> file. Presently the LED colons are set to about 1/3rd the power as the digit LEDs. Should you change the controller's <code>LEDbrightnessFactor</code>, then be sure to upload the changes to the controller's Raspberry Pi Pico W 2040.
 <img alt="displayfacepcbtest-5" src="../../img/displayfacepcbs/displayfacepcbtest-5.webp" />
 <img alt="brightnesstest" src="../../img/displayfacepcbs/brightnesstest.webp" /></li>
-<li><strong>Rename <code>_main.py</code> to <code>main.py</code></strong>. Then upload the project to the controller's Raspberry Pi Pico W 2040.</li>
+<li>From your Visual Studio Code file explorer pane, open the <code>secrets.py</code> file and change the usr and pwd to your network SSID and password so the Kinetic Display can connect to your local wifi network. This is an optional step as you will be able to change this at a later date.</li>
+<li>At the bottom of the <code>_main.py</code> file, comment out the <code>manual()</code> call and uncomment the <code>loop()</code> call. <strong>Rename <code>_main.py</code> to <code>main.py</code></strong> and comment out the <code>manual()</code> call and uncomment the <code>loop()</code> call. Then upload the project to the controller's Raspberry Pi Pico W 2040.</li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
