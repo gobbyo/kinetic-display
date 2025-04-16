@@ -20,9 +20,9 @@ nav:
     - Digit PCBs: ./assembly/digitpcbassembly.md
     - Deploy Digit Project: ./assembly/deploydigitproject.md
     - Digit PCB Test: ./assembly/digitpcbtest.md
-    - Controller PCB: ./assembly/controllerpcbassembly.md
-    - Deploy Controller Project: ./assembly/deploycontrollerproject.md
-    - Controller PCB Test: ./assembly/controllerpcbtest.md
+    - Conductor PCB: ./assembly/controllerpcbassembly.md
+    - Deploy Conductor Project: ./assembly/deploycontrollerproject.md
+    - Conductor PCB Test: ./assembly/controllerpcbtest.md
     - Power Management PCB: ./assembly/powermanagementpcb.md
     - Power Management PCB Test: ./assembly/powermanagementpcbtest.md
     - Buck Module Wiring: ./assembly/buckmodulesandwiring.md
