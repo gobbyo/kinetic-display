@@ -4,7 +4,7 @@ The links listed below should be followed in the order they appear on the page f
 
 ## Introduction
 
-- [Introduction, tools, and BOM](intro.md)
+- [Introduction](intro.md)
 - [Software and Microcontroller Preparation](prerequisitesoftware.md)
 
 ## Order Parts
