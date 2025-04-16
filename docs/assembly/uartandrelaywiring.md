@@ -27,7 +27,7 @@ Note the wire color references in the section below are in yellow and blue which
 ![uartwiring-1](../img/uartwiring/uartwiring-1.webp)
 1. Follow the picture below for Digit 2 and 3 UART wiring. On Digit 2 PCB, **(A)** connect the yellow (white) wire to the `Rx-1` and the blue (black) wire to the `Tx-1` terminal block connector. Route the wires to the Digit 3 `Rx-1` and `Tx-1` terminal block connectors and give the wires about 10mm of extra length, then cut. **(B)** slide the heat shrink over the wires and position them according to the picture. On Digit 3 PCB, **(C)** connect the yellow (white) wire to the `Rx-1` and the blue (black) wire to the `Tx-1` terminal block connector.
 ![uartwiring-2](../img/uartwiring/uartwiring-2.webp)
-1. Follow the picture below for the controller to Digit 2 UART wiring. On the conductor PCB, **(A)** connect the yellow (white) wire to the `Rx-1` and the blue (black) wire to the `Tx-1` terminal block connector. Route the wires to the Digit 2 `Rx-1` and `Tx-1` terminal block connectors and give the wires about 10mm of extra length, then cut. On Digit 3 PCB, **(C)** connect the yellow (white) wire to the `Tx-1` and the blue (black) wire to the `Rx-1` terminal block connector.
+1. Follow the picture below for the conductor to Digit 2 UART wiring. On the conductor PCB, **(A)** connect the yellow (white) wire to the `Rx-1` and the blue (black) wire to the `Tx-1` terminal block connector. Route the wires to the Digit 2 `Rx-1` and `Tx-1` terminal block connectors and give the wires about 10mm of extra length, then cut. On Digit 3 PCB, **(C)** connect the yellow (white) wire to the `Tx-1` and the blue (black) wire to the `Rx-1` terminal block connector.
 ![uartwiring-3](../img/uartwiring/uartwiring-3.webp)
 
 ## Relay Wiring
