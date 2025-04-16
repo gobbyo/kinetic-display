@@ -84,9 +84,9 @@ Below is a photo showing the color variation of blue 5mm LEDs within the same ba
 
 1. Break out 7 pairs of 2.54mm male breakaway pins using needle nose pliers.
 ![digitpcbmotorpins-2](../img/digitpcbassembly/2-digitpcbassembly-motorpins.webp)
-1. On the back of the digit PCB, place the short end of the pin-pair into each actuator segment through hole (seg-A through seg-G).
+1. On the back of the digit PCB, place the short end of the motor pin-pair into each actuator segment through hole (seg-A through seg-G).
 ![digitpcbmotorpins-3](../img/digitpcbassembly/3-digitpcbassembly-motorpins.webp)
-1. On the front of the digit PCB motor solder pins into place.
+1. On the front of the digit PCB, solder the motor pins into place.
 ![digitpcbmotorpins-4](../img/digitpcbassembly/4-digitpcbassembly-motorpins.webp)
 1. Continuing on the front of the digit PCB, cut the pins flush on the pcb, then resolder the snipped pins to create smooth beads.
 ![digitpcbmotorpins-5](../img/digitpcbassembly/5-digitpcbassembly-motorpins.webp)
@@ -103,7 +103,7 @@ Below is a photo showing the color variation of blue 5mm LEDs within the same ba
 
 ## Add the PCB Mount, Two pin (2P) Terminal Block Connectors
 
-1. On the front of the digit PCB, insert the PCB two pin terminal block connector into the 5v through holes so the face of the connector where the wires are inserted points toward the LEDs on the PCB.
+1. On the front of the digit PCB, insert the PCB two pin terminal block connector into the 5v through holes so the face of the connector (where the wires are inserted) points toward the LEDs on the PCB.
 ![digitpcbconnector-1](../img/digitpcbassembly/1-digitpcbassembly-connector.webp)
 1. Solder the terminal block connector pins on the back of the digit PCB.
 ![digitpcbconnector-2](../img/digitpcbassembly/2-digitpcbassembly-connector.webp)

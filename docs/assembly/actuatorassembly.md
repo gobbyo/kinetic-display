@@ -106,23 +106,23 @@ The tools and parts needed to assemble the motor mount include: 3d printed motor
 
 1. Cut the off the straight sections from the Jumbo paper clip.
 ![actuatorstep1](../img/actuator/1-actuator.webp)
-1. Measure 2 cm from each Jumbo paper clip straight section.
+2. Measure 2 cm from each Jumbo paper clip straight section.
 ![actuatorstep2](../img/actuator/2-actuator.webp)
-1. Use a large wire cutter to cut the shaft.
+3. Use a large wire cutter to cut the shaft.
 ![actuatorstep3](../img/actuator/3-actuator.webp)
-1. Insert the 2 cm shaft through the motor mount until it protrudes about 1mm into the pinion gear space.
+4. Insert the 2 cm shaft through the motor mount until it protrudes about 1mm into the pinion gear space.
 ![actuatorstep4](../img/actuator/4-actuator.webp)
-1. Add the pinion gear to the motor mount as shown in the diagram. Insert the shaft by aligning the pinion gear shaft hole with the metal shaft, then slide the metal shaft all the way into the motor mount.
+5. Add the pinion gear to the motor mount as shown in the diagram. Insert the shaft by aligning the pinion gear shaft hole with the metal shaft, then slide the metal shaft all the way into the motor mount.
 ![actuatorstep5](../img/actuator/5-actuator.webp)
-1. Heat your soldering iron to 250°C and prepare your clamping tweezer and zinc strip as shown in the picture.
+6. Heat your soldering iron to 250°C and prepare your clamping tweezer and zinc strip as shown in the picture.
 ![actuatorstep6](../img/actuator/6-actuator.webp)
-1. Hold the zinc strip over the shaft collar and press down on the zinc strip with your soldering iron. Melt the collar and flatten it onto the motor mount.
+7. Hold the zinc strip over the shaft collar and press down on the zinc strip with your soldering iron. Melt the collar and flatten it onto the motor mount.
 ![actuatorstep7](../img/actuator/7-actuator.webp)
-1. When finished, the melted collar will only protrude about a half millimeter out from the motor mount.
+8. When finished, the melted collar will only protrude about a half millimeter out from the motor mount.
 ![actuatorstep8](../img/actuator/8-actuator.webp)
 !!! note
     Verify the shaft can slide through the pinion gear before assembling the motor. If you cannot rotate the pinion gear on the shaft, then you'll need to reprint the pinion gear to ensure the hole is wide enough. Avoid an overly sized shaft hole as it allows the gear to shift side to side on the motor shaft and will cause the actuator to jam or stick. ![actuatorstep9](../img/actuator/9-actuator.webp)
-1. Hold the main body of the motor mount so the pinion gear faces left. Avoid touching or putting any pressure onto the motor mounting tabs used the screw the motor onto the display. With your other hand, hold the prepared motor with the shaft pointed left and the terminals downward, insert the prepared motor into the motor mount.
+9. Hold the main body of the motor mount so the pinion gear faces left. Avoid touching or putting any pressure onto the motor mounting tabs used the screw the motor onto the display. With your other hand, hold the prepared motor with the shaft pointed left and the terminals downward, insert the prepared motor into the motor mount.
 ![actuatorstep10](../img/actuator/10-actuator.webp)
-1. Repeat the process for the remaining 29 motors.
+10. Repeat the process for the remaining 29 motors.
 ![actuatorstep11](../img/actuator/11-actuator.webp)
