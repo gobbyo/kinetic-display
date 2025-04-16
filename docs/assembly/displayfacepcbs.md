@@ -4,6 +4,8 @@ This guide details assembling the PCBs onto the display face, and includes integ
 
 ## Prerequisites
 
+
+
 ***Table of components***
 
 | Quantity | Component | Image |
