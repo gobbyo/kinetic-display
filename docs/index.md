@@ -1,5 +1,7 @@
 # Contents
 
+The links listed below should be followed in the order they appear on the page from top to bottom. Use the `← Previous` and `Next →` buttons on the top menu bar to navigate.
+
 ## Introduction
 
 - [Introduction, tools, and BOM](intro.md)
