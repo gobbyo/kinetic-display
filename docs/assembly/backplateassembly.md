@@ -2,9 +2,10 @@
 
 ## Prerequisites
 
-digit-back-plate.stl
-digit2-back-plate.stl
-digit1-back-plate.stl
+- Completed the [actuator assembly](actuatorassembly.md) guide for all 30 actuators
+- `digit-back-plate.stl`
+- `digit2-back-plate.stl`
+- `digit1-back-plate.stl`
 
 ## Digit Backplate Assembly
 
@@ -26,7 +27,7 @@ The picture below shows the digit 2 backplate. Digit 2 backplate is nearly the s
 
 ## Conductor and Digit One Backplate Assembly
 
-The picture below shows the conductor and digit one backplate in an upright position. The backplate has engraved segment characters **A** through **G** and colons **U** and **L**. The large rectangular hole above the U label is where the on/off switch is mounted. Also note the top edge of the backplate has a slot for the LDR to fit into.
+The picture below shows the conductor and digit one backplate in an upright position. The backplate has engraved segment characters **A** through **G** and colons **U** and **L**. The large rectangular hole above the **U** label is where the on/off switch is mounted. Also note the top edge of the backplate has a slot for the LDR to fit into.
 
 **digit1-back-plate.stl**
 
