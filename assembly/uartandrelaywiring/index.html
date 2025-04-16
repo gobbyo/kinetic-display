@@ -178,26 +178,26 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="uart_and_relay_wiring">UART and Relay Wiring<a class="headerlink" href="#uart_and_relay_wiring" title="Permanent link">&para;</a></h1>
-<p>UART (Universal Asynchronous Receiver-Transmitter) facilitates communication between the controller and the digit PCBs. The controller acts as the central hub, transmitting commands and receiving status updates from the digits.</p>
+<p>UART (Universal Asynchronous Receiver-Transmitter) facilitates communication between the conductor and the digit PCBs. The conductor acts as the central hub, transmitting commands and receiving status updates from the digits.</p>
 <ol>
-<li><strong>Controller (Transmitter and Receiver)</strong>:<ul>
-<li>The controller's UART <code>Tx</code> (transmit) pin sends data to the digits, such as display commands and brightness levels.</li>
-<li>The controller's UART <code>Rx</code> (receive) pin listens for acknowledgment or status updates from the digits.</li>
+<li><strong>Conductor (Transmitter and Receiver)</strong>:<ul>
+<li>The conductor's UART <code>Tx</code> (transmit) pin sends data to the digits, such as display commands and brightness levels.</li>
+<li>The conductor's UART <code>Rx</code> (receive) pin listens for acknowledgment or status updates from the digits.</li>
 </ul>
 </li>
 <li><strong>Digits (Receivers and Transmitters)</strong>:<ul>
-<li>Each digit PCB's UART <code>Rx</code> pin receives commands from the controller.</li>
-<li>The digit PCBs' UART <code>Tx</code> pins send status updates or responses back to the controller.</li>
+<li>Each digit PCB's UART <code>Rx</code> pin receives commands from the conductor.</li>
+<li>The digit PCBs' UART <code>Tx</code> pins send status updates or responses back to the conductor.</li>
 </ul>
 </li>
 </ol>
-<p>This bidirectional communication ensures synchronized operation of the display, enabling the controller to manage all digits effectively.</p>
+<p>This bidirectional communication ensures synchronized operation of the display, enabling the conductor to manage all digits effectively.</p>
 <h2 id="uart_wiring">UART Wiring<a class="headerlink" href="#uart_wiring" title="Permanent link">&para;</a></h2>
-<p>The UART wiring diagram illustrates the communication connections between the controller and the digit PCBs. It shows how the UART <code>Tx</code> (transmit) and <code>Rx</code> (receive) pins are connected using the two UART channels 0 and 1.</p>
+<p>The UART wiring diagram illustrates the communication connections between the conductor and the digit PCBs. It shows how the UART <code>Tx</code> (transmit) and <code>Rx</code> (receive) pins are connected using the two UART channels 0 and 1.</p>
 <ul>
-<li>The controller's channel 1 <code>Tx</code> pin is connected to the channel 1 <code>Rx</code> pin on the digit 2 PCB. The controller PCB has tracing that connects the controller's channel 0 <code>Tx</code> pin to channel 0 <code>Rx</code> pin on digit 1.</li>
-<li>The controller's channel 1 <code>Rx</code> pin is connected to the channel 1 <code>Tx</code> pin of the digit 2 PCB. The controller PCB has tracing that connects the controller's channel 0 <code>Rx</code> pin to channel 0 <code>Tx</code> pin on digit 1.</li>
-<li>Digit 2 and 3 PCB's <code>Tx</code> pins are connected and Digit 0 PCB and Digit 1 on the controller PCB's <code>Tx</code> pin are connected. The same is true for the <code>Rx</code> pins for Digits 0-3.</li>
+<li>The conductor's channel 1 <code>Tx</code> pin is connected to the channel 1 <code>Rx</code> pin on the digit 2 PCB. The conductor PCB has tracing that connects the conductor's channel 0 <code>Tx</code> pin to channel 0 <code>Rx</code> pin on digit 1.</li>
+<li>The conductor's channel 1 <code>Rx</code> pin is connected to the channel 1 <code>Tx</code> pin of the digit 2 PCB. The conductor PCB has tracing that connects the conductor's channel 0 <code>Rx</code> pin to channel 0 <code>Tx</code> pin on digit 1.</li>
+<li>Digit 2 and 3 PCB's <code>Tx</code> pins are connected and Digit 0 PCB and Digit 1 on the conductor PCB's <code>Tx</code> pin are connected. The same is true for the <code>Rx</code> pins for Digits 0-3.</li>
 </ul>
 <p><img alt="uartwiring" src="../../img/uartwiring/uartwiring.webp" /></p>
 <p>Note the wire color references in the section below are in yellow and blue which can be substituted by white and black.</p>
@@ -206,14 +206,14 @@
 <img alt="uartwiring-1" src="../../img/uartwiring/uartwiring-1.webp" /></li>
 <li>Follow the picture below for Digit 2 and 3 UART wiring. On Digit 2 PCB, <strong>(A)</strong> connect the yellow (white) wire to the <code>Rx-1</code> and the blue (black) wire to the <code>Tx-1</code> terminal block connector. Route the wires to the Digit 3 <code>Rx-1</code> and <code>Tx-1</code> terminal block connectors and give the wires about 10mm of extra length, then cut. <strong>(B)</strong> slide the heat shrink over the wires and position them according to the picture. On Digit 3 PCB, <strong>(C)</strong> connect the yellow (white) wire to the <code>Rx-1</code> and the blue (black) wire to the <code>Tx-1</code> terminal block connector.
 <img alt="uartwiring-2" src="../../img/uartwiring/uartwiring-2.webp" /></li>
-<li>Follow the picture below for the controller to Digit 2 UART wiring. On the controller PCB, <strong>(A)</strong> connect the yellow (white) wire to the <code>Rx-1</code> and the blue (black) wire to the <code>Tx-1</code> terminal block connector. Route the wires to the Digit 2 <code>Rx-1</code> and <code>Tx-1</code> terminal block connectors and give the wires about 10mm of extra length, then cut. On Digit 3 PCB, <strong>(C)</strong> connect the yellow (white) wire to the <code>Tx-1</code> and the blue (black) wire to the <code>Rx-1</code> terminal block connector.
+<li>Follow the picture below for the controller to Digit 2 UART wiring. On the conductor PCB, <strong>(A)</strong> connect the yellow (white) wire to the <code>Rx-1</code> and the blue (black) wire to the <code>Tx-1</code> terminal block connector. Route the wires to the Digit 2 <code>Rx-1</code> and <code>Tx-1</code> terminal block connectors and give the wires about 10mm of extra length, then cut. On Digit 3 PCB, <strong>(C)</strong> connect the yellow (white) wire to the <code>Tx-1</code> and the blue (black) wire to the <code>Rx-1</code> terminal block connector.
 <img alt="uartwiring-3" src="../../img/uartwiring/uartwiring-3.webp" /></li>
 </ol>
 <h2 id="relay_wiring">Relay Wiring<a class="headerlink" href="#relay_wiring" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Follow the picture below starting from the back side of the controller PCB. Using any color 28 AWG wire, connect the <strong>(A)</strong> terminal block connector pin <code>GPIO19</code> from the controller PCB to the <strong>(B)</strong> terminal block connector pin <code>GPIO19</code> on the power management PCB.
+<li>Follow the picture below starting from the back side of the conductor PCB. Using any color 28 AWG wire, connect the <strong>(A)</strong> terminal block connector pin <code>GPIO19</code> from the conductor PCB to the <strong>(B)</strong> terminal block connector pin <code>GPIO19</code> on the power management PCB.
 <img alt="relaywiring-1" src="../../img/uartwiring/relaywiring-1.webp" /></li>
-<li>Following the picture below, turn the controller PCB over so the front face is up. <strong>(A)</strong> Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the <code>+</code> on the <code>5v-OUT</code> terminal block connector and the black wire onto the <code>-</code>. <strong>(B)</strong> Route the white wire to the <code>5v +</code> and the black wire to the <code>5v -</code> on the power management PCB, then cut the wires with at least 2cm of slack. Strip 3mm of insulation, tin the stripped end with solder, then connect each wire to the appropriate terminal block connector.
+<li>Following the picture below, turn the conductor PCB over so the front face is up. <strong>(A)</strong> Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the <code>+</code> on the <code>5v-OUT</code> terminal block connector and the black wire onto the <code>-</code>. <strong>(B)</strong> Route the white wire to the <code>5v +</code> and the black wire to the <code>5v -</code> on the power management PCB, then cut the wires with at least 2cm of slack. Strip 3mm of insulation, tin the stripped end with solder, then connect each wire to the appropriate terminal block connector.
 <img alt="relaywiring-2" src="../../img/uartwiring/relaywiring-2.webp" /></li>
 <li>Following the picture below, position the heat shrink and apply heat with a heat gun. Add the two remaining M1.7x6mm self tapping screws to the power management PCB. Ensure all 4 screws securing the power management PCB are snug, but do not over tighten.
 <img alt="relaywiring-3" src="../../img/uartwiring/relaywiring-3.webp" /></li>

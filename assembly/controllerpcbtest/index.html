@@ -160,7 +160,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#controller_pcb_test" class="nav-link">Controller PCB Test</a>
+            <li class="nav-item" data-bs-level="1"><a href="#conductor_pcb_test" class="nav-link">Conductor PCB Test</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#prerequisites" class="nav-link">Prerequisites</a>
               <ul class="nav flex-column">
@@ -185,24 +185,24 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="controller_pcb_test">Controller PCB Test<a class="headerlink" href="#controller_pcb_test" title="Permanent link">&para;</a></h1>
-<p>Run the tests in this section after assembling the controller PCB to ensure all the components on the PCB are soldered and functional. Any defective electronic component on the controller PCB will need to be replaced before completing the project.</p>
+<h1 id="conductor_pcb_test">Conductor PCB Test<a class="headerlink" href="#conductor_pcb_test" title="Permanent link">&para;</a></h1>
+<p>Run the tests in this section after assembling the conductor PCB to ensure all the components on the PCB are soldered and functional. Any defective electronic component on the conductor PCB will need to be replaced before completing the project.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../controllerpcbassembly/">Completed Controller and Digit 1 PCB ready for actuators</a>.</li>
+<li><a href="../controllerpcbassembly/">Completed Conductor and Digit 1 PCB ready for actuators</a>.</li>
 <li>Computer and microcontroller with the <a href="../../prerequisitesoftware/">prerequisite software</a>.</li>
-<li><a href="../deploycontrollerproject/">Deployed the Controller Project to the Controller PCB</a></li>
-<li><a href="../digitpcbtest/">Completed the digit PCB test</a> for digit 1 on the controller PCB.</li>
+<li><a href="../deploycontrollerproject/">Deployed the Conductor Project to the Conductor PCB</a></li>
+<li><a href="../digitpcbtest/">Completed the digit PCB test</a> for digit 1 on the conductor PCB.</li>
 </ul>
 <h2 id="test_the_led_and_motor_segments">Test the LED and Motor Segments<a class="headerlink" href="#test_the_led_and_motor_segments" title="Permanent link">&para;</a></h2>
 <ol>
 <li>From Visual Studio Code, <strong>(A)</strong> select the File-&gt;Open Folder menu, <strong>(B)</strong> select the conductor folder, then <strong>(C)</strong> click the <strong>Select Folder</strong> button.
 <img alt="testpcbactuator-prerequisite" src="../../img/controllerpcbtest/controllerpcbtest-1.webp" /></li>
-<li>On the Controller and Digit 1 PCB, <strong>(A)</strong> plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040. <strong>(B)</strong> Connect a motor actuator to the <code>TOP-LED1</code> with the white wire dupont connector plugged into <code>CW</code> pin and the black wire plugged into the <code>CCW</code> pin.
+<li>On the Conductor and Digit 1 PCB, <strong>(A)</strong> plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040. <strong>(B)</strong> Connect a motor actuator to the <code>TOP-LED1</code> with the white wire dupont connector plugged into <code>CW</code> pin and the black wire plugged into the <code>CCW</code> pin.
 <img alt="controllerpcbtest-2" src="../../img/controllerpcbtest/controllerpcbtest-2.webp" /></li>
 <li>From Visual Studio Code, <strong>(A)</strong> select the <code>digit_colon.py</code> file, then <strong>(B)</strong> select <strong>MicroPico vREPL</strong> from the terminal pane menu.
 <img alt="controllerpcbtest-3" src="../../img/controllerpcbtest/controllerpcbtest-3.webp" /></li>
-<li>From the Visual Studio Code status bar, <strong>(A)</strong> verify the Raspberry Pi Pico W is connected. <strong>(B)</strong> Click the <code>Run</code> button to start the controller PCB test application.
+<li>From the Visual Studio Code status bar, <strong>(A)</strong> verify the Raspberry Pi Pico W is connected. <strong>(B)</strong> Click the <code>Run</code> button to start the conductor PCB test application.
 <img alt="controllerpcbtest-4" src="../../img/controllerpcbtest/controllerpcbtest-4.webp" /></li>
 <li>The console test application shows various options that relate to the top or bottom colon: the <code>TOP-LED1</code> is 0 and the <code>LWR-LED1</code> is 1. Extend <code>TOP-LED1</code> by typing <strong>e0</strong> in the console.
 <img alt="controllerpcbtest-5" src="../../img/controllerpcbtest/controllerpcbtest-5.webp" /></li>
@@ -213,7 +213,7 @@
 </ol>
 <h2 id="test_the_light_detection">Test the Light Detection<a class="headerlink" href="#test_the_light_detection" title="Permanent link">&para;</a></h2>
 <ol>
-<li>On the Controller and Digit 1 PCB, plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040.</li>
+<li>On the Conductor and Digit 1 PCB, plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040.</li>
 <li>From Visual Studio Code <strong>(A)</strong> select the file <code>photoresistor.py</code>, then <strong>(B)</strong> click the Run button in the status bar.
 <img alt="LDRpcbtest-1" src="../../img/controllerpcbtest/LDRpcbtest-1.webp" /></li>
 <li>The terminal pane will print the light level, between 0 and 9, depending on the brightness of the light as detected by the LDR.
@@ -222,7 +222,7 @@
 </ol>
 <h2 id="test_the_humidity_and_temperature">Test the Humidity and Temperature<a class="headerlink" href="#test_the_humidity_and_temperature" title="Permanent link">&para;</a></h2>
 <ol>
-<li>On the Controller and Digit 1 PCB, <strong>(A)</strong> plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040. <strong>(B)</strong> Connect the DHT22 sensor by ensuring the <code>- Data +</code> pins in the <code>DHT1</code> silk screen align with the <code>+ out -</code> pins on the DHT22 sensor.
+<li>On the Conductor and Digit 1 PCB, <strong>(A)</strong> plug the USB cable from your computer into the USB port on the Raspberry Pi Pico W 2040. <strong>(B)</strong> Connect the DHT22 sensor by ensuring the <code>- Data +</code> pins in the <code>DHT1</code> silk screen align with the <code>+ out -</code> pins on the DHT22 sensor.
 <img alt="dhtpcbtest-1" src="../../img/controllerpcbtest/dhtpcbtest-1.webp" /></li>
 <li>From Visual Studio Code <strong>(A)</strong> select the file <code>dhttest.py</code>, then <strong>(B)</strong> click the Run button in the status bar.
 <img alt="dhtpcbtest-3" src="../../img/controllerpcbtest/dhttest-3.webp" /></li>
