@@ -6,7 +6,7 @@ This guide provides detailed instructions for assembling and wiring DC to DC var
 
 1. **Correct Wiring**: Proper routing and connection of wires are critical to ensure the display functions correctly. Incorrect wire lengths or connections can lead to assembly issues or electrical faults.
 1. **Voltage Calibration**: The buck converters step down the input voltage from 12V to a stable 5.0-5.1V output. Calibration ensures the modules provide the correct voltage to prevent damage to connected components or malfunctions.
-1. **Safety Measures**: The document emphasizes using anti-static precautions and proper tools to avoid damaging sensitive electronics during assembly.
+1. **Safety Measures**: Be sure to follow anti-static precautions and proper tools to avoid damaging sensitive electronics during assembly.
 
 This guide is essential for ensuring the reliability and safety of the Kinetic Display system.
 
@@ -49,7 +49,7 @@ This section ensures wiring for the PCBs are oriented for the mounting of the bu
 
 ## Wiring the Buck Modules
 
-This section details wiring the buck converter to the PCBs. Be sure to follow the instructions in this section to get the wire lengths correct. Otherwise you are likely to have the wires be too short or too long for the display face to correctly fit. The buck converter module has an `In +` and `In -` on one side for the 12v input, and an `Out +` and `Out -` on the opposite side for the converted 5v output. This section will also cover how to calibrate the variable buck module to provide 5.0v to 5.1v output.
+This section details wiring the buck converter module to the PCBs. Be sure to follow the instructions in this section to get the wire lengths correct. Otherwise you are likely to have the wires be too short or too long for the display face to correctly fit. Each buck module has an `In +` and `In -` on one side for the 12v input, and an `Out +` and `Out -` on the opposite side for the converted 5v output. This section will also cover how to calibrate the variable buck module to provide 5.0v to 5.1v output.
 
 The picture below is the wiring diagram for the buck converter modules.
 
