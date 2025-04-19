@@ -39,12 +39,20 @@ class extTempHumid:
             print(f"lat={lat}, lon={lon}")
             r = urequests.get("https://api.open-meteo.com/v1/forecast?latitude={0}&longitude={1}&current_weather=true&hourly=relativehumidity_2m".format(lat,lon))
             j = ujson.loads(r.content)
+            #print("api.open-meteo.com json = {0}".format(j))
             temperature = j['current_weather']['temperature']
             print(f"temp={temperature}")
             temp = int(temperature)
             conf.write("tempoutdoor",temp)
             print("temp sensor outdoor = {0}".format(temp))
-            humidity = j['hourly']['relativehumidity_2m'][0]
+            current_hour = j['current_weather']['time'].split(':')[0]
+            print(f"current_hour={current_hour}")
+            current_hour_index = 0
+            for item in j['hourly']['time']:
+                if item.find(current_hour) != -1:
+                    break
+                current_hour_index += 1
+            humidity = j['hourly']['relativehumidity_2m'][current_hour_index] # last value in the list
             humid = int(humidity)
             conf.write("humidoutdoor",humid)
             print("humidity sensor outdoor = {0}".format(humid))

@@ -3,7 +3,9 @@ from common.uart_protocol import commandHelper, uartCommand
 import time
 from common.config import Config
 
-LEDbrightness = 0.4
+LEDbrightness = 0.4 # 0-1, 0.5 being 50% brightness
+LEDbrightnessFactor = -49152   #dim value from 65535 being the brightest
+LEDmaxBrightness = 65535 + LEDbrightnessFactor # 0-65535, 0 being the dimmest
 
 motorSpeedPin=11
 # motor tuples (extend pin, retract pin)
@@ -65,7 +67,7 @@ class Digit_Colons:
             self.rtc = RTC()
             current = self.conf.read("previous")
             percentLED_brightness = float(self.conf.read("brightness")) # 0-1, 0.5 being 50% brightness
-            self._brightness = int(percentLED_brightness*65536)
+            self._brightness = int(percentLED_brightness*LEDmaxBrightness)
             self._previousDigitArray = self.conf.read("previous")
             self._motorspeed = int(self.conf.read("speed"))
             self._waitTime = float(self.conf.read("wait"))
@@ -123,7 +125,7 @@ class Digit_Colons:
     
     @brightness.setter
     def brightness(self, b):
-        self._brightness = int(b*65536)
+        self._brightness = int(b*LEDmaxBrightness)
         self.conf.write("brightness", b)
         for i in range(2):
             if 1 == self._previousDigitArray[i]:
@@ -233,7 +235,7 @@ class Digit_Colons:
 
 #Example usage:
 def main():
-    d = Digit_Colons(led_pins, LEDbrightness, motor_pins)
+    d = Digit_Colons(led_pins, 0.4, motor_pins)
     
     while True:
         seg = input("Enter \n\t(d)igit (d0-2)\n\t(b)rightness\n\t(e)xtend segment (e0-e1)\n\t(t)ime\n\t(r)etract segment (r0-r1)\n\t(m)otor speed\n\t(w)ait time\n\t(q)uit\n\t>:")

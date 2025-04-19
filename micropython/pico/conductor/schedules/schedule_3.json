@@ -6,8 +6,15 @@
             "hour": -1,
             "minute": -1,
             "second": 0,
-            "elapse": 9,
+            "elapse": 5,
             "event": 1
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 5,
+            "elapse": 5,
+            "event": 7
         },
         {
             "hour": -1,
@@ -33,13 +40,6 @@
         {
             "hour": -1,
             "minute": -1,
-            "second": 31,
-            "elapse": 9,
-            "event": 7
-        },
-        {
-            "hour": -1,
-            "minute": -1,
             "second": 40,
             "elapse": 9,
             "event": 5
@@ -48,14 +48,14 @@
             "hour": -1,
             "minute": -1,
             "second": 50,
-            "elapse": 9,
+            "elapse": 5,
             "event": 6
         },
         {
             "hour": 22,
             "minute": 0,
-            "second": 5,
-            "elapse": 4,
+            "second": 58,
+            "elapse": 18,
             "event": 9
         }
     ]

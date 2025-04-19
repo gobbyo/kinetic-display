@@ -1,6 +1,6 @@
 {
     "title": "All Features",
-    "scheduleDescription": "Time, date, month, internal and external temp and humid",
+    "scheduleDescription": "Time: 15 and 45 seconds. Date: 5 minutes. Month: 2 minutes. Internal and external temperature and humidity every 10 minutes. Sleep: 10:00 PM for 8 hours.",
     "scheduledEvent": [
         {
             "hour": -1,
@@ -25,7 +25,21 @@
         },
         {
             "hour": -1,
+            "minute": 5,
+            "second": 20,
+            "elapse": 19,
+            "event": 2
+        },
+        {
+            "hour": -1,
             "minute": 10,
+            "second": 20,
+            "elapse": 19,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 15,
             "second": 20,
             "elapse": 19,
             "event": 2
@@ -39,7 +53,21 @@
         },
         {
             "hour": -1,
+            "minute": 25,
+            "second": 20,
+            "elapse": 19,
+            "event": 2
+        },
+        {
+            "hour": -1,
             "minute": 30,
+            "second": 20,
+            "elapse": 19,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 35,
             "second": 20,
             "elapse": 19,
             "event": 2
@@ -53,7 +81,21 @@
         },
         {
             "hour": -1,
+            "minute": 45,
+            "second": 20,
+            "elapse": 19,
+            "event": 2
+        },
+        {
+            "hour": -1,
             "minute": 50,
+            "second": 20,
+            "elapse": 19,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": 55,
             "second": 20,
             "elapse": 19,
             "event": 2
@@ -67,7 +109,21 @@
         },
         {
             "hour": -1,
+            "minute": 6,
+            "second": 15,
+            "elapse": 10,
+            "event": 3
+        },
+        {
+            "hour": -1,
             "minute": 12,
+            "second": 15,
+            "elapse": 10,
+            "event": 3
+        },
+        {
+            "hour": -1,
+            "minute": 16,
             "second": 15,
             "elapse": 10,
             "event": 3
@@ -81,7 +137,21 @@
         },
         {
             "hour": -1,
+            "minute": 26,
+            "second": 15,
+            "elapse": 10,
+            "event": 3
+        },
+        {
+            "hour": -1,
             "minute": 32,
+            "second": 15,
+            "elapse": 10,
+            "event": 3
+        },
+        {
+            "hour": -1,
+            "minute": 36,
             "second": 15,
             "elapse": 10,
             "event": 3
@@ -95,7 +165,21 @@
         },
         {
             "hour": -1,
+            "minute": 46,
+            "second": 15,
+            "elapse": 10,
+            "event": 3
+        },
+        {
+            "hour": -1,
             "minute": 52,
+            "second": 15,
+            "elapse": 10,
+            "event": 3
+        },
+        {
+            "hour": -1,
+            "minute": 56,
             "second": 15,
             "elapse": 10,
             "event": 3
@@ -109,7 +193,21 @@
         },
         {
             "hour": -1,
+            "minute": 6,
+            "second": 30,
+            "elapse": 10,
+            "event": 4
+        },
+        {
+            "hour": -1,
             "minute": 12,
+            "second": 30,
+            "elapse": 10,
+            "event": 4
+        },
+        {
+            "hour": -1,
+            "minute": 16,
             "second": 30,
             "elapse": 10,
             "event": 4
@@ -123,7 +221,21 @@
         },
         {
             "hour": -1,
+            "minute": 26,
+            "second": 30,
+            "elapse": 10,
+            "event": 4
+        },
+        {
+            "hour": -1,
             "minute": 32,
+            "second": 30,
+            "elapse": 10,
+            "event": 4
+        },
+        {
+            "hour": -1,
+            "minute": 36,
             "second": 30,
             "elapse": 10,
             "event": 4
@@ -137,7 +249,21 @@
         },
         {
             "hour": -1,
+            "minute": 46,
+            "second": 30,
+            "elapse": 10,
+            "event": 4
+        },
+        {
+            "hour": -1,
             "minute": 52,
+            "second": 30,
+            "elapse": 10,
+            "event": 4
+        },
+        {
+            "hour": -1,
+            "minute": 56,
             "second": 30,
             "elapse": 10,
             "event": 4
@@ -151,7 +277,21 @@
         },
         {
             "hour": -1,
+            "minute": 8,
+            "second": 15,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
             "minute": 14,
+            "second": 15,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 18,
             "second": 15,
             "elapse": 10,
             "event": 5
@@ -165,7 +305,21 @@
         },
         {
             "hour": -1,
+            "minute": 28,
+            "second": 15,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
             "minute": 34,
+            "second": 15,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 38,
             "second": 15,
             "elapse": 10,
             "event": 5
@@ -179,7 +333,21 @@
         },
         {
             "hour": -1,
+            "minute": 48,
+            "second": 15,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
             "minute": 54,
+            "second": 15,
+            "elapse": 10,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": 58,
             "second": 15,
             "elapse": 10,
             "event": 5
@@ -193,7 +361,21 @@
         },
         {
             "hour": -1,
+            "minute": 8,
+            "second": 30,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
             "minute": 14,
+            "second": 30,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 18,
             "second": 30,
             "elapse": 10,
             "event": 6
@@ -207,7 +389,21 @@
         },
         {
             "hour": -1,
+            "minute": 28,
+            "second": 30,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
             "minute": 34,
+            "second": 30,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 38,
             "second": 30,
             "elapse": 10,
             "event": 6
@@ -221,7 +417,21 @@
         },
         {
             "hour": -1,
+            "minute": 48,
+            "second": 30,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
             "minute": 54,
+            "second": 30,
+            "elapse": 10,
+            "event": 6
+        },
+        {
+            "hour": -1,
+            "minute": 58,
             "second": 30,
             "elapse": 10,
             "event": 6

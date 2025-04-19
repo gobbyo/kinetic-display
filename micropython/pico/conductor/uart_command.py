@@ -38,6 +38,7 @@ class conductor:
         self.temp = 0
         self.humidity = 0
         self.rtc = RTC()
+        self.syncRTC = syncRTC()
         self.hybernateswitch = Pin(hybernateswitchPin, Pin.IN, Pin.PULL_DOWN)
         self.powerRelay = Pin(powerRelayPin, Pin.OUT)
         self.schedule = []
@@ -92,8 +93,7 @@ class conductor:
             self.powerRelay.off()
             self.wifi = PicoWifi(secrets.usr,secrets.pwd)
             self.wifi.connect_to_wifi_network()
-            syncrtc = syncRTC()
-            syncrtc.syncclock(self.rtc)
+            self.syncRTC.syncclock(self.rtc)
         pass
 
     def checkHybernate(self):
@@ -118,8 +118,7 @@ class conductor:
             if hybernated:
                 self.wifi = PicoWifi(secrets.usr,secrets.pwd)
                 self.wifi.connect_to_wifi_network()
-                rtc = syncRTC()
-                rtc.syncclock(self.rtc)
+                self.syncRTC.syncclock(self.rtc)
         return hybernated
 
     def updateIndoorTemp(self):
@@ -139,8 +138,7 @@ class conductor:
 
     def updateOutdoorTempHumid(self):
         try:
-            syncrtc = syncRTC()
-            etc = extTempHumid(syncrtc)
+            etc = extTempHumid(self.syncRTC)
             etc.updateOutdoorTemp()
         except Exception as e:
             print(f"Error conductor updateOutdoorTempHumid: {e}")
@@ -464,9 +462,8 @@ def loop():
         controller.wifi = PicoWifi("config.json")
         if(controller.wifi.connect_to_wifi_network()):
             time.sleep(1)
-            syncrtc = syncRTC()
-            syncrtc.syncclock(controller.rtc)
-            etc = extTempHumid(syncrtc)
+            controller.syncRTC.syncclock(controller.rtc)
+            etc = extTempHumid(controller.syncRTC)
             etc.setLatLon()
     except Exception as e:
         print(f"Wifi error: {e}")
@@ -499,9 +496,8 @@ def loop():
                         controller.wifi = PicoWifi("config.json")
                         if(controller.wifi.connect_to_wifi_network()):
                             time.sleep(1)
-                            syncrtc = syncRTC()
-                            syncrtc.syncclock(controller.rtc)
-                            etc = extTempHumid(syncrtc)
+                            controller.syncRTC.syncclock(controller.rtc)
+                            etc = extTempHumid(controller.syncRTC)
                             etc.setLatLon()
                     break
             
