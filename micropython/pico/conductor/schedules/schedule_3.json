@@ -52,85 +52,8 @@
             "event": 6
         },
         {
-            "hour": -1,
-            "minute": 1,
-            "second": 5,
-            "elapse": 4,
-            "event": 9
-        },
-        {
-            "hour": -1,
-            "minute": 6,
-            "second": 5,
-            "elapse": 4,
-            "event": 9
-        },
-        {
-            "hour": -1,
-            "minute": 11,
-            "second": 5,
-            "elapse": 4,
-            "event": 9
-        },
-        {
-            "hour": -1,
-            "minute": 16,
-            "second": 5,
-            "elapse": 4,
-            "event": 9
-        },
-        {
-            "hour": -1,
-            "minute": 21,
-            "second": 5,
-            "elapse": 4,
-            "event": 9
-        },
-        {
-            "hour": -1,
-            "minute": 26,
-            "second": 5,
-            "elapse": 4,
-            "event": 9
-        },
-        {
-            "hour": -1,
-            "minute": 31,
-            "second": 5,
-            "elapse": 4,
-            "event": 9
-        },
-        {
-            "hour": -1,
-            "minute": 36,
-            "second": 5,
-            "elapse": 4,
-            "event": 9
-        },
-        {
-            "hour": -1,
-            "minute": 41,
-            "second": 5,
-            "elapse": 4,
-            "event": 9
-        },
-        {
-            "hour": -1,
-            "minute": 46,
-            "second": 5,
-            "elapse": 4,
-            "event": 9
-        },
-        {
-            "hour": -1,
-            "minute": 51,
-            "second": 5,
-            "elapse": 4,
-            "event": 9
-        },
-        {
-            "hour": -1,
-            "minute": 56,
+            "hour": 22,
+            "minute": 0,
             "second": 5,
             "elapse": 4,
             "event": 9
