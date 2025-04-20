@@ -39,19 +39,19 @@ p.off()
 1. [Install Git](https://git-scm.com/downloads)
 1. Open a browser and follow the link to the [Kinetic-Display](https://github.com/gobbyo/kinetic-display) repository
 1. [Create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) of the Kinetic-Display repository.
-1. Open a new **PowerShell** terminal in VS Code, change the directory to ```kinetic-display\micropython\pico``` in your cloned fork, then run the following command.
+2. Open a new **PowerShell** terminal in VS Code, change the directory to ```kinetic-display\micropython\pico``` in your cloned fork, then run the command `./deploy.ps1 <directorypath>`. For example,
 
     <!--dos-->
-        PS > ./deploy.ps1
+        ./deploy.ps1 "c:/deploy"
         
-1. You'll get the following example output when successful.
+3. You'll get the following example output when successful.
 
     <!--dos-->
-            Directory: C:\repos\deploy
+            Directory: C:\deploy
         
         Mode                 LastWriteTime         Length Name
         ----                 -------------         ------ ----
         d-----         1/31/2025   8:30 PM                conductor
         d-----         1/31/2025   8:30 PM                digit
 
-1. Verify the **conductor** and **digit** folders exist under the same parent directory where you cloned your fork.
+4. Verify the **conductor** and **digit** folders exist under the folder you provided in the parameter for the `./deploy.ps1`.
