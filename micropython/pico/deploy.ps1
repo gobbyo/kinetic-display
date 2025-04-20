@@ -1,6 +1,11 @@
+# Define the root path for temp directories (passed as a parameter)
+param (
+    [string]$TempRootPath = "../../../deploy"
+)
+
 # Define the paths
-$conductorTempDir = "../../../deploy/conductor"
-$digitTempDir = "../../../deploy/digit"
+$conductorTempDir = Join-Path $TempRootPath "conductor"
+$digitTempDir = Join-Path $TempRootPath "digit"
 $conductorDir = "./conductor"
 $commonDir = "./common"
 $digitDir = "./digit"
