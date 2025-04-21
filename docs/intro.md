@@ -10,11 +10,11 @@ The Kinetic display is a unique and entertaining way to view the current time, d
 
 ![summaryfeatures](img/intro/whitedisplay.webp)
 
-The display is robust and designed to last for years when made properly by following the extensive and detailed assembly documentation. Below is the evolution of experiments needed to design the display.
+The display is robust and designed to last for years when made properly by following the extensive and detailed assembly documentation. Below is the evolution of experiments needed to reach the goal of making an inexpensive, robust, and reliable actuator that is 3D printable on a 256mm x 256mm x 256mm build plate.
 
 **Actuator Prototype**
 
-The display started with the goal of making an inexpensive, robust, and reliable actuator that is 3D printable. Early experiments of the original design caused the teeth on the rack and pinion gear to break after several minutes of continuous use because of several issues: gear tooth size, type of filament used for fabrication, size of the gear, and the jarring stops when extending or retracting. For example, the size and number of teeth on each gear was tuned to balance the transmission of stress equitably across the gears. Use of 103 motor made a big difference in the amount of voltage draw that was required to make the actuator work properly. Cheap 103 motors could barely make the actuator move with 5v, whereas heavy duty 103 motors worked fine with only 3v.
+The 30 actuators needed to make the display function were critical to get right from the start of the design. Early experiments of the original design caused the teeth on the rack and pinion gear to break after several minutes of continuous use because of several issues: gear tooth size, type of filament used for fabrication, size of the gear, and the jarring stops when extending or retracting. For example, the size and number of teeth on each gear was tuned to balance the transmission of stress equitably across the gears. Use of 103 motor made a big difference in the amount of voltage draw that was required to make the actuator work properly. Cheap 103 motors could barely make the actuator move with 5v, whereas heavy duty 103 motors worked fine with only 3v.
 ![actuator](img/intro/actuatorprototype.webp)
 
 **Segment Prototype**
@@ -24,7 +24,7 @@ Iterations of the segment design were needed to see how robust the head of the s
 
 **Digit Prototype**
 
-The first digit prototype provided insights into the digit's PCB design, software that needed to be written, and the minimum size of the digit given the dimensions and positioning of the seven actuators.
+The first digit prototype provided insights into the digit's PCB design, teh software that needed to be written, and the minimum size of the display given the dimensions and positioning of the seven actuators that make a single digit.
 
 ![digit](img/intro/singledigitprototype.webp)
 
