@@ -27,4 +27,4 @@ The links listed below should be followed in the order they appear on the page f
 - [Buck Module Wiring](./assembly/buckmodulesandwiring.md)
 - [UART and Relay Wiring](./assembly/uartandrelaywiring.md)
 - [Display Face and PCBs Assembly with Integration Testing](./assembly/displayfacepcbs.md)
-- [Backplate Assembly](./assembly/backplateassembly.md)
+- [Backplate and Stand Assembly](./assembly/backplateassembly.md)
