@@ -42,21 +42,19 @@ p.off()
 4. Open a new **PowerShell** terminal by clicking on the windows icon in the bottom task bar and searching for "Windows PowerShell", then run the application. See **(A)** in the screen shot below.
 ![prereqsoftware-7](./img/prereq-software/prereqsoftware-7.webp)
 5. Change the directory to ```kinetic-display\micropython\pico``` in your cloned fork, see **(B)** in the previous screen shot.
-6. Run the command `./deploy.ps1 <directorypath>`. See **(A)** in the screen shot below. For example,
-
-    <!--dos-->
-        ./deploy.ps1 "c:/deploy"
+6. Run the command `./deploy.ps1 <directorypath>`, for example `./deploy.ps1 "c:/deploy"`. See **(A)** in the screen shot below. For example,
 
     ![prereqsoftware-8](./img/prereq-software/prereqsoftware-8.webp)
 
-7. You'll get the following example output when successful, see **(B)** in the previous screen shot.
+!!! warning
+    The folder you provide for **`<directorypath>`** will be deleted as well as all its contents when you run this command. Be sure to save or rename the folder if you want to preserve any changes you made.
 
-    <!--dos-->
-            Directory: C:\deploy
-        
-        Mode                 LastWriteTime         Length Name
-        ----                 -------------         ------ ----
-        d-----         1/31/2025   8:30 PM                conductor
-        d-----         1/31/2025   8:30 PM                digit
+You'll get the following example output when successful, see **(B)** in the previous screen shot. Verify the **conductor** and **digit** folders exist under the folder you provided in the parameter for the `./deploy.ps1`. This is the code you'll use to load onto your Raspberry Pi 2040 Picos and PicoW.
 
-8. Verify the **conductor** and **digit** folders exist under the folder you provided in the parameter for the `./deploy.ps1`.
+<!--dos-->
+        Directory: C:\deploy
+    
+    Mode                 LastWriteTime         Length Name
+    ----                 -------------         ------ ----
+    d-----         1/31/2025   8:30 PM                conductor
+    d-----         1/31/2025   8:30 PM                digit
