@@ -1,6 +1,6 @@
 # Software and Microcontroller Preparation
 
-If you have any problems with this documentation or the code, please create a new issue on the kinetic-display github site here: https://github.com/gobbyo/kinetic-display/issues/new/choose.
+If you have any problems with this documentation or the code, please create a [new issue](https://github.com/gobbyo/kinetic-display/issues/new/choose) on the kinetic-display github site.
 
 ## Prerequisites
 
