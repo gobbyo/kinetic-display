@@ -228,11 +228,13 @@ p.off()
 <li><a href="https://git-scm.com/downloads">Install Git</a></li>
 <li>Open a browser and follow the link to the <a href="https://github.com/gobbyo/kinetic-display">Kinetic-Display</a> repository</li>
 <li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">Create a fork</a> of the Kinetic-Display repository.</li>
-<li>Open a new <strong>PowerShell</strong> terminal by clicking on the windows icon in the bottom task bar and searching for "Windows PowerShell", then run the application. See <strong>(A)</strong> in the screen shot below.
+<li>Run this step if you have never used or run PowerShell on your computer. Open a new <strong>PowerShell</strong> terminal by clicking on the windows icon in the bottom task bar and searching for "Windows PowerShell", then run the application. See <strong>(A)</strong> in the screen shot below. <strong>(B)</strong> Type <code>Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser</code> in the PS terminal and enter. <strong>(C)</strong> Verify the command by typing <code>Get-ExecutionPolicy -List</code> and ensure the <code>CurrentUser</code> is set to <code>Unrestricted</code>.
 <img alt="prereqsoftware-7" src="../img/prereq-software/prereqsoftware-7.webp" /></li>
+<li>If you did not need to run the previous step, then open a new <strong>PowerShell</strong> terminal by clicking on the windows icon in the bottom task bar and searching for "Windows PowerShell", then run the application. See <strong>(A)</strong> in the screen shot below.
+<img alt="prereqsoftware-8" src="../img/prereq-software/prereqsoftware-8.webp" /></li>
 <li>Change the directory to <code>kinetic-display\micropython\pico</code> in your cloned fork, see <strong>(B)</strong> in the previous screen shot.</li>
 <li>Run the command <code>./deploy.ps1 &lt;directorypath&gt;</code>, for example <code>./deploy.ps1 "c:\deploy"</code>. See <strong>(A)</strong> in the screen shot below.
-<img alt="prereqsoftware-8" src="../img/prereq-software/prereqsoftware-8.webp" /></li>
+<img alt="prereqsoftware-9" src="../img/prereq-software/prereqsoftware-9.webp" /></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
