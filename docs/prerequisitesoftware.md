@@ -37,14 +37,19 @@ p.off()
 ## Fork and Clone the Repository
 
 1. [Install Git](https://git-scm.com/downloads)
-1. Open a browser and follow the link to the [Kinetic-Display](https://github.com/gobbyo/kinetic-display) repository
-1. [Create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) of the Kinetic-Display repository.
-2. Open a new **PowerShell** terminal in VS Code, change the directory to ```kinetic-display\micropython\pico``` in your cloned fork, then run the command `./deploy.ps1 <directorypath>`. For example,
+2. Open a browser and follow the link to the [Kinetic-Display](https://github.com/gobbyo/kinetic-display) repository
+3. [Create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) of the Kinetic-Display repository.
+4. Open a new **PowerShell** terminal by clicking on the windows icon in the bottom task bar and searching for "Windows PowerShell", then run the application. See **(A)** in the screen shot below.
+![prereqsoftware-7](./img/prereq-software/prereqsoftware-7.webp)
+5. Change the directory to ```kinetic-display\micropython\pico``` in your cloned fork, see **(B)** in the previous screen shot.
+6. Run the command `./deploy.ps1 <directorypath>`. See **(A)** in the screen shot below. For example,
 
     <!--dos-->
         ./deploy.ps1 "c:/deploy"
-        
-3. You'll get the following example output when successful.
+
+    ![prereqsoftware-8](./img/prereq-software/prereqsoftware-8.webp)
+
+7. You'll get the following example output when successful, see **(B)** in the previous screen shot.
 
     <!--dos-->
             Directory: C:\deploy
@@ -54,4 +59,4 @@ p.off()
         d-----         1/31/2025   8:30 PM                conductor
         d-----         1/31/2025   8:30 PM                digit
 
-4. Verify the **conductor** and **digit** folders exist under the folder you provided in the parameter for the `./deploy.ps1`.
+8. Verify the **conductor** and **digit** folders exist under the folder you provided in the parameter for the `./deploy.ps1`.
