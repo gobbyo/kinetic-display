@@ -6,14 +6,14 @@ Back face of the display when the backplates and stand are assembled.
 
 ## Prerequisites
 
-- Completed the [actuator assembly](actuatorassembly.md) guide for all 30 actuators
+- Completed all the guides previous to this assembly guide, which include the digit PCBs, conductor and digit 1 PCB, power management PCB, and mounting the buck modules.
 - `digit-back-plate.stl`
 - `digit2-back-plate.stl`
 - `digit1-back-plate.stl`
 
 ## Digit Backplate Assembly
 
-The picture below shows the digit 0 and 3 backplates in an upright position. Note the segment characters, **A** through **G**, engraved onto the backplate. The round port holes allow the motor's rack gear to protrude into the face of the display. The rectangular holes allow the motor's white and black wires to plug into the `CW` and `CCW` pins on the PCB.
+The picture below shows the digit 0 and 3 backplates in an upright position. Note the segment characters, **A** through **G**, engraved onto the backplate. The round port holes allow the motor's rack gear to protrude into the face of the display. The rectangular holes allow the motor's white and black wires to plug into their respective `CW` and `CCW` pins on the PCB.
 
 **digit-back-plate.stl**
 
