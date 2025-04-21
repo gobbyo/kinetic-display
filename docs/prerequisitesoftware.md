@@ -41,11 +41,13 @@ p.off()
 1. [Install Git](https://git-scm.com/downloads)
 2. Open a browser and follow the link to the [Kinetic-Display](https://github.com/gobbyo/kinetic-display) repository
 3. [Create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) of the Kinetic-Display repository.
-4. Open a new **PowerShell** terminal by clicking on the windows icon in the bottom task bar and searching for "Windows PowerShell", then run the application. See **(A)** in the screen shot below.
+4. Run this step if you have never used or run PowerShell on your computer. Open a new **PowerShell** terminal by clicking on the windows icon in the bottom task bar and searching for "Windows PowerShell", then run the application. See **(A)** in the screen shot below. **(B)** Type `Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser` in the PS terminal and enter. **(C)** Verify the command by typing `Get-ExecutionPolicy -List` and ensure the `CurrentUser` is set to `Unrestricted`.
 ![prereqsoftware-7](./img/prereq-software/prereqsoftware-7.webp)
-5. Change the directory to ```kinetic-display\micropython\pico``` in your cloned fork, see **(B)** in the previous screen shot.
-6. Run the command `./deploy.ps1 <directorypath>`, for example `./deploy.ps1 "c:\deploy"`. See **(A)** in the screen shot below.
+5. If you did not need to run the previous step, then open a new **PowerShell** terminal by clicking on the windows icon in the bottom task bar and searching for "Windows PowerShell", then run the application. See **(A)** in the screen shot below.
 ![prereqsoftware-8](./img/prereq-software/prereqsoftware-8.webp)
+6. Change the directory to ```kinetic-display\micropython\pico``` in your cloned fork, see **(B)** in the previous screen shot.
+7. Run the command `./deploy.ps1 <directorypath>`, for example `./deploy.ps1 "c:\deploy"`. See **(A)** in the screen shot below.
+![prereqsoftware-9](./img/prereq-software/prereqsoftware-9.webp)
 
 !!! warning
     The folder you provide for **`<directorypath>`** will be deleted as well as all its contents when you run this command. Be sure to save or rename the folder if you want to preserve any changes you made.
