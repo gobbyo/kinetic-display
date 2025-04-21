@@ -231,26 +231,23 @@ p.off()
 <img alt="prereqsoftware-7" src="../img/prereq-software/prereqsoftware-7.webp" /></li>
 <li>Change the directory to <code>kinetic-display\micropython\pico</code> in your cloned fork, see <strong>(B)</strong> in the previous screen shot.</li>
 <li>
-<p>Run the command <code>./deploy.ps1 &lt;directorypath&gt;</code>. See <strong>(A)</strong> in the screen shot below. For example,</p>
-<p><!--dos-->
-    ./deploy.ps1 "c:/deploy"</p>
+<p>Run the command <code>./deploy.ps1 &lt;directorypath&gt;</code>, for example <code>./deploy.ps1 "c:/deploy"</code>. See <strong>(A)</strong> in the screen shot below. For example,</p>
 <p><img alt="prereqsoftware-8" src="../img/prereq-software/prereqsoftware-8.webp" /></p>
 </li>
-<li>
-<p>You'll get the following example output when successful, see <strong>(B)</strong> in the previous screen shot.</p>
-<p><!--dos-->
-        Directory: C:\deploy</p>
-<pre class="codehilite"><code>Mode                 LastWriteTime         Length Name
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The folder you provide for <strong><code>&lt;directorypath&gt;</code></strong> will be deleted as well as all its contents when you run this command. Be sure to save or rename the folder if you want to preserve any changes you made.</p>
+</div>
+<p>You'll get the following example output when successful, see <strong>(B)</strong> in the previous screen shot. Verify the <strong>conductor</strong> and <strong>digit</strong> folders exist under the folder you provided in the parameter for the <code>./deploy.ps1</code>. This is the code you'll use to load onto your Raspberry Pi 2040 Picos and PicoW.</p>
+<!--dos-->
+<pre class="codehilite"><code>    Directory: C:\deploy
+
+Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
 d-----         1/31/2025   8:30 PM                conductor
 d-----         1/31/2025   8:30 PM                digit
-</code></pre>
-
-</li>
-<li>
-<p>Verify the <strong>conductor</strong> and <strong>digit</strong> folders exist under the folder you provided in the parameter for the <code>./deploy.ps1</code>.</p>
-</li>
-</ol></div>
+</code></pre></div>
             </div>
         </div>
 
