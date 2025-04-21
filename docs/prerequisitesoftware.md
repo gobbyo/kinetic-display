@@ -50,7 +50,7 @@ p.off()
 !!! warning
     The folder you provide for **`<directorypath>`** will be deleted as well as all its contents when you run this command. Be sure to save or rename the folder if you want to preserve any changes you made.
 
-You'll get the following example output when successful, see **(B)** in the previous screen shot. Verify the **conductor** and **digit** folders exist under the folder you provided in the parameter for the `./deploy.ps1`. This is the code you'll use to load onto your Raspberry Pi 2040 Picos and PicoW.
+You'll get the following example output when successful, also see **(B)** in the previous screen shot. Verify the **conductor** and **digit** folders exist under the folder you provided in the parameter for the `./deploy.ps1`. This is the code you'll use to load onto your Raspberry Pi 2040 Picos and PicoW.
 
 <!--dos-->
         Directory: C:\deploy
