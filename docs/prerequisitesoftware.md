@@ -1,5 +1,7 @@
 # Software and Microcontroller Preparation
 
+If you have any problems with this documentation or the code, please create a new issue on the kinetic-display github site here: https://github.com/gobbyo/kinetic-display/issues/new/choose.
+
 ## Prerequisites
 
 Read and bookmark the instructions to install [Micropython onto your Raspberry Pi Pico](https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#what-is-micropython).
