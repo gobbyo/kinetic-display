@@ -44,9 +44,8 @@ p.off()
 4. Open a new **PowerShell** terminal by clicking on the windows icon in the bottom task bar and searching for "Windows PowerShell", then run the application. See **(A)** in the screen shot below.
 ![prereqsoftware-7](./img/prereq-software/prereqsoftware-7.webp)
 5. Change the directory to ```kinetic-display\micropython\pico``` in your cloned fork, see **(B)** in the previous screen shot.
-6. Run the command `./deploy.ps1 <directorypath>`, for example `./deploy.ps1 "c:\deploy"`. See **(A)** in the screen shot below. For example,
-
-    ![prereqsoftware-8](./img/prereq-software/prereqsoftware-8.webp)
+6. Run the command `./deploy.ps1 <directorypath>`, for example `./deploy.ps1 "c:\deploy"`. See **(A)** in the screen shot below.
+![prereqsoftware-8](./img/prereq-software/prereqsoftware-8.webp)
 
 !!! warning
     The folder you provide for **`<directorypath>`** will be deleted as well as all its contents when you run this command. Be sure to save or rename the folder if you want to preserve any changes you made.
