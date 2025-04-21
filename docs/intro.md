@@ -14,7 +14,7 @@ The display is robust and designed to last for years when made properly by follo
 
 **Actuator Prototype**
 
-The display started with the goal of making an inexpensive, robust, and reliable actuator that is 3D printable. Early experiments of the original design caused the teeth on the rack and pinion gear to break after several minutes of continuous use because of several issues: gear tooth size, type of filament used for fabrication, size of the gear, and motor thrust. For example, the size and number of teeth on each gear was tuned to balance the transmission of stress equitably across the gears. Use of 103 motor made a big difference in the amount of voltage draw that was required to make the actuator work properly. Cheap 103 motors could barely make the actuator move with 5v, whereas heavy duty 103 motors worked fine with only 3v.
+The display started with the goal of making an inexpensive, robust, and reliable actuator that is 3D printable. Early experiments of the original design caused the teeth on the rack and pinion gear to break after several minutes of continuous use because of several issues: gear tooth size, type of filament used for fabrication, size of the gear, and the jarring stops when extending or retracting. For example, the size and number of teeth on each gear was tuned to balance the transmission of stress equitably across the gears. Use of 103 motor made a big difference in the amount of voltage draw that was required to make the actuator work properly. Cheap 103 motors could barely make the actuator move with 5v, whereas heavy duty 103 motors worked fine with only 3v.
 ![actuator](img/intro/actuatorprototype.webp)
 
 **Segment Prototype**
