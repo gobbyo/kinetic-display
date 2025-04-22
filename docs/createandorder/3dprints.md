@@ -13,65 +13,73 @@ Below is a table of quantities of filament by weight. Since a roll of filament i
 
 </p>
 
-## Parts
+## **1. Black Nylon, Smooth Build Plate**
 
-### **1. Black Nylon, Smooth Build Plate**
+For Orca and Bambu Studio slicers see `.\fdm\3mf\nylon-smooth-black.3mf`
 
 | File | Description | Density |&nbsp;Quantity&nbsp;| Per Unit (g) | Total (g) |
 | :--- | :---- | ----: | ----: | ----: | ----: |
-| **digit-gear30.stl**&nbsp;| Pinion gear for digits and colons  | 100% | 30 | 1.1 | 33 |
-| **rack-gear.stl**&nbsp;| The arm of the actuator that extends and retracts the segment | 25% | 30 | 1.47 | 44.1 |
+| `digit-gear30.stl` | Pinion gear for digits and colons  | 100% | 30 | 1.1 | 33 |
+| `rack-gear.stl` | The arm of the actuator that extends and retracts the segment | 25% | 30 | 1.47 | 44.1 |
 
 </p>
 
-### **2. Black Matte PLA, Smooth Build Plate**
+## **2. Black Matte PLA, Smooth Build Plate**
+
+For Orca and Bambu Studio slicers see `.\fdm\3mf\pla-smooth-black.3mf`
 
 | File | Description | Density |&nbsp;Quantity&nbsp;| Per Unit (g) | Total (g) |
 | :------ | :------ |  ----: |  ----: |  ----: |  ----: |
-| **digit-back-plate.stl**&nbsp;| Back plates for digits 0 and 3 for mounting the actuators | 50% | 3 | 47.43 | 142.29 |
-| **digit-gear10.stl**&nbsp;| Motor shaft gear mounted onto the heavy duty 103 motors | 100% | 30 | 0.5 | 15 |
-| **digit1-back-plate.stl**&nbsp;| Conductor and digit 1 back plate for mounting the actuators | 50% | 1 | 67.7 | 67.7 |
-| **digit2-back-plate.stl**&nbsp;| Back plate for digit 2 for mounting the actuators and powerbank/display stand | 50% | 1 | 47.43 | 47.43 |
+| `digit-back-plate.stl` | Back plates for digits 0 and 3 for mounting the actuators | 50% | 3 | 47.43 | 142.29 |
+| `digit-gear10.stl` | Motor shaft gear mounted onto the heavy duty 103 motors | 100% | 30 | 0.5 | 15 |
+| `digit1-back-plate.stl` | Conductor and digit 1 back plate for mounting the actuators | 50% | 1 | 67.7 | 67.7 |
+| `digit2-back-plate.stl` | Back plate for digit 2 for mounting the actuators and powerbank/display stand | 50% | 1 | 47.43 | 47.43 |
 
 </p>
 
-### **3. White Matte PLA, Smooth Build Plate**
+## **3. White Matte PLA, Smooth Build Plate**
 
-| STL | Description | Density |&nbsp;Quantity&nbsp;| Per Unit (g) | Total (g) |
+For Orca and Bambu Studio slicers see `.\fdm\3mf\pla-smooth-white.3mf`
+
+| File | Description | Density |&nbsp;Quantity&nbsp;| Per Unit (g) | Total (g) |
 | :---- | :---- | :---- |  ----: |  ----: |  ----: |
-| **digit-motor-mount.stl**&nbsp;| Motor mount for digits and colons | 100% | 30 | 12.77 | 383.1 |
-| **powerbank-cover.stl**&nbsp;| Cover for buck converters and powerbank PCB | 100% | 1 | 65.53 | 65.53 |
-| **powerbank.stl**&nbsp;| Kinetic display stand, buck converter mounts, and powerbank PCB mount | 100% | 1 | 146.75 | 146.75 |
-| **rackgear-bumper.stl**&nbsp;| Stops the segment or colon at the precise distance when extended | 100% | 30 | 0.61 | 18.3 |
-| **seg-pin.stl**&nbsp;| Pin to hold the rack gear onto the segment and colons | 100% | 30 | 0.4 | 12 |
+| `digit-motor-mount.stl`| Motor mount for digits and colons | 100% | 30 | 12.77 | 383.1 |
+| `powerbank-cover.stl`| Cover for buck converters and powerbank PCB | 100% | 1 | 65.53 | 65.53 |
+| `powerbank.stl`| Kinetic display stand, buck converter mounts, and powerbank PCB mount | 100% | 1 | 146.75 | 146.75 |
+| `rackgear-bumper.stl`| Stops the segment or colon at the precise distance when extended | 100% | 30 | 0.61 | 18.3 |
+| `seg-pin.stl`| Pin to hold the rack gear onto the segment and colons | 100% | 30 | 0.4 | 12 |
 
 </p>
 
-### **4. White Matte PLA, Textured Build Plate**
+## **4. White Matte PLA, Textured Build Plate**
 
-| STL | Description | Density |&nbsp;Quantity&nbsp;| Per Unit (g) | Total (g) |
+For Orca and Bambu Studio slicers see `.\fdm\3mf\pla-textured-white.3mf`
+
+| File | Description | Density |&nbsp;Quantity&nbsp;| Per Unit (g) | Total (g) |
 | :---- | :---- | :---- |  ----: |  ----: |  ----: |
-| **colon-seg.stl**&nbsp;| Colon, upper and lower | 100% | 2 | 1.88 | 3.76 |
-| **digit0-1-face.stl**&nbsp;| Kinetic display face, right side (when facing the front, textured surface side) | 70% | 1 | 395 | 395 |
-| **digit2-3-face.stl**&nbsp;| Kinetic display face, left side (when facing the front, textured surface side) | 70% | 1 | 399 | 399 |
-| **seg-a.stl**&nbsp;| Digit 7-segment A | 100% | 4 | 4 | 16 |
-| **seg-b.stl**&nbsp;| Digit 7-segment B | 100% | 4 | 4 | 16 |
-| **seg-c.stl**&nbsp;| Digit 7-segment C | 100% | 4 | 4 | 16 |
-| **seg-d.stl**&nbsp;| Digit 7-segment D | 100% | 4 | 4 | 16 |
-| **seg-e.stl**&nbsp;| Digit 7-segment E | 100% | 4 | 4 | 16 |
-| **seg-f.stl**&nbsp;| Digit 7-segment F | 100% | 4 | 4 | 16 |
-| **seg-g.stl**&nbsp;| Digit 7-segment G | 100% | 4 | 4 | 16 |
+| colon-seg.stl | Colon, upper and lower | 100% | 2 | 1.88 | 3.76 |
+| digit0-1-face.stl | Kinetic display face, right side (when facing the front, textured surface side) | 70% | 1 | 395 | 395 |
+| digit2-3-face.stl | Kinetic display face, left side (when facing the front, textured surface side) | 70% | 1 | 399 | 399 |
+| seg-a.stl | Digit 7-segment A | 100% | 4 | 4 | 16 |
+| seg-b.stl | Digit 7-segment B | 100% | 4 | 4 | 16 |
+| seg-c.stl | Digit 7-segment C | 100% | 4 | 4 | 16 |
+| seg-d.stl | Digit 7-segment D | 100% | 4 | 4 | 16 |
+| seg-e.stl | Digit 7-segment E | 100% | 4 | 4 | 16 |
+| seg-f.stl | Digit 7-segment F | 100% | 4 | 4 | 16 |
+| seg-g.stl | Digit 7-segment G | 100% | 4 | 4 | 16 |
 
 </p>
 
-### **5. Black TPU, Smooth Build Plate**
+## **5. Black TPU, Smooth Build Plate**
+
+For Orca and Bambu Studio slicers see `.\fdm\3mf\tpu-smooth-black.3mf`
   
-| STL | Description | Density |&nbsp;Quantity&nbsp;| Per Unit (g) | Total (g) |
+| File | Description | Density |&nbsp;Quantity&nbsp;| Per Unit (g) | Total (g) |
 | :---- | :---- | :---- |  ----: |  ----: |  ----: |
-| **digit-gasket.stl**&nbsp;| Gaskets for digits 0 and 3 to cushion the PCB during segment retractions | 15% | 3 | 17.86 | 53.58 |
-| **digit1-gasket.stl**&nbsp;| Gasket for the conductor and digit 1 to cushion the PCB during segment retractions | 15% | 1 | 31.71 | 31.71 |
-| **digit2-gasket.stl**&nbsp;| Gasket for digits 2 to cushion the PCB during segment retractions | 15% | 1 | 17.86 | 17.86 |
-| **rackgear-bumper-gasket.stl**&nbsp;| Provides some cushion for the rack gear when extended | 100% | 30 | 0.4 | 12 |
+| digit-gasket.stl | Gaskets for digits 0 and 3 to cushion the PCB during segment retractions | 15% | 3 | 17.86 | 53.58 |
+| digit1-gasket.stl | Gasket for the conductor and digit 1 to cushion the PCB during segment retractions | 15% | 1 | 31.71 | 31.71 |
+| digit2-gasket.stl | Gasket for digits 2 to cushion the PCB during segment retractions | 15% | 1 | 17.86 | 17.86 |
+| rackgear-bumper-gasket.stl | Provides some cushion for the rack gear when extended | 100% | 30 | 0.4 | 12 |
 
 </p>
 
