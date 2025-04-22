@@ -174,7 +174,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#add_the_16_pin_headers" class="nav-link">Add the 16 pin headers</a>
+            <li class="nav-item" data-bs-level="2"><a href="#add_the_16_pin_headers" class="nav-link">Add the 16 Pin Headers</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -214,16 +214,16 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="digit_pcb_assembly">Digit PCB Assembly<a class="headerlink" href="#digit_pcb_assembly" title="Permanent link">&para;</a></h1>
-<p>The display has 4 digits. The digits are numbered from right to left, 0-3, when looking at the front of display. The digit PCBs are digits 0, 2, and 3 whereas the controller PCB is digit 1 and includes the colons. The digit PCBs are the foundation of the display and serve several important functions:</p>
+<p>The display has 4 digits, numbered from right to left (0-3) when viewed from the front. The digit PCBs are for digits 0, 2, and 3, while the controller PCB (digit 1) includes the colons. The digit PCBs are the foundation of the display and serve several important functions:</p>
 <ul>
-<li>provides a mechanical backstop to the actuator's segment when retracting into the display</li>
-<li>provides a consistent distance of dispersion for the lighting of the segment, giving each segment a uniform glow rather than spots of light</li>
-<li>provides the traditional role of reducing the wiring, efficiently connects various electronic component minimizing the overall size, reliable, cost-effective, and consistent quality of the circuitry</li>
+<li><strong>Mechanical Backstop</strong>: Provides a sturdy backstop for the actuator's segment when retracting into the display.</li>
+<li><strong>Uniform Lighting</strong>: Ensures consistent light dispersion for each segment, creating a uniform glow without hotspots.</li>
+<li><strong>Efficient Circuitry</strong>: Reduces wiring complexity, connects components efficiently, and ensures reliable, cost-effective, and consistent quality.</li>
 </ul>
-<p>This section details the assembly of the digit PCBs. Note the pictures below showing the fully assembled PCBs that will be covered in this section.</p>
+<p>This guide details the assembly of the digit PCBs. Below are images of the fully assembled PCBs covered in this section.</p>
 <p>Front face fully assembled.
-<img alt="digit pcb front face" src="../../img/digitpcbassembly/1-digitpcbassembly-frontface.webp" />
-Back side fully assembled.
+<img alt="digit pcb front face" src="../../img/digitpcbassembly/1-digitpcbassembly-frontface.webp" /></p>
+<p>Back side fully assembled.
 <img alt="digit pcb back side" src="../../img/digitpcbassembly/1-digitpcbassembly-backface.webp" /></p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
@@ -336,60 +336,54 @@ Back side fully assembled.
 </table>
 <h2 id="label_the_digit_pcb">Label the Digit PCB<a class="headerlink" href="#label_the_digit_pcb" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Using a label maker or piece of tape and pen, create two sets of 3 labels: "0", "2", and "3". Add the <strong>(A)</strong> label to the <strong>(B)</strong> FRONT FACING SIDE of each of the 3 digit PCBs as placed in the picture below. Also note that digit 0 <strong>(C)</strong> in the picture below is a completed digit PCB ready for mounting onto the display.
-<img alt="digitpcb-2" src="../../img/digitpcbassembly/2-digitpcbassembly.webp" /></li>
-<li>Add the <strong>(A)</strong> label to the <strong>(B)</strong> BACK FACING SIDE of each of the 3 digit PCBs as placed in the picture below.
-<img alt="digitpcb-3" src="../../img/digitpcbassembly/3-digitpcbassembly.webp" /></li>
+<li><strong>Label the Front Side</strong>: Using a label maker or tape and pen, create labels for "0", "2", and "3". Attach the labels to the <strong>front-facing side</strong> of each digit PCB as shown below. Note that digit 0 <strong>(C)</strong> in the image is a completed PCB ready for mounting.
+   <img alt="digitpcb-2" src="../../img/digitpcbassembly/2-digitpcbassembly.webp" /></li>
+<li><strong>Label the Back Side</strong>: Attach the same labels to the <strong>back-facing side</strong> of each digit PCB as shown below.
+   <img alt="digitpcb-3" src="../../img/digitpcbassembly/3-digitpcbassembly.webp" /></li>
 </ol>
-<h2 id="add_the_16_pin_headers">Add the 16 pin headers<a class="headerlink" href="#add_the_16_pin_headers" title="Permanent link">&para;</a></h2>
+<h2 id="add_the_16_pin_headers">Add the 16 Pin Headers<a class="headerlink" href="#add_the_16_pin_headers" title="Permanent link">&para;</a></h2>
 <ol>
-<li>From the front side of the digit PCB, <strong>(A)</strong> insert the 16 pin header into the through holes by aligning the notch with the digit PCB top silk layer outline of the 16 pins. The notch in the 16-pin header is used to ensure correct orientation when connecting the L293D motor driver. Carefully turn over the digit PCB while keeping the 16 pin header in the through holes.
-<img alt="digitpcb-4" src="../../img/digitpcbassembly/4-digitpcbassembly.webp" /></li>
-<li><strong>(A)</strong> Solder the 16 pins and repeat the previous step until all 4 of the 16 pin headers are soldered into place.
-<img alt="digitpcb-5" src="../../img/digitpcbassembly/5-digitpcbassembly.webp" /></li>
-<li>From the back of the digit PCB, <strong>(A)</strong> cut off the soldered pins.
-<img alt="digitpcb-6" src="../../img/digitpcbassembly/6-digitpcbassembly.webp" /></li>
-<li>Touch up the clipped pins with a small bit of solder to make <strong>(A)</strong> smooth rounded beads instead of sharp points.
-<img alt="digitpcb-7" src="../../img/digitpcbassembly/7-digitpcbassembly.webp" /></li>
-<li>Clean up the soldered pins by removing the flux using a cotton pad dabbed with isopropyl alcohol. Repeat the previous step if you find your cotton pad is being torn from any protruding pins.
-<img alt="digitpcb-8" src="../../img/digitpcbassembly/8-digitpcbassembly.webp" /></li>
+<li><strong>Insert the Header</strong>: From the front side of the PCB, align the notch on the 16-pin header with the silk screen outline. Insert the header into the through holes.
+   <img alt="digitpcb-4" src="../../img/digitpcbassembly/4-digitpcbassembly.webp" /></li>
+<li><strong>Solder the Pins</strong>: Turn the PCB over and solder all 16 pins. Repeat for all 4 headers.
+   <img alt="digitpcb-5" src="../../img/digitpcbassembly/5-digitpcbassembly.webp" /></li>
+<li><strong>Trim and Smooth</strong>: From the back, snip the soldered pins flush, then touch up with solder to create smooth rounded beads.
+   <img alt="digitpcb-6" src="../../img/digitpcbassembly/6-digitpcbassembly.webp" /></li>
+<li><strong>Clean the Flux</strong>: Use a cotton pad dabbed with isopropyl alcohol to remove flux residue.
+   <img alt="digitpcb-8" src="../../img/digitpcbassembly/8-digitpcbassembly.webp" /></li>
 </ol>
 <h2 id="add_the_28_leds">Add the 28 LEDs<a class="headerlink" href="#add_the_28_leds" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>BEFORE SOLDERING LEDS ONTO YOUR DIGIT PCB, be sure to test your LEDs on a breadboard and use a digital camera to spot any variations in color when the LEDs are lit.</p>
+<p>Test your LEDs on a breadboard before soldering to ensure consistent color and brightness. Use a digital camera to detect variations.</p>
 </div>
-<p>Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with <strong>(C)</strong> 2.63v. Note the <strong>(A)</strong> light blue LEDs and the <strong>(B)</strong> purple LEDs within the same blue batch of LEDs.
-<img alt="blueLEDs" src="../../img/digitpcbassembly/ledcolors.webp" /></p>
 <ol>
-<li>There are seven segments "A" through "G" each with four LEDs. From the front of the digit PCB, start with segment "A" by inserting the LED's <strong>(A)</strong> long lead (anode) into the "+" through hole. Repeat the process for all segment-A LEDs.
-<img alt="digitpcbLEDs-1" src="../../img/digitpcbassembly/1-digitpcbassembly-LED.webp" /></li>
-<li>Carefully turn over the digit PCB and rest it with the back facing up. Solder each LED pin onto the digit PCB, then <strong>(A)</strong> snip off the excess. Touch up the clipped pins with a small bit of solder to make smooth rounded beads instead of sharp points.
-<img alt="digitpcbLEDs-3" src="../../img/digitpcbassembly/3-digitpcbassembly-LED.webp" /></li>
-<li>Clean the flux off with <strong>(A)</strong> a cotton pad dabbed in isopropyl alcohol.
-<img alt="digitpcbLEDs-4" src="../../img/digitpcbassembly/4-digitpcbassembly-LED.webp" /></li>
-<li>Repeat the previous steps for segments B through G until all 28 LEDs are soldered onto the PCB. The picture below is the front face of the digit with all 28 LEDs soldered into place.
-<img alt="digitpcbLEDs-5" src="../../img/digitpcbassembly/5-digitpcbassembly-LED.webp" /></li>
+<li><strong>Insert LEDs</strong>: Start with segment "A". Insert the LED's <strong>long lead (anode)</strong> into the "+" through hole. Repeat for all LEDs in segment "A".
+   <img alt="digitpcbLEDs-1" src="../../img/digitpcbassembly/1-digitpcbassembly-LED.webp" /></li>
+<li><strong>Solder and Trim</strong>: Turn the PCB over, solder the LED pins, and snip off the excess. Smooth the clipped pins with solder.
+   <img alt="digitpcbLEDs-3" src="../../img/digitpcbassembly/3-digitpcbassembly-LED.webp" /></li>
+<li><strong>Clean the Flux</strong>: Remove flux residue with a cotton pad and isopropyl alcohol.
+   <img alt="digitpcbLEDs-4" src="../../img/digitpcbassembly/4-digitpcbassembly-LED.webp" /></li>
+<li><strong>Repeat for All Segments</strong>: Complete the process for segments B through G. The image below shows all LEDs soldered in place.
+   <img alt="digitpcbLEDs-5" src="../../img/digitpcbassembly/5-digitpcbassembly-LED.webp" /></li>
 </ol>
 <h2 id="add_the_motor_pins">Add the Motor Pins<a class="headerlink" href="#add_the_motor_pins" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Break out 7 pairs of 2.54mm male breakaway pins using needle nose pliers.
-<img alt="digitpcbmotorpins-2" src="../../img/digitpcbassembly/2-digitpcbassembly-motorpins.webp" /></li>
-<li>On the back of the digit PCB, place the short end of the motor pin-pair into each actuator segment through hole (seg-A through seg-G).
-<img alt="digitpcbmotorpins-3" src="../../img/digitpcbassembly/3-digitpcbassembly-motorpins.webp" /></li>
-<li>On the front of the digit PCB, solder the motor pins into place.
-<img alt="digitpcbmotorpins-4" src="../../img/digitpcbassembly/4-digitpcbassembly-motorpins.webp" /></li>
-<li>Continuing on the front of the digit PCB, cut the pins flush on the pcb, then resolder the snipped pins to create smooth beads.
-<img alt="digitpcbmotorpins-5" src="../../img/digitpcbassembly/5-digitpcbassembly-motorpins.webp" /></li>
-<li>Clean off the flux residue using a cotton pad dabbed in isopropyl alcohol.
-<img alt="digitpcbmotorpins-6" src="../../img/digitpcbassembly/6-digitpcbassembly-motorpins.webp" /></li>
+<li><strong>Break Out Pins</strong>: Use needle nose pliers to break out 7 pairs of 2.54mm male breakaway pins.
+   <img alt="digitpcbmotorpins-2" src="../../img/digitpcbassembly/2-digitpcbassembly-motorpins.webp" /></li>
+<li><strong>Insert Pins</strong>: Place the short end of each pin pair into the actuator segment through holes (seg-A to seg-G) on the back of the PCB.
+   <img alt="digitpcbmotorpins-3" src="../../img/digitpcbassembly/3-digitpcbassembly-motorpins.webp" /></li>
+<li><strong>Solder and Trim</strong>: Solder the pins on the front side, snip them flush, and smooth with solder.
+   <img alt="digitpcbmotorpins-5" src="../../img/digitpcbassembly/5-digitpcbassembly-motorpins.webp" /></li>
+<li><strong>Clean the Flux</strong>: Remove flux residue with isopropyl alcohol.
+   <img alt="digitpcbmotorpins-6" src="../../img/digitpcbassembly/6-digitpcbassembly-motorpins.webp" /></li>
 </ol>
 <h2 id="mount_the_motor_drivers">Mount the Motor Drivers<a class="headerlink" href="#mount_the_motor_drivers" title="Permanent link">&para;</a></h2>
 <ol>
-<li>From the front of the digit PCB, orient the motor driver so the notch (or pin 1) is aligned with the 16 pin header.
-<img alt="digitpcbmotordriver1" src="../../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp" /></li>
-<li>CAREFULLY insert the motor driver into the 16 pin header and ensure none of the pins on the motor driver are bent or protruding from the 16 pin header.
-<img alt="digitpcbmotordriver2" src="../../img/digitpcbassembly/2-digitpcbassembly-motordriver.webp" /></li>
+<li><strong>Align the Driver</strong>: Orient the motor driver so the notch aligns with the 16-pin header.
+   <img alt="digitpcbmotordriver1" src="../../img/digitpcbassembly/1-digitpcbassembly-motordriver.webp" /></li>
+<li><strong>Insert Carefully</strong>: Insert the motor driver into the header, ensuring no pins are bent.
+   <img alt="digitpcbmotordriver2" src="../../img/digitpcbassembly/2-digitpcbassembly-motordriver.webp" /></li>
 <li>Repeat the install for the remaining motor drivers.</li>
 </ol>
 <h2 id="add_the_pcb_mount_two_pin_2p_terminal_block_connectors">Add the PCB Mount, Two pin (2P) Terminal Block Connectors<a class="headerlink" href="#add_the_pcb_mount_two_pin_2p_terminal_block_connectors" title="Permanent link">&para;</a></h2>
@@ -414,7 +408,7 @@ Back side fully assembled.
 <p>Ceramic capacitors do not have polarity and can be inserted in any direction.</p>
 </div>
 <p><img alt="digitpcbcapacitor-2" src="../../img/digitpcbassembly/3-digitpcbassembly-capacitor.webp" />
-3. On the back of the digit PCB, cut the pins flush, resolder to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
+1. On the back of the digit PCB, cut the pins flush, resolder to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 <img alt="digitpcbcapacitor-3" src="../../img/digitpcbassembly/4-digitpcbassembly-capacitor.webp" /></p>
 <h2 id="add_the_20_pin_headers_and_install_the_microcontroller">Add the 20 pin Headers and Install the Microcontroller<a class="headerlink" href="#add_the_20_pin_headers_and_install_the_microcontroller" title="Permanent link">&para;</a></h2>
 <ol>
