@@ -1,6 +1,6 @@
 # Backplate and Stand Assembly
 
-Back face of the display when the backplates and stand are assembled.
+Back of the display when the backplates and stand are assembled.
 
 ![backplateassembly-13](../img/backplateassembly/backplateassembly-13.webp)
 

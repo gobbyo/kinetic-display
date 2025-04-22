@@ -60,7 +60,7 @@ This section will guide you through following the relevant instructions from the
 ![1-controllerpcb](../img/controllerpcb/1-controllerpcb.webp)
 1. On the front face of the conductor PCB, [add the 28 5mm LEDs](digitpcbassembly.md#add_the_28_leds) as previously completed for the digit PCBs. Be sure to insert the LED anode (long pin) into the through hole marked with a `+`. Do not solder the 5mm LED into the `Top-LED1` or `LWR-LED1` location on the conductor PCB. Instructions later in this tutorial will detail how to install the 3mm LEDs into the `Top-LED1` and `LWR-LED1` locations. Finish soldering the 28 5mm LEDs by snipping all the pins flush on the back side of the conductor PCB, resolder each snipped pin into a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.
 ![2-controllerpcb](../img/controllerpcb/2-controllerpcb.webp)
-1. On the back face of the conductor PCB, [add the motor pins](digitpcbassembly.md#add_the_motor_pins). Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add for the colons, and an additional 3-pin connector for the Digital Humidity and Temperature (DHT) sensor. Don't forget to snip all the pins flush on the back side of the conductor PCB, resolder each snipped pin to a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.
+1. On the back of the conductor PCB, [add the motor pins](digitpcbassembly.md#add_the_motor_pins). Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add for the colons, and an additional 3-pin connector for the Digital Humidity and Temperature (DHT) sensor. Don't forget to snip all the pins flush on the back side of the conductor PCB, resolder each snipped pin to a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.
 ![3-controllerpcb](../img/controllerpcb/3-controllerpcb.webp)
 
 ## Colon Segments LEDs
@@ -112,7 +112,7 @@ The picture below shows a completed install of the terminal block connectors on 
 ![17-controllerpcb](../img/controllerpcb/17-controllerpcb.webp)
 1. Follow the picture below, insert the 2P terminal block connector into the `5v-D0` through holes with the connector facing LEFT, then solder it into place.
 ![18-controllerpcb](../img/controllerpcb/18-controllerpcb.webp)
-1. Position the back face of the PCB up and insert the 2P terminal block connector into the `5v-OUT` through holes with the connector facing RIGHT, then solder it into place.
+1. Position the back of the PCB up and insert the 2P terminal block connector into the `5v-OUT` through holes with the connector facing RIGHT, then solder it into place.
 ![19-controllerpcb](../img/controllerpcb/19-controllerpcb.webp)
 
 ## Electrolytic and Ceramic Capacitors
@@ -129,12 +129,12 @@ On the front face of the conductor PCB, [mount the L293D 16-pin IC Stepper Motor
 
 ## Vertical Slide SPDT Switch
 
-On the back face of the conductor PCB, insert the SPDT vertical slide switch pins into the `ON/OFF` through holes found on the top right hand corner, then solder into place.
+On the back of the conductor PCB, insert the SPDT vertical slide switch pins into the `ON/OFF` through holes found on the top right hand corner, then solder into place.
 ![22-controllerpcb](../img/controllerpcb/22-controllerpcb.webp)
 
 ## Light Dependent Resistor (LDR)
 
-Following the picture below and from the back face of the conductor PCB, place the two LDR pins into the `R1` through holes. Bend the pins of the LDR upward so the head of the LDR fits tightly on the top of conductor PCB. Solder the LDR in place once properly positioned.
+Following the picture below and from the back of the conductor PCB, place the two LDR pins into the `R1` through holes. Bend the pins of the LDR upward so the head of the LDR fits tightly on the top of conductor PCB. Solder the LDR in place once properly positioned.
 
 ![23-controllerpcb](../img/controllerpcb/23-controllerpcb.webp)
 

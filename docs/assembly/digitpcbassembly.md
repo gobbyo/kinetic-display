@@ -10,8 +10,8 @@ This section details the assembly of the digit PCBs. Note the pictures below sho
 
 Front face fully assembled.
 ![digit pcb front face](../img/digitpcbassembly/1-digitpcbassembly-frontface.webp)
-Back face fully assembled.
-![digit pcb back face](../img/digitpcbassembly/1-digitpcbassembly-backface.webp)
+Back side fully assembled.
+![digit pcb back side](../img/digitpcbassembly/1-digitpcbassembly-backface.webp)
 
 ## Prerequisites
 
