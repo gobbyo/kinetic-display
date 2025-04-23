@@ -1,66 +1,66 @@
 # Conductor and Digit 1 PCB Assembly
 
-Digit 1 and the colons are on a single PCB. Digit 1, powered by a Raspberry Pi Pico 2040 is identical to digits 0, 2, and 3 except it is contained on a single PCB with the conductor. The Raspberry Pi Pico W 2040 (conductor) operates the colons and serves as the central command and control for the display performing the following functions:
+Digit 1 and the colons are on a single PCB. Digit 1, powered by a Raspberry Pi Pico 2040, is identical to digits 0, 2, and 3 except it is contained on a single PCB with the conductor. The Raspberry Pi Pico W 2040 (conductor) operates the colons and serves as the central command and control for the display, performing the following functions:
 
-- Sends commands to digits as to what to display (i.e. 0-9, A-F)
-- Sends commands for the brightness of the digits
-- When in Admin mode, it will transmit its own wifi service to wirelessly change the display settings from a cell phone or computer.
+- Sends commands to digits as to what to display (e.g., 0-9, A-F).
+- Sends commands for the brightness of the digits.
+- When in Admin mode, transmits its own Wi-Fi service to wirelessly change the display settings from a cell phone or computer.
 - Manages the scheduler, which is the mechanism for displaying time, date, external temperature and humidity, and interior temperature and humidity.
-- When connected to a wifi network, it will obtain its public facing IP address, look up the time zone it is located in, and set the display to the local time
-- When connected to a wifi network, it will obtain the closest weather station and, depending on the scheduler, may display the external temperature and humidity.
-- Manages the low power consumption mode by turning off the power to digits 0-3.  When awakened, it will turn on the power to digits 0-3.
+- When connected to a Wi-Fi network, obtains its public-facing IP address, looks up the time zone it is located in, and sets the display to the local time.
+- When connected to a Wi-Fi network, obtains the closest weather station and, depending on the scheduler, may display the external temperature and humidity.
+- Manages the low power consumption mode by turning off the power to digits 0-3. When awakened, it turns on the power to digits 0-3.
 
-Front face of the conductor PCB fully assembled.
-![front-face-controller-pcb](../img/controllerpcb/fullyassembled-frontface.webp)
-Back side of the conductor PCB fully assembled.
+Front face of the conductor PCB fully assembled:  
+![front-face-controller-pcb](../img/controllerpcb/fullyassembled-frontface.webp)  
+Back side of the conductor PCB fully assembled:  
 ![back-face-controller-pcb](../img/controllerpcb/fullyassembled-backface.webp)
 
 ## Prerequisites
 
-- [Fabrication of the conductor and digit one PCB](../createandorder/pcb.md)
-- 3D print of the upper and lower colons
+- [Fabrication of the conductor and digit one PCB](../createandorder/pcb.md).
+- 3D print of the upper and lower colons.
 
 ***Table of components***
 
 | Quantity | Component | Image |
 | :--: | :------ | :-----: |
-| 5 | 16 pin IC socket | ![component-1](../img/component/component-1.webp)|
-| 5 | L293D stepper motor driver | ![component-2](../img/component/component-2.webp)|
-| 4 | 20 pin female header connector | ![component-3](../img/component/component-3.webp)|
-| 1 | 20 pin single row breakaway male connector | ![component-4](../img/component/component-4.webp)|
-| 1 | Vertical Slide Switch Micro High Knob 3 Pin 2 Position 1P2T SPDT Panel Mount | ![component-4](../img/component/component-18.webp)|
-| 6 | 2 Pin PCB Mount Screw Terminal Block Connector Straight Pin | ![component-5](../img/component/component-5.webp)|
-| 2 | 0.1μ farad ceramic capacitor | ![component-6](../img/component/component-6.webp)|
-| 2 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp)|
+| 5 | 16 pin IC socket | ![component-1](../img/component/component-1.webp) |
+| 5 | L293D stepper motor driver | ![component-2](../img/component/component-2.webp) |
+| 4 | 20 pin female header connector | ![component-3](../img/component/component-3.webp) |
+| 1 | 20 pin single row breakaway male connector | ![component-4](../img/component/component-4.webp) |
+| 1 | Vertical Slide Switch Micro High Knob 3 Pin 2 Position 1P2T SPDT Panel Mount | ![component-18](../img/component/component-18.webp) |
+| 6 | 2 Pin PCB Mount Screw Terminal Block Connector Straight Pin | ![component-5](../img/component/component-5.webp) |
+| 2 | 0.1μ farad ceramic capacitor | ![component-6](../img/component/component-6.webp) |
+| 2 | 1μ farad electrolytic capacitor | ![component-7](../img/component/component-7.webp) |
 | 1 | 5mm 0.5 Ω ohm Photoresistor Resistor 5516 GL5516 | ![component-19](../img/component/component-19.webp) |
 | 1 | S8550 TO-92 TH PNP Transistor | ![component-20](../img/component/component-20.webp) |
 | 1 | 2N2222 TO-92 TH NPN Transistor | ![component-21](../img/component/component-21.webp) |
 | 2 | 10K ohm 0805 Resistor 1/2w Metal Film Fixed Resistor | ![component-22](../img/component/component-22.webp) |
-| 28 | 5mm Flat top LED, anode long lead (your choice of color) | ![component-8](../img/component/component-8.webp)|
-| 2 | 3mm Flat top LED, anode long lead (your choice of color) | ![component-17](../img/component/component-17.webp)|
-| 1 | Raspberry Pi Pico 2040 with Headers | ![component-9](../img/component/component-9.webp)|
-| 1 | Raspberry Pi Pico W 2040 with Headers | ![component-9](../img/component/component-16.webp)|
-| 1 | conductor PCB | See next section |
+| 28 | 5mm Flat top LED, anode long lead (your choice of color) | ![component-8](../img/component/component-8.webp) |
+| 2 | 3mm Flat top LED, anode long lead (your choice of color) | ![component-17](../img/component/component-17.webp) |
+| 1 | Raspberry Pi Pico 2040 with Headers | ![component-9](../img/component/component-9.webp) |
+| 1 | Raspberry Pi Pico W 2040 with Headers | ![component-16](../img/component/component-16.webp) |
+| 1 | Conductor PCB | See next section |
 
 ***Table of tools***
 
 | Required | Tool | Image |
 | :------: | :------- | :---: |
-| Yes | Soldering station    | ![tool-4](../img/tools/tool-4.webp)|
-| Yes | 0.8mm 1.76oz RoHS flux core solder | ![tool-1](../img/tools/tool-1.webp)|
-| Yes | Mini flush cutters   | ![tool-6](../img/tools/tool-6.webp)|
-| Yes | Isopropyl Alcohol | ![tool-3](../img/tools/tool-3.webp)|
-| Yes | Cotton Facial Pads | ![tool-2](../img/tools/tool-2.webp)|
+| Yes | Soldering station | ![tool-4](../img/tools/tool-4.webp) |
+| Yes | 0.8mm 1.76oz RoHS flux core solder | ![tool-1](../img/tools/tool-1.webp) |
+| Yes | Mini flush cutters | ![tool-6](../img/tools/tool-6.webp) |
+| Yes | Isopropyl Alcohol | ![tool-3](../img/tools/tool-3.webp) |
+| Yes | Cotton Facial Pads | ![tool-2](../img/tools/tool-2.webp) |
 
 ## Assemble Digit One
 
 This section will guide you through following the relevant instructions from the **Digit 0, 2, & 3** PCB assembly to assemble **Digit 1** on the conductor PCB.
 
-1. On the front face of the conductor PCB, [add the 16 pin headers](digitpcbassembly.md#add_the_16_pin_headers) as previously completed for the digit PCBs. Note the highlighted sections in the picture below that you'll add an additional, 16 pin header to the conductor PCB. Don't forget to snip all the pins flush on the back side of the conductor PCB, resolder each snipped pin to a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.
+1. On the front face of the conductor PCB, [add the 16 pin headers](digitpcbassembly.md#add_the_16_pin_headers) as previously completed for the digit PCBs. Note the highlighted sections in the picture below where you'll add an additional 16 pin header to the conductor PCB. Don't forget to snip all the pins flush on the back side of the conductor PCB, resolder each snipped pin to a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.  
 ![1-controllerpcb](../img/controllerpcb/1-controllerpcb.webp)
-1. On the front face of the conductor PCB, [add the 28 5mm LEDs](digitpcbassembly.md#add_the_28_leds) as previously completed for the digit PCBs. Be sure to insert the LED anode (long pin) into the through hole marked with a `+`. Do not solder the 5mm LED into the `Top-LED1` or `LWR-LED1` location on the conductor PCB. Instructions later in this tutorial will detail how to install the 3mm LEDs into the `Top-LED1` and `LWR-LED1` locations. Finish soldering the 28 5mm LEDs by snipping all the pins flush on the back side of the conductor PCB, resolder each snipped pin into a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.
+1. On the front face of the conductor PCB, [add the 28 5mm LEDs](digitpcbassembly.md#add_the_28_leds) as previously completed for the digit PCBs. Be sure to insert the LED anode (long pin) into the through hole marked with a `+`. Do not solder the 5mm LED into the `Top-LED1` or `LWR-LED1` location on the conductor PCB. Instructions later in this tutorial will detail how to install the 3mm LEDs into the `Top-LED1` and `LWR-LED1` locations. Finish soldering the 28 5mm LEDs by snipping all the pins flush on the back side of the conductor PCB, resolder each snipped pin into a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.  
 ![2-controllerpcb](../img/controllerpcb/2-controllerpcb.webp)
-1. On the back of the conductor PCB, [add the motor pins](digitpcbassembly.md#add_the_motor_pins). Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add for the colons, and an additional 3-pin connector for the Digital Humidity and Temperature (DHT) sensor. Don't forget to snip all the pins flush on the back side of the conductor PCB, resolder each snipped pin to a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.
+1. On the back of the conductor PCB, [add the motor pins](digitpcbassembly.md#add_the_motor_pins). Note the highlighted sections in the picture below where there are two additional motor pins (pairs) you'll need to add for the colons, and an additional 3-pin connector for the Digital Humidity and Temperature (DHT) sensor. Don't forget to snip all the pins flush on the back side of the conductor PCB, resolder each snipped pin to a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.  
 ![3-controllerpcb](../img/controllerpcb/3-controllerpcb.webp)
 
 ## Colon Segments LEDs
