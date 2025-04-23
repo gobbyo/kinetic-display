@@ -39,49 +39,43 @@ For Orca and Bambu Studio slicers, see `.\fdm\3mf\pla-smooth-black.3mf`.
 
 ## **3. White Matte PLA, Smooth Build Plate**
 
-For Orca and Bambu Studio slicers see `.\fdm\3mf\pla-smooth-white.3mf`
+For Orca and Bambu Studio slicers, see `.\fdm\3mf\pla-smooth-white.3mf`.
 
-| File | Description | Density |&nbsp;Quantity&nbsp;| Per Unit (g) | Total (g) |
-| :---- | :---- | :---- |  ----: |  ----: |  ----: |
-| `digit-motor-mount.stl`| Motor mount for digits and colons | 100% | 30 | 12.77 | 383.1 |
-| `powerbank-cover.stl`| Cover for buck converters and powerbank PCB | 100% | 1 | 65.53 | 65.53 |
-| `powerbank.stl`| Kinetic display stand, buck converter mounts, and powerbank PCB mount | 100% | 1 | 146.75 | 146.75 |
-| `rackgear-bumper.stl`| Stops the segment or colon at the precise distance when extended | 100% | 30 | 0.61 | 18.3 |
-| `seg-pin.stl`| Pin to hold the rack gear onto the segment and colons | 100% | 30 | 0.4 | 12 |
-
-</p>
+| File                  | Description                                           | Density | Quantity | Per Unit (g) | Total (g) |
+| :-------------------- | :--------------------------------------------------- | ------: | -------: | -----------: | --------: |
+| `digit-motor-mount.stl`| Motor mount for digits and colons                    | 100% | 30 | 12.77 | 383.1 |
+| `powerbank-cover.stl` | Cover for buck converters and powerbank PCB          | 100% | 1 | 65.53 | 65.53 |
+| `powerbank.stl`       | Kinetic display stand, buck converter mounts, and powerbank PCB mount | 100% | 1 | 146.75 | 146.75 |
+| `rackgear-bumper.stl` | Stops the segment or colon at the precise distance when extended | 100% | 30 | 0.61 | 18.3 |
+| `seg-pin.stl`         | Pin to hold the rack gear onto the segment and colons | 100% | 30 | 0.4 | 12 |
 
 ## **4. White Matte PLA, Textured Build Plate**
 
-For Orca and Bambu Studio slicers see `.\fdm\3mf\pla-textured-white.3mf`
+For Orca and Bambu Studio slicers, see `.\fdm\3mf\pla-textured-white.3mf`.
 
-| File | Description | Density |&nbsp;Quantity&nbsp;| Per Unit (g) | Total (g) |
-| :---- | :---- | :---- |  ----: |  ----: |  ----: |
-| colon-seg.stl | Colon, upper and lower | 100% | 2 | 1.88 | 3.76 |
-| digit0-1-face.stl | Kinetic display face, right side (when facing the front, textured surface side) | 70% | 1 | 395 | 395 |
-| digit2-3-face.stl | Kinetic display face, left side (when facing the front, textured surface side) | 70% | 1 | 399 | 399 |
-| seg-a.stl | Digit 7-segment A | 100% | 4 | 4 | 16 |
-| seg-b.stl | Digit 7-segment B | 100% | 4 | 4 | 16 |
-| seg-c.stl | Digit 7-segment C | 100% | 4 | 4 | 16 |
-| seg-d.stl | Digit 7-segment D | 100% | 4 | 4 | 16 |
-| seg-e.stl | Digit 7-segment E | 100% | 4 | 4 | 16 |
-| seg-f.stl | Digit 7-segment F | 100% | 4 | 4 | 16 |
-| seg-g.stl | Digit 7-segment G | 100% | 4 | 4 | 16 |
-
-</p>
+| File                  | Description                                           | Density | Quantity | Per Unit (g) | Total (g) |
+| :-------------------- | :--------------------------------------------------- | ------: | -------: | -----------: | --------: |
+| `colon-seg.stl`       | Colon, upper and lower                               | 100% | 2 | 1.88 | 3.76 |
+| `digit0-1-face.stl`   | Kinetic display face, right side (when facing the front, textured surface side) | 70% | 1 | 395 | 395 |
+| `digit2-3-face.stl`   | Kinetic display face, left side (when facing the front, textured surface side) | 70% | 1 | 399 | 399 |
+| `seg-a.stl`           | Digit 7-segment A                                    | 100% | 4 | 4 | 16 |
+| `seg-b.stl`           | Digit 7-segment B                                    | 100% | 4 | 4 | 16 |
+| `seg-c.stl`           | Digit 7-segment C                                    | 100% | 4 | 4 | 16 |
+| `seg-d.stl`           | Digit 7-segment D                                    | 100% | 4 | 4 | 16 |
+| `seg-e.stl`           | Digit 7-segment E                                    | 100% | 4 | 4 | 16 |
+| `seg-f.stl`           | Digit 7-segment F                                    | 100% | 4 | 4 | 16 |
+| `seg-g.stl`           | Digit 7-segment G                                    | 100% | 4 | 4 | 16 |
 
 ## **5. Black TPU, Smooth Build Plate**
 
-For Orca and Bambu Studio slicers see `.\fdm\3mf\tpu-smooth-black.3mf`
-  
-| File | Description | Density |&nbsp;Quantity&nbsp;| Per Unit (g) | Total (g) |
-| :---- | :---- | :---- |  ----: |  ----: |  ----: |
-| digit-gasket.stl | Gaskets for digits 0 and 3 to cushion the PCB during segment retractions | 15% | 3 | 17.86 | 53.58 |
-| digit1-gasket.stl | Gasket for the conductor and digit 1 to cushion the PCB during segment retractions | 15% | 1 | 31.71 | 31.71 |
-| digit2-gasket.stl | Gasket for digits 2 to cushion the PCB during segment retractions | 15% | 1 | 17.86 | 17.86 |
-| rackgear-bumper-gasket.stl | Provides some cushion for the rack gear when extended | 100% | 30 | 0.4 | 12 |
+For Orca and Bambu Studio slicers, see `.\fdm\3mf\tpu-smooth-black.3mf`.
 
-</p>
+| File                  | Description                                           | Density | Quantity | Per Unit (g) | Total (g) |
+| :-------------------- | :--------------------------------------------------- | ------: | -------: | -----------: | --------: |
+| `digit-gasket.stl`    | Gaskets for digits 0 and 3 to cushion the PCB during segment retractions | 15% | 3 | 17.86 | 53.58 |
+| `digit1-gasket.stl`   | Gasket for the conductor and digit 1 to cushion the PCB during segment retractions | 15% | 1 | 31.71 | 31.71 |
+| `digit2-gasket.stl`   | Gasket for digit 2 to cushion the PCB during segment retractions | 15% | 1 | 17.86 | 17.86 |
+| `rackgear-bumper-gasket.stl` | Provides some cushion for the rack gear when extended | 100% | 30 | 0.4 | 12 |
 
 ## Guidelines
 
