@@ -182,7 +182,7 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="digit_pcb_test">Digit PCB Test<a class="headerlink" href="#digit_pcb_test" title="Permanent link">&para;</a></h1>
-<p>Run the tests in this section after assembling each digit PCB to ensure all the components on the PCB are soldered and functional. Any defective electronic component on the digit PCB will need to be replaced before completing the project.</p>
+<p>Run the tests in this section after assembling each digit PCB to ensure all components are soldered correctly and functional. Any defective electronic component on the digit PCB must be replaced before completing the project.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../digitpcbassembly/">Completed digit PCB ready for actuators</a></li>
@@ -191,21 +191,48 @@
 </ul>
 <h2 id="test_the_motor_and_led_segments">Test the Motor and LED Segments<a class="headerlink" href="#test_the_motor_and_led_segments" title="Permanent link">&para;</a></h2>
 <ol>
-<li>From Visual Studio Code, open the deployed <code>digit</code> project by following the steps in the screen capture below: <strong>(A)</strong> click the file menu, <strong>(B)</strong> select the <code>digit</code> folder, then <strong>(C)</strong> click the <strong>Select Folder</strong> button.
+<li><strong>Open the Deployed Project</strong>:<br />
+  From Visual Studio Code, open the deployed <code>digit</code> project.
+     <strong>(A)</strong> Click the file menu, <strong>(B)</strong> select the <code>digit</code> folder, then <strong>(C)</strong> click the <strong>Select Folder</strong> button.<br />
 <img alt="testpcbactuator-prerequisite" src="../../img/digitpcbtest/prerequisite.webp" /></li>
-<li>Following the picture below, plug a USB cable connected to your computer into the Raspberry Pi Pico's USB port on the controller PCB. Connect your Raspberry Pi Pico to Visual Studio Code by opening the <strong>MicroPico vREPL</strong> in the terminal dropdown, see the prerequisite software section <a href="../../prerequisitesoftware/#verify_micropython_on_your_raspberry_pi_pico">Verify Micropython on your Raspberry Pi Pico</a>.
+<li><strong>Connect the Raspberry Pi Pico</strong>:  <ul>
+<li>Plug a USB cable from your computer into the Raspberry Pi Pico's USB port on the digit PCB.  </li>
+<li>Open the <strong>MicroPico vREPL</strong> in the terminal dropdown as described in <a href="../../prerequisitesoftware/#verify_micropython_on_your_raspberry_pi_pico">Verify Micropython on your Raspberry Pi Pico</a>.<br />
 <img alt="digitpcbtest-1" src="../../img/digitpcbtest/digitpcbtest-2.webp" /></li>
-<li>Following the picture below, plug the dupont connector from the actuator into the <code>SEG-A</code> pins with the white wire connected to the <code>CW</code> pin and the black wire to the <code>CCW</code> pin.
+</ul>
+</li>
+<li><strong>Connect the Actuator</strong>:  <ul>
+<li>Plug the Dupont connector from the actuator into the <code>SEG-A</code> pins.  </li>
+<li>Ensure the <strong>white wire</strong> is connected to the <code>CW</code> pin and the <strong>black wire</strong> to the <code>CCW</code> pin.<br />
 <img alt="digitpcbtest-2" src="../../img/digitpcbtest/digitpcbtest-3.webp" /></li>
-<li>From Visual Studio Code, <strong>(A)</strong> click on the <code>digit.py</code> file then <strong>(B)</strong> select the MicroPico vREPL from the menu in the Terminal pane.
+</ul>
+</li>
+<li><strong>Open the Test File</strong>:<br />
+  From Visual Studio Code, <strong>(A)</strong> click on the <code>digit.py</code> file, then <strong>(B)</strong> select the MicroPico vREPL from the terminal menu.<br />
 <img alt="digitpcbtest-3" src="../../img/digitpcbtest/digitpcbtest-4.webp" /></li>
-<li>From Visual Studio Code <strong>(A)</strong> verify the connection from your computer to the Raspberry Pi Pico, then <strong>(B)</strong> click the <strong>Run</strong> button to run the test application for the digit.
+<li><strong>Run the Test Application</strong>:  <ul>
+<li><strong>(A)</strong> Verify the connection between your computer and the Raspberry Pi Pico.  </li>
+<li><strong>(B)</strong> Click the <strong>Run</strong> button to execute the test application for the digit PCB.<br />
 <img alt="digitpcbtest-4" src="../../img/digitpcbtest/digitpcbtest-5.webp" /></li>
-<li>The console test application shows various options that relate to segments 0-6 which correspond to segments A-G. For example, segment A is 0, B is 1, until G which is 6. Extend <code>SEG-A</code> by typing <strong>e0</strong> in the console.
+</ul>
+</li>
+<li><strong>Test Segment A</strong>:  <ul>
+<li>The console test application displays options for segments 0-6, corresponding to segments A-G.  </li>
+<li>Extend <code>SEG-A</code> by typing <strong>e0</strong> in the console.<br />
 <img alt="digitpcbtest-6" src="../../img/digitpcbtest/digitpcbtest-6.webp" /></li>
-<li>Following the picture below, the 4 <code>SEG-A</code> LEDs light up and the motor briefly turns on. From the terminal session, type <strong>r0</strong> to retract the segment.<br>
+</ul>
+</li>
+<li><strong>Verify Segment A</strong>:  <ul>
+<li>The 4 <code>SEG-A</code> LEDs should light up, and the motor should briefly turn on.  </li>
+<li>Retract <code>SEG-A</code> by typing <strong>r0</strong> in the console.<br />
 <img alt="digitpcbtest-7" src="../../img/digitpcbtest/digitpcbtest-7.webp" /></li>
-<li>Repeat steps 6 and 7 to verify the remaining <code>SEG-B</code> through <code>SEG-G</code> work as expected. Repeat the test for all digit PCBs 0-3.</li>
+</ul>
+</li>
+<li><strong>Test Remaining Segments</strong>:  <ul>
+<li>Repeat steps 6 and 7 for <code>SEG-B</code> through <code>SEG-G</code> to verify all segments work as expected.  </li>
+<li>Perform this test for all digit PCBs (0-3).</li>
+</ul>
+</li>
 </ol></div>
             </div>
         </div>

@@ -199,6 +199,10 @@
 <li>Black Matte PLA shaft gear 10, <code>digit-gear10.stl</code></li>
 <li>White Matte PLA motor mount, <code>digit-motor-mount.stl</code></li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ensure all 3D-printed parts are free of defects and printed with the recommended settings for optimal fit and durability.</p>
+</div>
 <p><strong><em>Table of components</em></strong></p>
 <table>
 <thead>
@@ -298,36 +302,44 @@
 </tr>
 <tr>
 <td style="text-align: center;">No</td>
-<td style="text-align: left;">Label Maker</td>
+<td style="text-align: left;">Label Maker (optional for labeling wires)</td>
 <td style="text-align: center;"><img alt="tool-5" src="../../img/tools/tool-5.webp" /></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Always work in a well-ventilated area when soldering or using super glue to avoid inhaling fumes.</p>
+</div>
 <h2 id="shaft_gear">Shaft Gear<a class="headerlink" href="#shaft_gear" title="Permanent link">&para;</a></h2>
 <p>In this section, you'll glue the shaft gear onto the motor shaft to prevent slippage. The shaft gear must be made from rigid filament like PLA or ABS.</p>
 <h3 id="shaft_gear_installation_steps">Shaft Gear Installation Steps<a class="headerlink" href="#shaft_gear_installation_steps" title="Permanent link">&para;</a></h3>
 <p>The tools and parts needed include: a regular tipped screwdriver, super glue, <code>digit-gear10.stl</code>, and a DC brushed toy motor.</p>
 <ol>
-<li><strong>Apply Glue</strong>: Add a drop of super glue to the shaft gear. Ensure the gear is 10mm high with a 5mm hole.
+<li><strong>Apply Glue</strong>: Add a drop of super glue to the shaft gear. Ensure the gear is 10mm high with a 5mm hole. Avoid excess glue to prevent it from seeping into the motor shaft.
    <img alt="shaftstep1" src="../../img/motor-shaft-gear/2-motor-shaft-gear.webp" /></li>
-<li><strong>Attach the Gear</strong>: Position the DC motor vertically so the bottom of the shaft rests on a hard surface. Use the screwdriver to press the gear 5mm down onto the shaft.
+<li><strong>Attach the Gear</strong>: Position the DC motor vertically so the bottom of the shaft rests on a hard surface. Use the screwdriver to press the gear 5mm down onto the shaft. Ensure the gear is aligned and does not wobble.
    <img alt="shaftstep2" src="../../img/motor-shaft-gear/3-motor-shaft-gear.webp" /></li>
-<li><strong>Repeat</strong>: Follow these steps for the remaining 29 motors.
+<li><strong>Repeat</strong>: Follow these steps for the remaining 29 motors. Allow the glue to cure for at least 10 minutes before proceeding.
    <img alt="shaftstep4" src="../../img/motor-shaft-gear/4-motor-shaft-gear.webp" /></li>
 </ol>
 <h2 id="wires">Wires<a class="headerlink" href="#wires" title="Permanent link">&para;</a></h2>
 <p>The white 28 AWG wire provides clockwise (CW) motion to extend the segment, while the black wire provides counterclockwise (CCW) motion to retract it.</p>
 <h3 id="wire_cutting_and_soldering_steps">Wire Cutting and Soldering Steps<a class="headerlink" href="#wire_cutting_and_soldering_steps" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Cut Wires</strong>: Cut 9 white and 9 black wires to 6cm for actuators labeled "C", "D", and "UC" (upper colon). Cut 21 white and 21 black wires to 4cm for the remaining actuators.
+<li><strong>Cut Wires</strong>: Cut 9 white and 9 black wires to 6cm for actuators labeled "C", "D", and "UC" (upper colon). Cut 21 white and 21 black wires to 4cm for the remaining actuators. Use a ruler for precise measurements.
    <img alt="step1" src="../../img/motor-wire/1-motor-wire.webp" /></li>
-<li><strong>Strip Wires</strong>: Strip 3mm of insulation from one end of each wire.
+<li><strong>Strip Wires</strong>: Strip 3mm of insulation from one end of each wire. Avoid nicking the wire strands.
    <img alt="step2" src="../../img/motor-wire/2-motor-wire.webp" /></li>
-<li><strong>Prepare Terminals</strong>: Position the motor with the shaft pointing away and terminals facing up. Heat the soldering iron to 350°C and tin each terminal.
+<li><strong>Prepare Terminals</strong>: Position the motor with the shaft pointing away and terminals facing up. Heat the soldering iron to 350°C and tin each terminal with a small amount of solder.
    <img alt="step3" src="../../img/motor-wire/3-motor-wire.webp" /></li>
-<li><strong>Solder Wires</strong>: Solder the white wire to the left terminal and the black wire to the right terminal.
+<li><strong>Solder Wires</strong>: Solder the white wire to the left terminal and the black wire to the right terminal. Ensure the solder joints are clean and secure.
    <img alt="step4" src="../../img/motor-wire/4-motor-wire.webp" /></li>
 </ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use a helping hand tool to hold the motor steady while soldering.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Label the black-wire side of the 6cm actuators ("C", "D", and "UC"). No labels are needed for the 4cm actuators.</p>
@@ -343,6 +355,10 @@
 <li><strong>Repeat</strong>: Complete this process for all motors. Ensure labeled actuators are correctly marked.
    <img alt="step4" src="../../img/dupont-connections/4-motor-dupont-connection.webp" /></li>
 </ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Test each connection with a multimeter to ensure continuity before proceeding.</p>
+</div>
 <h2 id="motor_mount">Motor Mount<a class="headerlink" href="#motor_mount" title="Permanent link">&para;</a></h2>
 <p>Properly assembling the motor mount is critical to avoid issues like jamming or sticking. The motor mount consists of:
 - <strong>(A)</strong> Motor mount (<code>digit-motor-mount.stl</code>)
@@ -352,20 +368,24 @@
 <p><img alt="actuatorfigure" src="../../img/actuator/motor-mount-figure.webp" /></p>
 <h3 id="motor_mount_assembly_steps">Motor Mount Assembly Steps<a class="headerlink" href="#motor_mount_assembly_steps" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Cut Shaft</strong>: Cut straight sections from a jumbo paperclip into 2cm pieces.
+<li><strong>Cut Shaft</strong>: Cut straight sections from a jumbo paperclip into 2cm pieces. Use heavy-duty wire cutter pliers for clean cuts.
    <img alt="actuatorstep1" src="../../img/actuator/1-actuator.webp" /></li>
-<li><strong>Insert Shaft</strong>: Insert the 2cm shaft into the motor mount until it protrudes 1mm into the pinion gear space.
+<li><strong>Insert Shaft</strong>: Insert the 2cm shaft into the motor mount until it protrudes 1mm into the pinion gear space. Ensure the shaft is straight.
    <img alt="actuatorstep4" src="../../img/actuator/4-actuator.webp" /></li>
-<li><strong>Attach Pinion Gear</strong>: Align the pinion gear hole with the shaft and slide it into the motor mount.
+<li><strong>Attach Pinion Gear</strong>: Align the pinion gear hole with the shaft and slide it into the motor mount. Verify the gear rotates freely.
    <img alt="actuatorstep5" src="../../img/actuator/5-actuator.webp" /></li>
-<li><strong>Melt Collar</strong>: Heat the soldering iron to 250°C. Use a zinc strip to melt and flatten the collar onto the motor mount.
+<li><strong>Melt Collar</strong>: Heat the soldering iron to 250°C. Use a zinc strip to melt and flatten the collar onto the motor mount. Work carefully to avoid damaging the mount.
    <img alt="actuatorstep7" src="../../img/actuator/7-actuator.webp" /></li>
-<li><strong>Verify Fit</strong>: Ensure the shaft rotates freely in the pinion gear. Reprint the gear if necessary to avoid jamming.
+<li><strong>Verify Fit</strong>: Ensure the shaft rotates freely in the pinion gear. Reprint the gear if necessary to avoid jamming. Lubricate lightly if needed.
    <img alt="actuatorstep9" src="../../img/actuator/9-actuator.webp" /></li>
-<li><strong>Install Motor</strong>: Insert the prepared motor into the mount with the shaft pointing left and terminals downward.
+<li><strong>Install Motor</strong>: Insert the prepared motor into the mount with the shaft pointing left and terminals downward. Secure the motor firmly.
    <img alt="actuatorstep10" src="../../img/actuator/10-actuator.webp" /></li>
-<li><strong>Repeat</strong>: Assemble the remaining 29 motors.</li>
-</ol></div>
+<li><strong>Repeat</strong>: Assemble the remaining 29 motors. Perform a final inspection to ensure all assemblies are consistent.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Avoid overtightening or forcing components, as this may cause damage or misalignment.</p>
+</div></div>
             </div>
         </div>
 

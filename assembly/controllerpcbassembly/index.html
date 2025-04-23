@@ -222,24 +222,24 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="conductor_and_digit_1_pcb_assembly">Conductor and Digit 1 PCB Assembly<a class="headerlink" href="#conductor_and_digit_1_pcb_assembly" title="Permanent link">&para;</a></h1>
-<p>Digit 1 and the colons are on a single PCB. Digit 1, powered by a Raspberry Pi Pico 2040 is identical to digits 0, 2, and 3 except it is contained on a single PCB with the conductor. The Raspberry Pi Pico W 2040 (conductor) operates the colons and serves as the central command and control for the display performing the following functions:</p>
+<p>Digit 1 and the colons are on a single PCB. Digit 1, powered by a Raspberry Pi Pico 2040, is identical to digits 0, 2, and 3 except it is contained on a single PCB with the conductor. The Raspberry Pi Pico W 2040 (conductor) operates the colons and serves as the central command and control for the display, performing the following functions:</p>
 <ul>
-<li>Sends commands to digits as to what to display (i.e. 0-9, A-F)</li>
-<li>Sends commands for the brightness of the digits</li>
-<li>When in Admin mode, it will transmit its own wifi service to wirelessly change the display settings from a cell phone or computer.</li>
+<li>Sends commands to digits as to what to display (e.g., 0-9, A-F).</li>
+<li>Sends commands for the brightness of the digits.</li>
+<li>When in Admin mode, transmits its own Wi-Fi service to wirelessly change the display settings from a cell phone or computer.</li>
 <li>Manages the scheduler, which is the mechanism for displaying time, date, external temperature and humidity, and interior temperature and humidity.</li>
-<li>When connected to a wifi network, it will obtain its public facing IP address, look up the time zone it is located in, and set the display to the local time</li>
-<li>When connected to a wifi network, it will obtain the closest weather station and, depending on the scheduler, may display the external temperature and humidity.</li>
-<li>Manages the low power consumption mode by turning off the power to digits 0-3.  When awakened, it will turn on the power to digits 0-3.</li>
+<li>When connected to a Wi-Fi network, obtains its public-facing IP address, looks up the time zone it is located in, and sets the display to the local time.</li>
+<li>When connected to a Wi-Fi network, obtains the closest weather station and, depending on the scheduler, may display the external temperature and humidity.</li>
+<li>Manages the low power consumption mode by turning off the power to digits 0-3. When awakened, it turns on the power to digits 0-3.</li>
 </ul>
-<p>Front face of the conductor PCB fully assembled.
-<img alt="front-face-controller-pcb" src="../../img/controllerpcb/fullyassembled-frontface.webp" />
-Back side of the conductor PCB fully assembled.
+<p>Front face of the conductor PCB fully assembled:<br />
+<img alt="front-face-controller-pcb" src="../../img/controllerpcb/fullyassembled-frontface.webp" /><br />
+Back side of the conductor PCB fully assembled:<br />
 <img alt="back-face-controller-pcb" src="../../img/controllerpcb/fullyassembled-backface.webp" /></p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../../createandorder/pcb/">Fabrication of the conductor and digit one PCB</a></li>
-<li>3D print of the upper and lower colons</li>
+<li><a href="../../createandorder/pcb/">Fabrication of the conductor and digit one PCB</a>.</li>
+<li>3D print of the upper and lower colons.</li>
 </ul>
 <p><strong><em>Table of components</em></strong></p>
 <table>
@@ -274,7 +274,7 @@ Back side of the conductor PCB fully assembled.
 <tr>
 <td style="text-align: center;">1</td>
 <td style="text-align: left;">Vertical Slide Switch Micro High Knob 3 Pin 2 Position 1P2T SPDT Panel Mount</td>
-<td style="text-align: center;"><img alt="component-4" src="../../img/component/component-18.webp" /></td>
+<td style="text-align: center;"><img alt="component-18" src="../../img/component/component-18.webp" /></td>
 </tr>
 <tr>
 <td style="text-align: center;">6</td>
@@ -329,11 +329,11 @@ Back side of the conductor PCB fully assembled.
 <tr>
 <td style="text-align: center;">1</td>
 <td style="text-align: left;">Raspberry Pi Pico W 2040 with Headers</td>
-<td style="text-align: center;"><img alt="component-9" src="../../img/component/component-16.webp" /></td>
+<td style="text-align: center;"><img alt="component-16" src="../../img/component/component-16.webp" /></td>
 </tr>
 <tr>
 <td style="text-align: center;">1</td>
-<td style="text-align: left;">conductor PCB</td>
+<td style="text-align: left;">Conductor PCB</td>
 <td style="text-align: center;">See next section</td>
 </tr>
 </tbody>
@@ -378,11 +378,11 @@ Back side of the conductor PCB fully assembled.
 <h2 id="assemble_digit_one">Assemble Digit One<a class="headerlink" href="#assemble_digit_one" title="Permanent link">&para;</a></h2>
 <p>This section will guide you through following the relevant instructions from the <strong>Digit 0, 2, &amp; 3</strong> PCB assembly to assemble <strong>Digit 1</strong> on the conductor PCB.</p>
 <ol>
-<li>On the front face of the conductor PCB, <a href="../digitpcbassembly/#add_the_16_pin_headers">add the 16 pin headers</a> as previously completed for the digit PCBs. Note the highlighted sections in the picture below that you'll add an additional, 16 pin header to the conductor PCB. Don't forget to snip all the pins flush on the back side of the conductor PCB, resolder each snipped pin to a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.
+<li>On the front face of the conductor PCB, <a href="../digitpcbassembly/#add_the_16_pin_headers">add the 16 pin headers</a> as previously completed for the digit PCBs. Note the highlighted sections in the picture below where you'll add an additional 16 pin header to the conductor PCB. Don't forget to snip all the pins flush on the back side of the conductor PCB, resolder each snipped pin to a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.<br />
 <img alt="1-controllerpcb" src="../../img/controllerpcb/1-controllerpcb.webp" /></li>
-<li>On the front face of the conductor PCB, <a href="../digitpcbassembly/#add_the_28_leds">add the 28 5mm LEDs</a> as previously completed for the digit PCBs. Be sure to insert the LED anode (long pin) into the through hole marked with a <code>+</code>. Do not solder the 5mm LED into the <code>Top-LED1</code> or <code>LWR-LED1</code> location on the conductor PCB. Instructions later in this tutorial will detail how to install the 3mm LEDs into the <code>Top-LED1</code> and <code>LWR-LED1</code> locations. Finish soldering the 28 5mm LEDs by snipping all the pins flush on the back side of the conductor PCB, resolder each snipped pin into a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.
+<li>On the front face of the conductor PCB, <a href="../digitpcbassembly/#add_the_28_leds">add the 28 5mm LEDs</a> as previously completed for the digit PCBs. Be sure to insert the LED anode (long pin) into the through hole marked with a <code>+</code>. Do not solder the 5mm LED into the <code>Top-LED1</code> or <code>LWR-LED1</code> location on the conductor PCB. Instructions later in this tutorial will detail how to install the 3mm LEDs into the <code>Top-LED1</code> and <code>LWR-LED1</code> locations. Finish soldering the 28 5mm LEDs by snipping all the pins flush on the back side of the conductor PCB, resolder each snipped pin into a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.<br />
 <img alt="2-controllerpcb" src="../../img/controllerpcb/2-controllerpcb.webp" /></li>
-<li>On the back of the conductor PCB, <a href="../digitpcbassembly/#add_the_motor_pins">add the motor pins</a>. Note the highlighted sections in the picture below that there are two additional motor pins (pairs) you'll need to add for the colons, and an additional 3-pin connector for the Digital Humidity and Temperature (DHT) sensor. Don't forget to snip all the pins flush on the back side of the conductor PCB, resolder each snipped pin to a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.
+<li>On the back of the conductor PCB, <a href="../digitpcbassembly/#add_the_motor_pins">add the motor pins</a>. Note the highlighted sections in the picture below where there are two additional motor pins (pairs) you'll need to add for the colons, and an additional 3-pin connector for the Digital Humidity and Temperature (DHT) sensor. Don't forget to snip all the pins flush on the back side of the conductor PCB, resolder each snipped pin to a smooth bead, then remove the flux with cotton dabbed with isopropyl alcohol.<br />
 <img alt="3-controllerpcb" src="../../img/controllerpcb/3-controllerpcb.webp" /></li>
 </ol>
 <h2 id="colon_segments_leds">Colon Segments LEDs<a class="headerlink" href="#colon_segments_leds" title="Permanent link">&para;</a></h2>

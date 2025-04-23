@@ -182,30 +182,44 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="deploy_the_conductor_project_to_the_conductor_pcb">Deploy the Conductor Project to the Conductor PCB<a class="headerlink" href="#deploy_the_conductor_project_to_the_conductor_pcb" title="Permanent link">&para;</a></h1>
-<p>In this section you will upload code to your Raspberry Pi Pico W 2040 from your computer.</p>
+<p>In this section, you will upload code to your Raspberry Pi Pico W 2040 from your computer.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Completed the assembly and soldering of the <a href="../controllerpcbassembly/">conductor PCB</a></li>
-<li>Created a fork of the Kinetic-Display GitHub repository, see <a href="../../prerequisitesoftware/">Software and Microcontroller Preparation</a></li>
-<li>Deployed the digit and controller directories, also see <a href="../../prerequisitesoftware/">Software and Microcontroller Preparation</a></li>
+<li>Completed the assembly and soldering of the <a href="../controllerpcbassembly/">conductor PCB</a>.</li>
+<li>Created a fork of the Kinetic-Display GitHub repository. See <a href="../../prerequisitesoftware/">Software and Microcontroller Preparation</a>.</li>
+<li>Deployed the digit and controller directories. Also, see <a href="../../prerequisitesoftware/">Software and Microcontroller Preparation</a>.</li>
 </ul>
 <h2 id="configure_and_deploy_the_conductor_project">Configure and Deploy the Conductor Project<a class="headerlink" href="#configure_and_deploy_the_conductor_project" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Connect your Computer to the conductor PCB Pico W 2040 per the instructions on <a href="../../prerequisitesoftware/">Verify Micropython on your Raspberry Pi Pico</a></li>
-<li>Following the screen capture below from VS Code, select <strong>(A)</strong> <strong>File-&gt;Open Folder...</strong>, <strong>(B)</strong> open the <strong>deploy/conductor</strong> folder you deployed during step 4 in the section <a href="../../prerequisitesoftware/">Fork and Clone the Repository</a>, then <strong>(C)</strong> click the "Select Folder" button.
+<li>Connect your computer to the conductor PCB Pico W 2040 as described in <a href="../../prerequisitesoftware/">Verify Micropython on your Raspberry Pi Pico</a>.</li>
+<li>Open VS Code and follow the steps below:</li>
+<li><strong>(A)</strong> Select <strong>File -&gt; Open Folder...</strong>.</li>
+<li><strong>(B)</strong> Navigate to the <strong>deploy/conductor</strong> folder you deployed during step 4 in the section <a href="../../prerequisitesoftware/">Fork and Clone the Repository</a>.</li>
+<li><strong>(C)</strong> Click the "Select Folder" button.<br />
 <img alt="deploycontrollercode-1.webp" src="../../img/deploycontrollercode/deploycontrollercode-1.webp" /></li>
-<li>Following the screen capture below, <strong>(A)</strong> select the <code>main.py</code> file, <strong>(B)</strong> then comment out the call to the <code>loop()</code> function, and uncomment the <code>manual()</code> function. Finally, rename the <code>main.py</code> file to <code>_main.py</code>. Don't forget to save the file after changing the value.
+<li>Open the <code>main.py</code> file and make the following changes:</li>
+<li><strong>(A)</strong> Comment out the call to the <code>loop()</code> function.</li>
+<li><strong>(B)</strong> Uncomment the <code>manual()</code> function.</li>
+<li><strong>(C)</strong> Rename the <code>main.py</code> file to <code>_main.py</code>.<br />
+   Don't forget to save the file after making these changes.<br />
 <img alt="deploycontrollercode-2" src="../../img/deploycontrollercode/deploycontrollercode-2.webp" /></li>
-<li>Following the screen capture below, create a new terminal by <strong>(A) clicking the elipse ...</strong>, then <strong>(B) Terminal-&gt;New Terminal</strong> submenu.
+<li>Create a new terminal in VS Code:</li>
+<li><strong>(A)</strong> Click the ellipsis (<code>...</code>) in the terminal pane.</li>
+<li><strong>(B)</strong> Select <strong>Terminal -&gt; New Terminal</strong> from the submenu.<br />
 <img alt="deploycontrollercode-3" src="../../img/deploycontrollercode/deploycontrollercode-3.webp" /></li>
-<li>Following the picture below, connect your computer's USB port to the Raspberry Pi Pico W 2040.
+<li>Connect your computer's USB port to the Raspberry Pi Pico W 2040 as shown below:<br />
 <img alt="deploycontrollercode-4" src="../../img/deploycontrollercode/deploycontrollercode-4.webp" /></li>
-<li>Following the screen capture below, <strong>(A) select the drop-down menu</strong> in the terminal pane, then <strong>(B) click the MicroPico vREPL submenu</strong> item.
+<li>In the terminal pane:</li>
+<li><strong>(A)</strong> Select the drop-down menu.</li>
+<li><strong>(B)</strong> Click the <strong>MicroPico vREPL</strong> submenu item.<br />
 <img alt="deploycontrollercode-5" src="../../img/deploycontrollercode/deploycontrollercode-5.webp" /></li>
-<li>Following the screen capture below, click <strong>All Commands</strong> (<strong>A</strong>) on the <a href="https://code.visualstudio.com/api/ux-guidelines/status-bar">status bar</a>. In the Command text field (<strong>B</strong>), type "<strong>Upload</strong>" after "<strong>&gt; MicroPico:</strong> ", then select the dropdown <strong>MicroPico: Upload project to Pico</strong>.
+<li>Upload the project to the Pico:</li>
+<li><strong>(A)</strong> Click <strong>All Commands</strong> on the <a href="https://code.visualstudio.com/api/ux-guidelines/status-bar">status bar</a>.</li>
+<li><strong>(B)</strong> In the Command text field, type "<strong>Upload</strong>" after "<strong>&gt; MicroPico:</strong> ".</li>
+<li><strong>(C)</strong> Select the dropdown <strong>MicroPico: Upload project to Pico</strong>.<br />
 <img alt="deploycontrollercode-6" src="../../img/deploycontrollercode/deploycontrollercode-6.webp" /></li>
 </ol>
-<p>Congratulations on successfully uploading the code to the Digit's Raspberry Pi Pico W!</p></div>
+<p>Congratulations on successfully uploading the code to the conductor's Raspberry Pi Pico W!</p></div>
             </div>
         </div>
 
