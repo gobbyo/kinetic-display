@@ -15,7 +15,7 @@ Below is a table of quantities of filament by weight. Since a roll of filament i
 
 ## **1. Black Nylon, Smooth Build Plate**
 
-For Orca and Bambu Studio slicers, see `.\fdm\3mf\nylon-smooth-black.3mf`.
+For Orca and Bambu Studio slicers, see `fdm\3mf\nylon-smooth-black.3mf`.
 
 | File               | Description                                           | Density | Quantity | Per Unit (g) | Total (g) |
 | :----------------- | :--------------------------------------------------- | ------: | -------: | -----------: | --------: |
@@ -26,7 +26,7 @@ For Orca and Bambu Studio slicers, see `.\fdm\3mf\nylon-smooth-black.3mf`.
 
 ## **2. Black Matte PLA, Smooth Build Plate**
 
-For Orca and Bambu Studio slicers, see `.\fdm\3mf\pla-smooth-black.3mf`.
+For Orca and Bambu Studio slicers, see `fdm\3mf\pla-smooth-black.3mf`.
 
 | File                  | Description                                           | Density | Quantity | Per Unit (g) | Total (g) |
 | :-------------------- | :--------------------------------------------------- | ------: | -------: | -----------: | --------: |
@@ -39,7 +39,7 @@ For Orca and Bambu Studio slicers, see `.\fdm\3mf\pla-smooth-black.3mf`.
 
 ## **3. White Matte PLA, Smooth Build Plate**
 
-For Orca and Bambu Studio slicers, see `.\fdm\3mf\pla-smooth-white.3mf`.
+For Orca and Bambu Studio slicers, see `fdm\3mf\pla-smooth-white.3mf`.
 
 | File                  | Description                                           | Density | Quantity | Per Unit (g) | Total (g) |
 | :-------------------- | :--------------------------------------------------- | ------: | -------: | -----------: | --------: |
@@ -51,7 +51,7 @@ For Orca and Bambu Studio slicers, see `.\fdm\3mf\pla-smooth-white.3mf`.
 
 ## **4. White Matte PLA, Textured Build Plate**
 
-For Orca and Bambu Studio slicers, see `.\fdm\3mf\pla-textured-white.3mf`.
+For Orca and Bambu Studio slicers, see `fdm\3mf\pla-textured-white.3mf`.
 
 | File                  | Description                                           | Density | Quantity | Per Unit (g) | Total (g) |
 | :-------------------- | :--------------------------------------------------- | ------: | -------: | -----------: | --------: |
@@ -68,7 +68,7 @@ For Orca and Bambu Studio slicers, see `.\fdm\3mf\pla-textured-white.3mf`.
 
 ## **5. Black TPU, Smooth Build Plate**
 
-For Orca and Bambu Studio slicers, see `.\fdm\3mf\tpu-smooth-black.3mf`.
+For Orca and Bambu Studio slicers, see `fdm\3mf\tpu-smooth-black.3mf`.
 
 | File                  | Description                                           | Density | Quantity | Per Unit (g) | Total (g) |
 | :-------------------- | :--------------------------------------------------- | ------: | -------: | -----------: | --------: |
