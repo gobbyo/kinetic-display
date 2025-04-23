@@ -170,7 +170,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#verify_micropython_on_your_raspberry_pi_pico" class="nav-link">Verify Micropython on your Raspberry Pi Pico</a>
+            <li class="nav-item" data-bs-level="2"><a href="#verify_micropython_on_your_raspberry_pi_pico" class="nav-link">Verify MicroPython on your Raspberry Pi Pico</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -186,63 +186,67 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="software_and_microcontroller_preparation">Software and Microcontroller Preparation<a class="headerlink" href="#software_and_microcontroller_preparation" title="Permanent link">&para;</a></h1>
-<p>If you have any problems with this documentation or the code, please create a <a href="https://github.com/gobbyo/kinetic-display/issues/new/choose">new issue</a> on the kinetic-display github site.</p>
+<p>If you have any problems with this documentation or the code, please create a <a href="https://github.com/gobbyo/kinetic-display/issues/new/choose">new issue</a> on the Kinetic-Display GitHub site.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>Read and bookmark the instructions to install <a href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#what-is-micropython">Micropython onto your Raspberry Pi Pico</a>.</p>
+<p>Read and bookmark the instructions to install <a href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#what-is-micropython">MicroPython onto your Raspberry Pi Pico</a>.</p>
 <ol>
-<li><a href="https://code.visualstudio.com/download">Install Visual Studio Code</a></li>
+<li><a href="https://code.visualstudio.com/download">Install Visual Studio Code</a>.</li>
 <li>With VS Code installed and open, click on the extensions icon on the <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout">Activity bar</a> and install the following <a href="https://code.visualstudio.com/docs/editor/extension-marketplace">extensions from Marketplace</a>:<ol>
-<li><strong>Python</strong> by Microsoft</li>
-<li><strong>MicroPico</strong> by paulober</li>
+<li><strong>Python</strong> by Microsoft.</li>
+<li><strong>MicroPico</strong> by paulober.</li>
 </ol>
 </li>
-<li>Download the <a href="https://github.com/Pwea/Flash-Nuke">flash_nuke Uf2 file</a></li>
+<li>Download the <a href="https://github.com/Pwea/Flash-Nuke">flash_nuke UF2 file</a>.</li>
 <li>Clear your Raspberry Pi Pico before flashing a new build:<ol>
-<li>Plug a USB cable into your Raspberry Pi Pico's USB port</li>
-<li>Press and hold the <strong>BOOTSEL</strong> button on your Raspberry Pi Pico while plugging your USB cable into your computer</li>
-<li>Verify an <strong>RPI-RP2</strong> storage device appears</li>
-<li>Drag and drop the <strong>flash_nuke.uf2</strong> file into the RPI-RP2 storage</li>
+<li>Plug a USB cable into your Raspberry Pi Pico's USB port.</li>
+<li>Press and hold the <strong>BOOTSEL</strong> button on your Raspberry Pi Pico while plugging your USB cable into your computer.</li>
+<li>Verify an <strong>RPI-RP2</strong> storage device appears.</li>
+<li>Drag and drop the <strong>flash_nuke.uf2</strong> file into the RPI-RP2 storage.</li>
 </ol>
 </li>
-<li>Download the micropython Uf2 file for the <a href="https://micropython.org/download/RPI_PICO/">Raspberry Pi Pico</a> and <a href="https://micropython.org/download/RPI_PICO_W/">Raspberry Pi PicoW</a></li>
+<li>Download the MicroPython UF2 file for the <a href="https://micropython.org/download/RPI_PICO/">Raspberry Pi Pico</a> and <a href="https://micropython.org/download/RPI_PICO_W/">Raspberry Pi Pico W</a>.</li>
 </ol>
-<h2 id="verify_micropython_on_your_raspberry_pi_pico">Verify Micropython on your Raspberry Pi Pico<a class="headerlink" href="#verify_micropython_on_your_raspberry_pi_pico" title="Permanent link">&para;</a></h2>
+<h2 id="verify_micropython_on_your_raspberry_pi_pico">Verify MicroPython on your Raspberry Pi Pico<a class="headerlink" href="#verify_micropython_on_your_raspberry_pi_pico" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Open Visual Studio Code</li>
-<li>On the top menu select the <strong>(A) elipse ...</strong> (if present), then <strong>(B) Terminal-&gt;New Terminal</strong>.
+<li>Open Visual Studio Code.</li>
+<li>On the top menu, select the <strong>(A) ellipsis ...</strong> (if present), then <strong>(B) Terminal -&gt; New Terminal</strong>.<br />
 <img alt="micropico-0" src="../img/prereq-software/prereqsoftware-3.webp" /></li>
-<li>In the terminal pane, select the terminal menu <strong>(A)</strong> followed by the MicroPico vREPL sub-menu <strong>(B)</strong>
+<li>In the terminal pane, select the terminal menu <strong>(A)</strong> followed by the MicroPico vREPL sub-menu <strong>(B)</strong>.<br />
 <img alt="micropico-1" src="../img/prereq-software/prereqsoftware-4.webp" /></li>
-<li>Plug your Raspberry Pi Pico into the USB port and the <strong>(A)</strong> <a href="https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix/recipes/notifications?view=vs-2022#status-bar">Status bar</a> will show your Pico as connected
+<li>Plug your Raspberry Pi Pico into the USB port, and the <strong>(A)</strong> <a href="https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix/recipes/notifications?view=vs-2022#status-bar">Status bar</a> will show your Pico as connected.<br />
 <img alt="micropico-3" src="../img/prereq-software/prereqsoftware-6.webp" /></li>
-<li>Verify your Pico's onboard LED turns on and off by typing the following code in the <strong>(B) Terminal pane</strong> (screen capture above) and copy/paste each line separately:</li>
+<li>Verify your Pico's onboard LED turns on and off by typing the following code in the <strong>(B) Terminal pane</strong> (screen capture above). Copy/paste each line separately:</li>
 </ol>
-<pre class="codehilite"><code class="language-python">from machine import Pin
-p = Pin(25,Pin.OUT)
-p.on()
-p.off()
+<pre class="codehilite"><code class="language-python">   from machine import Pin
+   p = Pin(25, Pin.OUT)
+   p.on()
+   p.off()
 </code></pre>
 
 <h2 id="fork_and_clone_the_repository">Fork and Clone the Repository<a class="headerlink" href="#fork_and_clone_the_repository" title="Permanent link">&para;</a></h2>
 <ol>
-<li><a href="https://git-scm.com/downloads">Install Git</a></li>
-<li>Open a browser and follow the link to the <a href="https://github.com/gobbyo/kinetic-display">Kinetic-Display</a> repository</li>
+<li><a href="https://git-scm.com/downloads">Install Git</a>.</li>
+<li>Open a browser and follow the link to the <a href="https://github.com/gobbyo/kinetic-display">Kinetic-Display</a> repository.</li>
 <li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">Create a fork</a> of the Kinetic-Display repository.</li>
-<li>Run this step if you have never used or run PowerShell on your computer. Open a new <strong>PowerShell</strong> terminal by clicking on the windows icon in the bottom task bar and searching for "Windows PowerShell", then run the application. See <strong>(A)</strong> in the screen shot below. <strong>(B)</strong> Type <code>Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser</code> in the PS terminal and enter. <strong>(C)</strong> Verify the command by typing <code>Get-ExecutionPolicy -List</code> and ensure the <code>CurrentUser</code> is set to <code>Unrestricted</code>.
+<li>Run this step if you have never used or run PowerShell on your computer:<ul>
+<li>Open a new <strong>PowerShell</strong> terminal by clicking on the Windows icon in the bottom taskbar and searching for "Windows PowerShell," then run the application. See <strong>(A)</strong> in the screenshot below.</li>
+<li><strong>(B)</strong> Type <code>Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser</code> in the PowerShell terminal and press Enter.</li>
+<li><strong>(C)</strong> Verify the command by typing <code>Get-ExecutionPolicy -List</code> and ensure the <code>CurrentUser</code> is set to <code>Unrestricted</code>.<br />
 <img alt="prereqsoftware-7" src="../img/prereq-software/prereqsoftware-7.webp" /></li>
-<li>If you did not need to run the previous step, then open a new <strong>PowerShell</strong> terminal by clicking on the windows icon in the bottom task bar and searching for "Windows PowerShell", then run the application. See <strong>(A)</strong> in the screen shot below.
+</ul>
+</li>
+<li>If you did not need to run the previous step, then open a new <strong>PowerShell</strong> terminal by clicking on the Windows icon in the bottom taskbar and searching for "Windows PowerShell," then run the application. See <strong>(A)</strong> in the screenshot below.<br />
 <img alt="prereqsoftware-8" src="../img/prereq-software/prereqsoftware-8.webp" /></li>
-<li>Change the directory to <code>kinetic-display\micropython\pico</code> in your cloned fork, see <strong>(B)</strong> in the previous screen shot.</li>
-<li>Run the command <code>./deploy.ps1 &lt;directorypath&gt;</code>, for example <code>./deploy.ps1 "c:\deploy"</code>. See <strong>(A)</strong> in the screen shot below.
+<li>Change the directory to <code>kinetic-display\micropython\pico</code> in your cloned fork. See <strong>(B)</strong> in the previous screenshot.</li>
+<li>Run the command <code>./deploy.ps1 &lt;directorypath&gt;</code>, for example, <code>./deploy.ps1 "c:\deploy"</code>. See <strong>(A)</strong> in the screenshot below.<br />
 <img alt="prereqsoftware-9" src="../img/prereq-software/prereqsoftware-9.webp" /></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The folder you provide for <strong><code>&lt;directorypath&gt;</code></strong> will be deleted as well as all its contents when you run this command. Be sure to save or rename the folder if you want to preserve any changes you made.</p>
+<p>The folder you provide for <strong><code>&lt;directorypath&gt;</code></strong> will be deleted along with all its contents when you run this command. Be sure to save or rename the folder if you want to preserve any changes you made.</p>
 </div>
-<p>You'll get the following example output when successful, also see <strong>(B)</strong> in the previous screen shot. Verify the <strong>conductor</strong> and <strong>digit</strong> folders exist under the folder you provided in the parameter for the <code>./deploy.ps1</code>. This is the code you'll use to load onto your Raspberry Pi 2040 Picos and PicoW.</p>
-<!--dos-->
-<pre class="codehilite"><code>    Directory: C:\deploy
+<p>You'll get the following example output when successful. Also, see <strong>(B)</strong> in the previous screenshot. Verify the <strong>conductor</strong> and <strong>digit</strong> folders exist under the folder you provided in the parameter for the <code>./deploy.ps1</code>. This is the code you'll use to load onto your Raspberry Pi 2040 Picos and Pico W.</p>
+<pre class="codehilite"><code class="language-dos">    Directory: C:\deploy
 
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
