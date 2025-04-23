@@ -3,7 +3,7 @@
 | Item | Quantity |
 |---------|---------|
 | Single digit PCB for digits 0, 2, & 3 | 3 |
-| Controller PCB for digit 1 and the colons | 1 |
+| Conductor PCB for digit 1 and the colons | 1 |
 | Powerbank PCB | 1 |
 | A4 Size Felt Sheets with Adhesive Backing | 1 |
 | 2 Inch Jumbo Paper Clips (Smooth Big Paperclips) | 20 |
