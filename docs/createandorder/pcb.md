@@ -11,13 +11,13 @@ You will need to order more PCBs than required for this project because most PCB
 ## Steps to Order PCBs
 
 1. Open your browser and navigate to [https://jlcpcb.com/](https://jlcpcb.com/). Create an account if you do not already have one, then click the **Order now** button.  
-   ![Click the 'order now' button](../img/pcborder-1.png)
-1. Upload the Gerber file by clicking the **Add Gerber file** button. Repeat this step through step 4 for each of the three Gerber files found under the `kinetic-display\pcb` directory.  
-   ![Click the 'Add Gerber file' button](../img/pcborder-2.png)
-1. Use all the default settings except change the PCB color to **white** to enhance the luminosity of the LEDs.  
-   ![Use the default settings except set the PCB color to white](../img/pcborder-3.png)
-1. Click the **SAVE TO CART** button and complete the order by following the shipping and payment steps in the wizard.  
-   ![Use the default settings except set the PCB color to white](../img/pcborder-4.png)
+   ![Click the 'order now' button](../img/pcborder/pcborder-1.webp)
+2. Upload the Gerber file by clicking the **Add Gerber file** button. Repeat this step through step 4 for each of the three Gerber files found under the `kinetic-display\pcb` directory.  
+   ![Click the 'Add Gerber file' button](../img/pcborder/pcborder-2.webp)
+3. Use all the default settings except change the PCB color to **white** to enhance the luminosity of the LEDs.  
+   ![Use the default settings except set the PCB color to white](../img/pcborder/pcborder-3.webp)
+4. Click the **SAVE TO CART** button and complete the order by following the shipping and payment steps in the wizard.  
+   ![Use the default settings except set the PCB color to white](../img/pcborder/pcborder-4.webp)
 
 ## Notes
 
