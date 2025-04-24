@@ -35,7 +35,7 @@ Back side of the conductor PCB fully assembled:
 | 1 | 5mm 0.5 Ω ohm Photoresistor Resistor 5516 GL5516 | ![component-19](../img/component/component-19.webp) |
 | 1 | S8550 TO-92 TH PNP Transistor | ![component-20](../img/component/component-20.webp) |
 | 1 | 2N2222 TO-92 TH NPN Transistor | ![component-21](../img/component/component-21.webp) |
-| 2 | 10K ohm 0805 Resistor 1/2w Metal Film Fixed Resistor | ![component-22](../img/component/component-22.webp) |
+| 2 | 10K ohm 0805 Resistor 1/4w Metal Film Fixed Resistor | ![component-22](../img/component/component-22.webp) |
 | 28 | 5mm Flat top LED, anode long lead (your choice of color) | ![component-8](../img/component/component-8.webp) |
 | 2 | 3mm Flat top LED, anode long lead (your choice of color) | ![component-17](../img/component/component-17.webp) |
 | 1 | Raspberry Pi Pico 2040 with Headers | ![component-9](../img/component/component-9.webp) |

@@ -34,7 +34,7 @@
 | 1uF Electrolytic Capacitor 1UF-50V-5X11 | 5 |
 | S8550 TO-92 PNP Transistor | 1 |
 | 2N2222 TO-92 NPN Transistor | 1 |
-| 10K ohm 0805 Resistor 1/2w Metal Film Fixed Resistor | 2 |
+| 10K ohm 0805 Resistor 1/4w Metal Film Fixed Resistor | 2 |
 | Raspberry pi 2040 Pico | 4 |
 | Raspberry pi 2040 Pico-W | 1 |
 | Superglue (small tube) | 1 |
