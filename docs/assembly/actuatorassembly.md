@@ -92,11 +92,12 @@ The white 28 AWG wire provides clockwise (CW) motion to extend the segment, whil
    ![step4](../img/dupont-connections/4-motor-dupont-connection.webp)
 
 !!! tip
-    Test each connection with a multimeter to ensure continuity before proceeding.
+    Test each connection from the Dupont connector to the soldered wire on the motor with a multimeter to ensure continuity before proceeding.
 
 ## Motor Mount
 
 Properly assembling the motor mount is critical to avoid issues like jamming or sticking. The motor mount consists of:
+
 - **(A)** Motor mount (`digit-motor-mount.stl`)
 - **(B)** Pinion reduction gear (`digit-gear30.stl`)
 - **(C)** Pinion gear shaft (cut from a jumbo paperclip)
