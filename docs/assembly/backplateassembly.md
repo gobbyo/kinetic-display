@@ -25,11 +25,10 @@ The picture below shows the digit 2 backplate. Digit 2 backplate is nearly the s
 
 ![backplateassembly-2](../img/backplateassembly/backplateassembly-2.webp)
 
-1. Each motor is mounted to the backplate using three M1.7x8mm screws. Use a small philips tip screwdriver to install the motors. A larger philips tip screwdriver is prone to overtighten and may cause the head of the screw to shear off. The picture below shows the order the actuator motors should be installed.
-
+1. Each motor is mounted to the backplate using three M1.7x8mm screws. Use a small philips tip screwdriver to install the motors. A larger philips tip screwdriver is prone to overtighten and may cause the head of the screw to shear off. The picture below shows the order the actuator motors should be installed.</p>
 ![backplateassembly-3](../img/backplateassembly/backplateassembly-3.webp)
 
-1. Repeat the install for digits 2 and 3.
+2. Repeat the install for digits 2 and 3.
 
 ## Conductor and Digit One Backplate Assembly
 
