@@ -38,24 +38,24 @@ Read and bookmark the instructions to install [MicroPython onto your Raspberry P
 
 ## Fork and Clone the Repository
 
-1. [Install Git](https://git-scm.com/downloads).
+1. [Install Git](https://git-scm.com/downloads) for Windows.
 2. Open a browser and follow the link to the [Kinetic-Display](https://github.com/gobbyo/kinetic-display) repository.
-3. [Create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) of the Kinetic-Display repository.
+3. [Create a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) from the `kinetic-display` repository.
 4. Run this step if you have never used or run PowerShell on your computer:
-       - Open a new **PowerShell** terminal by clicking on the Windows icon in the bottom taskbar and searching for "Windows PowerShell," then run the application. See **(A)** in the screenshot below.
+       - Open a new **PowerShell** terminal by clicking on the Windows icon in the bottom taskbar and searching for "Windows PowerShell," then run the application as administrator. See **(A)** in the screenshot below.
        - **(B)** Type `Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser` in the PowerShell terminal and press Enter.
        - **(C)** Verify the command by typing `Get-ExecutionPolicy -List` and ensure the `CurrentUser` is set to `Unrestricted`.  
     ![prereqsoftware-7](./img/prereq-software/prereqsoftware-7.webp)
 5. If you did not need to run the previous step, then open a new **PowerShell** terminal by clicking on the Windows icon in the bottom taskbar and searching for "Windows PowerShell," then run the application. See **(A)** in the screenshot below.  
    ![prereqsoftware-8](./img/prereq-software/prereqsoftware-8.webp)
 6. Change the directory to `kinetic-display\micropython\pico` in your cloned fork. See **(B)** in the previous screenshot.
-7. Run the command `./deploy.ps1 <directorypath>`, for example, `./deploy.ps1 "c:\deploy"`. See **(A)** in the screenshot below.  
+7. Run the command `./deploy.ps1 <directorypath>` where `<directorypath>` is replaced with a quoted path to a folder, for example, `./deploy.ps1 "c:\deploy"`. See **(A)** in the screenshot below.  
    ![prereqsoftware-9](./img/prereq-software/prereqsoftware-9.webp)
 
 !!! warning
-    The folder you provide for **`<directorypath>`** will be deleted along with all its contents when you run this command. Be sure to save or rename the folder if you want to preserve any changes you made.
+    The folder you provide for **`<directorypath>`** will be deleted along with all its contents when you run the `deploy.ps1` script. Be sure to save or rename the folder if you want to preserve any changes you made.
 
-You'll get the following example output when successful. Also, see **(B)** in the previous screenshot. Verify the **conductor** and **digit** folders exist under the folder you provided in the parameter for the `./deploy.ps1`. This is the code you'll use to load onto your Raspberry Pi 2040 Picos and Pico W.
+You'll get the following example output when successful. Also, see **(B)** in the previous screenshot. Verify the **conductor** and **digit** folders exist under the folder you provided in the parameter for the `./deploy.ps1`. You'll use the code in the **conductor** and **digit** folders to test and load onto your Raspberry Pi 2040 Picos and Pico W.
 
 ```dos
     Directory: C:\deploy
