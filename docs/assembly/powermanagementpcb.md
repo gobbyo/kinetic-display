@@ -50,7 +50,7 @@ Top view of the power management PCB:
 Bottom view of the power management PCB:  
 ![powermanagement-bottom](../img/powermanagement/powermanagement-bottom.webp)
 
-1. Following the picture below on the TOP side of the PCB, solder the `1kΩ 805` surface mount resistor onto `R1`.  
+1. Following the picture below on the TOP side of the PCB, solder the `1kΩ 0805` surface mount resistor onto `R1`.  
    ![powermanagement-1](../img/powermanagement/powermanagement-1.webp)
 1. Following the picture below on the TOP side of the PCB, solder the `s8050` through-hole transistor into `Q1`. Be sure to align the pins according to the silk screen outline.  
    ![powermanagement-2](../img/powermanagement/powermanagement-2.webp)
