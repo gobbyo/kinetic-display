@@ -1,7 +1,5 @@
 # Actuator Assembly
 
-This guide ensures the actuators function reliably and integrate seamlessly into the display system.
-
 There are 30 actuators in the display, 7 per digit and 2 for the colons (4 digits x 7 segments + 2 colons = 30 total actuators). The actuator assembly includes installing the shaft gear onto the DC brushed motor, preparing and adding wires to the motor, assembling the motor mount, pinion gear, and shaft, then adding the DC brushed motor to the assembled motor mount. The picture below shows a fully assembled actuator.
 
 ![actuatorstep11](../img/actuator/11-actuator.webp)
