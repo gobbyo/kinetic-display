@@ -41,12 +41,12 @@ There are 30 actuators in the display, 7 per digit and 2 for the colons (4 digit
 | Yes | 10cm zinc strip | ![tool-14](../img/tools/tool-14.webp) |
 | No | Label Maker (optional for labeling wires) | ![tool-5](../img/tools/tool-5.webp) |
 
-!!! warning
-    Always work in a well-ventilated area when soldering or using super glue to avoid inhaling fumes.
-
 ## Shaft Gear
 
 In this section, you'll glue the shaft gear onto the motor shaft to prevent slippage. The shaft gear must be made from rigid filament like PLA or ABS.
+
+!!! warning
+    Always work in a well-ventilated area when soldering or using super glue to avoid inhaling fumes.
 
 ### Shaft Gear Installation Steps
 
@@ -116,7 +116,7 @@ Discard the red support section.
    ![actuatorstep5](../img/actuator/5-actuator.webp)
 1. **Melt Collar**: Heat the soldering iron to 250°C. Use a zinc strip to melt and flatten the collar onto the motor mount. Work carefully to avoid damaging the mount.
    ![actuatorstep7](../img/actuator/7-actuator.webp)
-1. **Verify Fit**: Ensure the shaft rotates freely in the pinion gear. Reprint the gear if necessary to avoid jamming. Lubricate lightly if needed.
+1. **Verify Fit**: Ensure the shaft rotates freely in the pinion gear but is not loose. Reprint the gear if necessary to avoid jamming.
    ![actuatorstep9](../img/actuator/9-actuator.webp)
 1. **Install Motor**: Insert the prepared motor into the mount with the shaft pointing left and terminals downward. Secure the motor firmly.
    ![actuatorstep10](../img/actuator/10-actuator.webp)
