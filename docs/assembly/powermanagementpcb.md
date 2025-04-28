@@ -91,7 +91,7 @@ Bottom view of the power management PCB with the arrow pointing in the direction
    ![powermanagement-13](../img/powermanagement/powermanagement-13.webp)
 1. Add heat shrink to protect exposing the soldered pin locations. Wrap the exposed soldered pin with a piece of electrical tape if you don't have any heat shrink.  
    ![powermanagement-14](../img/powermanagement/powermanagement-14.webp)
-    Secure the heat shrink with a heat gun.  
+1. Secure the heat shrink with a heat gun.  
    ![powermanagement-15](../img/powermanagement/powermanagement-15.webp)
 1. Insert the barrel jack into the display stand as shown in the picture below. Note the barrel jack has opposing flat sides that will need to align with the display stand hole.  
    ![powermanagement-16](../img/powermanagement/powermanagement-16.webp)
