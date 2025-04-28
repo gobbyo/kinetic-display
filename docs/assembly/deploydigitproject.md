@@ -1,6 +1,6 @@
 # Deploy the Digit Project to the Digit PCB
 
-This section guides you through uploading code to your Raspberry Pi Pico 2040 for the digit PCB.
+In this guide you will upload code from the **digit** folder on your computer to your Raspberry Pi Pico 2040.
 
 ## Prerequisites
 

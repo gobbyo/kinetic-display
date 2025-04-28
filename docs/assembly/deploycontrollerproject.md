@@ -1,6 +1,6 @@
 # Deploy the Conductor Project to the Conductor PCB
 
-In this section, you will upload code to your Raspberry Pi Pico W 2040 from your computer.
+In this guide you will upload code from the **conductor** folder on your computer to your Raspberry Pi Pico W 2040.
 
 ## Prerequisites
 

@@ -1,6 +1,6 @@
 # Buck Module Wiring
 
-Buck converters are essential for converting 12V DC to 5V DC because they efficiently step down the voltage while minimizing energy loss. Unlike linear regulators, which dissipate excess voltage as heat, buck converters use high-frequency switching and inductors to transfer energy more efficiently. This makes them ideal for powering sensitive electronics like microcontrollers and LEDs, as they provide stable output voltage, reduce heat generation, and improve overall system reliability.
+Buck converters are essential for converting 12V DC to 5V DC because they efficiently step down the voltage while minimizing energy loss. Unlike linear regulators, which dissipate excess voltage as heat, buck converters use high-frequency switching and inductors to transfer energy more efficiently. This makes them ideal for powering sensitive electronics like micro controllers and LEDs, as they provide stable output voltage, reduce heat generation, and improve overall system reliability.
 
 This guide provides detailed instructions for assembling and wiring DC to DC variable buck converter modules in a Kinetic Display system. It includes a list of required components and tools, step-by-step guidance for wiring and securing the modules, and calibration instructions to ensure proper voltage output.
 
@@ -12,7 +12,7 @@ This guide is essential for ensuring the reliability and safety of the Kinetic D
 
 ## Prerequisites
 
-- 3D print the Digit and controller TPU gaskets.
+- 3D print the Conductor and Digits TPU gaskets.
 - 3D print the Display stand.
 
 ***Table of components***
@@ -42,9 +42,9 @@ This guide is essential for ensuring the reliability and safety of the Kinetic D
 This section ensures wiring for the PCBs is oriented for the mounting of the buck modules and wiring.
 
 1. Remove the Raspberry Pi Pico and Pico W 2040 from the PCBs. These will be added later when it is safe to do so.
-1. Lay the PCBs face up with Digit 0 on the far right and Digit 3 on the far left. Position the stand below the PCBs so the barrel jack is between the controller/Digit 1 PCB and Digit 2 PCB.  
+2. Lay the PCBs face up with Digit 0 on the far right and Digit 3 on the far left. Position the stand below the PCBs so the barrel jack is between the Conductor and Digit 1 PCB and Digit 2 PCB.  
    ![buckmodulesandwiring-1](../img/buckmoduleassembly/buckmoduleassembly-1.webp)
-1. Place the TPU gaskets on the PCBs. Note that the wiring lays over the gaskets.  
+3. Place the TPU gaskets on the PCBs. Note that the wiring lays over the gaskets.  
    ![buckmodulesandwiring-2](../img/buckmoduleassembly/buckmoduleassembly-2.webp)
 
 ## Wiring the Buck Modules
@@ -60,7 +60,7 @@ The picture below shows the completed wiring of the buck converter modules. The 
 !!! warning
     Use anti-static mats, an ESD wristband, and a grounding wire for the remainder of the Kinetic Display electronics assembly.
 
-### Digits and Controller
+### Digits and Conductor
 
 1. Following the picture below, place a buck converter module for Digit 0 on the rightmost support on the display stand. Strip 3mm of insulation from the black and white 28 AWG wire while on the roll starting then tin the stripped end with solder. **(A)** Route the two wires from the 5V terminal block connector on the Digit 0 PCB. **(B)** Slide two 3cm sections of heat shrink on the two wires but DO NOT APPLY HEAT, then **(C)** continue routing the wire around the relay, under the power management PCB and through the port on the PCB stand. **(D)** Finish unwinding the wire when you reach the end of the buck module as shown in the picture. Now that the length of wire is known from its route, snip off the wires next to the terminal block connector. **(A)** Strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the `5V` terminal block connector and the black wire onto the `-`.  
    ![buckmodulesandwiring-3](../img/buckmoduleassembly/buckmoduleassembly-3.webp)
@@ -78,7 +78,7 @@ The picture below shows the completed wiring of the buck converter modules. The 
    ![buckmodulesandwiring-9](../img/buckmoduleassembly/buckmoduleassembly-9.webp)
 1. Follow the previous steps 3-5 for the Digit 1 buck module then connect the 12V black and white wire into the next available block terminals on `C-12V-1`. See the picture below for the assembled Digit 1 buck module.  
    ![buckmodulesandwiring-10](../img/buckmoduleassembly/buckmoduleassembly-10.webp)
-1. Place a buck converter module for the Colon/controller to the left of the Digit 1 module. Strip 3mm of insulation from the black and white 28 AWG wire while on the roll starting then tin the stripped end with solder. On the backside of the Colon/controller buck module, **(A)** solder the white wire onto the `Out +` pad and the black wire onto the `Out -` pad. Route the wire around the power management relay and **(B)** to the 5V terminal block connector.  
+1. Place a buck converter module for the Conductor and Digit 1 to the left of the Digit 1 module. Strip 3mm of insulation from the black and white 28 AWG wire while on the roll starting then tin the stripped end with solder. On the backside of the Conductor and Digit 1 buck module, **(A)** solder the white wire onto the `Out +` pad and the black wire onto the `Out -` pad. Route the wire around the power management relay and **(B)** to the 5V terminal block connector.  
    ![buckmodulesandwiring-11](../img/buckmoduleassembly/buckmoduleassembly-11.webp)
 1. Clip the white and black wires, strip 3mm of insulation then tin the stripped end with solder. Connect the white wire to the `+` on the 5V terminal block connector and the black wire onto the `-`.  
    ![buckmodulesandwiring-12](../img/buckmoduleassembly/buckmoduleassembly-12.webp)
