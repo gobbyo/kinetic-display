@@ -340,6 +340,8 @@ Bottom view of the power management PCB:<br />
 <h2 id="power_management_pcb_block_connectors">Power Management PCB Block Connectors<a class="headerlink" href="#power_management_pcb_block_connectors" title="Permanent link">&para;</a></h2>
 <p>Top view of the power management PCB with arrows pointing in the direction of the connected wire.<br />
 <img alt="powermanagement-top-arrows" src="../../img/powermanagement/powermanagement-top-arrows.webp" /></p>
+<p>Bottom view of the power management PCB with the arrow pointing in the direction of the <a href="#barrel_jack_panel_mount">Barrel Jack Panel Mount</a> wires.</p>
+<p><img alt="powermanagement-bottom-arrow" src="../../img/powermanagement/powermanagement-bottom-arrow.webp" /></p>
 <ol>
 <li>Following the picture below on the TOP side of the PCB, hold the PCB so the silk screen <code>C-12V-1</code> is to your left. Solder the 4 pin terminal block connector into the <code>C-12V-1</code> through holes so the connection to the wires faces out to the left.<br />
 <img alt="powermanagement-5" src="../../img/powermanagement/powermanagement-5.webp" /></li>
@@ -349,9 +351,7 @@ Bottom view of the power management PCB:<br />
 <img alt="powermanagement-7" src="../../img/powermanagement/powermanagement-7.webp" /></li>
 <li>Following the picture below on the TOP side of the PCB, continue to hold the PCB so the silk screen <code>CONN-1</code> to your left. Solder the 3 pin terminal block connector into the <code>GPIO19 12v+ 12v-</code> through holes of the <code>CONN-1</code> silk screen so the connection to the wires faces out to the left.<br />
 <img alt="powermanagement-8" src="../../img/powermanagement/powermanagement-8.webp" /></li>
-<li>Note the arrows pointing in the direction of the connected wire on the BOTTOM side of the power management PCB.<br />
-<img alt="powermanagement-bottom-arrow" src="../../img/powermanagement/powermanagement-bottom-arrow.webp" />
-    Following the picture below on the BOTTOM side of the power management PCB, solder the two pins of the terminal block connector into the through holes marked as <code>12v(in)</code>.<br />
+<li>Following the picture below on the BOTTOM side of the power management PCB, solder the two pins of the terminal block connector into the through holes marked as <code>12v(in)</code>.<br />
 <img alt="powermanagement-9" src="../../img/powermanagement/powermanagement-9.webp" /></li>
 </ol>
 <h2 id="barrel_jack_panel_mount">Barrel Jack Panel Mount<a class="headerlink" href="#barrel_jack_panel_mount" title="Permanent link">&para;</a></h2>
@@ -381,7 +381,7 @@ Bottom view of the power management PCB:<br />
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Verifying the 12v <code>+</code> and <code>-</code> voltage with a multimeter is an important step to ensure the correctness of your connections. If the <code>+</code> and <code>-</code> are reversed, then change the connections from the barrel jack and re-verify using your multimeter.</p>
+<p>Verifying the 12v <code>+</code> and <code>-</code> voltage with a multimeter is an important step to ensure the correctness of your connections. If you discover the <code>+</code> and <code>-</code> are reversed, then change the connections from the barrel jack and re-verify using your multimeter.</p>
 </div>
 <h2 id="schematic">Schematic<a class="headerlink" href="#schematic" title="Permanent link">&para;</a></h2>
 <p>The power management PCB is designed to provide stable and sufficient power to the kinetic display's motors, LEDs, and sensors. It incorporates protection mechanisms (diode, relay), current regulation (resistor, transistor), and secure connections (terminal blocks, barrel jack). The power management schematic with the buck converter modules ensure the system operates efficiently and safely under varying load conditions.</p>
