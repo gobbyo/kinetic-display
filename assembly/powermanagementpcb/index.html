@@ -381,11 +381,11 @@ Bottom view of the power management PCB:<br />
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This is an extremely important step to ensure the correctness of your connections.</p>
+<p>Verifying the 12v <code>+</code> and <code>-</code> voltage with a multimeter is an important step to ensure the correctness of your connections. If the <code>+</code> and <code>-</code> are reversed, then change the connections from the barrel jack and re-verify using your multimeter.</p>
 </div>
 <h2 id="schematic">Schematic<a class="headerlink" href="#schematic" title="Permanent link">&para;</a></h2>
 <p>The power management PCB is designed to provide stable and sufficient power to the kinetic display's motors, LEDs, and sensors. It incorporates protection mechanisms (diode, relay), current regulation (resistor, transistor), and secure connections (terminal blocks, barrel jack). The power management schematic with the buck converter modules ensure the system operates efficiently and safely under varying load conditions.</p>
-<h3 id="key_components">Key Components:<a class="headerlink" href="#key_components" title="Permanent link">&para;</a></h3>
+<h3 id="key_components">Key Components<a class="headerlink" href="#key_components" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>1kΩ Resistor (R1)</strong>:
     Used to limit current flow to the base of the transistor.</li>
@@ -400,7 +400,7 @@ Bottom view of the power management PCB:<br />
 <li><strong>Barrel Jack Connector</strong>:
     Used to connect the external 12V power supply to the PCB.</li>
 </ol>
-<h3 id="circuitry_explanation">Circuitry Explanation:<a class="headerlink" href="#circuitry_explanation" title="Permanent link">&para;</a></h3>
+<h3 id="circuitry_explanation">Circuitry Explanation<a class="headerlink" href="#circuitry_explanation" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Power Input</strong>. The 12V power supply is connected to the barrel jack. The positive and negative terminals are routed to the PCB through the terminal block connectors.</li>
 <li><strong>C-12v-1</strong> and <strong>C-12v-2</strong>. Terminal block connector through holes that route the incoming 12v to the assigned buck converter module. When the relay is switched off, the 12v power is cut to the buck converter modules.</li>
