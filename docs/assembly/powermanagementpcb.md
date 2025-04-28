@@ -64,6 +64,10 @@ Bottom view of the power management PCB:
 Top view of the power management PCB with arrows pointing in the direction of the connected wire.  
 ![powermanagement-top-arrows](../img/powermanagement/powermanagement-top-arrows.webp)
 
+Bottom view of the power management PCB with the arrow pointing in the direction of the [Barrel Jack Panel Mount](#barrel_jack_panel_mount) wires.
+
+![powermanagement-bottom-arrow](../img/powermanagement/powermanagement-bottom-arrow.webp)
+
 1. Following the picture below on the TOP side of the PCB, hold the PCB so the silk screen `C-12V-1` is to your left. Solder the 4 pin terminal block connector into the `C-12V-1` through holes so the connection to the wires faces out to the left.  
    ![powermanagement-5](../img/powermanagement/powermanagement-5.webp)
 1. Following the picture below on the TOP side of the PCB, hold the PCB so the silk screen `C-12V-2` is to your right. Solder the 4 pin terminal block connector into the `C-12V-2` through holes so the connection to the wires faces out to the right.  
@@ -72,9 +76,7 @@ Top view of the power management PCB with arrows pointing in the direction of th
    ![powermanagement-7](../img/powermanagement/powermanagement-7.webp)
 1. Following the picture below on the TOP side of the PCB, continue to hold the PCB so the silk screen `CONN-1` to your left. Solder the 3 pin terminal block connector into the `GPIO19 12v+ 12v-` through holes of the `CONN-1` silk screen so the connection to the wires faces out to the left.  
    ![powermanagement-8](../img/powermanagement/powermanagement-8.webp)
-1. Note the arrows pointing in the direction of the connected wire on the BOTTOM side of the power management PCB.  
-   ![powermanagement-bottom-arrow](../img/powermanagement/powermanagement-bottom-arrow.webp)
-    Following the picture below on the BOTTOM side of the power management PCB, solder the two pins of the terminal block connector into the through holes marked as `12v(in)`.  
+1. Following the picture below on the BOTTOM side of the power management PCB, solder the two pins of the terminal block connector into the through holes marked as `12v(in)`.  
    ![powermanagement-9](../img/powermanagement/powermanagement-9.webp)
 
 ## Barrel Jack Panel Mount
