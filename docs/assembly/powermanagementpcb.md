@@ -105,7 +105,7 @@ Bottom view of the power management PCB with the arrow pointing in the direction
    ![powermanagement-20](../img/powermanagement/powermanagement-20.webp)
 
 !!! warning
-    Verifying the 12v `+` and `-` voltage with a multimeter is an important step to ensure the correctness of your connections. If the `+` and `-` are reversed, then change the connections from the barrel jack and re-verify using your multimeter.
+    Verifying the 12v `+` and `-` voltage with a multimeter is an important step to ensure the correctness of your connections. If you discover the `+` and `-` are reversed, then change the connections from the barrel jack and re-verify using your multimeter.
 
 ## Schematic
 
