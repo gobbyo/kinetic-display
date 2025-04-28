@@ -1,6 +1,6 @@
 # Backplate and Stand Assembly
 
-Back of the display when the backplates and stand are assembled.
+This guide details installing the backplate onto the display face, installing the DHT22 sensor, connecting the motor wires to the motor pins, and installing the stand and power manager onto the display face. Below is the back of the display when the backplates and stand are assembled.
 
 ![backplateassembly-13](../img/backplateassembly/backplateassembly-13.webp)
 
@@ -50,9 +50,9 @@ The picture below shows the order the actuator motors should be installed.
 ![backplateassembly-7](../img/backplateassembly/backplateassembly-7.webp)
 1. Using needlenose pliers, connect each of the motor's Dupont connector to their respective CW (white wire) and CCW (black wire) pins on the PCB.
 ![backplateassembly-8](../img/backplateassembly/backplateassembly-8.webp)
-1. Trim the 3 wires that come with the DHT22 to a suitable size, then connect the Dupont connections to the appropriate sensor pins. Verify the wires connecting the `+ Data -` pins on the PCB are connected to the sensor's `+ Data -` pins.
+1. Trim the 3 wires that come with the DHT22 to a suitable length, then connect the Dupont connections to the appropriate sensor pins. Verify the wires connecting the `+ Data -` pins on the PCB are connected to the sensor's `+ Data -` pins.
 ![backplateassembly-9](../img/backplateassembly/backplateassembly-9.webp)
-1. Using an M1.7x8mm self tapping screw, mount the DHT22 as shown in the picture below.
+1. Using an M1.7x6mm self tapping screw, mount the DHT22 as shown in the picture below.
 ![backplateassembly-10](../img/backplateassembly/backplateassembly-10.webp)
 
 ## Install the Stand onto the Face
