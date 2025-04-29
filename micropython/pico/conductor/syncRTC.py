@@ -16,50 +16,45 @@ class syncRTC:
 
     def syncclock(self, rtc):
         print("Sync clock")
-        returnval = True
+        self.setExternalIPAddress()
 
-        # Try WorldTimeAPI first
-        try:
-            self.setExternalIPAddress()
-            r = urequests.get(externalWorldTimeAPI)
-            z = ujson.loads(r.content)
-            print(f"WorldTimeAPI Response: {z}")
+        # List of APIs to try in order
+        apis = [
+            externalWorldTimeAPI,
+            externalOpenTimeAPI.format(self.externalIPaddress)
+        ]
 
-            # Parse the datetime string from WorldTimeAPI
-            iso_time = z["datetime"]  # Example: "2025-04-28T20:44:06.487506+00:00"
-            dt = self._iso_to_rtc_tuple(iso_time)
-
-            # Set the RTC datetime
-            rtc.datetime(dt)
-        except Exception as e:
-            print(f"WorldTimeAPI Exception: {e}")
-            returnval = False
-
-        # If WorldTimeAPI fails, try OpenTimeAPI
-        if not returnval:
+        for api in apis:
             try:
-                timeAPI = externalOpenTimeAPI.format(self.externalIPaddress)
-                r = urequests.get(timeAPI)
+                r = urequests.get(api)
                 z = ujson.loads(r.content)
-                print(f"OpenTimeAPI Response: {z}")
+                print(f"API Response from {api}: {z}")
 
-                # Set the RTC datetime using OpenTimeAPI response
-                rtc.datetime((
-                    int(z["year"]),
-                    int(z["month"]),
-                    int(z["day"]),
-                    0,  # Weekday (set to 0, can be calculated if needed)
-                    int(z["hour"]),
-                    int(z["minute"]),
-                    int(z["seconds"]),
-                    0  # Subseconds set to 0
-                ))
-                returnval = True
+                # Handle response from TimeAPI.io
+                if api.startswith("https://www.timeapi.io"):
+                    dt = (
+                        int(z["year"]),
+                        int(z["month"]),
+                        int(z["day"]),
+                        0,  # Weekday (set to 0, can be calculated if needed)
+                        int(z["hour"]),
+                        int(z["minute"]),
+                        int(z["seconds"]),  # Note: "seconds" key in TimeAPI.io response
+                        0  # Subseconds set to 0
+                    )
+                else:
+                    # Handle response from WorldTimeAPI
+                    iso_time = z["datetime"]  # Example: "2025-04-28T20:44:06.487506+00:00"
+                    dt = self._iso_to_rtc_tuple(iso_time)
+
+                # Set the RTC datetime
+                rtc.datetime(dt)
+                return True
             except Exception as e:
-                print(f"OpenTimeAPI Exception: {e}")
-                returnval = False
+                print(f"Exception with API {api}: {e}")
 
-        return returnval
+        # If all APIs fail
+        return False
 
     def _iso_to_rtc_tuple(self, iso_time):
         """Convert ISO 8601 string to RTC-compatible tuple."""
