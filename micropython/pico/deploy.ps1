@@ -3,6 +3,11 @@ param (
     [string]$TempRootPath = "../../../deploy"
 )
 
+# Delete the root temp directory if it already exists
+if (Test-Path $TempRootPath) {
+    Remove-Item -Recurse -Force $TempRootPath
+}
+
 # Define the paths
 $conductorTempDir = Join-Path $TempRootPath "conductor"
 $digitTempDir = Join-Path $TempRootPath "digit"

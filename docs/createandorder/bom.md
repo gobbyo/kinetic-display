@@ -3,16 +3,16 @@
 | Item | Quantity |
 |---------|---------|
 | Single digit PCB for digits 0, 2, & 3 | 3 |
-| Controller PCB for digit 1 and the colons | 1 |
+| Conductor PCB for digit 1 and the colons | 1 |
 | Powerbank PCB | 1 |
 | A4 Size Felt Sheets with Adhesive Backing | 1 |
 | 2 Inch Jumbo Paper Clips (Smooth Big Paperclips) | 20 |
-| M1.7 x 5mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
+| M1.7 x 6mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
 | M1.7 x 8mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
 | M2 X 15mm Stainless Steel Phillips Round Head Self Tapping Screws | 50 |
 | Micro 130 DC Motor Strong Magnetic Brushed Electric DC 3V -12V 25000 RPM Cars Toys Electric Motor, High Speed Torque | 30 |
-| Black 28 AWG Gauge Flexible Silicone Rubber Electric Wire | 3M |
-| White 28 AWG Gauge Flexible Silicone Rubber Electric Wire | 3M |
+| Black 28 AWG Gauge Flexible Silicone Rubber Electric Wire | 10M |
+| White 28 AWG Gauge Flexible Silicone Rubber Electric Wire | 10M |
 | Male Breakout Pin Connector 2.54mm | 100 |
 | 2.54mm 0.1" Pitch PCB Mount Screw Terminal Block Connector, 2P 3P 4P Terminals for 26-18AWG Cable | 50 |
 | Dupont Jumper Wire Cable Female Pin Connector 2.54mm | 100 |
@@ -22,7 +22,6 @@
 | 5mm Flat Top LED Diode Lights[^1] (Clear Transparent Lens) Bright Lighting Bulb Lamps Electronics Components Indicator Light Emitting Diodes | 112 |
 | 3mm Flat Top LED Diode Lights[^1] (Clear Transparent Lens) Bright Lighting Bulb Lamps Electronics Components Indicator Light Emitting Diodes | 2 |
 | Vertical Slide Switches Micro High Knob 3 Pin 2 Position 1P2T SPDT Panel Mount AC 125V 2A | 1 |
-| 2.54mm 0.1" Pitch PCB Mount Screw Terminal Block Connector, 2P 3P 4P Terminals 150V 6A for 26-18AWG Cable | 1 |
 | LM2596 DC-DC Step Down Variable Volt Regulator Input 3.2V-40V Output 1.25V-35V Adjustable Buck Converter Electronic Voltage Stabilizer Power Supply Module | 5 |
 | 2.1mm Barrel Jack 5.5x2.1mm Female DC Power Jack 2.1 X 5.5mm DC Jack Connector 6V 9V 12V DC Jack Panel Mount | 1 |
 | 12V 5A Power Supply, AC DC Converter 100-220V to 12 Volt 5 Amp Transformer 5.5x2.1mm Plug | 1 |
@@ -35,10 +34,9 @@
 | 1uF Electrolytic Capacitor 1UF-50V-5X11 | 5 |
 | S8550 TO-92 PNP Transistor | 1 |
 | 2N2222 TO-92 NPN Transistor | 1 |
-| 10K ohm 0805 Resistor 1/2w Metal Film Fixed Resistor | 2 |
-| Vertical Slide Switch Micro High Knob 3 Pin 2 Position 1P2T SPDT Panel Mount AC 125V 2A | 1 |
+| 10K ohm 0805 Resistor 1/4w Metal Film Fixed Resistor | 2 |
 | Raspberry pi 2040 Pico | 4 |
-| Raspberry pi 2040 pico-W | 1 |
+| Raspberry pi 2040 Pico-W | 1 |
 | Superglue (small tube) | 1 |
 | White PLA Comgrow 1KG | 2 |
 | Black PLA Comgrow 1 KG | 1 |
@@ -52,7 +50,7 @@
 - Small Philips head screwdriver
 - Dupont connector tool
 - Soldering station with solder/flux
-- Needle nose pliers.
+- Needle nose pliers
 - Tweezers
 - Clamping tweezers
 - Zinc strip or thin metal strip (for melting PLA)
@@ -62,5 +60,5 @@
 - Label maker (optional)
 - Computer with USB connector
 
-[^1]: You can choose any color of LED that you would like for your display. White LEDs are the easiest to work with as they have no color variation within the same batch. Colored LEDs like blue or warm white may vary in the same batch. Therefore, you will need to order more than the quantity listed in the BOM to get enough LEDs of the same color. Be sure to test your LEDs by using your phones digital camera to see if there are any variations in color when the LEDs are lit. Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboards power rail with 2.63v. In this case I used the purple hued LEDs because there were 112 of the same color.
+[^1]: You can choose any color of LED that you would like for your display. White LEDs are the easiest to work with as they have no color variation within the same batch. Colored LEDs like blue or warm white may vary in the same batch. Therefore, you will need to order more than the quantity listed in the BOM to get enough LEDs of the same color. Be sure to test your LEDs by using your phone's digital camera to see if there are any variations in color when the LEDs are lit. Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboard's power rail with 2.63v. In this case, I used the purple-hued LEDs because there were 112 of the same color.  
 ![blueLEDs](../img/digitpcbassembly/ledcolors.webp)

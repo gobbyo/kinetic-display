@@ -1,28 +1,17 @@
 # Actuator Assembly
 
-This guide is essential for ensuring the actuators function reliably and integrate seamlessly into the display system. It provides detailed instructions for assembling the 30 actuators used in the Kinetic Display. Below are the key areas:
+There are 30 actuators in the display, 7 per digit and 2 for the colons (4 digits x 7 segments + 2 colons = 30 total actuators). The actuator assembly includes installing the shaft gear onto the DC brushed motor, preparing and adding wires to the motor, assembling the motor mount, pinion gear, and shaft, then adding the DC brushed motor to the assembled motor mount. The picture below shows a fully assembled actuator.
 
-1. **Components and Tools**: Lists all required components (e.g., motors, wires, connectors) and tools (e.g., soldering station, wire strippers, crimping tool).
-2. **Shaft Gear Installation**: Explains how to securely attach the shaft gear to the motor shaft using super glue and precise alignment.
-3. **Wire Preparation**: Details cutting, stripping, and soldering wires to motor terminals, ensuring proper polarity for clockwise and counterclockwise motion.
-4. **Dupont Connectors**: Guides the crimping and housing of Dupont connectors for easy connection to the digit PCB.
-5. **Motor Mount Assembly**: Covers assembling the motor mount, pinion gear, and shaft, ensuring smooth operation without jamming or sticking.
-
-There are 30 actuators in the display, 7 per digit and 2 for the colons (4 digits x 7 segments + 2 colons = 30 total actuators). The diagrams below identify the various parts and composition of the actuator.
-
-Fully assembled actuator with segment and back stopper.
-![All 3D printed parts](../img/motor-actuator-titles.png)
-
-Actuator rack and pinion gear assembly.
-![All 3D printed parts](../img/motor-gears-title.png)
-
-The actuator assembly includes installing the shaft gear onto the DC brushed motor, preparing and adding the wires to the motor, assembling the motor mount, pinion gear and shaft, then adding the DC brushed motor to the assembled motor mount.
+![actuatorstep11](../img/actuator/11-actuator.webp)
 
 ## Prerequisites
 
 - Nylon pinion gear 30, `digit-gear30.stl`
 - Black Matte PLA shaft gear 10, `digit-gear10.stl`
 - White Matte PLA motor mount, `digit-motor-mount.stl`
+
+!!! tip
+    Ensure all 3D-printed parts are free of defects and printed with the recommended settings for optimal fit and durability.
 
 ***Table of components***
 
@@ -39,8 +28,8 @@ The actuator assembly includes installing the shaft gear onto the DC brushed mot
 
 | Required | Tool | Image |
 | :---: | :------- | :---: |
-| Yes | Soldering station    | ![tool-4](../img/tools/tool-4.webp)|
-| Yes | 0.8mm 1.76oz RoHS flux core solder | ![tool-1](../img/tools/tool-1.webp)|
+| Yes | Soldering station    | ![tool-4](../img/tools/tool-4.webp) |
+| Yes | 0.8mm 1.76oz RoHS flux core solder | ![tool-1](../img/tools/tool-1.webp) |
 | Yes | Large regular tipped screwdriver | ![tool-7](../img/tools/tool-7.webp) |
 | Yes | Super glue | ![tool-8](../img/tools/tool-8.webp) |
 | Yes | 22-34 AWG Wire Stripper and Cutter | ![tool-9](../img/tools/tool-9.webp) |
@@ -48,81 +37,88 @@ The actuator assembly includes installing the shaft gear onto the DC brushed mot
 | Yes | Heavy Duty Wire Cutter Pliers | ![tool-11](../img/tools/tool-11.webp) |
 | Yes | Heavy Duty Cross Locking or Clamping Tweezers | ![tool-12](../img/tools/tool-12.webp) |
 | Yes | 10cm zinc strip | ![tool-14](../img/tools/tool-14.webp) |
-| No | Label Maker | ![tool-5](../img/tools/tool-5.webp) |
+| No | Label Maker (optional for labeling wires) | ![tool-5](../img/tools/tool-5.webp) |
 
 ## Shaft Gear
 
-In this section you'll glue the shaft gear onto the shaft to avoid slippage. The shaft gear must be made from rigid filament like PLA or ABS.
+In this section, you'll glue the shaft gear onto the motor shaft to prevent slippage. The shaft gear must be made from rigid filament like PLA or ABS.
+
+!!! warning
+    Always work in a well-ventilated area when soldering or using super glue to avoid inhaling fumes.
 
 ### Shaft Gear Installation Steps
 
-The tools and parts needed to install the shaft gear include: a regular tipped screwdriver, super glue, `digit-gear10.stl`, and DC brushed toy motor.
+The tools and parts needed include: a regular tipped screwdriver, super glue, `digit-gear10.stl`, and a DC brushed toy motor.
 
-1. Add a drop of super glue to attach the shaft gear. Note the shaft gear is 10mm high and the hole is 5mm.
-![shaftstep1](../img/motor-shaft-gear/2-motor-shaft-gear.webp)
-1. Position the DC toy motor vertically so the bottom of the DC motor shaft sits on a hard surface. Use the regular tipped screwdriver to press the 10-toothed gear onto the shaft. Be sure to push the 10-toothed gear 5mm down into the shaft.
-![shaftstep2](../img/motor-shaft-gear/3-motor-shaft-gear.webp)
-1. Repeat the steps in this section for the remaining 29 motors.
-![shaftstep4](../img/motor-shaft-gear/4-motor-shaft-gear.webp)
+1. **Apply Glue**: Add a drop of super glue to the shaft gear. Ensure the gear is 10mm high with a 5mm hole. Avoid excess glue to prevent it from seeping into the motor shaft.
+   ![shaftstep1](../img/motor-shaft-gear/2-motor-shaft-gear.webp)
+1. **Attach the Gear**: Position the DC motor vertically so the bottom of the shaft rests on a hard surface. Use the screwdriver to press the gear 5mm down onto the shaft. Ensure the gear is aligned and does not wobble.
+   ![shaftstep2](../img/motor-shaft-gear/3-motor-shaft-gear.webp)
+1. **Repeat**: Follow these steps for the remaining 29 motors. Allow the glue to cure for at least 10 minutes before proceeding.
+   ![shaftstep4](../img/motor-shaft-gear/4-motor-shaft-gear.webp)
 
 ## Wires
 
-After the actuator is assembled, it will be connected to the digit PCB. The white 28 AWG wire provides the clockwise (CW) motion that extends the segment, the black wire provides the counter clockwise (CCW) motion that retracts the segment.
+The white 28 AWG wire provides clockwise (CW) motion to extend the segment, while the black wire provides counterclockwise (CCW) motion to retract it.
 
 ### Wire Cutting and Soldering Steps
 
-In this section you'll create 21 unlabelled motors with 4 centimeter wires with Dupont connectors, 4 motors labelled "C", 4 motors labelled "D", and one labelled "UC" (upper colon), totalling 9 motors having 6 centimeter wires with dupont connectors. The tools and parts needed to prepare and add the wires to the DC motor includes: black and white 28 AWG stranded wire, wire strippers for 28 AWG wire, and a soldering station with 0.8mm 1.76g flux core solder.
+1. **Cut Wires**: Cut 9 white and 9 black wires to 6cm for actuators labeled "C", "D", and "UC" (upper colon). Cut 21 white and 21 black wires to 4cm for the remaining actuators. Use a ruler for precise measurements.
+   ![step1](../img/motor-wire/1-motor-wire.webp)
+1. **Strip Wires**: Strip 3mm of insulation from one end of each wire. Avoid nicking the wire strands.
+   ![step2](../img/motor-wire/2-motor-wire.webp)
+1. **Prepare Terminals**: Position the motor with the shaft pointing away and terminals facing up. Heat the soldering iron to 350°C and tin each terminal with a small amount of solder.
+   ![step3](../img/motor-wire/3-motor-wire.webp)
+1. **Solder Wires**: Solder the white wire to the left terminal and the black wire to the right terminal. Ensure the solder joints are clean and secure.
+   ![step4](../img/motor-wire/4-motor-wire.webp)
 
-1. Cut 9 white and 9 black wires of 6 centimeter lengths for segment actuators C and D and the upper colon. Cut 21 white and 21 black wires of 4 centimeter lengths for the remaining actuators.
-![step1](../img/motor-wire/1-motor-wire.webp)
-1. Strip about 3mm off one end of each black and white wire.
-![step2](../img/motor-wire/2-motor-wire.webp)
-1. Position the DC motor so the shaft is pointed away and the terminals are facing up. Set your soldering iron to 350°C then add solder to each motor terminal.
-![step3](../img/motor-wire/3-motor-wire.webp)
-1. With the DC motor shaft pointing up and the terminals are facing up, solder the white wire onto the left motor terminal and the black wire onto the right motor terminal.
-![step4](../img/motor-wire/4-motor-wire.webp)
+!!! tip
+    Use a helping hand tool to hold the motor steady while soldering.
 
 !!! note
-     There are 9 motors with 6 centimeter wire lengths: four motors labelled C, four D, and one UC (upper colon). Place a label on the black-wire side of the motor.
+    Label the black-wire side of the 6cm actuators ("C", "D", and "UC"). No labels are needed for the 4cm actuators.
 
 ### Dupont Connections
 
-The tools and parts needed to add the 2.54mm Dupont connectors to each wire include: the DC motor with shaft gear and wires (as prepared in the previous steps), a Dupont connector crimping tool, 60 female Dupont pin connectors and 30 1x2p Dupont connector housings.
+1. **Strip Wires**: Strip 3mm of insulation from the free end of each wire.
+   ![step1](../img/dupont-connections/1-motor-dupont-connection.webp)
+1. **Crimp Connectors**: Attach female Dupont connectors to each wire.
+   ![step2](../img/dupont-connections/2-motor-dupont-connection.webp)
+1. **Attach Housing**: Slide the wires into the Dupont connector housing until the pins lock in place.
+   ![step3](../img/dupont-connections/3-motor-dupont-connection.webp)
+1. **Repeat**: Complete this process for all motors. Ensure labeled actuators are correctly marked.
+   ![step4](../img/dupont-connections/4-motor-dupont-connection.webp)
 
-1. Strip 3mm off the end of the DC motor wire.
-![step1](../img/dupont-connections/1-motor-dupont-connection.webp)
-1. Crimp the female connectors onto each wire.
-![step2](../img/dupont-connections/2-motor-dupont-connection.webp)
-1. Slide the Dupont connector housing onto the wires so the pins lock into the housing.
-![step3](../img/dupont-connections/3-motor-dupont-connection.webp)
-1. Repeat the previous steps for all remaining motors. Be sure to place your label on the black-wire side of the motor for the 6 centimeter wire length actuators with C (4), D (4) and one UC (upper colon). No need to label the 21 other actuators with 4 centimeter lengths
-![step4](../img/dupont-connections/4-motor-dupont-connection.webp)
+!!! tip
+    Test each connection from the Dupont connector to the soldered wire on the motor with a multimeter to ensure continuity before proceeding.
 
 ## Motor Mount
 
-In this section you'll assemble the motor mounts. Properly installed parts on the motor mount are essential to making the actuators work without issues such as having a segment stick or jam in an extended or retracted position. The figure below summarizes the assembly for the motor mount. There are three parts: the **(A) motor mount** white matte PLA `digit-motor-mount.stl`, the **(B) pinion reduction gear** nylon `digit-gear30.stl`, and **(C) pinion gear shaft**. Discard the red support section.
-![actuatorfigure](../img/actuator/motor-mount-figure.webp)
-The tools and parts needed to assemble the motor mount include: 3d printed motor mount in PLA and Nylon pinion reduction gear, a 20mm metal shaft made from a jumbo paper clip, a soldering station capable of a heat setting of 250° C, clamping tweezers with a thin piece of metal.
+Properly assembling the motor mount is critical to avoid issues like jamming or sticking. The motor mount consists of:
 
-1. Cut the off the straight sections from the Jumbo paper clip.
-![actuatorstep1](../img/actuator/1-actuator.webp)
-2. Measure 2 cm from each Jumbo paper clip straight section.
-![actuatorstep2](../img/actuator/2-actuator.webp)
-3. Use a large wire cutter to cut the shaft.
-![actuatorstep3](../img/actuator/3-actuator.webp)
-4. Insert the 2 cm shaft through the motor mount until it protrudes about 1mm into the pinion gear space.
-![actuatorstep4](../img/actuator/4-actuator.webp)
-5. Add the pinion gear to the motor mount as shown in the diagram. Insert the shaft by aligning the pinion gear shaft hole with the metal shaft, then slide the metal shaft all the way into the motor mount.
-![actuatorstep5](../img/actuator/5-actuator.webp)
-6. Heat your soldering iron to 250°C and prepare your clamping tweezer and zinc strip as shown in the picture.
-![actuatorstep6](../img/actuator/6-actuator.webp)
-7. Hold the zinc strip over the shaft collar and press down on the zinc strip with your soldering iron. Melt the collar and flatten it onto the motor mount.
-![actuatorstep7](../img/actuator/7-actuator.webp)
-8. When finished, the melted collar will only protrude about a half millimeter out from the motor mount.
-![actuatorstep8](../img/actuator/8-actuator.webp)
-!!! note
-    Verify the shaft can slide through the pinion gear before assembling the motor. If you cannot rotate the pinion gear on the shaft, then you'll need to reprint the pinion gear to ensure the hole is wide enough. Avoid an overly sized shaft hole as it allows the gear to shift side to side on the motor shaft and will cause the actuator to jam or stick. ![actuatorstep9](../img/actuator/9-actuator.webp)
-9. Hold the main body of the motor mount so the pinion gear faces left. Avoid touching or putting any pressure onto the motor mounting tabs used the screw the motor onto the display. With your other hand, hold the prepared motor with the shaft pointed left and the terminals downward, insert the prepared motor into the motor mount.
-![actuatorstep10](../img/actuator/10-actuator.webp)
-10. Repeat the process for the remaining 29 motors.
-![actuatorstep11](../img/actuator/11-actuator.webp)
+- **(A)** Motor mount (`digit-motor-mount.stl`)
+- **(B)** Pinion reduction gear (`digit-gear30.stl`)
+- **(C)** Pinion gear shaft (cut from a jumbo paperclip)
+
+Discard the red support section.
+
+![actuatorfigure](../img/actuator/motor-mount-figure.webp)
+
+### Motor Mount Assembly Steps
+
+1. **Cut Shaft**: Cut straight sections from a jumbo paperclip into 2cm pieces. Use heavy-duty wire cutter pliers for clean cuts.
+   ![actuatorstep1](../img/actuator/1-actuator.webp)
+1. **Insert Shaft**: Insert the 2cm shaft into the motor mount until it protrudes 1mm into the pinion gear space. Ensure the shaft is straight.
+   ![actuatorstep4](../img/actuator/4-actuator.webp)
+1. **Attach Pinion Gear**: Align the pinion gear hole with the shaft and slide it into the motor mount. Verify the gear rotates freely.
+   ![actuatorstep5](../img/actuator/5-actuator.webp)
+1. **Melt Collar**: Heat the soldering iron to 250°C. Use a zinc strip to melt and flatten the collar onto the motor mount. Work carefully to avoid damaging the mount.
+   ![actuatorstep7](../img/actuator/7-actuator.webp)
+1. **Verify Fit**: Ensure the shaft rotates freely in the pinion gear but is not loose. Reprint the gear if necessary to avoid jamming.
+   ![actuatorstep9](../img/actuator/9-actuator.webp)
+1. **Install Motor**: Insert the prepared motor into the mount with the shaft pointing left and terminals downward. Secure the motor firmly.
+   ![actuatorstep10](../img/actuator/10-actuator.webp)
+1. **Repeat**: Assemble the remaining 29 motors. Perform a final inspection to ensure all assemblies are consistent.
+
+!!! warning
+    Avoid overtightening or forcing components, as this may cause damage or misalignment.
