@@ -1,12 +1,18 @@
 from picowifiserver import PicoWifi
 import syncRTC
 import externalTemp
+import secrets
 from common.config import Config
 from machine import RTC
 import time
 
+ssid = input("Enter WiFi SSID: ")
+password = input("Enter WiFi Password: ")
+secrets.usr = ssid
+secrets.pwd = password
+
 try:
-    picowifi = PicoWifi("config.json",ssid='Clipper', password='Orcatini')
+    picowifi = PicoWifi("config.json",ssid, password)
     if(picowifi.connect_to_wifi_network()):
         rtc = RTC()
         rtc.datetime((1970, 1, 1, 0, 0, 0, 0, 0)) # Set RTC to epoch time
