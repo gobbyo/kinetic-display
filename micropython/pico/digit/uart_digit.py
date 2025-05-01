@@ -30,11 +30,30 @@ def handle_command(display, cmd):
     The function will print the action taken and any relevant details to the console.
     """
     def set_digit():
-        a = int(cmd.value)
-        digitArray = display.getDigitArray(uartCommand.digitAlien[a] if display.testdigit == 1 else uartCommand.digitValue[a])
-        moves = display.set_digit(digitArray)
-        print(f"digit {cmd.digit} set to number {cmd.value}, actuator moves = {moves}")
-        return moves
+        try:
+            digit_value = int(cmd.value)
+            
+            # Check if digit_value is in valid range
+            if digit_value not in uartCommand.digitValue:
+                print(f"Invalid digit value: {digit_value}")
+                return 0
+                
+            digit_array = display.getDigitArray(
+                uartCommand.digitAlien[digit_value] if display.testdigit == 1 
+                else uartCommand.digitValue[digit_value]
+            )
+            
+            moves = display.set_digit(digit_array)
+            print(f"digit {cmd.digit} set to number {digit_value}, actuator moves = {moves}")
+            return moves
+            
+        except ValueError:
+            print(f"Invalid digit value format: {cmd.value}")
+            return 0
+        except Exception as e:
+            print(f"Error setting digit: {e}")
+            return 0
+
 
     def set_brightness():
         display.brightness = cmd.value / 10
