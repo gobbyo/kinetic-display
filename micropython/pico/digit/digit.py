@@ -76,8 +76,8 @@ class Digit:
     It also includes functionality to synchronize and display time, and perform a "dance"
     sequence by sequentially extending and retracting segments.
 
-    Note the code is not written to be asynchronous, but rather synchronous. This is to ensure that the actuators are not activated at the same time.
-    This is important for the hardware design, as the power system not designed to have more than one motor active at any given time.
+    The code is written to be synchronous, not asynchronous. 
+    The design of the power system cannot safely handle more than one motor active at any given time.
 
     Attributes:
         leds (list): A list of PWM objects controlling the LEDs.
@@ -186,12 +186,10 @@ class Digit:
             if hasattr(self, 'start_led'):
                 self.start_led.off()
             if hasattr(self, 'config'):
-                # Use a proper cleanup method instead of __del__
-                self.config.close()  # Assuming there's a close method
+                print("need to add close method to config")
+                #self.config.close()  # Assuming there's a close method
         except Exception as e:
             print(f"Error during cleanup: {e}")
-
-
 
     @property
     def testdigit(self):
@@ -447,11 +445,11 @@ def instructions():
         print("\t(c)ycle through digits")
         print("\t(d)igit (d0-d9,dA-dF)")
         print("\t(e)xtend segment (e0-e6)")
-        print("\t(l)uminosity(0-9)")
+        print("\t(l)uminosity (0-9)")
         print("\t(r)etract segment (r0-r6)")
-        print("\t(s)peed(10-100)% of segment movement")
+        print("\t(s)peed (50-100)% of segment movement")
         print("\t(t)est digit")
-        print("\t(w)ait(15-30 milliseconds) of segment movement")
+        print("\t(w)ait time (15-30 milliseconds) of segment movement")
         print("\t(q)uit")
         cmd = input("command: ").strip()
 
