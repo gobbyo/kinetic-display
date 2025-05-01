@@ -76,6 +76,9 @@ class Digit:
     It also includes functionality to synchronize and display time, and perform a "dance"
     sequence by sequentially extending and retracting segments.
 
+    Note the code is not written to be asynchronous, but rather synchronous. This is to ensure that the actuators are not activated at the same time.
+    This is important for the hardware design, as the power system not designed to have more than one motor active at any given time.
+
     Attributes:
         leds (list): A list of PWM objects controlling the LEDs.
         start_led (Pin): A Pin object for the start LED.
