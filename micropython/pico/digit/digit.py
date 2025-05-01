@@ -296,7 +296,7 @@ class Digit:
                 self.actuators[seg].extend(self.motor_speed, self.wait_time)
                 self.leds[seg].duty_u16(self._brightness)
                 self.previous_digit_array[seg] = 1
-                self.set_previous_digit_array(self.previous_digit_array)
+                self.setPreviousDigitArray(self.previous_digit_array)
             except IndexError as e:
                 print(f"Error accessing actuator/LED for segment {seg}: {e}")
             except Exception as e:
