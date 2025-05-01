@@ -53,39 +53,79 @@ def handle_command(display, cmd):
         except Exception as e:
             print(f"Error setting digit: {e}")
             return 0
-
-
     def set_brightness():
-        display.brightness = cmd.value / 10
-        print(f"digit {cmd.digit} set brightness to {display.brightness}")
-        return 1
+        try:
+            brightness_value = float(cmd.value) / BRIGHTNESS_DIVISOR
+            display.brightness = brightness_value
+            print(f"digit {cmd.digit} set brightness to {display.brightness}")
+            return 1
+        except ValueError:
+            print(f"Invalid brightness value format: {cmd.value}")
+            return 0
+        except Exception as e:
+            print(f"Error setting brightness: {e}")
+            return 0
 
     def set_motor_speed():
-        display.motorspeed = int(cmd.value)
-        print(f"digit {cmd.digit} motorspeed set to {display.motorspeed}")
-        return 1
+        try:
+            motor_speed = int(cmd.value)
+            display.motorspeed = motor_speed
+            print(f"digit {cmd.digit} motorspeed set to {display.motorspeed}")
+            return 1
+        except ValueError:
+            print(f"Invalid motor speed value format: {cmd.value}")
+            return 0
+        except Exception as e:
+            print(f"Error setting motor speed: {e}")
+            return 0
 
     def set_wait_time():
-        display.waitTime = float(cmd.value / 100)
-        print(f"digit {cmd.digit} waittime set to {display.waitTime}")
-        return 1
+        try:
+            wait_time = float(cmd.value) / WAIT_TIME_DIVISOR
+            display.waitTime = wait_time
+            print(f"digit {cmd.digit} waittime set to {display.waitTime}")
+            return 1
+        except ValueError:
+            print(f"Invalid wait time value format: {cmd.value}")
+            return 0
+        except Exception as e:
+            print(f"Error setting wait time: {e}")
+            return 0
 
     def dance():
-        moves = display.dance()
-        print(f"digit {cmd.digit} dancing")
-        return moves
+        try:
+            moves = display.dance()
+            print(f"digit {cmd.digit} dancing")
+            return moves
+        except Exception as e:
+            print(f"Error performing dance: {e}")
+            return 0
 
     def extend_segment():
-        cmd.value = min(cmd.value, 6)
-        moves = display.extend_segment(int(cmd.value))
-        print(f"digit {cmd.digit} extending segment {cmd.value}")
-        return moves
+        try:
+            segment_value = min(int(cmd.value), MAX_SEGMENT_VALUE)
+            moves = display.extend_segment(segment_value)
+            print(f"digit {cmd.digit} extending segment {segment_value}")
+            return moves
+        except ValueError:
+            print(f"Invalid segment value format: {cmd.value}")
+            return 0
+        except Exception as e:
+            print(f"Error extending segment: {e}")
+            return 0
 
     def retract_segment():
-        cmd.value = min(cmd.value, 6)
-        moves = display.retract_segment(int(cmd.value))
-        print(f"digit {cmd.digit} retracting segment {cmd.value}")
-        return moves
+        try:
+            segment_value = min(int(cmd.value), MAX_SEGMENT_VALUE)
+            moves = display.retract_segment(segment_value)
+            print(f"digit {cmd.digit} retracting segment {segment_value}")
+            return moves
+        except ValueError:
+            print(f"Invalid segment value format: {cmd.value}")
+            return 0
+        except Exception as e:
+            print(f"Error retracting segment: {e}")
+            return 0
 
     actions = {
         int(uartActions.setdigit): set_digit,
