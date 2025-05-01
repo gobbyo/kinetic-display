@@ -108,6 +108,12 @@ def handle_command(display, cmd):
     @handle_errors()
     def retract_segment():
         segment_value = max(0, min(int(cmd.value), MAX_SEGMENT_VALUE))  # Ensure segment_value is between 0 and MAX_SEGMENT_VALUE
+        
+        # Validate segment index before accessing previous_digit_array
+        if segment_value >= len(display.previous_digit_array):
+            print(f"Invalid segment index: {segment_value}")
+            return 0
+        
         moves = display.retract_segment(segment_value)
         print(f"digit {cmd.digit} retracting segment {segment_value}")
         return moves
@@ -141,7 +147,7 @@ def main():
     2. Selects the UART channel based on the display digit.
     3. Synchronizes the display time.
     4. Initializes the UART protocol with the selected channel and baud rate.
-    5. Enters an infinite loop to receive and handle commands:
+    5. Enters an event-driven loop to receive and handle commands:
         - Receives a command via UART.
         - If a command is received, it prints the command details and calls handle_command to execute the command.
         - Handles various exceptions such as UARTChecksumError and UARTInvalidDigit, printing error details.
@@ -159,22 +165,48 @@ def main():
         time.sleep(ACTUATOR_MOVE_DELAY_SECONDS)
 
         while True:
-            time.sleep(UART_RECEIVE_DELAY_SECONDS)
             try:
-                cmd = uart.receiveCommand()
+                # Use a non-blocking approach to check for commands
+                cmd = uart.receiveCommand(non_blocking=True)
                 if cmd is not None:
                     print(f"digit received cmd: digit={cmd.digit} action={cmd.action} value={cmd.value}")
-                    handle_command(display, cmd)
+                    actuator_moves = handle_command(display, cmd)
+                    
+                    # Instead of sleeping, use a non-blocking delay mechanism
+                    if actuator_moves > 0:
+                        start_time = time.ticks_ms()
+                        while time.ticks_diff(time.ticks_ms(), start_time) < actuator_moves * display.wait_time * 1000:
+                            # Check for new commands during the delay
+                            try:
+                                cmd = uart.receiveCommand(non_blocking=True)
+                                if cmd is not None:
+                                    print(f"digit received cmd during delay: digit={cmd.digit} action={cmd.action} value={cmd.value}")
+                                    handle_command(display, cmd)
+                            except Exception as e:
+                                print(f"Error during command handling in delay: {type(e).__name__}: {e}")
+                                import traceback
+                                traceback.print_exc()
+                                raise  # Re-raise the exception for consistent error handling
             except (UARTChecksumError, UARTInvalidDigit, UARTInvalidAction) as e:
                 print(f"{type(e).__name__}: {e}")
+                raise  # Re-raise the exception for consistent error handling
+            finally:
+                # Ensure any resources like Pin objects are properly cleaned up
+                if hasattr(uart, 'cleanup'):
+                    uart.cleanup()
     except ValueError as e:
         print(f"ValueError: Invalid value encountered. Details: {e}")
+        raise  # Re-raise the exception for consistent error handling
     except Exception as e:
         print(f"Critical error in main: {type(e).__name__}: {e}")
         import traceback
         traceback.print_exc()
+        raise  # Re-raise the exception for consistent error handling
+    finally:
+        # Ensure any resources like Pin objects are properly cleaned up
+        if hasattr(uart, 'cleanup'):
+            uart.cleanup()
 
 
 if __name__ == '__main__':
     main()
-    #asyncio.run(main())
