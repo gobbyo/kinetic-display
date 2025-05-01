@@ -69,7 +69,7 @@ class Digit_Colons:
             percentLED_brightness = float(self.conf.read("brightness")) # 0-1, 0.5 being 50% brightness
             self._brightness = int(percentLED_brightness*LEDmaxBrightness)
             self._previousDigitArray = self.conf.read("previous")
-            self._motorspeed = int(self.conf.read("speed"))
+            self._motorspeed = int(self.conf.read("motorspeed"))
             self._waitTime = float(self.conf.read("wait"))
             self._digit = int(self.conf.read("digit"))
             self._testDigit = int(self.conf.read("alien"))
