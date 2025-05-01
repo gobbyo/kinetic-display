@@ -5,7 +5,7 @@ import time
 
 def handle_command(display, cmd):
     actuatorMoves = 0
-    if display._digit == cmd.digit:
+    if display.digit == cmd.digit:
         if cmd.action == int(uartActions.setdigit):
             a = int(cmd.value)
             digitArray = display.getDigitArray(uartCommand.digitAlien[a] if display.testdigit == 1 else uartCommand.digitValue[a])
@@ -38,14 +38,14 @@ def handle_command(display, cmd):
             pass
         time.sleep(actuatorMoves * display.waitTime)
     else:
-        print(f"command ignored as target digit {cmd.digit} is not digit {display._digit}")
+        print(f"command ignored as target digit {cmd.digit} is not digit {display.digit}")
 
 def main():
-    display = digit.Digit(digit.led_pins, digit.LEDbrightness, digit.motor_pins)
-    uartCh = uartChannel.uart0 if display._digit <= 1 else uartChannel.uart1
+    display = digit.Digit(digit.led_pins, digit.Digit.brightness, digit.motor_pins)
+    uartCh = uartChannel.uart0 if display.digit <= 1 else uartChannel.uart1
     
-    display.syncTime(0, 0, 0)
-    print(f"Digit {display._digit} using UART channel {uartCh}")
+    display.sync_time(0, 0, 0)
+    print(f"Digit {display.digit} using UART channel {uartCh}")
 
     try:
         uart = uartProtocol(uartCh, commandHelper.baudRate[3])

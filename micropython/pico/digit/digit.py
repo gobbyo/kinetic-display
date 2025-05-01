@@ -140,7 +140,7 @@ class Digit:
             for actuator in self.actuators:
                 actuator.stop()
 
-        except FileNotFoundError as fnfe:
+        except OSError as fnfe:
             print(f"Configuration file not found: {fnfe}")
             self._release_resources()
             raise
@@ -170,12 +170,35 @@ class Digit:
 
     def _load_config(self):
         """Load configuration values from the config file."""
-        self.previous_digit_array = self.config.read("previous", default=[0] * 7)
-        self.brightness = int(float(self.config.read("brightness", default=0.5)) * 65536)
-        self.motor_speed = int(self.config.read("motorspeed", default=50))
-        self.wait_time = float(self.config.read("waitTime", default=0.02))
-        self.digit = int(self.config.read("digit", default=0))
-        self.test_digit = int(self.config.read("alien", default=0))
+        try:
+            self.previous_digit_array = self.config.read("previous") or [0] * 7
+        except KeyError:
+            self.previous_digit_array = [0] * 7
+
+        try:
+            self.brightness = int(float(self.config.read("brightness")) * 65536)
+        except (KeyError, TypeError, ValueError):
+            self.brightness = int(0.5 * 65536)
+
+        try:
+            self.motor_speed = int(self.config.read("motorspeed"))
+        except (KeyError, TypeError, ValueError):
+            self.motor_speed = 50
+
+        try:
+            self.wait_time = float(self.config.read("waitTime"))
+        except (KeyError, TypeError, ValueError):
+            self.wait_time = 0.02
+
+        try:
+            self.digit = int(self.config.read("digit"))
+        except (KeyError, TypeError, ValueError):
+            self.digit = 0
+
+        try:
+            self.test_digit = int(self.config.read("alien"))
+        except (KeyError, TypeError, ValueError):
+            self.test_digit = 0
 
     def __del__(self):
         """Clean up resources when the object is garbage collected."""
@@ -193,30 +216,30 @@ class Digit:
 
     @property
     def testdigit(self):
-        return self._testDigit
+        return self.test_digit
     
     @testdigit.setter
     def testdigit(self, test):
-        self._testDigit = test
-        self.conf.write("alien", test)
+        self.test_digit = test
+        self.config.write("alien", test)
     
     @property
     def motorspeed(self):
-        return self._motorspeed
+        return self.motor_speed
 
     @motorspeed.setter
     def motorspeed(self, speed):
-        self._motorspeed = speed
-        self.conf.write("motorspeed", speed)
+        self.motor_speed = speed
+        self.config.write("motorspeed", speed)
     
     @property
     def waitTime(self):
-        return self._waitTime
+        return self.wait_time
     
     @waitTime.setter
     def waitTime(self, wt):
-        self._waitTime = wt
-        self.conf.write("waitTime", wt)
+        self.wait_time = wt
+        self.config.write("waitTime", wt)
     
     @property
     def brightness(self):
@@ -225,9 +248,9 @@ class Digit:
     @brightness.setter
     def brightness(self, b):
         self._brightness = int(b*65536)
-        self.conf.write("brightness", b)
+        self.config.write("brightness", b)
         for i in range(0,7):
-            if 1 == self._previousDigitArray[i]:
+            if 1 == self.previous_digit_array[i]:
                 self.leds[i].duty_u16(self._brightness)
                 print(f"----------\nbrightness {self._brightness} seg={i}")
 
@@ -264,16 +287,16 @@ class Digit:
         Returns:
             int: 1 if the segment was successfully extended, 0 if the segment index is invalid.
         """
-        if not 0 <= seg < len(self._previousDigitArray):
+        if not 0 <= seg < len(self.previous_digit_array):
             print(f"Error: Invalid segment index {seg}")
             return 0
 
-        if self._previousDigitArray[seg] == 0:
+        if self.previous_digit_array[seg] == 0:
             try:
-                self.actuators[seg].extend(self._motorspeed, self._waitTime)
+                self.actuators[seg].extend(self.motor_speed, self.wait_time)
                 self.leds[seg].duty_u16(self._brightness)
-                self._previousDigitArray[seg] = 1
-                self.set_previous_digit_array(self._previousDigitArray)
+                self.previous_digit_array[seg] = 1
+                self.set_previous_digit_array(self.previous_digit_array)
             except IndexError as e:
                 print(f"Error accessing actuator/LED for segment {seg}: {e}")
             except Exception as e:
@@ -294,12 +317,12 @@ class Digit:
         Returns:
             int: 1 if the segment was successfully retracted, 0 if the segment index is invalid.
         """
-        if self._previousDigitArray[seg] == 1:
+        if self.previous_digit_array[seg] == 1:
             try:
-                self.actuators[seg].retract(self._motorspeed, self._waitTime)
+                self.actuators[seg].retract(self.motor_speed, self.wait_time)
                 self.leds[seg].duty_u16(0)
-                self._previousDigitArray[seg] = 0
-                self.setPreviousDigitArray(self._previousDigitArray)
+                self.previous_digit_array[seg] = 0
+                self.setPreviousDigitArray(self.previous_digit_array)
             except Exception as e:
                 print(f"Error retracting segment {seg}: {e}")
         return 1
@@ -320,35 +343,35 @@ class Digit:
         Returns:
             int: The total number of actuator moves performed.
         """
-        self.startLED.on()
+        self.start_led.on()
         actuatorMoves = 0
         print(f"set_digit: {digitArray}")
         for i in range(0,7):
             skipped = True
-            if (1 == digitArray[i]) and (0 == self._previousDigitArray[i]):
-                self.actuators[i].extend(self._motorspeed,self._waitTime)
+            if (1 == digitArray[i]) and (0 == self.previous_digit_array[i]):
+                self.actuators[i].extend(self.motor_speed,self.wait_time)
                 print(f"\t[1] seg {chr(i+97)} extended")
                 self.leds[i].duty_u16(self._brightness)
                 actuatorMoves += 1
                 skipped = False
 
-            if (1 == digitArray[i]) and (1 == self._previousDigitArray[i]):
+            if (1 == digitArray[i]) and (1 == self.previous_digit_array[i]):
                 self.leds[i].duty_u16(self._brightness)
                 print(f"\t[1] seg {chr(i+97)} skipped")
                 skipped = False
 
-            if (0 == digitArray[i]) and (1 == self._previousDigitArray[i]):
+            if (0 == digitArray[i]) and (1 == self.previous_digit_array[i]):
                 print(f"\t[0] seg {chr(i+97)} retracted")
                 self.leds[i].duty_u16(0)
-                self.actuators[i].retract(self._motorspeed,self._waitTime)
+                self.actuators[i].retract(self.motor_speed,self.wait_time)
                 actuatorMoves += 1
                 skipped = False
 
             if skipped:
-                print(f"\t[{self._previousDigitArray[i]}] seg {chr(i+97)} skipped")
+                print(f"\t[{self.previous_digit_array[i]}] seg {chr(i+97)} skipped")
 
         self.setPreviousDigitArray(digitArray)
-        self.startLED.off()
+        self.start_led.off()
         return actuatorMoves
 
     def setPreviousDigitArray(self, digitArray):
@@ -361,9 +384,9 @@ class Digit:
         Args:
             digitArray (list): A list of integers representing the new digit array.
         """
-        self.conf.write('previous',digitArray)
+        self.config.write('previous',digitArray)
         for i in range(7):
-            self._previousDigitArray[i] = digitArray[i]
+            self.previous_digit_array[i] = digitArray[i]
 
     def dance(self):
         """
@@ -376,7 +399,7 @@ class Digit:
         Returns:
             int: The total number of actuator moves performed during the dance sequence.
         """
-        self.startLED.on()
+        self.start_led.on()
         actuatorMoves = 0
         for seg in [2,3,4,5,0,1,6]:
             self.extend_segment(seg)
@@ -438,7 +461,7 @@ def instructions():
     Returns:
         tuple: A tuple containing the action (str) and value (str) entered by the user.
     """
-    actions = ['c', 'd', 'e', 'l', 'r', 's', 't', 'w']
+    actions = ['c', 'd', 'e', 'l', 'r', 's', 't', 'w', 'q']
 
     while True:
         print("Enter a command:")
@@ -463,7 +486,7 @@ def instructions():
             continue
 
         value = cmd[1:].strip()
-        if action in ['d', 'e', 'r', 'l', 's', 'w']:
+        if action in ['e', 'r', 'l', 's', 'w']:
             if not value.isdigit():
                 print(f"Invalid value '{value}' for action '{action}'. Please enter a numeric value.")
                 continue
