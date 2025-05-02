@@ -3,233 +3,232 @@ from common.uart_protocol import commandHelper, uartCommand
 import time
 from common.config import Config
 
-LEDbrightness = 0.4 # 0-1, 0.5 being 50% brightness
-LEDbrightnessFactor = -54613   #dim value as 1/6th of the max brightness
-LEDmaxBrightness = 65535 + LEDbrightnessFactor # 0-65535, 0 being the dimmest
+# Constants
+LED_BRIGHTNESS_DEFAULT = 0.4
+LED_MAX_BRIGHTNESS = 10922 # 1/6th of 65535
+MOTOR_SPEED_PIN = 11
+PWM_FREQUENCY = 50
+LED_PWM_FREQUENCY = 1000
+MOTOR_SPEED_MAX = 100
+WAIT_TIME_DEFAULT = 0.02
+RTC_YEAR = 2000
+RTC_MONTH = 1
+RTC_DAY = 1
+RTC_WEEKDAY = 0
+RTC_SUBSECONDS = 0
 
-motorSpeedPin=11
-# motor tuples (extend pin, retract pin)
-motor1 = (12,13)
-motor2 = (14,15)
-motor_pins = [motor1,motor2]
-led_pins = [2,3]
+# Motor tuples (extend pin, retract pin)
+motor1 = (12, 13)
+motor2 = (14, 15)
+motor_pins = [motor1, motor2]
+
+# LED pins
+led_pins = [2, 3]
 
 class Motoractuator:
     def __init__(self, speedPin, cwPin, acwPin):
         self.speed = PWM(Pin(speedPin))
-        self.speed.freq(50)
+        self.speed.freq(PWM_FREQUENCY)
         self.cw = Pin(cwPin, Pin.OUT)
         self.ccw = Pin(acwPin, Pin.OUT)
         self.stop()
     
     def extend(self, motor_speed, wait):
-        # try/except block needed as an exception may be thrown without stopping the motor
         try:
-            self.speed.duty_u16(int((motor_speed/100)*65536))
+            self.speed.duty_u16(int((motor_speed / MOTOR_SPEED_MAX) * LED_MAX_BRIGHTNESS))
             self.cw.on()
             time.sleep(wait)
         except Exception as e:
-            print("extend error: {0}".format(e))
+            print(f"extend error: {e}")
         finally:
             self.stop()
-            print("extend")
     
     def retract(self, motor_speed, wait):
-        # try/except block needed as an exception may be thrown without stopping the motor
         try:
-            self.speed.duty_u16(int((motor_speed/100)*65536))
+            self.speed.duty_u16(int((motor_speed / MOTOR_SPEED_MAX) * LED_MAX_BRIGHTNESS))
             self.ccw.on()
             time.sleep(wait)
         except Exception as e:
-            print("retract error: {0}".format(e))
+            print(f"retract error: {e}")
         finally:
             self.stop()
-            print("retract")
     
     def stop(self):
         self.speed.duty_u16(0)
         self.cw.off()
         self.ccw.off()
-        print("stop")
 
 class Digit_Colons:
     def __init__(self, led_pins, percentLED_brightness, motor_pins):
         self.leds = []
-        self.startLED = Pin(25,Pin.OUT)
-        for i in range(2):
-            led = PWM(Pin(led_pins[i]))
-            led.freq(1000)
+        for pin in led_pins:
+            led = PWM(Pin(pin))
+            led.freq(LED_PWM_FREQUENCY)
             led.duty_u16(0)
             self.leds.append(led)
-        self.conf = Config("digit.json")
-        self._previousDigitArray = [0,0]
+        self.config = Config("digit.json")
+        self.previous_digit_array = [0, 0]
         try:
             self.rtc = RTC()
-            current = self.conf.read("previous")
-            percentLED_brightness = float(self.conf.read("brightness")) # 0-1, 0.5 being 50% brightness
-            self._brightness = int(percentLED_brightness*LEDmaxBrightness)
-            self._previousDigitArray = self.conf.read("previous")
-            self._motorspeed = int(self.conf.read("motorspeed"))
-            self._waitTime = float(self.conf.read("wait"))
-            self._digit = int(self.conf.read("digit"))
-            self._testDigit = int(self.conf.read("alien"))
-        finally:
-            pass
+            current = self.config.read("previous") or [0, 0]
+            percent_led_brightness = float(self.config.read("brightness") or LED_BRIGHTNESS_DEFAULT)
+            self.brightness = int(percent_led_brightness * LED_MAX_BRIGHTNESS)
+            self.previous_digit_array = current
+            self.motor_speed = int(self.config.read("motorspeed") or MOTOR_SPEED_MAX)
+            self.wait_time = float(self.config.read("wait") or WAIT_TIME_DEFAULT)
+            self.digit = int(self.config.read("digit") or 0)
+            self.test_digit = int(self.config.read("alien") or 0)
+        except Exception as e:
+            print(f"Error loading configuration: {e}")
         self.actuators = []
         for motor in motor_pins:
-            m = Motoractuator(motorSpeedPin,motor[0],motor[1])
+            m = Motoractuator(MOTOR_SPEED_PIN, motor[0], motor[1])
             m.stop()
             self.actuators.append(m)
 
-        time.sleep(.5)
+        time.sleep(0.5)
         self.set_digit(current)
     
     def __del__(self):
-        for led in self.leds:
-            led.duty_u16(0)
-        self.startLED.off()
-        self.conf.__del__()
+        try:
+            for led in self.leds:
+                led.duty_u16(0)
+            self.config.__del__()
+        except Exception as e:
+            print(f"Error during cleanup: {e}")
 
     @property
     def testdigit(self):
-        return self._testDigit
+        return self.test_digit
     
     @testdigit.setter
     def testdigit(self, test):
-        self._testDigit = test
-        self.conf.write("alien", test)
+        self.test_digit = test
+        self.config.write("alien", test)
     
     @property
     def speed(self):
-        print("speed={0}".format(self._motorspeed))
-        return self._motorspeed
+        return self.motor_speed
 
     @speed.setter
     def speed(self, speed):
-        self._motorspeed = speed
-        self.conf.write("speed", int(speed))
+        self.motor_speed = speed
+        self.config.write("speed", int(speed))
     
     @property
     def wait(self):
-        print("wait={0}".format(self._waitTime))
-        return self._waitTime
+        return self.wait_time
     
     @wait.setter
     def wait(self, wt):
-        self._waitTime = wt
-        self.conf.write("wait", wt)
+        self.wait_time = wt
+        self.config.write("wait", wt)
     
     @property
     def brightness(self):
-        return self._brightness
+        return self.brightness
     
     @brightness.setter
     def brightness(self, b):
-        self._brightness = int(b*LEDmaxBrightness)
-        self.conf.write("brightness", b)
+        self.brightness = int(b * LED_MAX_BRIGHTNESS)
+        self.config.write("brightness", b)
         for i in range(2):
-            if 1 == self._previousDigitArray[i]:
-                self.leds[i].duty_u16(self._brightness)
-                print("----------")
-                print("brightness {0} seg={1}".format(self._brightness, i))
+            if self.previous_digit_array[i] == 1:
+                self.leds[i].duty_u16(self.brightness)
 
     def getDigitArray(self, val):
-        a = [0,0]
-        i = 0
-        for s in a:
+        a = [0, 0]
+        for i in range(len(a)):
             a[i] = (val & (0x01 << i)) >> i
-            i += 1
         return a
     
     def extend_segment(self, seg):
-        if(0 == self._previousDigitArray[seg]):
-            self.actuators[seg].extend(self._motorspeed,self._waitTime)
-            self.leds[seg].duty_u16(self._brightness)
-        self._previousDigitArray[seg] = 1
-        self.setPreviousDigitArray(self._previousDigitArray)
+        if not 0 <= seg < len(self.previous_digit_array):
+            print(f"Error: Invalid segment index {seg}")
+            return 0
+
+        if self.previous_digit_array[seg] == 0:
+            try:
+                self.actuators[seg].extend(self.motor_speed, self.wait_time)
+                self.leds[seg].duty_u16(self.brightness)
+                self.previous_digit_array[seg] = 1
+                self.setPreviousDigitArray(self.previous_digit_array)
+            except Exception as e:
+                print(f"Error extending segment {seg}: {e}")
         return 1
 
     def retract_segment(self, seg):
-        if(1 == self._previousDigitArray[seg]):
-            self.actuators[seg].retract(self._motorspeed,self._waitTime)
-            self.leds[seg].duty_u16(0)
-        self._previousDigitArray[seg] = 0
-        self.setPreviousDigitArray(self._previousDigitArray)
+        if not 0 <= seg < len(self.previous_digit_array):
+            print(f"Error: Invalid segment index {seg}")
+            return 0
+
+        if self.previous_digit_array[seg] == 1:
+            try:
+                self.actuators[seg].retract(self.motor_speed, self.wait_time)
+                self.leds[seg].duty_u16(0)
+                self.previous_digit_array[seg] = 0
+                self.setPreviousDigitArray(self.previous_digit_array)
+            except Exception as e:
+                print(f"Error retracting segment {seg}: {e}")
         return 1
 
-    def set_digit(self, digitArray):     
-        self.startLED.on()   
+    def set_digit(self, digitArray):
         actuatorMoves = 0
         for i in range(2):
-            if (1 == digitArray[i]) and (0 == self._previousDigitArray[i]):
-                self.actuators[i].extend(self._motorspeed,self._waitTime)
-                print("----------")
-                print("extend {0} digit {1}".format(i, digitArray))
-                self.leds[i].duty_u16(self._brightness)
+            if (digitArray[i] == 1 and self.previous_digit_array[i] == 0):
+                self.actuators[i].extend(self.motor_speed, self.wait_time)
+                self.leds[i].duty_u16(self.brightness)
                 actuatorMoves += 1
-            
-            if (1 == digitArray[i]) and (1 == self._previousDigitArray[i]):
-                self.leds[i].duty_u16(self._brightness)
-                print("----------")
-                print("extend {0} digit {1}".format(i, digitArray))
-
-            if (0 == digitArray[i]) and (1 == self._previousDigitArray[i]):
-                print("----------")
-                print("retract {0} digit {1}".format(i, digitArray))
+            elif (digitArray[i] == 0 and self.previous_digit_array[i] == 1):
+                self.actuators[i].retract(self.motor_speed, self.wait_time)
                 self.leds[i].duty_u16(0)
-                self.actuators[i].retract(self._motorspeed,self._waitTime)
                 actuatorMoves += 1
-
         self.setPreviousDigitArray(digitArray)
-        self.startLED.off()
         return actuatorMoves
 
     def setPreviousDigitArray(self, digitArray):
-        self.conf.write('previous',digitArray)
-        for i in range(2):
-            self._previousDigitArray[i] = digitArray[i]
+        self.config.write('previous', digitArray)
+        self.previous_digit_array = digitArray
 
     def dance(self):
-        self.startLED.on()
         actuatorMoves = 0
         for seg in range(2):
             self.extend_segment(seg)
-            time.sleep(.01)
+            time.sleep(0.01)
             actuatorMoves += 1
         for seg in range(2):
             self.retract_segment(seg)
-            time.sleep(.01)
+            time.sleep(0.01)
             actuatorMoves += 1
-        self.startLED.off()
         return actuatorMoves
 
     def syncTime(self, h, m, s):
-        # time tuple = [year, month, day, weekday, hours, minutes, seconds, subseconds]
-        self.rtc.datetime((2000, 1, 1, 0, h, m, s, 0))
+        self.rtc.datetime((RTC_YEAR, RTC_MONTH, RTC_DAY, RTC_WEEKDAY, h, m, s, RTC_SUBSECONDS))
     
-    # This method is used to format 12 or 24 hour time
-    # parameter 'twelveHour' is a boolean value
-    # time tuple = [year, month, day, weekday, hours, minutes, seconds, subseconds]
     def setTimeDisplay(self, twelveHour):
-        ready = False
-        while not ready:
-            t = self.rtc.datetime()
-            if t[6]%10 == self._digit:
-                ready = True
-            time.sleep(.1)
-        
-        d = '0'
-        if self._digit >= 0 and self._digit < 2:
-            a = '{0:02}'.format(t[4])
-            d = a[self._digit]
-            print("hours d={0}".format(d))
-        else:
-            a = '{0:02}'.format(t[5])
-            d = a[self._digit - 2]
-            print("minutes d={0}".format(d))
+        max_attempts = 100
+        attempts = 0
 
-        if twelveHour and d == '0' and self._digit == 0:
+        while attempts < max_attempts:
+            t = self.rtc.datetime()
+            if t[6] % 10 == self.digit:
+                break
+            time.sleep(0.1)
+            attempts += 1
+
+        if attempts == max_attempts:
+            print("Warning: setTimeDisplay reached maximum attempts without success.")
+            return
+
+        d = '0'
+        if self.digit < 2:
+            d = '{0:02}'.format(t[4])[self.digit]
+        else:
+            d = '{0:02}'.format(t[5])[self.digit - 2]
+
+        if twelveHour and d == '0' and self.digit == 0:
             d = 'F'
+
         cmd = uartCommand("default")
         self.set_digit(self.getDigitArray(cmd.digitValue[int(d)]))
 
