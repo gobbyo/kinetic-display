@@ -24,7 +24,7 @@ powerRelayPin = 19
 # This class is the conductor of the display. It manages the various components of the system
 # and orchestrates the display of the time, date, temperature, and humidity. It also manages the
 # hybernation of the system and the schedule of events.
-class conductor:
+class Conductor:
     def __init__(self):
         self.wifi = None
         self.wifihotspot = None
@@ -81,7 +81,7 @@ class conductor:
                 #Clear the display
                 if not cleared:
                     print("hybernating...")
-                    self.cleardisplay() 
+                    self.clearDisplay() 
                     time.sleep(2)
                     self.wifi.disconnect_from_wifi_network()
                     self.powerRelay.on()
@@ -103,7 +103,7 @@ class conductor:
             while self.hybernateswitch():
                 #Clear the display
                 if not cleared:
-                    self.cleardisplay()
+                    self.clearDisplay()
                     print("hybernating...")
                     time.sleep(2)
                     self.wifi.disconnect_from_wifi_network()
@@ -145,7 +145,7 @@ class conductor:
         finally:
             pass
 
-    def updatebrightness(self):
+    def updateBrightness(self):
         curlight = self.light.read()
         if curlight == self.brightness:
             return
@@ -165,7 +165,7 @@ class conductor:
             time.sleep(.1)
         self.brightness = curlight
 
-    def cleardisplay(self):
+    def clearDisplay(self):
         # Set the brightness of the digits
         try:
             for d in range(3,-1,-1):
@@ -188,7 +188,7 @@ class conductor:
         finally:
             pass
 
-    def testdigits(self):
+    def testDigits(self):
         # Initialize/test each digit
         for d in range(3,-1,-1):
             cmd = None
@@ -400,7 +400,7 @@ class conductor:
 def loop():
 
     # Set up the UARTs digits 0 through 3
-    controller = conductor()
+    controller = Conductor()
 
     try:
 
@@ -439,7 +439,7 @@ def loop():
             print("24 hour time")
             controller.display12hour = False
         time.sleep(.5)
-        controller.testdigits()
+        controller.testDigits()
 
         # Load the schedule 
         try:
@@ -470,7 +470,7 @@ def loop():
     finally:
         pass
 
-    controller.updatebrightness()
+    controller.updateBrightness()
 
     while True:
         try:
@@ -503,12 +503,12 @@ def loop():
             
             time.sleep(1)
             if controller.checkHybernate():
-                controller.updatebrightness()
+                controller.updateBrightness()
 
         except Exception as e:
             print(f"Error: {e}")
         finally:
-            controller.updatebrightness() 
+            controller.updateBrightness() 
             time.sleep(1)
 
 ##############################
@@ -550,13 +550,13 @@ def instructions():
 
 #Example usage:
 def manual():
-    controller = conductor()
+    controller = Conductor()
     finished = False
 
     while not finished:
         a, v = instructions()
         if a == 'a':
-            controller.testdigits()
+            controller.testDigits()
             print("(a)ll digits test")
         elif a == 'c':
             for u in range(15):
@@ -589,7 +589,7 @@ def manual():
             controller.showIndoorHumidity()
             print(f"Indoor humidity")
         elif a == 'l':
-            controller.updatebrightness()
+            controller.updateBrightness()
             print(f"Change in luminosity")
         elif a == 'w':
             controller.setWaitTime(int(v))
@@ -607,7 +607,7 @@ def manual():
         else:
             print(f'Quitting program')
             finished = True
-            controller.cleardisplay()
+            controller.clearDisplay()
 
 if __name__ == '__main__':
     #manual()

@@ -38,7 +38,7 @@ def handle_errors(default_return=0):
         return wrapper
     return decorator
 
-def handle_command(display, cmd):
+def handleCommand(display, cmd):  # Changed to CamelCase
     """
     Handle a command received via UART and perform the corresponding action on the display.
 
@@ -170,7 +170,7 @@ def main():
                 cmd = uart.receiveCommand(non_blocking=True)
                 if cmd is not None:
                     print(f"digit received cmd: digit={cmd.digit} action={cmd.action} value={cmd.value}")
-                    actuator_moves = handle_command(display, cmd)
+                    actuator_moves = handleCommand(display, cmd)
                     
                     # Instead of sleeping, use a non-blocking delay mechanism
                     if actuator_moves > 0:
@@ -181,7 +181,7 @@ def main():
                                 cmd = uart.receiveCommand(non_blocking=True)
                                 if cmd is not None:
                                     print(f"digit received cmd during delay: digit={cmd.digit} action={cmd.action} value={cmd.value}")
-                                    handle_command(display, cmd)
+                                    handleCommand(display, cmd)
                             except Exception as e:
                                 print(f"Error during command handling in delay: {type(e).__name__}: {e}")
                                 import traceback

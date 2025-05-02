@@ -31,7 +31,7 @@ motor_pins = [motor1, motor2, motor3, motor4, motor5, motor6, motor7]
 # LED pins
 led_pins = [2, 3, 6, 7, 8, 9, 28]
 
-class Motoractuator:
+class MotorActuator:  # Changed to CamelCase
     def __init__(self, speedPin, cwPin, ccwPin):
         self.speed = PWM(Pin(speedPin))
         self.speed.freq(PWM_FREQUENCY)
@@ -39,9 +39,9 @@ class Motoractuator:
         self.ccw = Pin(ccwPin, Pin.OUT)
         self.stop()
     
-    def extend(self, motor_speed, waitTime):
+    def extend(self, motorSpeed, waitTime):  # Changed to CamelCase
         try:
-            self.speed.duty_u16(int((motor_speed / MOTOR_SPEED_MAX) * BRIGHTNESS_MAX))
+            self.speed.duty_u16(int((motorSpeed / MOTOR_SPEED_MAX) * BRIGHTNESS_MAX))
             self.cw.on()
             time.sleep(waitTime)
         except Exception as e:
@@ -50,9 +50,9 @@ class Motoractuator:
             self.stop()
             #print("extend")
     
-    def retract(self, motor_speed, waitTime):
+    def retract(self, motorSpeed, waitTime):  # Changed to CamelCase
         try:
-            self.speed.duty_u16(int((motor_speed / MOTOR_SPEED_MAX) * BRIGHTNESS_MAX))
+            self.speed.duty_u16(int((motorSpeed / MOTOR_SPEED_MAX) * BRIGHTNESS_MAX))
             self.ccw.on()
             time.sleep(waitTime)
         except Exception as e:
@@ -92,7 +92,7 @@ class Digit:
         digit (int): The current digit being displayed.
         test_digit (int): A test digit value.
     """
-    def __init__(self, led_pins, percent_led_brightness, motor_pins):
+    def __init__(self, ledPins, percentLedBrightness, motorPins):  # Changed to CamelCase
         """
         Initialize the Digit class.
 
@@ -115,7 +115,7 @@ class Digit:
             self.start_led = Pin(25, Pin.OUT)
 
             # Initialize LEDs
-            for pin in led_pins:
+            for pin in ledPins:
                 led = PWM(Pin(pin))
                 led.freq(LED_PWM_FREQUENCY)
                 led.duty_u16(0)
@@ -131,29 +131,29 @@ class Digit:
             self.test_digit = 0
 
             self.rtc = RTC()
-            self._load_config()
+            self._loadConfig()
 
             # Initialize actuators
             self.actuators = [
-                Motoractuator(MOTOR_SPEED_PIN, motor[0], motor[1]) for motor in motor_pins
+                MotorActuator(MOTOR_SPEED_PIN, motor[0], motor[1]) for motor in motorPins
             ]
             for actuator in self.actuators:
                 actuator.stop()
 
         except OSError as fnfe:
             print(f"Configuration file not found: {fnfe}")
-            self._release_resources()
+            self._releaseResources()
             raise
         except ValueError as ve:
             print(f"Invalid configuration value: {ve}")
-            self._release_resources()
+            self._releaseResources()
             raise
         except Exception as e:
             print(f"Unexpected error during initialization: {e}")
-            self._release_resources()
+            self._releaseResources()
             raise
 
-    def _release_resources(self):
+    def _releaseResources(self):  # Changed to CamelCase
         """Release resources initialized during the constructor."""
         if self.leds:
             for led in self.leds:
@@ -168,7 +168,7 @@ class Digit:
         self.config = None
         self.rtc = None
 
-    def _load_config(self):
+    def _loadConfig(self):  # Changed to CamelCase
         """Load configuration values from the config file."""
         try:
             self.previous_digit_array = self.config.read("previous") or [0] * 7
@@ -273,7 +273,7 @@ class Digit:
             a[i] = (val & (0x01 << i)) >> i
         return a
     
-    def extend_segment(self, seg):
+    def extendSegment(self, seg):  # Changed to CamelCase
         """
         Extend a specific segment of the digit display.
 
@@ -304,7 +304,7 @@ class Digit:
         return 1
 
 
-    def retract_segment(self, seg):
+    def retractSegment(self, seg):  # Changed to CamelCase
         """
         Retract a specific segment of the digit display.
 
@@ -327,7 +327,7 @@ class Digit:
                 print(f"Error retracting segment {seg}: {e}")
         return 1
 
-    def set_digit(self, digitArray):
+    def setDigit(self, digitArray):  # Changed to CamelCase
         """
         Set the digit display to the specified digit array.
 
@@ -374,7 +374,7 @@ class Digit:
         self.start_led.off()
         return actuatorMoves
 
-    def setPreviousDigitArray(self, digitArray):
+    def setPreviousDigitArray(self, digitArray):  # Changed to CamelCase
         """
         Update the previous digit array and save it to the configuration.
 
@@ -402,17 +402,17 @@ class Digit:
         self.start_led.on()
         actuatorMoves = 0
         for seg in [2,3,4,5,0,1,6]:
-            self.extend_segment(seg)
+            self.extendSegment(seg)
             time.sleep(.01)
             actuatorMoves += 1
         for seg in [5,0,1,2,3,4,6]:
-            self.retract_segment(seg)
+            self.retractSegment(seg)
             time.sleep(.01)
             actuator_moves += 1
         self.start_led.off()
         return actuator_moves
 
-    def sync_time(self, h, m, s):
+    def syncTime(self, h, m, s):  # Changed to CamelCase
         """
         Synchronize the RTC with the provided time.
 
@@ -424,7 +424,7 @@ class Digit:
         # time tuple = [year, month, day, weekday, hours, minutes, seconds, subseconds]
         self.rtc.datetime((RTC_YEAR, RTC_MONTH, RTC_DAY, RTC_WEEKDAY, h, m, s, RTC_SUBSECONDS))
     
-    def set_time_display(self, twelve_hour):
+    def setTimeDisplay(self, twelveHour):  # Changed to CamelCase
         """
         Display the current time on the digit display in either 12-hour or 24-hour format.
 
@@ -447,12 +447,12 @@ class Digit:
 
         if self.digit < 2:  # Hours
             d = '{0:02}'.format(t[4])[self.digit]
-            if twelve_hour and d == '0' and self.digit == 0:
+            if twelveHour and d == '0' and self.digit == 0:
                 d = 'F'
         else:  # Minutes
             d = '{0:02}'.format(t[5])[self.digit - 2]
 
-        self.set_digit(self.get_digit_array(uartCommand.digitValue[int(d)]))
+        self.setDigit(self.getDigitArray(uartCommand.digitValue[int(d)]))
 
 def instructions():
     """
@@ -531,7 +531,7 @@ def main():
                     a = helper.decodeHex(value=i)
                     print(f"digit=(0x{a:02x})")
                     digitArray = d.getDigitArray(uartCommand.digitValue[int(a)])
-                    d.set_digit(digitArray)
+                    d.setDigit(digitArray)
                     time.sleep(1)
                 except ValueError as ve:
                     print(f"ValueError during digit cycling: {ve}")
@@ -542,7 +542,7 @@ def main():
             try:
                 a = helper.decodeHex(value)
                 digitArray = d.getDigitArray(uartCommand.digitValue[a])
-                actuatorMoves = d.set_digit(digitArray)
+                actuatorMoves = d.setDigit(digitArray)
                 print(f"Digit set successfully. Actuator moves: {actuatorMoves}")
             except KeyError as ke:
                 print(f"KeyError while setting digit: {ke}. Ensure the digit value is valid.")
@@ -554,7 +554,7 @@ def main():
             try:
                 i = int(value)
                 print(f"extend segment=({i})")
-                actuatorMoves = d.extend_segment(i)
+                actuatorMoves = d.extendSegment(i)
             except ValueError as ve:
                 print(f"ValueError while extending segment: {ve}")
             except Exception as e:
@@ -571,7 +571,7 @@ def main():
             try:
                 i = int(value)
                 print(f"retract segment=({i})")
-                actuatorMoves = d.retract_segment(i)
+                actuatorMoves = d.retractSegment(i)
             except ValueError as ve:
                 print(f"ValueError while retracting segment: {ve}")
             except Exception as e:
