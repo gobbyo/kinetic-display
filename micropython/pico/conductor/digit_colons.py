@@ -62,8 +62,12 @@ class MotorActuator:
             self.speed.duty_u16(int((motorSpeed / MOTOR_SPEED_MAX) * LED_MAX_BRIGHTNESS))
             direction_pin.on()
             time.sleep(wait)
+        except ValueError as e:
+            print(f"Motor movement error - invalid parameter value: {e}")
+        except OSError as e:
+            print(f"Motor movement hardware error: {e}")
         except Exception as e:
-            print(f"Motor movement error: {e}")
+            print(f"Unexpected motor movement error: {e}")
         finally:
             self.stop()
 
@@ -94,19 +98,19 @@ class DigitColons:
     Attributes:
         leds (list): List of PWM objects for controlling LED brightness.
         config (Config): Configuration object for reading and writing settings.
-        previous_digit_array (list): List representing the current state of each segment.
+        previousDigitArray (list): List representing the current state of each segment.
         actuators (list): List of MotorActuator objects for controlling segment movement.
         rtc (RTC): Real-time clock object for time synchronization.
-        _brightness (int): Current brightness level of the LEDs.
-        motor_speed (int): Current speed of the motor actuators.
-        wait_time (float): Wait time between motor movements.
+        brightness (int): Current brightness level of the LEDs.
+        motorSpeed (int): Current speed of the motor actuators.
+        waitTime (float): Wait time between motor movements.
         digit (int): Current digit being displayed.
-        test_digit (int): Test digit for display purposes.
+        testDigit (int): Test digit for display purposes.
     """
     def __init__(self, ledPins, percentLedBrightness, motorPins):  
         self.leds = []
         self.config = None
-        self.previous_digit_array = [0] * SEGMENT_COUNT
+        self.previousDigitArray = [0] * SEGMENT_COUNT
         self.actuators = []
         self.rtc = None
 
@@ -123,13 +127,13 @@ class DigitColons:
             self.rtc = RTC()
             
             # Load configuration values with defaults
-            self.previous_digit_array = self.config.read("previous", default=[0] * SEGMENT_COUNT)
-            percent_led_brightness = float(self.config.read("brightness", default=LED_BRIGHTNESS_DEFAULT))
-            self._brightness = int(percent_led_brightness * LED_MAX_BRIGHTNESS)
-            self.motor_speed = int(self.config.read("speed", default=MOTOR_SPEED_MAX))
-            self.wait_time = float(self.config.read("wait", default=WAIT_TIME_DEFAULT))
+            self.previousDigitArray = self.config.read("previous", default=[0] * SEGMENT_COUNT)
+            percentLedBrightness = float(self.config.read("brightness", default=LED_BRIGHTNESS_DEFAULT))
+            self._brightness = int(percentLedBrightness * LED_MAX_BRIGHTNESS)
+            self.motorSpeed = int(self.config.read("speed", default=MOTOR_SPEED_MAX))
+            self.waitTime = float(self.config.read("wait", default=WAIT_TIME_DEFAULT))
             self.digit = int(self.config.read("digit", default=0))
-            self.test_digit = int(self.config.read("alien", default=0))
+            self.testDigit = int(self.config.read("alien", default=0))
 
             # Initialize motor actuators
             for motor in motorPins:
@@ -137,9 +141,17 @@ class DigitColons:
 
             # Wait for initialization to complete and set initial state
             time.sleep(0.5)
-            self.setDigit(self.previous_digit_array)
+            self.setDigit(self.previousDigitArray)
+        except ValueError as e:
+            print(f"Initialization error - invalid parameter value: {e}")
+            self._releaseResources()
+            raise
+        except OSError as e:
+            print(f"Initialization hardware error: {e}")
+            self._releaseResources()
+            raise
         except Exception as e:
-            print(f"Error during initialization: {e}")
+            print(f"Unexpected error during initialization: {e}")
             self._releaseResources()
             raise
 
@@ -156,42 +168,50 @@ class DigitColons:
 
             self.actuators = []
             self.rtc = None
+        except OSError as e:
+            print(f"Hardware error during resource release: {e}")
+        except AttributeError as e:
+            print(f"Attribute error during resource release: {e}")
         except Exception as e:
-            print(f"Error during resource release: {e}")
+            print(f"Unexpected error during resource release: {e}")
 
     def __del__(self):
         try:
             for led in self.leds:
                 led.duty_u16(0)
             self.config.__del__()
+        except AttributeError as e:
+            print(f"Attribute error during cleanup: {e}")
+        except OSError as e:
+            print(f"Hardware error during cleanup: {e}")
         except Exception as e:
-            print(f"Error during cleanup: {e}")
+            print(f"Unexpected error during cleanup: {e}")
 
     @property
     def testdigit(self):
-        return self.test_digit
+        return self.testDigit
     
     @testdigit.setter
     def testdigit(self, test):
-        self.test_digit = test
+        self.testDigit = test
         self.config.write("alien", test)
     
     @property
     def speed(self):
-        return self.motor_speed
+        return self.motorSpeed
 
     @speed.setter
     def speed(self, speed):
-        self.motor_speed = speed
+        self.motorSpeed = speed
         self.config.write("speed", int(speed))
     
     @property
     def wait(self):
-        return self.wait_time
+        return self.waitTime
     
     @wait.setter
     def wait(self, wt):
-        self.wait_time = wt
+        self.waitTime = wt
         self.config.write("wait", wt)
     
     @property
@@ -203,7 +223,7 @@ class DigitColons:
         self._brightness = int(b * LED_MAX_BRIGHTNESS)
         self.config.write("brightness", b)
         for i in range(SEGMENT_COUNT):
-            if self.previous_digit_array[i] == 1:
+            if self.previousDigitArray[i] == 1:
                 self.leds[i].duty_u16(self._brightness)
 
     def getDigitArray(self, val):
@@ -228,15 +248,21 @@ class DigitColons:
             print(f"Error: Invalid segment index {seg}")
             return 0
 
-        if self.previous_digit_array[seg] == 0:
+        if self.previousDigitArray[seg] == 0:
             try:
-                self.actuators[seg].extend(self.motor_speed, self.wait_time)
+                self.actuators[seg].extend(self.motorSpeed, self.waitTime)
                 self.leds[seg].duty_u16(self._brightness)
-                self.previous_digit_array[seg] = 1
-                self.setPreviousDigitArray(self.previous_digit_array)
+                self.previousDigitArray[seg] = 1
+                self.setPreviousDigitArray(self.previousDigitArray)
                 return 1  # Success
+            except OSError as e:
+                print(f"Hardware error extending segment {seg}: {e}")
+                return 0  # Failed
+            except IndexError as e:
+                print(f"Index error extending segment {seg}: {e}")
+                return 0  # Failed
             except Exception as e:
-                print(f"Error extending segment {seg}: {e}")
+                print(f"Unexpected error extending segment {seg}: {e}")
                 return 0  # Failed
         return -1  # Already extended, no action taken
 
@@ -256,15 +282,21 @@ class DigitColons:
             print(f"Error: Invalid segment index {seg}")
             return 0
 
-        if self.previous_digit_array[seg] == 1:
+        if self.previousDigitArray[seg] == 1:
             try:
-                self.actuators[seg].retract(self.motor_speed, self.wait_time)
+                self.actuators[seg].retract(self.motorSpeed, self.waitTime)
                 self.leds[seg].duty_u16(0)
-                self.previous_digit_array[seg] = 0
-                self.setPreviousDigitArray(self.previous_digit_array)
+                self.previousDigitArray[seg] = 0
+                self.setPreviousDigitArray(self.previousDigitArray)
                 return 1  # Success
+            except OSError as e:
+                print(f"Hardware error retracting segment {seg}: {e}")
+                return 0  # Failed
+            except IndexError as e:
+                print(f"Index error retracting segment {seg}: {e}")
+                return 0  # Failed
             except Exception as e:
-                print(f"Error retracting segment {seg}: {e}")
+                print(f"Unexpected error retracting segment {seg}: {e}")
                 return 0  # Failed
         return -1  # Already retracted, no action taken
 
@@ -286,24 +318,33 @@ class DigitColons:
         try:
             actuatorMoves = 0
             for i in range(SEGMENT_COUNT):
-                if (digitArray[i] == 1 and self.previous_digit_array[i] == 0):
-                    self.actuators[i].extend(self.motor_speed, self.wait_time)
+                if (digitArray[i] == 1 and self.previousDigitArray[i] == 0):
+                    self.actuators[i].extend(self.motorSpeed, self.waitTime)
                     self.leds[i].duty_u16(self._brightness)
                     actuatorMoves += 1
-                elif (digitArray[i] == 0 and self.previous_digit_array[i] == 1):
-                    self.actuators[i].retract(self.motor_speed, self.wait_time)
+                elif (digitArray[i] == 0 and self.previousDigitArray[i] == 1):
+                    self.actuators[i].retract(self.motorSpeed, self.waitTime)
                     self.leds[i].duty_u16(0)
                     actuatorMoves += 1
                     
             self.setPreviousDigitArray(digitArray)
             return actuatorMoves
+        except IndexError as e:
+            print(f"Index error setting digit: {e}")
+            return 0
+        except OSError as e:
+            print(f"Hardware error setting digit: {e}")
+            return 0
+        except ValueError as e:
+            print(f"Value error setting digit: {e}")
+            return 0
         except Exception as e:
-            print(f"Error setting digit: {e}")
+            print(f"Unexpected error setting digit: {e}")
             return 0
 
     def setPreviousDigitArray(self, digitArray):  
         self.config.write('previous', digitArray)
-        self.previous_digit_array = digitArray
+        self.previousDigitArray = digitArray
 
     def dance(self):
         actuatorMoves = 0
@@ -373,6 +414,7 @@ def main():
         (a): Run dance sequence.
         (q)uit: Quit the program.
     """
+    d = None
     try:
         d = DigitColons(led_pins, 0.4, motor_pins)
         
@@ -414,8 +456,8 @@ def main():
                 # Dance sequence
                 elif command == 'a':
                     print("Running dance sequence...")
-                    actuator_moves = d.dance()
-                    print(f"Dance completed with {actuator_moves} movements.")
+                    actuatorMoves = d.dance()
+                    print(f"Dance completed with {actuatorMoves} movements.")
                     
                 # Brightness adjustment
                 elif command == 'b':
@@ -423,13 +465,13 @@ def main():
                         print("Error: Brightness command requires a digit from 0-9.")
                         continue
                     
-                    brightness_value = int(seg[1])
-                    if not 0 <= brightness_value <= 9:
+                    brightnessValue = int(seg[1])
+                    if not 0 <= brightnessValue <= 9:
                         print("Error: Brightness must be between 0 and 9.")
                         continue
                         
-                    print(f"Setting brightness to {brightness_value}/10")
-                    d.brightness = brightness_value/10  # Scale to 0-0.9
+                    print(f"Setting brightness to {brightnessValue}/10")
+                    d.brightness = brightnessValue/10  # Scale to 0-0.9
                     
                 # Set digit display
                 elif command == 'd':
@@ -439,12 +481,16 @@ def main():
                     
                     try:
                         a = commandHelper().decodeHex(value=seg[1])
-                        digit_array = d.getDigitArray(a)
-                        print(f"Setting digit {a}, array={digit_array}")
-                        actuator_moves = d.setDigit(digit_array)
-                        time.sleep(actuator_moves * d.wait_time)
+                        digitArray = d.getDigitArray(a)
+                        print(f"Setting digit {a}, array={digitArray}")
+                        actuatorMoves = d.setDigit(digitArray)
+                        time.sleep(actuatorMoves * d.wait)
+                    except ValueError as e:
+                        print(f"Value error setting digit: {e}")
+                    except TypeError as e:
+                        print(f"Type error setting digit: {e}")
                     except Exception as e:
-                        print(f"Error setting digit: {e}")
+                        print(f"Unexpected error setting digit: {e}")
                     
                 # Extend segment
                 elif command == 'e':
@@ -452,14 +498,14 @@ def main():
                         print("Error: Extend command requires a segment number (0-1).")
                         continue
                     
-                    segment_index = int(seg[1])
-                    if not 0 <= segment_index < SEGMENT_COUNT:
+                    segmentIndex = int(seg[1])
+                    if not 0 <= segmentIndex < SEGMENT_COUNT:
                         print(f"Error: Invalid segment index. Must be between 0 and {SEGMENT_COUNT-1}.")
                         continue
                         
-                    print(f"Extending segment {segment_index}...")
-                    actuator_moves = d.extendSegment(segment_index)
-                    time.sleep(actuator_moves * d.wait_time)
+                    print(f"Extending segment {segmentIndex}...")
+                    actuatorMoves = d.extendSegment(segmentIndex)
+                    time.sleep(actuatorMoves * d.wait)
                     
                 # Set motor speed
                 elif command == 'm':
@@ -468,15 +514,15 @@ def main():
                             print("Error: Motor speed command requires a value (0-100).")
                             continue
                             
-                        speed_value = int(seg[1:])
-                        if not 0 <= speed_value <= 100:
+                        speedValue = int(seg[1:])
+                        if not 0 <= speedValue <= 100:
                             print("Error: Motor speed must be between 0 and 100.")
                             continue
                             
-                        print(f"Setting motor speed to {speed_value}")
-                        d.speed = speed_value
-                    except ValueError:
-                        print("Error: Motor speed must be a number between 0 and 100.")
+                        print(f"Setting motor speed to {speedValue}")
+                        d.speed = speedValue
+                    except ValueError as e:
+                        print(f"Value error setting motor speed: {e}")
                     
                 # Set wait time
                 elif command == 'w':
@@ -485,16 +531,16 @@ def main():
                             print("Error: Wait time command requires a value (1-99).")
                             continue
                             
-                        wait_value = int(seg[1:])
-                        if not 1 <= wait_value <= 99:
+                        waitValue = int(seg[1:])
+                        if not 1 <= waitValue <= 99:
                             print("Error: Wait time must be between 1 and 99.")
                             continue
                             
-                        wait_time = wait_value/100
-                        print(f"Setting wait time to {wait_time:.2f} seconds")
-                        d.wait = wait_time
-                    except ValueError:
-                        print("Error: Wait time must be a number between 1 and 99.")
+                        waitTime = waitValue/100
+                        print(f"Setting wait time to {waitTime:.2f} seconds")
+                        d.wait = waitTime
+                    except ValueError as e:
+                        print(f"Value error setting wait time: {e}")
                     
                 # Retract segment
                 elif command == 'r':
@@ -502,14 +548,14 @@ def main():
                         print("Error: Retract command requires a segment number (0-1).")
                         continue
                     
-                    segment_index = int(seg[1])
-                    if not 0 <= segment_index < SEGMENT_COUNT:
+                    segmentIndex = int(seg[1])
+                    if not 0 <= segmentIndex < SEGMENT_COUNT:
                         print(f"Error: Invalid segment index. Must be between 0 and {SEGMENT_COUNT-1}.")
                         continue
                         
-                    print(f"Retracting segment {segment_index}...")
-                    actuator_moves = d.retractSegment(segment_index)
-                    time.sleep(actuator_moves * d.wait_time)
+                    print(f"Retracting segment {segmentIndex}...")
+                    actuatorMoves = d.retractSegment(segmentIndex)
+                    time.sleep(actuatorMoves * d.wait)
                 
                 # Time setting (placeholder - actual implementation needed)
                 elif command == 't':
@@ -520,14 +566,27 @@ def main():
                 else:
                     print(f"Error: Invalid command '{command}'. Please try again.")
                 
+            except OSError as e:
+                print(f"Hardware error processing command: {e}")
+            except ValueError as e:
+                print(f"Value error processing command: {e}")
+            except KeyboardInterrupt:
+                print("\nOperation interrupted by user.")
+                break
             except Exception as e:
-                print(f"Error processing command: {e}")
+                print(f"Unexpected error processing command: {e}")
                 
+    except OSError as e:
+        print(f"Hardware error initializing DigitColons: {e}")
+    except ValueError as e:
+        print(f"Value error initializing DigitColons: {e}")
+    except KeyboardInterrupt:
+        print("\nOperation interrupted by user.")
     except Exception as e:
-        print(f"Failed to initialize DigitColons: {e}")
+        print(f"Unexpected error initializing DigitColons: {e}")
     finally:
         # Ensure proper cleanup
-        if 'd' in locals() and d is not None:
+        if d is not None:
             print("Cleaning up resources...")
             d.__del__()
             
