@@ -9,7 +9,8 @@ LED_MAX_BRIGHTNESS = 10922  # 1/6th of 65535
 MOTOR_SPEED_PIN = 11
 PWM_FREQUENCY = 50
 LED_PWM_FREQUENCY = 1000
-MOTOR_SPEED_MAX = 100
+MOTOR_SPEED_MAX = 65535
+MOTOR_SPEED_MAX_PERCENT = 100
 WAIT_TIME_DEFAULT = 0.02
 RTC_YEAR = 2000
 RTC_MONTH = 1
@@ -59,7 +60,7 @@ class MotorActuator:
             direction_pin (Pin): Pin object for the movement direction.
         """
         try:
-            self.speed.duty_u16(int((motorSpeed / MOTOR_SPEED_MAX) * LED_MAX_BRIGHTNESS))
+            self.speed.duty_u16(int((motorSpeed / MOTOR_SPEED_MAX_PERCENT) * MOTOR_SPEED_MAX))
             direction_pin.on()
             time.sleep(wait)
         except ValueError as e:
@@ -127,13 +128,13 @@ class DigitColons:
             self.rtc = RTC()
             
             # Load configuration values with defaults
-            self.previousDigitArray = self.config.read("previous", default=[0] * SEGMENT_COUNT)
-            percentLedBrightness = float(self.config.read("brightness", default=LED_BRIGHTNESS_DEFAULT))
+            self.previousDigitArray = self.config.read("previous")
+            percentLedBrightness = float(self.config.read("brightness"))
             self._brightness = int(percentLedBrightness * LED_MAX_BRIGHTNESS)
-            self.motorSpeed = int(self.config.read("speed", default=MOTOR_SPEED_MAX))
-            self.waitTime = float(self.config.read("wait", default=WAIT_TIME_DEFAULT))
-            self.digit = int(self.config.read("digit", default=0))
-            self.testDigit = int(self.config.read("alien", default=0))
+            self.motorSpeed = int(self.config.read("speed"))
+            self.waitTime = float(self.config.read("wait"))
+            self.digit = int(self.config.read("digit"))
+            self.testDigit = int(self.config.read("alien"))
 
             # Initialize motor actuators
             for motor in motorPins:
@@ -141,7 +142,9 @@ class DigitColons:
 
             # Wait for initialization to complete and set initial state
             time.sleep(0.5)
+            print("previousDigitArray:", self.previousDigitArray)
             self.setDigit(self.previousDigitArray)
+
         except ValueError as e:
             print(f"Initialization error - invalid parameter value: {e}")
             self._releaseResources()
@@ -248,22 +251,22 @@ class DigitColons:
             print(f"Error: Invalid segment index {seg}")
             return 0
 
-        if self.previousDigitArray[seg] == 0:
-            try:
+        try:
+            if self.previousDigitArray[seg] == 0:
                 self.actuators[seg].extend(self.motorSpeed, self.waitTime)
                 self.leds[seg].duty_u16(self._brightness)
-                self.previousDigitArray[seg] = 1
-                self.setPreviousDigitArray(self.previousDigitArray)
-                return 1  # Success
-            except OSError as e:
-                print(f"Hardware error extending segment {seg}: {e}")
-                return 0  # Failed
-            except IndexError as e:
-                print(f"Index error extending segment {seg}: {e}")
-                return 0  # Failed
-            except Exception as e:
-                print(f"Unexpected error extending segment {seg}: {e}")
-                return 0  # Failed
+            self.previousDigitArray[seg] = 1
+            self.setPreviousDigitArray(self.previousDigitArray)
+            return 1  # Success
+        except OSError as e:
+            print(f"Hardware error extending segment {seg}: {e}")
+            return 0  # Failed
+        except IndexError as e:
+            print(f"Index error extending segment {seg}: {e}")
+            return 0  # Failed
+        except Exception as e:
+            print(f"Unexpected error extending segment {seg}: {e}")
+            return 0  # Failed
         return -1  # Already extended, no action taken
 
     def retractSegment(self, seg):  
@@ -282,22 +285,22 @@ class DigitColons:
             print(f"Error: Invalid segment index {seg}")
             return 0
 
-        if self.previousDigitArray[seg] == 1:
-            try:
+        try:
+            if self.previousDigitArray[seg] == 1:
                 self.actuators[seg].retract(self.motorSpeed, self.waitTime)
                 self.leds[seg].duty_u16(0)
-                self.previousDigitArray[seg] = 0
-                self.setPreviousDigitArray(self.previousDigitArray)
-                return 1  # Success
-            except OSError as e:
-                print(f"Hardware error retracting segment {seg}: {e}")
-                return 0  # Failed
-            except IndexError as e:
-                print(f"Index error retracting segment {seg}: {e}")
-                return 0  # Failed
-            except Exception as e:
-                print(f"Unexpected error retracting segment {seg}: {e}")
-                return 0  # Failed
+            self.previousDigitArray[seg] = 0
+            self.setPreviousDigitArray(self.previousDigitArray)
+            return 1  # Success
+        except OSError as e:
+            print(f"Hardware error retracting segment {seg}: {e}")
+            return 0  # Failed
+        except IndexError as e:
+            print(f"Index error retracting segment {seg}: {e}")
+            return 0  # Failed
+        except Exception as e:
+            print(f"Unexpected error retracting segment {seg}: {e}")
+            return 0  # Failed
         return -1  # Already retracted, no action taken
 
     def setDigit(self, digitArray):  
@@ -322,6 +325,8 @@ class DigitColons:
                     self.actuators[i].extend(self.motorSpeed, self.waitTime)
                     self.leds[i].duty_u16(self._brightness)
                     actuatorMoves += 1
+                elif (digitArray[i] == 1 and self.previousDigitArray[i] == 1):
+                    self.leds[i].duty_u16(self._brightness)
                 elif (digitArray[i] == 0 and self.previousDigitArray[i] == 1):
                     self.actuators[i].retract(self.motorSpeed, self.waitTime)
                     self.leds[i].duty_u16(0)

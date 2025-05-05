@@ -43,7 +43,7 @@ class Conductor:
         self.powerRelay = Pin(powerRelayPin, Pin.OUT)
         self.schedule = []
         self.brightness = 0
-        self.colons = digit_colons.Digit_Colons(digit_colons.led_pins, digit_colons.LEDbrightness, digit_colons.motor_pins)
+        self.colons = digit_colons.DigitColons(digit_colons.led_pins, digit_colons.DigitColons.brightness, digit_colons.motor_pins)
 
     def checkForScheduledAction(self, s):
         #[year, month, day, weekday, hours, minutes, seconds, subseconds]
@@ -172,8 +172,8 @@ class Conductor:
                 cmd = None
                 if d < 2:
                     if d == 1:
-                        self.colons.retract_segment(0)
-                        self.colons.retract_segment(1)
+                        self.colons.retractSegment(0)
+                        self.colons.retractSegment(1)
                     cmd = uartCommand('{0}015'.format(d))
                     self.uart0.sendCommand(cmd)
                     print(f"clear display: cmd={cmd.cmdStr}")
@@ -220,8 +220,8 @@ class Conductor:
             
             # set the digits to show the temperature
             self.displayNumber(3,int(t[0]))
-            self.colons.extend_segment(0)
-            self.colons.retract_segment(1)
+            self.colons.extendSegment(0)
+            self.colons.retractSegment(1)
             self.displayNumber(2,int(t[1]))
             self.displayNumber(1,10)
 
@@ -242,8 +242,8 @@ class Conductor:
             # set the digits to show the temperature
             self.displayNumber(3,int(h[0]))
             self.displayNumber(2,int(h[1]))
-            self.colons.extend_segment(0)
-            self.colons.retract_segment(1)
+            self.colons.extendSegment(0)
+            self.colons.retractSegment(1)
             self.displayNumber(1,10)
             self.displayNumber(0,11)
         except Exception as e:
@@ -276,8 +276,8 @@ class Conductor:
                      
             # set the digits to show the temperature
             self.displayNumber(3,int(t[0]))
-            self.colons.retract_segment(0)
-            self.colons.extend_segment(1)
+            self.colons.retractSegment(0)
+            self.colons.extendSegment(1)
             self.displayNumber(2,int(t[1]))
             self.displayNumber(1,10)
 
@@ -323,8 +323,8 @@ class Conductor:
             else:
                 self.displayNumber(3,int(t[0]))
             self.displayNumber(2,int(t[1]))
-            self.colons.extend_segment(0)
-            self.colons.extend_segment(1)
+            self.colons.extendSegment(0)
+            self.colons.extendSegment(1)
             self.displayNumber(1,int(t[2]))
             self.displayNumber(0,int(t[3]))
         except Exception as e:
@@ -341,8 +341,8 @@ class Conductor:
             t = "{0:02}{1:02}".format(dt[1],dt[2])
             self.displayNumber(3,int(t[0]))
             self.displayNumber(2,int(t[1]))
-            self.colons.retract_segment(0)
-            self.colons.retract_segment(1)
+            self.colons.retractSegment(0)
+            self.colons.retractSegment(1)
             self.displayNumber(1,int(t[2]))
             self.displayNumber(0,int(t[3]))
         except Exception as e:
