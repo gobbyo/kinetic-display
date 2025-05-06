@@ -91,8 +91,9 @@ class Conductor:
             print(f"Error scheduledHybernation: {e}")
         finally:
             self.powerRelay.off()
-            self.wifi = PicoWifi(secrets.usr,secrets.pwd)
+            self.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
             self.wifi.connect_to_wifi_network()
+            self.syncRTC.refresh_timezone()
             self.syncRTC.syncclock(self.rtc)
         pass
 
@@ -116,8 +117,9 @@ class Conductor:
         finally:
             self.powerRelay.off()
             if hybernated:
-                self.wifi = PicoWifi(secrets.usr,secrets.pwd)
+                self.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
                 self.wifi.connect_to_wifi_network()
+                self.syncRTC.refresh_timezone()
                 self.syncRTC.syncclock(self.rtc)
         return hybernated
 
@@ -301,6 +303,8 @@ class Conductor:
             h = str(humidity)
             self.displayNumber(3,int(h[0]))
             self.displayNumber(2,int(h[1]))
+            self.colons.retractSegment(0)
+            self.colons.extendSegment(1)
             self.displayNumber(1,10)
             self.displayNumber(0,11)
         except Exception as e:
@@ -465,9 +469,10 @@ def loop():
         gc.collect()
         # Enable wifi and sync the RTC
         print("Creating wifi object")
-        controller.wifi = PicoWifi(secrets.usr,secrets.pwd)
+        controller.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
         if(controller.wifi.connect_to_wifi_network()):
             time.sleep(1)
+            controller.syncRTC.refresh_timezone()
             controller.syncRTC.syncclock(controller.rtc)
             etc = extTempHumid(controller.syncRTC)
             etc.setLatLon()
@@ -499,9 +504,10 @@ def loop():
                 elif a == eventActions.hybernate:
                     controller.scheduledHybernation(s)
                     if controller.wifi:
-                        controller.wifi = PicoWifi("config.json")
+                        controller.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
                         if(controller.wifi.connect_to_wifi_network()):
                             time.sleep(1)
+                            controller.syncRTC.refresh_timezone()
                             controller.syncRTC.syncclock(controller.rtc)
                             etc = extTempHumid(controller.syncRTC)
                             etc.setLatLon()

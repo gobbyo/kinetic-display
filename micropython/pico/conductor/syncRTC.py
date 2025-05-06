@@ -24,41 +24,57 @@ class syncRTC:
 
     def syncclock(self, rtc):
         print("Sync clock")
-        returnval = True
+        returnval = False
 
-        # Try WorldTimeAPI first
-        try:
-            self.setExternalIPAddress()
-            r = urequests.get(externalWorldTimeAPI)
-            z = ujson.loads(r.content)
-            print(f"WorldTimeAPI Response: {z}")
-
-            # Parse the datetime string from WorldTimeAPI
-            iso_time = z["datetime"]  # Example: "2025-04-28T20:44:06.487506+00:00"
-            dt = self._iso_to_rtc_tuple(iso_time)
-
-            # Set the RTC datetime
-            rtc.datetime(dt)
-        except Exception as e:
-            print(f"WorldTimeAPI Exception: {e}")
-            returnval = False
-
-        # If WorldTimeAPI fails, try OpenTimeAPI
-        if not returnval:
+        # 1. Try to use timezone from config if available
+        if self.timeZone:
             try:
-                # Use timezone API if available in config, otherwise use IP-based API
-                if self.timeZone:
-                    timeAPI = externalOpenTimeZoneAPI.format(self.timeZone)
-                    print(f"Using timezone from config: {self.timeZone}")
-                else:
-                    timeAPI = externalOpenTimeAPI.format(self.externalIPaddress)
-                    print(f"Using IP-based timezone detection: {self.externalIPaddress}")
-                    
+                timeAPI = externalOpenTimeZoneAPI.format(self.timeZone)
+                print(f"Using timezone from config: {self.timeZone}")
                 r = urequests.get(timeAPI)
                 z = ujson.loads(r.content)
                 print(f"OpenTimeAPI Response: {z}")
 
-                # Set the RTC datetime using OpenTimeAPI response
+                rtc.datetime((
+                    int(z["year"]),
+                    int(z["month"]),
+                    int(z["day"]),
+                    0,  # Weekday (set to 0, can be calculated if needed)
+                    int(z["hour"]),
+                    int(z["minute"]),
+                    int(z["seconds"]),
+                    0  # Subseconds set to 0
+                ))
+                return True
+            except Exception as e:
+                print(f"OpenTimeAPI (timezone from config) Exception: {e}")
+                returnval = False
+
+        # 2. If no timezone in config or it failed, try IP-based timezone detection
+        try:
+            self.setExternalIPAddress()
+            # Try WorldTimeAPI first (uses IP)
+            r = urequests.get(externalWorldTimeAPI)
+            z = ujson.loads(r.content)
+            print(f"WorldTimeAPI Response: {z}")
+
+            iso_time = z["datetime"]  # Example: "2025-04-28T20:44:06.487506+00:00"
+            dt = self._iso_to_rtc_tuple(iso_time)
+            rtc.datetime(dt)
+            returnval = True
+        except Exception as e:
+            print(f"WorldTimeAPI Exception: {e}")
+            returnval = False
+
+        # 3. If WorldTimeAPI fails, try OpenTimeAPI with IP address
+        if not returnval:
+            try:
+                timeAPI = externalOpenTimeAPI.format(self.externalIPaddress)
+                print(f"Using IP-based timezone detection: {self.externalIPaddress}")
+                r = urequests.get(timeAPI)
+                z = ujson.loads(r.content)
+                print(f"OpenTimeAPI Response: {z}")
+
                 rtc.datetime((
                     int(z["year"]),
                     int(z["month"]),
@@ -71,7 +87,7 @@ class syncRTC:
                 ))
                 returnval = True
             except Exception as e:
-                print(f"OpenTimeAPI Exception: {e}")
+                print(f"OpenTimeAPI (IP-based) Exception: {e}")
                 returnval = False
 
         return returnval
@@ -98,6 +114,14 @@ class syncRTC:
             returnval = False
         finally:
             returnval
+
+    def refresh_timezone(self):
+        """Reload the timeZone from the config file."""
+        if self.config:
+            try:
+                self.timeZone = self.config.read("timeZone")
+            except:
+                self.timeZone = None
 
 # Example usage:
 def main():
