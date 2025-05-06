@@ -411,7 +411,7 @@ def loop():
                 controller.wifihotspot.run_server()
             controller.wifihotspot.shutdown_server()
             controller.wifihotspot.shutdownWifi()
-            controller.wifihotspot.__del__()
+            #controller.wifihotspot.__del__()
             while controller.hybernateswitch(): #wait for the switch to be turned to the "on" position
                 time.sleep(1)
        
@@ -440,8 +440,7 @@ def loop():
             controller.display12hour = False
         
         # Check if digit test at startup is enabled (default to True if setting not found)
-        enable_test = conf.read("enable_test_digits", default="true")
-        if enable_test.lower() == "true":
+        if  conf.read("enable_test_digits"):
             print("Digit test at startup is enabled")
             time.sleep(.5)
             controller.testDigits()
