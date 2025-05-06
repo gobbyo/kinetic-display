@@ -5,5 +5,6 @@
     "speed": "85",
     "lat": "48.5062",
     "lon": "-122.6291",
-    "schedule": "schedule_0.json"
+    "schedule": "schedule_0.json",
+    "timeZone": ""
 }
