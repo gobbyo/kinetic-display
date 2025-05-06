@@ -15,12 +15,12 @@ class Config():
     def __del__(self):
         pass
 
-    def read(self,name):
+    def read(self,name,default=None):
         c = ""
         with open(self.filename, "r") as f:
             c = ujson.load(f)
             f.close()
-        return c[name]
+        return c.get(name, default)
     
     def write(self,name,value):
         c = ""

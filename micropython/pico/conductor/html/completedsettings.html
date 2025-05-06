@@ -1,14 +1,95 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>Settings Saved</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                line-height: 1.6;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            .important {
+                color: #d00;
+                font-weight: bold;
+            }
+            button {
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 10px 15px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+            .hidden {
+                display: none;
+            }
+            .message {
+                margin-top: 20px;
+                padding: 10px;
+                border-left: 4px solid #4CAF50;
+                background-color: #f1f1f1;
+            }
+        </style>
+    </head>
     <body>
-        <p>Your settings have been saved.</p>
+        <h2>Your settings have been saved</h2>
         <p><b>Be sure to have the ON/OFF switch in the ON position</b><br>so the kinetic display uses your Wifi credentials.</p>
-        <button id="shutdown-button">Shut down</button>
+        
+        <div id="shutdown-container">
+            <p>Click the button below to shut down the configuration server:</p>
+            <button id="shutdown-button">Shut Down</button>
+        </div>
+        
+        <div id="message" class="message hidden">
+            <p>Shutting down the server...</p>
+            <p>The page will attempt to close automatically in <span id="countdown">5</span> seconds.</p>
+            <p>If the tab doesn't close, you can safely close it manually.</p>
+        </div>
 
         <script>
             document.getElementById('shutdown-button').addEventListener('click', function() {
-                window.location.href = '/shutdown';
-                document.getElementById('message').textContent = "Success! Close this browser window after clicking the 'Shut Down' button";
+                // Show the message and hide the button
+                document.getElementById('message').classList.remove('hidden');
+                document.getElementById('shutdown-container').classList.add('hidden');
+                
+                // Send the request to shut down the server
+                fetch('/shutdown')
+                    .then(function(response) {
+                        console.log('Server shutting down:', response.status);
+                    })
+                    .catch(function(error) {
+                        console.log('Error occurred:', error);
+                    });
+                
+                // Start the countdown
+                let count = 5;
+                const countdownElement = document.getElementById('countdown');
+                
+                const timer = setInterval(function() {
+                    count--;
+                    countdownElement.textContent = count;
+                    
+                    if (count <= 0) {
+                        clearInterval(timer);
+                        // Try to close the window (may be blocked by browser)
+                        try {
+                            window.close();
+                        } catch (e) {
+                            console.log('Could not close window automatically');
+                        }
+                        
+                        // As a fallback, redirect to a blank page
+                        document.body.innerHTML = '<h1>Server has been shut down</h1><p>You can now close this tab.</p>';
+                    }
+                }, 1000);
             });
         </script>
     </body>

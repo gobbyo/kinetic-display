@@ -139,9 +139,10 @@ class PicoWifi:
         page = ''
         findCF = f'<option value="{self.config.read("tempCF")}">'
         findTime = f'<option value="{self.config.read("time")}">'
+        findTimeZone = f'<option value="{self.config.read("timeZone", default="Europe/London")}">'
         findWait = f'id="wait"'
         findSpeed = f'id="speed"'
-        selected_schedule = self.config.read("schedule")
+        selected_schedule = self.config.read("schedule", default="")
 
         # Load schedule titles
         schedules = self.load_schedules()
@@ -158,6 +159,8 @@ class PicoWifi:
                         line = line.replace('ea83bcd634fa', secrets.pwd)
                     if line.find(findCF) > 0:
                         line = line.replace(findCF, f'<option value="{self.config.read("tempCF")}" selected>')
+                    if line.find(findTimeZone) > 0:
+                        line = line.replace(findTimeZone, f'<option value="{self.config.read("timeZone", default="Europe/London")}" selected>')
                     if line.find('wait') > 0:
                         line = line.replace(findWait, f'id="wait" value={self.config.read("wait")}')
                     if line.find('speed') > 0:
@@ -165,7 +168,10 @@ class PicoWifi:
                     if line.find(findTime) > 0:
                         line = line.replace(findTime, f'<option value="{self.config.read("time")}" selected>')
                     if line.find('<select name="schedule" id="schedule">') > 0:
-                        schedule_options = ''.join([f'<option value="{file}" data-id="{title}">{title}</option>' for title, file in schedules])
+                        schedule_options = ''
+                        for title, filename in schedules:
+                            selected = 'selected' if filename == selected_schedule else ''
+                            schedule_options += f'<option value="{filename}" data-id="{title}" {selected}>{title}</option>'
                         line = line.replace('<select name="schedule" id="schedule">', f'<select name="schedule" id="schedule">{schedule_options}')
                     page += line
         except OSError as e:
@@ -203,6 +209,7 @@ class PicoWifi:
             self.writeSecrets(f['ssid'], f['pwd'])
             self.config.write('time', f['time'])
             self.config.write('tempCF', f['tempCF'])
+            self.config.write('timeZone', f['timeZone'])
             self.config.write('wait', f['wait'])
             self.config.write('speed', f['speed'])
             self.config.write('schedule', f['schedule'])
@@ -286,3 +293,4 @@ if __name__ == "__main__":
             picowifi.disconnect_from_wifi_network()
     finally:
         print('deleted picowifi instance')
+        time.sleep(1)
