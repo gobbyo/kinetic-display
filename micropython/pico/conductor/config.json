@@ -1,11 +1,1 @@
-{
-    "tempCF": "FC",
-    "time": "12",
-    "wait": "16",
-    "speed": "85",
-    "lat": "90",
-    "lon": "90",
-    "schedule": "schedule_0.json",
-    "timeZone": "",
-    "enable_test_digits": true
-}
+{"time": "12", "lon": "90", "lat": "90", "wait": "16", "schedule": "schedule_3.json", "enable_test_digits": true, "tempCF": "F", "timeZone": "America/Los_Angeles", "speed": "85"}

@@ -12,11 +12,12 @@ secrets.usr = ssid
 secrets.pwd = password
 
 try:
+    conf = Config("config.json")
     picowifi = PicoWifi("config.json", ssid, password)
     if(picowifi.connect_to_wifi_network()):
         rtc = RTC()
         rtc.datetime((1970, 1, 1, 0, 0, 0, 0, 0))  # Set RTC to epoch time
-        sync = syncRTC.syncRTC()
+        sync = syncRTC.syncRTC(conf)
 
         print("\n*******API Test 1*********")
         prev_ip = sync.externalIPaddress
@@ -37,7 +38,6 @@ try:
         # Test 2: Test syncclock() with auto-detection (empty timezone)
         rtc.datetime((1970, 1, 1, 0, 0, 0, 0, 0))  # Set RTC to epoch time
         # Clear the timeZone config to test auto-detection
-        conf = Config("config.json")
         conf.write("timeZone", "")
         
         sync.syncclock(rtc)
@@ -61,7 +61,7 @@ try:
         conf.write("timeZone", timezone_to_test)
         
         # Create a new syncRTC instance to ensure it picks up the config change
-        sync = syncRTC.syncRTC()
+        sync = syncRTC.syncRTC(conf)
         
         if sync.syncclock(rtc):
             dt = rtc.datetime()
@@ -83,7 +83,7 @@ try:
         conf.write("timeZone", timezone_to_test)
         
         # Create a new syncRTC instance to ensure it picks up the config change
-        sync = syncRTC.syncRTC()
+        sync = syncRTC.syncRTC(conf)
         
         if sync.syncclock(rtc):
             dt = rtc.datetime()
@@ -104,7 +104,7 @@ try:
         conf.write("timeZone", test_timezone)
         
         # Create a new syncRTC instance to ensure it reads the new config value
-        new_sync = syncRTC.syncRTC()
+        new_sync = syncRTC.syncRTC(conf)
         
         # Get the timezone from the config that syncRTC is using
         actual_timezone = new_sync.config.read("timeZone", default="")
@@ -124,7 +124,7 @@ try:
         conf.write("timeZone", unusual_timezone)
         
         # Create a new syncRTC instance to ensure it picks up the config change
-        sync = syncRTC.syncRTC()
+        sync = syncRTC.syncRTC(conf)
         
         if sync.syncclock(rtc):
             dt = rtc.datetime()

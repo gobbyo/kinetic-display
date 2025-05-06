@@ -2,17 +2,25 @@ from machine import RTC
 import urequests
 import ujson
 
-externalIPAddressAPI = const("http://api.ipify.org")
-externalWorldTimeAPI = const("http://worldtimeapi.org/api/ip")
-externalOpenTimeAPI = const("https://www.timeapi.io/api/Time/current/ip?ipAddress={0}")
+externalIPAddressAPI = "http://api.ipify.org"
+externalWorldTimeAPI = "http://worldtimeapi.org/api/ip"
+externalOpenTimeAPI = "https://www.timeapi.io/api/Time/current/ip?ipAddress={0}"
+externalOpenTimeZoneAPI = "https://www.timeapi.io/api/Time/current/zone?timeZone={0}"
 
 # This class is used to sync the RTC with the WorldTimeAPI service
 # It is also used to obtain the external IP address of the device
 # in order to determine the timezone of the device
 class syncRTC:
 
-    def __init__(self):
+    def __init__(self, config=None):
         self.externalIPaddress = "00.000.000.000"
+        self.config = config
+        self.timeZone = None
+        if self.config:
+            try:
+                self.timeZone = self.config.read("timeZone")
+            except:
+                self.timeZone = None
 
     def syncclock(self, rtc):
         print("Sync clock")
@@ -38,7 +46,14 @@ class syncRTC:
         # If WorldTimeAPI fails, try OpenTimeAPI
         if not returnval:
             try:
-                timeAPI = externalOpenTimeAPI.format(self.externalIPaddress)
+                # Use timezone API if available in config, otherwise use IP-based API
+                if self.timeZone:
+                    timeAPI = externalOpenTimeZoneAPI.format(self.timeZone)
+                    print(f"Using timezone from config: {self.timeZone}")
+                else:
+                    timeAPI = externalOpenTimeAPI.format(self.externalIPaddress)
+                    print(f"Using IP-based timezone detection: {self.externalIPaddress}")
+                    
                 r = urequests.get(timeAPI)
                 z = ujson.loads(r.content)
                 print(f"OpenTimeAPI Response: {z}")
@@ -84,11 +99,24 @@ class syncRTC:
         finally:
             returnval
 
-#Example usage:
+# Example usage:
 def main():
     rtc = RTC()
     rtc2 = RTC()
+    
+    # Example with config (normally you would import the Config class)
+    class MockConfig:
+        def read(self, key):
+            if key == "timeZone":
+                return "America/Los_Angeles"  # Replace with your desired timezone
+            return None
+    
+    # Uncomment to test with timezone from config
+    # clock = syncRTC(MockConfig())
+    
+    # Or use without config to default to IP-based detection
     clock = syncRTC()
+    
     clock.syncclock(rtc)
     print(rtc.datetime())
     print(rtc2.datetime())

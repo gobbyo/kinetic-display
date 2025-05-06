@@ -154,8 +154,7 @@ class WebSocket:
         elif length == -8:
             length = await self.request.sock[0].read(8)
             length = int.from_bytes(length, 'big')
-        max_allowed_length = Request.max_body_length \
-            if self.max_message_length == -1 else self.max_message_length
+        max_allowed_length = Request.max_body_length \n            if self.max_message_length == -1 else self.max_message_length
         if length > max_allowed_length:
             raise WebSocketError('Message too large')
         if has_mask:  # pragma: no cover

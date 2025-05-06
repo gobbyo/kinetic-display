@@ -31,8 +31,7 @@ class CORS:
         self.allow_credentials = allow_credentials
         self.allowed_methods = allowed_methods
         self.expose_headers = expose_headers
-        self.allowed_headers = None if allowed_headers is None \
-            else [h.lower() for h in allowed_headers]
+        self.allowed_headers = None if allowed_headers is None \n            else [h.lower() for h in allowed_headers]
         self.max_age = max_age
         if app is not None:
             self.initialize(app, handle_cors=handle_cors)
@@ -70,12 +69,10 @@ class CORS:
         elif origin in (self.allowed_origins or []):
             cors_headers['Access-Control-Allow-Origin'] = origin
             cors_headers['Vary'] = 'Origin'
-        if self.allow_credentials and \
-                'Access-Control-Allow-Origin' in cors_headers:
+        if self.allow_credentials and \n                'Access-Control-Allow-Origin' in cors_headers:
             cors_headers['Access-Control-Allow-Credentials'] = 'true'
         if self.expose_headers:
-            cors_headers['Access-Control-Expose-Headers'] = \
-                ', '.join(self.expose_headers)
+            cors_headers['Access-Control-Expose-Headers'] = \n                ', '.join(self.expose_headers)
 
         if request.method == 'OPTIONS':
             # handle preflight request
@@ -85,8 +82,7 @@ class CORS:
             method = request.headers.get('Access-Control-Request-Method')
             if method:
                 method = method.upper()
-                if self.allowed_methods is None or \
-                        method in self.allowed_methods:
+                if self.allowed_methods is None or \n                        method in self.allowed_methods:
                     cors_headers['Access-Control-Allow-Methods'] = method
 
             headers = request.headers.get('Access-Control-Request-Headers')
@@ -97,8 +93,7 @@ class CORS:
                     headers = [h.strip() for h in headers.split(',')]
                     headers = [h for h in headers
                                if h.lower() in self.allowed_headers]
-                    cors_headers['Access-Control-Allow-Headers'] = \
-                        ', '.join(headers)
+                    cors_headers['Access-Control-Allow-Headers'] = \n                        ', '.join(headers)
 
         return cors_headers
 

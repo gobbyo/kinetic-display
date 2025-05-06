@@ -433,13 +433,11 @@ class Request:
             if isinstance(urlencoded, str):
                 for kv in [pair.split('=', 1)
                            for pair in urlencoded.split('&') if pair]:
-                    data[urldecode_str(kv[0])] = urldecode_str(kv[1]) \
-                        if len(kv) > 1 else ''
+                    data[urldecode_str(kv[0])] = urldecode_str(kv[1]) \n                        if len(kv) > 1 else ''
             elif isinstance(urlencoded, bytes):  # pragma: no branch
                 for kv in [pair.split(b'=', 1)
                            for pair in urlencoded.split(b'&') if pair]:
-                    data[urldecode_bytes(kv[0])] = urldecode_bytes(kv[1]) \
-                        if len(kv) > 1 else b''
+                    data[urldecode_bytes(kv[0])] = urldecode_bytes(kv[1]) \n                        if len(kv) > 1 else b''
         return data
 
     @property
@@ -622,8 +620,7 @@ class Response:
                         max_age=0, **kwargs)
 
     def complete(self):
-        if isinstance(self.body, bytes) and \
-                'Content-Length' not in self.headers:
+        if isinstance(self.body, bytes) and \n                'Content-Length' not in self.headers:
             self.headers['Content-Length'] = str(len(self.body))
         if 'Content-Type' not in self.headers:
             self.headers['Content-Type'] = self.default_content_type
@@ -635,8 +632,7 @@ class Response:
 
         try:
             # status code
-            reason = self.reason if self.reason is not None else \
-                ('OK' if self.status_code == 200 else 'N/A')
+            reason = self.reason if self.reason is not None else \n                ('OK' if self.status_code == 200 else 'N/A')
             await stream.awrite('HTTP/1.0 {status_code} {reason}\r\n'.format(
                 status_code=self.status_code, reason=reason).encode())
 
@@ -657,8 +653,7 @@ class Response:
                     try:
                         await stream.awrite(body)
                     except OSError as exc:  # pragma: no cover
-                        if exc.errno in MUTED_SOCKET_ERRORS or \
-                                exc.args[0] == 'Connection lost':
+                        if exc.errno in MUTED_SOCKET_ERRORS or \n                                exc.args[0] == 'Connection lost':
                             if hasattr(iter, 'aclose'):
                                 await iter.aclose()
                         raise
@@ -666,8 +661,7 @@ class Response:
                     await iter.aclose()
 
         except OSError as exc:  # pragma: no cover
-            if exc.errno in MUTED_SOCKET_ERRORS or \
-                    exc.args[0] == 'Connection lost':
+            if exc.errno in MUTED_SOCKET_ERRORS or \n                    exc.args[0] == 'Connection lost':
                 pass
             else:
                 raise
@@ -790,8 +784,7 @@ class Response:
             headers['Cache-Control'] = 'max-age={}'.format(max_age)
 
         if compressed:
-            headers['Content-Encoding'] = compressed \
-                if isinstance(compressed, str) else 'gzip'
+            headers['Content-Encoding'] = compressed \n                if isinstance(compressed, str) else 'gzip'
 
         f = stream or open(filename + file_extension, 'rb')
         return cls(body=f, status_code=status_code, headers=headers)

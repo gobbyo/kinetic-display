@@ -167,9 +167,7 @@ class TestClient:
                     _, path = option.split('=', 1)
             if delete:
                 if cookie_name in self.cookies:  # pragma: no branch
-                    cookie_path = self.cookies[cookie_name][1] \
-                        if isinstance(self.cookies[cookie_name], tuple) \
-                        else '/'
+                    cookie_path = self.cookies[cookie_name][1] \n                        if isinstance(self.cookies[cookie_name], tuple) \n                        else '/'
                     if path == cookie_path:
                         del self.cookies[cookie_name]
             else:
@@ -282,15 +280,13 @@ class TestClient:
 
             async def _next(self, data=None):
                 try:
-                    data = (await gen.asend(data)) if hasattr(gen, 'asend') \
-                        else gen.send(data)
+                    data = (await gen.asend(data)) if hasattr(gen, 'asend') \n                        else gen.send(data)
                 except (StopIteration, StopAsyncIteration):
                     if not self.closed:
                         self.closed = True
                         raise OSError(32, 'Websocket connection closed')
                     return  # pragma: no cover
-                opcode = WebSocket.TEXT if isinstance(data, str) \
-                    else WebSocket.BINARY
+                opcode = WebSocket.TEXT if isinstance(data, str) \n                    else WebSocket.BINARY
                 return WebSocket._encode_websocket_frame(opcode, data)
 
             async def read(self, n):

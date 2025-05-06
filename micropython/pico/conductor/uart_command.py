@@ -38,7 +38,7 @@ class Conductor:
         self.temp = 0
         self.humidity = 0
         self.rtc = RTC()
-        self.syncRTC = syncRTC()
+        self.syncRTC = syncRTC(Config("config.json"))
         self.hybernateswitch = Pin(hybernateswitchPin, Pin.IN, Pin.PULL_DOWN)
         self.powerRelay = Pin(powerRelayPin, Pin.OUT)
         self.schedule = []
@@ -414,7 +414,7 @@ def loop():
             #controller.wifihotspot.__del__()
             while controller.hybernateswitch(): #wait for the switch to be turned to the "on" position
                 time.sleep(1)
-       
+
         # Load the configuration
         conf = Config("config.json")
         tempCF = conf.read("tempCF")
@@ -465,7 +465,7 @@ def loop():
         gc.collect()
         # Enable wifi and sync the RTC
         print("Creating wifi object")
-        controller.wifi = PicoWifi("config.json")
+        controller.wifi = PicoWifi(secrets.usr,secrets.pwd)
         if(controller.wifi.connect_to_wifi_network()):
             time.sleep(1)
             controller.syncRTC.syncclock(controller.rtc)
