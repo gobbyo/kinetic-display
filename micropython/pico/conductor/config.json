@@ -1,10 +1,10 @@
 {
-    "tempCF": "F",
+    "tempCF": "FC",
     "time": "12",
     "wait": "16",
     "speed": "85",
-    "lat": "48.5062",
-    "lon": "-122.6291",
+    "lat": "90",
+    "lon": "90",
     "schedule": "schedule_0.json",
     "timeZone": ""
 }
