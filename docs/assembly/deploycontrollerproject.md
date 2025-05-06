@@ -38,4 +38,19 @@ In this guide you will upload code from the **conductor** folder on your compute
    - **(C)** Select the dropdown **MicroPico: Upload project to Pico**.  
    ![deploycontrollercode-6](../img/deploycontrollercode/deploycontrollercode-6.webp)
 
+## Configuration Options
+
+The Kinetic Display can be configured through the web interface after connection to Wi-Fi. The following settings are available:
+
+- **Time Format**: 12-hour or 24-hour time format (setting: `time`)
+- **Motor Speed**: Controls the speed of segment movements (setting: `speed`)
+- **Wait Time**: Delay between segment movements in milliseconds (setting: `wait`)
+- **Temperature Unit**: Celsius or Fahrenheit (setting: `tempCF`)
+- **Schedule**: The event schedule file to use (setting: `schedule`)
+- **Digit Test at Startup**: Enable or disable the digit test animation when the display starts up (setting: `enable_test_digits`)
+  - Set to `true` to enable the digit test (default)
+  - Set to `false` to disable the digit test
+
+Disabling the digit test at startup can be useful in environments where the mechanical noise of the segment movements might be disruptive, or when you want the display to start showing the time immediately.
+
 Congratulations on successfully uploading the code to the conductor's Raspberry Pi Pico W!

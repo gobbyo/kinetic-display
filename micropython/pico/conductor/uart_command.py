@@ -438,8 +438,15 @@ def loop():
         else:
             print("24 hour time")
             controller.display12hour = False
-        time.sleep(.5)
-        controller.testDigits()
+        
+        # Check if digit test at startup is enabled (default to True if setting not found)
+        enable_test = conf.read("enable_test_digits", default="true")
+        if enable_test.lower() == "true":
+            print("Digit test at startup is enabled")
+            time.sleep(.5)
+            controller.testDigits()
+        else:
+            print("Digit test at startup is disabled")
 
         # Load the schedule 
         try:

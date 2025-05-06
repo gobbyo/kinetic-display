@@ -6,5 +6,6 @@
     "lat": "90",
     "lon": "90",
     "schedule": "schedule_0.json",
-    "timeZone": ""
+    "timeZone": "",
+    "enable_test_digits": true
 }
