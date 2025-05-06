@@ -7,7 +7,7 @@ import secrets
 import ujson
 import gc
 import os
-from microdot import Microdot, send_file, Request
+from microdot import Microdot, Request, send_file  # noqa: F401
 
 class PicoWifi:
     def __init__(self, configfilename, ssid='kinetic-display', password='12oclock'):
@@ -79,39 +79,77 @@ class PicoWifi:
     def connect_to_wifi_network(self):
         gc.collect()
         print("Connecting to WiFi")
+        # Ensure we have the latest credentials
+        self.reload_secrets()
+        
         # STA_IF=Station mode, the PICO W acts as a client that connects to an existing WiFi network, 
         # similar to how your phone or laptop connects to a WiFi router.
         self.wifi = network.WLAN(network.STA_IF)
-        self.wifi.active(True)
-        # set power mode to turn off WiFi power-saving (if needed)
-        self.wifi.config(pm=0xa11140)
         
+        # Reset WiFi connection first to clear any previous state
+        self.wifi.disconnect()
+        time.sleep(1)
+        
+        self.wifi.active(False)
+        time.sleep(1)
+        self.wifi.active(True)
+        time.sleep(1)
+        
+        # Configure advanced WiFi parameters to improve connection stability
+        # Disable power-saving mode for better reliability
+        self.wifi.config(pm=0xa11140)
+        # Note: 'reconnects' parameter is not supported in this MicroPython implementation
+        
+        print(f"Attempting to connect to {secrets.usr}")
         self.wifi.connect(secrets.usr, secrets.pwd)
+        
+        # Use more time for connection attempts and add retry mechanism
         max_wait = self.waittime
-        while max_wait > 0:
-            if self.wifi.isconnected():
-                self.url = self.wifi.ifconfig()[0]
-                print(f'Connected to WiFi, IP address: {self.url}')
-                return True
-            elif self.wifi.status() == network.STAT_WRONG_PASSWORD:
-                print("Failed to connect to WiFi: Wrong password (network.STAT_WRONG_PASSWORD)")
-            elif self.wifi.status() == network.STAT_NO_AP_FOUND:
-                print("Failed to connect to WiFi: No access point found (network.STAT_NO_AP_FOUND)")
-            elif self.wifi.status() == network.STAT_CONNECT_FAIL:
-                print("Failed to connect to WiFi: Connection failed (network.STAT_CONNECT_FAIL)")
-            elif self.wifi.status() == network.STAT_CONNECTING:
-                print("Connecting to WiFi network (network.STAT_CONNECTING)")
-            elif self.wifi.status() == network.STAT_GOT_IP:
-                print(f'Connected to WiFi network (network.STAT_GOT_IP), IP address: {self.url}')
-                self.url = self.wifi.ifconfig()[0]
-                return True
+        retries = 3
+        
+        while retries > 0:
+            while max_wait > 0:
+                status = self.wifi.status()
+                
+                if self.wifi.isconnected():
+                    self.url = self.wifi.ifconfig()[0]
+                    print(f'Connected to WiFi, IP address: {self.url}')
+                    return True
+                elif status == network.STAT_GOT_IP:
+                    self.url = self.wifi.ifconfig()[0]
+                    print(f'Connected to WiFi network (network.STAT_GOT_IP), IP address: {self.url}')
+                    return True
+                elif status == network.STAT_WRONG_PASSWORD:
+                    print("Failed to connect to WiFi: Wrong password (network.STAT_WRONG_PASSWORD)")
+                    return False  # No point in retrying with wrong password
+                elif status == network.STAT_NO_AP_FOUND:
+                    print("Failed to connect to WiFi: No access point found (network.STAT_NO_AP_FOUND)")
+                    break  # Break inner loop to retry
+                elif status == network.STAT_CONNECT_FAIL:
+                    print("Failed to connect to WiFi: Connection failed (network.STAT_CONNECT_FAIL)")
+                    break  # Break inner loop to retry
+                elif status == network.STAT_CONNECTING:
+                    print("Connecting to WiFi network (network.STAT_CONNECTING)")
+                else:
+                    print(f'Unknown wifi status = {status}')
+
+                max_wait -= 1
+                print('Waiting for connection...')
+                time.sleep(2)
+            
+            # If we didn't connect successfully, retry
+            retries -= 1
+            if retries > 0:
+                print(f"Retrying connection, {retries} attempts left")
+                # Reset connection for retry
+                self.wifi.disconnect()
+                time.sleep(2)
+                self.wifi.connect(secrets.usr, secrets.pwd)
+                max_wait = self.waittime
             else:
-                print(f'unknown wifi status = {self.wifi.status()}')
-
-            max_wait -= 1
-            print('Waiting for connection...')
-            time.sleep(2)
-
+                print("Failed to connect to WiFi after multiple attempts")
+                return False
+        
         print("Failed to connect to WiFi: Timeout")
         return False
     
@@ -132,8 +170,19 @@ class PicoWifi:
                 f.write(f"usr='{ssid}'\r\npwd='{pwd}'")
                 f.flush()
                 f.close()
+            # Reload the secrets module to refresh the values in memory
+            self.reload_secrets()
         except OSError as e:
             print(f"Error writing secrets: {e}")
+    
+    def reload_secrets(self):
+        """Reload the secrets module to update values in memory"""
+        import sys
+        if 'secrets' in sys.modules:
+            del sys.modules['secrets']
+        global secrets
+        import secrets
+        print(f"Reloaded secrets module with usr={secrets.usr}")
 
     def createIndex(self):
         page = ''
@@ -287,7 +336,7 @@ if __name__ == "__main__":
         time.sleep(1)
 
     try:
-        picowifi = PicoWifi("config.json", secrets.usr, secrets.pwd)
+        picowifi = PicoWifi("config.json")
         if(picowifi.connect_to_wifi_network()):
             time.sleep(2)
             picowifi.disconnect_from_wifi_network()
