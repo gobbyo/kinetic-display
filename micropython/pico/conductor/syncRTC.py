@@ -27,6 +27,15 @@ class syncRTC:
         print("Sync clock")
         returnval = False
 
+        try:
+            # First try to sync with the RTC
+            rtc.datetime((1970, 1, 1, 0, 0, 0, 0, 0))  # Set a default date/time
+            print("RTC set to default date/time")
+            self.setExternalIPAddress()
+        except Exception as e:
+            print(f"RTC Exception: {e}")
+            returnval = False
+
         # 1. Try to use timezone from config if available
         if self.timeZone:
             try:
@@ -68,7 +77,6 @@ class syncRTC:
 
         # 2. If no timezone in config or it failed, try IP-based timezone detection
         try:
-            self.setExternalIPAddress()
             # Try WorldTimeAPI first (uses IP)
             r = urequests.get(externalWorldTimeAPI)
             z = ujson.loads(r.content)
