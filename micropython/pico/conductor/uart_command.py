@@ -415,7 +415,7 @@ def loop():
                 controller.wifihotspot.run_server()
             controller.wifihotspot.shutdown_server()
             controller.wifihotspot.shutdownWifi()
-            #controller.wifihotspot.__del__()
+            controller.wifihotspot.__del__()
             while controller.hybernateswitch(): #wait for the switch to be turned to the "on" position
                 time.sleep(1)
 
@@ -454,19 +454,46 @@ def loop():
         # Load the schedule 
         try:
             path = f'schedules/{conf.read("schedule")}'
-            scheduleConf = uio.open(path)
-            s = ujson.load(scheduleConf)
-            for i in s["scheduledEvent"]:
-                controller.schedule.append(scheduleInfo(i["hour"],i["minute"],i["second"],i["elapse"],i["event"]))
-        except ValueError as ve:
-            print(f"Schedule loading value error: {ve}")
-        except OSError as ioe:
-            print(f"Schedule loading IO error: {ioe}")
-        finally:
-            scheduleConf.close()
-            print(f"schedule length={len(controller.schedule)}")
-
+            # Import the optimized schedule loader
+            from scheduler import ScheduleLoader
+            import gc
+            
+            # Start with the most reliable method first
+            print("Loading schedule...")
+            controller.schedule = []
+            
+            try:
+                print("Trying simple loader...")
+                controller.schedule = ScheduleLoader.load_schedule_simple(path)
+                
+                # If simple loader returned no events, try other methods
+                if len(controller.schedule) == 0:
+                    gc.collect()
+                    print("Simple loader returned no events, trying stream loader...")
+                    controller.schedule = ScheduleLoader.load_schedule_stream(path)
+                    
+                    if len(controller.schedule) == 0:
+                        gc.collect()
+                        print("Stream loader returned no events, trying optimized loader...")
+                        controller.schedule = ScheduleLoader.load_schedule_optimized(path)
+            except Exception as e:
+                print(f"Schedule loading error: {e}")
+                controller.schedule = []
+            
+            print(f"Schedule loaded - {len(controller.schedule)} events")
+            
+            # Dump the loaded schedule for debugging
+            print("Loaded schedule events:")
+            for idx, s in enumerate(controller.schedule):
+                print(f"Event {idx}: hour={s.hour}, minute={s.minute}, second={s.second}, elapse={s.elapse}, event={s.event}")
+                
+            gc.collect()
+        except Exception as e:
+            print(f"Schedule loading error: {e}")
+            controller.schedule = []
+        
         gc.collect()
+
         # Enable wifi and sync the RTC
         print("Creating wifi object")
         controller.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
@@ -485,8 +512,43 @@ def loop():
 
     while True:
         try:
+            dt = controller.rtc.datetime()  # Get this once per loop instead of for each schedule item
+            
+            # Only process events that might be active in this minute
+            current_minute = dt[5]  # Minutes from datetime
+            current_hour = dt[4]    # Hours from datetime
+            current_second = dt[6]  # Seconds from datetime
+            
             for s in controller.schedule:
-                a = controller.checkForScheduledAction(s)
+                # Quick pre-filtering - skip events that can't possibly match current time
+                if (s.minute != -1 and s.minute != current_minute and 
+                    not (s.hour == -1 and s.minute == -1)):
+                    continue
+                
+                if (s.hour != -1 and s.hour != current_hour and 
+                    not (s.hour == -1 and s.minute == -1)):
+                    continue
+                    
+                # Only for non-hibernation events, check seconds
+                if s.event != eventActions.hybernate:
+                    if current_second < s.second or current_second >= (s.second + s.elapse):
+                        continue
+
+                # Now do the full check for matching events
+                a = 0
+                if s.event == eventActions.hybernate:
+                    if (current_hour == s.hour or s.hour == -1) and (current_minute == s.minute or s.minute == -1):
+                        a = eventActions.hybernate
+                else:
+                    # This is the key fix - the original code was only triggering when hour=-1
+                    # We need to check for specific hour matches too
+                    if ((s.hour == -1 and s.minute == current_minute) or 
+                        (s.hour == -1 and s.minute == -1) or
+                        (s.hour == current_hour and s.minute == current_minute)):
+                        if current_second >= s.second and current_second < (s.second + s.elapse):
+                            a = s.event
+
+                # Process the scheduled action
                 if a == eventActions.displayTime:
                     controller.showTime()
                 elif a == eventActions.displayDate:
@@ -503,19 +565,14 @@ def loop():
                     controller.updateOutdoorTempHumid()
                 elif a == eventActions.hybernate:
                     controller.scheduledHybernation(s)
-                    if controller.wifi:
-                        controller.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
-                        if(controller.wifi.connect_to_wifi_network()):
-                            time.sleep(1)
-                            controller.syncRTC.refresh_timezone()
-                            controller.syncRTC.syncclock(controller.rtc)
-                            etc = extTempHumid(controller.syncRTC)
-                            etc.setLatLon()
-                    break
             
             time.sleep(1)
             if controller.checkHybernate():
                 controller.updateBrightness()
+
+            # Add this for debugging after your event processing
+            if a == 0:  # If no action was taken, print why for debugging
+                print(f"Event {s.event} skipped: hour={s.hour}({current_hour}), min={s.minute}({current_minute}), sec={s.second}({current_second}), elapse={s.elapse}")
 
         except Exception as e:
             print(f"Error: {e}")
