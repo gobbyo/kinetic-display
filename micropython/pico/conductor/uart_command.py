@@ -444,7 +444,19 @@ def loop():
             controller.display12hour = False
         
         # Check if digit test at startup is enabled (default to True if setting not found)
-        if  conf.read("enable_test_digits"):
+        test_on_startup = conf.read("testOnStartup")
+        print(f"Test on startup setting: {test_on_startup}")
+        # Convert string value to boolean properly
+        if test_on_startup is not None:
+            if isinstance(test_on_startup, str):
+                enable_test = test_on_startup.lower() == "true"
+            else:
+                enable_test = bool(test_on_startup)
+        else:
+            # Default to False if setting not found
+            enable_test = False
+            
+        if enable_test:
             print("Digit test at startup is enabled")
             time.sleep(.5)
             controller.testDigits()
@@ -519,6 +531,9 @@ def loop():
             current_hour = dt[4]    # Hours from datetime
             current_second = dt[6]  # Seconds from datetime
             
+            # Initialize action variable at the start of each loop
+            a = 0
+            
             for s in controller.schedule:
                 # Quick pre-filtering - skip events that can't possibly match current time
                 if (s.minute != -1 and s.minute != current_minute and 
@@ -535,7 +550,6 @@ def loop():
                         continue
 
                 # Now do the full check for matching events
-                a = 0
                 if s.event == eventActions.hybernate:
                     if (current_hour == s.hour or s.hour == -1) and (current_minute == s.minute or s.minute == -1):
                         a = eventActions.hybernate
@@ -570,9 +584,10 @@ def loop():
             if controller.checkHybernate():
                 controller.updateBrightness()
 
-            # Add this for debugging after your event processing
-            if a == 0:  # If no action was taken, print why for debugging
-                print(f"Event {s.event} skipped: hour={s.hour}({current_hour}), min={s.minute}({current_minute}), sec={s.second}({current_second}), elapse={s.elapse}")
+            # Add this for debugging after your event processing - make sure s is defined
+            if a == 0 and len(controller.schedule) > 0:  # Only print if no action and there are scheduled events
+                # Don't reference s directly here as it might be undefined if schedule was empty
+                print(f"No scheduled action triggered at: hour={current_hour}, min={current_minute}, sec={current_second}")
 
         except Exception as e:
             print(f"Error: {e}")
