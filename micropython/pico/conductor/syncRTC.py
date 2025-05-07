@@ -4,6 +4,7 @@ import ujson
 
 externalIPAddressAPI = "http://api.ipify.org"
 externalWorldTimeAPI = "http://worldtimeapi.org/api/ip"
+externalWorldTimeZoneAPI = "http://worldtimeapi.org/api/timezone/{0}"
 externalOpenTimeAPI = "https://www.timeapi.io/api/Time/current/ip?ipAddress={0}"
 externalOpenTimeZoneAPI = "https://www.timeapi.io/api/Time/current/zone?timeZone={0}"
 
@@ -29,8 +30,9 @@ class syncRTC:
         # 1. Try to use timezone from config if available
         if self.timeZone:
             try:
+                # First try timeapi.io with the configured timezone
                 timeAPI = externalOpenTimeZoneAPI.format(self.timeZone)
-                print(f"Using timezone from config: {self.timeZone}")
+                print(f"Using timezone from config with timeapi.io: {self.timeZone}")
                 r = urequests.get(timeAPI)
                 z = ujson.loads(r.content)
                 print(f"OpenTimeAPI Response: {z}")
@@ -48,7 +50,21 @@ class syncRTC:
                 return True
             except Exception as e:
                 print(f"OpenTimeAPI (timezone from config) Exception: {e}")
-                returnval = False
+                # If timeapi.io fails, try worldtimeapi.org with the same timezone
+                try:
+                    worldTimeAPI = externalWorldTimeZoneAPI.format(self.timeZone)
+                    print(f"Trying worldtimeapi.org with timezone: {self.timeZone}")
+                    r = urequests.get(worldTimeAPI)
+                    z = ujson.loads(r.content)
+                    print(f"WorldTimeAPI Timezone Response: {z}")
+                    
+                    iso_time = z["datetime"]
+                    dt = self._iso_to_rtc_tuple(iso_time)
+                    rtc.datetime(dt)
+                    return True
+                except Exception as e:
+                    print(f"WorldTimeAPI (timezone from config) Exception: {e}")
+                    returnval = False
 
         # 2. If no timezone in config or it failed, try IP-based timezone detection
         try:
