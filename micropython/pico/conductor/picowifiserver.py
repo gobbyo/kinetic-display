@@ -136,56 +136,82 @@ class PicoWifi:
             print(f"Error writing secrets: {e}")
 
     def createIndex(self):
-        page = ''
-        findCF = f'<option value="{self.config.read("tempCF")}">'
-        findTime = f'<option value="{self.config.read("time")}">'
-        findTimeZone = f'id="timeZone"'
-        findWait = f'id="wait"'
-        findSpeed = f'id="speed"'
+        # Collect configuration values once to avoid repeated calls
+        config_tempCF = self.config.read("tempCF")
+        config_time = self.config.read("time")
+        config_wait = self.config.read("wait")
+        config_speed = self.config.read("speed")
+        config_timezone = self.config.read("timeZone", default="Europe/London")
         selected_schedule = self.config.read("schedule", default="")
-
-        # Load schedule titles
-        schedules = self.load_schedules()
-
+        
+        # Pre-calculate search strings to avoid string interpolation in the loop
+        findCF = f'<option value="{config_tempCF}">'
+        findTime = f'<option value="{config_time}">'
+        
+        # Load schedules data
         try:
-            with open("html/admin.html", 'r') as f:
-                while True:
-                    line = f.readline()
-                    if not line:
-                        break
-                    if line.find('ssid') > 0:
+            schedules = self.load_schedules()
+        except Exception as e:
+            print(f"Error loading schedules: {e}")
+            schedules = []
+            
+        # Run garbage collection before processing large files
+        gc.collect()
+        
+        try:
+            with open("html/admin.html", 'r') as input_file, open("html/index.html", 'w') as output_file:
+                for line in input_file:
+                    # Process line by line with minimal string operations
+                    modified = False
+                    
+                    if not modified and 'ssid' in line:
                         line = line.replace('ce9c7e1bb79e', secrets.usr)
-                    if line.find('pwd') > 0:
+                        modified = True
+                        
+                    if not modified and 'pwd' in line:
                         line = line.replace('ea83bcd634fa', secrets.pwd)
-                    if line.find(findCF) > 0:
-                        line = line.replace(findCF, f'<option value="{self.config.read("tempCF")}" selected>')
-                    if line.find(findTimeZone) > 0:
-                        timezone_value = self.config.read("timeZone", default="Europe/London")
-                        line = line.replace(findTimeZone, f'id="timeZone" value="{timezone_value}"')
-                    if line.find(findWait) > 0:
-                        line = line.replace(findWait, f'id="wait" name="wait" value="{self.config.read("wait")}"')
-                    if line.find(findSpeed) > 0:
-                        line = line.replace(findSpeed, f'id="speed" name="speed" value="{self.config.read("speed")}"')
-                    if line.find(findTime) > 0:
-                        line = line.replace(findTime, f'<option value="{self.config.read("time")}" selected>')
-                    if line.find('<select name="schedule" id="schedule">') > 0:
-                        schedule_options = ''
+                        modified = True
+                        
+                    if not modified and findCF in line:
+                        line = line.replace(findCF, f'<option value="{config_tempCF}" selected>')
+                        modified = True
+                        
+                    if not modified and 'id="timeZone"' in line:
+                        line = line.replace('id="timeZone"', f'id="timeZone" value="{config_timezone}"')
+                        modified = True
+                        
+                    if not modified and 'id="wait"' in line:
+                        line = line.replace('id="wait"', f'id="wait" name="wait" value="{config_wait}"')
+                        modified = True
+                        
+                    if not modified and 'id="speed"' in line:
+                        line = line.replace('id="speed"', f'id="speed" name="speed" value="{config_speed}"')
+                        modified = True
+                        
+                    if not modified and findTime in line:
+                        line = line.replace(findTime, f'<option value="{config_time}" selected>')
+                        modified = True
+                        
+                    if not modified and '<select name="schedule" id="schedule">' in line:
+                        # Generate schedule options directly into the output stream
+                        output_file.write('<select name="schedule" id="schedule">')
                         for title, filename in schedules:
                             selected = 'selected' if filename == selected_schedule else ''
-                            schedule_options += f'<option value="{filename}" data-id="{title}" {selected}>{title}</option>'
-                        line = line.replace('<select name="schedule" id="schedule">', f'<select name="schedule" id="schedule">{schedule_options}')
-                    page += line
+                            output_file.write(f'<option value="{filename}" data-id="{title}" {selected}>{title}</option>')
+                        continue  # Skip the default write at the end since we've already written to the file
+                    
+                    # Write the processed line directly to the output file
+                    output_file.write(line)
+                
+                # Force memory cleanup before finishing
+                gc.collect()
+                
+            return True
         except OSError as e:
-            print(f"Error reading admin.html: {e}")
+            print(f"Error processing HTML files: {e}")
+            # Run garbage collection after error to free memory
+            gc.collect()
             return False
-
-        try:
-            with open("html/index.html", 'w') as f:
-                f.write(page)
-        except OSError as e:
-            print(f"Error writing index.html: {e}")
-            return False
-        return True
 
     def run_server(self):
         self.app = Microdot()
