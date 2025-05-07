@@ -55,11 +55,15 @@
                     <td>Display Motor Speed</td>
                     <td><input type="number" id="speed" name="speed" min="50" max="99"> percent</td>
                 </tr>
+                <tr>
+                    <td>Test on startup</td>
+                    <td><select name="testOnStartup" id="testOnStartup">
+                            <option value="true">Test</option>
+                            <option value="false">No Test</option>
+                        </select>
+                    </td>
+                </tr>
             </table>
-            <div class="form-check mb-3">
-                <input type="checkbox" class="form-check-input" id="testOnStartup" name="testOnStartup">
-                <label class="form-check-label" for="testOnStartup">Test on startup</label>
-            </div>
             <p></p><input type="submit" value="Save" onclick="upload(event)">
         </form>
         <script>
@@ -74,7 +78,7 @@
                     tempCF: document.getElementById('tempCF').value,
                     timeZone: document.getElementById('timeZone').value,
                     schedule: document.getElementById('schedule').value,
-                    testOnStartup: document.getElementById('testOnStartup').checked,
+                    testOnStartup: document.getElementById('testOnStartup').value === "true",
                 });
         
                 await fetch('/controllersettings', {
@@ -109,6 +113,7 @@
                     const response = await fetch('/controllersettings');
                     if (response.ok) {
                         const settings = await response.json();
+                        console.log('Loaded settings:', settings); // Debug output
                         
                         // Set the values for all form fields
                         if (settings.wait) document.getElementById('wait').value = settings.wait;
@@ -120,8 +125,36 @@
                         if (settings.timeZone) document.getElementById('timeZone').value = settings.timeZone;
                         if (settings.schedule) document.getElementById('schedule').value = settings.schedule;
                         
-                        // Set the testOnStartup checkbox based on the config value
-                        document.getElementById('testOnStartup').checked = settings.testOnStartup === true;
+                        // Set the testOnStartup dropdown based on the config value
+                        console.log('testOnStartup value:', settings.testOnStartup);
+                        console.log('testOnStartup type:', typeof settings.testOnStartup);
+                        
+                        // Convert the testOnStartup value to the string format needed for the dropdown
+                        const testOnStartupElement = document.getElementById('testOnStartup');
+                        if (settings.testOnStartup === true || settings.testOnStartup === "true") {
+                            testOnStartupElement.value = "true";
+                        } else {
+                            testOnStartupElement.value = "false";
+                        }
+                        
+                        // Also add code to populate the schedule dropdown
+                        if (settings.schedules && Array.isArray(settings.schedules)) {
+                            const scheduleSelect = document.getElementById('schedule');
+                            // Clear existing options first
+                            scheduleSelect.innerHTML = '';
+                            
+                            settings.schedules.forEach(schedule => {
+                                const option = document.createElement('option');
+                                option.value = schedule;
+                                option.textContent = schedule;
+                                scheduleSelect.appendChild(option);
+                            });
+                            
+                            // Set the selected value
+                            if (settings.schedule) {
+                                scheduleSelect.value = settings.schedule;
+                            }
+                        }
                     } else {
                         console.error('Failed to load settings');
                     }
@@ -129,8 +162,8 @@
                     console.error('Error loading settings:', err);
                 }
             }
-
-            // Call loadSettings when the page is loaded
+            
+            // Make sure to call loadSettings when the page loads
             window.addEventListener('DOMContentLoaded', loadSettings);
         </script>
     </body>
