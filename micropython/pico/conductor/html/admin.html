@@ -56,6 +56,10 @@
                     <td><input type="number" id="speed" name="speed" min="50" max="99"> percent</td>
                 </tr>
             </table>
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="testOnStartup" name="testOnStartup">
+                <label class="form-check-label" for="testOnStartup">Test on startup</label>
+            </div>
             <p></p><input type="submit" value="Save" onclick="upload(event)">
         </form>
         <script>
@@ -70,6 +74,7 @@
                     tempCF: document.getElementById('tempCF').value,
                     timeZone: document.getElementById('timeZone').value,
                     schedule: document.getElementById('schedule').value,
+                    testOnStartup: document.getElementById('testOnStartup').checked,
                 });
         
                 await fetch('/controllersettings', {
@@ -97,6 +102,36 @@
                     window.location.reload();
                 });
             }
+
+            // Load settings when the page loads
+            async function loadSettings() {
+                try {
+                    const response = await fetch('/controllersettings');
+                    if (response.ok) {
+                        const settings = await response.json();
+                        
+                        // Set the values for all form fields
+                        if (settings.wait) document.getElementById('wait').value = settings.wait;
+                        if (settings.speed) document.getElementById('speed').value = settings.speed;
+                        if (settings.ssid) document.getElementById('ssid').value = settings.ssid;
+                        if (settings.pwd) document.getElementById('pwd').value = settings.pwd;
+                        if (settings.time) document.getElementById('time').value = settings.time;
+                        if (settings.tempCF) document.getElementById('tempCF').value = settings.tempCF;
+                        if (settings.timeZone) document.getElementById('timeZone').value = settings.timeZone;
+                        if (settings.schedule) document.getElementById('schedule').value = settings.schedule;
+                        
+                        // Set the testOnStartup checkbox based on the config value
+                        document.getElementById('testOnStartup').checked = settings.testOnStartup === true;
+                    } else {
+                        console.error('Failed to load settings');
+                    }
+                } catch (err) {
+                    console.error('Error loading settings:', err);
+                }
+            }
+
+            // Call loadSettings when the page is loaded
+            window.addEventListener('DOMContentLoaded', loadSettings);
         </script>
     </body>
 </html>

@@ -31,7 +31,7 @@ class Motoractuator:
             print("extend error: {0}".format(e))
         finally:
             self.stop()
-            print("extend")
+            # print("extend")
     
     def retract(self, motor_speed, wait):
         # try/except block needed as an exception may be thrown without stopping the motor
@@ -43,13 +43,13 @@ class Motoractuator:
             print("retract error: {0}".format(e))
         finally:
             self.stop()
-            print("retract")
+            # print("retract")
     
     def stop(self):
         self.speed.duty_u16(0)
         self.cw.off()
         self.ccw.off()
-        print("stop")
+        # print("stop")
 
 class DigitColons:
     def __init__(self, led_pins, percentLED_brightness, motor_pins):
@@ -100,7 +100,7 @@ class DigitColons:
     
     @property
     def speed(self):
-        print("speed={0}".format(self._motorspeed))
+        # print("speed={0}".format(self._motorspeed))
         return self._motorspeed
 
     @speed.setter
@@ -110,7 +110,7 @@ class DigitColons:
     
     @property
     def wait(self):
-        print("wait={0}".format(self._waitTime))
+        # print("wait={0}".format(self._waitTime))
         return self._waitTime
     
     @wait.setter
@@ -129,8 +129,8 @@ class DigitColons:
         for i in range(2):
             if 1 == self._previousDigitArray[i]:
                 self.leds[i].duty_u16(self._brightness)
-                print("----------")
-                print("brightness {0} seg={1}".format(self._brightness, i))
+                # print("----------")
+                # print("brightness {0} seg={1}".format(self._brightness, i))
 
     def getDigitArray(self, val):
         a = [0,0]
@@ -162,19 +162,19 @@ class DigitColons:
         for i in range(2):
             if (1 == digitArray[i]) and (0 == self._previousDigitArray[i]):
                 self.actuators[i].extend(self._motorspeed,self._waitTime)
-                print("----------")
-                print("extend {0} digit {1}".format(i, digitArray))
+                # print("----------")
+                # print("extend {0} digit {1}".format(i, digitArray))
                 self.leds[i].duty_u16(self._brightness)
                 actuatorMoves += 1
             
             if (1 == digitArray[i]) and (1 == self._previousDigitArray[i]):
                 self.leds[i].duty_u16(self._brightness)
-                print("----------")
-                print("extend {0} digit {1}".format(i, digitArray))
+                # print("----------")
+                # print("extend {0} digit {1}".format(i, digitArray))
 
             if (0 == digitArray[i]) and (1 == self._previousDigitArray[i]):
-                print("----------")
-                print("retract {0} digit {1}".format(i, digitArray))
+                # print("----------")
+                # print("retract {0} digit {1}".format(i, digitArray))
                 self.leds[i].duty_u16(0)
                 self.actuators[i].retract(self._motorspeed,self._waitTime)
                 actuatorMoves += 1
@@ -221,11 +221,11 @@ class DigitColons:
         if self._digit >= 0 and self._digit < 2:
             a = '{0:02}'.format(t[4])
             d = a[self._digit]
-            print("hours d={0}".format(d))
+            # print("hours d={0}".format(d))
         else:
             a = '{0:02}'.format(t[5])
             d = a[self._digit - 2]
-            print("minutes d={0}".format(d))
+            # print("minutes d={0}".format(d))
 
         if twelveHour and d == '0' and self._digit == 0:
             d = 'F'
