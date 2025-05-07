@@ -16,7 +16,7 @@ class PicoWifi:
         self.config = Config(configfilename)
         self.uart = None
         # AP_IF=Access Point interface of the network module. 
-        # This is typically used when you want your Pico W to act as a Wi-Fi access point, 
+        # Used when you want your Pico W to act as a Wi-Fi access point, 
         # allowing other devices to connect to it.
         self.wifi = network.WLAN(network.AP_IF)
         self.waittime = 20
@@ -148,7 +148,7 @@ class PicoWifi:
         findCF = f'<option value="{config_tempCF}">'
         findTime = f'<option value="{config_time}">'
         
-        # Load schedules data
+        # Load schedule data
         try:
             schedules = self.load_schedules()
         except Exception as e:
