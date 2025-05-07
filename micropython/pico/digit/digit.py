@@ -56,7 +56,7 @@ class Motoractuator:
 class Digit:
     def __init__(self, led_pins, percentLED_brightness, motor_pins):
         self.leds = []
-        self.startLED = Pin(25,Pin.OUT)
+        #self.startLED = Pin(25,Pin.OUT)
         for i in range(7):
             led = PWM(Pin(led_pins[i]))
             led.freq(1000)
@@ -88,7 +88,7 @@ class Digit:
     def __del__(self):
         for led in self.leds:
             led.duty_u16(0)
-        self.startLED.off()
+        #self.startLED.off()
         self.conf.__del__()
 
     @property
@@ -154,7 +154,7 @@ class Digit:
         return 1
 
     def set_digit(self, digitArray):     
-        self.startLED.on()   
+        #self.startLED.on()   
         actuatorMoves = 0
         print(f"set_digit: {digitArray}")
         for i in range(0,7):
@@ -182,7 +182,7 @@ class Digit:
                 print(f"\t[{self._previousDigitArray[i]}] seg {chr(i+97)} skipped")
 
         self.setPreviousDigitArray(digitArray)
-        self.startLED.off()
+        #self.startLED.off()
         return actuatorMoves
 
     def setPreviousDigitArray(self, digitArray):
@@ -191,7 +191,7 @@ class Digit:
             self._previousDigitArray[i] = digitArray[i]
 
     def dance(self):
-        self.startLED.on()
+        #self.startLED.on()
         actuatorMoves = 0
         for seg in [2,3,4,5,0,1,6]:
             self.extend_segment(seg)
@@ -201,7 +201,7 @@ class Digit:
             self.retract_segment(seg)
             time.sleep(.01)
             actuatorMoves += 1
-        self.startLED.off()
+        #self.startLED.off()
         return actuatorMoves
 
     def syncTime(self, h, m, s):
