@@ -255,7 +255,9 @@ class PicoWifi:
             self.config.write('wait', f['wait'])
             self.config.write('speed', f['speed'])
             self.config.write('schedule', f['schedule'])
-            self.config.write('testOnStartup', f['testOnStartup'])
+            self.config.write('testOnStartup', "true" if f['testOnStartup'] else "false")
+            self.config.write('digitType', f['digitType'])  # Save the digitType setting
+            
             return ''
 
         @self.app.post('/upload')

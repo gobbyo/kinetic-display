@@ -1,4 +1,4 @@
-from common.uart_protocol import uartProtocol, uartChannel, uartCommand, commandHelper, uartActions
+from common.uart_protocol import uartProtocol, uartChannel, uartCommand, commandHelper, uartActions, digitType
 import dht
 from machine import Pin, RTC
 import photoresistor
@@ -387,6 +387,21 @@ class Conductor:
                 self.uart1.sendCommand(cmd)
                 time.sleep(.1)
     
+    def setDigittype(self, digitType):
+        print(f"setDigittype digitType={digitType}")
+        for d in range(3,-1,-1):
+            cmd = None
+            if d < 2:
+                cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.digittype, digitType))
+                print(f"sending setDigittype command: cmd={cmd.cmdStr}")
+                self.uart0.sendCommand(cmd)
+                time.sleep(.1)
+            else:
+                cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.digittype, digitType))
+                print(f"sending setDigittype command: cmd={cmd.cmdStr}")
+                self.uart1.sendCommand(cmd)
+                time.sleep(.1)
+    
     def displayNumber(self,d,n):
         cmd = uartCommand('{0}0{1:02}'.format(d,n))
         if d < 2:     
@@ -442,6 +457,11 @@ def loop():
         else:
             print("24 hour time")
             controller.display12hour = False
+        thetype = conf.read("digitType")
+        if "Earth" in thetype:
+            controller.setDigittype(digitType.human)
+        else:
+            controller.setDigittype(digitType.alien)
         
         # Check if digit test at startup is enabled (default to True if setting not found)
         test_on_startup = conf.read("testOnStartup")

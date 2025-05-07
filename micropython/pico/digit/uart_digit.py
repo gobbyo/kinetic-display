@@ -11,6 +11,7 @@ ACTION_SETWAITTIME = int(uartActions.setwaittime)
 ACTION_DANCE = int(uartActions.dance)
 ACTION_EXTENDSEGMENT = int(uartActions.extendSegment)
 ACTION_RETRACTSEGMENT = int(uartActions.retractSegment)
+ACTION_DIGITTYPE = int(uartActions.digittype)
 
 # Add a debug flag to reduce print statements in production
 DEBUG = False
@@ -35,6 +36,7 @@ def handle_command(display, cmd):
         ACTION_DANCE: _handle_dance,
         ACTION_EXTENDSEGMENT: _handle_extend,
         ACTION_RETRACTSEGMENT: _handle_retract,
+        ACTION_DIGITTYPE: _handle_digitType,
     }
     
     handler = cmd_handlers.get(action)
@@ -48,7 +50,7 @@ def handle_command(display, cmd):
 # Helper functions (defined outside handle_command)
 def _handle_setdigit(display, digit, value):
     is_alien = getattr(display, 'testdigit', 0) == 1
-    pattern = uartCommand.digitAlien[value] if is_alien else uartCommand.digitValue[value]
+    pattern = uartCommand.digitTest[value] if is_alien else uartCommand.digitValue[value]
     digit_array = display.getDigitArray(pattern)
     actuator_moves = display.set_digit(digit_array)
     print("digit", digit, "set to number", value, "actuator moves =", actuator_moves)
@@ -85,6 +87,12 @@ def _handle_retract(display, digit, value):
     actuator_moves = display.retract_segment(segment)
     print("digit", digit, "retracting segment", segment)
     return actuator_moves
+
+def _handle_digitType(display, digit, value):
+    digitType = min(value, 2)
+    display.testdigit = digitType
+    print("digit", digit, "set to ", digitType)
+    return 1
 
 def main():
     # Initialize with error handling

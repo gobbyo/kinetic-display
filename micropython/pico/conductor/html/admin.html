@@ -63,6 +63,14 @@
                         </select>
                     </td>
                 </tr>
+                <tr>
+                    <td>Digit Style</td>
+                    <td><select name="digitType" id="digitType">
+                            <option value="Earth">Earth</option>
+                            <option value="Alien">Alien</option>
+                        </select>
+                    </td>
+                </tr>
             </table>
             <p></p><input type="submit" value="Save" onclick="upload(event)">
         </form>
@@ -79,6 +87,7 @@
                     timeZone: document.getElementById('timeZone').value,
                     schedule: document.getElementById('schedule').value,
                     testOnStartup: document.getElementById('testOnStartup').value === "true",
+                    digitType: document.getElementById('digitType').value,
                 });
         
                 await fetch('/controllersettings', {
@@ -135,6 +144,14 @@
                             testOnStartupElement.value = "true";
                         } else {
                             testOnStartupElement.value = "false";
+                        }
+                        
+                        // Set the digitType dropdown based on config value
+                        if (settings.digitType) {
+                            document.getElementById('digitType').value = settings.digitType;
+                        } else {
+                            // Default to "Human" if not set
+                            document.getElementById('digitType').value = "Human";
                         }
                         
                         // Also add code to populate the schedule dropdown

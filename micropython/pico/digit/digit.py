@@ -97,6 +97,7 @@ class Digit:
     
     @testdigit.setter
     def testdigit(self, test):
+        print(f"test digit={test}")
         self._testDigit = test
         self.conf.write("alien", test)
     
@@ -236,17 +237,18 @@ class Digit:
         self.set_digit(self.getDigitArray(v[int(d)]))
 
 def instructions():
-    actions = ['c','d','e','l','r','s','t','w']
+    actions = ['c','d','e','h','l','r','s','t','w']
 
     while True:
         print("Enter a command:")
         print("\t(c)ycle through digits")
         print("\t(d)igit (d0-d9,dA-dF)")
         print("\t(e)xtend segment (e0-e6)")
+        print("\t(h)uman or alien digit (h0-h1)")
         print("\t(l)uminosity(0-9)")
         print("\t(r)etract segment (r0-r6)")
         print("\t(s)peed(10-100)% of segment movement")
-        print("\t(t)est digit")
+        print("\t(t)est digits")
         print("\t(w)ait(15-30 milliseconds) of segment movement")
         print("\t(q)uit")
         cmd = input("command: ")
@@ -280,14 +282,17 @@ def main():
             for i in range(0,16):
                 a = helper.decodeHex(value=i)
                 print(f"digit=(0x{a:02x})")
-                digitArray = d.getDigitArray(uartCommand.digitValue[int(a)])
+                if 1 == d.testdigit:
+                    digitArray = d.getDigitArray(uartCommand.digitTest[int(a)])
+                else:
+                    digitArray = d.getDigitArray(uartCommand.digitValue[int(a)])
                 d.set_digit(digitArray)
                 time.sleep(1)
         elif seg == 'd':
             print(f"digit=({value})")
             a = helper.decodeHex(value)
             if 1 == d.testdigit:
-                digitArray = d.getDigitArray(uartCommand.digitValue[a])
+                digitArray = d.getDigitArray(uartCommand.digitTest[a])
             else:
                 digitArray = d.getDigitArray(uartCommand.digitValue[a])
             actuatorMoves = d.set_digit(digitArray)
@@ -295,6 +300,12 @@ def main():
             i = int(value)
             print(f"extend segment=({i})")
             actuatorMoves = d.extend_segment(i)
+        elif seg == 'h':
+            d.testdigit = int(value)
+            if d.testdigit == 1:
+                print("digit type = 'alien'")
+            else:
+                print("digit type = 'human'")
         elif seg == 'l':
             print(f"luminosity=({value})")
             d.brightness = float(value)/10

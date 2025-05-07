@@ -1,1 +1,1 @@
-{"time": "12", "lon": "90", "lat": "90", "wait": "16", "schedule": "schedule_3.json", "enable_test_digits": true, "tempCF": "F", "timeZone": "", "speed": "85"}
+{"time": "12", "lon": "90", "lat": "90", "wait": "16", "schedule": "schedule_3.json", "enable_test_digits": true, "digitType": 0, "tempCF": "F", "timeZone": "", "speed": "85"}
