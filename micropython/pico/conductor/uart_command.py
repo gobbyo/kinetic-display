@@ -1,19 +1,15 @@
 from common.uart_protocol import uartProtocol, uartChannel, uartCommand, commandHelper, uartActions, digitType
-import dht
 from machine import Pin, RTC
 import photoresistor
 from time_formatter import formatHour
-from picowifiserver import PicoWifi
 from syncRTC import syncRTC
 from externalTemp import extTempHumid
-from scheduler import scheduleInfo, eventActions
+from scheduler import eventActions
 import digit_colons
 from common.config import Config
 import secrets
 import gc
 import time
-import ujson
-import uio
 
 # System constants
 UART_BAUD_RATE_INDEX = 3
@@ -52,18 +48,22 @@ CONFIG_DIGIT_TYPE_KEY = "digitType"
 CONFIG_TEST_ON_STARTUP_KEY = "testOnStartup"
 CONFIG_SCHEDULE_KEY = "schedule"
 
+# Add at class level
+GC_THRESHOLD = 15  # Run GC every 15 iterations
+
 # This class is the conductor of the display. It manages the various components of the system
 # and orchestrates the display of the time, date, temperature, and humidity. It also manages the
 # hybernation of the system and the schedule of events.
 class Conductor:
     def __init__(self):
-        self.wifi = None
+        self._wifi_module = None  # Used to store the actual PicoWifi instance
+        self._wifihotspot = None  # Used to store the actual PicoWifi instance
+        self._dht = None  # Used to store the actual DHT22 instance
         self.wifihotspot = None
         self.uart0 = uartProtocol(uartChannel.uart0, commandHelper.baudRate[UART_BAUD_RATE_INDEX])
         time.sleep(UART_SEND_DELAY * 7.5)  # Initial delay for UART setup
         self.uart1 = uartProtocol(uartChannel.uart1, commandHelper.baudRate[UART_BAUD_RATE_INDEX])
         self.light = photoresistor.photoresistor(PHOTORESISTOR_PIN)
-        self.dht = dht.DHT22(Pin(DHT_PIN))
         self.dhtpower = Pin(DHT_POWER_PIN, Pin.OUT)
         self.display12hour = True
         self.temp = 0
@@ -75,20 +75,70 @@ class Conductor:
         self.schedule = []
         self.brightness = 0
         self.colons = digit_colons.DigitColons(digit_colons.led_pins, digit_colons.DigitColons.brightness, digit_colons.motor_pins)
+        self.gc_counter = 0
+        self._dt_cache = [0] * 8  # Pre-allocated array for datetime tuple
+        # Add to __init__
+        COMMAND_BUFFER_SIZE = 16
+        self._command_buffer = bytearray(COMMAND_BUFFER_SIZE)
+
+    # Create properties for lazy loading
+    @property
+    def wifi(self):
+        if self._wifi_module is None:
+            from picowifiserver import PicoWifi
+            self._wifi_module = PicoWifi("config.json", secrets.usr, secrets.pwd)
+        return self._wifi_module
+
+    @wifi.setter
+    def wifi(self, value):
+        self._wifi_module = value
+
+    @property
+    def wifihotspot(self):
+        if self._wifihotspot is None:
+            from picowifiserver import PicoWifi
+            self._wifihotspot = PicoWifi("config.json")
+        return self._wifihotspot
+
+    @wifihotspot.setter
+    def wifihotspot(self, value):
+        self._wifihotspot = value
+
+    @property
+    def dht(self):
+        if self._dht is None:
+            import dht
+            self._dht = dht.DHT22(Pin(DHT_PIN))
+        return self._dht
+
+    @dht.setter
+    def dht(self, value):
+        self._dht = value
+
+    def get_datetime(self):
+        dt = self.rtc.datetime()
+        # Copy values to pre-allocated array
+        for i in range(8):
+            self._dt_cache[i] = dt[i]
+        return self._dt_cache
 
     def checkForScheduledAction(self, s):
-        #[year, month, day, weekday, hours, minutes, seconds, subseconds]
-        dt = self.rtc.datetime()
-                
+        dt = self.get_datetime()
+        
+        # Extract relevant time components once
+        current_hour = dt[4]
+        current_minute = dt[5]
+        current_second = dt[6]
+        
+        # Check hibernation first with direct comparison instead of string formatting
         if s.event == eventActions.hybernate:
-            if (dt[4] == s.hour or s.hour == -1) and (dt[5] == s.minute or s.minute == -1):
-                print(f"h={s.hour}, m={s.minute}, s={s.second}, e={s.event}")
+            if (current_hour == s.hour or s.hour == -1) and (current_minute == s.minute or s.minute == -1):
                 return eventActions.hybernate
-    
+        
+        # For non-hibernation events
         if s.event < eventActions.hybernate:
-            if (s.hour == -1 and dt[5] == (s.minute)) or (s.hour == -1 and s.minute == -1):
-                if dt[6] >= s.second and dt[6] < (s.second + s.elapse):
-                    print(f"h={s.hour}, m={s.minute}, s={s.second}, e={s.event}")
+            if (s.hour == -1 and current_minute == s.minute) or (s.hour == -1 and s.minute == -1):
+                if current_second >= s.second and current_second < (s.second + s.elapse):
                     return s.event
         
         return 0
@@ -98,13 +148,13 @@ class Conductor:
         cleared = False
         hybernating = True
         try:
-            dt = self.rtc.datetime()
+            dt = self.get_datetime()
             m = s.elapse + (dt[4] * 60) + dt[5]
             deadlineinHours = int(m/60) % 24 #hours
             deadlineinMinutes = int(m%60)
             print(f"deadline {deadlineinHours}:{deadlineinMinutes}")
             while hybernating:
-                dt = self.rtc.datetime()
+                dt = self.get_datetime()
                 if deadlineinHours == dt[4] and deadlineinMinutes == dt[5]:
                     hybernating = False
                 if self.hybernateswitch():
@@ -122,7 +172,7 @@ class Conductor:
             print(f"Error scheduledHybernation: {e}")
         finally:
             self.powerRelay.off()
-            self.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
+            #self.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
             self.wifi.connect_to_wifi_network()
             self.syncRTC.refresh_timezone()
             self.syncRTC.syncclock(self.rtc)
@@ -148,7 +198,7 @@ class Conductor:
         finally:
             self.powerRelay.off()
             if hybernated:
-                self.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
+                #self.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
                 self.wifi.connect_to_wifi_network()
                 self.syncRTC.refresh_timezone()
                 self.syncRTC.syncclock(self.rtc)
@@ -171,6 +221,7 @@ class Conductor:
 
     def updateOutdoorTempHumid(self):
         try:
+            # Remove the with statement since extTempHumid is not a context manager
             etc = extTempHumid(self.syncRTC)
             etc.updateOutdoorTemp()
         except Exception as e:
@@ -348,7 +399,7 @@ class Conductor:
         try:
             print(f"showTime display12hour={self.display12hour}")
             #[year, month, day, weekday, hours, minutes, seconds, subseconds]
-            dt = self.rtc.datetime()
+            dt = self.get_datetime()
             t = "{0:02}{1:02}".format(formatHour(dt[4],self.display12hour), dt[5])
             print(f"time={t}")
 
@@ -372,7 +423,7 @@ class Conductor:
         try:
             print("showDate")
             #[year, month, day, weekday, hours, minutes, seconds, subseconds]
-            dt = self.rtc.datetime()
+            dt = self.get_datetime()
             t = "{0:02}{1:02}".format(dt[1],dt[2])
             self.displayNumber(3,int(t[0]))
             self.displayNumber(2,int(t[1]))
@@ -388,18 +439,24 @@ class Conductor:
     def setMotorSpeed(self, percentSpeed):
         print(f"setMotorSpeed percentSpeed={percentSpeed}")
         self.colons.speed = percentSpeed
+        
+        # Create a single command object and reuse it
+        # Fix the format string to include all three parameters
+        cmd = uartCommand('{0}{1}{2:02}'.format(0, uartActions.setmotorspeed, percentSpeed))
+        
         for d in range(DIGIT_COUNT - 1, -1, -1):
-            cmd = None
+            # Modify the first character instead of creating new command
+            cmd.cmdStr = cmd.cmdStr.replace(cmd.cmdStr[0], str(d))
+            cmd.digit = d
+            
             if d <= UART0_MAX_DIGIT:
-                cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.setmotorspeed, percentSpeed))
                 print(f"sending setMotorSpeed command: cmd={cmd.cmdStr}")
                 self.uart0.sendCommand(cmd)
-                time.sleep(UART_SEND_DELAY)
             else:
-                cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.setmotorspeed, percentSpeed))
                 print(f"sending setMotorSpeed command: cmd={cmd.cmdStr}")
                 self.uart1.sendCommand(cmd)
-                time.sleep(UART_SEND_DELAY)
+                
+            time.sleep(UART_SEND_DELAY)
 
     # Set the wait time for the digits to move in tenths of a second
     def setWaitTime(self, tenthsSecondWaitTime):
@@ -433,19 +490,35 @@ class Conductor:
                 self.uart1.sendCommand(cmd)
                 time.sleep(UART_SEND_DELAY)
     
-    def displayNumber(self,d,n):
-        cmd = uartCommand('{0}0{1:02}'.format(d,n))
+    def displayNumber(self, d, n):
+        # Avoid format string allocations by using simple concatenation for small strings
+        cmd_str = str(d) + '0' + ('0' + str(n))[-2:]
+        cmd = uartCommand(cmd_str)
+        
         if d <= UART0_MAX_DIGIT:     
             self.uart0.sendCommand(cmd)
-            print(f"command sent on ch0 to display number: cmd={cmd.cmdStr}")
+            print("command sent on ch0 to display number: cmd=", cmd_str)
             time.sleep(UART_SEND_DELAY)
-            #cmd = self.uart0.receiveCommand()
         else:
             self.uart1.sendCommand(cmd)
-            print(f"command sent on ch1 to display number: cmd={cmd.cmdStr}")
+            print("command sent on ch1 to display number: cmd=", cmd_str)
             time.sleep(UART_SEND_DELAY)
-            #cmd = self.uart1.receiveCommand()
         del cmd
+
+    def release_resources(self):
+        """Explicitly release resources to help garbage collection"""
+        # Release UART resources
+        if hasattr(self, 'uart0'):
+            del self.uart0
+        if hasattr(self, 'uart1'):
+            del self.uart1
+        
+        # Release sensor resources
+        if hasattr(self, 'dht'):
+            del self.dht
+        
+        # Force garbage collection
+        gc.collect()
 
 def loop():
 
@@ -453,17 +526,19 @@ def loop():
     controller = Conductor()
 
     try:
-
         if controller.hybernateswitch(): #if the hybernate switch is in "off" position
-            controller.wifihotspot = PicoWifi("config.json")
+            # Use the property instead of direct instantiation
             controller.wifihotspot.start_wifi()
             if controller.wifihotspot.ip_address != "":
                 controller.wifihotspot.run_server()
             controller.wifihotspot.shutdown_server()
             controller.wifihotspot.shutdownWifi()
-            controller.wifihotspot.__del__()
+            # Set to None to allow GC to clean up instead of using __del__
+            controller.wifihotspot = None
             while controller.hybernateswitch(): #wait for the switch to be turned to the "on" position
                 time.sleep(1)
+            import machine
+            machine.reset()
 
         # Load the configuration
         conf = Config("config.json")
@@ -559,7 +634,7 @@ def loop():
 
         # Enable wifi and sync the RTC
         print("Creating wifi object")
-        controller.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
+        #controller.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
         if(controller.wifi.connect_to_wifi_network()):
             time.sleep(1)
             controller.syncRTC.refresh_timezone()
@@ -575,7 +650,7 @@ def loop():
 
     while True:
         try:
-            dt = controller.rtc.datetime()  # Get this once per loop instead of for each schedule item
+            dt = controller.get_datetime()  # Get this once per loop instead of for each schedule item
             
             # Only process events that might be active in this minute
             current_minute = dt[5]  # Minutes from datetime
@@ -639,6 +714,12 @@ def loop():
             if a == 0 and len(controller.schedule) > 0:  # Only print if no action and there are scheduled events
                 # Don't reference s directly here as it might be undefined if schedule was empty
                 print(f"No scheduled action triggered at: hour={current_hour}, min={current_minute}, sec={current_second}")
+
+            # Periodic garbage collection
+            controller.gc_counter += 1
+            if controller.gc_counter >= GC_THRESHOLD:
+                gc.collect()
+                controller.gc_counter = 0
 
         except Exception as e:
             print(f"Error: {e}")
