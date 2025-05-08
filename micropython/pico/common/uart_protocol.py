@@ -46,6 +46,11 @@ class uartActions():
     setwaittime = 6
     brightness = 7
     hybernate = 8
+    digittype = 9
+
+class digitType():
+    human = 0
+    alien = 1
 
 # The UART protocol is a 3 character string
 # The valid character set is 0-15 for the digit display

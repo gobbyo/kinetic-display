@@ -45,7 +45,46 @@
                 </tr>
                 <tr>
                     <td>Time Zone</td>
-                    <td><input type="text" id="timeZone" name="timeZone" placeholder="Europe/London" maxlength="30" size="24"></td>
+                    <td><select name="timeZone" id="timeZone">
+                        <option value="auto">Auto by IP address</option>
+                        <option value="Africa/Cairo">Africa/Cairo</option>
+                        <option value="Africa/Johannesburg">Africa/Johannesburg</option>
+                        <option value="Africa/Lagos">Africa/Lagos</option>
+                        <option value="America/Anchorage">America/Anchorage</option>
+                        <option value="America/Bogota">America/Bogota</option>
+                        <option value="America/Chicago">America/Chicago</option>
+                        <option value="America/Denver">America/Denver</option>
+                        <option value="America/Halifax">America/Halifax</option>
+                        <option value="America/Los_Angeles">America/Los_Angeles</option>
+                        <option value="America/Mexico_City">America/Mexico_City</option>
+                        <option value="America/New_York">America/New_York</option>
+                        <option value="America/Phoenix">America/Phoenix</option>
+                        <option value="America/Santiago">America/Santiago</option>
+                        <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+                        <option value="America/Toronto">America/Toronto</option>
+                        <option value="Asia/Dubai">Asia/Dubai</option>
+                        <option value="Asia/Hong_Kong">Asia/Hong_Kong</option>
+                        <option value="Asia/Jakarta">Asia/Jakarta</option>
+                        <option value="Asia/Jerusalem">Asia/Jerusalem</option>
+                        <option value="Asia/Kolkata">Asia/Kolkata</option>
+                        <option value="Asia/Seoul">Asia/Seoul</option>
+                        <option value="Asia/Shanghai">Asia/Shanghai</option>
+                        <option value="Asia/Singapore">Asia/Singapore</option>
+                        <option value="Asia/Tokyo">Asia/Tokyo</option>
+                        <option value="Australia/Melbourne">Australia/Melbourne</option>
+                        <option value="Australia/Perth">Australia/Perth</option>
+                        <option value="Australia/Sydney">Australia/Sydney</option>
+                        <option value="Europe/Amsterdam">Europe/Amsterdam</option>
+                        <option value="Europe/Athens">Europe/Athens</option>
+                        <option value="Europe/Berlin">Europe/Berlin</option>
+                        <option value="Europe/London">Europe/London</option>
+                        <option value="Europe/Madrid">Europe/Madrid</option>
+                        <option value="Europe/Moscow">Europe/Moscow</option>
+                        <option value="Europe/Paris">Europe/Paris</option>
+                        <option value="Europe/Rome">Europe/Rome</option>
+                        <option value="Pacific/Auckland">Pacific/Auckland</option>
+                        <option value="Pacific/Honolulu">Pacific/Honolulu</option>
+                    </select></td>
                 </tr>
                 <tr>
                     <td>Display Motor Wait Time</td>
@@ -54,6 +93,22 @@
                 <tr>
                     <td>Display Motor Speed</td>
                     <td><input type="number" id="speed" name="speed" min="50" max="99"> percent</td>
+                </tr>
+                <tr>
+                    <td>Test on startup</td>
+                    <td><select name="testOnStartup" id="testOnStartup">
+                            <option value="true">Test</option>
+                            <option value="false">No Test</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Digit Style</td>
+                    <td><select name="digitType" id="digitType">
+                            <option value="Earth">Earth</option>
+                            <option value="Alien">Alien</option>
+                        </select>
+                    </td>
                 </tr>
             </table>
             <p></p><input type="submit" value="Save" onclick="upload(event)">
@@ -70,6 +125,8 @@
                     tempCF: document.getElementById('tempCF').value,
                     timeZone: document.getElementById('timeZone').value,
                     schedule: document.getElementById('schedule').value,
+                    testOnStartup: document.getElementById('testOnStartup').value === "true",
+                    digitType: document.getElementById('digitType').value,
                 });
         
                 await fetch('/controllersettings', {
@@ -97,6 +154,91 @@
                     window.location.reload();
                 });
             }
+
+            // Load settings when the page loads
+            async function loadSettings() {
+                try {
+                    const response = await fetch('/controllersettings');
+                    if (response.ok) {
+                        const settings = await response.json();
+                        console.log('Loaded settings:', settings); // Debug output
+                        
+                        // Set the values for all form fields
+                        if (settings.wait) document.getElementById('wait').value = settings.wait;
+                        if (settings.speed) document.getElementById('speed').value = settings.speed;
+                        if (settings.ssid) document.getElementById('ssid').value = settings.ssid;
+                        if (settings.pwd) document.getElementById('pwd').value = settings.pwd;
+                        if (settings.time) document.getElementById('time').value = settings.time;
+                        if (settings.tempCF) document.getElementById('tempCF').value = settings.tempCF;
+                        if (settings.timeZone) {
+                            const timeZoneSelect = document.getElementById('timeZone');
+                            // Check if the value exists in the dropdown
+                            let found = false;
+                            for (let i = 0; i < timeZoneSelect.options.length; i++) {
+                                if (timeZoneSelect.options[i].value === settings.timeZone) {
+                                    timeZoneSelect.selectedIndex = i;
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            
+                            // If not found, default to "auto"
+                            if (!found) {
+                                timeZoneSelect.value = "auto";
+                            }
+                        } else {
+                            document.getElementById('timeZone').value = "auto";
+                        }
+                        if (settings.schedule) document.getElementById('schedule').value = settings.schedule;
+                        
+                        // Set the testOnStartup dropdown based on the config value
+                        console.log('testOnStartup value:', settings.testOnStartup);
+                        console.log('testOnStartup type:', typeof settings.testOnStartup);
+                        
+                        // Convert the testOnStartup value to the string format needed for the dropdown
+                        const testOnStartupElement = document.getElementById('testOnStartup');
+                        if (settings.testOnStartup === true || settings.testOnStartup === "true") {
+                            testOnStartupElement.value = "true";
+                        } else {
+                            testOnStartupElement.value = "false";
+                        }
+                        
+                        // Set the digitType dropdown based on config value
+                        if (settings.digitType) {
+                            document.getElementById('digitType').value = settings.digitType;
+                        } else {
+                            // Default to "Human" if not set
+                            document.getElementById('digitType').value = "Human";
+                        }
+                        
+                        // Also add code to populate the schedule dropdown
+                        if (settings.schedules && Array.isArray(settings.schedules)) {
+                            const scheduleSelect = document.getElementById('schedule');
+                            // Clear existing options first
+                            scheduleSelect.innerHTML = '';
+                            
+                            settings.schedules.forEach(schedule => {
+                                const option = document.createElement('option');
+                                option.value = schedule;
+                                option.textContent = schedule;
+                                scheduleSelect.appendChild(option);
+                            });
+                            
+                            // Set the selected value
+                            if (settings.schedule) {
+                                scheduleSelect.value = settings.schedule;
+                            }
+                        }
+                    } else {
+                        console.error('Failed to load settings');
+                    }
+                } catch (err) {
+                    console.error('Error loading settings:', err);
+                }
+            }
+            
+            // Make sure to call loadSettings when the page loads
+            window.addEventListener('DOMContentLoaded', loadSettings);
         </script>
     </body>
 </html>

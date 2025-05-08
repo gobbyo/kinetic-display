@@ -143,10 +143,13 @@ class PicoWifi:
         config_speed = self.config.read("speed")
         config_timezone = self.config.read("timeZone", default="Europe/London")
         selected_schedule = self.config.read("schedule", default="")
+        test_on_startup = self.config.read("testOnStartup")
+        digit_type = self.config.read("digitType", default="Earth")  # Get digitType from config
         
         # Pre-calculate search strings to avoid string interpolation in the loop
         findCF = f'<option value="{config_tempCF}">'
         findTime = f'<option value="{config_time}">'
+        findTimezone = f'<option value="{config_timezone}">'  # New search string for timezone
         
         # Load schedule data
         try:
@@ -175,9 +178,15 @@ class PicoWifi:
                     if not modified and findCF in line:
                         line = line.replace(findCF, f'<option value="{config_tempCF}" selected>')
                         modified = True
-                        
-                    if not modified and 'id="timeZone"' in line:
-                        line = line.replace('id="timeZone"', f'id="timeZone" value="{config_timezone}"')
+                    
+                    # Fix timezone selection - replace this:
+                    # if not modified and 'id="timeZone"' in line:
+                    #    line = line.replace('id="timeZone"', f'id="timeZone" value="{config_timezone}"')
+                    #    modified = True
+                    
+                    # With this:
+                    if not modified and findTimezone in line:
+                        line = line.replace(findTimezone, f'<option value="{config_timezone}" selected>')
                         modified = True
                         
                     if not modified and 'id="wait"' in line:
@@ -191,14 +200,33 @@ class PicoWifi:
                     if not modified and findTime in line:
                         line = line.replace(findTime, f'<option value="{config_time}" selected>')
                         modified = True
-                        
+                    
+                    if not modified and '<option value="true">Test</option>' in line:
+                        # If test_on_startup is True, select the "Test" option
+                        if test_on_startup is True or test_on_startup == "true":
+                            line = line.replace('<option value="true">', '<option value="true" selected>')
+                        modified = True
+                    
+                    if not modified and '<option value="false">No Test</option>' in line:
+                        # If test_on_startup is False or None, select the "No Test" option
+                        if test_on_startup is False or test_on_startup == "false" or test_on_startup is None:
+                            line = line.replace('<option value="false">', '<option value="false" selected>')
+                        modified = True
+                    
+                    # Handle digitType dropdown
+                    if not modified and f'<option value="{digit_type}">' in line:
+                        line = line.replace(f'<option value="{digit_type}">', f'<option value="{digit_type}" selected>')
+                        modified = True
+                    
+                    # Fix the schedule dropdown alignment issue by modifying the line instead of
+                    # writing directly to the output stream
                     if not modified and '<select name="schedule" id="schedule">' in line:
-                        # Generate schedule options directly into the output stream
-                        output_file.write('<select name="schedule" id="schedule">')
+                        schedule_options = '<select name="schedule" id="schedule">'
                         for title, filename in schedules:
                             selected = 'selected' if filename == selected_schedule else ''
-                            output_file.write(f'<option value="{filename}" data-id="{title}" {selected}>{title}</option>')
-                        continue  # Skip the default write at the end since we've already written to the file
+                            schedule_options += f'<option value="{filename}" data-id="{title}" {selected}>{title}</option>'
+                        line = schedule_options
+                        modified = True
                     
                     # Write the processed line directly to the output file
                     output_file.write(line)
@@ -240,6 +268,9 @@ class PicoWifi:
             self.config.write('wait', f['wait'])
             self.config.write('speed', f['speed'])
             self.config.write('schedule', f['schedule'])
+            self.config.write('testOnStartup', "true" if f['testOnStartup'] else "false")
+            self.config.write('digitType', f['digitType'])  # Save the digitType setting
+            
             return ''
 
         @self.app.post('/upload')
