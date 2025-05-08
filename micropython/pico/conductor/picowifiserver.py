@@ -221,11 +221,15 @@ class PicoWifi:
                     # Fix the schedule dropdown alignment issue by modifying the line instead of
                     # writing directly to the output stream
                     if not modified and '<select name="schedule" id="schedule">' in line:
-                        schedule_options = '<select name="schedule" id="schedule">'
+                        # Create schedule options while preserving the HTML structure
+                        options_html = ''
                         for title, filename in schedules:
                             selected = 'selected' if filename == selected_schedule else ''
-                            schedule_options += f'<option value="{filename}" data-id="{title}" {selected}>{title}</option>'
-                        line = schedule_options
+                            options_html += f'<option value="{filename}" data-id="{title}" {selected}>{title}</option>'
+                        
+                        # Replace only the inner content of the select element, preserving the surrounding HTML
+                        line = line.replace('<select name="schedule" id="schedule">', 
+                                          f'<select name="schedule" id="schedule">{options_html}')
                         modified = True
                     
                     # Write the processed line directly to the output file
