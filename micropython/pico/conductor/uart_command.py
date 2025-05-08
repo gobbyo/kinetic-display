@@ -15,11 +15,42 @@ import time
 import ujson
 import uio
 
-photoresistorPin = 28
-dhtPin = 27
-dhtPowerpin = 16
-hybernateswitchPin = 18
-powerRelayPin = 19
+# System constants
+UART_BAUD_RATE_INDEX = 3
+UART_SEND_DELAY = 0.1  # seconds delay between UART commands
+DIGIT_COUNT = 4  # Total number of digits (0-3)
+UART0_MAX_DIGIT = 1  # Maximum digit number for UART0 (digits 0 and 1)
+
+# Pin assignments
+PHOTORESISTOR_PIN = 28
+DHT_PIN = 27
+DHT_POWER_PIN = 16
+HYBERNATE_SWITCH_PIN = 18
+POWER_RELAY_PIN = 19
+
+# Time constants
+DHT_POWER_ON_DELAY = 1.5  # seconds to wait after powering on DHT sensor
+DHT_POWER_OFF_DELAY = 0.25  # seconds to wait before powering off DHT sensor
+WIFI_CONNECT_DELAY = 1.0  # seconds to wait after connecting to WiFi
+DIGIT_TEST_DELAY = 0.5  # seconds to wait before digit test
+DANCE_DELAY = 2.0  # seconds to wait after sending dance command
+COMMAND_REPLY_DELAY = 0.5  # seconds to wait for command reply
+
+# Default values
+DEFAULT_HOUR = 0
+DEFAULT_MINUTE = 0
+DEFAULT_SECOND = 0
+DEFAULT_BRIGHTNESS_DIVISOR = 10.0  # For converting light level to brightness
+
+# Configuration keys
+CONFIG_FILE = "config.json"
+CONFIG_TEMP_CF_KEY = "tempCF"
+CONFIG_WAIT_KEY = "wait"
+CONFIG_SPEED_KEY = "speed"
+CONFIG_TIME_KEY = "time"
+CONFIG_DIGIT_TYPE_KEY = "digitType"
+CONFIG_TEST_ON_STARTUP_KEY = "testOnStartup"
+CONFIG_SCHEDULE_KEY = "schedule"
 
 # This class is the conductor of the display. It manages the various components of the system
 # and orchestrates the display of the time, date, temperature, and humidity. It also manages the
@@ -28,19 +59,19 @@ class Conductor:
     def __init__(self):
         self.wifi = None
         self.wifihotspot = None
-        self.uart0 = uartProtocol(uartChannel.uart0, commandHelper.baudRate[3])
-        time.sleep(.75)
-        self.uart1 = uartProtocol(uartChannel.uart1, commandHelper.baudRate[3])
-        self.light = photoresistor.photoresistor(photoresistorPin)
-        self.dht = dht.DHT22(Pin(dhtPin))
-        self.dhtpower = Pin(dhtPowerpin, Pin.OUT)
+        self.uart0 = uartProtocol(uartChannel.uart0, commandHelper.baudRate[UART_BAUD_RATE_INDEX])
+        time.sleep(UART_SEND_DELAY * 7.5)  # Initial delay for UART setup
+        self.uart1 = uartProtocol(uartChannel.uart1, commandHelper.baudRate[UART_BAUD_RATE_INDEX])
+        self.light = photoresistor.photoresistor(PHOTORESISTOR_PIN)
+        self.dht = dht.DHT22(Pin(DHT_PIN))
+        self.dhtpower = Pin(DHT_POWER_PIN, Pin.OUT)
         self.display12hour = True
         self.temp = 0
         self.humidity = 0
         self.rtc = RTC()
-        self.syncRTC = syncRTC(Config("config.json"))
-        self.hybernateswitch = Pin(hybernateswitchPin, Pin.IN, Pin.PULL_DOWN)
-        self.powerRelay = Pin(powerRelayPin, Pin.OUT)
+        self.syncRTC = syncRTC(Config(CONFIG_FILE))
+        self.hybernateswitch = Pin(HYBERNATE_SWITCH_PIN, Pin.IN, Pin.PULL_DOWN)
+        self.powerRelay = Pin(POWER_RELAY_PIN, Pin.OUT)
         self.schedule = []
         self.brightness = 0
         self.colons = digit_colons.DigitColons(digit_colons.led_pins, digit_colons.DigitColons.brightness, digit_colons.motor_pins)
@@ -125,7 +156,7 @@ class Conductor:
 
     def updateIndoorTemp(self):
         self.dhtpower.on()
-        time.sleep(1.5)
+        time.sleep(DHT_POWER_ON_DELAY)
         self.temp = 0
         self.humidity = 0
         try:
@@ -135,7 +166,7 @@ class Conductor:
         except Exception as e:
             print(f"Error updateIndoorTemp: {e}")
         finally:
-            time.sleep(.25)
+            time.sleep(DHT_POWER_OFF_DELAY)
             self.dhtpower.off()
 
     def updateOutdoorTempHumid(self):
@@ -153,38 +184,38 @@ class Conductor:
             return
         print(f"Light level: {curlight}")
         # Set the brightness of the digits
-        for d in range(3,-1,-1):
+        for d in range(DIGIT_COUNT - 1, -1, -1):
             cmd = None
-            if d < 2:
+            if d <= UART0_MAX_DIGIT:
                 if d == 1:
-                    self.colons.brightness = curlight/10
+                    self.colons.brightness = curlight / DEFAULT_BRIGHTNESS_DIVISOR
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.brightness, curlight))
                 self.uart0.sendCommand(cmd)
             else:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.brightness, curlight))
                 self.uart1.sendCommand(cmd)
             print(f"sending brightness command to digit {d} = {cmd.cmdStr}")
-            time.sleep(.1)
+            time.sleep(UART_SEND_DELAY)
         self.brightness = curlight
 
     def clearDisplay(self):
         # Set the brightness of the digits
         try:
-            for d in range(3,-1,-1):
+            for d in range(DIGIT_COUNT - 1, -1, -1):
                 cmd = None
-                if d < 2:
+                if d <= UART0_MAX_DIGIT:
                     if d == 1:
                         self.colons.retractSegment(0)
                         self.colons.retractSegment(1)
                     cmd = uartCommand('{0}015'.format(d))
                     self.uart0.sendCommand(cmd)
                     print(f"clear display: cmd={cmd.cmdStr}")
-                    time.sleep(.1)
+                    time.sleep(UART_SEND_DELAY)
                 else:
                     cmd = uartCommand(f'{d}015')
                     self.uart1.sendCommand(cmd)
                     print(f"clear display: cmd={cmd.cmdStr}")
-                    time.sleep(.1)
+                    time.sleep(UART_SEND_DELAY)
         except Exception as e:
             print(f"Error cleardisplay: {e}")
         finally:
@@ -192,11 +223,11 @@ class Conductor:
 
     def testDigits(self):
         # Initialize/test each digit
-        for d in range(3,-1,-1):
+        for d in range(DIGIT_COUNT - 1, -1, -1):
             cmd = None
-            if d < 2:
+            if d <= UART0_MAX_DIGIT:
                 if d == 1:
-                    time.sleep(.2)
+                    time.sleep(DIGIT_TEST_DELAY * 2)
                     self.colons.dance()
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.dance, 0))
                 self.uart0.sendCommand(cmd)
@@ -204,12 +235,12 @@ class Conductor:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.dance, 0))
                 self.uart1.sendCommand(cmd)
             print(f"sending dance command: cmd={cmd.cmdStr}")
-            time.sleep(2)
+            time.sleep(DANCE_DELAY)
             
             if cmd is not None:
                 print(f"received reply: cmd={cmd.cmdStr}")
             
-            time.sleep(.5)
+            time.sleep(COMMAND_REPLY_DELAY)
 
     def showIndoorTemp(self, celcius):
         try:
@@ -357,62 +388,62 @@ class Conductor:
     def setMotorSpeed(self, percentSpeed):
         print(f"setMotorSpeed percentSpeed={percentSpeed}")
         self.colons.speed = percentSpeed
-        for d in range(3,-1,-1):
+        for d in range(DIGIT_COUNT - 1, -1, -1):
             cmd = None
-            if d < 2:
+            if d <= UART0_MAX_DIGIT:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.setmotorspeed, percentSpeed))
                 print(f"sending setMotorSpeed command: cmd={cmd.cmdStr}")
                 self.uart0.sendCommand(cmd)
-                time.sleep(.1)
+                time.sleep(UART_SEND_DELAY)
             else:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.setmotorspeed, percentSpeed))
                 print(f"sending setMotorSpeed command: cmd={cmd.cmdStr}")
                 self.uart1.sendCommand(cmd)
-                time.sleep(.1)
+                time.sleep(UART_SEND_DELAY)
 
     # Set the wait time for the digits to move in tenths of a second
     def setWaitTime(self, tenthsSecondWaitTime):
         print(f"setWaitTime tenthsSecondWaitTime={tenthsSecondWaitTime}")
         self.colons.wait = tenthsSecondWaitTime/100
-        for d in range(3,-1,-1):
+        for d in range(DIGIT_COUNT - 1, -1, -1):
             cmd = None
-            if d < 2:
+            if d <= UART0_MAX_DIGIT:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.setwaittime, tenthsSecondWaitTime))
                 print(f"sending setWaitTime command: cmd={cmd.cmdStr}")
                 self.uart0.sendCommand(cmd)
-                time.sleep(.1)
+                time.sleep(UART_SEND_DELAY)
             else:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.setwaittime, tenthsSecondWaitTime))
                 print(f"sending setWaitTime command: cmd={cmd.cmdStr}")
                 self.uart1.sendCommand(cmd)
-                time.sleep(.1)
+                time.sleep(UART_SEND_DELAY)
     
     def setDigittype(self, digitType):
         print(f"setDigittype digitType={digitType}")
-        for d in range(3,-1,-1):
+        for d in range(DIGIT_COUNT - 1, -1, -1):
             cmd = None
-            if d < 2:
+            if d <= UART0_MAX_DIGIT:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.digittype, digitType))
                 print(f"sending setDigittype command: cmd={cmd.cmdStr}")
                 self.uart0.sendCommand(cmd)
-                time.sleep(.1)
+                time.sleep(UART_SEND_DELAY)
             else:
                 cmd = uartCommand('{0}{1}{2:02}'.format(d, uartActions.digittype, digitType))
                 print(f"sending setDigittype command: cmd={cmd.cmdStr}")
                 self.uart1.sendCommand(cmd)
-                time.sleep(.1)
+                time.sleep(UART_SEND_DELAY)
     
     def displayNumber(self,d,n):
         cmd = uartCommand('{0}0{1:02}'.format(d,n))
-        if d < 2:     
+        if d <= UART0_MAX_DIGIT:     
             self.uart0.sendCommand(cmd)
             print(f"command sent on ch0 to display number: cmd={cmd.cmdStr}")
-            time.sleep(.1)
+            time.sleep(UART_SEND_DELAY)
             #cmd = self.uart0.receiveCommand()
         else:
             self.uart1.sendCommand(cmd)
             print(f"command sent on ch1 to display number: cmd={cmd.cmdStr}")
-            time.sleep(.1)
+            time.sleep(UART_SEND_DELAY)
             #cmd = self.uart1.receiveCommand()
         del cmd
 
