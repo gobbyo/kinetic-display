@@ -1,5 +1,5 @@
 from common.uart_protocol import uartProtocol, uartChannel, uartCommand, commandHelper, uartActions, digitType
-from machine import Pin, RTC
+from machine import Pin, RTC, WDT  # Added WDT import
 import photoresistor
 from time_formatter import formatHour
 from syncRTC import syncRTC
@@ -51,6 +51,9 @@ CONFIG_SCHEDULE_KEY = "schedule"
 # Add at class level
 GC_THRESHOLD = 15  # Run GC every 15 iterations
 
+# Watchdog timeout in milliseconds (8 seconds)
+WATCHDOG_TIMEOUT_MS = 8000
+
 # This class is the conductor of the display. It manages the various components of the system
 # and orchestrates the display of the time, date, temperature, and humidity. It also manages the
 # hybernation of the system and the schedule of events.
@@ -80,6 +83,8 @@ class Conductor:
         # Add to __init__
         COMMAND_BUFFER_SIZE = 16
         self._command_buffer = bytearray(COMMAND_BUFFER_SIZE)
+        # Initialize watchdog timer
+        self.wdt = WDT(timeout=WATCHDOG_TIMEOUT_MS)
 
     # Create properties for lazy loading
     @property
@@ -522,21 +527,30 @@ class Conductor:
 
 def loop():
 
+    # Initialize the watchdog timer with 8-second timeout
+    wdt = WDT(timeout=WATCHDOG_TIMEOUT_MS)
+    print(f"Watchdog timer initialized with {WATCHDOG_TIMEOUT_MS}ms timeout")
+    
     # Set up the UARTs digits 0 through 3
     controller = Conductor()
 
     try:
+        # Feed the watchdog after initialization
+        wdt.feed()
+        
         if controller.hybernateswitch(): #if the hybernate switch is in "off" position
             # Use the property instead of direct instantiation
             controller.wifihotspot.start_wifi()
             if controller.wifihotspot.ip_address != "":
                 controller.wifihotspot.run_server()
+                # Feed watchdog periodically during long operations
+                wdt.feed()
             controller.wifihotspot.shutdown_server()
             controller.wifihotspot.shutdownWifi()
-            # Set to None to allow GC to clean up instead of using __del__
             controller.wifihotspot = None
             while controller.hybernateswitch(): #wait for the switch to be turned to the "on" position
                 time.sleep(1)
+                wdt.feed()  # Feed watchdog while waiting
             import machine
             machine.reset()
 
@@ -549,9 +563,13 @@ def loop():
             cf = False
         tempWait = int(conf.read("wait"))
         tempSpeed = int(conf.read("speed"))
-            # set the motor speed to % (x10) of max
+        # set the motor speed to % (x10) of max
         print(f"tempSpeed={tempSpeed}")
         controller.setMotorSpeed(tempSpeed)
+        
+        # Feed watchdog after motor speed configuration
+        wdt.feed()
+        
         # set the wait time in hundreths of a second, e.g. 15 = 0.15 seconds
         print(f"tempWait={tempWait}")
         controller.setWaitTime(tempWait)
@@ -568,6 +586,9 @@ def loop():
             controller.setDigittype(digitType.human)
         else:
             controller.setDigittype(digitType.alien)
+        
+        # Feed watchdog after digit type configuration
+        wdt.feed()
         
         # Check if digit test at startup is enabled (default to True if setting not found)
         test_on_startup = conf.read("testOnStartup")
@@ -586,10 +607,12 @@ def loop():
             print("Digit test at startup is enabled")
             time.sleep(.5)
             controller.testDigits()
+            # Feed watchdog after digit test
+            wdt.feed()
         else:
             print("Digit test at startup is disabled")
 
-        # Load the schedule 
+        # Load the schedule with feeding the watchdog
         try:
             path = f'schedules/{conf.read("schedule")}'
             # Import the optimized schedule loader
@@ -600,6 +623,9 @@ def loop():
             print("Loading schedule...")
             controller.schedule = []
             
+            # Feed watchdog before schedule loading
+            wdt.feed()
+            
             try:
                 print("Trying simple loader...")
                 controller.schedule = ScheduleLoader.load_schedule_simple(path)
@@ -607,11 +633,15 @@ def loop():
                 # If simple loader returned no events, try other methods
                 if len(controller.schedule) == 0:
                     gc.collect()
+                    # Feed watchdog between load attempts
+                    wdt.feed()
                     print("Simple loader returned no events, trying stream loader...")
                     controller.schedule = ScheduleLoader.load_schedule_stream(path)
                     
                     if len(controller.schedule) == 0:
                         gc.collect()
+                        # Feed watchdog between load attempts
+                        wdt.feed()
                         print("Stream loader returned no events, trying optimized loader...")
                         controller.schedule = ScheduleLoader.load_schedule_optimized(path)
             except Exception as e:
@@ -624,12 +654,17 @@ def loop():
             print("Loaded schedule events:")
             for idx, s in enumerate(controller.schedule):
                 print(f"Event {idx}: hour={s.hour}, minute={s.minute}, second={s.second}, elapse={s.elapse}, event={s.event}")
+                # Feed watchdog periodically during long operations
+                if idx % 10 == 0:
+                    wdt.feed()
                 
             gc.collect()
         except Exception as e:
             print(f"Schedule loading error: {e}")
             controller.schedule = []
         
+        # Feed watchdog after schedule loading
+        wdt.feed()
         gc.collect()
 
         # Enable wifi and sync the RTC
@@ -637,13 +672,19 @@ def loop():
         #controller.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
         if(controller.wifi.connect_to_wifi_network()):
             time.sleep(1)
+            # Feed watchdog during network operations
+            wdt.feed()
             controller.syncRTC.refresh_timezone()
             controller.syncRTC.syncclock(controller.rtc)
+            # Feed watchdog after clock sync
+            wdt.feed()
             etc = extTempHumid(controller.syncRTC)
             etc.setLatLon()
     except Exception as e:
         print(f"Wifi error: {e}")
     finally:
+        # Always feed the watchdog if there's an exception
+        wdt.feed()
         pass
 
     controller.updateBrightness()
@@ -703,12 +744,19 @@ def loop():
                     controller.showOutdoorHumidity()
                 elif a == eventActions.updateOutdoorTempHumid:
                     controller.updateOutdoorTempHumid()
+                    # Feed watchdog after network operation
+                    wdt.feed()
                 elif a == eventActions.hybernate:
+                    # Pass the watchdog to scheduledHybernation
                     controller.scheduledHybernation(s)
+                    # Feed immediately after returning from hibernation
+                    wdt.feed()
             
             time.sleep(1)
             if controller.checkHybernate():
                 controller.updateBrightness()
+                # Feed watchdog after hibernation check
+                wdt.feed()
 
             # Add this for debugging after your event processing - make sure s is defined
             if a == 0 and len(controller.schedule) > 0:  # Only print if no action and there are scheduled events
@@ -721,11 +769,16 @@ def loop():
                 gc.collect()
                 controller.gc_counter = 0
 
+            # Feed the watchdog timer at the end of each loop iteration
+            wdt.feed()
+
         except Exception as e:
             print(f"Error: {e}")
         finally:
             controller.updateBrightness() 
             time.sleep(1)
+            # Feed the watchdog in the finally block to ensure it's always fed
+            wdt.feed()
 
 ##############################
 # Manual
