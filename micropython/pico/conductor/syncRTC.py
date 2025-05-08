@@ -2,11 +2,29 @@ from machine import RTC
 import urequests
 import ujson
 
-externalIPAddressAPI = "http://api.ipify.org"
-externalWorldTimeAPI = "http://worldtimeapi.org/api/ip"
-externalWorldTimeZoneAPI = "http://worldtimeapi.org/api/timezone/{0}"
-externalOpenTimeAPI = "https://www.timeapi.io/api/Time/current/ip?ipAddress={0}"
-externalOpenTimeZoneAPI = "https://www.timeapi.io/api/Time/current/zone?timeZone={0}"
+# API endpoint constants
+EXTERNAL_IP_ADDRESS_API = "http://api.ipify.org"
+EXTERNAL_WORLD_TIME_API = "http://worldtimeapi.org/api/ip"
+EXTERNAL_WORLD_TIME_ZONE_API = "http://worldtimeapi.org/api/timezone/{0}"
+EXTERNAL_OPEN_TIME_API = "https://www.timeapi.io/api/Time/current/ip?ipAddress={0}"
+EXTERNAL_OPEN_TIME_ZONE_API = "https://www.timeapi.io/api/Time/current/zone?timeZone={0}"
+
+# Default values
+DEFAULT_IP_ADDRESS = "00.000.000.000"
+AUTO_TIMEZONE = "auto"
+
+# Default time tuple values
+DEFAULT_YEAR = 1970
+DEFAULT_MONTH = 1
+DEFAULT_DAY = 1
+DEFAULT_WEEKDAY = 0
+DEFAULT_HOUR = 0
+DEFAULT_MINUTE = 0
+DEFAULT_SECOND = 0
+DEFAULT_SUBSECONDS = 0
+
+# Config key constants
+CONFIG_TIMEZONE_KEY = "timeZone"
 
 # This class is used to sync the RTC with the WorldTimeAPI service
 # It is also used to obtain the external IP address of the device
@@ -14,12 +32,12 @@ externalOpenTimeZoneAPI = "https://www.timeapi.io/api/Time/current/zone?timeZone
 class syncRTC:
 
     def __init__(self, config=None):
-        self.externalIPaddress = "00.000.000.000"
+        self.externalIPaddress = DEFAULT_IP_ADDRESS
         self.config = config
         self.timeZone = None
         if self.config:
             try:
-                self.timeZone = self.config.read("timeZone")
+                self.timeZone = self.config.read(CONFIG_TIMEZONE_KEY)
             except:
                 self.timeZone = None
 
@@ -29,21 +47,23 @@ class syncRTC:
 
         try:
             # Set a default date/time
-            rtc.datetime((1970, 1, 1, 0, 0, 0, 0, 0))
+            rtc.datetime((DEFAULT_YEAR, DEFAULT_MONTH, DEFAULT_DAY, 
+                         DEFAULT_WEEKDAY, DEFAULT_HOUR, DEFAULT_MINUTE, 
+                         DEFAULT_SECOND, DEFAULT_SUBSECONDS))
             print("RTC set to default date/time")
             
             # Always get external IP for potential use
             self.setExternalIPAddress()
             
             # Determine which API to use based on timeZone setting
-            if self.timeZone and self.timeZone != "auto":
+            if self.timeZone and self.timeZone != AUTO_TIMEZONE:
                 # Use timezone-specific API
                 print(f"Using timezone from config: {self.timeZone}")
-                timeAPI = externalOpenTimeZoneAPI.format(self.timeZone)
+                timeAPI = EXTERNAL_OPEN_TIME_ZONE_API.format(self.timeZone)
             else:
                 # Use IP-based API (auto)
                 print(f"Using IP-based timezone detection: {self.externalIPaddress}")
-                timeAPI = externalOpenTimeAPI.format(self.externalIPaddress)
+                timeAPI = EXTERNAL_OPEN_TIME_API.format(self.externalIPaddress)
                 
             # Make the API request
             r = urequests.get(timeAPI)
@@ -55,11 +75,11 @@ class syncRTC:
                 int(z["year"]),
                 int(z["month"]),
                 int(z["day"]),
-                0,  # Weekday (set to 0)
+                DEFAULT_WEEKDAY,  # Weekday (set to 0)
                 int(z["hour"]),
                 int(z["minute"]),
                 int(z["seconds"]),
-                0  # Subseconds set to 0
+                DEFAULT_SUBSECONDS  # Subseconds set to 0
             ))
             returnval = True
             
@@ -79,12 +99,12 @@ class syncRTC:
         second = int(time_parts[2].split(".")[0])  # ignore milliseconds
 
         # Weekday is set to 0 (can be calculated if needed)
-        return (year, month, day, 0, hour, minute, second, 0)
+        return (year, month, day, DEFAULT_WEEKDAY, hour, minute, second, DEFAULT_SUBSECONDS)
 
     def setExternalIPAddress(self):
         returnval = True
         try:
-            ipaddress = urequests.get(externalIPAddressAPI)
+            ipaddress = urequests.get(EXTERNAL_IP_ADDRESS_API)
             self.externalIPaddress = ipaddress.content.decode("utf-8")
         except Exception as e:
             print("Exception: {}".format(e))
@@ -96,34 +116,6 @@ class syncRTC:
         """Reload the timeZone from the config file."""
         if self.config:
             try:
-                self.timeZone = self.config.read("timeZone")
+                self.timeZone = self.config.read(CONFIG_TIMEZONE_KEY)
             except:
                 self.timeZone = None
-
-# Example usage:
-def main():
-    rtc = RTC()
-    rtc2 = RTC()
-    
-    # Example with config (normally you would import the Config class)
-    class MockConfig:
-        def read(self, key):
-            if key == "timeZone":
-                return "America/Los_Angeles"  # Replace with your desired timezone
-            return None
-    
-    # Uncomment to test with timezone from config
-    # clock = syncRTC(MockConfig())
-    
-    # Or use without config to default to IP-based detection
-    clock = syncRTC()
-    
-    clock.syncclock(rtc)
-    print(rtc.datetime())
-    print(rtc2.datetime())
-    rtc2.datetime((2023, 1, 1, 0, 0, 0, 0, 0))
-    print(rtc.datetime())
-    print(rtc2.datetime())
-
-if __name__ == "__main__":
-    main()

@@ -114,7 +114,7 @@ def _handle_digitType(display, digit, value):
 def main():
     # Initialize with error handling
     try:
-        display = digit.Digit(digit.led_pins, digit.LEDbrightness, digit.motor_pins)
+        display = digit.Digit(digit.led_pins, digit.LED_DEFAULT_BRIGHTNESS, digit.motor_pins)
     except Exception as e:
         print("Error initializing display:", e)
         return
