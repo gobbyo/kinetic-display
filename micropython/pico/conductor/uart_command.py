@@ -721,7 +721,8 @@ def loop():
                     if (current_hour == s.hour or s.hour == -1) and (current_minute == s.minute or s.minute == -1):
                         a = eventActions.hybernate
                 else:
-                    # This is the key fix - the original code was only triggering when hour=-1
+                    # Check for scheduled actions
+                    # We can skip the second check if hour and minute are both -1
                     # We need to check for specific hour matches too
                     if ((s.hour == -1 and s.minute == current_minute) or 
                         (s.hour == -1 and s.minute == -1) or
