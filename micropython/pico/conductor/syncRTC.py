@@ -25,94 +25,47 @@ class syncRTC:
 
     def syncclock(self, rtc):
         print("Sync clock")
-        returnval = False
+        returnval = True
 
         try:
-            # First try to sync with the RTC
-            rtc.datetime((1970, 1, 1, 0, 0, 0, 0, 0))  # Set a default date/time
+            # Set a default date/time
+            rtc.datetime((1970, 1, 1, 0, 0, 0, 0, 0))
             print("RTC set to default date/time")
+            
+            # Always get external IP for potential use
             self.setExternalIPAddress()
-        except Exception as e:
-            print(f"RTC Exception: {e}")
-            returnval = False
-
-        # 1. Try to use timezone from config if available
-        if self.timeZone:
-            try:
-                # First try timeapi.io with the configured timezone
+            
+            # Determine which API to use based on timeZone setting
+            if self.timeZone and self.timeZone != "auto":
+                # Use timezone-specific API
+                print(f"Using timezone from config: {self.timeZone}")
                 timeAPI = externalOpenTimeZoneAPI.format(self.timeZone)
-                print(f"Using timezone from config with timeapi.io: {self.timeZone}")
-                r = urequests.get(timeAPI)
-                z = ujson.loads(r.content)
-                print(f"OpenTimeAPI Response: {z}")
-
-                rtc.datetime((
-                    int(z["year"]),
-                    int(z["month"]),
-                    int(z["day"]),
-                    0,  # Weekday (set to 0, can be calculated if needed)
-                    int(z["hour"]),
-                    int(z["minute"]),
-                    int(z["seconds"]),
-                    0  # Subseconds set to 0
-                ))
-                return True
-            except Exception as e:
-                print(f"OpenTimeAPI (timezone from config) Exception: {e}")
-                # If timeapi.io fails, try worldtimeapi.org with the same timezone
-                try:
-                    worldTimeAPI = externalWorldTimeZoneAPI.format(self.timeZone)
-                    print(f"Trying worldtimeapi.org with timezone: {self.timeZone}")
-                    r = urequests.get(worldTimeAPI)
-                    z = ujson.loads(r.content)
-                    print(f"WorldTimeAPI Timezone Response: {z}")
-                    
-                    iso_time = z["datetime"]
-                    dt = self._iso_to_rtc_tuple(iso_time)
-                    rtc.datetime(dt)
-                    return True
-                except Exception as e:
-                    print(f"WorldTimeAPI (timezone from config) Exception: {e}")
-                    returnval = False
-
-        # 2. If no timezone in config or it failed, try IP-based timezone detection
-        try:
-            # Try WorldTimeAPI first (uses IP)
-            r = urequests.get(externalWorldTimeAPI)
-            z = ujson.loads(r.content)
-            print(f"WorldTimeAPI Response: {z}")
-
-            iso_time = z["datetime"]  # Example: "2025-04-28T20:44:06.487506+00:00"
-            dt = self._iso_to_rtc_tuple(iso_time)
-            rtc.datetime(dt)
-            returnval = True
-        except Exception as e:
-            print(f"WorldTimeAPI Exception: {e}")
-            returnval = False
-
-        # 3. If WorldTimeAPI fails, try OpenTimeAPI with IP address
-        if not returnval:
-            try:
-                timeAPI = externalOpenTimeAPI.format(self.externalIPaddress)
+            else:
+                # Use IP-based API (auto)
                 print(f"Using IP-based timezone detection: {self.externalIPaddress}")
-                r = urequests.get(timeAPI)
-                z = ujson.loads(r.content)
-                print(f"OpenTimeAPI Response: {z}")
-
-                rtc.datetime((
-                    int(z["year"]),
-                    int(z["month"]),
-                    int(z["day"]),
-                    0,  # Weekday (set to 0, can be calculated if needed)
-                    int(z["hour"]),
-                    int(z["minute"]),
-                    int(z["seconds"]),
-                    0  # Subseconds set to 0
-                ))
-                returnval = True
-            except Exception as e:
-                print(f"OpenTimeAPI (IP-based) Exception: {e}")
-                returnval = False
+                timeAPI = externalOpenTimeAPI.format(self.externalIPaddress)
+                
+            # Make the API request
+            r = urequests.get(timeAPI)
+            z = ujson.loads(r.content)
+            print(f"Time API Response: {z}")
+            
+            # Set the RTC datetime using response
+            rtc.datetime((
+                int(z["year"]),
+                int(z["month"]),
+                int(z["day"]),
+                0,  # Weekday (set to 0)
+                int(z["hour"]),
+                int(z["minute"]),
+                int(z["seconds"]),
+                0  # Subseconds set to 0
+            ))
+            returnval = True
+            
+        except Exception as e:
+            print(f"Time API Exception: {e}")
+            returnval = False
 
         return returnval
 
