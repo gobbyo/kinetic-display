@@ -29,3 +29,6 @@ The links listed below should be followed in the order they appear on the page f
 - [Display Face and PCBs Assembly with Integration Testing](./assembly/displayfacepcbs.md)
 - [Backplate and Stand Assembly](./assembly/backplateassembly.md)
 - [Segment Assembly and Installation](./assembly/segmentassembly.md)
+- [Finishing Touch](./assembly/finishingtouch.md)
+
+## User Guide

@@ -30,3 +30,5 @@ nav:
     - Display Face and PCBs Assembly with Integration Testing: ./assembly/displayfacepcbs.md
     - Backplate and Stand Assembly: ./assembly/backplateassembly.md
     - Segment Assembly and Installation: ./assembly/segmentassembly.md
+    - Finishing Touch: ./assembly/finishingtouch.md
+  - User Guide:
