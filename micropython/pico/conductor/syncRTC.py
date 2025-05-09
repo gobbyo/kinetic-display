@@ -32,7 +32,7 @@ CONFIG_TIMEZONE_KEY = "timeZone"
 class syncRTC:
 
     def __init__(self, config=None):
-        self.externalIPaddress = DEFAULT_IP_ADDRESS
+        self._externalIPaddress = DEFAULT_IP_ADDRESS
         self.config = config
         self.timeZone = None
         if self.config:
@@ -41,6 +41,14 @@ class syncRTC:
             except:
                 self.timeZone = None
 
+    @property
+    def externalIPaddress(self):
+        return self._externalIPaddress
+    
+    @externalIPaddress.setter
+    def externalIPaddress(self, value):
+        self._externalIPaddress = value
+    
     def syncclock(self, rtc):
         print("Sync clock")
         returnval = True

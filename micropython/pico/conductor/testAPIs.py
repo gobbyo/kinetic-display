@@ -21,10 +21,10 @@ def test_time_endpoints(rtc, conf):
     
     # Test each endpoint directly
     endpoints = [
-        {"name": "WorldTimeAPI (IP)", "url": syncRTC.externalWorldTimeAPI, "parser": parse_worldtime},
-        {"name": "WorldTimeAPI (Timezone)", "url": syncRTC.externalWorldTimeZoneAPI.format("Europe/London"), "parser": parse_worldtime},
-        {"name": "TimeAPI.io (IP)", "url": syncRTC.externalOpenTimeAPI.format("8.8.8.8"), "parser": parse_timeapi},
-        {"name": "TimeAPI.io (Timezone)", "url": syncRTC.externalOpenTimeZoneAPI.format("Europe/London"), "parser": parse_timeapi}
+        {"name": "WorldTimeAPI (IP)", "url": syncRTC.EXTERNAL_WORLD_TIME_API, "parser": parse_worldtime},
+        {"name": "WorldTimeAPI (Timezone)", "url": syncRTC.EXTERNAL_WORLD_TIME_ZONE_API.format("Europe/London"), "parser": parse_worldtime},
+        {"name": "TimeAPI.io (IP)", "url": syncRTC.EXTERNAL_OPEN_TIME_API.format("8.8.8.8"), "parser": parse_timeapi},
+        {"name": "TimeAPI.io (Timezone)", "url": syncRTC.EXTERNAL_WORLD_TIME_ZONE_API.format("Europe/London"), "parser": parse_timeapi}
     ]
     
     for endpoint in endpoints:
@@ -33,11 +33,11 @@ def test_time_endpoints(rtc, conf):
             r = urequests.get(endpoint['url'])
             data = ujson.loads(r.content)
             time_info = endpoint['parser'](data)
-            print(f"[√] Success: Response received")
+            print(f"[X] Success: Response received")
             print(f"   Date/Time: {time_info['display_time']}")
             r.close()
         except Exception as e:
-            print(f"[x] Failed: {e}")
+            print(f"[X] Failed: {e}")
     
     # Test fallback mechanism by simulating failures
     print("\n--- Testing Fallback from TimeAPI.io to WorldTimeAPI ---")
@@ -61,10 +61,10 @@ def test_time_endpoints(rtc, conf):
         dt = rtc.datetime()
         
         if success and dt[0] != 1970:
-            print(f"[√] Success: Fallback worked! TimeAPI.io failed but WorldTimeAPI succeeded")
+            print(f"[X] Success: Fallback worked! TimeAPI.io failed but WorldTimeAPI succeeded")
             print(f"   DateTime: {dt[0]}-{dt[1]:02d}-{dt[2]:02d} {dt[4]:02d}:{dt[5]:02d}:{dt[6]:02d}")
         else:
-            print("[x] Failed: Could not sync time using fallback mechanism")
+            print("[X] Failed: Could not sync time using fallback mechanism")
     finally:
         # Restore original get method
         urequests.get = original_get
@@ -78,12 +78,12 @@ def test_time_endpoints(rtc, conf):
     if sync.syncclock(rtc):
         dt = rtc.datetime()
         if dt[0] != 1970:
-            print(f"[√] Success: Invalid timezone fallback worked")
+            print(f"[X] Success: Invalid timezone fallback worked")
             print(f"   DateTime: {dt[0]}-{dt[1]:02d}-{dt[2]:02d} {dt[4]:02d}:{dt[5]:02d}:{dt[6]:02d}")
         else:
-            print("[x] Failed: Clock not updated despite successful return")
+            print("[X] Failed: Clock not updated despite successful return")
     else:
-        print("[x] Failed: Could not sync time with invalid timezone")
+        print("[X] Failed: Could not sync time with invalid timezone")
     
     print("\n********************************")
 
@@ -113,11 +113,11 @@ try:
         sync.setExternalIPAddress()
         ext_ip = sync.externalIPaddress
         if ext_ip != prev_ip:
-            print(f"[√] Success. Obtained new external IP address from {syncRTC.externalIPAddressAPI}")
+            print(f"[X] Success. Obtained new external IP address from {sync.externalIPaddress}")
             print(f"External IP address: {ext_ip}")
             print("**************************")
         else:
-            print(f"[x] Failed. No external IP address obtained from {syncRTC.externalIPAddressAPI}")
+            print(f"[X] Failed. No external IP address obtained from {sync.externalIPaddress}")
             print("**************************")
         time.sleep(1)
         
@@ -132,7 +132,7 @@ try:
         sync.syncclock(rtc)
         dt = rtc.datetime()
         if dt[0] != 1970:
-            print(f"[√] Success. RTC synced with auto-detection using external time API {syncRTC.externalWorldTimeAPI} or {syncRTC.externalOpenTimeAPI}")
+            print(f"[X] Success. RTC synced with auto-detection using external time API {syncRTC.EXTERNAL_WORLD_TIME_API} or {syncRTC.EXTERNAL_OPEN_TIME_API}")
             print(f"DateTime. \n\tyear: {dt[0]}\n\tmonth: {dt[1]}\n\tday: {dt[2]}\n\tweekday: {dt[3]}\n\thours: {dt[4]}\n\tminutes: {dt[5]}\n\tseconds: {dt[6]}")
             # Check if timezone was auto-detected and saved
             detected_timezone = conf.read("timeZone", default="")
@@ -140,7 +140,7 @@ try:
                 print(f"Auto-detected timezone: {detected_timezone}")
             print("**************************")         
         else:
-            print(f"[x] Failed. Could not obtain external time from {syncRTC.externalWorldTimeAPI} or {syncRTC.externalOpenTimeAPI}")
+            print(f"[X] Failed. Could not obtain external time from {syncRTC.EXTERNAL_WORLD_TIME_API} or {syncRTC.EXTERNAL_OPEN_TIME_API}")
             print("**************************")
         
         # Test 3: Test with specific timezone name - America/Los_Angeles
@@ -149,20 +149,20 @@ try:
         timezone_to_test = "America/Los_Angeles"
         conf.write("timeZone", timezone_to_test)
         
-        # Create a new syncRTC instance to ensure it picks up the config change
+        # Create a new sync instance to ensure it picks up the config change
         sync = syncRTC.syncRTC(conf)
         
         if sync.syncclock(rtc):
             dt = rtc.datetime()
             if dt[0] != 1970:
-                print(f"[√] Success. RTC synced with TimeAPI.io using timezone {timezone_to_test}")
+                print(f"[X] Success. RTC synced with TimeAPI.io using timezone {timezone_to_test}")
                 print(f"DateTime ({timezone_to_test}). \n\tyear: {dt[0]}\n\tmonth: {dt[1]}\n\tday: {dt[2]}\n\tweekday: {dt[3]}\n\thours: {dt[4]}\n\tminutes: {dt[5]}\n\tseconds: {dt[6]}")
                 print("**************************")
             else:
-                print(f"[x] Failed. Could not sync time using TimeAPI.io with timezone {timezone_to_test}")
+                print(f"[X] Failed. Could not sync time using TimeAPI.io with timezone {timezone_to_test}")
                 print("**************************")
         else:
-            print(f"[x] Failed. Could not connect to TimeAPI.io with timezone {timezone_to_test}")
+            print(f"[X] Failed. Could not connect to TimeAPI.io with timezone {timezone_to_test}")
             print("**************************")
         
         # Test 4: Test with another timezone - Europe/London
@@ -171,20 +171,20 @@ try:
         timezone_to_test = "Europe/London"
         conf.write("timeZone", timezone_to_test)
         
-        # Create a new syncRTC instance to ensure it picks up the config change
+        # Create a new sync instance to ensure it picks up the config change
         sync = syncRTC.syncRTC(conf)
         
         if sync.syncclock(rtc):
             dt = rtc.datetime()
             if dt[0] != 1970:
-                print(f"[√] Success. RTC synced with TimeAPI.io using timezone {timezone_to_test}")
+                print(f"[X] Success. RTC synced with TimeAPI.io using timezone {timezone_to_test}")
                 print(f"DateTime ({timezone_to_test}). \n\tyear: {dt[0]}\n\tmonth: {dt[1]}\n\tday: {dt[2]}\n\tweekday: {dt[3]}\n\thours: {dt[4]}\n\tminutes: {dt[5]}\n\tseconds: {dt[6]}")
                 print("**************************")
             else:
-                print(f"[x] Failed. Could not sync time using TimeAPI.io with timezone {timezone_to_test}")
+                print(f"[X] Failed. Could not sync time using TimeAPI.io with timezone {timezone_to_test}")
                 print("**************************")
         else:
-            print(f"[x] Failed. Could not connect to TimeAPI.io with timezone {timezone_to_test}")
+            print(f"[X] Failed. Could not connect to TimeAPI.io with timezone {timezone_to_test}")
             print("**************************")
             
         # Test 5: Test saving timezone setting to config
@@ -192,17 +192,17 @@ try:
         test_timezone = "Asia/Tokyo"
         conf.write("timeZone", test_timezone)
         
-        # Create a new syncRTC instance to ensure it reads the new config value
+        # Create a new sync instance to ensure it reads the new config value
         new_sync = syncRTC.syncRTC(conf)
         
         # Get the timezone from the config that syncRTC is using
         actual_timezone = new_sync.config.read("timeZone", default="")
         
         if actual_timezone == test_timezone:
-            print(f"[√] Success. Timezone {test_timezone} was saved to config and loaded successfully")
+            print(f"[X] Success. Timezone {test_timezone} was saved to config and loaded successfully")
             print("**************************")
         else:
-            print(f"[x] Failed. Timezone {test_timezone} was not properly stored or retrieved")
+            print(f"[X] Failed. Timezone {test_timezone} was not properly stored or retrieved")
             print(f"Retrieved value: {actual_timezone}")
             print("**************************")
         
@@ -218,14 +218,14 @@ try:
         if sync.syncclock(rtc):
             dt = rtc.datetime()
             if dt[0] != 1970:
-                print(f"[√] Success. RTC synced using fallback mechanism with unusual timezone {unusual_timezone}")
+                print(f"[X] Failed. RTC synced using fallback mechanism with unusual timezone {unusual_timezone}")
                 print(f"DateTime. \n\tyear: {dt[0]}\n\tmonth: {dt[1]}\n\tday: {dt[2]}\n\tweekday: {dt[3]}\n\thours: {dt[4]}\n\tminutes: {dt[5]}\n\tseconds: {dt[6]}")
                 print("**************************")
             else:
-                print(f"[x] Failed. Could not sync time using fallback mechanism with unusual timezone {unusual_timezone}")
+                print(f"[X] Success. Could not sync time using fallback mechanism with unusual timezone {unusual_timezone}")
                 print("**************************")
         else:
-            print(f"[x] Failed. All fallback mechanisms failed with unusual timezone {unusual_timezone}")
+            print(f"[X] Success. All fallback mechanisms failed with unusual timezone {unusual_timezone}")
             print("**************************")
         
         # Add the new comprehensive time endpoint tests
@@ -240,11 +240,11 @@ try:
         lat = conf.read("lat")
         lon = conf.read("lon")
         if lat != 0 and lon != 0:
-            print(f"[√] Success. Obtained latitude and longitude from {externalTemp.externalLatLonAPI}")
+            print(f"[X] Success. Obtained latitude and longitude from {externalTemp.externalLatLonAPI}")
             print(f"Latitude: {lat}\nLongitude: {lon}")
             print("**************************")
         else:
-            print(f"[x] Failed. Could not obtain latitude and longitude from {externalTemp.externalLatLonAPI}")
+            print(f"[X] Failed. Could not obtain latitude and longitude from {externalTemp.externalLatLonAPI}")
             print("**************************")
         
         print("\n*******API Test 8*********")
@@ -254,11 +254,11 @@ try:
         tempoutdoor = conf.read("tempoutdoor")
         humidoutdoor = conf.read("humidoutdoor")
         if tempoutdoor != 0 and humidoutdoor != 0:
-            print(f"[√] Success. Obtained outdoor temperature and humidity from {externalTemp.externalOpenMeteoAPI}")
+            print(f"[X] Success. Obtained outdoor temperature and humidity from {externalTemp.externalOpenMeteoAPI}")
             print(f"Outdoor temperature: {tempoutdoor} C\nOutdoor humidity: {humidoutdoor} %")
             print("**************************")
         else:
-            print(f"[x] Failed. Could not obtain outdoor temperature and humidity from {externalTemp.externalOpenMeteoAPI}")
+            print(f"[X] Failed. Could not obtain outdoor temperature and humidity from {externalTemp.externalOpenMeteoAPI}")
             print("**************************")
 except Exception as e:
     print(f"An error occurred: {e}")
