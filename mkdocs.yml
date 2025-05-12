@@ -31,3 +31,5 @@ nav:
     - Backplate and Stand Assembly: ./assembly/backplateassembly.md
     - Segment Assembly and Installation: ./assembly/segmentassembly.md
     - Finishing Touch: ./assembly/finishingtouch.md
+  - User Guide:
+    - Web Service Settings: ./userguide/websettings.md

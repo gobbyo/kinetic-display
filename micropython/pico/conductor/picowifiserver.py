@@ -144,7 +144,7 @@ class PicoWifi:
         config_timezone = self.config.read("timeZone", default="Europe/London")
         selected_schedule = self.config.read("schedule", default="")
         test_on_startup = self.config.read("testOnStartup")
-        digit_type = self.config.read("digitType", default="Earth")  # Get digitType from config
+        digit_type = self.config.read("digitType", default="Human")  # Get digitType from config
         
         # Pre-calculate search strings to avoid string interpolation in the loop
         findCF = f'<option value="{config_tempCF}">'
