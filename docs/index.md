@@ -32,3 +32,5 @@ The links listed below should be followed in the order they appear on the page f
 - [Finishing Touch](./assembly/finishingtouch.md)
 
 ## User Guide
+
+- [Web Service and Settings](./userguide/websettings.md)

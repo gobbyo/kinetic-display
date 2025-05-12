@@ -564,7 +564,7 @@ def loop():
             print("24 hour time")
             controller.display12hour = False
         thetype = conf.read("digitType")
-        if "Earth" in thetype:
+        if "Human" in thetype:
             controller.setDigittype(digitType.human)
         else:
             controller.setDigittype(digitType.alien)

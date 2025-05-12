@@ -20,8 +20,8 @@ In this guide you will upload code from the **digit** folder on your computer to
       - In the Explorer pane, click the **Explorer icon** (**A**) in the left [Activity bar](https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout).  
       - Open the `digit.json` file (**B**) and change the **"digit":** value (**C**) to match the PCB's labeled number (0-3).  
       - Save the file after making changes.  
-      !!! warning
-          Ensure the digit value in the `digit.json` file matches the PCB's labeled value to avoid incorrect behavior.  
+    !!! warning
+        Ensure the digit value in the `digit.json` file matches the PCB's labeled value to avoid incorrect behavior.
     ![testdigitpcb-2](../img/prereq-software/prereqsoftware-2.webp)
 1. **Create a New Terminal**:  
       - **(A)** Click the ellipsis (`...`) in the terminal pane.  
