@@ -18,6 +18,27 @@ Read and bookmark the instructions to install [MicroPython onto your Raspberry P
     4. Drag and drop the **flash_nuke.uf2** file into the RPI-RP2 storage.
 5. Download the MicroPython UF2 file for the [Raspberry Pi Pico](https://micropython.org/download/RPI_PICO/) and [Raspberry Pi Pico W](https://micropython.org/download/RPI_PICO_W/).
 
+## Test Rest API Dependencies using a Web Browser
+
+Code in the Kinetic Display relies on the use of several Rest APIs to obtain local time and weather information. Follow the steps below to ensure the Kinetic Display will function properly before you order materials or begin 3D printing parts.
+
+1. **External IP Address**. Obtain the extenal IP address of your computer by pasting [http://api.ipify.org](http://api.ipify.org) into the address bar of your browser and hit the return key. The result from calling the URL will be the external IP address of your computer, for example `11.115.204.194`. Save your external IP address for the next step.
+2. **Latitude and Longitude**. Using the external IP address you obtained in the previous step, change the `{0}` value in `http://ip-api.com/json/{0}` with your external IP address then paste the URL into the address bar of your browser and hit the return key. For example, [http://ip-api.com/json/11.115.204.194](http://ip-api.com/json/11.115.204.194). Verify the resulting JSON is contains `lat`, `lon`, and `timezone`. For example,
+
+```json
+
+    {"status":"success","country":"United States","countryCode":"US","region":"OH","regionName":"Ohio","city":"Whitehall","zip":"43218","lat":39.9747,"lon":-82.8947,"timezone":"America/New_York","isp":"DoD Network Information Center","org":"DoD Network Information Center","as":"AS749 DoD Network Information Center","query":"11.115.204.194"}
+   
+```
+
+3. **Weather**. Using the **"lat"** and **"lon"** values you obtained in the previous sep, use the api [https://api.open-meteo.com/v1/forecast?latitude={0}&longitude={1}&current_weather=true&hourly=relativehumidity_2m](https://api.open-meteo.com/v1/forecast?latitude={0}&longitude={1}&current_weather=true&hourly=relativehumidity_2m) and change the `{0}` with the **"lat"** value and `{1}` with the **"lon"** value. for example, [https://api.open-meteo.com/v1/forecast?latitude=39.9747&longitude=-82.8947&current_weather=true&hourly=relativehumidity_2m](https://api.open-meteo.com/v1/forecast?latitude=39.9747&longitude=-82.8947&current_weather=true&hourly=relativehumidity_2m). Paste the modified URL into your browser address bar and hit the return or enter key. Verify the resulting JSON is contains `temperature` and `relativehumidity_2m`. For example,
+
+```json
+
+    {"latitude":39.986526,"longitude":-82.90847,"generationtime_ms":0.058770179748535156,"utc_offset_seconds":0,"timezone":"GMT","timezone_abbreviation":"GMT","elevation":242.0,"current_weather_units":{"time":"iso8601","interval":"seconds","temperature":"°C","windspeed":"km/h","winddirection":"°","is_day":"","weathercode":"wmo code"},"current_weather":{"time":"2025-05-13T19:30","interval":900,"temperature":21.3,"windspeed":5.5,"winddirection":122,"is_day":1,"weathercode":3},"hourly_units":{"time":"iso8601","relativehumidity_2m":"%"},"hourly":{"time":[],"relativehumidity_2m":[]}}
+
+```
+
 ## Verify MicroPython on your Raspberry Pi Pico
 
 1. Open Visual Studio Code.
