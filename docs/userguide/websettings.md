@@ -15,7 +15,7 @@
     2. Add Schedule button
     3. Delete Schedule button
 1. WiFi SSID and PWD
-    Your home wifi network name and password.
+    Your home wifi network name and password. SSID = ssid-name, PWD = wifi-password
 1. Time
     Dropdown selection of 12 or 24 hour display of time.
 1. TempCF
