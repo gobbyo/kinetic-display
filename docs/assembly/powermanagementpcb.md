@@ -23,7 +23,7 @@ There are several choices of power supplies available in the market. Why not sim
 | 1 | SONGLE SRS-05VDC-SL 05VDC-SL 4100 Blue 5V 6PIN Power Relay | ![component-25](../img/component/component-25.webp) |
 | 1 | 1N4001 Diode, standard, 1A, 50V, DO-41 | ![component-26](../img/component/component-26.webp) |
 | 1 | S8050 TO-92 TH PNP Transistor | ![component-20](../img/component/component-20.webp) |
-| 2 | 1K ohm 0805 Resistor 1/2w Metal Film Fixed Resistor | ![component-22](../img/component/component-22.webp) |
+| 2 | 1K ohm 0805 Resistor 1/4w Metal Film Fixed Resistor | ![component-22](../img/component/component-22.webp) |
 | 1 | 2.1mm Barrel Jack 5.5x2.1mm Female DC Power Jack 2.1 X 5.5mm DC Jack Connector 6V 9V 12V DC Jack Panel Mount | ![component-27](../img/component/component-27.webp) |
 | 10M | White 28 AWG Gauge Flexible Silicone Rubber Electric Wire | ![component-28](../img/component/component-28.webp) |
 | 10M | Black 28 AWG Gauge Flexible Silicone Rubber Electric Wire | ![component-29](../img/component/component-29.webp) |
