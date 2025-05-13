@@ -187,11 +187,11 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#test_rest_api_dependencies_using_a_web_browser" class="nav-link">Test Rest API Dependencies using a Web Browser</a>
+            <li class="nav-item" data-bs-level="2"><a href="#test_rest_api_dependencies" class="nav-link">Test REST API Dependencies</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#verify_micropython_on_your_raspberry_pi_pico" class="nav-link">Verify MicroPython on your Raspberry Pi Pico</a>
+            <li class="nav-item" data-bs-level="2"><a href="#verify_micropython_on_your_raspberry_pi_pico" class="nav-link">Verify MicroPython on Your Raspberry Pi Pico</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -209,80 +209,254 @@
 <h1 id="software_and_microcontroller_preparation">Software and Microcontroller Preparation<a class="headerlink" href="#software_and_microcontroller_preparation" title="Permanent link">&para;</a></h1>
 <p>If you have any problems with this documentation or the code, please create a <a href="https://github.com/gobbyo/kinetic-display/issues/new/choose">new issue</a> on the Kinetic-Display GitHub site.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>Read and bookmark the instructions to install <a href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#what-is-micropython">MicroPython onto your Raspberry Pi Pico</a>.</p>
+<p>Before you begin, please:</p>
+<ul>
+<li>Read and bookmark the <a href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html#what-is-micropython">MicroPython installation guide for Raspberry Pi Pico</a>.</li>
+</ul>
+<h3 id="1_install_required_software">1. Install Required Software<a class="headerlink" href="#1_install_required_software" title="Permanent link">&para;</a></h3>
 <ol>
-<li><a href="https://code.visualstudio.com/download">Install Visual Studio Code</a>.</li>
-<li>With VS Code installed and open, click on the extensions icon on the <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout">Activity bar</a> and install the following <a href="https://code.visualstudio.com/docs/editor/extension-marketplace">extensions from Marketplace</a>:<ol>
-<li><strong>Python</strong> by Microsoft.</li>
-<li><strong>MicroPico</strong> by paulober.</li>
-</ol>
+<li><a href="https://code.visualstudio.com/download">Download and install Visual Studio Code</a>.</li>
+<li>Open VS Code and click the <strong>Extensions</strong> icon on the <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_basic-layout">Activity Bar</a>.</li>
+<li>Search for and install these extensions from the <a href="https://code.visualstudio.com/docs/editor/extension-marketplace">Marketplace</a>:<ul>
+<li><strong>Python</strong> by Microsoft</li>
+<li><strong>MicroPico</strong> by paulober</li>
+</ul>
 </li>
+</ol>
+<h3 id="2_prepare_your_raspberry_pi_pico">2. Prepare Your Raspberry Pi Pico<a class="headerlink" href="#2_prepare_your_raspberry_pi_pico" title="Permanent link">&para;</a></h3>
+<ol>
 <li>Download the <a href="https://github.com/Pwea/Flash-Nuke">flash_nuke UF2 file</a>.</li>
-<li>Clear your Raspberry Pi Pico before flashing a new build:<ol>
-<li>Plug a USB cable into your Raspberry Pi Pico's USB port.</li>
-<li>Press and hold the <strong>BOOTSEL</strong> button on your Raspberry Pi Pico while plugging your USB cable into your computer.</li>
-<li>Verify an <strong>RPI-RP2</strong> storage device appears.</li>
-<li>Drag and drop the <strong>flash_nuke.uf2</strong> file into the RPI-RP2 storage.</li>
-</ol>
+<li>Clear your Raspberry Pi Pico before flashing a new build:<ul>
+<li>Unplug your Pico from USB if it is connected.</li>
+<li>Press and hold the <strong>BOOTSEL</strong> button on your Pico while plugging it into your computer's USB port.</li>
+<li>Wait for the <strong>RPI-RP2</strong> storage device to appear on your computer.</li>
+<li>Drag and drop the <strong>flash_nuke.uf2</strong> file onto the RPI-RP2 drive.</li>
+</ul>
 </li>
-<li>Download the MicroPython UF2 file for the <a href="https://micropython.org/download/RPI_PICO/">Raspberry Pi Pico</a> and <a href="https://micropython.org/download/RPI_PICO_W/">Raspberry Pi Pico W</a>.</li>
+<li>Download the MicroPython UF2 file for your device:<ul>
+<li><a href="https://micropython.org/download/RPI_PICO/">Raspberry Pi Pico</a></li>
+<li><a href="https://micropython.org/download/RPI_PICO_W/">Raspberry Pi Pico W</a></li>
+</ul>
+</li>
 </ol>
-<h2 id="test_rest_api_dependencies_using_a_web_browser">Test Rest API Dependencies using a Web Browser<a class="headerlink" href="#test_rest_api_dependencies_using_a_web_browser" title="Permanent link">&para;</a></h2>
-<p>Code in the Kinetic Display relies on the use of several Rest APIs to obtain local time and weather information. Follow the steps below to ensure the Kinetic Display will function properly before you order materials or begin 3D printing parts.</p>
-<ol>
-<li><strong>External IP Address</strong>. Obtain the extenal IP address of your computer by pasting <a href="http://api.ipify.org">http://api.ipify.org</a> into the address bar of your browser and hit the return key. The result from calling the URL will be the external IP address of your computer, for example <code>11.115.204.194</code>. Save your external IP address for the next step.</li>
-<li><strong>Latitude and Longitude</strong>. Using the external IP address you obtained in the previous step, change the <code>{0}</code> value in <code>http://ip-api.com/json/{0}</code> with your external IP address then paste the URL into the address bar of your browser and hit the return key. For example, <a href="http://ip-api.com/json/11.115.204.194">http://ip-api.com/json/11.115.204.194</a>. Verify the resulting JSON is contains <code>lat</code>, <code>lon</code>, and <code>timezone</code>. For example,</li>
-</ol>
-<pre class="codehilite"><code class="language-json">    {&quot;status&quot;:&quot;success&quot;,&quot;country&quot;:&quot;United States&quot;,&quot;countryCode&quot;:&quot;US&quot;,&quot;region&quot;:&quot;OH&quot;,&quot;regionName&quot;:&quot;Ohio&quot;,&quot;city&quot;:&quot;Whitehall&quot;,&quot;zip&quot;:&quot;43218&quot;,&quot;lat&quot;:39.9747,&quot;lon&quot;:-82.8947,&quot;timezone&quot;:&quot;America/New_York&quot;,&quot;isp&quot;:&quot;DoD Network Information Center&quot;,&quot;org&quot;:&quot;DoD Network Information Center&quot;,&quot;as&quot;:&quot;AS749 DoD Network Information Center&quot;,&quot;query&quot;:&quot;11.115.204.194&quot;}
+<hr />
+<h2 id="test_rest_api_dependencies">Test REST API Dependencies<a class="headerlink" href="#test_rest_api_dependencies" title="Permanent link">&para;</a></h2>
+<p>The Kinetic Display uses several REST APIs to obtain local time and weather information. Use your computer's web browser to verify these APIs work for your location <strong>before</strong> ordering materials or 3D printing parts. Some APIs are used as backups for reliability, as they may be throttled or temporarily unavailable.</p>
+<h3 id="step_1_get_your_external_ip_address">Step 1: Get Your External IP Address<a class="headerlink" href="#step_1_get_your_external_ip_address" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Visit <a href="http://api.ipify.org">http://api.ipify.org</a> in your browser. The page will display your external IP address (e.g., <code>11.115.204.194</code>). Save this address for the next steps.</li>
+</ul>
+<h3 id="step_2_get_latitude_longitude_and_time_zone">Step 2: Get Latitude, Longitude, and Time Zone<a class="headerlink" href="#step_2_get_latitude_longitude_and_time_zone" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Replace <code>{0}</code> in <code>http://ip-api.com/json/{0}</code> with your external IP address from Step 1.</li>
+<li>Example: <a href="http://ip-api.com/json/11.115.204.194">http://ip-api.com/json/11.115.204.194</a></li>
+<li>The JSON response should include <code>lat</code>, <code>lon</code>, and <code>timezone</code> fields. Example:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;status&quot;: &quot;success&quot;,
+  &quot;country&quot;: &quot;United States&quot;,
+  &quot;countryCode&quot;: &quot;US&quot;,
+  &quot;region&quot;: &quot;OH&quot;,
+  &quot;regionName&quot;: &quot;Ohio&quot;,
+  &quot;city&quot;: &quot;Whitehall&quot;,
+  &quot;zip&quot;: &quot;43218&quot;,
+  &quot;lat&quot;: 39.9747,
+  &quot;lon&quot;: -82.8947,
+  &quot;timezone&quot;: &quot;America/New_York&quot;,
+  &quot;isp&quot;: &quot;DoD Network Information Center&quot;,
+  &quot;org&quot;: &quot;DoD Network Information Center&quot;,
+  &quot;as&quot;: &quot;AS749 DoD Network Information Center&quot;,
+  &quot;query&quot;: &quot;11.115.204.194&quot;
+}
 </code></pre>
 
-<ol>
-<li><strong>Weather</strong>. Using the <strong>"lat"</strong> and <strong>"lon"</strong> values you obtained in the previous sep, use the api <a href="https://api.open-meteo.com/v1/forecast?latitude={0}&amp;longitude={1}&amp;current_weather=true&amp;hourly=relativehumidity_2m">https://api.open-meteo.com/v1/forecast?latitude={0}&amp;longitude={1}&amp;current_weather=true&amp;hourly=relativehumidity_2m</a> and change the <code>{0}</code> with the <strong>"lat"</strong> value and <code>{1}</code> with the <strong>"lon"</strong> value. for example, <a href="https://api.open-meteo.com/v1/forecast?latitude=39.9747&amp;longitude=-82.8947&amp;current_weather=true&amp;hourly=relativehumidity_2m">https://api.open-meteo.com/v1/forecast?latitude=39.9747&amp;longitude=-82.8947&amp;current_weather=true&amp;hourly=relativehumidity_2m</a>. Paste the modified URL into your browser address bar and hit the return or enter key. Verify the resulting JSON is contains <code>temperature</code> and <code>relativehumidity_2m</code>. For example,</li>
-</ol>
-<pre class="codehilite"><code class="language-json">    {&quot;latitude&quot;:39.986526,&quot;longitude&quot;:-82.90847,&quot;generationtime_ms&quot;:0.058770179748535156,&quot;utc_offset_seconds&quot;:0,&quot;timezone&quot;:&quot;GMT&quot;,&quot;timezone_abbreviation&quot;:&quot;GMT&quot;,&quot;elevation&quot;:242.0,&quot;current_weather_units&quot;:{&quot;time&quot;:&quot;iso8601&quot;,&quot;interval&quot;:&quot;seconds&quot;,&quot;temperature&quot;:&quot;°C&quot;,&quot;windspeed&quot;:&quot;km/h&quot;,&quot;winddirection&quot;:&quot;°&quot;,&quot;is_day&quot;:&quot;&quot;,&quot;weathercode&quot;:&quot;wmo code&quot;},&quot;current_weather&quot;:{&quot;time&quot;:&quot;2025-05-13T19:30&quot;,&quot;interval&quot;:900,&quot;temperature&quot;:21.3,&quot;windspeed&quot;:5.5,&quot;winddirection&quot;:122,&quot;is_day&quot;:1,&quot;weathercode&quot;:3},&quot;hourly_units&quot;:{&quot;time&quot;:&quot;iso8601&quot;,&quot;relativehumidity_2m&quot;:&quot;%&quot;},&quot;hourly&quot;:{&quot;time&quot;:[],&quot;relativehumidity_2m&quot;:[]}}
+<h3 id="step_3_get_weather_data">Step 3: Get Weather Data<a class="headerlink" href="#step_3_get_weather_data" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use the <code>lat</code> and <code>lon</code> values from Step 2 in the following API:
+  <code>https://api.open-meteo.com/v1/forecast?latitude={0}&amp;longitude={1}&amp;current_weather=true&amp;hourly=relativehumidity_2m</code></li>
+<li>Example: <a href="https://api.open-meteo.com/v1/forecast?latitude=39.9747&amp;longitude=-82.8947&amp;current_weather=true&amp;hourly=relativehumidity_2m">https://api.open-meteo.com/v1/forecast?latitude=39.9747&amp;longitude=-82.8947&amp;current_weather=true&amp;hourly=relativehumidity_2m</a></li>
+<li>The JSON response should include <code>temperature</code> and <code>relativehumidity_2m</code> fields. Example:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;latitude&quot;: 39.986526,
+  &quot;longitude&quot;: -82.90847,
+  &quot;generationtime_ms&quot;: 0.0587701797485352,
+  &quot;utc_offset_seconds&quot;: 0,
+  &quot;timezone&quot;: &quot;GMT&quot;,
+  &quot;timezone_abbreviation&quot;: &quot;GMT&quot;,
+  &quot;elevation&quot;: 242,
+  &quot;current_weather_units&quot;: {
+    &quot;time&quot;: &quot;iso8601&quot;,
+    &quot;interval&quot;: &quot;seconds&quot;,
+    &quot;temperature&quot;: &quot;°C&quot;,
+    &quot;windspeed&quot;: &quot;km/h&quot;,
+    &quot;winddirection&quot;: &quot;°&quot;,
+    &quot;is_day&quot;: &quot;&quot;,
+    &quot;weathercode&quot;: &quot;wmo code&quot;
+  },
+  &quot;current_weather&quot;: {
+    &quot;time&quot;: &quot;2025-05-13T19:30&quot;,
+    &quot;interval&quot;: 900,
+    &quot;temperature&quot;: 21.3,
+    &quot;windspeed&quot;: 5.5,
+    &quot;winddirection&quot;: 122,
+    &quot;is_day&quot;: 1,
+    &quot;weathercode&quot;: 3
+  },
+  &quot;hourly_units&quot;: {
+    &quot;time&quot;: &quot;iso8601&quot;,
+    &quot;relativehumidity_2m&quot;: &quot;%&quot;
+  },
+  &quot;hourly&quot;: {
+    &quot;time&quot;: [],
+    &quot;relativehumidity_2m&quot;: []
+  }
+}
 </code></pre>
 
-<h2 id="verify_micropython_on_your_raspberry_pi_pico">Verify MicroPython on your Raspberry Pi Pico<a class="headerlink" href="#verify_micropython_on_your_raspberry_pi_pico" title="Permanent link">&para;</a></h2>
+<h3 id="step_4_get_world_time_by_ip">Step 4: Get World Time by IP<a class="headerlink" href="#step_4_get_world_time_by_ip" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use your external IP address in the following API:
+  <code>http://worldtimeapi.org/api/ip/{ip}</code></li>
+<li>Example: <a href="http://worldtimeapi.org/api/ip/11.115.204.194">http://worldtimeapi.org/api/ip/11.115.204.194</a></li>
+<li>The JSON response should include a <code>datetime</code> field. Example:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;utc_offset&quot;: &quot;-05:00&quot;,
+  &quot;timezone&quot;: &quot;America/Chicago&quot;,
+  &quot;day_of_week&quot;: 2,
+  &quot;day_of_year&quot;: 133,
+  &quot;datetime&quot;: &quot;2025-05-13T16:42:11.694884-05:00&quot;,
+  &quot;utc_datetime&quot;: &quot;2025-05-13T21:42:11.694884+00:00&quot;,
+  &quot;unixtime&quot;: 1747172531,
+  &quot;raw_offset&quot;: -21600,
+  &quot;week_number&quot;: 20,
+  &quot;dst&quot;: true,
+  &quot;abbreviation&quot;: &quot;CDT&quot;,
+  &quot;dst_offset&quot;: 3600,
+  &quot;dst_from&quot;: &quot;2025-03-09T08:00:00+00:00&quot;,
+  &quot;dst_until&quot;: &quot;2025-11-02T07:00:00+00:00&quot;,
+  &quot;client_ip&quot;: &quot;45.115.204.194&quot;
+}
+</code></pre>
+
+<h3 id="step_5_get_time_api_by_ip">Step 5: Get Time API by IP<a class="headerlink" href="#step_5_get_time_api_by_ip" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use your external IP address in the following API:
+  <code>https://www.timeapi.io/api/Time/current/ip?ipAddress={ip}</code></li>
+<li>Example: <a href="https://www.timeapi.io/api/Time/current/ip?ipAddress=11.115.204.194">https://www.timeapi.io/api/Time/current/ip?ipAddress=11.115.204.194</a></li>
+<li>The JSON response should include <code>year</code>, <code>month</code>, <code>hour</code>, <code>minute</code>, <code>seconds</code>, and <code>date</code>. Example:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;year&quot;: 2025,
+  &quot;month&quot;: 5,
+  &quot;day&quot;: 13,
+  &quot;hour&quot;: 15,
+  &quot;minute&quot;: 39,
+  &quot;seconds&quot;: 36,
+  &quot;milliSeconds&quot;: 804,
+  &quot;dateTime&quot;: &quot;2025-05-13T15:39:36.8047099&quot;,
+  &quot;date&quot;: &quot;05/13/2025&quot;,
+  &quot;time&quot;: &quot;15:39&quot;,
+  &quot;timeZone&quot;: &quot;America/New_York&quot;,
+  &quot;dayOfWeek&quot;: &quot;Tuesday&quot;,
+  &quot;dstActive&quot;: true
+}
+</code></pre>
+
+<h3 id="step_6_get_world_time_by_time_zone">Step 6: Get World Time by Time Zone<a class="headerlink" href="#step_6_get_world_time_by_time_zone" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use the <code>timezone</code> value from Step 2 in the following API:
+  <code>http://worldtimeapi.org/api/timezone/{timezone}</code></li>
+<li>Example: <a href="http://worldtimeapi.org/api/timezone/America/New_York">http://worldtimeapi.org/api/timezone/America/New_York</a></li>
+<li>The JSON response should include a <code>datetime</code> field. Example:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;utc_offset&quot;: &quot;-05:00&quot;,
+  &quot;timezone&quot;: &quot;America/Chicago&quot;,
+  &quot;day_of_week&quot;: 2,
+  &quot;day_of_year&quot;: 133,
+  &quot;datetime&quot;: &quot;2025-05-13T16:42:11.694884-05:00&quot;,
+  &quot;utc_datetime&quot;: &quot;2025-05-13T21:42:11.694884+00:00&quot;,
+  &quot;unixtime&quot;: 1747172531,
+  &quot;raw_offset&quot;: -21600,
+  &quot;week_number&quot;: 20,
+  &quot;dst&quot;: true,
+  &quot;abbreviation&quot;: &quot;CDT&quot;,
+  &quot;dst_offset&quot;: 3600,
+  &quot;dst_from&quot;: &quot;2025-03-09T08:00:00+00:00&quot;,
+  &quot;dst_until&quot;: &quot;2025-11-02T07:00:00+00:00&quot;,
+  &quot;client_ip&quot;: &quot;45.115.204.194&quot;
+}
+</code></pre>
+
+<h3 id="step_7_get_time_api_by_time_zone">Step 7: Get Time API by Time Zone<a class="headerlink" href="#step_7_get_time_api_by_time_zone" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use the <code>timezone</code> value from Step 2 in the following API:
+  <code>https://www.timeapi.io/api/Time/current/zone?timeZone={timezone}</code></li>
+<li>Example: <a href="https://www.timeapi.io/api/Time/current/zone?timeZone=America/New_York">https://www.timeapi.io/api/Time/current/zone?timeZone=America/New_York</a></li>
+<li>The JSON response should include <code>year</code>, <code>month</code>, <code>hour</code>, <code>minute</code>, <code>seconds</code>, and <code>date</code>. Example:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;year&quot;: 2025,
+  &quot;month&quot;: 5,
+  &quot;day&quot;: 13,
+  &quot;hour&quot;: 15,
+  &quot;minute&quot;: 39,
+  &quot;seconds&quot;: 36,
+  &quot;milliSeconds&quot;: 804,
+  &quot;dateTime&quot;: &quot;2025-05-13T15:39:36.8047099&quot;,
+  &quot;date&quot;: &quot;05/13/2025&quot;,
+  &quot;time&quot;: &quot;15:39&quot;,
+  &quot;timeZone&quot;: &quot;America/New_York&quot;,
+  &quot;dayOfWeek&quot;: &quot;Tuesday&quot;,
+  &quot;dstActive&quot;: true
+}
+</code></pre>
+
+<hr />
+<h2 id="verify_micropython_on_your_raspberry_pi_pico">Verify MicroPython on Your Raspberry Pi Pico<a class="headerlink" href="#verify_micropython_on_your_raspberry_pi_pico" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Open Visual Studio Code.</li>
-<li>On the top menu, select the <strong>(A) ellipsis ...</strong> (if present), then <strong>(B) Terminal -&gt; New Terminal</strong>.<br />
-<img alt="micropico-0" src="../img/prereq-software/prereqsoftware-3.webp" /></li>
-<li>In the terminal pane, select the terminal menu <strong>(A)</strong> followed by the MicroPico vREPL sub-menu <strong>(B)</strong>.<br />
-<img alt="micropico-1" src="../img/prereq-software/prereqsoftware-4.webp" /></li>
-<li>Plug your Raspberry Pi Pico into the USB port, and the <strong>(A)</strong> <a href="https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix/recipes/notifications?view=vs-2022#status-bar">Status bar</a> will show your Pico as connected.<br />
-<img alt="micropico-3" src="../img/prereq-software/prereqsoftware-6.webp" /></li>
-<li>Verify your Pico's onboard LED turns on and off by typing the following code in the <strong>(B) Terminal pane</strong> (screen capture above). Copy/paste each line separately:</li>
+<li>On the top menu, select the <strong>ellipsis ...</strong> (if present), then <strong>Terminal → New Terminal</strong>.
+   <img alt="micropico-0" src="../img/prereq-software/prereqsoftware-3.webp" /></li>
+<li>In the terminal pane, select the terminal menu, then the MicroPico vREPL sub-menu.
+   <img alt="micropico-1" src="../img/prereq-software/prereqsoftware-4.webp" /></li>
+<li>Plug your Raspberry Pi Pico into the USB port. The <a href="https://learn.microsoft.com/en-us/visualstudio/extensibility/vsix/recipes/notifications?view=vs-2022#status-bar">Status bar</a> will show your Pico as connected.
+   <img alt="micropico-3" src="../img/prereq-software/prereqsoftware-6.webp" /></li>
+<li>Verify your Pico's onboard LED turns on and off by typing the following code in the terminal pane (copy/paste each line separately):</li>
 </ol>
-<pre class="codehilite"><code class="language-python">   from machine import Pin
-   p = Pin(25, Pin.OUT)
-   p.on()
-   p.off()
+<pre class="codehilite"><code class="language-python">from machine import Pin
+p = Pin(25, Pin.OUT)
+p.on()
+p.off()
 </code></pre>
 
+<hr />
 <h2 id="fork_and_clone_the_repository">Fork and Clone the Repository<a class="headerlink" href="#fork_and_clone_the_repository" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="https://git-scm.com/downloads">Install Git</a> for Windows.</li>
-<li>Open a browser and follow the link to the <a href="https://github.com/gobbyo/kinetic-display">Kinetic-Display</a> repository.</li>
-<li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">Create a fork</a> from the <code>kinetic-display</code> repository.</li>
-<li>Run this step if you have never used or run PowerShell on your computer:<ul>
-<li>Open a new <strong>PowerShell</strong> terminal by clicking on the Windows icon in the bottom taskbar and searching for "Windows PowerShell," then run the application as administrator. See <strong>(A)</strong> in the screenshot below.</li>
-<li><strong>(B)</strong> Type <code>Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser</code> in the PowerShell terminal and press Enter.</li>
-<li><strong>(C)</strong> Verify the command by typing <code>Get-ExecutionPolicy -List</code> and ensure the <code>CurrentUser</code> is set to <code>Unrestricted</code>.<br />
-<img alt="prereqsoftware-7" src="../img/prereq-software/prereqsoftware-7.webp" /></li>
+<li>Go to the <a href="https://github.com/gobbyo/kinetic-display">Kinetic-Display GitHub repository</a>.</li>
+<li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">Create a fork</a> of the repository.</li>
+<li>If you have never used PowerShell before:<ul>
+<li>Open a new <strong>PowerShell</strong> terminal as administrator (search for "Windows PowerShell" in the Start menu).</li>
+<li>Run: <code>Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser</code></li>
+<li>Verify with: <code>Get-ExecutionPolicy -List</code> (ensure <code>CurrentUser</code> is set to <code>Unrestricted</code>).</li>
+<li><img alt="prereqsoftware-7" src="../img/prereq-software/prereqsoftware-7.webp" /></li>
 </ul>
 </li>
-<li>If you did not need to run the previous step, then open a new <strong>PowerShell</strong> terminal by clicking on the Windows icon in the bottom taskbar and searching for "Windows PowerShell," then run the application. See <strong>(A)</strong> in the screenshot below.<br />
-<img alt="prereqsoftware-8" src="../img/prereq-software/prereqsoftware-8.webp" /></li>
-<li>Change the directory to <code>kinetic-display\micropython\pico</code> in your cloned fork. See <strong>(B)</strong> in the previous screenshot.</li>
-<li>Run the command <code>./deploy.ps1 &lt;directorypath&gt;</code> where <code>&lt;directorypath&gt;</code> is replaced with a quoted path to a folder, for example, <code>./deploy.ps1 "c:\deploy"</code>. See <strong>(A)</strong> in the screenshot below.<br />
-<img alt="prereqsoftware-9" src="../img/prereq-software/prereqsoftware-9.webp" /></li>
+<li>Otherwise, open a new <strong>PowerShell</strong> terminal (no admin needed).
+   <img alt="prereqsoftware-8" src="../img/prereq-software/prereqsoftware-8.webp" /></li>
+<li>Change directory to your cloned repo's <code>kinetic-display\micropython\pico</code> folder.</li>
+<li>Run the command: <code>./deploy.ps1 &lt;directorypath&gt;</code> (replace <code>&lt;directorypath&gt;</code> with your desired folder, e.g., <code>./deploy.ps1 "c:\deploy"</code>).
+   <img alt="prereqsoftware-9" src="../img/prereq-software/prereqsoftware-9.webp" /></li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The folder you provide for <strong><code>&lt;directorypath&gt;</code></strong> will be deleted along with all its contents when you run the <code>deploy.ps1</code> script. Be sure to save or rename the folder if you want to preserve any changes you made.</p>
+<p>The folder you provide for <code>&lt;directorypath&gt;</code> will be deleted along with all its contents when you run the <code>deploy.ps1</code> script. Be sure to save or rename the folder if you want to preserve any changes you made.</p>
 </div>
-<p>You'll get the following example output when successful. Also, see <strong>(B)</strong> in the previous screenshot. Verify the <strong>conductor</strong> and <strong>digit</strong> folders exist under the folder you provided in the parameter for the <code>./deploy.ps1</code>. You'll use the code in the <strong>conductor</strong> and <strong>digit</strong> folders to test and load onto your Raspberry Pi 2040 Picos and Pico W.</p>
-<pre class="codehilite"><code class="language-dos">    Directory: C:\deploy
+<p>If successful, you should see output like this, and the <code>conductor</code> and <code>digit</code> folders should exist in your deployment directory:</p>
+<pre class="codehilite"><code class="language-dos">Directory: C:\deploy
 
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
