@@ -100,22 +100,22 @@ Back side fully assembled.
 
 1. On the front of the digit PCB, insert the PCB two pin terminal block connector into the 5v through holes so the face of the connector (where the wires are inserted) points toward the LEDs on the PCB.
 ![digitpcbconnector-1](../img/digitpcbassembly/1-digitpcbassembly-connector.webp)
-1. Solder the terminal block connector pins on the back of the digit PCB.
+2. Solder the terminal block connector pins on the back of the digit PCB.
 ![digitpcbconnector-2](../img/digitpcbassembly/2-digitpcbassembly-connector.webp)
-1. On the front of the digit PCB position the 2 pin terminal block connector facing away from the LEDs. For **PCBs labelled "2" & "3"**, insert the connector pins into the `UART Tx-1/Rx-1` through holes. For the digit **PCB labelled "0"**, insert the connector into the `Tx-0/Rx-0` through holes.
+3. On the front of the digit PCB position the 2 pin terminal block connector facing away from the LEDs. For **PCBs labelled "2" & "3"**, insert the connector pins into the `UART Tx-1/Rx-1` through holes. For the digit **PCB labelled "0"**, insert the connector into the `Tx-0/Rx-0` through holes.
 ![digitpcbconnector-3](../img/digitpcbassembly/3-digitpcbassembly-connector.webp)
-1. On the back of the digit PCB, solder the remaining connector pins, cut the pins flush, resolder to a smooth bead, then remove the flux wth a cotton dabbed with isopropyl alcohol.
+4. On the back of the digit PCB, solder the remaining connector pins, cut the pins flush, resolder to a smooth bead, then remove the flux wth a cotton dabbed with isopropyl alcohol.
 ![digitpcbconnector-4](../img/digitpcbassembly/4-digitpcbassembly-connector.webp)
 
 ## Add the Electrolytic and Ceramic Capacitors
 
 1. On the front of the digit PCB, align the electrolytic capacitor `-` sign opposite the `+` printed on the PCB for capacitor `c1`, see the picture below. Insert the pins into the through holes, then turn the digit PCB over to the back side and solder the capacitor.
 ![digitpcbcapacitor-1](../img/digitpcbassembly/1-digitpcbassembly-capacitor.webp)
-1. On the front of the digit PCB, insert the ceramic capacitor pins into the through holes titled `c2`. Turn the digit PCB over to the back and solder the capacitor.
+2. On the front of the digit PCB, insert the ceramic capacitor pins into the through holes titled `c2`. Turn the digit PCB over to the back and solder the capacitor.
 !!! note
     Ceramic capacitors do not have polarity and can be inserted in any direction.
 ![digitpcbcapacitor-2](../img/digitpcbassembly/3-digitpcbassembly-capacitor.webp)
-1. On the back of the digit PCB, cut the pins flush, resolder to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
+3. On the back of the digit PCB, cut the pins flush, resolder to a smooth bead, then remove the flux with a cotton dabbed with isopropyl alcohol.
 ![digitpcbcapacitor-3](../img/digitpcbassembly/4-digitpcbassembly-capacitor.webp)
 
 ## Add the 20 pin Headers and Install the Microcontroller
