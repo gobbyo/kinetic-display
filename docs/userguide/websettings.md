@@ -73,7 +73,7 @@ The screen capture below is the Kinetic Display Control Settings when opened for
 1. **Test on startup**. A dropdown selection of **Test** or **No Test**.
     - **Test** this setting causes each digit from 3 through 0 to extend each segment in order of A-G, then retract each segment A-G. The scheduled actions for display begin when all digits and colons fully retracted. For example, suppose the display is showing **10:30** and the power unexpectedly goes out, then the power is restored 11 minutes later. The display will immediately light up showing its last knowns state of **10:30**, then each digit will extend and retract its segments until the entire display is cleared before showing the time of **10:41**.
     - **No Test** this setting causes the display to resume from its last known state.  For example, suppose the display is showing **10:30** and the power unexpectedly goes out, then the power is restored 11 minutes later. The display will immediately light up showing its last knowns state of **10:30**, when the time is retrieved from the internet, the **10** and **:** will remain and only the **30** changes to the number **41**.
-1. **Digit Style or Type**. Dropdown selection of **Human** or **Alien**. See the [Table of Human and Alien Digit Styles](#table-of-human-and-alien-digit-styles) at the end of this guide.
+1. **Digit Style or Type**. Dropdown selection of **Human** or **Alien**. See the [Table of Human and Alien Digit Type](./digittype.md) at the end of this guide.
 
 ## Save
 
@@ -87,15 +87,5 @@ The screen capture below is the Kinetic Display Control Settings when opened for
 
     ![settings-4](../img/user-guide-settings/settings-4.webp)
 
-## Table of Human and Alien Digit Styles
-
-| Human | Alien |
-| :---: | :--- |
-| ![h-0](../img/digits/digit-0.webp) | ![a-0](../img/digits/digit-alien-0.webp) |
-| ![h-1](../img/digits/digit-1.webp) | ![a-1](../img/digits/digit-alien-1.webp) |
-| ![h-2](../img/digits/digit-2.webp) | ![a-2](../img/digits/digit-alien-2.webp) |
-| ![h-3](../img/digits/digit-3.webp) | ![a-2](../img/digits/digit-alien-3.webp) |
-| ![h-4](../img/digits/digit-4.webp) | ![a-2](../img/digits/digit-alien-4.webp) |
-| ![h-5](../img/digits/digit-5.webp) | ![a-2](../img/digits/digit-alien-5.webp) |
-| ![h-6](../img/digits/digit-6.webp) | ![a-2](../img/digits/digit-alien-6.webp) |
-| ![h-7](../img/digits/digit-7.webp) | ![a-2](../img/digits/digit-alien-7.webp) |
+!!! note
+    It can take up to a minute for the display to begin showing its scheduled actions.

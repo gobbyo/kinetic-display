@@ -33,3 +33,4 @@ nav:
     - Finishing Touch: ./assembly/finishingtouch.md
   - User Guide:
     - Web Service Settings: ./userguide/websettings.md
+    - Table of Human and Alien Digit Type: ./userguide/digittype.md
