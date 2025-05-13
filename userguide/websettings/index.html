@@ -139,6 +139,10 @@
 <li>
     <a href="./" class="dropdown-item active" aria-current="page">Web Service Settings</a>
 </li>
+                                    
+<li>
+    <a href="../digittype/" class="dropdown-item">Table of Human and Alien Digit Type</a>
+</li>
                                 </ul>
                             </li>
                         </ul>
@@ -155,7 +159,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="../digittype/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -195,6 +199,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#save" class="nav-link">Save</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -206,7 +214,7 @@
 <h2 id="start_the_kinetic_displays_wifi_access_point">Start the Kinetic Display's Wifi Access Point<a class="headerlink" href="#start_the_kinetic_displays_wifi_access_point" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Unplug</strong> the display's 12v power supply</li>
-<li>Set the switch on the back of the display to the <strong>Off position</strong></li>
+<li>Set the switch on the back of the display to the <strong>Off</strong> position</li>
 <li><strong>Plug in</strong> the display's 12v power supply</li>
 </ol>
 <h2 id="connect_your_mobile_device_or_computer_to_the_kinetic-display_wifi_access_point_ap">Connect your Mobile device or Computer to the <strong>kinetic-display</strong> Wifi Access Point (AP)<a class="headerlink" href="#connect_your_mobile_device_or_computer_to_the_kinetic-display_wifi_access_point_ap" title="Permanent link">&para;</a></h2>
@@ -264,72 +272,44 @@
 </ol>
 </li>
 <li>
-<p><strong>Wifi SSID and Wifi PWD</strong>.
-    Your home wifi network name and password. SSID = ssid-name, PWD = wifi-password When the settings page is opened for the first time, the default Wifi SSID and Wifi PWD are set to <code>SSID</code> and <code>Password</code>. You'll need to change the <code>SSID</code> and <code>Password</code> to your home network wifi name and password.</p>
+<p><strong>Wifi SSID and Wifi PWD</strong>. Your home wifi network name and password. SSID = ssid-name, PWD = wifi-password When the settings page is opened for the first time, the default Wifi SSID and Wifi PWD are set to <code>SSID</code> and <code>Password</code>. You'll need to change the <code>SSID</code> and <code>Password</code> to your home network wifi name and password.</p>
 </li>
-<li><strong>Time</strong>.
-    Dropdown selection of <strong>12</strong> or <strong>24</strong> hour display of time. The default is set to <strong>12</strong> hour.</li>
-<li><strong>TempCF</strong>.
-    Dropdown selection to display the temperature in <strong>Celcius</strong> or <strong>Fahrenheit</strong>. The default is set to <strong>Fahrenheit</strong>.</li>
-<li><strong>TimeZone</strong>.
-    Dropdown selection of time zones for the local time display. When the settings page is opened for the first time, <strong>By IP Address</strong> is selected, the display will obtain its external-facing IP address, then use the IP address to obtain your local time. The when a named time zone is selected, the display uses the time zone name to obtain your local time.</li>
-<li><strong>Display Motor Wait Time</strong>.
-    A value between <strong>15</strong> and <strong>30</strong> milliseconds.  The default is <strong>16</strong> milliseconds. It is the length of time in milliseconds the motor is on when a segment extends or retracts.</li>
-<li><strong>Display Motor Speed</strong>.
-    A value between <strong>50</strong> and <strong>99</strong> percent. The default is <strong>85</strong> percent. It is the amount of power the motor is provided when extending or retracting. Reducing the motor speed slows the extension and retraction of the display segments. Conversely, increasing the motor speed quickens the extension and retraction of the segments.</li>
-<li><strong>Test on startup</strong>.
-    A dropdown selection of <strong>Test</strong> or <strong>No Test</strong>.<ul>
+<li><strong>Time</strong>. Dropdown selection of <strong>12</strong> or <strong>24</strong> hour display of time. The default is set to <strong>12</strong> hour.</li>
+<li><strong>TempCF</strong>. Dropdown selection to display the temperature in <strong>Celcius</strong> or <strong>Fahrenheit</strong>. The default is set to <strong>Fahrenheit</strong>.</li>
+<li>
+<p><strong>TimeZone</strong>. Dropdown selection of time zones for the local time display. When the settings page is opened for the first time, <strong>By IP Address</strong> is selected, the display will obtain its external-facing IP address, then use the IP address to obtain your local time. The when a named time zone is selected, the display uses the time zone name to obtain your local time.</p>
+<p><img alt="settings-2" src="../../img/user-guide-settings/settings-2.webp" /></p>
+</li>
+<li>
+<p><strong>Display Motor Wait Time</strong>. A value between <strong>15</strong> and <strong>30</strong> milliseconds.  The default is <strong>16</strong> milliseconds. It is the length of time in milliseconds the motor is on when a segment extends or retracts.</p>
+</li>
+<li><strong>Display Motor Speed</strong>. A value between <strong>50</strong> and <strong>99</strong> percent. The default is <strong>85</strong> percent. It is the amount of power the motor is provided when extending or retracting. Reducing the motor speed slows the extension and retraction of the display segments. Conversely, increasing the motor speed quickens the extension and retraction of the segments.</li>
+<li><strong>Test on startup</strong>. A dropdown selection of <strong>Test</strong> or <strong>No Test</strong>.<ul>
 <li><strong>Test</strong> this setting causes each digit from 3 through 0 to extend each segment in order of A-G, then retract each segment A-G. The scheduled actions for display begin when all digits and colons fully retracted. For example, suppose the display is showing <strong>10:30</strong> and the power unexpectedly goes out, then the power is restored 11 minutes later. The display will immediately light up showing its last knowns state of <strong>10:30</strong>, then each digit will extend and retract its segments until the entire display is cleared before showing the time of <strong>10:41</strong>.</li>
 <li><strong>No Test</strong> this setting causes the display to resume from its last known state.  For example, suppose the display is showing <strong>10:30</strong> and the power unexpectedly goes out, then the power is restored 11 minutes later. The display will immediately light up showing its last knowns state of <strong>10:30</strong>, when the time is retrieved from the internet, the <strong>10</strong> and <strong>:</strong> will remain and only the <strong>30</strong> changes to the number <strong>41</strong>.</li>
 </ul>
 </li>
+<li><strong>Digit Style or Type</strong>. Dropdown selection of <strong>Human</strong> or <strong>Alien</strong>. See the <a href="../digittype/">Table of Human and Alien Digit Type</a> at the end of this guide.</li>
+</ol>
+<h2 id="save">Save<a class="headerlink" href="#save" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Click the <strong>Save</strong> button</li>
 <li>
-<p><strong>Digit Style or Type</strong>.
-    Dropdown selection of <strong>Human</strong> or <strong>Alien</strong>.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Human</th>
-<th style="text-align: left;">Alien</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><img alt="h-0" src="../../img/digits/digit-0.webp" /></td>
-<td style="text-align: left;"><img alt="a-0" src="../../img/digits/digit-alien-0.webp" /></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img alt="h-1" src="../../img/digits/digit-1.webp" /></td>
-<td style="text-align: left;"><img alt="a-1" src="../../img/digits/digit-alien-1.webp" /></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img alt="h-2" src="../../img/digits/digit-2.webp" /></td>
-<td style="text-align: left;"><img alt="a-2" src="../../img/digits/digit-alien-2.webp" /></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img alt="h-3" src="../../img/digits/digit-3.webp" /></td>
-<td style="text-align: left;"><img alt="a-2" src="../../img/digits/digit-alien-3.webp" /></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img alt="h-4" src="../../img/digits/digit-4.webp" /></td>
-<td style="text-align: left;"><img alt="a-2" src="../../img/digits/digit-alien-4.webp" /></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img alt="h-5" src="../../img/digits/digit-5.webp" /></td>
-<td style="text-align: left;"><img alt="a-2" src="../../img/digits/digit-alien-5.webp" /></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img alt="h-6" src="../../img/digits/digit-6.webp" /></td>
-<td style="text-align: left;"><img alt="a-2" src="../../img/digits/digit-alien-6.webp" /></td>
-</tr>
-<tr>
-<td style="text-align: center;"><img alt="h-7" src="../../img/digits/digit-7.webp" /></td>
-<td style="text-align: left;"><img alt="a-2" src="../../img/digits/digit-alien-7.webp" /></td>
-</tr>
-</tbody>
-</table>
+<p>The following browser screen appears, click the <strong>Shut Down</strong> button. Clicking the button turns off the kinetic-display wifi and settings web service, and turns the display into a client that uses your home wifi credentials to access the internet.</p>
+<p><img alt="settings-3" src="../../img/user-guide-settings/settings-3.webp" /></p>
 </li>
-</ol></div>
+<li>
+<p>Set the switch on the back of the display to the <strong>On</strong> position.</p>
+</li>
+<li>
+<p>Close the following browser screen.</p>
+<p><img alt="settings-4" src="../../img/user-guide-settings/settings-4.webp" /></p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It can take up to a minute for the display to begin showing its scheduled actions.</p>
+</div></div>
             </div>
         </div>
 
