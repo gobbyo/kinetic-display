@@ -32,3 +32,9 @@
        - **Disabling** this setting causes the display to resume from its last known state.  For example, suppose the display is showing 10:30 and the power unexpectedly goes out. The power is restored 11 minutes later, the display will immediately light up showing its last knowns state of 10:30, then when the time is retrieved from the internet, the 10 and : will remain and only the 30 changes to the number 41.
 1. Digit Style or Type
     Dropdown selection of **Human** or **Alien**.
+
+    | Human | Alien |
+    | :---: | :--- |
+    | ![h-0](../img/digits/digit-0.webp) | ![a-0](../img/digits/digit-alien-0.webp) |
+    | ![h-1](../img/digits/digit-1.webp) | ![a-1](../img/digits/digit-alien-1.webp) |
+    | ![h-2](../img/digits/digit-2.webp) | ![a-2](../img/digits/digit-alien-2.webp) |
