@@ -12,7 +12,7 @@ The Kinetic Display is an innovative and engaging way to showcase the current ti
 
 The display features a built-in web service with adjustable settings that allow you to easily configure and personalize your display using any device with Wi-Fi and a web browser.
 
-![display-settings](../docs/img/user-guide-wifi/getURL.webp)
+![display-settings](img/user-guide-wifi/getURL.webp)
 
 Having adjustable settings for your kinetic display offers several advantages:
 
