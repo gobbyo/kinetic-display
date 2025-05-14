@@ -38,10 +38,10 @@
 | Raspberry pi 2040 Pico | 4 |
 | Raspberry pi 2040 Pico-W | 1 |
 | Superglue (small tube) | 1 |
-| White PLA 1KG | 2 |
-| Black PLA 1 KG | 1 |
-| Black Nylon, 1 KG | 1 |
-| Black TPU, 1 KG | 1 |
+| White Matte PLA Filament, 1 KG | 2 |
+| Black Matte PLA Filament, 1 KG | 1 |
+| Black Nylon Filament, 1 KG | 1 |
+| Black TPU Filament, 1 KG | 1 |
 
 ## Tools
 
