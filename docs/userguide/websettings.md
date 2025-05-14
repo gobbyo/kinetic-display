@@ -99,7 +99,7 @@ The screenshot below shows the Kinetic Display Control Settings page when opened
     - **No Test:** The display resumes from its last known state after power loss.
 9. **Digit Style or Type**
     - Choose **Human** or **Alien**. See the [Digit Type Table](./digittype.md) for details.
-
+    ![settings-6](../img/user-guide-settings/settings-6.webp)
 ---
 
 ## 5. Save and Apply Settings
