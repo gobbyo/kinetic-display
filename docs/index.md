@@ -6,7 +6,7 @@ The links listed below should be followed in the order they appear on the page f
 
 - [Introduction](intro.md)
 - [Verify REST API Dependencies](verifyapis.md)
-- [Software and Microcontroller Preparation](prerequisitesoftware.md)
+- [Software and Micro Controller Preparation](prerequisitesoftware.md)
 
 ## Order Parts
 
