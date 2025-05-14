@@ -1,10 +1,6 @@
 # User Guide - Web Service and Settings
 
-The Kinetic Display features a built-in web service that allows you to easily configure and personalize your display using any device with Wi-Fi and a web browser. This guide will walk you through connecting to the display's Wi-Fi access point, accessing the web-based settings page, and understanding each available setting.
-
-## Why Adjustable Settings Matter
-
-Having adjustable settings for your kinetic display offers several advantages:
+The Kinetic Display features a built-in web service that allows you to easily configure and personalize your display using any device with Wi-Fi and a web browser. Having adjustable settings for your kinetic display offers several advantages:
 
 - **Personalization:** Tailor the display's schedule, time format, temperature units, and digit style to match your preferences and environment.
 - **Convenience:** Make changes from your phone or computer without needing to reprogram or physically access the device.
@@ -12,7 +8,7 @@ Having adjustable settings for your kinetic display offers several advantages:
 - **Reliability:** Built-in test and recovery options help ensure the display operates correctly after power loss or network changes.
 - **Energy Efficiency:** Schedule sleep and wake times to save power and extend the life of your display.
 
-This guide provides step-by-step instructions for connecting to the web service, adjusting settings, and saving your configuration for a seamless and customized kinetic display experience.
+This guide will walk you through connecting to the display's Wi-Fi access point, accessing the web-based settings page, and understanding each available setting.
 
 ## 1. Start the Kinetic Display's Wifi Access Point
 
