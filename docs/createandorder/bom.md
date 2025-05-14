@@ -5,7 +5,6 @@
 | Single digit PCB for digits 0, 2, & 3 | 3 |
 | Conductor PCB for digit 1 and the colons | 1 |
 | Powerbank PCB | 1 |
-| A4 Size Felt Sheets with Adhesive Backing | 1 |
 | 2 Inch Jumbo Paper Clips (Smooth Big Paperclips) | 20 |
 | M1.7 x 6mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
 | M1.7 x 8mm Stainless Steel Phillips Round Head Self Tapping Screws | 200 |
@@ -39,10 +38,10 @@
 | Raspberry pi 2040 Pico | 4 |
 | Raspberry pi 2040 Pico-W | 1 |
 | Superglue (small tube) | 1 |
-| White PLA Comgrow 1KG | 2 |
-| Black PLA Comgrow 1 KG | 1 |
-| Black Easy Nylon Overture, 1 KG | 1 |
-| Black TPU Colorful (flexible), 1 KG | 1 |
+| White PLA 1KG | 2 |
+| Black PLA 1 KG | 1 |
+| Black Nylon, 1 KG | 1 |
+| Black TPU, 1 KG | 1 |
 
 ## Tools
 
@@ -61,5 +60,5 @@
 - Label maker (optional)
 - Computer with USB connector
 
-[^1]: You can choose any color of LED that you would like for your display. White LEDs are the easiest to work with as they have no color variation within the same batch. Colored LEDs like blue or warm white may vary in the same batch. Therefore, you will need to order more than the quantity listed in the BOM to get enough LEDs of the same color. Be sure to test your LEDs by using your phone's digital camera to see if there are any variations in color when the LEDs are lit. Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboard's power rail with 2.63v. In this case, I used the purple-hued LEDs because there were 112 of the same color.  
+[^1]: You can choose any color of LED that you would like for your display. White LEDs are the easiest to work with as they may have minor color variation within the same batch. Colored LEDs like blue or warm white may greatly vary in color within the same batch. Therefore, you may need to order more than the quantity listed in the BOM to get enough LEDs of the same color. Be sure to test your LEDs by using your phone's digital camera to see if there are any variations in color when the LEDs are lit. Below is a photo showing the color variation of blue 5mm LEDs within the same batch using a breadboard's power rail with 2.63v. In this case, I used the purple-hued LEDs because there were 112 of the same color.  
 ![blueLEDs](../img/digitpcbassembly/ledcolors.webp)
