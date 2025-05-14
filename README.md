@@ -8,6 +8,18 @@ See the full documentation, assembly instructions, and user guides at [https://g
 
 ![summaryfeatures](./docs/img/intro/featureoverview-shortstand.webp)
 
+The display features a built-in web service with adjustable settings that allow you to easily configure and personalize your display using any device with Wi-Fi and a web browser.
+
+![display-settings](./docs/img/user-guide-wifi/getURL.webp)
+
+Having adjustable settings for your kinetic display offers several advantages:
+
+- **Personalization**: Tailor the display's schedule, time format, temperature units, and digit style to match your preferences and environment.
+- **Convenience**: Make changes from your phone or computer without needing to reprogram or physically access the device.
+- **Adaptability**: Quickly update Wi-Fi credentials, time zones, or schedules if you move the display or your needs change.
+- **Reliability**: Built-in test and recovery options help ensure the display operates correctly after power loss or network changes.
+- **Energy Efficiency**: Schedule sleep and wake times to save power and extend the life of your display.
+
 Designed for durability, the display is built to last for years when assembled correctly by following the detailed documentation. Below is an overview of the iterative design process that led to the creation of a robust, reliable, and cost-effective display, fully 3D-printable on a 256mm x 256mm x 256mm build plate.
 
 **Actuator Prototype**
