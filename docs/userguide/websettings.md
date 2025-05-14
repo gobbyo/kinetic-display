@@ -1,4 +1,4 @@
-# Web Service and Settings
+# User Guide - Web Service and Settings
 
 The Kinetic Display features a built-in web service that allows you to easily configure and personalize your display using any device with Wi-Fi and a web browser. This guide will walk you through connecting to the display's Wi-Fi access point, accessing the web-based settings page, and understanding each available setting.
 
@@ -24,7 +24,7 @@ This guide provides step-by-step instructions for connecting to the web service,
 
 ## 2. Connect Your Device to the **kinetic-display** Wifi Access Point (AP)
 
-!!! note 
+!!! note
     Complete the previous step to start the Kinetic Display's Wifi Access Point before proceeding.
 
 ### Connect from a Mobile Device

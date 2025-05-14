@@ -1,4 +1,4 @@
-# Table of Human and Alien Digit Type
+# User Guide - Table of Human and Alien Digit Type
 
 | Human | Alien |
 | :---: | :--- |
