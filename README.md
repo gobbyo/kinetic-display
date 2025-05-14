@@ -20,6 +20,12 @@ Having adjustable settings for your kinetic display offers several advantages:
 - **Reliability**: Built-in test and recovery options help ensure the display operates correctly after power loss or network changes.
 - **Energy Efficiency**: Schedule sleep and wake times to save power and extend the life of your display.
 
+Optional startup animation setting whenever the power is turned on or the display wakes up from low power mode.
+![settings-5](./docs/img/user-guide-settings/settings-5.webp)
+
+Optional alien digit type setting.
+![settings-6](./docs/img/user-guide-settings/settings-6.webp)
+
 Designed for durability, the display is built to last for years when assembled correctly by following the detailed documentation. Below is an overview of the iterative design process that led to the creation of a robust, reliable, and cost-effective display, fully 3D-printable on a 256mm x 256mm x 256mm build plate.
 
 **Actuator Prototype**
