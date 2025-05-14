@@ -1,4 +1,4 @@
-## Orientation
+# Orientation
 
 ## Front of Display
 
