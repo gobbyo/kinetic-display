@@ -34,5 +34,7 @@ nav:
     - Finishing Touch: ./assembly/finishingtouch.md
   - User Guide:
     - Orientation: ./userguide/orientation.md
+    - On/Off Switch: ./userguide/spdtswitch.md
     - Web Service Settings: ./userguide/websettings.md
+    - Schedule Creation: ./userguide/schedule.md
     - Table of Human and Alien Digit Type: ./userguide/digittype.md
