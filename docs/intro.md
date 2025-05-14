@@ -8,7 +8,7 @@ The Kinetic Display is an innovative and engaging way to showcase the current ti
 
 **Feature Summary**
 
-![summaryfeatures](img/intro/whitedisplay.webp)
+![summaryfeatures](img/intro/featureoverview-shortstand.webp)
 
 Designed for durability, the display is built to last for years when assembled correctly by following the detailed documentation. Below is an overview of the iterative design process that led to the creation of a robust, reliable, and cost-effective display, fully 3D-printable on a 256mm x 256mm x 256mm build plate.
 
