@@ -8,9 +8,10 @@ markdown_extensions:
       separator: "_"
 nav:
   - Contents: index.md
-  - Introduction: 
-    - intro.md
-    - prerequisitesoftware.md
+  - Start Here: 
+    - Introduction: intro.md
+    - Verify REST API Dependencies: verifyapis.md
+    - Install Prerequisite Software: prerequisitesoftware.md
   - Parts:
     - Bill of Materials: ./createandorder/bom.md
     - Order PCBs: ./createandorder/pcb.md

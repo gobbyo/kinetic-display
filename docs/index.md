@@ -2,9 +2,10 @@
 
 The links listed below should be followed in the order they appear on the page from top to bottom. Use the `← Previous` and `Next →` buttons on the top menu bar to navigate.
 
-## Introduction
+## Start Here
 
 - [Introduction](intro.md)
+- [Verify REST API Dependencies](verifyapis.md)
 - [Software and Microcontroller Preparation](prerequisitesoftware.md)
 
 ## Order Parts
