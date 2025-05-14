@@ -185,18 +185,16 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="2"><a href="#orientation" class="nav-link">Orientation</a>
+            <li class="nav-item" data-bs-level="1"><a href="#orientation" class="nav-link">Orientation</a>
               <ul class="nav flex-column">
-              </ul>
-            </li>
-            
             <li class="nav-item" data-bs-level="2"><a href="#front_of_display" class="nav-link">Front of Display</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
             <li class="nav-item" data-bs-level="2"><a href="#back_of_display" class="nav-link">Back of Display</a>
               <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -204,19 +202,29 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="orientation">Orientation<a class="headerlink" href="#orientation" title="Permanent link">&para;</a></h2>
+<h1 id="orientation">Orientation<a class="headerlink" href="#orientation" title="Permanent link">&para;</a></h1>
 <h2 id="front_of_display">Front of Display<a class="headerlink" href="#front_of_display" title="Permanent link">&para;</a></h2>
 <p>Following the diagram below.</p>
 <ul>
-<li><strong>A</strong>. Digit 0</li>
-<li><strong>B</strong>. Digit 1</li>
-<li><strong>C</strong>. Upper and lower colons</li>
-<li><strong>D</strong>. Digit 2</li>
-<li><strong>E</strong>. Digit 3</li>
+<li><strong>A</strong> is Digit 0</li>
+<li><strong>B</strong> is Digit 1</li>
+<li><strong>C</strong> is Upper and lower colons</li>
+<li><strong>D</strong> is Digit 2</li>
+<li><strong>E</strong> is Digit 3</li>
 </ul>
-<p>Each digit has seven segments A-G that extend or contract depending on the action.</p>
-<p>When the segment extends there are LEDs that provide lighting for each segment. A Light Dependent Resistor (LDR) above Digit 1 in the back, senses the ambient light in the room causing the LEDs to adjust from (1) minimum  to (9) maximum brightness. Note that (0) means the LEDs are turned off. All extended segments with lit LEDs adjust to the given light level.</p>
+<p>Each digit has seven segments A-G that extend or retract depending on the action.</p>
+<p>When a segment extends, LEDs behind the segment provide lighting to give it a uniform glow. A Light Dependent Resistor (LDR) above Digit 1 in the back, senses the ambient light in the room causing the LEDs to dim or brighten. All extended segments with lit LEDs adjust to the given light level. The LEDs turn off when the segment retracts.</p>
 <p><img alt="orientation-1" src="../../img/user-guide-orientation/orientation-1.webp" /></p>
+<p>The display has several actions allowing you to customize a scheduler which determines when and which item among the following is displayed:</p>
+<ol>
+<li><strong>Local time</strong> in 12 or 12 hour, both colons extended</li>
+<li><strong>Date</strong> in month and day, both colons retracted</li>
+<li><strong>Internal temperature</strong> in Celsius or Fahrenheit, upper colon extended, lower colon retracted</li>
+<li><strong>Internal humidity</strong> in percent, upper colon extended, lower colon retracted</li>
+<li><strong>External temperature</strong> in Celsius or Fahrenheit, lower colon extended, upper colon retracted</li>
+<li><strong>External humidity</strong> in percent, lower colon extended, upper colon retracted</li>
+</ol>
+<p>The display also allows you to show the digits as human or alien, see the <a href="../digittype/">translation table for alien digits</a></p>
 <h2 id="back_of_display">Back of Display<a class="headerlink" href="#back_of_display" title="Permanent link">&para;</a></h2></div>
             </div>
         </div>
