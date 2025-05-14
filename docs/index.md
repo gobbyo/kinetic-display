@@ -33,5 +33,6 @@ The links listed below should be followed in the order they appear on the page f
 
 ## User Guide
 
+- [Orientation](./userguide/orientation.md)
 - [Web Service and Settings](./userguide/websettings.md)
 - [Table of Human and Alien Digit Type](./userguide/digittype.md)

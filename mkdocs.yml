@@ -32,5 +32,6 @@ nav:
     - Segment Assembly and Installation: ./assembly/segmentassembly.md
     - Finishing Touch: ./assembly/finishingtouch.md
   - User Guide:
+    - Orientation: ./userguide/orientation.md
     - Web Service Settings: ./userguide/websettings.md
     - Table of Human and Alien Digit Type: ./userguide/digittype.md
