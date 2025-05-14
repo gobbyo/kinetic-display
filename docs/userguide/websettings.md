@@ -24,7 +24,8 @@ This guide provides step-by-step instructions for connecting to the web service,
 
 ## 2. Connect Your Device to the **kinetic-display** Wifi Access Point (AP)
 
-> **Note:** Complete the previous step to start the Kinetic Display's Wifi Access Point before proceeding.
+!!! note 
+    Complete the previous step to start the Kinetic Display's Wifi Access Point before proceeding.
 
 ### Connect from a Mobile Device
 
