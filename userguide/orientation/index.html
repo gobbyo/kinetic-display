@@ -207,70 +207,74 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="user_guide_-_orientation">User Guide - Orientation<a class="headerlink" href="#user_guide_-_orientation" title="Permanent link">&para;</a></h1>
+<p>This guide provides a visual and descriptive overview of the Kinetic Display, helping you identify and understand each of its key components and features. You'll learn how to recognize the display's front, top, and back, and discover the function of each labeled part. The main sections include:</p>
+<ul>
+<li><strong>Front of Display:</strong> Learn about the digit layout, segment actions, and how the display shows time, date, temperature, humidity, and digit styles.</li>
+<li><strong>Top of Display:</strong> See the stand options and how the top profile is designed for stability and protection.</li>
+<li><strong>Back of Display:</strong> Identify all major components, including sensors, microcontrollers, actuators, and power connections, with clear explanations of their roles.</li>
+</ul>
+<p>By the end of this guide, you'll be able to confidently orient the Kinetic Display, understand its capabilities, and know where to find each important feature for setup, troubleshooting, or customization.</p>
+<hr />
 <h2 id="front_of_display">Front of Display<a class="headerlink" href="#front_of_display" title="Permanent link">&para;</a></h2>
-<p>Following the diagram below.</p>
+<p>Refer to the diagram below to identify the main features on the front of the display:</p>
 <ul>
-<li><strong>A</strong> is Digit 0</li>
-<li><strong>B</strong> is Digit 1</li>
-<li><strong>C</strong> is Upper and lower colons</li>
-<li><strong>D</strong> is Digit 2</li>
-<li><strong>E</strong> is Digit 3</li>
+<li><strong>A</strong>: Digit 0</li>
+<li><strong>B</strong>: Digit 1</li>
+<li><strong>C</strong>: Upper and lower colons</li>
+<li><strong>D</strong>: Digit 2</li>
+<li><strong>E</strong>: Digit 3</li>
 </ul>
-<p>Each digit has seven segments A-G that extend or retract depending on the action.</p>
-<p>When a segment extends, LEDs behind the segment provide lighting to give it a uniform glow. A Light Dependent Resistor (LDR) above Digit 1 in the back, senses the ambient light in the room causing the LEDs to dim or brighten. All extended segments with lit LEDs adjust to the given light level. The LEDs turn off when the segment retracts.</p>
-<p><img alt="orientation-1" src="../../img/user-guide-orientation/orientation-1.webp" /></p>
-<p>The display has several actions allowing you to customize a scheduler which determines when and which item among the following is displayed:</p>
+<p>Each digit consists of seven segments (A-G) that can extend or retract to form numbers or symbols. When a segment extends, LEDs behind it provide a uniform glow. The Light Dependent Resistor (LDR) above Digit 1 (on the back) senses ambient light and automatically adjusts the LED brightness for optimal visibility. LEDs turn off when the segment retracts to save power.</p>
+<p><img alt="Front of Display" src="../../img/user-guide-orientation/orientation-1.webp" /></p>
+<h3 id="display_modes_and_scheduler_actions">Display Modes and Scheduler Actions<a class="headerlink" href="#display_modes_and_scheduler_actions" title="Permanent link">&para;</a></h3>
+<p>The Kinetic Display can be customized to show different information at scheduled times. The scheduler determines which of the following modes is active:</p>
 <ol>
-<li><strong>Local time</strong> in 12 or 12 hour, both colons extended
-    <img alt="orientation-1b" src="../../img/user-guide-orientation/orientation-1b.webp" /></li>
-<li><strong>Date</strong> in month and day, both colons retracted
-    <img alt="orientation-2" src="../../img/user-guide-orientation/orientation-2.webp" /></li>
-<li><strong>Internal temperature</strong> in Celsius or Fahrenheit, upper colon extended, lower colon retracted
-    <img alt="orientation-3" src="../../img/user-guide-orientation/orientation-3.webp" /></li>
-<li><strong>Internal humidity</strong> in percent, upper colon extended, lower colon retracted
-    <img alt="orientation-4" src="../../img/user-guide-orientation/orientation-4.webp" /></li>
-<li><strong>External temperature</strong> in Celsius or Fahrenheit, lower colon extended, upper colon retracted
-    <img alt="orientation-5" src="../../img/user-guide-orientation/orientation-5.webp" /></li>
-<li>
-<p><strong>External humidity</strong> in percent, lower colon extended, upper colon retracted
-    <img alt="orientation-6" src="../../img/user-guide-orientation/orientation-6.webp" /></p>
-</li>
-<li>
-<p><strong>Digit Type</strong> is a setting allowing you to show the digits as human or alien, see the <a href="../digittype/">translation table for alien digits</a>. Below is a picture of the alien digit type.</p>
-<p><img alt="orientation-9" src="../../img/user-guide-orientation/orientation-9.webp" /></p>
-</li>
+<li><strong>Local Time</strong> (12 or 24 hour): Both colons extended. Shows the current time.
+    <img alt="Time Mode" src="../../img/user-guide-orientation/orientation-1b.webp" /></li>
+<li><strong>Date</strong> (Month and Day): Both colons retracted. Shows the current date.
+    <img alt="Date Mode" src="../../img/user-guide-orientation/orientation-2.webp" /></li>
+<li><strong>Internal Temperature</strong> (°C or °F): Upper colon extended, lower colon retracted. Shows the room temperature.
+    <img alt="Internal Temp" src="../../img/user-guide-orientation/orientation-3.webp" /></li>
+<li><strong>Internal Humidity</strong> (%): Upper colon extended, lower colon retracted. Shows the room humidity.
+    <img alt="Internal Humidity" src="../../img/user-guide-orientation/orientation-4.webp" /></li>
+<li><strong>External Temperature</strong> (°C or °F): Lower colon extended, upper colon retracted. Shows the outdoor temperature.
+    <img alt="External Temp" src="../../img/user-guide-orientation/orientation-5.webp" /></li>
+<li><strong>External Humidity</strong> (%): Lower colon extended, upper colon retracted. Shows the outdoor humidity.
+    <img alt="External Humidity" src="../../img/user-guide-orientation/orientation-6.webp" /></li>
+<li><strong>Digit Type</strong>: Choose between human or alien digit styles. See the <a href="../digittype/">translation table for alien digits</a>. Example of the alien digit type:
+    <img alt="Alien Digits" src="../../img/user-guide-orientation/orientation-9.webp" /></li>
 </ol>
+<hr />
 <h2 id="top_of_display">Top of Display<a class="headerlink" href="#top_of_display" title="Permanent link">&para;</a></h2>
-<p>The top profile of the display with the short-form stand. Optionally, you can install a long-form stand with a protective guard to protect curious cats from disrupting the power management system.
-<img alt="orientation-8" src="../../img/user-guide-orientation/orientation-8.webp" /></p>
+<p>The top profile of the display is shown below with the short-form stand. For added stability or to protect the power management system from pets, you can install a long-form stand with a protective guard.</p>
+<p><img alt="Top of Display" src="../../img/user-guide-orientation/orientation-8.webp" /></p>
+<hr />
 <h2 id="back_of_display">Back of Display<a class="headerlink" href="#back_of_display" title="Permanent link">&para;</a></h2>
-<p>Following the picture below:</p>
-<p><strong>A</strong> = <strong>Light Dependent Resistor (LDR)</strong>. Senses the ambient light in the room causing the LEDs to dim or brighten. All extended segments with lit LEDs adjust to the given light level.</p>
-<p><strong>B</strong> = <strong>On/Off switch</strong>. The On/Off switch has different modes depending on the state of being plugged in or not. See the On/Off switch guide for details.</p>
-<p><strong>C</strong> = <strong>Digital Humidity Temperature (DHT-22) sensor</strong>. Allows for the display of the internal room temperature and humidity.</p>
-<p><strong>D</strong> = <strong>Segment Actuator</strong>. There are 30 total segment actuators including the colons.</p>
-<p><strong>E</strong> = <strong>Digit Raspberry Pi Pico 2040 Micro Controller</strong>. There are 4 <strong>Picos</strong>, one for each digit, numbered 0-3. The <strong>Pico</strong> acts as the central processing unit for the digit supporting the following functions:</p>
+<p>Refer to the labeled picture below to identify the main components on the back of the display:</p>
+<p><strong>A</strong> = <strong>Light Dependent Resistor (LDR):</strong> Senses ambient light and adjusts LED brightness automatically.</p>
+<p><strong>B</strong> = <strong>On/Off Switch:</strong> Controls power and has different functions depending on its position. See the On/Off switch guide for details.</p>
+<p><strong>C</strong> = <strong>Digital Humidity Temperature (DHT-22) Sensor:</strong> Measures internal room temperature and humidity.</p>
+<p><strong>D</strong> = <strong>Segment Actuator:</strong> There are 30 actuators in total, including those for the colons, responsible for moving the segments.</p>
+<p><strong>E</strong> = <strong>Digit Raspberry Pi Pico 2040 Microcontroller:</strong> Four Picos (one per digit, labeled 0-3) act as CPUs for each digit, handling:</p>
 <ul>
-<li>Sends control signals to the motor drivers for segment movement.</li>
-<li>Controls the LEDs for segment illumination.</li>
-<li>Communicates with the main conductor PCB via UART.</li>
+<li>Motor driver control for segment movement</li>
+<li>LED control for segment illumination</li>
+<li>Communication with the main conductor PCB via UART</li>
 </ul>
-<p><strong>F</strong> = <strong>Conductor and Colon Raspberry Pi Pico 2040 W Micro Controller</strong>. The <strong>Pico W</strong> 2040 (conductor) operates the colons and serves as the central command and control for the display, performing the following functions:</p>
+<p><strong>F</strong> = <strong>Conductor and Colon Raspberry Pi Pico 2040 W Microcontroller:</strong> The Pico W (conductor) operates the colons and acts as the central command for the display, handling:</p>
 <ul>
-<li>Sends commands to digits as to what to display (e.g., 0-9, A-F).</li>
-<li>Sends commands for the brightness of the digits.</li>
-<li>When in Admin mode, transmits its own Wi-Fi service to wirelessly change the display settings from a cell phone or computer.</li>
-<li>Manages the scheduler, which is the mechanism for displaying time, date, external temperature and humidity, and interior temperature and humidity.</li>
-<li>When connected to a Wi-Fi network, obtains its public-facing IP address, looks up the time zone it is located in, and sets the display to the local time.</li>
-<li>When connected to a Wi-Fi network, obtains the closest weather station and, depending on the scheduler, may display the external temperature and humidity.</li>
-<li>Manages the low power consumption mode by turning off the power to digits 0-3. When awakened, it turns on the power to digits 0-3.</li>
+<li>Sending display and brightness commands to digits</li>
+<li>Broadcasting its own Wi-Fi service for wireless settings changes (Admin mode)</li>
+<li>Managing the scheduler for time, date, and weather display</li>
+<li>Setting local time and weather by connecting to Wi-Fi and external APIs</li>
+<li>Managing low-power mode by controlling power to digits 0-3</li>
 </ul>
-<p><strong>G</strong> = <strong>Barrel Jack for 12v Power Supply</strong>. The stand containing the barrel jack also serves as the power management system for the display. There are different modes for the <strong>On/Off</strong> switch depending on the wall plug being plugged in when the switch is in its <strong>On</strong> position or its <strong>Off</strong> position. See the On/Off switch guide for details.</p>
+<p><strong>G</strong> = <strong>Barrel Jack for 12V Power Supply:</strong> The stand with the barrel jack also houses the power management system. The On/Off switch has different modes depending on the power connection. See the On/Off switch guide for more details.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Plug the 12v power supply into the barrel jack BEFORE plugging the power supply into the wall plug.</p>
+<p>Plug the 12V power supply into the barrel jack <strong>before</strong> plugging the power supply into the wall outlet.</p>
 </div>
-<p><img alt="orientation-7" src="../../img/user-guide-orientation/orientation-7.webp" /></p></div>
+<p><img alt="Back of Display" src="../../img/user-guide-orientation/orientation-7.webp" /></p></div>
             </div>
         </div>
 
