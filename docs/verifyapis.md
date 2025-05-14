@@ -87,7 +87,7 @@ The Kinetic Display uses several REST APIs to obtain local time and weather info
 ```json
 {
   "utc_offset": "-05:00",
-  "timezone": "America/Chicago",
+  "timezone": "America/New_York",
   "day_of_week": 2,
   "day_of_year": 133,
   "datetime": "2025-05-13T16:42:11.694884-05:00",
@@ -139,7 +139,7 @@ The Kinetic Display uses several REST APIs to obtain local time and weather info
 ```json
 {
   "utc_offset": "-05:00",
-  "timezone": "America/Chicago",
+  "timezone": "America/New_York",
   "day_of_week": 2,
   "day_of_year": 133,
   "datetime": "2025-05-13T16:42:11.694884-05:00",
