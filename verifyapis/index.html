@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Introduction - Kinetic Display</title>
+        <title>Verify REST API Dependencies - Kinetic Display</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -42,11 +42,11 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Introduction</a>
+    <a href="../intro/" class="dropdown-item">Introduction</a>
 </li>
                                     
 <li>
-    <a href="../verifyapis/" class="dropdown-item">Verify REST API Dependencies</a>
+    <a href="./" class="dropdown-item active" aria-current="page">Verify REST API Dependencies</a>
 </li>
                                     
 <li>
@@ -162,12 +162,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href=".." class="nav-link">
+                                <a rel="prev" href="../intro/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../verifyapis/" class="nav-link">
+                                <a rel="next" href="../prerequisitesoftware/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -189,9 +189,33 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#kinetic_display" class="nav-link">Kinetic Display</a>
+            <li class="nav-item" data-bs-level="1"><a href="#verify_rest_api_dependencies" class="nav-link">Verify REST API Dependencies</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#introduction" class="nav-link">Introduction</a>
+            <li class="nav-item" data-bs-level="2"><a href="#step_1_get_your_external_ip_address" class="nav-link">Step 1: Get Your External IP Address</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#step_2_get_latitude_longitude_and_time_zone" class="nav-link">Step 2: Get Latitude, Longitude, and Time Zone</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#step_3_get_weather_data" class="nav-link">Step 3: Get Weather Data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#step_4_get_world_time_by_ip" class="nav-link">Step 4: Get World Time by IP</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#step_5_get_time_api_by_ip" class="nav-link">Step 5: Get Time API by IP</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#step_6_get_world_time_by_time_zone" class="nav-link">Step 6: Get World Time by Time Zone</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#step_7_get_time_api_by_time_zone" class="nav-link">Step 7: Get Time API by Time Zone</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -202,39 +226,179 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="kinetic_display">Kinetic Display<a class="headerlink" href="#kinetic_display" title="Permanent link">&para;</a></h1>
-<p>gobbyo | jbeman@hotmail.com</p>
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>The Kinetic Display is an innovative and engaging way to showcase the current time, date, indoor temperature and humidity, and outdoor temperature and humidity. Watch the feature summary video below to see it in action. This robotic seven-segment clock-like display consists of 4 digits and 2 colons, totaling 30 actuators that extend and retract segments. Each segment lights up when extended and turns off when retracted, creating a satisfying clacking sound with every movement, adding a unique auditory experience.</p>
-<p><strong>Feature Summary</strong></p>
-<p><img alt="summaryfeatures" src="../img/intro/featureoverview-shortstand.webp" /></p>
-<p>The display features a built-in web service with adjustable settings that allow you to easily configure and personalize your display using any device with Wi-Fi and a web browser.</p>
-<p><img alt="display-settings" src="../img/user-guide-wifi/getURL.webp" /></p>
-<p>Having adjustable settings for your kinetic display offers several advantages:</p>
+<h1 id="verify_rest_api_dependencies">Verify REST API Dependencies<a class="headerlink" href="#verify_rest_api_dependencies" title="Permanent link">&para;</a></h1>
+<p>The Kinetic Display uses several REST APIs to obtain local time and weather information. Use your computer's web browser to verify these APIs work for your location <strong>before</strong> ordering materials or 3D printing parts. Some APIs are used as backups for reliability, as they may be throttled or temporarily unavailable.</p>
+<h2 id="step_1_get_your_external_ip_address">Step 1: Get Your External IP Address<a class="headerlink" href="#step_1_get_your_external_ip_address" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Personalization</strong>: Tailor the display's schedule, time format, temperature units, and digit style to match your preferences and environment.</li>
-<li><strong>Convenience</strong>: Make changes from your phone or computer without needing to reprogram or physically access the device.</li>
-<li><strong>Adaptability</strong>: Quickly update Wi-Fi credentials, time zones, or schedules if you move the display or your needs change.</li>
-<li><strong>Reliability</strong>: Built-in test and recovery options help ensure the display operates correctly after power loss or network changes.</li>
-<li><strong>Energy Efficiency</strong>: Schedule sleep and wake times to save power and extend the life of your display.</li>
+<li>Visit <a href="http://api.ipify.org">http://api.ipify.org</a> in your browser. The page will display your external IP address (e.g., <code>11.115.204.194</code>). Save this address for the next steps.</li>
 </ul>
-<p>Optional startup animation setting whenever the power is turned on or the display wakes up from low power mode.
-<img alt="settings-5" src="../img/user-guide-settings/settings-5.webp" /></p>
-<p>Optional alien digit type setting.
-<img alt="settings-6" src="../img/user-guide-settings/settings-6.webp" /></p>
-<p>Designed for durability, the display is built to last for years when assembled correctly by following the detailed documentation. Below is an overview of the iterative design process that led to the creation of a robust, reliable, and cost-effective display, fully 3D-printable on a 256mm x 256mm x 256mm build plate.</p>
-<p><strong>Actuator Prototype</strong></p>
-<p>The actuators are the heart of the display, and getting their design right was critical. Early prototypes revealed issues such as gear tooth breakage due to improper sizing, material selection, and abrupt stops during operation. Adjustments to gear dimensions and the use of heavy-duty 103 motors significantly improved performance, enabling smooth operation with lower voltage requirements.
-<img alt="actuator" src="../img/intro/actuatorprototype.webp" /></p>
-<p><strong>Segment Prototype</strong></p>
-<p>Multiple iterations of the segment design ensured the robustness of the segment head and its attachment to the rack gear. Experiments also determined the best cushioning material to absorb the impact of constant actuator movement.
-<img alt="segment" src="../img/intro/segmentprototype.webp" /></p>
-<p><strong>Digit Prototype</strong></p>
-<p>The first digit prototype provided valuable insights into PCB design, software requirements, and the optimal dimensions for positioning the seven actuators within a single digit.
-<img alt="digit" src="../img/intro/singledigitprototype.webp" /></p>
-<p><strong>First Prototype</strong></p>
-<p>The prototype below has been running continuously since April 2024, demonstrating the reliability and durability of the design.
-<img alt="display" src="../img/intro/intro-shortclip.webp" /></p></div>
+<h2 id="step_2_get_latitude_longitude_and_time_zone">Step 2: Get Latitude, Longitude, and Time Zone<a class="headerlink" href="#step_2_get_latitude_longitude_and_time_zone" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Replace <code>{0}</code> in <code>http://ip-api.com/json/{0}</code> with your external IP address from Step 1.</li>
+<li>Example: <a href="http://ip-api.com/json/11.115.204.194">http://ip-api.com/json/11.115.204.194</a></li>
+<li>The JSON response should include <code>lat</code>, <code>lon</code>, and <code>timezone</code> fields. Example:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;status&quot;: &quot;success&quot;,
+  &quot;country&quot;: &quot;United States&quot;,
+  &quot;countryCode&quot;: &quot;US&quot;,
+  &quot;region&quot;: &quot;OH&quot;,
+  &quot;regionName&quot;: &quot;Ohio&quot;,
+  &quot;city&quot;: &quot;Whitehall&quot;,
+  &quot;zip&quot;: &quot;43218&quot;,
+  &quot;lat&quot;: 39.9747,
+  &quot;lon&quot;: -82.8947,
+  &quot;timezone&quot;: &quot;America/New_York&quot;,
+  &quot;isp&quot;: &quot;DoD Network Information Center&quot;,
+  &quot;org&quot;: &quot;DoD Network Information Center&quot;,
+  &quot;as&quot;: &quot;AS749 DoD Network Information Center&quot;,
+  &quot;query&quot;: &quot;11.115.204.194&quot;
+}
+</code></pre>
+
+<h2 id="step_3_get_weather_data">Step 3: Get Weather Data<a class="headerlink" href="#step_3_get_weather_data" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Use the <code>lat</code> and <code>lon</code> values from Step 2 in the following API:
+  <code>https://api.open-meteo.com/v1/forecast?latitude={0}&amp;longitude={1}&amp;current_weather=true&amp;hourly=relativehumidity_2m</code></li>
+<li>Example: <a href="https://api.open-meteo.com/v1/forecast?latitude=39.9747&amp;longitude=-82.8947&amp;current_weather=true&amp;hourly=relativehumidity_2m">https://api.open-meteo.com/v1/forecast?latitude=39.9747&amp;longitude=-82.8947&amp;current_weather=true&amp;hourly=relativehumidity_2m</a></li>
+<li>The JSON response should include <code>temperature</code> and <code>relativehumidity_2m</code> fields. Example:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;latitude&quot;: 39.986526,
+  &quot;longitude&quot;: -82.90847,
+  &quot;generationtime_ms&quot;: 0.0587701797485352,
+  &quot;utc_offset_seconds&quot;: 0,
+  &quot;timezone&quot;: &quot;GMT&quot;,
+  &quot;timezone_abbreviation&quot;: &quot;GMT&quot;,
+  &quot;elevation&quot;: 242,
+  &quot;current_weather_units&quot;: {
+    &quot;time&quot;: &quot;iso8601&quot;,
+    &quot;interval&quot;: &quot;seconds&quot;,
+    &quot;temperature&quot;: &quot;°C&quot;,
+    &quot;windspeed&quot;: &quot;km/h&quot;,
+    &quot;winddirection&quot;: &quot;°&quot;,
+    &quot;is_day&quot;: &quot;&quot;,
+    &quot;weathercode&quot;: &quot;wmo code&quot;
+  },
+  &quot;current_weather&quot;: {
+    &quot;time&quot;: &quot;2025-05-13T19:30&quot;,
+    &quot;interval&quot;: 900,
+    &quot;temperature&quot;: 21.3,
+    &quot;windspeed&quot;: 5.5,
+    &quot;winddirection&quot;: 122,
+    &quot;is_day&quot;: 1,
+    &quot;weathercode&quot;: 3
+  },
+  &quot;hourly_units&quot;: {
+    &quot;time&quot;: &quot;iso8601&quot;,
+    &quot;relativehumidity_2m&quot;: &quot;%&quot;
+  },
+  &quot;hourly&quot;: {
+    &quot;time&quot;: [],
+    &quot;relativehumidity_2m&quot;: []
+  }
+}
+</code></pre>
+
+<h2 id="step_4_get_world_time_by_ip">Step 4: Get World Time by IP<a class="headerlink" href="#step_4_get_world_time_by_ip" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Use your external IP address in the following API:
+  <code>http://worldtimeapi.org/api/ip/{ip}</code></li>
+<li>Example: <a href="http://worldtimeapi.org/api/ip/11.115.204.194">http://worldtimeapi.org/api/ip/11.115.204.194</a></li>
+<li>The JSON response should include a <code>datetime</code> field. Example:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;utc_offset&quot;: &quot;-05:00&quot;,
+  &quot;timezone&quot;: &quot;America/Chicago&quot;,
+  &quot;day_of_week&quot;: 2,
+  &quot;day_of_year&quot;: 133,
+  &quot;datetime&quot;: &quot;2025-05-13T16:42:11.694884-05:00&quot;,
+  &quot;utc_datetime&quot;: &quot;2025-05-13T21:42:11.694884+00:00&quot;,
+  &quot;unixtime&quot;: 1747172531,
+  &quot;raw_offset&quot;: -21600,
+  &quot;week_number&quot;: 20,
+  &quot;dst&quot;: true,
+  &quot;abbreviation&quot;: &quot;CDT&quot;,
+  &quot;dst_offset&quot;: 3600,
+  &quot;dst_from&quot;: &quot;2025-03-09T08:00:00+00:00&quot;,
+  &quot;dst_until&quot;: &quot;2025-11-02T07:00:00+00:00&quot;,
+  &quot;client_ip&quot;: &quot;45.115.204.194&quot;
+}
+</code></pre>
+
+<h2 id="step_5_get_time_api_by_ip">Step 5: Get Time API by IP<a class="headerlink" href="#step_5_get_time_api_by_ip" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Use your external IP address in the following API:
+  <code>https://www.timeapi.io/api/Time/current/ip?ipAddress={ip}</code></li>
+<li>Example: <a href="https://www.timeapi.io/api/Time/current/ip?ipAddress=11.115.204.194">https://www.timeapi.io/api/Time/current/ip?ipAddress=11.115.204.194</a></li>
+<li>The JSON response should include <code>year</code>, <code>month</code>, <code>hour</code>, <code>minute</code>, <code>seconds</code>, and <code>date</code>. Example:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;year&quot;: 2025,
+  &quot;month&quot;: 5,
+  &quot;day&quot;: 13,
+  &quot;hour&quot;: 15,
+  &quot;minute&quot;: 39,
+  &quot;seconds&quot;: 36,
+  &quot;milliSeconds&quot;: 804,
+  &quot;dateTime&quot;: &quot;2025-05-13T15:39:36.8047099&quot;,
+  &quot;date&quot;: &quot;05/13/2025&quot;,
+  &quot;time&quot;: &quot;15:39&quot;,
+  &quot;timeZone&quot;: &quot;America/New_York&quot;,
+  &quot;dayOfWeek&quot;: &quot;Tuesday&quot;,
+  &quot;dstActive&quot;: true
+}
+</code></pre>
+
+<h2 id="step_6_get_world_time_by_time_zone">Step 6: Get World Time by Time Zone<a class="headerlink" href="#step_6_get_world_time_by_time_zone" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Use the <code>timezone</code> value from Step 2 in the following API:
+  <code>http://worldtimeapi.org/api/timezone/{timezone}</code></li>
+<li>Example: <a href="http://worldtimeapi.org/api/timezone/America/New_York">http://worldtimeapi.org/api/timezone/America/New_York</a></li>
+<li>The JSON response should include a <code>datetime</code> field. Example:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;utc_offset&quot;: &quot;-05:00&quot;,
+  &quot;timezone&quot;: &quot;America/Chicago&quot;,
+  &quot;day_of_week&quot;: 2,
+  &quot;day_of_year&quot;: 133,
+  &quot;datetime&quot;: &quot;2025-05-13T16:42:11.694884-05:00&quot;,
+  &quot;utc_datetime&quot;: &quot;2025-05-13T21:42:11.694884+00:00&quot;,
+  &quot;unixtime&quot;: 1747172531,
+  &quot;raw_offset&quot;: -21600,
+  &quot;week_number&quot;: 20,
+  &quot;dst&quot;: true,
+  &quot;abbreviation&quot;: &quot;CDT&quot;,
+  &quot;dst_offset&quot;: 3600,
+  &quot;dst_from&quot;: &quot;2025-03-09T08:00:00+00:00&quot;,
+  &quot;dst_until&quot;: &quot;2025-11-02T07:00:00+00:00&quot;,
+  &quot;client_ip&quot;: &quot;45.115.204.194&quot;
+}
+</code></pre>
+
+<h2 id="step_7_get_time_api_by_time_zone">Step 7: Get Time API by Time Zone<a class="headerlink" href="#step_7_get_time_api_by_time_zone" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Use the <code>timezone</code> value from Step 2 in the following API:
+  <code>https://www.timeapi.io/api/Time/current/zone?timeZone={timezone}</code></li>
+<li>Example: <a href="https://www.timeapi.io/api/Time/current/zone?timeZone=America/New_York">https://www.timeapi.io/api/Time/current/zone?timeZone=America/New_York</a></li>
+<li>The JSON response should include <code>year</code>, <code>month</code>, <code>hour</code>, <code>minute</code>, <code>seconds</code>, and <code>date</code>. Example:</li>
+</ul>
+<pre class="codehilite"><code class="language-json">{
+  &quot;year&quot;: 2025,
+  &quot;month&quot;: 5,
+  &quot;day&quot;: 13,
+  &quot;hour&quot;: 15,
+  &quot;minute&quot;: 39,
+  &quot;seconds&quot;: 36,
+  &quot;milliSeconds&quot;: 804,
+  &quot;dateTime&quot;: &quot;2025-05-13T15:39:36.8047099&quot;,
+  &quot;date&quot;: &quot;05/13/2025&quot;,
+  &quot;time&quot;: &quot;15:39&quot;,
+  &quot;timeZone&quot;: &quot;America/New_York&quot;,
+  &quot;dayOfWeek&quot;: &quot;Tuesday&quot;,
+  &quot;dstActive&quot;: true
+}
+</code></pre></div>
             </div>
         </div>
 

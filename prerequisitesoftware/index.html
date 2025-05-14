@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Software and Microcontroller Preparation - Kinetic Display</title>
+        <title>Install Prerequisite Software - Kinetic Display</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -38,15 +38,19 @@
                                 <a href=".." class="nav-link">Contents</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Introduction</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Start Here</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../intro/" class="dropdown-item">Kinetic Display</a>
+    <a href="../intro/" class="dropdown-item">Introduction</a>
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Software and Microcontroller Preparation</a>
+    <a href="../verifyapis/" class="dropdown-item">Verify REST API Dependencies</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Install Prerequisite Software</a>
 </li>
                                 </ul>
                             </li>
@@ -158,7 +162,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../intro/" class="nav-link">
+                                <a rel="prev" href="../verifyapis/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -188,10 +192,6 @@
             <li class="nav-item" data-bs-level="1"><a href="#software_and_microcontroller_preparation" class="nav-link">Software and Microcontroller Preparation</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-bs-level="2"><a href="#prerequisites" class="nav-link">Prerequisites</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#test_rest_api_dependencies" class="nav-link">Test REST API Dependencies</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -243,181 +243,6 @@
 </ul>
 </li>
 </ol>
-<hr />
-<h2 id="test_rest_api_dependencies">Test REST API Dependencies<a class="headerlink" href="#test_rest_api_dependencies" title="Permanent link">&para;</a></h2>
-<p>The Kinetic Display uses several REST APIs to obtain local time and weather information. Use your computer's web browser to verify these APIs work for your location <strong>before</strong> ordering materials or 3D printing parts. Some APIs are used as backups for reliability, as they may be throttled or temporarily unavailable.</p>
-<h3 id="step_1_get_your_external_ip_address">Step 1: Get Your External IP Address<a class="headerlink" href="#step_1_get_your_external_ip_address" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Visit <a href="http://api.ipify.org">http://api.ipify.org</a> in your browser. The page will display your external IP address (e.g., <code>11.115.204.194</code>). Save this address for the next steps.</li>
-</ul>
-<h3 id="step_2_get_latitude_longitude_and_time_zone">Step 2: Get Latitude, Longitude, and Time Zone<a class="headerlink" href="#step_2_get_latitude_longitude_and_time_zone" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Replace <code>{0}</code> in <code>http://ip-api.com/json/{0}</code> with your external IP address from Step 1.</li>
-<li>Example: <a href="http://ip-api.com/json/11.115.204.194">http://ip-api.com/json/11.115.204.194</a></li>
-<li>The JSON response should include <code>lat</code>, <code>lon</code>, and <code>timezone</code> fields. Example:</li>
-</ul>
-<pre class="codehilite"><code class="language-json">{
-  &quot;status&quot;: &quot;success&quot;,
-  &quot;country&quot;: &quot;United States&quot;,
-  &quot;countryCode&quot;: &quot;US&quot;,
-  &quot;region&quot;: &quot;OH&quot;,
-  &quot;regionName&quot;: &quot;Ohio&quot;,
-  &quot;city&quot;: &quot;Whitehall&quot;,
-  &quot;zip&quot;: &quot;43218&quot;,
-  &quot;lat&quot;: 39.9747,
-  &quot;lon&quot;: -82.8947,
-  &quot;timezone&quot;: &quot;America/New_York&quot;,
-  &quot;isp&quot;: &quot;DoD Network Information Center&quot;,
-  &quot;org&quot;: &quot;DoD Network Information Center&quot;,
-  &quot;as&quot;: &quot;AS749 DoD Network Information Center&quot;,
-  &quot;query&quot;: &quot;11.115.204.194&quot;
-}
-</code></pre>
-
-<h3 id="step_3_get_weather_data">Step 3: Get Weather Data<a class="headerlink" href="#step_3_get_weather_data" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Use the <code>lat</code> and <code>lon</code> values from Step 2 in the following API:
-  <code>https://api.open-meteo.com/v1/forecast?latitude={0}&amp;longitude={1}&amp;current_weather=true&amp;hourly=relativehumidity_2m</code></li>
-<li>Example: <a href="https://api.open-meteo.com/v1/forecast?latitude=39.9747&amp;longitude=-82.8947&amp;current_weather=true&amp;hourly=relativehumidity_2m">https://api.open-meteo.com/v1/forecast?latitude=39.9747&amp;longitude=-82.8947&amp;current_weather=true&amp;hourly=relativehumidity_2m</a></li>
-<li>The JSON response should include <code>temperature</code> and <code>relativehumidity_2m</code> fields. Example:</li>
-</ul>
-<pre class="codehilite"><code class="language-json">{
-  &quot;latitude&quot;: 39.986526,
-  &quot;longitude&quot;: -82.90847,
-  &quot;generationtime_ms&quot;: 0.0587701797485352,
-  &quot;utc_offset_seconds&quot;: 0,
-  &quot;timezone&quot;: &quot;GMT&quot;,
-  &quot;timezone_abbreviation&quot;: &quot;GMT&quot;,
-  &quot;elevation&quot;: 242,
-  &quot;current_weather_units&quot;: {
-    &quot;time&quot;: &quot;iso8601&quot;,
-    &quot;interval&quot;: &quot;seconds&quot;,
-    &quot;temperature&quot;: &quot;°C&quot;,
-    &quot;windspeed&quot;: &quot;km/h&quot;,
-    &quot;winddirection&quot;: &quot;°&quot;,
-    &quot;is_day&quot;: &quot;&quot;,
-    &quot;weathercode&quot;: &quot;wmo code&quot;
-  },
-  &quot;current_weather&quot;: {
-    &quot;time&quot;: &quot;2025-05-13T19:30&quot;,
-    &quot;interval&quot;: 900,
-    &quot;temperature&quot;: 21.3,
-    &quot;windspeed&quot;: 5.5,
-    &quot;winddirection&quot;: 122,
-    &quot;is_day&quot;: 1,
-    &quot;weathercode&quot;: 3
-  },
-  &quot;hourly_units&quot;: {
-    &quot;time&quot;: &quot;iso8601&quot;,
-    &quot;relativehumidity_2m&quot;: &quot;%&quot;
-  },
-  &quot;hourly&quot;: {
-    &quot;time&quot;: [],
-    &quot;relativehumidity_2m&quot;: []
-  }
-}
-</code></pre>
-
-<h3 id="step_4_get_world_time_by_ip">Step 4: Get World Time by IP<a class="headerlink" href="#step_4_get_world_time_by_ip" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Use your external IP address in the following API:
-  <code>http://worldtimeapi.org/api/ip/{ip}</code></li>
-<li>Example: <a href="http://worldtimeapi.org/api/ip/11.115.204.194">http://worldtimeapi.org/api/ip/11.115.204.194</a></li>
-<li>The JSON response should include a <code>datetime</code> field. Example:</li>
-</ul>
-<pre class="codehilite"><code class="language-json">{
-  &quot;utc_offset&quot;: &quot;-05:00&quot;,
-  &quot;timezone&quot;: &quot;America/Chicago&quot;,
-  &quot;day_of_week&quot;: 2,
-  &quot;day_of_year&quot;: 133,
-  &quot;datetime&quot;: &quot;2025-05-13T16:42:11.694884-05:00&quot;,
-  &quot;utc_datetime&quot;: &quot;2025-05-13T21:42:11.694884+00:00&quot;,
-  &quot;unixtime&quot;: 1747172531,
-  &quot;raw_offset&quot;: -21600,
-  &quot;week_number&quot;: 20,
-  &quot;dst&quot;: true,
-  &quot;abbreviation&quot;: &quot;CDT&quot;,
-  &quot;dst_offset&quot;: 3600,
-  &quot;dst_from&quot;: &quot;2025-03-09T08:00:00+00:00&quot;,
-  &quot;dst_until&quot;: &quot;2025-11-02T07:00:00+00:00&quot;,
-  &quot;client_ip&quot;: &quot;45.115.204.194&quot;
-}
-</code></pre>
-
-<h3 id="step_5_get_time_api_by_ip">Step 5: Get Time API by IP<a class="headerlink" href="#step_5_get_time_api_by_ip" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Use your external IP address in the following API:
-  <code>https://www.timeapi.io/api/Time/current/ip?ipAddress={ip}</code></li>
-<li>Example: <a href="https://www.timeapi.io/api/Time/current/ip?ipAddress=11.115.204.194">https://www.timeapi.io/api/Time/current/ip?ipAddress=11.115.204.194</a></li>
-<li>The JSON response should include <code>year</code>, <code>month</code>, <code>hour</code>, <code>minute</code>, <code>seconds</code>, and <code>date</code>. Example:</li>
-</ul>
-<pre class="codehilite"><code class="language-json">{
-  &quot;year&quot;: 2025,
-  &quot;month&quot;: 5,
-  &quot;day&quot;: 13,
-  &quot;hour&quot;: 15,
-  &quot;minute&quot;: 39,
-  &quot;seconds&quot;: 36,
-  &quot;milliSeconds&quot;: 804,
-  &quot;dateTime&quot;: &quot;2025-05-13T15:39:36.8047099&quot;,
-  &quot;date&quot;: &quot;05/13/2025&quot;,
-  &quot;time&quot;: &quot;15:39&quot;,
-  &quot;timeZone&quot;: &quot;America/New_York&quot;,
-  &quot;dayOfWeek&quot;: &quot;Tuesday&quot;,
-  &quot;dstActive&quot;: true
-}
-</code></pre>
-
-<h3 id="step_6_get_world_time_by_time_zone">Step 6: Get World Time by Time Zone<a class="headerlink" href="#step_6_get_world_time_by_time_zone" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Use the <code>timezone</code> value from Step 2 in the following API:
-  <code>http://worldtimeapi.org/api/timezone/{timezone}</code></li>
-<li>Example: <a href="http://worldtimeapi.org/api/timezone/America/New_York">http://worldtimeapi.org/api/timezone/America/New_York</a></li>
-<li>The JSON response should include a <code>datetime</code> field. Example:</li>
-</ul>
-<pre class="codehilite"><code class="language-json">{
-  &quot;utc_offset&quot;: &quot;-05:00&quot;,
-  &quot;timezone&quot;: &quot;America/Chicago&quot;,
-  &quot;day_of_week&quot;: 2,
-  &quot;day_of_year&quot;: 133,
-  &quot;datetime&quot;: &quot;2025-05-13T16:42:11.694884-05:00&quot;,
-  &quot;utc_datetime&quot;: &quot;2025-05-13T21:42:11.694884+00:00&quot;,
-  &quot;unixtime&quot;: 1747172531,
-  &quot;raw_offset&quot;: -21600,
-  &quot;week_number&quot;: 20,
-  &quot;dst&quot;: true,
-  &quot;abbreviation&quot;: &quot;CDT&quot;,
-  &quot;dst_offset&quot;: 3600,
-  &quot;dst_from&quot;: &quot;2025-03-09T08:00:00+00:00&quot;,
-  &quot;dst_until&quot;: &quot;2025-11-02T07:00:00+00:00&quot;,
-  &quot;client_ip&quot;: &quot;45.115.204.194&quot;
-}
-</code></pre>
-
-<h3 id="step_7_get_time_api_by_time_zone">Step 7: Get Time API by Time Zone<a class="headerlink" href="#step_7_get_time_api_by_time_zone" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Use the <code>timezone</code> value from Step 2 in the following API:
-  <code>https://www.timeapi.io/api/Time/current/zone?timeZone={timezone}</code></li>
-<li>Example: <a href="https://www.timeapi.io/api/Time/current/zone?timeZone=America/New_York">https://www.timeapi.io/api/Time/current/zone?timeZone=America/New_York</a></li>
-<li>The JSON response should include <code>year</code>, <code>month</code>, <code>hour</code>, <code>minute</code>, <code>seconds</code>, and <code>date</code>. Example:</li>
-</ul>
-<pre class="codehilite"><code class="language-json">{
-  &quot;year&quot;: 2025,
-  &quot;month&quot;: 5,
-  &quot;day&quot;: 13,
-  &quot;hour&quot;: 15,
-  &quot;minute&quot;: 39,
-  &quot;seconds&quot;: 36,
-  &quot;milliSeconds&quot;: 804,
-  &quot;dateTime&quot;: &quot;2025-05-13T15:39:36.8047099&quot;,
-  &quot;date&quot;: &quot;05/13/2025&quot;,
-  &quot;time&quot;: &quot;15:39&quot;,
-  &quot;timeZone&quot;: &quot;America/New_York&quot;,
-  &quot;dayOfWeek&quot;: &quot;Tuesday&quot;,
-  &quot;dstActive&quot;: true
-}
-</code></pre>
-
 <hr />
 <h2 id="verify_micropython_on_your_raspberry_pi_pico">Verify MicroPython on Your Raspberry Pi Pico<a class="headerlink" href="#verify_micropython_on_your_raspberry_pi_pico" title="Permanent link">&para;</a></h2>
 <ol>
