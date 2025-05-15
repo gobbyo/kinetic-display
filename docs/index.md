@@ -37,5 +37,5 @@ The links listed below should be followed in the order they appear on the page f
 - [Orientation](./userguide/orientation.md)
 - [On/Off Switch](./userguide/spdtswitch.md)
 - [Web Service and Settings](./userguide/websettings.md)
-- [Schedule Creation](./userguide/schedule.md)
+- [Schedule Creation and Management](./userguide/schedule.md)
 - [Table of Human and Alien Digit Type](./userguide/digittype.md)

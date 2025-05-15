@@ -75,9 +75,9 @@ The screenshot below shows the Kinetic Display Control Settings page when opened
 ### Key Settings
 
 1. **Schedule**
-    - **Dropdown selection:** Choose from 5 prebuilt schedules, or add your own to customize sleep/wake times.
+    - **Dropdown selection:** Choose from 5 prebuilt schedules, or add your own, see the user guide on [Schedule Creation and Management](schedule.md).
     - ![settings-1](../img/user-guide-settings/settings-1.webp)
-    - **Add Schedule** and **Delete Schedule** buttons are available.
+    - **Add Schedule** and **Delete Schedule** to customize the list of schedules, see the user guide on [Schedule Creation and Management](schedule.md) for details.
 2. **Wifi SSID and Wifi PWD**
     - Enter your home Wifi network name (SSID) and password (PWD).
     - The default values are `SSID` and `Password`. Change these to your actual Wifi credentials.
@@ -100,6 +100,7 @@ The screenshot below shows the Kinetic Display Control Settings page when opened
 9. **Digit Style or Type**
     - Choose **Human** or **Alien**. See the [Digit Type Table](./digittype.md) for details.
     ![settings-6](../img/user-guide-settings/settings-6.webp)
+
 ---
 
 ## 5. Save and Apply Settings
