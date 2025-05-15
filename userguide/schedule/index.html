@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Schedule Creation - Kinetic Display</title>
+        <title>Schedule Creation and Management - Kinetic Display</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -153,7 +153,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Schedule Creation</a>
+    <a href="./" class="dropdown-item active" aria-current="page">Schedule Creation and Management</a>
 </li>
                                     
 <li>
@@ -197,8 +197,32 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#schedule_creation" class="nav-link">Schedule Creation</a>
+            <li class="nav-item" data-bs-level="1"><a href="#user_guide_-_schedule_creation_and_management" class="nav-link">User Guide - Schedule Creation and Management</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#how_scheduling_works" class="nav-link">How Scheduling Works</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#core_components" class="nav-link">Core Components</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#event_actions_reference" class="nav-link">Event Actions Reference</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#building_your_schedule" class="nav-link">Building Your Schedule</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#real-world_example_schedule_0json" class="nav-link">Real-World Example: schedule_0.json</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#managing_schedules_through_the_web_interface" class="nav-link">Managing Schedules Through the Web Interface</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -206,8 +230,389 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="schedule_creation">Schedule Creation<a class="headerlink" href="#schedule_creation" title="Permanent link">&para;</a></h1>
-<p>[TBD]</p></div>
+<h1 id="user_guide_-_schedule_creation_and_management">User Guide - Schedule Creation and Management<a class="headerlink" href="#user_guide_-_schedule_creation_and_management" title="Permanent link">&para;</a></h1>
+<p>The Kinetic Display includes a powerful scheduling system that controls what information is shown on your display and when it appears. This guide will help you understand how to create, customize, and manage your display schedules.</p>
+<div class="admonition tip">
+<p class="admonition-title">Key Points</p>
+<ul>
+<li>Scheduling is managed by the Conductor (Raspberry Pi Pico W 2040)</li>
+<li>Custom schedules are created as JSON files</li>
+<li>Add or remove schedules through the display's <a href="../websettings/">web service settings</a></li>
+<li>Multiple schedules allow for different display behaviors for various situations</li>
+</ul>
+</div>
+<h2 id="how_scheduling_works">How Scheduling Works<a class="headerlink" href="#how_scheduling_works" title="Permanent link">&para;</a></h2>
+<p>The scheduling system operates on three key concepts:</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Schedules</strong></td>
+<td>Collections of timed events that determine the display behavior</td>
+</tr>
+<tr>
+<td><strong>Event actions</strong></td>
+<td>Specific display functions (showing time, date, temperature, etc.)</td>
+</tr>
+<tr>
+<td><strong>Time triggers</strong></td>
+<td>When each event should activate (using precise times or wildcards)</td>
+</tr>
+</tbody>
+</table>
+<p>By combining these elements, you can create dynamic display routines tailored to your needs.</p>
+<h2 id="core_components">Core Components<a class="headerlink" href="#core_components" title="Permanent link">&para;</a></h2>
+<h3 id="1_schedule_files">1. Schedule Files<a class="headerlink" href="#1_schedule_files" title="Permanent link">&para;</a></h3>
+<p>Each display can store multiple schedule configurations:</p>
+<ul>
+<li><strong><code>schedule_0.json</code></strong>, <strong><code>schedule_1.json</code></strong>, <strong><code>schedule_2.json</code></strong>, etc.</li>
+<li>Each schedule file is a JSON document containing a list of <code>scheduledEvent</code> objects</li>
+<li>Multiple schedules allow you to save different display configurations for various situations</li>
+</ul>
+<h4 id="schedule_file_structure">Schedule File Structure<a class="headerlink" href="#schedule_file_structure" title="Permanent link">&para;</a></h4>
+<p>A complete schedule JSON file has the following structure:</p>
+<pre class="codehilite"><code class="language-json">{
+  &quot;title&quot;: &quot;Schedule Name&quot;,              // Name shown in settings dropdown
+  &quot;scheduleDescription&quot;: &quot;Description&quot;,  // Brief explanation of this schedule
+  &quot;scheduledEvent&quot;: [
+    // Array of scheduled events (detailed below)
+  ]
+}
+</code></pre>
+
+<h4 id="event_structure">Event Structure<a class="headerlink" href="#event_structure" title="Permanent link">&para;</a></h4>
+<p>Each event defines <strong>when</strong> to trigger and <strong>what</strong> action to perform:</p>
+<pre class="codehilite"><code class="language-json">{
+  &quot;hour&quot;: -1,    // Every hour (wildcard)
+  &quot;minute&quot;: 0,   // When minute is 0 (top of each hour)
+  &quot;second&quot;: 20,  // When second is 20
+  &quot;elapse&quot;: 9,   // Run for 9 seconds
+  &quot;event&quot;: 2     // Show the date (action #2)
+}
+</code></pre>
+
+<h4 id="event_fields_explained">Event Fields Explained<a class="headerlink" href="#event_fields_explained" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Purpose</th>
+<th>Example Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hour</code></td>
+<td>Hour to trigger (0-23, or -1 for every hour)</td>
+<td><code>8</code>, <code>13</code>, <code>-1</code></td>
+</tr>
+<tr>
+<td><code>minute</code></td>
+<td>Minute to trigger (0-59, or -1 for every minute)</td>
+<td><code>30</code>, <code>45</code>, <code>-1</code></td>
+</tr>
+<tr>
+<td><code>second</code></td>
+<td>Second to trigger (0-59)</td>
+<td><code>0</code>, <code>15</code></td>
+</tr>
+<tr>
+<td><code>elapse</code></td>
+<td>Duration in seconds</td>
+<td><code>5</code>, <code>10</code>, <code>30</code></td>
+</tr>
+<tr>
+<td><code>event</code></td>
+<td>Action ID (see Event Actions table)</td>
+<td><code>1</code>, <code>2</code>, <code>9</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2_the_scheduler_system">2. The Scheduler System<a class="headerlink" href="#2_the_scheduler_system" title="Permanent link">&para;</a></h3>
+<p>The scheduling system uses these components to control your display:</p>
+<ul>
+<li>The <code>ScheduleLoader</code> class (<code>scheduler.py</code>) loads schedule files and creates a list of <code>scheduleInfo</code> objects</li>
+<li>The main loop (<code>uart_command.py</code>) continuously checks if the current time matches any scheduled events</li>
+<li>When a match occurs, the corresponding action is triggered for the specified duration</li>
+</ul>
+<h3 id="3_time_matching_patterns">3. Time Matching Patterns<a class="headerlink" href="#3_time_matching_patterns" title="Permanent link">&para;</a></h3>
+<p>Using <code>-1</code> as a wildcard in time fields creates flexible scheduling patterns:</p>
+<h4 id="every_hour">Every Hour<a class="headerlink" href="#every_hour" title="Permanent link">&para;</a></h4>
+<p>Set <code>hour: -1</code> to run at the same minute/second each hour</p>
+<pre class="codehilite"><code class="language-json">{ &quot;hour&quot;: -1, &quot;minute&quot;: 30, &quot;second&quot;: 0, ... }  // Runs at 30 minutes past every hour
+</code></pre>
+
+<h4 id="every_minute">Every Minute<a class="headerlink" href="#every_minute" title="Permanent link">&para;</a></h4>
+<p>Set <code>minute: -1</code> to run at the same second each minute</p>
+<pre class="codehilite"><code class="language-json">{ &quot;hour&quot;: -1, &quot;minute&quot;: -1, &quot;second&quot;: 0, ... }  // Runs at the start of every minute
+</code></pre>
+
+<h4 id="specific_time">Specific Time<a class="headerlink" href="#specific_time" title="Permanent link">&para;</a></h4>
+<p>Set exact values to run at a specific time each day</p>
+<pre class="codehilite"><code class="language-json">{ &quot;hour&quot;: 8, &quot;minute&quot;: 0, &quot;second&quot;: 0, ... }  // Runs at 8:00:00 AM
+</code></pre>
+
+<hr />
+<h2 id="event_actions_reference">Event Actions Reference<a class="headerlink" href="#event_actions_reference" title="Permanent link">&para;</a></h2>
+<p>The <code>eventActions</code> class in <code>scheduler.py</code> defines all possible actions the display can perform:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>nothing</td>
+<td>Do nothing</td>
+</tr>
+<tr>
+<td>1</td>
+<td>displayTime</td>
+<td>Show the current time</td>
+</tr>
+<tr>
+<td>2</td>
+<td>displayDate</td>
+<td>Show the current date</td>
+</tr>
+<tr>
+<td>3</td>
+<td>displayIndoorTemp</td>
+<td>Show indoor temperature</td>
+</tr>
+<tr>
+<td>4</td>
+<td>displayIndoorHumidity</td>
+<td>Show indoor humidity</td>
+</tr>
+<tr>
+<td>5</td>
+<td>displayOutdoorTemp</td>
+<td>Show outdoor temperature</td>
+</tr>
+<tr>
+<td>6</td>
+<td>displayOutdoorHumidity</td>
+<td>Show outdoor humidity</td>
+</tr>
+<tr>
+<td>7</td>
+<td>updateOutdoorTempHumid</td>
+<td>Update external temp/humidity sensor</td>
+</tr>
+<tr>
+<td>9</td>
+<td>hybernate</td>
+<td>Enter hibernation mode</td>
+</tr>
+</tbody>
+</table>
+<p>You use the <code>event</code> field in each scheduled event to specify which action to perform.</p>
+<hr />
+<h2 id="building_your_schedule">Building Your Schedule<a class="headerlink" href="#building_your_schedule" title="Permanent link">&para;</a></h2>
+<h3 id="step_1_plan_your_display_routine">Step 1: Plan Your Display Routine<a class="headerlink" href="#step_1_plan_your_display_routine" title="Permanent link">&para;</a></h3>
+<div class="admonition question">
+<p class="admonition-title">Consider These Questions</p>
+<ul>
+<li>What information is most important at different times of day?</li>
+<li>How long should each piece of information display?</li>
+<li>Are there times when the display should turn off (hibernate)?</li>
+<li>What pattern will make the information most useful to viewers?</li>
+</ul>
+</div>
+<h3 id="step_2_create_your_schedule_file">Step 2: Create Your Schedule File<a class="headerlink" href="#step_2_create_your_schedule_file" title="Permanent link">&para;</a></h3>
+<p>Each schedule file contains an array of events. Start with this basic structure:</p>
+<pre class="codehilite"><code class="language-json">{
+  &quot;title&quot;: &quot;My Custom Schedule&quot;,
+  &quot;scheduleDescription&quot;: &quot;Brief description of what this schedule does&quot;,
+  &quot;scheduledEvent&quot;: [
+    { /* event 1 */ },
+    { /* event 2 */ },
+    // more events...
+  ]
+}
+</code></pre>
+
+<h3 id="step_3_add_specific_events">Step 3: Add Specific Events<a class="headerlink" href="#step_3_add_specific_events" title="Permanent link">&para;</a></h3>
+<p>For each action you want to schedule, add an event object to the <code>scheduledEvent</code> array:</p>
+<h4 id="example_show_time_every_minute">Example: Show Time Every Minute<a class="headerlink" href="#example_show_time_every_minute" title="Permanent link">&para;</a></h4>
+<p>This event displays the current time for 10 seconds at the start of every minute:</p>
+<pre class="codehilite"><code class="language-json">{
+  &quot;hour&quot;: -1,     // Every hour
+  &quot;minute&quot;: -1,   // Every minute
+  &quot;second&quot;: 0,    // When second is 0
+  &quot;elapse&quot;: 10,   // Run for 10 seconds
+  &quot;event&quot;: 1      // Display time (action #1)
+}
+</code></pre>
+
+<h4 id="example_show_date_at_regular_intervals">Example: Show Date at Regular Intervals<a class="headerlink" href="#example_show_date_at_regular_intervals" title="Permanent link">&para;</a></h4>
+<p>These events display the date for 25 seconds every 5 minutes:</p>
+<pre class="codehilite"><code class="language-json">{
+  &quot;hour&quot;: -1,     // Every hour
+  &quot;minute&quot;: 0,    // When minute is 0
+  &quot;second&quot;: 15,   // When second is 15
+  &quot;elapse&quot;: 25,   // Run for 25 seconds
+  &quot;event&quot;: 2      // Display date (action #2)
+},
+{
+  &quot;hour&quot;: -1,     // Every hour
+  &quot;minute&quot;: 5,    // When minute is 5
+  &quot;second&quot;: 15,   // When second is 15
+  &quot;elapse&quot;: 25,   // Run for 25 seconds
+  &quot;event&quot;: 2      // Display date (action #2)
+}
+</code></pre>
+
+<h4 id="example_enter_hibernation_at_night">Example: Enter Hibernation at Night<a class="headerlink" href="#example_enter_hibernation_at_night" title="Permanent link">&para;</a></h4>
+<p>This event puts the display into hibernation mode at 10:00 PM for 8 minutes:</p>
+<pre class="codehilite"><code class="language-json">{
+  &quot;hour&quot;: 22,     // At 10:00 PM
+  &quot;minute&quot;: 0,    // At minute 0
+  &quot;second&quot;: 0,    // At second 0
+  &quot;elapse&quot;: 480,  // Run for 480 seconds (8 minutes)
+  &quot;event&quot;: 9      // Enter hibernation (action #9)
+}
+</code></pre>
+
+<h2 id="real-world_example_schedule_0json">Real-World Example: schedule_0.json<a class="headerlink" href="#real-world_example_schedule_0json" title="Permanent link">&para;</a></h2>
+<p>The <code>schedule_0.json</code> file is an "All Features" schedule that demonstrates how to use all display capabilities:</p>
+<div class="admonition example">
+<p class="admonition-title">schedule_0.json Structure</p>
+<p><code>json
+{
+  "title": "All Features",
+  "scheduleDescription": "Time, date, month, internal and external temp and humid",
+  "scheduledEvent": [
+    {
+      "hour": -1, "minute": -1, "second": 0, "elapse": 10, "event": 1
+    },
+    {
+      "hour": -1, "minute": -1, "second": 45, "elapse": 10, "event": 1
+    },
+    {
+      "hour": -1, "minute": 0, "second": 20, "elapse": 9, "event": 2
+    },
+    {
+      "hour": -1, "minute": 10, "second": 20, "elapse": 9, "event": 2
+    },
+    {
+      "hour": -1, "minute": 2, "second": 20, "elapse": 9, "event": 3
+    },
+    {
+      "hour": -1, "minute": 24, "second": 20, "elapse": 9, "event": 3
+    },
+    {
+      "hour": -1, "minute": 2, "second": 30, "elapse": 9, "event": 4
+    },
+    {
+      "hour": -1, "minute": 24, "second": 30, "elapse": 9, "event": 4
+    },
+    {
+      "hour": -1, "minute": 5, "second": 20, "elapse": 9, "event": 5
+    },
+    {
+      "hour": -1, "minute": 25, "second": 20, "elapse": 9, "event": 5
+    },
+    {
+      "hour": -1, "minute": 5, "second": 30, "elapse": 9, "event": 6
+    },
+    {
+      "hour": -1, "minute": 25, "second": 30, "elapse": 9, "event": 6
+    },
+    {
+      "hour": 22, "minute": 0, "second": 0, "elapse": 480, "event": 9
+    }
+  ]
+}</code></p>
+</div>
+<h3 id="understanding_the_schedule_pattern">Understanding the Schedule Pattern<a class="headerlink" href="#understanding_the_schedule_pattern" title="Permanent link">&para;</a></h3>
+<p>This schedule creates a predictable pattern with:</p>
+<ol>
+<li><strong>Time Displays</strong></li>
+<li>At second 0 of every minute: Show time for 10 seconds</li>
+<li>
+<p>At second 45 of every minute: Show time for 10 seconds</p>
+</li>
+<li>
+<p><strong>Date Displays</strong></p>
+</li>
+<li>
+<p>At second 20 of minutes 0, 10, 20, 30, 40, and 50: Show date for 9 seconds</p>
+</li>
+<li>
+<p><strong>Indoor Conditions</strong></p>
+</li>
+<li>At minute 2 and 24 of each hour, second 20: Show indoor temperature for 9 seconds</li>
+<li>
+<p>At minute 2 and 24 of each hour, second 30: Show indoor humidity for 9 seconds</p>
+</li>
+<li>
+<p><strong>Outdoor Conditions</strong></p>
+</li>
+<li>At minute 5 and 25 of each hour, second 20: Show outdoor temperature for 9 seconds</li>
+<li>
+<p>At minute 5 and 25 of each hour, second 30: Show outdoor humidity for 9 seconds</p>
+</li>
+<li>
+<p><strong>Hibernation</strong></p>
+</li>
+<li>At 10:00 PM (hour 22): Enter hibernation mode for 8 minutes (480 seconds)</li>
+</ol>
+<h3 id="tips_for_effective_schedules">Tips for Effective Schedules<a class="headerlink" href="#tips_for_effective_schedules" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Avoid overlapping events</strong>: If multiple events match the same time, only one will run</li>
+<li><strong>Mind the timing</strong>: Ensure your <code>elapse</code> times don't create unwanted overlaps. Gaps are OK and will only cause a pause in the display when powering up.</li>
+<li><strong>Use hibernation</strong>: To save power, schedule hibernation during overnight hours</li>
+<li><strong>Balance information</strong>: Rotate between different types of information for the best user experience</li>
+<li><strong>Consider patterns</strong>: Create predictable patterns so users can anticipate when specific information will be displayed</li>
+</ul>
+<hr />
+<h2 id="managing_schedules_through_the_web_interface">Managing Schedules Through the Web Interface<a class="headerlink" href="#managing_schedules_through_the_web_interface" title="Permanent link">&para;</a></h2>
+<p>Once you've created a custom schedule JSON file, you can add it to your Kinetic Display using the web interface.</p>
+<h3 id="adding_a_new_schedule">Adding a New Schedule<a class="headerlink" href="#adding_a_new_schedule" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Connect to your Kinetic Display's web interface as described in the <a href="../websettings/">Web Settings</a> guide</li>
+<li>On the settings page, click the <strong>Add Schedule</strong> button</li>
+<li>In the dialog that appears:</li>
+<li>Upload your JSON file using the file selector</li>
+<li>The system will add it to the available schedules</li>
+</ol>
+<p><img alt="settings-1" src="../../img/user-guide-settings/settings-1.webp" /></p>
+<h3 id="selecting_a_schedule">Selecting a Schedule<a class="headerlink" href="#selecting_a_schedule" title="Permanent link">&para;</a></h3>
+<ol>
+<li>From the Schedule dropdown menu, select your preferred schedule</li>
+<li>Click <strong>Save</strong> to apply the changes</li>
+<li>Follow the prompted steps to restart the display</li>
+</ol>
+<h3 id="deleting_a_schedule">Deleting a Schedule<a class="headerlink" href="#deleting_a_schedule" title="Permanent link">&para;</a></h3>
+<p>If you no longer need a particular schedule:</p>
+<ol>
+<li>Select the schedule from the dropdown menu</li>
+<li>Click the <strong>Delete Schedule</strong> button</li>
+<li>Confirm the deletion when prompted</li>
+<li>Click <strong>Save</strong> to apply the changes</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The system includes several pre-installed schedules that provide good starting points and fallback options.</p>
+</div>
+<h3 id="tips_for_schedule_management">Tips for Schedule Management<a class="headerlink" href="#tips_for_schedule_management" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Create multiple schedules</strong> for different situations</li>
+<li><strong>Back up your custom schedules</strong> before making significant changes</li>
+<li><strong>Test new schedules</strong> thoroughly to ensure they work as expected</li>
+<li><strong>Start with a copy</strong> of an existing schedule as a template for your custom schedules</li>
+</ul></div>
             </div>
         </div>
 
