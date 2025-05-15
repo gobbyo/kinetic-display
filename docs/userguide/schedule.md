@@ -263,27 +263,23 @@ The `schedule_0.json` file is an "All Features" schedule that demonstrates how t
 This schedule creates a predictable pattern with:
 
 1. **Time Displays**
-   - At second 0 of every minute: Show time for 10 seconds
-   - At second 45 of every minute: Show time for 10 seconds
-
+      - At second 0 of every minute: Show time for 10 seconds
+      - At second 45 of every minute: Show time for 10 seconds
 2. **Date Displays**
-   - At second 20 of minutes 0, 10, 20, 30, 40, and 50: Show date for 9 seconds
-
+      - At second 20 of minutes 0, 10, 20, 30, 40, and 50: Show date for 9 seconds
 3. **Indoor Conditions**
-   - At minute 2 and 24 of each hour, second 20: Show indoor temperature for 9 seconds
-   - At minute 2 and 24 of each hour, second 30: Show indoor humidity for 9 seconds
-
+      - At minute 2 and 24 of each hour, second 20: Show indoor temperature for 9 seconds
+      - At minute 2 and 24 of each hour, second 30: Show indoor humidity for 9 seconds
 4. **Outdoor Conditions**
-   - At minute 5 and 25 of each hour, second 20: Show outdoor temperature for 9 seconds
-   - At minute 5 and 25 of each hour, second 30: Show outdoor humidity for 9 seconds
-
+      - At minute 5 and 25 of each hour, second 20: Show outdoor temperature for 9 seconds
+      - At minute 5 and 25 of each hour, second 30: Show outdoor humidity for 9 seconds
 5. **Hibernation**
-   - At 10:00 PM (hour 22): Enter hibernation mode for 8 hours (480 minutes)
+      - At 10:00 PM (hour 22): Enter hibernation mode for 8 hours (480 minutes)
 
 ### Tips for Effective Schedules
 
 - **Avoid overlapping events**: If multiple events match the same time, only one will run
-- **Mind the timing**: Ensure your `elapse` times don't create unwanted overlaps. Gaps are OK and will only cause a pause in the display when powering up.
+- **Mind the timing**: Ensure your `elapse` times don't create unwanted overlaps. Gaps are OK and will only cause a pause in before displaying an action (time, temperature, etc) when powering up.
 - **Use hibernation**: To save power, schedule hibernation during overnight hours
 - **Balance information**: Rotate between different types of information for the best user experience
 - **Consider patterns**: Create predictable patterns so users can anticipate when specific information will be displayed
