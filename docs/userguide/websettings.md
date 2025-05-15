@@ -97,6 +97,7 @@ The screenshot below shows the Kinetic Display Control Settings page when opened
     - **Test:** Each digit and colon will extend and retract all segments on startup, then begin scheduled actions. Useful for ensuring all segments are working.
       ![settings-5](../img/user-guide-settings/settings-5.webp)
     - **No Test:** The display resumes from its last known state after power loss.
+    - The state of the Kinetic Display is preserved even when the power is inadvertently turned off, such as a power outage. When the power is turned back after a power outage, the display will resume from its last known state when the setting is **No Test**. For example, the display is running normally and the power outage began at 10:30 and ended at 11:15, then all the digits except digit 3 would change on startup. If the setting is set to **Test**, then the display will run its animated segment test and clear all digits from 3 to 0 on the display before resuming.
 9. **Digit Style or Type**
     - Choose **Human** or **Alien**. See the [Digit Type Table](./digittype.md) for details.
     ![settings-6](../img/user-guide-settings/settings-6.webp)
