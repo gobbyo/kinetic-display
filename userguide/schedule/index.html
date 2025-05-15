@@ -474,12 +474,12 @@
 </code></pre>
 
 <h4 id="example_enter_hibernation_at_night">Example: Enter Hibernation at Night<a class="headerlink" href="#example_enter_hibernation_at_night" title="Permanent link">&para;</a></h4>
-<p>This event puts the display into hibernation mode at 10:00 PM for 8 minutes:</p>
+<p>This event puts the display into hibernation mode at 10:00 PM for 8 hours:</p>
 <pre class="codehilite"><code class="language-json">{
   &quot;hour&quot;: 22,     // At 10:00 PM
   &quot;minute&quot;: 0,    // At minute 0
   &quot;second&quot;: 0,    // At second 0
-  &quot;elapse&quot;: 480,  // Run for 480 seconds (8 minutes)
+  &quot;elapse&quot;: 480,  // Run for 480 minutes (8 hours)
   &quot;event&quot;: 9      // Enter hibernation (action #9)
 }
 </code></pre>
@@ -538,40 +538,34 @@
 <h3 id="understanding_the_schedule_pattern">Understanding the Schedule Pattern<a class="headerlink" href="#understanding_the_schedule_pattern" title="Permanent link">&para;</a></h3>
 <p>This schedule creates a predictable pattern with:</p>
 <ol>
-<li><strong>Time Displays</strong></li>
+<li><strong>Time Displays</strong><ul>
 <li>At second 0 of every minute: Show time for 10 seconds</li>
-<li>
-<p>At second 45 of every minute: Show time for 10 seconds</p>
+<li>At second 45 of every minute: Show time for 10 seconds</li>
+</ul>
 </li>
-<li>
-<p><strong>Date Displays</strong></p>
+<li><strong>Date Displays</strong><ul>
+<li>At second 20 of minutes 0, 10, 20, 30, 40, and 50: Show date for 9 seconds</li>
+</ul>
 </li>
-<li>
-<p>At second 20 of minutes 0, 10, 20, 30, 40, and 50: Show date for 9 seconds</p>
-</li>
-<li>
-<p><strong>Indoor Conditions</strong></p>
-</li>
+<li><strong>Indoor Conditions</strong><ul>
 <li>At minute 2 and 24 of each hour, second 20: Show indoor temperature for 9 seconds</li>
-<li>
-<p>At minute 2 and 24 of each hour, second 30: Show indoor humidity for 9 seconds</p>
+<li>At minute 2 and 24 of each hour, second 30: Show indoor humidity for 9 seconds</li>
+</ul>
 </li>
-<li>
-<p><strong>Outdoor Conditions</strong></p>
-</li>
+<li><strong>Outdoor Conditions</strong><ul>
 <li>At minute 5 and 25 of each hour, second 20: Show outdoor temperature for 9 seconds</li>
-<li>
-<p>At minute 5 and 25 of each hour, second 30: Show outdoor humidity for 9 seconds</p>
+<li>At minute 5 and 25 of each hour, second 30: Show outdoor humidity for 9 seconds</li>
+</ul>
 </li>
-<li>
-<p><strong>Hibernation</strong></p>
+<li><strong>Hibernation</strong><ul>
+<li>At 10:00 PM (hour 22): Enter hibernation mode for 8 hours (480 minutes)</li>
+</ul>
 </li>
-<li>At 10:00 PM (hour 22): Enter hibernation mode for 8 minutes (480 seconds)</li>
 </ol>
 <h3 id="tips_for_effective_schedules">Tips for Effective Schedules<a class="headerlink" href="#tips_for_effective_schedules" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Avoid overlapping events</strong>: If multiple events match the same time, only one will run</li>
-<li><strong>Mind the timing</strong>: Ensure your <code>elapse</code> times don't create unwanted overlaps. Gaps are OK and will only cause a pause in the display when powering up.</li>
+<li><strong>Mind the timing</strong>: Ensure your <code>elapse</code> times don't create unwanted overlaps. Gaps are OK and will only cause a pause in before displaying an action (time, temperature, etc) when powering up.</li>
 <li><strong>Use hibernation</strong>: To save power, schedule hibernation during overnight hours</li>
 <li><strong>Balance information</strong>: Rotate between different types of information for the best user experience</li>
 <li><strong>Consider patterns</strong>: Create predictable patterns so users can anticipate when specific information will be displayed</li>
