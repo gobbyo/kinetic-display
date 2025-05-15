@@ -21,7 +21,7 @@ The switch determines how your display behaves depending on its position and whe
 |---------------------------|-----------------|-----------------|---------------------------------------------------------------------|
 | Plug in with switch **ON** | ON              | Normal          | Display runs your schedule, shows time, date, temp, etc.            |
 | Plug in with switch **OFF**| OFF             | Configuration   | Display creates a WiFi hotspot for settings changes                 |
-| Already plugged in, set to OFF | OFF         | Low Power       | Digits turn off, controller stays on (saves power)                  |
+| Already plugged in, set to **OFF** | OFF         | Low Power       | Digits turn off, controller stays on (saves power)                  |
 
 ### 2. Power Management
 
@@ -66,7 +66,7 @@ You can also schedule the display to hibernate automatically, even if the switch
   "hour": 22,    // At 10:00 PM
   "minute": 0,
   "second": 0,
-  "elapse": 480, // Hibernate for 8 minutes
+  "elapse": 480, // Hibernate for 480 minutes (8 hours)
   "event": 9     // Hibernate mode
 }
 ```

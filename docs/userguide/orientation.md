@@ -26,7 +26,7 @@ Each digit consists of seven segments (A-G) that can extend or retract to form n
 
 ### Display Modes and Scheduler Actions
 
-The Kinetic Display can be customized to show different information at scheduled times. The scheduler determines which of the following modes is active:
+The Kinetic Display can be customized to show different information at scheduled times, see the user guide on [Schedule Creation and Management](schedule.md) for details. The scheduler determines which of the following modes is active:
 
 1. **Local Time** (12 or 24 hour): Both colons extended. Shows the current time.
     ![Time Mode](../img/user-guide-orientation/orientation-1b.webp)
