@@ -79,7 +79,7 @@ Refer to the labeled picture below to identify the main components on the back o
 - Setting local time and weather by connecting to Wi-Fi and external APIs
 - Managing low-power mode by controlling power to digits 0-3
 
-**G** = **Barrel Jack for 12V Power Supply:** The stand with the barrel jack also houses the power management system. The On/Off switch has different modes depending on the power connection. See the On/Off switch guide for more details.
+**G** = **Barrel Jack for 12V Power Supply:** The stand with the barrel jack also houses the power management system. The On/Off switch has different modes depending on the power connection. See the [On/Off switch user guide](spdtswitch.md) for more details.
 
 !!! note
     Plug the 12V power supply into the barrel jack **before** plugging the power supply into the wall outlet.
