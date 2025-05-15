@@ -200,7 +200,7 @@ This event puts the display into hibernation mode at 10:00 PM for 8 minutes:
   "hour": 22,     // At 10:00 PM
   "minute": 0,    // At minute 0
   "second": 0,    // At second 0
-  "elapse": 480,  // Run for 480 seconds (8 minutes)
+  "elapse": 480,  // Run for 480 minutes (8 hours)
   "event": 9      // Enter hibernation (action #9)
 }
 ```
@@ -278,7 +278,7 @@ This schedule creates a predictable pattern with:
    - At minute 5 and 25 of each hour, second 30: Show outdoor humidity for 9 seconds
 
 5. **Hibernation**
-   - At 10:00 PM (hour 22): Enter hibernation mode for 8 minutes (480 seconds)
+   - At 10:00 PM (hour 22): Enter hibernation mode for 8 hours (480 minutes)
 
 ### Tips for Effective Schedules
 
