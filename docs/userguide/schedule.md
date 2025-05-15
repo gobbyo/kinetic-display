@@ -193,7 +193,7 @@ These events display the date for 25 seconds every 5 minutes:
 
 #### Example: Enter Hibernation at Night
 
-This event puts the display into hibernation mode at 10:00 PM for 8 minutes:
+This event puts the display into hibernation mode at 10:00 PM for 8 hours:
 
 ```json
 {
