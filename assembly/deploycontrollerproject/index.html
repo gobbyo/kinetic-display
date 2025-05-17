@@ -229,32 +229,42 @@
 <h2 id="configure_and_deploy_the_conductor_project">Configure and Deploy the Conductor Project<a class="headerlink" href="#configure_and_deploy_the_conductor_project" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Connect your computer to the conductor PCB Pico W 2040 as described in <a href="../../prerequisitesoftware/">Verify Micropython on your Raspberry Pi Pico</a>.</li>
-<li>Open VS Code and follow the steps below:</li>
+<li>Open VS Code and follow the steps below:<ul>
 <li><strong>(A)</strong> Select <strong>File -&gt; Open Folder...</strong>.</li>
 <li><strong>(B)</strong> Navigate to the <strong>deploy/conductor</strong> folder you deployed during step 4 in the section <a href="../../prerequisitesoftware/">Fork and Clone the Repository</a>.</li>
 <li><strong>(C)</strong> Click the "Select Folder" button.<br />
 <img alt="deploycontrollercode-1.webp" src="../../img/deploycontrollercode/deploycontrollercode-1.webp" /></li>
-<li>Open the <code>main.py</code> file and make the following changes:</li>
+</ul>
+</li>
+<li>Open the <code>main.py</code> file and make the following changes:<ul>
 <li><strong>(A)</strong> Comment out the call to the <code>loop()</code> function.</li>
 <li><strong>(B)</strong> Uncomment the <code>manual()</code> function.</li>
 <li><strong>(C)</strong> Rename the <code>main.py</code> file to <code>_main.py</code>.<br />
    Don't forget to save the file after making these changes.<br />
 <img alt="deploycontrollercode-2" src="../../img/deploycontrollercode/deploycontrollercode-2.webp" /></li>
-<li>Create a new terminal in VS Code:</li>
+</ul>
+</li>
+<li>Create a new terminal in VS Code:<ul>
 <li><strong>(A)</strong> Click the ellipsis (<code>...</code>) in the terminal pane.</li>
 <li><strong>(B)</strong> Select <strong>Terminal -&gt; New Terminal</strong> from the submenu.<br />
 <img alt="deploycontrollercode-3" src="../../img/deploycontrollercode/deploycontrollercode-3.webp" /></li>
+</ul>
+</li>
 <li>Connect your computer's USB port to the Raspberry Pi Pico W 2040 as shown below:<br />
 <img alt="deploycontrollercode-4" src="../../img/deploycontrollercode/deploycontrollercode-4.webp" /></li>
-<li>In the terminal pane:</li>
+<li>In the terminal pane:<ul>
 <li><strong>(A)</strong> Select the drop-down menu.</li>
 <li><strong>(B)</strong> Click the <strong>MicroPico vREPL</strong> submenu item.<br />
 <img alt="deploycontrollercode-5" src="../../img/deploycontrollercode/deploycontrollercode-5.webp" /></li>
-<li>Upload the project to the Pico:</li>
+</ul>
+</li>
+<li>Upload the project to the Pico:<ul>
 <li><strong>(A)</strong> Click <strong>All Commands</strong> on the <a href="https://code.visualstudio.com/api/ux-guidelines/status-bar">status bar</a>.</li>
 <li><strong>(B)</strong> In the Command text field, type "<strong>Upload</strong>" after "<strong>&gt; MicroPico:</strong> ".</li>
 <li><strong>(C)</strong> Select the dropdown <strong>MicroPico: Upload project to Pico</strong>.<br />
 <img alt="deploycontrollercode-6" src="../../img/deploycontrollercode/deploycontrollercode-6.webp" /></li>
+</ul>
+</li>
 </ol>
 <h2 id="configuration_options">Configuration Options<a class="headerlink" href="#configuration_options" title="Permanent link">&para;</a></h2>
 <p>The Kinetic Display can be configured through the web interface after connection to Wi-Fi. The following settings are available:</p>
