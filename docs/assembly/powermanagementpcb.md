@@ -54,7 +54,7 @@ Bottom view of the power management PCB:
    ![powermanagement-1](../img/powermanagement/powermanagement-1.webp)
 1. Following the picture below on the TOP side of the PCB, solder the `s8050` through-hole transistor into `Q1`. Be sure to align the pins according to the silk screen outline.  
    ![powermanagement-2](../img/powermanagement/powermanagement-2.webp)
-1. Following the picture below on the TOP side of the PCB, solder the `1N4001` diode into `D1`. Be sure to align the anode band with the silk screen outline.  
+1. Following the picture below on the TOP side of the PCB, solder the `1N4001` diode into `D1`. Be sure to align the cathode band with the silk screen outline.  
    ![powermanagement-3](../img/powermanagement/powermanagement-3.webp)
 1. Following the picture below on the TOP side of the PCB, solder the 6 pins of the Songle relay into `RLY1`.  
    ![powermanagement-4](../img/powermanagement/powermanagement-4.webp)
