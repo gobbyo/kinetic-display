@@ -39,13 +39,16 @@ For Orca and Bambu Studio slicers, see `fdm\3mf\pla-smooth-black.3mf`.
 
 ## **3. White Matte PLA, Smooth Build Plate**
 
+You have two options: `powerbank.stl` or `powerbank-small.stl`. Print the `powerbank.stl` and `powerbank-cover.stl` if you have household animals that might have access to the back of the display. Print `powerbank-small.stl` to keep a lower profile of the back of the display. Mounting `powerbank.stl` and `powerbank-small.stl` is the same for both sizes.
+
 For Orca and Bambu Studio slicers, see `fdm\3mf\pla-smooth-white.3mf`.
 
 | File                  | Description                                           | Density | Quantity | Per Unit (g) | Total (g) |
 | :-------------------- | :--------------------------------------------------- | ------: | -------: | -----------: | --------: |
 | `digit-motor-mount.stl`| Motor mount for digits and colons                    | 100% | 30 | 12.77 | 383.1 |
-| `powerbank-cover.stl` | Cover for buck converters and powerbank PCB          | 100% | 1 | 65.53 | 65.53 |
-| `powerbank.stl`       | Kinetic display stand, buck converter mounts, and powerbank PCB mount | 100% | 1 | 146.75 | 146.75 |
+| `powerbank-cover.stl` | Cover for large stand (optional) | 100% | 1 | 65.53 | 65.53 |
+| `powerbank.stl`       | Large stand (optional), buck converter mounts, and powerbank PCB mount | 100% | 1 | 146.75 | 146.75 |
+| `powerbank-small.stl` | Small stand (preferred), buck converter mounts, and powerbank PCB mount | 100% | 1 | 116 | 116 |
 | `rackgear-bumper.stl` | Stops the segment or colon at the precise distance when extended | 100% | 30 | 0.61 | 18.3 |
 | `seg-pin.stl`         | Pin to hold the rack gear onto the segment and colons | 100% | 30 | 0.4 | 12 |
 
