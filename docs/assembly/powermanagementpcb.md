@@ -11,7 +11,7 @@ There are several choices of power supplies available in the market. Why not sim
 ## Prerequisites
 
 - [Fabrication of the power management PCB](../createandorder/pcb.md).
-- 3D print of the display stand. You have two options: `powerbank.stl` or `powerbank-small.stl`. Print the `powerbank.stl` and `powerbank-cover.stl` if you have household animals that might have access to the back of the display. Print `powerbank-small.stl` to keep a lower profile of the back of the display. Mounting `powerbank.stl` and `powerbank-small.stl` is the same for both sizes.
+- 3D print the display stand. You have two options: `powerbank.stl` or `powerbank-small.stl`. Print the `powerbank.stl` and `powerbank-cover.stl` if you have household animals that might have access to the back of the display. Print `powerbank-small.stl` to keep a lower profile of the back of the display. Mounting `powerbank.stl` and `powerbank-small.stl` is the same for both sizes.
 
 ***Table of components***
 
