@@ -163,7 +163,7 @@ class Conductor:
                 if not cleared:
                     print("hybernating...")
                     self.clearDisplay() 
-                    time.sleep(2)
+                    time.sleep(3)
                     self.wifi.disconnect_from_wifi_network()
                     self.powerRelay.on()
                     cleared = True
