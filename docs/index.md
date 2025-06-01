@@ -12,7 +12,7 @@ The links listed below should be followed in the order they appear on the page f
 
 - [Bill of Materials](./createandorder/bom.md)
 - [Fabricate the Printed Circuit Boards (PCBs)](./createandorder/pcb.md)
-- [3D Print the Display Parts](./createandorder/3dprints.md)
+- [Display Parts FDM Fabrication](./createandorder/3dprints.md)
 
 ## Assemble and Test Components
 

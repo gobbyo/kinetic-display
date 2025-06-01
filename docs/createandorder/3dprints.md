@@ -1,4 +1,4 @@
-# 3D Print the Display Parts
+# Display Parts FDM Fabrication
 
 ## Filament Quantity
 
@@ -30,7 +30,7 @@ For Orca and Bambu Studio slicers, see `fdm\3mf\pla-smooth-black.3mf`.
 
 | File                  | Description                                           | Density | Quantity | Per Unit (g) | Total (g) |
 | :-------------------- | :--------------------------------------------------- | ------: | -------: | -----------: | --------: |
-| `digit-back-plate.stl`| Back plates for digits 0 and 3 for mounting the actuators | 50% | 3 | 47.43 | 142.29 |
+| `digit-back-plate.stl`| Back plates for digits 0 and 3 for mounting the actuators | 50% | 2 | 47.43 | 142.29 |
 | `digit-gear10.stl`    | Motor shaft gear mounted onto the heavy-duty 103 motors | 100% | 30 | 0.5 | 15 |
 | `digit1-back-plate.stl`| Conductor and digit 1 back plate for mounting the actuators | 50% | 1 | 67.7 | 67.7 |
 | `digit2-back-plate.stl`| Back plate for digit 2 for mounting the actuators and powerbank/display stand | 50% | 1 | 47.43 | 47.43 |
@@ -75,7 +75,7 @@ For Orca and Bambu Studio slicers, see `fdm\3mf\tpu-smooth-black.3mf`.
 
 | File                  | Description                                           | Density | Quantity | Per Unit (g) | Total (g) |
 | :-------------------- | :--------------------------------------------------- | ------: | -------: | -----------: | --------: |
-| `digit-gasket.stl`    | Gaskets for digits 0 and 3 to cushion the PCB during segment retractions | 15% | 3 | 17.86 | 53.58 |
+| `digit-gasket.stl`    | Gaskets for digits 0 and 3 to cushion the PCB during segment retractions | 15% | 2 | 17.86 | 53.58 |
 | `digit1-gasket.stl`   | Gasket for the conductor and digit 1 to cushion the PCB during segment retractions | 15% | 1 | 31.71 | 31.71 |
 | `digit2-gasket.stl`   | Gasket for digit 2 to cushion the PCB during segment retractions | 15% | 1 | 17.86 | 17.86 |
 | `rackgear-bumper-gasket.stl` | Provides some cushion for the rack gear when extended | 100% | 30 | 0.4 | 12 |
