@@ -130,17 +130,17 @@ class Conductor:
         current_minute = dt[5]
         current_second = dt[6]
         
-        # Check hibernation first with direct comparison instead of string formatting
-        if s.event == eventActions.hybernate:
-            if (current_hour == s.hour or s.hour == -1) and (current_minute == s.minute or s.minute == -1):
-                return eventActions.hybernate
+        # Use the same logic for all event types, including hibernation
+        # First check if hour and minute match (or are wildcards)
+        hour_match = (s.hour == -1 or s.hour == current_hour)
+        minute_match = (s.minute == -1 or s.minute == current_minute)
         
-        # For non-hibernation events
-        if s.event < eventActions.hybernate:
-            if (s.hour == -1 and current_minute == s.minute) or (s.hour == -1 and s.minute == -1):
-                if current_second >= s.second and current_second < (s.second + s.elapse):
-                    return s.event
-        
+        # If both hour and minute match, check the seconds
+        if hour_match and minute_match:
+            # For all event types, check if we're within the elapse window
+            if current_second >= s.second and current_second < (s.second + s.elapse):
+                return s.event
+    
         return 0
     
     def scheduledHybernation(self,s):
@@ -677,10 +677,12 @@ def loop():
 
                 # Now do the full check for matching events
                 if s.event == eventActions.hybernate:
-                    if (current_hour == s.hour or s.hour == -1) and (current_minute == s.minute or s.minute == -1):
+                    # Use the same second-based precision for hibernation events
+                    if ((s.hour == -1 or s.hour == current_hour) and 
+                        (s.minute == -1 or s.minute == current_minute) and
+                        current_second >= s.second and current_second < (s.second + s.elapse)):
                         a = eventActions.hybernate
                 else:
-                    # This is the key fix - the original code was only triggering when hour=-1
                     # We need to check for specific hour matches too
                     if ((s.hour == -1 and s.minute == current_minute) or 
                         (s.hour == -1 and s.minute == -1) or
@@ -710,7 +712,7 @@ def loop():
             if controller.checkHybernate():
                 controller.updateBrightness()
 
-            # Add this for debugging after your event processing - make sure s is defined
+            # Add this for debugging after event processing - make sure s is defined
             if a == 0 and len(controller.schedule) > 0:  # Only print if no action and there are scheduled events
                 # Don't reference s directly here as it might be undefined if schedule was empty
                 print(f"No scheduled action triggered at: hour={current_hour}, min={current_minute}, sec={current_second}")
