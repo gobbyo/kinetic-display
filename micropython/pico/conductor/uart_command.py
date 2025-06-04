@@ -560,16 +560,21 @@ def loop():
         if tempTime == 12:
             print("12 hour time")
             controller.display12hour = True
+            print("Setting 12 hour time format")
         else:
             print("24 hour time")
             controller.display12hour = False
+        
+        print(f"read digitType from config: {conf.read('digitType')}")
         thetype = conf.read("digitType")
+
         if "Human" in thetype:
             controller.setDigittype(digitType.human)
         else:
             controller.setDigittype(digitType.alien)
         
         # Check if digit test at startup is enabled (default to True if setting not found)
+        print("Checking if digit test at startup is enabled...")
         test_on_startup = conf.read("testOnStartup")
         print(f"Test on startup setting: {test_on_startup}")
         # Convert string value to boolean properly
@@ -634,13 +639,17 @@ def loop():
 
         # Enable wifi and sync the RTC
         print("Creating wifi object")
-        #controller.wifi = PicoWifi("config.json", secrets.usr,secrets.pwd)
-        if(controller.wifi.connect_to_wifi_network()):
+
+        if controller.wifi.connect_to_wifi_network() == 1:
+            print("WiFi connected successfully.")
             time.sleep(1)
+            print("Syncing RTC with time server...")
             controller.syncRTC.refresh_timezone()
             controller.syncRTC.syncclock(controller.rtc)
             etc = extTempHumid(controller.syncRTC)
             etc.setLatLon()
+        else:
+            print("WiFi connection failed.")
     except Exception as e:
         print(f"Wifi error: {e}")
     finally:
@@ -665,33 +674,24 @@ def loop():
                 if (s.minute != -1 and s.minute != current_minute and 
                     not (s.hour == -1 and s.minute == -1)):
                     continue
-                
+         
                 if (s.hour != -1 and s.hour != current_hour and 
                     not (s.hour == -1 and s.minute == -1)):
                     continue
                     
-                # Only for non-hibernation events, check seconds
-                if s.event != eventActions.hybernate:
-                    if current_second < s.second or current_second >= (s.second + s.elapse):
-                        continue
-
-                # Now do the full check for matching events
-                if s.event == eventActions.hybernate:
-                    # Use the same second-based precision for hibernation events
-                    if ((s.hour == -1 or s.hour == current_hour) and 
-                        (s.minute == -1 or s.minute == current_minute) and
-                        current_second >= s.second and current_second < (s.second + s.elapse)):
-                        a = eventActions.hybernate
-                else:
-                    # We need to check for specific hour matches too
-                    if ((s.hour == -1 and s.minute == current_minute) or 
-                        (s.hour == -1 and s.minute == -1) or
-                        (s.hour == current_hour and s.minute == current_minute)):
-                        if current_second >= s.second and current_second < (s.second + s.elapse):
-                            a = s.event
+                if current_second < s.second or current_second >= (s.second + s.elapse):
+                    continue
+            
+                if ((s.hour == -1 and s.minute == current_minute) or 
+                    (s.hour == -1 and s.minute == -1) or
+                    (s.hour == current_hour and s.minute == current_minute)):
+                    if current_second >= s.second and current_second < (s.second + s.elapse):
+                        a = s.event
 
                 # Process the scheduled action
-                if a == eventActions.displayTime:
+                if a == eventActions.hybernate:
+                    controller.scheduledHybernation(s)
+                elif a == eventActions.displayTime:
                     controller.showTime()
                 elif a == eventActions.displayDate:
                     controller.showDate()
@@ -709,7 +709,7 @@ def loop():
                     controller.scheduledHybernation(s)
             
             time.sleep(1)
-            if controller.checkHybernate():
+            if controller.checkHybernate(): # if the hybernate switch is in "on" position
                 controller.updateBrightness()
 
             # Add this for debugging after event processing - make sure s is defined
