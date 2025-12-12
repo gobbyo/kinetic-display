@@ -32,6 +32,11 @@ if (Test-Path $uartCommandPath) {
 }
 
 # Step 4: Copy the "common" directory to the "conductor" temp directory
+# Remove existing common directory first if it exists
+$conductorCommonPath = Join-Path $conductorTempDir "common"
+if (Test-Path $conductorCommonPath) {
+    Remove-Item -Recurse -Force $conductorCommonPath
+}
 Copy-Item -Path $commonDir -Destination $conductorTempDir -Recurse
 
 # Step 5: Create a "secrets.py" file in the "conductor" temp directory with the specified contents
@@ -59,4 +64,9 @@ if (Test-Path $uartDigitPath) {
 }
 
 # Step 9: Copy the "common" directory to the new "digit" folder
+# Remove existing common directory first if it exists
+$digitCommonPath = Join-Path $digitTempDir "common"
+if (Test-Path $digitCommonPath) {
+    Remove-Item -Recurse -Force $digitCommonPath
+}
 Copy-Item -Path $commonDir -Destination $digitTempDir -Recurse
