@@ -15,7 +15,7 @@ nav:
   - Parts:
     - Bill of Materials: ./createandorder/bom.md
     - Order PCBs: ./createandorder/pcb.md
-    - Print Parts: ./createandorder/3dprints.md
+    - Parts FDM Fabrication: ./createandorder/3dprints.md
   - Assemble: 
     - Actuators: ./assembly/actuatorassembly.md
     - Digit PCBs: ./assembly/digitpcbassembly.md

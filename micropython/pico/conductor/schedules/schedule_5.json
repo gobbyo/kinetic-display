@@ -1,0 +1,97 @@
+{
+    "title": "All features in one minute",
+    "scheduleDescription": "All features in one minute.",
+    "scheduledEvent": [
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 0,
+            "elapse": 5,
+            "event": 1
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 5,
+            "elapse": 5,
+            "event": 7
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 10,
+            "elapse": 9,
+            "event": 2
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 20,
+            "elapse": 9,
+            "event": 3
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 30,
+            "elapse": 9,
+            "event": 4
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 40,
+            "elapse": 9,
+            "event": 5
+        },
+        {
+            "hour": -1,
+            "minute": -1,
+            "second": 50,
+            "elapse": 5,
+            "event": 6
+        },
+        {
+            "hour": 13,
+            "minute": 5,
+            "second": 10,
+            "elapse": 18,
+            "event": 9
+        },
+        {
+            "hour": 13,
+            "minute": 10,
+            "second": 10,
+            "elapse": 18,
+            "event": 9
+        },
+        {
+            "hour": 13,
+            "minute": 15,
+            "second": 10,
+            "elapse": 18,
+            "event": 9
+        },
+        {
+            "hour": 13,
+            "minute": 20,
+            "second": 10,
+            "elapse": 18,
+            "event": 9
+        },
+        {
+            "hour": 13,
+            "minute": 25,
+            "second": 10,
+            "elapse": 18,
+            "event": 9
+        },
+        {
+            "hour": 13,
+            "minute": 30,
+            "second": 10,
+            "elapse": 18,
+            "event": 9
+        }
+    ]
+}
