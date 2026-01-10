@@ -221,6 +221,7 @@ class Conductor:
 
     def updateOutdoorTempHumid(self):
         try:
+            print(f"updateOutdoorTempHumid")
             # Remove the with statement since extTempHumid is not a context manager
             etc = extTempHumid(self.syncRTC)
             etc.updateOutdoorTemp()
@@ -340,6 +341,12 @@ class Conductor:
             print("showOutdoorTemp")
             conf = Config("config.json")
             temp = conf.read("tempoutdoor")
+            
+            # Check if temp is None
+            if temp is None:
+                print("Outdoor temp not available")
+                return
+            
             cf = conf.read("tempCF")
             if cf == "C":
                 if temp < 0:
@@ -379,6 +386,12 @@ class Conductor:
             print("showOutdoorHumidity")
             conf = Config("config.json")
             humidity = conf.read("humidoutdoor")
+            
+            # Check if humidity is None
+            if humidity is None:
+                print("Outdoor humidity not available")
+                return
+            
             if humidity > 99:
                 humidity = 99
             # set the digits to show the temperature
@@ -646,8 +659,6 @@ def loop():
             print("Syncing RTC with time server...")
             controller.syncRTC.refresh_timezone()
             controller.syncRTC.syncclock(controller.rtc)
-            etc = extTempHumid(controller.syncRTC)
-            etc.setLatLon()
         else:
             print("WiFi connection failed.")
     except Exception as e:

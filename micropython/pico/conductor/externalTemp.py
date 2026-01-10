@@ -4,10 +4,7 @@ import ujson
 import time
 
 # API endpoint constants
-externalLatLonAPI = const("http://ip-api.com/json/{0}")
 externalOpenMeteoAPI = const("https://api.open-meteo.com/v1/forecast?latitude={0}&longitude={1}&current_weather=true&hourly=relativehumidity_2m")
-# Backup API if the primary one fails
-externalBackupLatLonAPI = const("https://ipapi.co/{0}/json/")
 
 class extTempHumid:
     """
@@ -46,44 +43,7 @@ class extTempHumid:
             print(f"API request error: {e}")
             return None
         
-    def setLatLon(self):
-        """
-        Obtain the latitude and longitude based on the device's external IP address.
-        The coordinates are then saved to the configuration file for future use.
-        
-        Returns:
-            tuple: (latitude, longitude) if successful, (None, None) if failed
-        """
-        if not self._sync or not hasattr(self._sync, 'externalIPaddress'):
-            print("Error: syncRTC instance not properly initialized or missing IP address")
-            return None, None
-            
-        # Try primary geolocation API
-        try:
-            geo = self._make_api_request(externalLatLonAPI.format(self._sync.externalIPaddress))
-            if geo and 'lat' in geo and 'lon' in geo:
-                self.config.write("lat", geo['lat'])
-                self.config.write("lon", geo['lon'])
-                print(f"Location set to: {geo['lat']}, {geo['lon']}")
-                return geo['lat'], geo['lon']
-        except Exception as e:
-            print(f"Primary geolocation API error: {e}")
-            
-        # Try backup geolocation API
-        try:
-            time.sleep(1)  # Add delay before trying backup API
-            geo = self._make_api_request(externalBackupLatLonAPI.format(self._sync.externalIPaddress))
-            if geo and 'latitude' in geo and 'longitude' in geo:
-                self.config.write("lat", geo['latitude'])
-                self.config.write("lon", geo['longitude'])
-                print(f"Location set to: {geo['latitude']}, {geo['longitude']} (from backup API)")
-                return geo['latitude'], geo['longitude']
-        except Exception as e:
-            print(f"Backup geolocation API error: {e}")
-            
-        print("Failed to obtain location coordinates")
-        return None, None
-    
+
     def updateOutdoorTemp(self):
         """
         Update the outdoor temperature and humidity using the Open-Meteo API.
