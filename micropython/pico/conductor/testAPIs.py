@@ -22,9 +22,7 @@ def test_time_endpoints(rtc, conf):
     # Test each endpoint directly
     endpoints = [
         {"name": "WorldTimeAPI (IP)", "url": syncRTC.EXTERNAL_WORLD_TIME_API, "parser": parse_worldtime},
-        {"name": "WorldTimeAPI (Timezone)", "url": syncRTC.EXTERNAL_WORLD_TIME_ZONE_API.format("Europe/London"), "parser": parse_worldtime},
-        {"name": "TimeAPI.io (IP)", "url": syncRTC.EXTERNAL_OPEN_TIME_API.format("8.8.8.8"), "parser": parse_timeapi},
-        {"name": "TimeAPI.io (Timezone)", "url": syncRTC.EXTERNAL_WORLD_TIME_ZONE_API.format("Europe/London"), "parser": parse_timeapi}
+        {"name": "WorldTimeAPI (Timezone)", "url": syncRTC.EXTERNAL_WORLD_TIME_ZONE_API.format("Europe/London"), "parser": parse_worldtime}
     ]
     
     for endpoint in endpoints:
@@ -132,16 +130,11 @@ try:
         sync.syncclock(rtc)
         dt = rtc.datetime()
         if dt[0] != 1970:
-            print(f"[X] Success. RTC synced with auto-detection using external time API {syncRTC.EXTERNAL_WORLD_TIME_API} or {syncRTC.EXTERNAL_OPEN_TIME_API}")
             print(f"DateTime. \n\tyear: {dt[0]}\n\tmonth: {dt[1]}\n\tday: {dt[2]}\n\tweekday: {dt[3]}\n\thours: {dt[4]}\n\tminutes: {dt[5]}\n\tseconds: {dt[6]}")
             # Check if timezone was auto-detected and saved
             detected_timezone = conf.read("timeZone", default="")
-            if detected_timezone:
-                print(f"Auto-detected timezone: {detected_timezone}")
+            print(f"Auto-detected timezone: {detected_timezone}")
             print("**************************")         
-        else:
-            print(f"[X] Failed. Could not obtain external time from {syncRTC.EXTERNAL_WORLD_TIME_API} or {syncRTC.EXTERNAL_OPEN_TIME_API}")
-            print("**************************")
         
         # Test 3: Test with specific timezone name - America/Los_Angeles
         print("\n*******API Test 3*********")
@@ -155,7 +148,7 @@ try:
         if sync.syncclock(rtc):
             dt = rtc.datetime()
             if dt[0] != 1970:
-                print(f"[X] Success. RTC synced with TimeAPI.io using timezone {timezone_to_test}")
+                print(f"[X] Success. RTC synced with NTP using timezone {timezone_to_test}")
                 print(f"DateTime ({timezone_to_test}). \n\tyear: {dt[0]}\n\tmonth: {dt[1]}\n\tday: {dt[2]}\n\tweekday: {dt[3]}\n\thours: {dt[4]}\n\tminutes: {dt[5]}\n\tseconds: {dt[6]}")
                 print("**************************")
             else:
