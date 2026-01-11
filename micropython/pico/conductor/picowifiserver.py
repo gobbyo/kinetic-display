@@ -141,10 +141,12 @@ class PicoWifi:
         config_time = self.config.read("time")
         config_wait = self.config.read("wait")
         config_speed = self.config.read("speed")
-        config_timezone = self.config.read("timeZone", default="Europe/London")
+        config_timezone = self.config.read("timeZone", default="America/Los_Angeles")  # Get timezone from config with default
         selected_schedule = self.config.read("schedule", default="")
         test_on_startup = self.config.read("testOnStartup")
         digit_type = self.config.read("digitType", default="Human")  # Get digitType from config
+        config_latitude = self.config.read("latitude", default="51.48")
+        config_longitude = self.config.read("longitude", default="0")
         
         # Pre-calculate search strings to avoid string interpolation in the loop
         findCF = f'<option value="{config_tempCF}">'
@@ -191,6 +193,14 @@ class PicoWifi:
                         
                     if not modified and 'id="wait"' in line:
                         line = line.replace('id="wait"', f'id="wait" name="wait" value="{config_wait}"')
+                        modified = True
+                        
+                    if not modified and 'id="latitude"' in line:
+                        line = line.replace('id="latitude"', f'id="latitude" value="{config_latitude}"')
+                        modified = True
+                        
+                    if not modified and 'id="longitude"' in line:
+                        line = line.replace('id="longitude"', f'id="longitude" value="{config_longitude}"')
                         modified = True
                         
                     if not modified and 'id="speed"' in line:
@@ -269,6 +279,8 @@ class PicoWifi:
             self.config.write('time', f['time'])
             self.config.write('tempCF', f['tempCF'])
             self.config.write('timeZone', f['timeZone'])
+            self.config.write('latitude', f['latitude'])
+            self.config.write('longitude', f['longitude'])
             self.config.write('wait', f['wait'])
             self.config.write('speed', f['speed'])
             self.config.write('schedule', f['schedule'])

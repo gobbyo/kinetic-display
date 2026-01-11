@@ -53,8 +53,8 @@ class extTempHumid:
             tuple: (temperature, humidity) if successful, (None, None) if failed
         """
         try:
-            lat = self.config.read("lat")
-            lon = self.config.read("lon")
+            lat = self.config.read("latitude")
+            lon = self.config.read("longitude")
             
             # Check if coordinates are available
             if not lat or not lon:
