@@ -2,9 +2,10 @@ from common.config import Config
 import urequests
 import ujson
 import time
+import gc
 
 # API endpoint constants
-externalOpenMeteoAPI = const("https://api.open-meteo.com/v1/forecast?latitude={0}&longitude={1}&current_weather=true&hourly=relativehumidity_2m")
+externalOpenMeteoAPI = const("https://api.open-meteo.com/v1/forecast?latitude={0}&longitude={1}&current=temperature_2m,relative_humidity_2m")
 
 class extTempHumid:
     """
@@ -32,16 +33,21 @@ class extTempHumid:
         Returns:
             dict: Parsed JSON response or None if request fails
         """
+        response = None
         try:
             response = urequests.get(url)
             if response.status_code == 200:
-                return ujson.loads(response.content)
+                data = ujson.loads(response.content)
+                return data
             else:
                 print(f"API request failed with status code: {response.status_code}")
                 return None
         except Exception as e:
             print(f"API request error: {e}")
             return None
+        finally:
+            if response:
+                response.close()
         
 
     def updateOutdoorTemp(self):
@@ -52,6 +58,7 @@ class extTempHumid:
         Returns:
             tuple: (temperature, humidity) if successful, (None, None) if failed
         """
+        gc.collect()  # Free memory before making API request
         try:
             lat = self.config.read("latitude")
             lon = self.config.read("longitude")
@@ -60,42 +67,37 @@ class extTempHumid:
             if not lat or not lon:
                 print("Error: Location coordinates not available. Try calling setLatLon() first.")
                 return None, None
-                
+            
+            print(f"Free memory before request: {gc.mem_free()} bytes")
             weather_data = self._make_api_request(externalOpenMeteoAPI.format(lat, lon))
             if not weather_data:
                 return None, None
                 
-            # Extract temperature
-            if 'current_weather' in weather_data and 'temperature' in weather_data['current_weather']:
-                temperature = int(weather_data['current_weather']['temperature'])
-                self.config.write("tempoutdoor", temperature)
-            else:
-                print("Error: Temperature data not available in API response")
-                return None, None
-                
-            # Extract humidity for the current hour
-            if 'hourly' in weather_data and 'relativehumidity_2m' in weather_data['hourly']:
-                # Find the index for the current hour
-                current_hour = weather_data['current_weather']['time'].split('T')[1].split(':')[0]
-                current_date = weather_data['current_weather']['time'].split('T')[0]
-                current_datetime = f"{current_date}T{current_hour}:00"
-                
-                try:
-                    hour_index = weather_data['hourly']['time'].index(current_datetime)
-                    humidity = int(weather_data['hourly']['relativehumidity_2m'][hour_index])
+            # Extract temperature and humidity from current conditions
+            if 'current' in weather_data:
+                if 'temperature_2m' in weather_data['current']:
+                    temperature = int(weather_data['current']['temperature_2m'])
+                    self.config.write("tempoutdoor", temperature)
+                else:
+                    print("Error: Temperature data not available in API response")
+                    return None, None
+                    
+                if 'relative_humidity_2m' in weather_data['current']:
+                    humidity = int(weather_data['current']['relative_humidity_2m'])
                     self.config.write("humidoutdoor", humidity)
                     print(f"Weather updated: {temperature}°C, {humidity}% humidity")
                     return temperature, humidity
-                except (ValueError, IndexError) as e:
-                    print(f"Error finding current hour in API response: {e}")
-                    # Fall back to first hour in the forecast
-                    humidity = int(weather_data['hourly']['relativehumidity_2m'][0])
-                    self.config.write("humidoutdoor", humidity)
-                    return temperature, humidity
+                else:
+                    print("Error: Humidity data not available in API response")
+                    return None, None
             else:
-                print("Error: Humidity data not available in API response")
+                print("Error: Current weather data not available in API response")
+                return None, None
                 
         except Exception as e:
             print(f"Error updating weather data: {e}")
+            return None, None
+        finally:
+            gc.collect()  # Free memory after request
             
         return None, None
