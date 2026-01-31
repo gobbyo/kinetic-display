@@ -49,6 +49,30 @@ class extTempHumid:
             if response:
                 response.close()
         
+    def setLatLon(self):
+        """
+        Retrieve latitude and longitude from the config file.
+        These values should be set via the web interface.
+        
+        Returns:
+            tuple: (latitude, longitude) if available, (None, None) otherwise
+        """
+        try:
+            lat = self.config.read("latitude")
+            lon = self.config.read("longitude")
+            
+            if lat and lon:
+                # Also write to alternate keys for backward compatibility
+                self.config.write("lat", lat)
+                self.config.write("lon", lon)
+                print(f"Location coordinates loaded: {lat}, {lon}")
+                return lat, lon
+            else:
+                print("Warning: Latitude and longitude not set in config. Please configure via web interface.")
+                return None, None
+        except Exception as e:
+            print(f"Error reading location from config: {e}")
+            return None, None
 
     def updateOutdoorTemp(self):
         """
