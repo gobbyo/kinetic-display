@@ -1,13 +1,7 @@
 from machine import RTC
 import ntptime
 import time
-
-try:
-    from dst_rules import get_dst_rule, get_offset
-except ImportError:
-    # Fallback if dst_rules not available
-    def get_dst_rule(tz): return None
-    def get_offset(tz, is_dst): return 0
+from dst_rules import get_dst_rule, get_offset
 
 # Default values
 AUTO_TIMEZONE = "auto"
@@ -32,6 +26,7 @@ class syncRTC:
     def __init__(self, config=None): # Initialize the Config object, not the file name
         self.config = config
         self.timeZone = None
+        self._rtc_is_local = False
         if self.config:
             try:
                 self.timeZone = self.config.read(CONFIG_TIMEZONE_KEY)
@@ -41,6 +36,7 @@ class syncRTC:
     def syncclock(self, rtc, max_retries=3, ntp_host="pool.ntp.org"):
         print("Sync clock using NTP")
         returnval = False
+        self._rtc_is_local = False
 
         try:
             # Set a default date/time
@@ -86,10 +82,13 @@ class syncRTC:
                                             local_tuple[6], local_tuple[3], local_tuple[4], 
                                             local_tuple[5], subsecond)
                             rtc.datetime(local_rtc_time)
+                            self._rtc_is_local = True
                             print(f"RTC set to local time: {local_tuple[0]}-{local_tuple[1]:02d}-{local_tuple[2]:02d} {local_tuple[3]:02d}:{local_tuple[4]:02d}:{local_tuple[5]:02d}")
                         else:
+                            self._rtc_is_local = False
                             print(f"Warning: Unknown timezone '{self.timeZone}', RTC remains in UTC")
                     else:
+                        self._rtc_is_local = False
                         print("No timezone configured, RTC set to UTC")
                     
                     returnval = True
@@ -115,6 +114,7 @@ class syncRTC:
                 self.timeZone = self.config.read(CONFIG_TIMEZONE_KEY)
             except:
                 self.timeZone = None
+        self._rtc_is_local = False
     
     def _is_dst_active(self, year, month, day, hour, weekday):
         """Determine if DST is active for the configured timezone on a given date."""
@@ -190,40 +190,33 @@ class syncRTC:
         Returns:
             Day of month for the transition
         """
-        # Find first day of month's weekday
+        # Day-of-week values use Monday=0 .. Sunday=6 (same as time.localtime)
         # Using a simple algorithm since MicroPython may not have full datetime
         import time
         
         # Get the first day of the month
         first_day = time.localtime(time.mktime((year, month, 1, 0, 0, 0, 0, 0)))
-        first_weekday = (first_day[6] + 1) % 7  # Convert Monday=0 to Sunday=0
+        first_weekday = first_day[6]
+
+        if month == 12:
+            next_month = (year + 1, 1, 1, 0, 0, 0, 0, 0)
+        else:
+            next_month = (year, month + 1, 1, 0, 0, 0, 0, 0)
+        days_in_month = time.localtime(time.mktime(next_month) - 86400)[2]
         
         if week == -1:  # Last occurrence
-            # Find days in month
-            if month == 12:
-                next_month = (year + 1, 1, 1, 0, 0, 0, 0, 0)
-            else:
-                next_month = (year, month + 1, 1, 0, 0, 0, 0, 0)
-            
-            days_in_month = time.localtime(
-                time.mktime(next_month) - 86400
-            )[2]
-            
             # Start from last day and work backwards
             for day in range(days_in_month, 0, -1):
                 day_tuple = time.localtime(time.mktime((year, month, day, 0, 0, 0, 0, 0)))
-                if (day_tuple[6] + 1) % 7 == target_weekday:
+                if day_tuple[6] == target_weekday:
                     return day
         else:
             # Find the nth occurrence
-            # Calculate offset from first day
-            if target_weekday >= first_weekday:
-                offset = target_weekday - first_weekday
-            else:
-                offset = 7 - first_weekday + target_weekday
-            
-            # Add weeks
-            return 1 + offset + (week - 1) * 7
+            offset = (target_weekday - first_weekday) % 7
+            transition_day = 1 + offset + (week - 1) * 7
+            if transition_day > days_in_month:
+                transition_day -= 7
+            return transition_day
         
         return 1  # Fallback
     
@@ -231,13 +224,19 @@ class syncRTC:
         """Get local time with timezone and DST adjustment.
         
         Args:
-            rtc: RTC object with UTC time
+            rtc: RTC object (UTC or already-local if set by syncclock)
         
         Returns:
             Tuple: (year, month, day, weekday, hour, minute, second, subsecond)
         """
         # Get current UTC time from RTC
         utc_time = rtc.datetime()
+
+        # syncclock() sets RTC to local time when timezone is configured.
+        # In that case, do not apply offset a second time.
+        if self._rtc_is_local and self.timeZone:
+            return utc_time
+
         year, month, day, weekday, hour, minute, second, subsecond = utc_time
         
         if not self.timeZone:
